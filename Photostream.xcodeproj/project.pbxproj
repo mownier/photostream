@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */; };
+		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
+		B9C1E4B21D507843000925FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4B11D507843000925FA /* AppDelegate.swift */; };
+		B9C1E4B41D507843000925FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4B31D507843000925FA /* ViewController.swift */; };
+		B9C1E4B71D507843000925FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C1E4B51D507843000925FA /* Main.storyboard */; };
+		B9C1E4B91D507843000925FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9C1E4B81D507843000925FA /* Assets.xcassets */; };
+		B9C1E4BC1D507843000925FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C1E4BA1D507843000925FA /* LaunchScreen.storyboard */; };
+		B9C1E4C71D507843000925FA /* PhotostreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4C61D507843000925FA /* PhotostreamTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9C1E4C31D507843000925FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C1E4A61D507843000925FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9C1E4AD1D507843000925FA;
+			remoteInfo = Photostream;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Photostream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CABFA691745D085069BD37E /* Pods-Photostream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.debug.xcconfig"; sourceTree = "<group>"; };
+		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
+		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B9C1E4AE1D507843000925FA /* Photostream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photostream.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C1E4B11D507843000925FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B9C1E4B31D507843000925FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B9C1E4B61D507843000925FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B9C1E4B81D507843000925FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B9C1E4BB1D507843000925FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B9C1E4BD1D507843000925FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9C1E4C21D507843000925FA /* PhotostreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotostreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C1E4C61D507843000925FA /* PhotostreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotostreamTests.swift; sourceTree = "<group>"; };
+		B9C1E4C81D507843000925FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B9C1E4AB1D507843000925FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9C1E4BF1D507843000925FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B9C1E4A51D507843000925FA = {
+			isa = PBXGroup;
+			children = (
+				B9C1E4B01D507843000925FA /* Photostream */,
+				B9C1E4C51D507843000925FA /* PhotostreamTests */,
+				B9C1E4AF1D507843000925FA /* Products */,
+				F836AD649A9490A32A324AE5 /* Pods */,
+				D281ADAE6A0B74DF75AA42E8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B9C1E4AF1D507843000925FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B9C1E4AE1D507843000925FA /* Photostream.app */,
+				B9C1E4C21D507843000925FA /* PhotostreamTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9C1E4B01D507843000925FA /* Photostream */ = {
+			isa = PBXGroup;
+			children = (
+				B9C1E4B11D507843000925FA /* AppDelegate.swift */,
+				B9C1E4B31D507843000925FA /* ViewController.swift */,
+				B9C1E4B51D507843000925FA /* Main.storyboard */,
+				B9C1E4B81D507843000925FA /* Assets.xcassets */,
+				B9C1E4BA1D507843000925FA /* LaunchScreen.storyboard */,
+				B9C1E4BD1D507843000925FA /* Info.plist */,
+			);
+			path = Photostream;
+			sourceTree = "<group>";
+		};
+		B9C1E4C51D507843000925FA /* PhotostreamTests */ = {
+			isa = PBXGroup;
+			children = (
+				B9C1E4C61D507843000925FA /* PhotostreamTests.swift */,
+				B9C1E4C81D507843000925FA /* Info.plist */,
+			);
+			path = PhotostreamTests;
+			sourceTree = "<group>";
+		};
+		D281ADAE6A0B74DF75AA42E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */,
+				7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F836AD649A9490A32A324AE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CABFA691745D085069BD37E /* Pods-Photostream.debug.xcconfig */,
+				BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */,
+				A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */,
+				745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B9C1E4AD1D507843000925FA /* Photostream */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9C1E4CB1D507843000925FA /* Build configuration list for PBXNativeTarget "Photostream" */;
+			buildPhases = (
+				DE9BC31E247CBEBA4162E125 /* [CP] Check Pods Manifest.lock */,
+				B9C1E4AA1D507843000925FA /* Sources */,
+				B9C1E4AB1D507843000925FA /* Frameworks */,
+				B9C1E4AC1D507843000925FA /* Resources */,
+				0AA4D3E6B1E1B3D608103861 /* [CP] Embed Pods Frameworks */,
+				CB6E360E9E13880FB70C4A1F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Photostream;
+			productName = Photostream;
+			productReference = B9C1E4AE1D507843000925FA /* Photostream.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B9C1E4C11D507843000925FA /* PhotostreamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9C1E4CE1D507843000925FA /* Build configuration list for PBXNativeTarget "PhotostreamTests" */;
+			buildPhases = (
+				3D9766328B7868A4DBCEAC81 /* [CP] Check Pods Manifest.lock */,
+				B9C1E4BE1D507843000925FA /* Sources */,
+				B9C1E4BF1D507843000925FA /* Frameworks */,
+				B9C1E4C01D507843000925FA /* Resources */,
+				EF25438C125A7EB2EECA9B87 /* [CP] Embed Pods Frameworks */,
+				55501091AC0E5F35B1261EA8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9C1E4C41D507843000925FA /* PBXTargetDependency */,
+			);
+			name = PhotostreamTests;
+			productName = PhotostreamTests;
+			productReference = B9C1E4C21D507843000925FA /* PhotostreamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B9C1E4A61D507843000925FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Mounir Ybanez";
+				TargetAttributes = {
+					B9C1E4AD1D507843000925FA = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					B9C1E4C11D507843000925FA = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = B9C1E4AD1D507843000925FA;
+					};
+				};
+			};
+			buildConfigurationList = B9C1E4A91D507843000925FA /* Build configuration list for PBXProject "Photostream" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B9C1E4A51D507843000925FA;
+			productRefGroup = B9C1E4AF1D507843000925FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B9C1E4AD1D507843000925FA /* Photostream */,
+				B9C1E4C11D507843000925FA /* PhotostreamTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B9C1E4AC1D507843000925FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C1E4BC1D507843000925FA /* LaunchScreen.storyboard in Resources */,
+				B9C1E4B91D507843000925FA /* Assets.xcassets in Resources */,
+				B9C1E4B71D507843000925FA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9C1E4C01D507843000925FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0AA4D3E6B1E1B3D608103861 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photostream/Pods-Photostream-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D9766328B7868A4DBCEAC81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		55501091AC0E5F35B1261EA8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB6E360E9E13880FB70C4A1F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photostream/Pods-Photostream-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE9BC31E247CBEBA4162E125 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF25438C125A7EB2EECA9B87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B9C1E4AA1D507843000925FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C1E4B41D507843000925FA /* ViewController.swift in Sources */,
+				B9C1E4B21D507843000925FA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9C1E4BE1D507843000925FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C1E4C71D507843000925FA /* PhotostreamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9C1E4C41D507843000925FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9C1E4AD1D507843000925FA /* Photostream */;
+			targetProxy = B9C1E4C31D507843000925FA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B9C1E4B51D507843000925FA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9C1E4B61D507843000925FA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B9C1E4BA1D507843000925FA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9C1E4BB1D507843000925FA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B9C1E4C91D507843000925FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B9C1E4CA1D507843000925FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B9C1E4CC1D507843000925FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CABFA691745D085069BD37E /* Pods-Photostream.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Photostream/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ner.Photostream;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B9C1E4CD1D507843000925FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Photostream/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ner.Photostream;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B9C1E4CF1D507843000925FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PhotostreamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ner.PhotostreamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photostream.app/Photostream";
+			};
+			name = Debug;
+		};
+		B9C1E4D01D507843000925FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PhotostreamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ner.PhotostreamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photostream.app/Photostream";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B9C1E4A91D507843000925FA /* Build configuration list for PBXProject "Photostream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9C1E4C91D507843000925FA /* Debug */,
+				B9C1E4CA1D507843000925FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9C1E4CB1D507843000925FA /* Build configuration list for PBXNativeTarget "Photostream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9C1E4CC1D507843000925FA /* Debug */,
+				B9C1E4CD1D507843000925FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9C1E4CE1D507843000925FA /* Build configuration list for PBXNativeTarget "PhotostreamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9C1E4CF1D507843000925FA /* Debug */,
+				B9C1E4D01D507843000925FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B9C1E4A61D507843000925FA /* Project object */;
+}
