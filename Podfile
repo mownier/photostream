@@ -5,6 +5,7 @@ target 'Photostream' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'Firebase'
+    pod 'Kingfisher'
 end
 
 target 'PhotostreamTests' do
