@@ -5,6 +5,9 @@ target 'Photostream' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'Firebase'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Storage'
     pod 'Kingfisher'
     pod 'SnapKit'
 end
