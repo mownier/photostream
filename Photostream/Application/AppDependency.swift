@@ -6,8 +6,23 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class AppDependency: Object {
+class AppDependency: AnyObject, LoginInteractorOutput {
 
+    init() {
+        let api = LoginAPIFirebase()
+        let service = LoginService(api: api)
+        let interactor = LoginInteractor(service: service)
+        interactor.output = self
+        interactor.login("chika@chikaminute.com", password: "123456789")
+    }
+
+    func loginDidSucceed(user: User!) {
+        print(user)
+    }
+
+    func loginDidFail(error: NSError!) {
+        print(error)
+    }
 }

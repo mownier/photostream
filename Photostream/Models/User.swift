@@ -6,8 +6,13 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class User: NSObject {
+struct User {
 
+    var id: String!
+    var username: String!
+    var firstName: String!
+    var lastName: String!
+    var email: String!
 }

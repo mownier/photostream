@@ -6,8 +6,9 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class LoginInteractorInput: Object {
+protocol LoginInteractorInput: class {
 
+    func login(email: String!, password: String!)
 }

@@ -6,8 +6,25 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import FirebaseAuth
 
-class LoginService: NSObject {
+typealias LoginServiceResultCallback = (User?, NSError?) -> Void
 
+class LoginService: AnyObject {
+
+    var api: LoginAPI!
+
+    init(api: LoginAPI!) {
+        self.api = api
+    }
+
+    func login(email: String!, password: String!, callback: LoginServiceResultCallback!) {
+        api.login(email, password: password, callback: callback)
+    }
+}
+
+protocol LoginAPI: class {
+
+    func login(email: String!, password: String!, callback: LoginServiceResultCallback!)
 }

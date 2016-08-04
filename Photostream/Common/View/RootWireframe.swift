@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RootWireframe: Object {
+class RootWireframe: AnyObject {
 
-    func showRoot(viewController: UIViewController, window: Window) {
-        
+    func showRoot(viewController: UIViewController, window: UIWindow) {
+
     }
 }

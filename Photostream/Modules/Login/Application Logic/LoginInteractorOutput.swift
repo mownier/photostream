@@ -6,8 +6,10 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class LoginInteractorOutput: Object {
+protocol LoginInteractorOutput: class {
 
+    func loginDidSucceed(user: User!)
+    func loginDidFail(error: NSError!)
 }
