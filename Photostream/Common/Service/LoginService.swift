@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 typealias LoginServiceResultCallback = (User?, NSError?) -> Void
 
@@ -20,7 +19,9 @@ class LoginService: AnyObject {
     }
 
     func login(email: String!, password: String!, callback: LoginServiceResultCallback!) {
-        source.login(email, password: password, callback: callback)
+        source.login(email, password: password) { (user, error) in
+            callback(user, error)
+        }
     }
 }
 
