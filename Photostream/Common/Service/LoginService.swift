@@ -13,18 +13,18 @@ typealias LoginServiceResultCallback = (User?, NSError?) -> Void
 
 class LoginService: AnyObject {
 
-    var api: LoginAPI!
+    var source: LoginServiceSource!
 
-    init(api: LoginAPI!) {
-        self.api = api
+    init(source: LoginServiceSource!) {
+        self.source = source
     }
 
     func login(email: String!, password: String!, callback: LoginServiceResultCallback!) {
-        api.login(email, password: password, callback: callback)
+        source.login(email, password: password, callback: callback)
     }
 }
 
-protocol LoginAPI: class {
+protocol LoginServiceSource: class {
 
     func login(email: String!, password: String!, callback: LoginServiceResultCallback!)
 }

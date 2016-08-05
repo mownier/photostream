@@ -11,8 +11,8 @@ import Foundation
 class AppDependency: AnyObject, LoginInteractorOutput {
 
     init() {
-        let api = LoginAPIFirebase()
-        let service = LoginService(api: api)
+        let source = LoginAPIFirebase()
+        let service = LoginService(source: source)
         let interactor = LoginInteractor(service: service)
         interactor.output = self
         interactor.login("chika@chikaminute.com", password: "123456789")

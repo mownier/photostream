@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseAuth
 
-class LoginAPIFirebase: LoginAPI {
+class LoginAPIFirebase: LoginServiceSource {
 
     func login(email: String!, password: String!, callback: LoginServiceResultCallback!) {
         if let auth = FIRAuth.auth() {
