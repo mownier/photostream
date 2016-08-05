@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginAPIFirebase: LoginServiceSource {
 
@@ -17,8 +18,26 @@ class LoginAPIFirebase: LoginServiceSource {
                 if let error = error {
                     callback(nil, error)
                 } else {
-                    let userModel = User()
-                    callback(userModel, error)
+                    guard let user = user else {
+                        callback(nil, NSError(domain: "LoginAPIFirebase", code: 1, userInfo: ["message": "FIRUser is nil."]))
+                        return
+                    }
+                    
+                    let id = user.uid
+                    let ref = FIRDatabase.database().reference()
+                    let path = "users/\(id)"
+                    ref.child(path).observeSingleEventOfType(.Value, withBlock: { (data) in
+                        guard let value = data.value else {
+                            callback(nil, NSError(domain: "LoginAPIFirebase", code: 2, userInfo: ["message": "FIRDataSnapshot is nil."]))
+                            return
+                        }
+                        var u = User()
+                        u.email = value["email"] as! String
+                        u.id = value["id"] as! String
+                        u.firstName = value["firstname"] as! String
+                        u.lastName = value["lastname"] as! String
+                        callback(u, nil)
+                    })
                 }
             }
         } else {
