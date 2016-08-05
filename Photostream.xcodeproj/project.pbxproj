@@ -16,6 +16,11 @@
 		B95FFD151D530BCD00085905 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD141D530BCD00085905 /* LoginService.swift */; };
 		B95FFD1D1D53184800085905 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95FFD1C1D53184800085905 /* GoogleService-Info.plist */; };
 		B95FFD211D532D3400085905 /* LoginAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD201D532D3400085905 /* LoginAPIFirebase.swift */; };
+		B961A2BA1D54576D00651D35 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2B91D54576D00651D35 /* RegistrationService.swift */; };
+		B961A2BC1D545A0600651D35 /* RegistrationAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2BB1D545A0600651D35 /* RegistrationAPIFirebase.swift */; };
+		B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */; };
+		B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */; };
+		B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */; };
 		B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3CE91D51C78900C5E76B /* AppDelegate.swift */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
@@ -49,6 +54,11 @@
 		B95FFD141D530BCD00085905 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		B95FFD1C1D53184800085905 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B95FFD201D532D3400085905 /* LoginAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPIFirebase.swift; sourceTree = "<group>"; };
+		B961A2B91D54576D00651D35 /* RegistrationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		B961A2BB1D545A0600651D35 /* RegistrationAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationAPIFirebase.swift; sourceTree = "<group>"; };
+		B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
+		B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorInput.swift; sourceTree = "<group>"; };
+		B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorOutput.swift; sourceTree = "<group>"; };
 		B97E3CE91D51C78900C5E76B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -146,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				B95FFD141D530BCD00085905 /* LoginService.swift */,
+				B961A2B91D54576D00651D35 /* RegistrationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -162,8 +173,67 @@
 			isa = PBXGroup;
 			children = (
 				B95FFD201D532D3400085905 /* LoginAPIFirebase.swift */,
+				B961A2BB1D545A0600651D35 /* RegistrationAPIFirebase.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		B961A2BD1D545D6800651D35 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B961A2BE1D545D6800651D35 /* Application Logic */,
+				B961A2BF1D545D6800651D35 /* Module Interface */,
+				B961A2C01D545D6800651D35 /* User Interface */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		B961A2BE1D545D6800651D35 /* Application Logic */ = {
+			isa = PBXGroup;
+			children = (
+				B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */,
+				B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */,
+				B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */,
+			);
+			path = "Application Logic";
+			sourceTree = "<group>";
+		};
+		B961A2BF1D545D6800651D35 /* Module Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Module Interface";
+			sourceTree = "<group>";
+		};
+		B961A2C01D545D6800651D35 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				B961A2C11D545D6800651D35 /* Presenter */,
+				B961A2C21D545D6800651D35 /* View */,
+				B961A2C31D545D6800651D35 /* Wireframe */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		B961A2C11D545D6800651D35 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B961A2C21D545D6800651D35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B961A2C31D545D6800651D35 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wireframe;
 			sourceTree = "<group>";
 		};
 		B97E3CE81D51C78900C5E76B /* Application */ = {
@@ -190,6 +260,7 @@
 			children = (
 				B97E3CF51D51C93600C5E76B /* Default */,
 				B95FFD041D53048700085905 /* Login */,
+				B961A2BD1D545D6800651D35 /* Registration */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -560,12 +631,17 @@
 				B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */,
 				B97E3D061D51CE5300C5E76B /* AppDependency.swift in Sources */,
 				B95FFD211D532D3400085905 /* LoginAPIFirebase.swift in Sources */,
+				B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */,
+				B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */,
 				B95FFD0E1D5306F500085905 /* LoginInteractorInput.swift in Sources */,
 				B95FFD151D530BCD00085905 /* LoginService.swift in Sources */,
 				B95FFD121D53092000085905 /* User.swift in Sources */,
 				B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */,
 				B97E3D041D51CCBF00C5E76B /* RootWireframe.swift in Sources */,
 				B95FFD101D53087B00085905 /* LoginInteractorOutput.swift in Sources */,
+				B961A2BC1D545A0600651D35 /* RegistrationAPIFirebase.swift in Sources */,
+				B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */,
+				B961A2BA1D54576D00651D35 /* RegistrationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
