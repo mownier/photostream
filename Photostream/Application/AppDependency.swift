@@ -8,21 +8,41 @@
 
 import Foundation
 
-class AppDependency: AnyObject, LoginInteractorOutput {
+class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOutput {
 
     init() {
+        login()
+    }
+    
+    func login() {
         let source = LoginAPIFirebase()
         let service = LoginService(source: source)
         let interactor = LoginInteractor(service: service)
         interactor.output = self
-        interactor.login("chika@chikaminute.com", password: "123456789")
+        interactor.login("redrepo.mail@gmail.com", password: "mynameisred")
+    }
+    
+    func register() {
+        let source = RegistrationAPIFirebase()
+        let service = RegistrationService(source: source)
+        let interactor = RegistrationInteractor(service: service)
+        interactor.output = self
+        interactor.register("redrepo.mail@gmail.com", password: "mynameisred", firstname: "Red", lastname: "Repo")
     }
 
+    func registrationDidSucceed(user: User!) {
+        print("registration succeeded: ", user)
+    }
+    
+    func registrationDidFail(error: NSError!) {
+        print("registration failed: ", error)
+    }
+    
     func loginDidSucceed(user: User!) {
-        print(user)
+        print("login succeeded: ", user)
     }
-
+    
     func loginDidFail(error: NSError!) {
-        print(error)
+        print("login failed: ", error)
     }
 }
