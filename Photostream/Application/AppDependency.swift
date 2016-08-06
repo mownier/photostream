@@ -11,7 +11,27 @@ import Foundation
 class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOutput {
 
     init() {
-        login()
+        getMePosts()
+    }
+    
+    func getMePosts() {
+        let source = PostAPIFirebase()
+        let service = PostService(source: source)
+        service.get(0, limit: 10) { (posts, error) in
+            print("posts:", posts)
+            print("error:", error)
+        }
+    }
+    
+    func post() {
+        let source = PostAPIFirebase()
+        let service = PostService(source: source)
+        var post = Post()
+        post.image = "https://image.png"
+        service.post(post) { (posts, error) in
+            print("posts:", posts)
+            print("error:", error)
+        }
     }
     
     func login() {
