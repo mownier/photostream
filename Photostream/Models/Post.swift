@@ -13,5 +13,5 @@ struct Post {
     var id: String!
     var user: User!
     var image: String!
-    var timestamp: Int64!
+    var timestamp: Double!
 }
