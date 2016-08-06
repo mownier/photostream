@@ -28,6 +28,13 @@
 		B97E3CFD1D51C93600C5E76B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3CFB1D51C93600C5E76B /* ViewController.swift */; };
 		B97E3D041D51CCBF00C5E76B /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */; };
 		B97E3D061D51CE5300C5E76B /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3D051D51CE5300C5E76B /* AppDependency.swift */; };
+		B97FB6F21D55B4B700B68048 /* NewsFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6F11D55B4B700B68048 /* NewsFeedInteractor.swift */; };
+		B97FB6F41D55B4E400B68048 /* NewsFeedInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6F31D55B4E400B68048 /* NewsFeedInteractorInput.swift */; };
+		B97FB6F61D55B5A600B68048 /* NewsFeedInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6F51D55B5A600B68048 /* NewsFeedInteractorOutput.swift */; };
+		B97FB6F81D55B67E00B68048 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6F71D55B67E00B68048 /* PostService.swift */; };
+		B97FB6FA1D55B7DE00B68048 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6F91D55B7DE00B68048 /* Post.swift */; };
+		B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6FB1D55B8E800B68048 /* Comment.swift */; };
+		B97FB6FE1D55BACD00B68048 /* PostAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6FD1D55BACD00B68048 /* PostAPIFirebase.swift */; };
 		B9C1E4C71D507843000925FA /* PhotostreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4C61D507843000925FA /* PhotostreamTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +73,13 @@
 		B97E3CFB1D51C93600C5E76B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		B97E3D051D51CE5300C5E76B /* AppDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		B97FB6F11D55B4B700B68048 /* NewsFeedInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractor.swift; sourceTree = "<group>"; };
+		B97FB6F31D55B4E400B68048 /* NewsFeedInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractorInput.swift; sourceTree = "<group>"; };
+		B97FB6F51D55B5A600B68048 /* NewsFeedInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractorOutput.swift; sourceTree = "<group>"; };
+		B97FB6F71D55B67E00B68048 /* PostService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		B97FB6F91D55B7DE00B68048 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		B97FB6FB1D55B8E800B68048 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		B97FB6FD1D55BACD00B68048 /* PostAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAPIFirebase.swift; sourceTree = "<group>"; };
 		B9C1E4AE1D507843000925FA /* Photostream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photostream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C1E4BD1D507843000925FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9C1E4C21D507843000925FA /* PhotostreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotostreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +171,7 @@
 			children = (
 				B95FFD141D530BCD00085905 /* LoginService.swift */,
 				B961A2B91D54576D00651D35 /* RegistrationService.swift */,
+				B97FB6F71D55B67E00B68048 /* PostService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -174,6 +189,7 @@
 			children = (
 				B95FFD201D532D3400085905 /* LoginAPIFirebase.swift */,
 				B961A2BB1D545A0600651D35 /* RegistrationAPIFirebase.swift */,
+				B97FB6FD1D55BACD00B68048 /* PostAPIFirebase.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -260,6 +276,7 @@
 			children = (
 				B97E3CF51D51C93600C5E76B /* Default */,
 				B95FFD041D53048700085905 /* Login */,
+				B97FB6EA1D55B48700B68048 /* News Feed */,
 				B961A2BD1D545D6800651D35 /* Registration */,
 			);
 			path = Modules;
@@ -343,6 +360,8 @@
 			isa = PBXGroup;
 			children = (
 				B95FFD111D53092000085905 /* User.swift */,
+				B97FB6F91D55B7DE00B68048 /* Post.swift */,
+				B97FB6FB1D55B8E800B68048 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -360,6 +379,64 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B97FB6EA1D55B48700B68048 /* News Feed */ = {
+			isa = PBXGroup;
+			children = (
+				B97FB6EB1D55B48700B68048 /* Application Logic */,
+				B97FB6EC1D55B48700B68048 /* Module Interface */,
+				B97FB6ED1D55B48700B68048 /* User Interface */,
+			);
+			path = "News Feed";
+			sourceTree = "<group>";
+		};
+		B97FB6EB1D55B48700B68048 /* Application Logic */ = {
+			isa = PBXGroup;
+			children = (
+				B97FB6F11D55B4B700B68048 /* NewsFeedInteractor.swift */,
+				B97FB6F31D55B4E400B68048 /* NewsFeedInteractorInput.swift */,
+				B97FB6F51D55B5A600B68048 /* NewsFeedInteractorOutput.swift */,
+			);
+			path = "Application Logic";
+			sourceTree = "<group>";
+		};
+		B97FB6EC1D55B48700B68048 /* Module Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Module Interface";
+			sourceTree = "<group>";
+		};
+		B97FB6ED1D55B48700B68048 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				B97FB6EE1D55B48700B68048 /* Presenter */,
+				B97FB6EF1D55B48700B68048 /* View */,
+				B97FB6F01D55B48700B68048 /* Wireframe */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		B97FB6EE1D55B48700B68048 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B97FB6EF1D55B48700B68048 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B97FB6F01D55B48700B68048 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wireframe;
 			sourceTree = "<group>";
 		};
 		B9C1E4A51D507843000925FA = {
@@ -635,13 +712,20 @@
 				B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */,
 				B95FFD0E1D5306F500085905 /* LoginInteractorInput.swift in Sources */,
 				B95FFD151D530BCD00085905 /* LoginService.swift in Sources */,
+				B97FB6F61D55B5A600B68048 /* NewsFeedInteractorOutput.swift in Sources */,
 				B95FFD121D53092000085905 /* User.swift in Sources */,
+				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
 				B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */,
 				B97E3D041D51CCBF00C5E76B /* RootWireframe.swift in Sources */,
 				B95FFD101D53087B00085905 /* LoginInteractorOutput.swift in Sources */,
+				B97FB6F81D55B67E00B68048 /* PostService.swift in Sources */,
 				B961A2BC1D545A0600651D35 /* RegistrationAPIFirebase.swift in Sources */,
+				B97FB6F41D55B4E400B68048 /* NewsFeedInteractorInput.swift in Sources */,
 				B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */,
 				B961A2BA1D54576D00651D35 /* RegistrationService.swift in Sources */,
+				B97FB6FE1D55BACD00B68048 /* PostAPIFirebase.swift in Sources */,
+				B97FB6F21D55B4B700B68048 /* NewsFeedInteractor.swift in Sources */,
+				B97FB6FA1D55B7DE00B68048 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
