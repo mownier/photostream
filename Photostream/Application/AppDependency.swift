@@ -15,16 +15,16 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
     
     func login() {
-        let source = LoginAPIFirebase()
-        let service = LoginService(source: source)
+        let source = AuthenticationAPIFirebase()
+        let service = AuthenticationService(source: source)
         let interactor = LoginInteractor(service: service)
         interactor.output = self
         interactor.login("redrepo.mail@gmail.com", password: "mynameisred")
     }
     
     func register() {
-        let source = RegistrationAPIFirebase()
-        let service = RegistrationService(source: source)
+        let source = AuthenticationAPIFirebase()
+        let service = AuthenticationService(source: source)
         let interactor = RegistrationInteractor(service: service)
         interactor.output = self
         interactor.register("redrepo.mail@gmail.com", password: "mynameisred", firstname: "Red", lastname: "Repo")

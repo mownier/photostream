@@ -11,9 +11,9 @@ import Foundation
 class RegistrationInteractor: RegistrationInteractorInput {
 
     var output: RegistrationInteractorOutput!
-    var service: RegistrationService!
+    var service: AuthenticationService!
     
-    init(service: RegistrationService!) {
+    init(service: AuthenticationService!) {
         self.service = service
     }
     

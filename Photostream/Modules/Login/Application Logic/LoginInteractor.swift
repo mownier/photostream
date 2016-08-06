@@ -10,10 +10,10 @@ import Foundation
 
 class LoginInteractor: LoginInteractorInput {
 
-    var service: LoginService!
+    var service: AuthenticationService!
     var output: LoginInteractorOutput!
 
-    init(service: LoginService!) {
+    init(service: AuthenticationService!) {
         self.service = service
     }
 
