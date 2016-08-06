@@ -19,7 +19,13 @@ class PostService: AnyObject {
     }
     
     func get(offset: UInt, limit: UInt, callback: PostServiceCallback!) {
-        get(offset, limit: limit) { (posts, error) in
+        source.get(offset, limit: limit) { (posts, error) in
+            callback(posts, error)
+        }
+    }
+    
+    func post(post: Post!, callback: PostServiceCallback) {
+        source.post(post) { (posts, error) in
             callback(posts, error)
         }
     }
@@ -28,4 +34,5 @@ class PostService: AnyObject {
 protocol PostServiceSource: class {
     
     func get(offset: UInt, limit: UInt, callback: PostServiceCallback!)
+    func post(post: Post!, callback: PostServiceCallback!)
 }
