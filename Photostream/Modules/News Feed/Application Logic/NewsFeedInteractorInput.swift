@@ -10,5 +10,5 @@ import Foundation
 
 protocol NewsFeedInteractorInput: class {
 
-    func fetch(offset: UInt, limit: UInt)
+    func fetch(userId: String!, offset: UInt!, limit: UInt!)
 }
