@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct Comment  {
+struct Comment {
     
     var id: String!
     var message: String!
-    var timestamp: Int64!
+    var timestamp: Double!
     var user: User!
 }
