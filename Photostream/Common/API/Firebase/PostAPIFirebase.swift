@@ -27,55 +27,52 @@ class PostAPIFirebase: PostServiceSource {
         return (uid, error)
     }
     
-    func get(offset: UInt, limit: UInt, callback: PostServiceCallback!) {
-        let (uid, error) = isOK()
+    func get(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
+        let (_, error) = isOK()
         if let error = error {
             callback(nil, error)
         } else {
-            let userId = uid as String!
             let ref = FIRDatabase.database().reference()
             let path = "user-posts/\(userId)"
             ref.child(path).queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
                 let posts = [Post]()
                 if let value = data.value as? [String: AnyObject] {
                     print("posts:", value)
+                    // TODO: Parse posts
                 }
                 callback(posts, nil)
             })
         }
     }
     
-    func post(post: Post!, callback: PostServiceCallback!) {
-        let (uid, error) = isOK()
+    func post(imageUrl: String!, user: User!, callback: PostServiceCallback!) {
+        let (_, error) = isOK()
         if let error = error {
             callback(nil, error)
         } else {
-            let userId = uid as String!
             let ref = FIRDatabase.database().reference()
             let key = ref.child("posts").childByAutoId().key
-            let newPost: [String: AnyObject] = [
+            let data: [String: AnyObject] = [
                 "id": key,
-                "uid": userId,
-                "image": post.image,
+                "uid": user.id,
+                "imageUrl": imageUrl,
                 "timestamp": FIRServerValue.timestamp()
             ]
             let path1 = "posts/\(key)"
-            let path2 = "user-posts/\(userId)/\(key)"
-            let updates = [path1: newPost, path2: newPost]
+            let path2 = "user-posts/\(user.id)/\(key)"
+            let updates = [path1: data, path2: data]
             
             ref.updateChildValues(updates)
-            ref.child("posts/\(key)").observeSingleEventOfType(.Value, withBlock: { (data) in
+            ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
+                var new = Post()
                 if let value = data.value {
-                    var new = Post()
-                    new.image = value["image"] as! String
+                    new.image = imageUrl
+                    new.id = key
+                    new.user = user
                     new.timestamp = value["timestamp"] as! Double
-                    new.id = value["id"] as! String
-                    new.user = User()
-                    new.user.id = value["uid"] as! String
                     callback([new], nil)
-                } else {
-                    callback(nil, nil)
                 }
+                callback([new], nil)
             })
         }
     }
