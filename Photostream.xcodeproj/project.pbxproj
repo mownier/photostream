@@ -19,6 +19,8 @@
 		B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */; };
 		B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */; };
 		B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */; };
+		B961A4B11D5849AB0052856D /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A4B01D5849AB0052856D /* CommentService.swift */; };
+		B961A4B31D584B550052856D /* CommentAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A4B21D584B550052856D /* CommentAPIFirebase.swift */; };
 		B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3CE91D51C78900C5E76B /* AppDelegate.swift */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
@@ -62,6 +64,8 @@
 		B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
 		B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorInput.swift; sourceTree = "<group>"; };
 		B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorOutput.swift; sourceTree = "<group>"; };
+		B961A4B01D5849AB0052856D /* CommentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		B961A4B21D584B550052856D /* CommentAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentAPIFirebase.swift; sourceTree = "<group>"; };
 		B97E3CE91D51C78900C5E76B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			children = (
 				B95FFD141D530BCD00085905 /* AuthenticationService.swift */,
 				B97FB6F71D55B67E00B68048 /* PostService.swift */,
+				B961A4B01D5849AB0052856D /* CommentService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			children = (
 				B95FFD201D532D3400085905 /* AuthenticationAPIFirebase.swift */,
 				B97FB6FD1D55BACD00B68048 /* PostAPIFirebase.swift */,
+				B961A4B21D584B550052856D /* CommentAPIFirebase.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -711,6 +717,8 @@
 				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
 				B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */,
 				B97E3D041D51CCBF00C5E76B /* RootWireframe.swift in Sources */,
+				B961A4B31D584B550052856D /* CommentAPIFirebase.swift in Sources */,
+				B961A4B11D5849AB0052856D /* CommentService.swift in Sources */,
 				B95FFD101D53087B00085905 /* LoginInteractorOutput.swift in Sources */,
 				B97FB6F81D55B67E00B68048 /* PostService.swift in Sources */,
 				B97FB6F41D55B4E400B68048 /* NewsFeedInteractorInput.swift in Sources */,
