@@ -7,30 +7,65 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOutput {
 
+    
+    var user = FIRAuth.auth()?.currentUser
+    
     init() {
-        getMePosts()
+        getComments("-KOcmgl9vRWrsu-AQpIq")
+//        comment("-KOcmgl9vRWrsu-AQpIq")
     }
     
     func getMePosts() {
         let source = PostAPIFirebase()
         let service = PostService(source: source)
-        service.get(0, limit: 10) { (posts, error) in
-            print("posts:", posts)
-            print("error:", error)
+        if let user = user {
+            service.get(user.uid, offset: 0, limit: 10) { (posts, error) in
+                print("posts:", posts)
+                print("error:", error)
+            }
         }
     }
     
     func post() {
         let source = PostAPIFirebase()
         let service = PostService(source: source)
-        var post = Post()
-        post.image = "https://image.png"
-        service.post(post) { (posts, error) in
-            print("posts:", posts)
-            print("error:", error)
+        if let user = user {
+            let imageUrl = "http://imageurl.png"
+            var poster = User()
+            poster.id = user.uid
+            service.post(imageUrl, user: poster) { (posts, error) in
+                print("posts:", posts)
+                print("error:", error)
+            }
+        }
+    }
+    
+    func getComments(pid: String!) {
+        let source = CommentAPIFirebase()
+        let service = CommentService(source: source)
+        if let _ = user {
+            service.get(pid, offset: 0, limit: 10) { (comments, error) in
+                print("comments:", comments)
+                print("error:", error)
+            }
+        }
+    }
+    
+    func comment(pid: String!) {
+        let source = CommentAPIFirebase()
+        let service = CommentService(source: source)
+        if let user = user {
+            let message = "Hello world!"
+            var commenter = User()
+            commenter.id = user.uid
+            service.post(pid, message: message, user: commenter) { (comments, error) in
+                print("comments:", comments)
+                print("error:", error)
+            }
         }
     }
     
