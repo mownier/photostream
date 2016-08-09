@@ -32,15 +32,34 @@ class PostAPIFirebase: PostServiceSource {
         if let error = error {
             callback(nil, error)
         } else {
-            let ref = FIRDatabase.database().reference()
-            let path = "user-posts/\(userId)"
-            ref.child(path).queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
-                let posts = [Post]()
-                if let value = data.value as? [String: AnyObject] {
-                    print("posts:", value)
-                    // TODO: Parse posts
+            let root = FIRDatabase.database().reference()
+            let users = root.child("users")
+            let posts = root.child("posts")
+            let ref = users.child(userId).child("posts")
+            ref.queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
+                var list = [Post]()
+                for snap in data.children {
+                    posts.child(snap.key).observeSingleEventOfType(.Value, withBlock: { (data2) in
+                        users.child(userId).observeSingleEventOfType(.Value, withBlock: { (data3) in
+                            var user = User()
+                            user.id = data3.childSnapshotForPath("id").value as! String
+                            user.firstName = data3.childSnapshotForPath("firstname").value as! String
+                            user.lastName = data3.childSnapshotForPath("lastname").value as! String
+                            
+                            var post = Post()
+                            post.user = user
+                            post.id = data2.childSnapshotForPath("id").value as! String
+                            post.image = data2.childSnapshotForPath("imageUrl").value as! String
+                            post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
+                            
+                            list.append(post)
+                            
+                            if UInt(list.count) == data.childrenCount {
+                                callback(list, nil)
+                            }
+                        })
+                    })
                 }
-                callback(posts, nil)
             })
         }
     }
@@ -59,8 +78,8 @@ class PostAPIFirebase: PostServiceSource {
                 "timestamp": FIRServerValue.timestamp()
             ]
             let path1 = "posts/\(key)"
-            let path2 = "user-posts/\(user.id)/\(key)"
-            let updates = [path1: data, path2: data]
+            let path2 = "users/\(user.id)/\(path1)"
+            let updates: [String: AnyObject] = [path1: data, path2: true]
             
             ref.updateChildValues(updates)
             ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
