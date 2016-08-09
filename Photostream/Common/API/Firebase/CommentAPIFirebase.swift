@@ -32,60 +32,37 @@ class CommentAPIFirebase: CommentServiceSource {
         if let error = error {
             callback(nil, error)
         } else {
-            let ref = FIRDatabase.database().reference()
-            let path = "post-comments/\(postId)"
-            ref.child(path).queryLimitedToFirst(10).observeSingleEventOfType(.Value, withBlock: { (data) in
-                // TODO: Parse data for comments
-                var temp = [Comment]()
-                if let value = data.value as? [String: AnyObject]{
-                    for (_, info) in value {
-                        var new = Comment()
-                        new.id = info["id"] as! String
-                        new.message = info["message"] as! String
-                        new.timestamp = info["timestamp"] as! Double
-                        
-                        let uid = info["uid"] as! String
-                        var user = User()
-                        user.id = uid
-                        new.user = user
-                        temp.append(new)
-                    }
-                    
-                }
-                
-                let count = temp.count
-                var comments = [Comment]()
-                var i = 0
-                for comment in temp {
-                    let path = "users/\(comment.user.id)"
-                    ref.child(path).observeSingleEventOfType(.Value, withBlock: { (data) in
-                        var user = User()
-                        user.id = comment.user.id
-                        if let value = data.value {
-                            user.email = value["email"] as! String
-                            user.lastName = value["lastname"] as! String
-                            user.firstName = value["firstname"] as! String
-                        }
-                        
-                        var new = Comment()
-                        new.user = user
-                        new.id = comment.id
-                        new.timestamp = comment.timestamp
-                        new.message = comment.message
-                        
-                        comments.append(new)
-                        
-                        // TODO: Fix weird count and temp :D
-                        i += 1
-                        
-                        if i == count {
-                            callback(comments, nil)
-                        }
+            let root = FIRDatabase.database().reference()
+            let comments = root.child("comments")
+            let posts = root.child("posts")
+            let users = root.child("users")
+            let ref = posts.child(postId).child("comments")
+            ref.queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
+                var list = [Comment]()
+                for snap in data.children {
+                    comments.child(snap.key).observeSingleEventOfType(.Value, withBlock: { (data2) in
+                        let userId = data2.childSnapshotForPath("uid").value as! String
+                        users.child(userId).observeSingleEventOfType(.Value, withBlock: { (data3) in
+                            var user = User()
+                            user.id = userId
+                            user.firstName = data3.childSnapshotForPath("firstname").value as! String
+                            user.lastName = data3.childSnapshotForPath("lastname").value as! String
+                            
+                            var comment = Comment()
+                            comment.user = user
+                            comment.id = data2.childSnapshotForPath("id").value as! String
+                            comment.message = data2.childSnapshotForPath("message").value as! String
+                            comment.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
+                            
+                            list.append(comment)
+                            
+                            if UInt(list.count) == data.childrenCount {
+                                callback(list, nil)
+                            }
+                        })
                     })
                 }
             })
-            
-
         }
     }
     
@@ -97,8 +74,8 @@ class CommentAPIFirebase: CommentServiceSource {
             let ref = FIRDatabase.database().reference()
             let key = ref.child("comments").childByAutoId().key
             let path1 = "comments/\(key)"
-            let path2 = "post-comments/\(postId)/\(key)"
-            let path3 = "user-comments/\(user.id)/\(key)"
+            let path2 = "posts/\(postId)/\(path1)"
+            let path3 = "users/\(user.id)/\(path1)"
             let data = [
                 "id": key,
                 "uid": user.id,
@@ -106,16 +83,14 @@ class CommentAPIFirebase: CommentServiceSource {
                 "message": message,
                 "timestamp": FIRServerValue.timestamp()
             ]
-            let updates = [path1: data, path2: data, path3: data]
+            let updates: [String: AnyObject] = [path1: data, path2: true, path3: true]
             ref.updateChildValues(updates)
             ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
                 var new = Comment()
-                if let value = data.value {
-                    new.id = key
-                    new.message = message
-                    new.user = user
-                    new.timestamp = value["timestamp"] as! Double
-                }
+                new.id = key
+                new.message = message
+                new.user = user
+                new.timestamp = data.childSnapshotForPath("timestamp").value as! Double
                 callback([new], nil)
             })
         }
