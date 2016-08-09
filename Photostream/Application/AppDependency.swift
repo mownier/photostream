@@ -15,8 +15,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     var user = FIRAuth.auth()?.currentUser
     
     init() {
-        getComments("-KOcmgl9vRWrsu-AQpIq")
-//        comment("-KOcmgl9vRWrsu-AQpIq")
+        getComments("-KOhu7qXwkjI_lGNY4Pj")
     }
     
     func getMePosts() {
