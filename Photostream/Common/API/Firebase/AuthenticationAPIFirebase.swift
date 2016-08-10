@@ -10,9 +10,9 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class AuthenticationAPIFirebase: AuthenticationServiceSource {
+class AuthenticationAPIFirebase: AuthenticationService {
 
-    func login(email: String!, password: String!, callback: AuthenticationServiceResultCallback!) {
+    func login(email: String!, password: String!, callback: AuthenticationServiceCallback!) {
         if let auth = FIRAuth.auth() {
             auth.signInWithEmail(email, password: password) { (user, error) in
                 if let error = error {
@@ -45,7 +45,7 @@ class AuthenticationAPIFirebase: AuthenticationServiceSource {
         }
     }
     
-    func register(email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceResultCallback!) {
+    func register(email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceCallback!) {
         if let auth = FIRAuth.auth() {
             auth.createUserWithEmail(email, password: password, completion: { (user, error) in
                 if let error = error {

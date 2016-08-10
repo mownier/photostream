@@ -15,7 +15,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     var user = FIRAuth.auth()?.currentUser
     
     init() {
-        getComments("-KOnNV3HBc9z1wSaxxoR")
+        login()
     }
     
     func getMePosts() {
@@ -62,16 +62,14 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
     
     func login() {
-        let source = AuthenticationAPIFirebase()
-        let service = AuthenticationService(source: source)
+        let service = AuthenticationAPIFirebase()
         let interactor = LoginInteractor(service: service)
         interactor.output = self
         interactor.login("redrepo.mail@gmail.com", password: "mynameisred")
     }
     
     func register() {
-        let source = AuthenticationAPIFirebase()
-        let service = AuthenticationService(source: source)
+        let service = AuthenticationAPIFirebase()
         let interactor = RegistrationInteractor(service: service)
         interactor.output = self
         interactor.register("redrepo.mail@gmail.com", password: "mynameisred", firstname: "Red", lastname: "Repo")

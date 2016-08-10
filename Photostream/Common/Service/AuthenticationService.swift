@@ -8,31 +8,10 @@
 
 import Foundation
 
-typealias AuthenticationServiceResultCallback = (User?, NSError?) -> Void
+typealias AuthenticationServiceCallback = (User?, NSError?) -> Void
 
-class AuthenticationService: AnyObject {
+protocol AuthenticationService: class {
 
-    var source: AuthenticationServiceSource!
-
-    init(source: AuthenticationServiceSource!) {
-        self.source = source
-    }
-
-    func login(email: String!, password: String!, callback: AuthenticationServiceResultCallback!) {
-        source.login(email, password: password) { (user, error) in
-            callback(user, error)
-        }
-    }
-    
-    func register(email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceResultCallback) {
-        source.register(email, password: password, firstname: firstname, lastname: lastname) { (user, error) in
-            callback(user, error)
-        }
-    }
-}
-
-protocol AuthenticationServiceSource: class {
-
-    func login(email: String!, password: String!, callback: AuthenticationServiceResultCallback!)
-    func register(email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceResultCallback!)
+    func login(email: String!, password: String!, callback: AuthenticationServiceCallback!)
+    func register(email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceCallback!)
 }
