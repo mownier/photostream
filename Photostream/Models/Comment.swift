@@ -13,5 +13,5 @@ struct Comment {
     var id: String!
     var message: String!
     var timestamp: Double!
-    var user: User!
+    var userId: String!
 }

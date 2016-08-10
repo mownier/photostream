@@ -8,31 +8,16 @@
 
 import Foundation
 
-typealias CommentServiceCallback = ([Comment]?, NSError?) -> Void
+typealias CommentServiceCallback = (CommentServiceResult?, NSError?) -> Void
 
-class CommentService: AnyObject {
-
-    var source: CommentServiceSource!
+protocol CommentService: class {
     
-    init(source: CommentServiceSource!) {
-        self.source = source
-    }
-    
-    func get(postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!) {
-        source.get(postId, offset: offset, limit: limit) { (comments, error) in
-            callback(comments, error)
-        }
-    }
-    
-    func post(postId: String!, message: String!, user: User!, callback: CommentServiceCallback!) {
-        source.post(postId, message: message, user: user) { (comments, error) in
-            callback(comments, error)
-        }
-    }
+    func fetchComments(postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!)
+    func writeComment(postId: String!, userId: String!, message: String!, callback: CommentServiceCallback!)
 }
 
-protocol CommentServiceSource: class {
+struct CommentServiceResult {
     
-    func get(postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!)
-    func post(postId: String!, message: String!, user: User!, callback: CommentServiceCallback!)
+    var comments: [Comment]!
+    var users: [String: User]!
 }

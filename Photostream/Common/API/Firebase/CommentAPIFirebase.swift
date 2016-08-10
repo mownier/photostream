@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class CommentAPIFirebase: CommentServiceSource {
+class CommentAPIFirebase: CommentService {
 
     func isOK() -> (String?, NSError?) {
         var uid: String?
@@ -27,7 +27,7 @@ class CommentAPIFirebase: CommentServiceSource {
         return (uid, error)
     }
     
-    func get(postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!) {
+    func fetchComments(postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!) {
         let (_, error) = isOK()
         if let error = error {
             callback(nil, error)
@@ -38,26 +38,33 @@ class CommentAPIFirebase: CommentServiceSource {
             let users = root.child("users")
             let ref = posts.child(postId).child("comments")
             ref.queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
-                var list = [Comment]()
+                var commentList = [Comment]()
+                var commentUsers = [String: User]()
                 for snap in data.children {
                     comments.child(snap.key).observeSingleEventOfType(.Value, withBlock: { (data2) in
                         let userId = data2.childSnapshotForPath("uid").value as! String
                         users.child(userId).observeSingleEventOfType(.Value, withBlock: { (data3) in
-                            var user = User()
-                            user.id = userId
-                            user.firstName = data3.childSnapshotForPath("firstname").value as! String
-                            user.lastName = data3.childSnapshotForPath("lastname").value as! String
-                            
+                            if commentUsers[userId] == nil {
+                                var user = User()
+                                user.id = userId
+                                user.firstName = data3.childSnapshotForPath("firstname").value as! String
+                                user.lastName = data3.childSnapshotForPath("lastname").value as! String
+                                commentUsers[userId] = user
+                            }
+
                             var comment = Comment()
-                            comment.user = user
+                            comment.userId = userId
                             comment.id = data2.childSnapshotForPath("id").value as! String
                             comment.message = data2.childSnapshotForPath("message").value as! String
                             comment.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
                             
-                            list.append(comment)
+                            commentList.append(comment)
                             
-                            if UInt(list.count) == data.childrenCount {
-                                callback(list, nil)
+                            if UInt(commentList.count) == data.childrenCount {
+                                var result = CommentServiceResult()
+                                result.comments  = commentList
+                                result.users = commentUsers
+                                callback(result, nil)
                             }
                         })
                     })
@@ -66,7 +73,7 @@ class CommentAPIFirebase: CommentServiceSource {
         }
     }
     
-    func post(postId: String!, message: String!, user: User!, callback: CommentServiceCallback!) {
+    func writeComment(postId: String!, userId: String!, message: String!, callback: CommentServiceCallback!) {
         let (_, error) = isOK()
         if let error = error {
             callback(nil, error)
@@ -75,23 +82,42 @@ class CommentAPIFirebase: CommentServiceSource {
             let key = ref.child("comments").childByAutoId().key
             let path1 = "comments/\(key)"
             let path2 = "posts/\(postId)/\(path1)"
-            let path3 = "users/\(user.id)/\(path1)"
+            let path3 = "users/\(userId)/\(path1)"
             let data = [
                 "id": key,
-                "uid": user.id,
+                "uid": userId,
                 "pid": postId,
                 "message": message,
                 "timestamp": FIRServerValue.timestamp()
             ]
             let updates: [String: AnyObject] = [path1: data, path2: true, path3: true]
+            
             ref.updateChildValues(updates)
             ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
-                var new = Comment()
-                new.id = key
-                new.message = message
-                new.user = user
-                new.timestamp = data.childSnapshotForPath("timestamp").value as! Double
-                callback([new], nil)
+                ref.child("users/\(userId)").observeSingleEventOfType(.Value, withBlock: { (data2) in
+                    var user = User()
+                    user.id = userId
+                    user.firstName = data2.childSnapshotForPath("firstname").value as! String
+                    user.lastName = data2.childSnapshotForPath("lastname").value as! String
+                    
+                    var comment = Comment()
+                    comment.id = key
+                    comment.message = message
+                    comment.userId = userId
+                    comment.timestamp = data.childSnapshotForPath("timestamp").value as! Double
+                    
+                    var comments = [Comment]()
+                    comments.append(comment)
+                    
+                    var users = [String: User]()
+                    users[userId] = user
+                    
+                    var result = CommentServiceResult()
+                    result.comments = comments
+                    result.users = users
+                    
+                    callback(result, nil)
+                })
             })
         }
     }

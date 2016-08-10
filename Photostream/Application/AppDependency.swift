@@ -15,7 +15,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     var user = FIRAuth.auth()?.currentUser
     
     init() {
-        post()
+        getComments("-KOnNV3HBc9z1wSaxxoR")
     }
     
     func getMePosts() {
@@ -40,10 +40,9 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
     
     func getComments(pid: String!) {
-        let source = CommentAPIFirebase()
-        let service = CommentService(source: source)
+        let service = CommentAPIFirebase()
         if let _ = user {
-            service.get(pid, offset: 0, limit: 10) { (comments, error) in
+            service.fetchComments(pid, offset: 0, limit: 10) { (comments, error) in
                 print("comments:", comments)
                 print("error:", error)
             }
@@ -51,13 +50,11 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
     
     func comment(pid: String!) {
-        let source = CommentAPIFirebase()
-        let service = CommentService(source: source)
+        let service = CommentAPIFirebase()
         if let user = user {
             let message = "Hello world!"
-            var commenter = User()
-            commenter.id = user.uid
-            service.post(pid, message: message, user: commenter) { (comments, error) in
+            let userId = user.uid
+            service.writeComment(pid, userId: userId, message: message) { (comments, error) in
                 print("comments:", comments)
                 print("error:", error)
             }
