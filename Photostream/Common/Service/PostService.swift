@@ -11,15 +11,14 @@ import Foundation
 typealias PostServiceCallback = (PostServiceResult?, NSError?) -> Void
 
 protocol PostService: class {
-    
+
     func fetchNewsFeed(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
     func fetchPosts(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
     func writePost(userId: String!, imageUrl: String!, callback: PostServiceCallback!)
 }
 
 struct PostServiceResult {
-    
+
     var posts: [Post]!
     var users: [String: User]!
 }
-

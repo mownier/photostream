@@ -26,7 +26,7 @@ class CommentAPIFirebase: CommentService {
         }
         return (uid, error)
     }
-    
+
     func fetchComments(postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!) {
         let (_, error) = isOK()
         if let error = error {
@@ -57,9 +57,9 @@ class CommentAPIFirebase: CommentService {
                             comment.id = data2.childSnapshotForPath("id").value as! String
                             comment.message = data2.childSnapshotForPath("message").value as! String
                             comment.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
-                            
+
                             commentList.append(comment)
-                            
+
                             if UInt(commentList.count) == data.childrenCount {
                                 var result = CommentServiceResult()
                                 result.comments  = commentList
@@ -72,7 +72,7 @@ class CommentAPIFirebase: CommentService {
             })
         }
     }
-    
+
     func writeComment(postId: String!, userId: String!, message: String!, callback: CommentServiceCallback!) {
         let (_, error) = isOK()
         if let error = error {
@@ -91,7 +91,7 @@ class CommentAPIFirebase: CommentService {
                 "timestamp": FIRServerValue.timestamp()
             ]
             let updates: [String: AnyObject] = [path1: data, path2: true, path3: true]
-            
+
             ref.updateChildValues(updates)
             ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
                 ref.child("users/\(userId)").observeSingleEventOfType(.Value, withBlock: { (data2) in
@@ -99,23 +99,23 @@ class CommentAPIFirebase: CommentService {
                     user.id = userId
                     user.firstName = data2.childSnapshotForPath("firstname").value as! String
                     user.lastName = data2.childSnapshotForPath("lastname").value as! String
-                    
+
                     var comment = Comment()
                     comment.id = key
                     comment.message = message
                     comment.userId = userId
                     comment.timestamp = data.childSnapshotForPath("timestamp").value as! Double
-                    
+
                     var comments = [Comment]()
                     comments.append(comment)
-                    
+
                     var users = [String: User]()
                     users[userId] = user
-                    
+
                     var result = CommentServiceResult()
                     result.comments = comments
                     result.users = users
-                    
+
                     callback(result, nil)
                 })
             })

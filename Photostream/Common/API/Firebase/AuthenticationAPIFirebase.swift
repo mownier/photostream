@@ -22,7 +22,7 @@ class AuthenticationAPIFirebase: AuthenticationService {
                         callback(nil, NSError(domain: "LoginAPIFirebase", code: 1, userInfo: ["message": "FIRUser is nil."]))
                         return
                     }
-                    
+
                     let id = user.uid
                     let ref = FIRDatabase.database().reference()
                     let path = "users/\(id)"
@@ -44,7 +44,7 @@ class AuthenticationAPIFirebase: AuthenticationService {
             callback(nil, NSError(domain: "LoginAPIFirebase", code: 0, userInfo: ["message": "Firebase auth is nil."]))
         }
     }
-    
+
     func register(email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceCallback!) {
         if let auth = FIRAuth.auth() {
             auth.createUserWithEmail(email, password: password, completion: { (user, error) in
@@ -59,13 +59,13 @@ class AuthenticationAPIFirebase: AuthenticationService {
                     let id = user.uid
                     let userInfo = ["firstname": firstname, "lastname": lastname, "id": id, "email": email]
                     ref.child("users/\(id)").setValue(userInfo)
-                    
+
                     var u = User()
                     u.email = email
                     u.firstName = firstname
                     u.lastName = lastname
                     u.id = id
-                    
+
                     callback(u, nil)
                 }
             })

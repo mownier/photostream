@@ -9,7 +9,7 @@
 import Foundation
 
 struct Post {
-    
+
     var id: String!
     var userId: String!
     var image: String!

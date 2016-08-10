@@ -12,11 +12,11 @@ class RegistrationInteractor: RegistrationInteractorInput {
 
     var output: RegistrationInteractorOutput!
     var service: AuthenticationService!
-    
+
     init(service: AuthenticationService!) {
         self.service = service
     }
-    
+
     func register(email: String!, password: String!, firstname: String!, lastname: String!) {
         service.register(email, password: password, firstname: firstname, lastname: lastname) { (user, error) in
             if let error = error {

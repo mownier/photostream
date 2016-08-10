@@ -26,7 +26,7 @@ class PostAPIFirebase: PostService {
         }
         return (uid, error)
     }
-    
+
     private func fetch(path: String, userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
         let (_, error) = isOK()
         if let error = error {
@@ -49,14 +49,14 @@ class PostAPIFirebase: PostService {
                                 user.lastName = data3.childSnapshotForPath("lastname").value as! String
                                 postUsers[userId] = user
                             }
-                            
+
                             var post = Post()
                             post.userId = userId
                             post.id = data2.childSnapshotForPath("id").value as! String
                             post.image = data2.childSnapshotForPath("imageUrl").value as! String
                             post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
                             postList.append(post)
-                            
+
                             if UInt(postList.count) == data.childrenCount {
                                 var result = PostServiceResult()
                                 result.posts = postList
@@ -69,16 +69,16 @@ class PostAPIFirebase: PostService {
             })
         }
     }
-    
+
     func fetchNewsFeed(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
         fetch("feed", userId: userId, offset: offset, limit: limit, callback: callback)
     }
-    
-    
+
+
     func fetchPosts(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
         fetch("posts", userId: userId, offset: offset, limit: limit, callback: callback)
     }
-    
+
     func writePost(userId: String!, imageUrl: String!, callback: PostServiceCallback!) {
         let (_, error) = isOK()
         if let error = error {
@@ -96,7 +96,7 @@ class PostAPIFirebase: PostService {
             let path2 = "users/\(userId)/\(path1)"
             let path3 = "users/\(userId)/feed/\(key)"
             let updates: [String: AnyObject] = [path1: data, path2: true, path3: true]
-            
+
             ref.updateChildValues(updates)
             ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
                 ref.child("users/\(userId)").observeSingleEventOfType(.Value, withBlock: { (data2) in
@@ -104,7 +104,7 @@ class PostAPIFirebase: PostService {
                     user.id = userId
                     user.firstName = data2.childSnapshotForPath("firstname").value as! String
                     user.lastName = data2.childSnapshotForPath("lastname").value as! String
-                    
+
                     var post = Post()
                     post.image = imageUrl
                     post.id = key
@@ -113,14 +113,14 @@ class PostAPIFirebase: PostService {
 
                     var posts = [Post]()
                     posts.append(post)
-                    
+
                     var users = [String: User]()
                     users[userId] = user
-                    
+
                     var result = PostServiceResult()
                     result.posts = posts
                     result.users = users
-                    
+
                     callback(result, nil)
 
                 })

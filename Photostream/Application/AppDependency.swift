@@ -11,13 +11,13 @@ import FirebaseAuth
 
 class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOutput {
 
-    
+
     var user = FIRAuth.auth()?.currentUser
-    
+
     init() {
         login()
     }
-    
+
     func getMePosts() {
         let service = PostAPIFirebase()
         if let user = user {
@@ -27,7 +27,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
             }
         }
     }
-    
+
     func post() {
         let service = PostAPIFirebase()
         if let user = user {
@@ -38,7 +38,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
             }
         }
     }
-    
+
     func getComments(pid: String!) {
         let service = CommentAPIFirebase()
         if let _ = user {
@@ -48,7 +48,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
             }
         }
     }
-    
+
     func comment(pid: String!) {
         let service = CommentAPIFirebase()
         if let user = user {
@@ -60,14 +60,14 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
             }
         }
     }
-    
+
     func login() {
         let service = AuthenticationAPIFirebase()
         let interactor = LoginInteractor(service: service)
         interactor.output = self
         interactor.login("redrepo.mail@gmail.com", password: "mynameisred")
     }
-    
+
     func register() {
         let service = AuthenticationAPIFirebase()
         let interactor = RegistrationInteractor(service: service)
@@ -78,15 +78,15 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     func registrationDidSucceed(user: User!) {
         print("registration succeeded: ", user)
     }
-    
+
     func registrationDidFail(error: NSError!) {
         print("registration failed: ", error)
     }
-    
+
     func loginDidSucceed(user: User!) {
         print("login succeeded: ", user)
     }
-    
+
     func loginDidFail(error: NSError!) {
         print("login failed: ", error)
     }
