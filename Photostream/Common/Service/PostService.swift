@@ -8,31 +8,18 @@
 
 import Foundation
 
-typealias PostServiceCallback = ([Post]?, NSError?) -> Void
+typealias PostServiceCallback = (PostServiceResult?, NSError?) -> Void
 
-class PostService: AnyObject {
-
-    var source: PostServiceSource!
+protocol PostService: class {
     
-    init(source: PostServiceSource!) {
-        self.source = source
-    }
-    
-    func get(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
-        source.get(userId, offset: offset, limit: limit) { (posts, error) in
-            callback(posts, error)
-        }
-    }
-    
-    func post(imageUrl: String!, user: User!, callback: PostServiceCallback) {
-        source.post(imageUrl, user: user) { (posts, error) in
-            callback(posts, error)
-        }
-    }
+    func fetchNewsFeed(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
+    func fetchPosts(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
+    func writePost(userId: String!, imageUrl: String!, callback: PostServiceCallback!)
 }
 
-protocol PostServiceSource: class {
+struct PostServiceResult {
     
-    func get(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
-    func post(imageUrl: String!, user: User!, callback: PostServiceCallback!)
+    var posts: [Post]!
+    var users: [String: User]!
 }
+

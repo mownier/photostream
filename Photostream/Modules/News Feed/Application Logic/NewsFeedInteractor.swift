@@ -18,11 +18,11 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
     }
     
     func fetch(userId: String!, offset: UInt! = 0, limit: UInt! = 10) {
-        service.get(userId, offset: offset, limit: limit) { (feed, error) in
-            if error != nil {
-                self.output.newsFeedDidFetch(feed)
-            } else {
+        service.fetchNewsFeed(userId, offset: offset, limit: limit) { (feed, error) in
+            if let error = error {
                 self.output.newsFeedDidFetchWithError(error)
+            } else {
+                self.output.newsFeedDidFetch(feed)
             }
         }
     }

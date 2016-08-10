@@ -15,14 +15,13 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     var user = FIRAuth.auth()?.currentUser
     
     init() {
-        getComments("-KOhu7qXwkjI_lGNY4Pj")
+        post()
     }
     
     func getMePosts() {
-        let source = PostAPIFirebase()
-        let service = PostService(source: source)
+        let service = PostAPIFirebase()
         if let user = user {
-            service.get(user.uid, offset: 0, limit: 10) { (posts, error) in
+            service.fetchPosts(user.uid, offset: 0, limit: 10) { (posts, error) in
                 print("posts:", posts)
                 print("error:", error)
             }
@@ -30,13 +29,10 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
     
     func post() {
-        let source = PostAPIFirebase()
-        let service = PostService(source: source)
+        let service = PostAPIFirebase()
         if let user = user {
             let imageUrl = "http://imageurl.png"
-            var poster = User()
-            poster.id = user.uid
-            service.post(imageUrl, user: poster) { (posts, error) in
+            service.writePost(user.uid, imageUrl: imageUrl) { (posts, error) in
                 print("posts:", posts)
                 print("error:", error)
             }

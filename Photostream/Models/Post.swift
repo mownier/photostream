@@ -11,7 +11,7 @@ import Foundation
 struct Post {
     
     var id: String!
-    var user: User!
+    var userId: String!
     var image: String!
     var timestamp: Double!
 }
