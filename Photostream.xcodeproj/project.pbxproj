@@ -38,6 +38,7 @@
 		B9BFA4BD1D5B18BF000AA368 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFA4BC1D5B18BF000AA368 /* UserService.swift */; };
 		B9BFA4BF1D5B1B9A000AA368 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFA4BE1D5B1B9A000AA368 /* Profile.swift */; };
 		B9C1E4C71D507843000925FA /* PhotostreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4C61D507843000925FA /* PhotostreamTests.swift */; };
+		B9D4A15E1D5C40B5000975C7 /* UserAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4A15D1D5C40B5000975C7 /* UserAPIFirebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		B9C1E4C21D507843000925FA /* PhotostreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotostreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C1E4C61D507843000925FA /* PhotostreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotostreamTests.swift; sourceTree = "<group>"; };
 		B9C1E4C81D507843000925FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9D4A15D1D5C40B5000975C7 /* UserAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIFirebase.swift; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +198,7 @@
 				B95FFD201D532D3400085905 /* AuthenticationAPIFirebase.swift */,
 				B97FB6FD1D55BACD00B68048 /* PostAPIFirebase.swift */,
 				B961A4B21D584B550052856D /* CommentAPIFirebase.swift */,
+				B9D4A15D1D5C40B5000975C7 /* UserAPIFirebase.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				B97E3CFD1D51C93600C5E76B /* ViewController.swift in Sources */,
 				B9BFA4BF1D5B1B9A000AA368 /* Profile.swift in Sources */,
 				B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */,
+				B9D4A15E1D5C40B5000975C7 /* UserAPIFirebase.swift in Sources */,
 				B97E3D061D51CE5300C5E76B /* AppDependency.swift in Sources */,
 				B95FFD211D532D3400085905 /* AuthenticationAPIFirebase.swift in Sources */,
 				B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */,

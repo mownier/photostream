@@ -8,12 +8,20 @@
 
 import Foundation
 
-typealias UserServiceCallback = (NSError?) -> Void
-typealias UserServiceProfileCallback = ()
+typealias UserServiceFollowCallback = ([User]?, NSError?) -> Void
+typealias UserServiceProfileCallback = (UserServiceProfileResult?, NSError?) -> Void
 
 protocol UserService: class {
 
-    func follow(userId: String!, callback: UserServiceCallback!)
-    func unfollow(userId: String!, callback: UserServiceCallback!)
-    func fetchProfile(userId: String!)
+    func follow(userId: String!, callback: UserServiceFollowCallback!)
+    func unfollow(userId: String!, callback: UserServiceFollowCallback!)
+    func fetchFollowers(userId: String!, callback: UserServiceFollowCallback!)
+    func fetchFollowing(userId: String!, callback: UserServiceFollowCallback!)
+    func fetchProfile(userId: String!, callback: UserServiceProfileCallback)
+}
+
+struct UserServiceProfileResult {
+    
+    var user: User!
+    var profile: Profile!
 }

@@ -9,13 +9,59 @@
 import Foundation
 import FirebaseAuth
 
+/*
+ pw: mynameiswee
+ User(id: "GtcQ2qoLnvh8MtjI1JmiN1vxdh82", username: nil, firstName: "Wee", lastName: "Wee", email: "wee@wee.com")
+ 
+ pw: mynameisred
+ User(id: "KptguGieRWRBUEL8VCQIcsM9UC92", username: nil, firstName: "Red", lastName: "Repo", email: "redrepo.mail@gmail.com")
+ */
 class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOutput {
-
 
     var user = FIRAuth.auth()?.currentUser
 
     init() {
-        login()
+        // Wee
+//        follow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
+//        unfollow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
+        
+        // Red
+        follow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
+//        unfollow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
+    }
+    
+    func loginWee() {
+        login("wee@wee.com", "mynameiswee")
+    }
+    
+    func loginRed() {
+        login("redrepo.mail@gmail.com", "mynameisred")
+    }
+    
+    func unfollow(userId: String!) {
+        if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            let service = UserAPIFirebase(authenticatedUser: u)
+            service.unfollow(userId, callback: { (users, error) in
+                print("unfollowed user:", users)
+                print("error:", error)
+            })
+        }
+    }
+    
+    func follow(userId: String!)  {
+        if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            let service = UserAPIFirebase(authenticatedUser: u)
+            service.follow(userId, callback: { (users, error) in
+                print("followed user:", users)
+                print("error:", error)
+            })
+        }
     }
 
     func getMePosts() {
@@ -61,18 +107,20 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
         }
     }
 
-    func login() {
+    func login(email: String!, _ password: String!) {
         let service = AuthenticationAPIFirebase()
         let interactor = LoginInteractor(service: service)
         interactor.output = self
-        interactor.login("redrepo.mail@gmail.com", password: "mynameisred")
+        // interactor.login("redrepo.mail@gmail.com", password: "mynameisred")
+        interactor.login(email, password: password)
     }
 
-    func register() {
+    func register(email: String!, _ password: String!, _ firstname: String!, _ lastname: String!) {
         let service = AuthenticationAPIFirebase()
         let interactor = RegistrationInteractor(service: service)
         interactor.output = self
-        interactor.register("redrepo.mail@gmail.com", password: "mynameisred", firstname: "Red", lastname: "Repo")
+        // interactor.register("redrepo.mail@gmail.com", password: "mynameisred", firstname: "Red", lastname: "Repo")
+        interactor.register(email, password: password, firstname: firstname, lastname: lastname)
     }
 
     func registrationDidSucceed(user: User!) {
