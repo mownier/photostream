@@ -21,13 +21,8 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     var user = FIRAuth.auth()?.currentUser
 
     init() {
-        // Wee
 //        follow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
-//        unfollow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
-        
-        // Red
-        follow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
-//        unfollow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
+        fetchFollowing()
     }
     
     func loginWee() {
@@ -36,6 +31,32 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     
     func loginRed() {
         login("redrepo.mail@gmail.com", "mynameisred")
+    }
+    
+    func fetchFollowing() {
+        if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            let service = UserAPIFirebase(authenticatedUser: u)
+            service.fetchFollowing(u.id, offset: 0, limit: 10, callback: { (following, error) in
+                print("following:", following)
+                print("error:", error)
+            })
+        }
+    }
+    
+    func fetchFollowers() {
+        if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            let service = UserAPIFirebase(authenticatedUser: u)
+            service.fetchFollowers(u.id, offset: 0, limit: 10, callback: { (followers, error) in
+                print("followers:", followers)
+                print("error:", error)
+            })
+        }
     }
     
     func unfollow(userId: String!) {

@@ -174,23 +174,60 @@ class UserAPIFirebase: UserService {
         }
     }
     
-    func fetchFollowers(userId: String!, callback: UserServiceFollowCallback!) {
-        
+    func fetchFollowers(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!) {
+        fetchFollows("followers", userId: userId, offset: offset, limit: limit, callback: callback)
     }
     
-    func fetchFollowing(userId: String!, callback: UserServiceFollowCallback!) {
-        
+    func fetchFollowing(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!) {
+        fetchFollows("following", userId: userId, offset: offset, limit: limit, callback: callback)
     }
     
     func fetchProfile(userId: String!, callback: UserServiceProfileCallback) {
         
     }
     
-    func isOK() -> NSError? {
+    private func isOK() -> NSError? {
         if let _ = authenticatedUser {
             return nil
         } else {
             return NSError(domain: "UserAPIFirebase", code: 0, userInfo: ["message": "No authenticated user."])
+        }
+    }
+    
+    private func fetchFollows(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!) {
+        if let error = isOK() {
+            callback(nil, error)
+        } else {
+            let path1 = "users"
+            let path2 = "users/\(userId)/\(path)"
+            let rootRef = FIRDatabase.database().reference()
+            let userRef = rootRef.child(path1)
+            let followerRef = rootRef.child(path2)
+            
+            followerRef.observeSingleEventOfType(.Value, withBlock: { (data) in
+                
+                var userList = [User]()
+                
+                if !data.exists() {
+                    callback(userList, nil)
+                } else {
+                    for child in data.children {
+                        userRef.child(child.key).observeSingleEventOfType(.Value, withBlock: { (data2) in
+                            
+                            var user = User()
+                            user.id = data2.childSnapshotForPath("id").value as! String
+                            user.firstName = data2.childSnapshotForPath("firstname").value as! String
+                            user.lastName = data2.childSnapshotForPath("lastname").value as! String
+                            
+                            userList.append(user)
+                            
+                            if UInt(userList.count) == data.childrenCount {
+                                callback(userList, nil)
+                            }
+                        })
+                    }
+                }
+            })
         }
     }
 }

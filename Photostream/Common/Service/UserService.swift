@@ -15,8 +15,8 @@ protocol UserService: class {
 
     func follow(userId: String!, callback: UserServiceFollowCallback!)
     func unfollow(userId: String!, callback: UserServiceFollowCallback!)
-    func fetchFollowers(userId: String!, callback: UserServiceFollowCallback!)
-    func fetchFollowing(userId: String!, callback: UserServiceFollowCallback!)
+    func fetchFollowers(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!)
+    func fetchFollowing(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!)
     func fetchProfile(userId: String!, callback: UserServiceProfileCallback)
 }
 
