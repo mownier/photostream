@@ -12,6 +12,12 @@ import FirebaseDatabase
 
 class CommentAPIFirebase: CommentService {
 
+    var session: AuthSession!
+    
+    required init(session: AuthSession!) {
+        self.session = session
+    }
+    
     func isOK() -> (String?, NSError?) {
         var uid: String?
         var error: NSError?
@@ -73,11 +79,12 @@ class CommentAPIFirebase: CommentService {
         }
     }
 
-    func writeComment(postId: String!, userId: String!, message: String!, callback: CommentServiceCallback!) {
+    func writeComment(postId: String!, message: String!, callback: CommentServiceCallback!) {
         let (_, error) = isOK()
         if let error = error {
             callback(nil, error)
         } else {
+            let userId = session.user.id
             let ref = FIRDatabase.database().reference()
             let key = ref.child("comments").childByAutoId().key
             let path1 = "comments/\(key)"

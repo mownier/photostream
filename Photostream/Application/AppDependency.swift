@@ -119,8 +119,14 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
 
     func getComments(pid: String!) {
-        let service = CommentAPIFirebase()
-        if let _ = user {
+        if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            var session = AuthSession()
+            session.user = u
+            
+            let service = CommentAPIFirebase(session: session)
             service.fetchComments(pid, offset: 0, limit: 10) { (comments, error) in
                 print("comments:", comments)
                 print("error:", error)
@@ -129,11 +135,16 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
 
     func comment(pid: String!) {
-        let service = CommentAPIFirebase()
         if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            var session = AuthSession()
+            session.user = u
+            
+            let service = CommentAPIFirebase(session: session)
             let message = "Hello world!"
-            let userId = user.uid
-            service.writeComment(pid, userId: userId, message: message) { (comments, error) in
+            service.writeComment(pid, message: message) { (comments, error) in
                 print("comments:", comments)
                 print("error:", error)
             }
