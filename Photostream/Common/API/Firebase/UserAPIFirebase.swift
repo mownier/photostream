@@ -20,7 +20,7 @@ class UserAPIFirebase: UserService {
 
     func follow(userId: String!, callback: UserServiceFollowCallback!) {
         if let error = isOK() {
-            callback(nil, error)
+            callback(false, error)
         } else {
             let user = session!.user
             let path1 = "users/\(user.id)/profile/following_count"
@@ -48,46 +48,40 @@ class UserAPIFirebase: UserService {
 
                         followingCountRef.runTransactionBlock({ (data3) -> FIRTransactionResult in
 
-                            var value = 0
-
-                            if let val = data3.value as? Int {
-                                value = val
+                            if let val = data3.value as? Int where val > 0 {
+                                data3.value = val + 1
+                            } else {
+                                data3.value = 1
                             }
-
-                            data3.value = value + 1
 
                             return FIRTransactionResult.successWithValue(data3)
 
-                            }, andCompletionBlock: { (error, result, snap) in
+                            }, andCompletionBlock: { (error, committed, snap) in
 
-                                if let error = error {
-                                    callback(nil, error)
+                                if !committed {
+                                    callback(false, error)
                                 } else {
                                     followerCountRef.runTransactionBlock({ (data4) -> FIRTransactionResult in
 
-                                        var value = 0
-                                        if let val = data4.value as? Int {
-                                            value = val
+                                        if let val = data4.value as? Int where val > 0 {
+                                            data4.value = val + 1
+                                        } else {
+                                            data4.value = 1
                                         }
-                                        data4.value = value + 1
+
                                         return FIRTransactionResult.successWithValue(data4)
 
-                                        }, andCompletionBlock: { (error, result, snap) in
+                                        }, andCompletionBlock: { (error, committed, snap) in
 
-                                            if let error = error {
-                                                callback(nil, error)
+                                            if !committed {
+                                                callback(false, error)
                                             } else {
                                                 feed2Ref.observeSingleEventOfType(.Value, withBlock: { (data5) in
 
                                                     if let feeds = data5.value as? [String: AnyObject] {
                                                         feed1Ref.updateChildValues(feeds)
                                                     }
-
-                                                    var users = [User]()
-                                                    var u = User()
-                                                    u.id = userId
-                                                    users.append(u)
-                                                    callback(users, nil)
+                                                    callback(true, nil)
                                                 })
                                             }
                                     })
@@ -95,7 +89,7 @@ class UserAPIFirebase: UserService {
                         })
                     })
                 } else {
-                    callback(nil, NSError(domain: "UserAPIFirebase", code: 1, userInfo: ["message": "Already followed."]))
+                    callback(false, NSError(domain: "UserAPIFirebase", code: 0, userInfo: ["message": "Already followed."]))
                 }
             })
         }
@@ -103,7 +97,7 @@ class UserAPIFirebase: UserService {
 
     func unfollow(userId: String!, callback: UserServiceFollowCallback!) {
         if let error = isOK() {
-            callback(nil, error)
+            callback(false, error)
         } else {
             let user = session!.user
             let path1 = "users/\(user.id)/profile/following_count"
@@ -125,61 +119,54 @@ class UserAPIFirebase: UserService {
             followerRef.removeValue()
             followingCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
 
-                var value = 0
-                if let val = data.value as? Int {
-                    value = val
-                }
-
-                if value > 0 {
-                    data.value = value - 1
+                if let val = data.value as? Int where val > 0 {
+                    data.value = val - 1
                 } else {
                     data.value = 0
                 }
 
                 return FIRTransactionResult.successWithValue(data)
 
-                }, andCompletionBlock: { (error, result, snap) in
+                }, andCompletionBlock: { (error, committed, snap) in
 
-                    followerCountRef.runTransactionBlock({ (data2) -> FIRTransactionResult in
+                    if !committed {
+                        callback(false, error)
+                    } else {
+                        followerCountRef.runTransactionBlock({ (data2) -> FIRTransactionResult in
 
-                        var value = 0
-                        if let val = data2.value as? Int {
-                            value = val
-                        }
+                            if let val = data2.value as? Int where val > 0 {
+                                data2.value = val - 1
+                            } else {
+                                data2.value = 0
+                            }
 
-                        if value > 0 {
-                            data2.value = value - 1
-                        } else {
-                            data2.value = 0
-                        }
+                            return FIRTransactionResult.successWithValue(data2)
 
-                        return FIRTransactionResult.successWithValue(data2)
+                            }, andCompletionBlock: { (error, committed, snap) in
 
-                        }, andCompletionBlock: { (error, result, snap) in
+                                if !committed {
+                                    callback(false, error)
+                                } else {
+                                    feed2Ref.observeSingleEventOfType(.Value, withBlock: { (data3) in
 
-                            feed2Ref.observeSingleEventOfType(.Value, withBlock: { (data3) in
-
-                                for child in data3.children {
-                                    feed1Ref.child(child.key).removeValue()
+                                        for child in data3.children {
+                                            feed1Ref.child(child.key).removeValue()
+                                        }
+                                        callback(true, nil)
+                                    })
                                 }
-
-                                var users = [User]()
-                                var u = User()
-                                u.id = userId
-                                users.append(u)
-                                callback(users, nil)
-                            })
-                    })
+                        })
+                    }
             })
         }
     }
 
-    func fetchFollowers(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!) {
-        fetchFollows("followers", userId: userId, offset: offset, limit: limit, callback: callback)
+    func fetchFollowers(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!) {
+        fetchFollowList("followers", userId: userId, offset: offset, limit: limit, callback: callback)
     }
 
-    func fetchFollowing(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!) {
-        fetchFollows("following", userId: userId, offset: offset, limit: limit, callback: callback)
+    func fetchFollowing(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!) {
+        fetchFollowList("following", userId: userId, offset: offset, limit: limit, callback: callback)
     }
 
     func fetchProfile(userId: String!, callback: UserServiceProfileCallback) {
@@ -232,7 +219,7 @@ class UserAPIFirebase: UserService {
         }
     }
 
-    private func fetchFollows(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!) {
+    private func fetchFollowList(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!) {
         if let error = isOK() {
             callback(nil, error)
         } else {
