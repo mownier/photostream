@@ -12,78 +12,81 @@ import FirebaseAuth
 
 class PostAPIFirebase: PostService {
 
-    private func isOK() -> (String?, NSError?) {
-        var uid: String?
-        var error: NSError?
-        if let auth = FIRAuth.auth() {
-            if let user = auth.currentUser {
-                uid = user.uid
-            } else {
-                error = NSError(domain: "PostAPIFirebase", code: 1, userInfo: ["message": "User not found."])
-            }
+    var session: AuthSession!
+    
+    required init(session: AuthSession!) {
+        self.session = session
+    }
+    
+    private func isOK() -> NSError? {
+        if session.isValid() {
+            return nil
         } else {
-            error = NSError(domain: "PostAPIFirebase", code: 0, userInfo: ["message": "Unauthorized."])
+            return NSError(domain: "PostAPIFirebase", code: 0, userInfo: ["message": "Unauthorized."])
         }
-        return (uid, error)
     }
 
     private func fetch(path: String, userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
-        let (_, error) = isOK()
-        if let error = error {
-            callback(nil, error)
-        } else {
-            let root = FIRDatabase.database().reference()
-            let users = root.child("users")
-            let posts = root.child("posts")
-            let ref = users.child(userId).child(path)
-            ref.queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
-                var postList = [Post]()
-                var postUsers = [String: User]()
-                for snap in data.children {
-                    posts.child(snap.key).observeSingleEventOfType(.Value, withBlock: { (data2) in
-                        users.child(userId).observeSingleEventOfType(.Value, withBlock: { (data3) in
-                            if postUsers[userId] == nil {
-                                var user = User()
-                                user.id = data3.childSnapshotForPath("id").value as! String
-                                user.firstName = data3.childSnapshotForPath("firstname").value as! String
-                                user.lastName = data3.childSnapshotForPath("lastname").value as! String
-                                postUsers[userId] = user
-                            }
-
-                            var post = Post()
-                            post.userId = userId
-                            post.id = data2.childSnapshotForPath("id").value as! String
-                            post.image = data2.childSnapshotForPath("imageUrl").value as! String
-                            post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
-                            postList.append(post)
-
-                            if UInt(postList.count) == data.childrenCount {
-                                var result = PostServiceResult()
-                                result.posts = postList
-                                result.users = postUsers
-                                callback(result, nil)
-                            }
-                        })
+        let root = FIRDatabase.database().reference()
+        let users = root.child("users")
+        let posts = root.child("posts")
+        let ref = users.child(userId).child(path)
+        ref.queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
+            var postList = [Post]()
+            var postUsers = [String: User]()
+            for snap in data.children {
+                posts.child(snap.key).observeSingleEventOfType(.Value, withBlock: { (data2) in
+                    users.child(userId).observeSingleEventOfType(.Value, withBlock: { (data3) in
+                        if postUsers[userId] == nil {
+                            var user = User()
+                            user.id = data3.childSnapshotForPath("id").value as! String
+                            user.firstName = data3.childSnapshotForPath("firstname").value as! String
+                            user.lastName = data3.childSnapshotForPath("lastname").value as! String
+                            postUsers[userId] = user
+                        }
+                        
+                        var post = Post()
+                        post.userId = userId
+                        post.id = data2.childSnapshotForPath("id").value as! String
+                        post.image = data2.childSnapshotForPath("imageUrl").value as! String
+                        post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
+                        postList.append(post)
+                        
+                        if UInt(postList.count) == data.childrenCount {
+                            var result = PostServiceResult()
+                            result.posts = postList
+                            result.users = postUsers
+                            callback(result, nil)
+                        }
                     })
-                }
-            })
-        }
+                })
+            }
+        })
     }
 
-    func fetchNewsFeed(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
-        fetch("feed", userId: userId, offset: offset, limit: limit, callback: callback)
+    func fetchNewsFeed(offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
+        if let error = isOK() {
+            callback(nil, error)
+        } else {
+            let userId = session.user.id
+            fetch("feed", userId: userId, offset: offset, limit: limit, callback: callback)
+        }
     }
 
 
     func fetchPosts(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
-        fetch("posts", userId: userId, offset: offset, limit: limit, callback: callback)
-    }
-
-    func writePost(userId: String!, imageUrl: String!, callback: PostServiceCallback!) {
-        let (_, error) = isOK()
-        if let error = error {
+        if let error = isOK() {
             callback(nil, error)
         } else {
+            fetch("posts", userId: userId, offset: offset, limit: limit, callback: callback)
+        }
+    }
+
+    func writePost(imageUrl: String!, callback: PostServiceCallback!) {
+        if let error = isOK() {
+            callback(nil, error)
+        } else {
+            let userId = session.user.id
             let ref = FIRDatabase.database().reference()
             let key = ref.child("posts").childByAutoId().key
             let data: [String: AnyObject] = [

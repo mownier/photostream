@@ -98,9 +98,15 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
 
     func getMePosts() {
-        let service = PostAPIFirebase()
         if let user = user {
-            service.fetchPosts(user.uid, offset: 0, limit: 10) { (posts, error) in
+            var u = User()
+            u.id = user.uid
+            
+            var session = AuthSession()
+            session.user = u
+            
+            let service = PostAPIFirebase(session: session)
+            service.fetchPosts(u.id, offset: 0, limit: 10) { (posts, error) in
                 print("posts:", posts)
                 print("error:", error)
             }
@@ -108,10 +114,16 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     }
 
     func post() {
-        let service = PostAPIFirebase()
         if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            var session = AuthSession()
+            session.user = u
+            
+            let service = PostAPIFirebase(session: session)
             let imageUrl = "http://imageurl.png"
-            service.writePost(user.uid, imageUrl: imageUrl) { (posts, error) in
+            service.writePost(imageUrl) { (posts, error) in
                 print("posts:", posts)
                 print("error:", error)
             }
