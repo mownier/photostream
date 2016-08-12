@@ -40,7 +40,7 @@ class UserAPIFirebase: UserService {
 
             followingRef.observeSingleEventOfType(.Value, withBlock: { (data) in
 
-                if let _ = data.value as? NSNull {
+                if !data.exists() {
                     followingRef.setValue(true)
 
                     followerRef.observeSingleEventOfType(.Value, withBlock: { (data2) in
