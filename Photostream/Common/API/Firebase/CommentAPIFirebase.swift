@@ -17,25 +17,9 @@ class CommentAPIFirebase: CommentService {
     required init(session: AuthSession!) {
         self.session = session
     }
-    
-    func isOK() -> (String?, NSError?) {
-        var uid: String?
-        var error: NSError?
-        if let auth = FIRAuth.auth() {
-            if let user = auth.currentUser {
-                uid = user.uid
-            } else {
-                error = NSError(domain: "CommentAPIFirebase", code: 1, userInfo: ["message": "User not found."])
-            }
-        } else {
-            error = NSError(domain: "CommentAPIFirebase", code: 0, userInfo: ["message": "Unauthorized."])
-        }
-        return (uid, error)
-    }
 
     func fetchComments(postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!) {
-        let (_, error) = isOK()
-        if let error = error {
+        if let error = isOK() {
             callback(nil, error)
         } else {
             let root = FIRDatabase.database().reference()
@@ -80,8 +64,7 @@ class CommentAPIFirebase: CommentService {
     }
 
     func writeComment(postId: String!, message: String!, callback: CommentServiceCallback!) {
-        let (_, error) = isOK()
-        if let error = error {
+        if let error = isOK() {
             callback(nil, error)
         } else {
             let userId = session.user.id
@@ -126,6 +109,14 @@ class CommentAPIFirebase: CommentService {
                     callback(result, nil)
                 })
             })
+        }
+    }
+    
+    private func isOK() -> NSError? {
+        if session.isValid() {
+            return nil
+        } else {
+            return NSError(domain: "CommentAPIFirebase", code: 0, userInfo: ["message": "No authenticated user."])
         }
     }
 }

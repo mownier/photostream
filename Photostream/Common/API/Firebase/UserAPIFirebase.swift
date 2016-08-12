@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 class UserAPIFirebase: UserService {
     
-    var session: AuthSession?
+    var session: AuthSession!
     
     required init(session: AuthSession!) {
         self.session = session
@@ -187,7 +187,7 @@ class UserAPIFirebase: UserService {
     }
     
     private func isOK() -> NSError? {
-        if let session = session where session.isValid() {
+        if session.isValid() {
             return nil
         } else {
             return NSError(domain: "UserAPIFirebase", code: 0, userInfo: ["message": "No authenticated user."])
