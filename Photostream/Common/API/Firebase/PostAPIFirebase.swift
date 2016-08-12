@@ -73,7 +73,6 @@ class PostAPIFirebase: PostService {
         }
     }
 
-
     func fetchPosts(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
         if let error = isOK() {
             callback(nil, error)
@@ -98,35 +97,49 @@ class PostAPIFirebase: PostService {
             let path1 = "posts/\(key)"
             let path2 = "users/\(userId)/\(path1)"
             let path3 = "users/\(userId)/feed/\(key)"
+            let path4 = "users/\(userId)/profile/posts_count"
             let updates: [String: AnyObject] = [path1: data, path2: true, path3: true]
-
-            ref.updateChildValues(updates)
-            ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
-                ref.child("users/\(userId)").observeSingleEventOfType(.Value, withBlock: { (data2) in
-                    var user = User()
-                    user.id = userId
-                    user.firstName = data2.childSnapshotForPath("firstname").value as! String
-                    user.lastName = data2.childSnapshotForPath("lastname").value as! String
-
-                    var post = Post()
-                    post.image = imageUrl
-                    post.id = key
-                    post.userId = userId
-                    post.timestamp = data.childSnapshotForPath("timestamp").value as! Double
-
-                    var posts = [Post]()
-                    posts.append(post)
-
-                    var users = [String: User]()
-                    users[userId] = user
-
-                    var result = PostServiceResult()
-                    result.posts = posts
-                    result.users = users
-
-                    callback(result, nil)
-
-                })
+            
+            ref.child(path4).runTransactionBlock({ (data) -> FIRTransactionResult in
+                
+                if let val = data.value as? Int {
+                    data.value = val + 1
+                } else {
+                    data.value = 0
+                }
+                
+                return FIRTransactionResult.successWithValue(data)
+                
+                }, andCompletionBlock: { (error, result, snap) in
+                    
+                    ref.updateChildValues(updates)
+                    ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
+                        ref.child("users/\(userId)").observeSingleEventOfType(.Value, withBlock: { (data2) in
+                            var user = User()
+                            user.id = userId
+                            user.firstName = data2.childSnapshotForPath("firstname").value as! String
+                            user.lastName = data2.childSnapshotForPath("lastname").value as! String
+                            
+                            var post = Post()
+                            post.image = imageUrl
+                            post.id = key
+                            post.userId = userId
+                            post.timestamp = data.childSnapshotForPath("timestamp").value as! Double
+                            
+                            var posts = [Post]()
+                            posts.append(post)
+                            
+                            var users = [String: User]()
+                            users[userId] = user
+                            
+                            var result = PostServiceResult()
+                            result.posts = posts
+                            result.users = users
+                            
+                            callback(result, nil)
+                            
+                        })
+                    })
             })
         }
     }

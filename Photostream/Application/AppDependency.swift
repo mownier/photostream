@@ -21,7 +21,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     var user = FIRAuth.auth()?.currentUser
 
     init() {
-        fetchProfile()
+        post()
     }
     
     func loginWee() {
