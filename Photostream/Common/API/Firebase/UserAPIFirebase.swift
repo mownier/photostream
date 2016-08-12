@@ -183,7 +183,45 @@ class UserAPIFirebase: UserService {
     }
     
     func fetchProfile(userId: String!, callback: UserServiceProfileCallback) {
-        
+        if let error = isOK() {
+            callback(nil, error)
+        } else {
+            let path1 = "users/\(userId)/"
+            let path2 = "profile"
+            let rootRef = FIRDatabase.database().reference()
+            let userRef = rootRef.child(path1)
+            let profRef  = userRef.child(path2)
+            userRef.observeSingleEventOfType(.Value, withBlock: { (data) in
+                
+                profRef.observeSingleEventOfType(.Value, withBlock: { (data2) in
+                    
+                    var user = User()
+                    user.id = data.childSnapshotForPath("id").value as! String
+                    user.firstName = data.childSnapshotForPath("firstname").value as! String
+                    user.lastName = data.childSnapshotForPath("lastname").value as! String
+                    
+                    var profile = Profile()
+                    profile.userId = user.id
+                    
+                    if data2.hasChild("posts_count") {
+                        profile.postsCount = (data2.childSnapshotForPath("posts_count").value as! NSNumber).longLongValue
+                    }
+                    
+                    if data2.hasChild("followers_count") {
+                        profile.followersCount = (data2.childSnapshotForPath("followers_count").value as! NSNumber).longLongValue
+                    }
+                    
+                    if data2.hasChild("following_count") {
+                        profile.followingCount = (data2.childSnapshotForPath("following_count").value as! NSNumber).longLongValue
+                    }
+                    
+                    var result = UserServiceProfileResult()
+                    result.user = user
+                    result.profile = profile
+                    callback(result, nil)
+                })
+            })
+        }
     }
     
     private func isOK() -> NSError? {

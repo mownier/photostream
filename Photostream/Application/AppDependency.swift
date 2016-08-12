@@ -21,8 +21,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     var user = FIRAuth.auth()?.currentUser
 
     init() {
-//        follow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
-//        fetchFollowing()
+        fetchProfile()
     }
     
     func loginWee() {
@@ -31,6 +30,22 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     
     func loginRed() {
         login("redrepo.mail@gmail.com", "mynameisred")
+    }
+    
+    func fetchProfile() {
+        if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            var session = AuthSession()
+            session.user = u
+            
+            let service = UserAPIFirebase(session: session)
+            service.fetchProfile(u.id, callback: { (result, error) in
+                print("profile:", result)
+                print("error:", error)
+            })
+        }
     }
     
     func fetchFollowing() {

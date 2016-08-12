@@ -14,4 +14,10 @@ struct Profile {
     var postsCount: Int64!
     var followersCount: Int64!
     var followingCount: Int64!
+
+    init() {
+        postsCount = 0
+        followersCount = 0
+        followingCount = 0
+    }
 }
