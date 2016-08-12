@@ -12,7 +12,8 @@ typealias UserServiceFollowCallback = ([User]?, NSError?) -> Void
 typealias UserServiceProfileCallback = (UserServiceProfileResult?, NSError?) -> Void
 
 protocol UserService: class {
-
+    
+    init(session: AuthSession!)
     func follow(userId: String!, callback: UserServiceFollowCallback!)
     func unfollow(userId: String!, callback: UserServiceFollowCallback!)
     func fetchFollowers(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowCallback!)

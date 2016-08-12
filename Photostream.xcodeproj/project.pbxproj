@@ -38,6 +38,7 @@
 		B9BFA4BD1D5B18BF000AA368 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFA4BC1D5B18BF000AA368 /* UserService.swift */; };
 		B9BFA4BF1D5B1B9A000AA368 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFA4BE1D5B1B9A000AA368 /* Profile.swift */; };
 		B9C1E4C71D507843000925FA /* PhotostreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4C61D507843000925FA /* PhotostreamTests.swift */; };
+		B9D331AB1D5D938D0010A8C1 /* AuthSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D331AA1D5D938D0010A8C1 /* AuthSession.swift */; };
 		B9D4A15E1D5C40B5000975C7 /* UserAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4A15D1D5C40B5000975C7 /* UserAPIFirebase.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		B9C1E4C21D507843000925FA /* PhotostreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotostreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C1E4C61D507843000925FA /* PhotostreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotostreamTests.swift; sourceTree = "<group>"; };
 		B9C1E4C81D507843000925FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9D331AA1D5D938D0010A8C1 /* AuthSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthSession.swift; sourceTree = "<group>"; };
 		B9D4A15D1D5C40B5000975C7 /* UserAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIFirebase.swift; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -372,6 +374,7 @@
 				B97FB6F91D55B7DE00B68048 /* Post.swift */,
 				B97FB6FB1D55B8E800B68048 /* Comment.swift */,
 				B9BFA4BE1D5B1B9A000AA368 /* Profile.swift */,
+				B9D331AA1D5D938D0010A8C1 /* AuthSession.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 				B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */,
 				B97FB6FE1D55BACD00B68048 /* PostAPIFirebase.swift in Sources */,
 				B97FB6F21D55B4B700B68048 /* NewsFeedInteractor.swift in Sources */,
+				B9D331AB1D5D938D0010A8C1 /* AuthSession.swift in Sources */,
 				B97FB6FA1D55B7DE00B68048 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

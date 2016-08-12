@@ -12,17 +12,17 @@ import FirebaseDatabase
 
 class UserAPIFirebase: UserService {
     
-    var authenticatedUser: User?
+    var session: AuthSession?
     
-    init(authenticatedUser: User) {
-        self.authenticatedUser = authenticatedUser
+    required init(session: AuthSession!) {
+        self.session = session
     }
     
     func follow(userId: String!, callback: UserServiceFollowCallback!) {
         if let error = isOK() {
             callback(nil, error)
         } else {
-            let user = authenticatedUser!
+            let user = session!.user
             let path1 = "users/\(user.id)/profile/following_count"
             let path2 = "users/\(user.id)/following/\(userId)"
             let path3 = "users/\(userId)/followers/\(user.id)"
@@ -105,7 +105,7 @@ class UserAPIFirebase: UserService {
         if let error = isOK() {
             callback(nil, error)
         } else {
-            let user = authenticatedUser!
+            let user = session!.user
             let path1 = "users/\(user.id)/profile/following_count"
             let path2 = "users/\(user.id)/following/\(userId)"
             let path3 = "users/\(userId)/followers/\(user.id)"
@@ -187,7 +187,7 @@ class UserAPIFirebase: UserService {
     }
     
     private func isOK() -> NSError? {
-        if let _ = authenticatedUser {
+        if let session = session where session.isValid() {
             return nil
         } else {
             return NSError(domain: "UserAPIFirebase", code: 0, userInfo: ["message": "No authenticated user."])

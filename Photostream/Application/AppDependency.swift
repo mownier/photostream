@@ -22,7 +22,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
 
     init() {
 //        follow("GtcQ2qoLnvh8MtjI1JmiN1vxdh82")
-        fetchFollowing()
+//        fetchFollowing()
     }
     
     func loginWee() {
@@ -38,7 +38,10 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
             var u = User()
             u.id = user.uid
             
-            let service = UserAPIFirebase(authenticatedUser: u)
+            var session = AuthSession()
+            session.user = u
+            
+            let service = UserAPIFirebase(session: session)
             service.fetchFollowing(u.id, offset: 0, limit: 10, callback: { (following, error) in
                 print("following:", following)
                 print("error:", error)
@@ -51,7 +54,10 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
             var u = User()
             u.id = user.uid
             
-            let service = UserAPIFirebase(authenticatedUser: u)
+            var session = AuthSession()
+            session.user = u
+            
+            let service = UserAPIFirebase(session: session)
             service.fetchFollowers(u.id, offset: 0, limit: 10, callback: { (followers, error) in
                 print("followers:", followers)
                 print("error:", error)
@@ -64,7 +70,10 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
             var u = User()
             u.id = user.uid
             
-            let service = UserAPIFirebase(authenticatedUser: u)
+            var session = AuthSession()
+            session.user = u
+            
+            let service = UserAPIFirebase(session: session)
             service.unfollow(userId, callback: { (users, error) in
                 print("unfollowed user:", users)
                 print("error:", error)
@@ -77,7 +86,10 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
             var u = User()
             u.id = user.uid
             
-            let service = UserAPIFirebase(authenticatedUser: u)
+            var session = AuthSession()
+            session.user = u
+            
+            let service = UserAPIFirebase(session: session)
             service.follow(userId, callback: { (users, error) in
                 print("followed user:", users)
                 print("error:", error)
