@@ -12,7 +12,7 @@ typealias UserServiceFollowCallback = ([User]?, NSError?) -> Void
 typealias UserServiceProfileCallback = (UserServiceProfileResult?, NSError?) -> Void
 
 protocol UserService: class {
-    
+
     init(session: AuthSession!)
     func follow(userId: String!, callback: UserServiceFollowCallback!)
     func unfollow(userId: String!, callback: UserServiceFollowCallback!)
@@ -22,7 +22,7 @@ protocol UserService: class {
 }
 
 struct UserServiceProfileResult {
-    
+
     var user: User!
     var profile: Profile!
 }

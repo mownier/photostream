@@ -9,7 +9,7 @@
 import Foundation
 
 struct Profile {
-    
+
     var userId: String!
     var postsCount: Int64!
     var followersCount: Int64!

@@ -13,7 +13,7 @@ import FirebaseDatabase
 class CommentAPIFirebase: CommentService {
 
     var session: AuthSession!
-    
+
     required init(session: AuthSession!) {
         self.session = session
     }
@@ -111,7 +111,7 @@ class CommentAPIFirebase: CommentService {
             })
         }
     }
-    
+
     private func isOK() -> NSError? {
         if session.isValid() {
             return nil

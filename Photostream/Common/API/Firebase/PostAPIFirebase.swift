@@ -13,7 +13,7 @@ import FirebaseAuth
 class PostAPIFirebase: PostService {
 
     var session: AuthSession!
-    
+
     required init(session: AuthSession!) {
         self.session = session
     }
@@ -53,19 +53,19 @@ class PostAPIFirebase: PostService {
             let path3 = "users/\(userId)/feed/\(key)"
             let path4 = "users/\(userId)/profile/posts_count"
             let updates: [String: AnyObject] = [path1: data, path2: true, path3: true]
-            
+
             ref.child(path4).runTransactionBlock({ (data) -> FIRTransactionResult in
-                
+
                 if let val = data.value as? Int {
                     data.value = val + 1
                 } else {
                     data.value = 0
                 }
-                
+
                 return FIRTransactionResult.successWithValue(data)
-                
+
                 }, andCompletionBlock: { (error, result, snap) in
-                    
+
                     ref.updateChildValues(updates)
                     ref.child(path1).observeSingleEventOfType(.Value, withBlock: { (data) in
                         ref.child("users/\(userId)").observeSingleEventOfType(.Value, withBlock: { (data2) in
@@ -73,31 +73,31 @@ class PostAPIFirebase: PostService {
                             user.id = userId
                             user.firstName = data2.childSnapshotForPath("firstname").value as! String
                             user.lastName = data2.childSnapshotForPath("lastname").value as! String
-                            
+
                             var post = Post()
                             post.image = imageUrl
                             post.id = key
                             post.userId = userId
                             post.timestamp = data.childSnapshotForPath("timestamp").value as! Double
-                            
+
                             var posts = [Post]()
                             posts.append(post)
-                            
+
                             var users = [String: User]()
                             users[userId] = user
-                            
+
                             var result = PostServiceResult()
                             result.posts = posts
                             result.users = users
-                            
+
                             callback(result, nil)
-                            
+
                         })
                     })
             })
         }
     }
-    
+
     func like(postId: String!, callback: PostServiceLikeCallback!) {
         if let error = isOK() {
             callback(false, error)
@@ -106,24 +106,24 @@ class PostAPIFirebase: PostService {
             let path1 = "posts/\(postId)/likes_count"
             let path2 = "posts/\(postId)/likes/\(userId)"
             let rootRef = FIRDatabase.database().reference()
-            
+
             rootRef.child(path2).observeSingleEventOfType(.Value, withBlock: { (data) in
-                
+
                 if data.exists() {
                     callback(false, NSError(domain: "PostAPIFirebase", code: 0, userInfo: ["message": "Already liked."]))
                 } else {
                     rootRef.child(path1).runTransactionBlock({ (data2) -> FIRTransactionResult in
-                        
+
                         if let val = data2.value as? Int {
                             data2.value = val + 1
                         } else {
                             data2.value = 1
                         }
-                        
+
                         return FIRTransactionResult.successWithValue(data2)
-                        
+
                         }, andCompletionBlock: { (error, committed, snap) in
-                            
+
                             if !committed {
                                 callback(false, error)
                             } else {
@@ -135,7 +135,7 @@ class PostAPIFirebase: PostService {
             })
         }
     }
-    
+
     func unlike(postId: String!, callback: PostServiceLikeCallback!) {
         if let error = isOK() {
             callback(false, error)
@@ -144,24 +144,24 @@ class PostAPIFirebase: PostService {
             let path1 = "posts/\(postId)/likes_count"
             let path2 = "posts/\(postId)/likes/\(userId)"
             let rootRef = FIRDatabase.database().reference()
-            
+
             rootRef.child(path2).observeSingleEventOfType(.Value, withBlock: { (data) in
-                
+
                 if !data.exists() {
                     callback(false, NSError(domain: "PostAPIFirebase", code: 0, userInfo: ["message": "Failed to unlike post."]))
                 } else {
                     rootRef.child(path1).runTransactionBlock({ (data) -> FIRTransactionResult in
-                        
+
                         if let val = data.value as? Int where val > 0 {
                             data.value = val - 1
                         } else {
                             data.value = 0
                         }
-                        
+
                         return FIRTransactionResult.successWithValue(data)
-                        
+
                         }, andCompletionBlock: { (error, committed, snap) in
-                            
+
                             if !committed {
                                 callback(false, error)
                             } else {
@@ -173,7 +173,7 @@ class PostAPIFirebase: PostService {
             })
         }
     }
-    
+
     func fetchLikes(postId: String, offset: UInt!, limit: UInt!, callback: PostServiceLikeListCallback!) {
         if let error = isOK() {
             callback(nil, error)
@@ -182,7 +182,7 @@ class PostAPIFirebase: PostService {
             let path2 = "users"
             let rootRef = FIRDatabase.database().reference()
             rootRef.child(path1).queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
-                
+
                 var likeList = [User]()
                 if !data.exists() {
                     callback(likeList, nil)
@@ -190,14 +190,14 @@ class PostAPIFirebase: PostService {
                     for c in data.children {
                         let child = c as! FIRDataSnapshot
                         rootRef.child("\(path2)/\(child.key)").observeSingleEventOfType(.Value, withBlock: { (data2) in
-                            
+
                             var user = User()
                             user.id = data2.childSnapshotForPath("id").value as! String
                             user.firstName = data2.childSnapshotForPath("firstname").value as! String
                             user.lastName = data2.childSnapshotForPath("lastname").value as! String
-                            
+
                             likeList.append(user)
-                            
+
                             if UInt(likeList.count) == data.childrenCount {
                                 callback(likeList, nil)
                             }
@@ -207,7 +207,7 @@ class PostAPIFirebase: PostService {
             })
         }
     }
-    
+
     private func isOK() -> NSError? {
         if session.isValid() {
             return nil
@@ -215,7 +215,7 @@ class PostAPIFirebase: PostService {
             return NSError(domain: "PostAPIFirebase", code: 0, userInfo: ["message": "Unauthorized."])
         }
     }
-    
+
     private func fetch(path: String, userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!) {
         let root = FIRDatabase.database().reference()
         let users = root.child("users")
@@ -234,14 +234,14 @@ class PostAPIFirebase: PostService {
                             user.lastName = data3.childSnapshotForPath("lastname").value as! String
                             postUsers[userId] = user
                         }
-                        
+
                         var post = Post()
                         post.userId = userId
                         post.id = data2.childSnapshotForPath("id").value as! String
                         post.image = data2.childSnapshotForPath("imageUrl").value as! String
                         post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
                         postList.append(post)
-                        
+
                         if UInt(postList.count) == data.childrenCount {
                             var result = PostServiceResult()
                             result.posts = postList

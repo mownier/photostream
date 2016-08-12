@@ -9,9 +9,9 @@
 import Foundation
 
 struct AuthSession {
-    
+
     var user: User!
-    
+
     func isValid() -> Bool {
         if let u = user,
             let _ = u.id {
