@@ -174,6 +174,40 @@ class PostAPIFirebase: PostService {
         }
     }
     
+    func fetchLikes(postId: String, offset: UInt!, limit: UInt!, callback: PostServiceLikeListCallback!) {
+        if let error = isOK() {
+            callback(nil, error)
+        } else {
+            let path1 = "posts/\(postId)/likes"
+            let path2 = "users"
+            let rootRef = FIRDatabase.database().reference()
+            rootRef.child(path1).queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
+                
+                var likeList = [User]()
+                if !data.exists() {
+                    callback(likeList, nil)
+                } else {
+                    for c in data.children {
+                        let child = c as! FIRDataSnapshot
+                        rootRef.child("\(path2)/\(child.key)").observeSingleEventOfType(.Value, withBlock: { (data2) in
+                            
+                            var user = User()
+                            user.id = data2.childSnapshotForPath("id").value as! String
+                            user.firstName = data2.childSnapshotForPath("firstname").value as! String
+                            user.lastName = data2.childSnapshotForPath("lastname").value as! String
+                            
+                            likeList.append(user)
+                            
+                            if UInt(likeList.count) == data.childrenCount {
+                                callback(likeList, nil)
+                            }
+                        })
+                    }
+                }
+            })
+        }
+    }
+    
     private func isOK() -> NSError? {
         if session.isValid() {
             return nil

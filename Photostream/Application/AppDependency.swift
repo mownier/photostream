@@ -21,7 +21,7 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     var user = FIRAuth.auth()?.currentUser
 
     init() {
-        likePost("-KOsPyyQncKv1VlPt34B")
+        fetchLikes("-KOsPyyQncKv1VlPt34B")
     }
     
     func loginWee() {
@@ -30,6 +30,23 @@ class AppDependency: AnyObject, RegistrationInteractorOutput, LoginInteractorOut
     
     func loginRed() {
         login("redrepo.mail@gmail.com", "mynameisred")
+    }
+    
+    
+    func fetchLikes(postId: String) {
+        if let user = user {
+            var u = User()
+            u.id = user.uid
+            
+            var session = AuthSession()
+            session.user = u
+            
+            let service = PostAPIFirebase(session: session)
+            service.fetchLikes(postId, offset: 0, limit: 10, callback: { (likes, error) in
+                print("likes:", likes)
+                print("error:", error)
+            })
+        }
     }
     
     func likePost(postId: String!) {
