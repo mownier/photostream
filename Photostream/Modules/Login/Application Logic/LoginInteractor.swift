@@ -22,8 +22,13 @@ class LoginInteractor: LoginInteractorInput {
             if let error = error {
                 self.output.loginDidFail(error)
             } else {
+                self.saveUser(user)
                 self.output.loginDidSucceed(user)
             }
         }
+    }
+    
+    private func saveUser(user: User!) {
+        // TODO: Save user into the keychain or any encrpted storage
     }
 }
