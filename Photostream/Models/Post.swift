@@ -14,4 +14,11 @@ struct Post {
     var userId: String!
     var image: String!
     var timestamp: Double!
+    var likesCount: Int64!
+    var isLiked: Bool!
+    
+    init() {
+        likesCount = 0
+        isLiked = false
+    }
 }
