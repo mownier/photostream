@@ -21,6 +21,18 @@
 		B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */; };
 		B961A4B11D5849AB0052856D /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A4B01D5849AB0052856D /* CommentService.swift */; };
 		B961A4B31D584B550052856D /* CommentAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A4B21D584B550052856D /* CommentAPIFirebase.swift */; };
+		B9706A971D5EED93002EE1D2 /* LoginModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */; };
+		B9706A991D5EEE7D002EE1D2 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706A981D5EEE7D002EE1D2 /* LoginPresenter.swift */; };
+		B9706A9B1D5EEEDF002EE1D2 /* LoginViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706A9A1D5EEEDF002EE1D2 /* LoginViewInterface.swift */; };
+		B9706A9D1D5EEF19002EE1D2 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706A9C1D5EEF19002EE1D2 /* LoginWireframe.swift */; };
+		B9706A9F1D5EF067002EE1D2 /* LoginWireframeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706A9E1D5EF067002EE1D2 /* LoginWireframeInput.swift */; };
+		B9706AA11D5EF10C002EE1D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706AA01D5EF10C002EE1D2 /* LoginViewController.swift */; };
+		B9706AA31D5EF206002EE1D2 /* RegistrationWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706AA21D5EF206002EE1D2 /* RegistrationWireframe.swift */; };
+		B9706AA51D5EF2A1002EE1D2 /* RegistrationViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706AA41D5EF2A1002EE1D2 /* RegistrationViewInterface.swift */; };
+		B9706AA71D5EF2BF002EE1D2 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706AA61D5EF2BF002EE1D2 /* RegistrationViewController.swift */; };
+		B9706AA91D5EF320002EE1D2 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */; };
+		B9706AAC1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9706AAB1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard */; };
+		B9706AAE1D5F02D7002EE1D2 /* FeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706AAD1D5F02D7002EE1D2 /* FeatureTests.swift */; };
 		B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3CE91D51C78900C5E76B /* AppDelegate.swift */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
@@ -71,6 +83,18 @@
 		B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorOutput.swift; sourceTree = "<group>"; };
 		B961A4B01D5849AB0052856D /* CommentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		B961A4B21D584B550052856D /* CommentAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentAPIFirebase.swift; sourceTree = "<group>"; };
+		B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
+		B9706A981D5EEE7D002EE1D2 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		B9706A9A1D5EEEDF002EE1D2 /* LoginViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewInterface.swift; sourceTree = "<group>"; };
+		B9706A9C1D5EEF19002EE1D2 /* LoginWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
+		B9706A9E1D5EF067002EE1D2 /* LoginWireframeInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireframeInput.swift; sourceTree = "<group>"; };
+		B9706AA01D5EF10C002EE1D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B9706AA21D5EF206002EE1D2 /* RegistrationWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationWireframe.swift; sourceTree = "<group>"; };
+		B9706AA41D5EF2A1002EE1D2 /* RegistrationViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewInterface.swift; sourceTree = "<group>"; };
+		B9706AA61D5EF2BF002EE1D2 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		B9706AAB1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginModuleStoryboard.storyboard; sourceTree = "<group>"; };
+		B9706AAD1D5F02D7002EE1D2 /* FeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTests.swift; sourceTree = "<group>"; };
 		B97E3CE91D51C78900C5E76B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -140,6 +164,7 @@
 		B95FFD061D53048700085905 /* Module Interface */ = {
 			isa = PBXGroup;
 			children = (
+				B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */,
 			);
 			path = "Module Interface";
 			sourceTree = "<group>";
@@ -157,6 +182,7 @@
 		B95FFD081D53068300085905 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				B9706A981D5EEE7D002EE1D2 /* LoginPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -164,6 +190,9 @@
 		B95FFD091D53068300085905 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9706AA01D5EF10C002EE1D2 /* LoginViewController.swift */,
+				B9706A9A1D5EEEDF002EE1D2 /* LoginViewInterface.swift */,
+				B9706AAA1D5EFE77002EE1D2 /* Storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +200,8 @@
 		B95FFD0A1D53068300085905 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
+				B9706A9C1D5EEF19002EE1D2 /* LoginWireframe.swift */,
+				B9706A9E1D5EF067002EE1D2 /* LoginWireframeInput.swift */,
 			);
 			path = Wireframe;
 			sourceTree = "<group>";
@@ -245,6 +276,7 @@
 		B961A2C11D545D6800651D35 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -252,6 +284,8 @@
 		B961A2C21D545D6800651D35 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9706AA41D5EF2A1002EE1D2 /* RegistrationViewInterface.swift */,
+				B9706AA61D5EF2BF002EE1D2 /* RegistrationViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,8 +293,17 @@
 		B961A2C31D545D6800651D35 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
+				B9706AA21D5EF206002EE1D2 /* RegistrationWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B9706AAA1D5EFE77002EE1D2 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B9706AAB1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		B97E3CE81D51C78900C5E76B /* Application */ = {
@@ -268,6 +311,7 @@
 			children = (
 				B97E3CE91D51C78900C5E76B /* AppDelegate.swift */,
 				B97E3D051D51CE5300C5E76B /* AppDependency.swift */,
+				B9706AAD1D5F02D7002EE1D2 /* FeatureTests.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -608,6 +652,7 @@
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B95FFD1D1D53184800085905 /* GoogleService-Info.plist in Resources */,
 				B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */,
+				B9706AAC1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard in Resources */,
 				B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,21 +764,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9706A971D5EED93002EE1D2 /* LoginModuleInterface.swift in Sources */,
+				B9706AA91D5EF320002EE1D2 /* RegistrationPresenter.swift in Sources */,
 				B97E3CFD1D51C93600C5E76B /* ViewController.swift in Sources */,
+				B9706AAE1D5F02D7002EE1D2 /* FeatureTests.swift in Sources */,
 				B9BFA4BF1D5B1B9A000AA368 /* Profile.swift in Sources */,
 				B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */,
+				B9706AA71D5EF2BF002EE1D2 /* RegistrationViewController.swift in Sources */,
 				B9D4A15E1D5C40B5000975C7 /* UserAPIFirebase.swift in Sources */,
 				B97E3D061D51CE5300C5E76B /* AppDependency.swift in Sources */,
 				B95FFD211D532D3400085905 /* AuthenticationAPIFirebase.swift in Sources */,
 				B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */,
+				B9706A9D1D5EEF19002EE1D2 /* LoginWireframe.swift in Sources */,
 				B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */,
+				B9706A9B1D5EEEDF002EE1D2 /* LoginViewInterface.swift in Sources */,
 				B95FFD0E1D5306F500085905 /* LoginInteractorInput.swift in Sources */,
+				B9706AA11D5EF10C002EE1D2 /* LoginViewController.swift in Sources */,
 				B9BFA4BD1D5B18BF000AA368 /* UserService.swift in Sources */,
+				B9706AA31D5EF206002EE1D2 /* RegistrationWireframe.swift in Sources */,
 				B95FFD151D530BCD00085905 /* AuthenticationService.swift in Sources */,
 				B97FB6F61D55B5A600B68048 /* NewsFeedInteractorOutput.swift in Sources */,
+				B9706AA51D5EF2A1002EE1D2 /* RegistrationViewInterface.swift in Sources */,
 				B95FFD121D53092000085905 /* User.swift in Sources */,
 				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
 				B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */,
+				B9706A991D5EEE7D002EE1D2 /* LoginPresenter.swift in Sources */,
 				B97E3D041D51CCBF00C5E76B /* RootWireframe.swift in Sources */,
 				B961A4B31D584B550052856D /* CommentAPIFirebase.swift in Sources */,
 				B961A4B11D5849AB0052856D /* CommentService.swift in Sources */,
@@ -741,6 +796,7 @@
 				B97FB6F81D55B67E00B68048 /* PostService.swift in Sources */,
 				B97FB6F41D55B4E400B68048 /* NewsFeedInteractorInput.swift in Sources */,
 				B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */,
+				B9706A9F1D5EF067002EE1D2 /* LoginWireframeInput.swift in Sources */,
 				B97FB6FE1D55BACD00B68048 /* PostAPIFirebase.swift in Sources */,
 				B97FB6F21D55B4B700B68048 /* NewsFeedInteractor.swift in Sources */,
 				B9D331AB1D5D938D0010A8C1 /* AuthSession.swift in Sources */,
