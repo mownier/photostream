@@ -10,7 +10,8 @@ import UIKit
 
 class RootWireframe: AnyObject {
 
-    func showRoot(viewController: UIViewController, window: UIWindow) {
-
+    func showRootViewController(viewController: UIViewController, window: UIWindow) {
+        let nav = UINavigationController(rootViewController: viewController)
+        window.rootViewController = nav
     }
 }

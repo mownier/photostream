@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         FIRApp.configure()
-        _ = AppDependency()
+        
+        let dependency = AppDependency()
+        dependency.attachRootViewControllerInWindow(window)
+        
         return true
     }
 }
