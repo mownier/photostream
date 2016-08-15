@@ -9,14 +9,14 @@
 import UIKit
 
 class HomeWireframe: AnyObject {
-    
+
     weak var homeViewController: HomeViewController!
-    
+
     var rootWireframe: RootWireframe!
-    
+
     init() {
     }
-    
+
     func navigateHomeInterfaceFromWindow(window: UIWindow!) {
         let sb = UIStoryboard(name: "HomeModuleStoryboard", bundle: nil)
         homeViewController = sb.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
