@@ -12,6 +12,7 @@ class RootWireframe: AnyObject {
 
     func showRootViewController(viewController: UIViewController, window: UIWindow) {
         let nav = UINavigationController(rootViewController: viewController)
+        nav.setNavigationBarHidden(true, animated: false)
         window.rootViewController = nav
     }
 }
