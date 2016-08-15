@@ -7,22 +7,37 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AppDependency: AnyObject {
 
-    var loginWireframe: LoginWireframe!
     var rootWireframe: RootWireframe!
 
     init() {
-        let rootWireframe = RootWireframe()
-        let loginWireframe = LoginWireframe()
-        loginWireframe.rootWireframe = rootWireframe
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch {}
 
-        self.rootWireframe = rootWireframe
-        self.loginWireframe = loginWireframe
+        self.rootWireframe = RootWireframe()
     }
 
     func attachRootViewControllerInWindow(window: UIWindow!) {
-        loginWireframe.navigateLoginInterfaceFromWindow(window)
+        if isOK() {
+            let homeWireframe = HomeWireframe()
+            homeWireframe.rootWireframe = rootWireframe
+            homeWireframe.navigateHomeInterfaceFromWindow(window)
+        } else {
+            let loginWireframe = LoginWireframe()
+            loginWireframe.rootWireframe = rootWireframe
+            loginWireframe.navigateLoginInterfaceFromWindow(window)
+        }
+    }
+
+    private func isOK() -> Bool {
+        if let _ = FIRAuth.auth()?.currentUser {
+            return true
+        } else {
+            return false
+        }
     }
 }
