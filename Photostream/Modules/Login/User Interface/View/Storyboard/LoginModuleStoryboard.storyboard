@@ -30,11 +30,18 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS9-s7-wf2">
                                 <rect key="frame" x="36" y="168" width="224" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="login:" destination="XnA-s3-8fm" eventType="touchUpInside" id="vLV-bN-yfX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="3xU-an-GH5" id="n8K-xt-swD"/>
+                        <outlet property="passwordTextField" destination="Ye8-q6-p5P" id="RMm-RQ-wV1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCB-8m-i3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
