@@ -16,7 +16,7 @@ struct Post {
     var timestamp: Double!
     var likesCount: Int64!
     var isLiked: Bool!
-    
+
     init() {
         likesCount = 0
         isLiked = false

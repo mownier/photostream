@@ -241,15 +241,15 @@ class PostAPIFirebase: PostService {
                         post.id = data2.childSnapshotForPath("id").value as! String
                         post.image = data2.childSnapshotForPath("imageUrl").value as! String
                         post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
-                        
+
                         if data2.hasChild("likes_count") {
                             post.likesCount = (data2.childSnapshotForPath("likes_count").value as! NSNumber).longLongValue
                         }
-                        
+
                         if data2.hasChild("likes/\(uid)") {
                            post.isLiked = true
                         }
-                        
+
                         postList.append(post)
 
 

@@ -12,16 +12,16 @@ class AppDependency: AnyObject {
 
     var loginWireframe: LoginWireframe!
     var rootWireframe: RootWireframe!
-    
+
     init() {
         let rootWireframe = RootWireframe()
         let loginWireframe = LoginWireframe()
         loginWireframe.rootWireframe = rootWireframe
-        
+
         self.rootWireframe = rootWireframe
         self.loginWireframe = loginWireframe
     }
-    
+
     func attachRootViewControllerInWindow(window: UIWindow!) {
         loginWireframe.navigateLoginInterfaceFromWindow(window)
     }

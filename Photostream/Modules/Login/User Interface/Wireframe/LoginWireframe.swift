@@ -13,7 +13,7 @@ class LoginWireframe: LoginWireframeInput {
     weak var loginViewController: LoginViewController!
     var loginPresenter: LoginPresenter!
     var rootWireframe: RootWireframe!
-    
+
     init() {
         let presenter = LoginPresenter()
         let service = AuthenticationAPIFirebase()
@@ -21,10 +21,10 @@ class LoginWireframe: LoginWireframeInput {
         interactor.output = presenter
         presenter.interactor = interactor
         presenter.wireframe = self
-        
+
         self.loginPresenter = presenter
     }
-    
+
     func navigateLoginInterfaceFromWindow(window: UIWindow!) {
         let sb = UIStoryboard(name: "LoginModuleStoryboard", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
@@ -33,11 +33,11 @@ class LoginWireframe: LoginWireframeInput {
         vc.presenter = loginPresenter
         rootWireframe.showRootViewController(vc, window: window)
     }
-    
+
     func navigateHomeInterface() {
         // TODO: Present home interface
     }
-    
+
     func navigateRegistrationInterface() {
         let registrationWireframe = RegistrationWireframe()
         registrationWireframe.navigateRegistrationInterfaceFromViewController(loginViewController)

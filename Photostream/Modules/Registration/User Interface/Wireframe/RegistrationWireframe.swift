@@ -12,11 +12,11 @@ class RegistrationWireframe: AnyObject {
 
     weak var registrationViewController: RegistrationViewController!
     var registrationPresenter: RegistrationPresenter!
-    
+
     init() {
         self.registrationPresenter = RegistrationPresenter()
     }
-    
+
     func navigateRegistrationInterfaceFromViewController(controller: UIViewController) {
         // TODO: Present registration interface
     }

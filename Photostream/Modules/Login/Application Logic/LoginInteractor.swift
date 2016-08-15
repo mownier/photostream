@@ -27,7 +27,7 @@ class LoginInteractor: LoginInteractorInput {
             }
         }
     }
-    
+
     private func saveUser(user: User!) {
         // TODO: Save user into the keychain or any encrpted storage
     }
