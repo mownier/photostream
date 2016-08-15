@@ -29,4 +29,8 @@ class LoginPresenter: LoginModuleInterface, LoginInteractorOutput {
     func showRegistration() {
         wireframe.navigateRegistrationInterface()
     }
+
+    func showErrorAlert(error: NSError!) {
+        wireframe.navigateLoginErrorAlert(error)
+    }
 }

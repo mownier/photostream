@@ -35,11 +35,20 @@ class LoginWireframe: LoginWireframeInput {
     }
 
     func navigateHomeInterface() {
-        // TODO: Present home interface
+        let homeWireframe = HomeWireframe()
+        homeWireframe.rootWireframe = rootWireframe
+        homeWireframe.navigateHomeInterfaceFromWindow(loginViewController.view.window)
     }
 
     func navigateRegistrationInterface() {
         let registrationWireframe = RegistrationWireframe()
         registrationWireframe.navigateRegistrationInterfaceFromViewController(loginViewController)
+    }
+
+    func navigateLoginErrorAlert(error: NSError!) {
+        let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        alert.addAction(okAction)
+        loginViewController.presentViewController(alert, animated: true, completion: nil)
     }
 }
