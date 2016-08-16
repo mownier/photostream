@@ -68,3 +68,14 @@ extension UIView {
         }
     }
 }
+
+extension UIView {
+    
+    func addSubviewAtCenter(subview: UIView!) {
+        let centerX = (width - subview.width) / 2
+        let centerY = (height - subview.height) / 2
+        let centerFrame = CGRectMake(centerX, centerY, subview.width, subview.height)
+        subview.frame = centerFrame
+        addSubview(subview)
+    }
+}
