@@ -22,15 +22,20 @@ class AppDependency: AnyObject {
     }
 
     func attachRootViewControllerInWindow(window: UIWindow!) {
-        if isOK() {
-            let homeWireframe = HomeWireframe()
-            homeWireframe.rootWireframe = rootWireframe
-            homeWireframe.navigateHomeInterfaceFromWindow(window)
-        } else {
-            let loginWireframe = LoginWireframe()
-            loginWireframe.rootWireframe = rootWireframe
-            loginWireframe.navigateLoginInterfaceFromWindow(window)
-        }
+//        if isOK() {
+//            let homeWireframe = HomeWireframe()
+//            homeWireframe.rootWireframe = rootWireframe
+//            homeWireframe.navigateHomeInterfaceFromWindow(window)
+//        } else {
+//            let loginWireframe = LoginWireframe()
+//            loginWireframe.rootWireframe = rootWireframe
+//            loginWireframe.navigateLoginInterfaceFromWindow(window)
+//        }
+        
+        // Temporary
+        let homeWireframe = HomeWireframe()
+        homeWireframe.rootWireframe = rootWireframe
+        homeWireframe.navigateHomeInterfaceFromWindow(window)
     }
 
     private func isOK() -> Bool {
