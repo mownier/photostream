@@ -10,6 +10,7 @@ target 'Photostream' do
     pod 'Firebase/Storage'
     pod 'Kingfisher'
     pod 'SnapKit'
+    pod 'MONUniformFlowLayout'
 end
 
 target 'PhotostreamTests' do
