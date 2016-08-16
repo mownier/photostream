@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */; };
 		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
+		B95A3D571D62D32200DA456D /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */; };
+		B95A3D591D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */; };
 		B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD0B1D5306E700085905 /* LoginInteractor.swift */; };
 		B95FFD0E1D5306F500085905 /* LoginInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD0D1D5306F500085905 /* LoginInteractorInput.swift */; };
 		B95FFD101D53087B00085905 /* LoginInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */; };
@@ -76,6 +78,8 @@
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B93F1F1D1D58810A006C6662 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B95FFD0B1D5306E700085905 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		B95FFD0D1D5306F500085905 /* LoginInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorInput.swift; sourceTree = "<group>"; };
 		B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorOutput.swift; sourceTree = "<group>"; };
@@ -151,6 +155,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B95A3D551D62D2F100DA456D /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		B95FFD041D53048700085905 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +510,8 @@
 		B97FB6EF1D55B48700B68048 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */,
+				B95A3D551D62D2F100DA456D /* Storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -730,6 +744,7 @@
 			files = (
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B95FFD1D1D53184800085905 /* GoogleService-Info.plist in Resources */,
+				B95A3D591D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard in Resources */,
 				B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */,
 				B9706AAC1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard in Resources */,
 				B98EE6411D61747400826C37 /* HomeModuleStoryboard.storyboard in Resources */,
@@ -885,6 +900,7 @@
 				B97FB6F21D55B4B700B68048 /* NewsFeedInteractor.swift in Sources */,
 				B9D331AB1D5D938D0010A8C1 /* AuthSession.swift in Sources */,
 				B97FB6FA1D55B7DE00B68048 /* Post.swift in Sources */,
+				B95A3D571D62D32200DA456D /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
