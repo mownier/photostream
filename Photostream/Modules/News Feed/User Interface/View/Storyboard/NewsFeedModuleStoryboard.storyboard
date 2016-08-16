@@ -1,7 +1,128 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="C7W-Ri-swz">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--News Feed View Controller-->
+        <scene sceneID="9ec-RU-Av4">
+            <objects>
+                <viewController storyboardIdentifier="NewsFeedViewController" id="pi3-ef-VEB" userLabel="News Feed View Controller" customClass="NewsFeedViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9hk-7j-OrJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ul6-VT-A5H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I19-sQ-EpG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SBM-QE-oGX">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hPb-Qd-zHo" customClass="MONUniformFlowLayout">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="60"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsFeedCell" id="Zh3-Vz-8RP">
+                                        <rect key="frame" x="0.0" y="124" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsFeedHeaderView" id="vAE-tm-fd7" customClass="NewsFeedHeaderView" customModule="Photostream" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gZP-sd-B64" userLabel="Avatar">
+                                            <rect key="frame" x="8" y="8" width="44" height="44"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="qXh-ab-Tns"/>
+                                                <constraint firstAttribute="width" constant="44" id="rKB-aU-bdt"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="22"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Juan Dela Cruz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38b-eR-noZ" userLabel="Name">
+                                            <rect key="frame" x="60" y="20" width="252" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="8hr-ab-d8b"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="38b-eR-noZ" firstAttribute="leading" secondItem="gZP-sd-B64" secondAttribute="trailing" constant="8" id="Ode-rE-Asp"/>
+                                        <constraint firstAttribute="trailing" secondItem="38b-eR-noZ" secondAttribute="trailing" constant="8" id="T09-cV-W3f"/>
+                                        <constraint firstItem="gZP-sd-B64" firstAttribute="leading" secondItem="vAE-tm-fd7" secondAttribute="leading" constant="8" id="UBt-J9-rCf"/>
+                                        <constraint firstItem="38b-eR-noZ" firstAttribute="top" secondItem="vAE-tm-fd7" secondAttribute="top" constant="20" id="h4Z-ip-pfB"/>
+                                        <constraint firstItem="gZP-sd-B64" firstAttribute="top" secondItem="vAE-tm-fd7" secondAttribute="top" constant="8" id="jej-nG-Ihd"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="avatarImageView" destination="gZP-sd-B64" id="ydo-B9-rqN"/>
+                                        <outlet property="displayNameLabel" destination="38b-eR-noZ" id="eSq-Ge-TZw"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsFeedFooterView" id="lW5-f1-dAA">
+                                    <rect key="frame" x="0.0" y="174" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="pi3-ef-VEB" id="qBn-S0-PBP"/>
+                                    <outlet property="delegate" destination="pi3-ef-VEB" id="mpa-xV-4LR"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="SBM-QE-oGX" secondAttribute="trailing" id="DUR-C5-syY"/>
+                            <constraint firstItem="SBM-QE-oGX" firstAttribute="leading" secondItem="I19-sQ-EpG" secondAttribute="leading" id="ghl-9s-ojv"/>
+                            <constraint firstItem="SBM-QE-oGX" firstAttribute="top" secondItem="9hk-7j-OrJ" secondAttribute="bottom" id="qVT-lH-ya4"/>
+                            <constraint firstItem="Ul6-VT-A5H" firstAttribute="top" secondItem="SBM-QE-oGX" secondAttribute="bottom" id="tdH-ph-98V"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photostream" id="ksQ-44-tNr"/>
+                    <connections>
+                        <outlet property="collectionView" destination="SBM-QE-oGX" id="zly-5X-Ush"/>
+                        <outlet property="flowLayout" destination="hPb-Qd-zHo" id="WH8-d7-YPX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X6b-nb-ebR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1447" y="794"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Obd-2b-ETe">
+            <objects>
+                <navigationController storyboardIdentifier="NewsFeedModuleRoot" automaticallyAdjustsScrollViewInsets="NO" id="C7W-Ri-swz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KBe-Rn-OnP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pi3-ef-VEB" kind="relationship" relationship="rootViewController" id="6Jr-Dy-IpG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCe-Tg-QuO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957" y="794"/>
+        </scene>
+    </scenes>
 </document>
