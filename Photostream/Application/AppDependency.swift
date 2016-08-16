@@ -31,7 +31,7 @@ class AppDependency: AnyObject {
 //            loginWireframe.rootWireframe = rootWireframe
 //            loginWireframe.navigateLoginInterfaceFromWindow(window)
 //        }
-        
+
         // Temporary
         let homeWireframe = HomeWireframe()
         homeWireframe.rootWireframe = rootWireframe

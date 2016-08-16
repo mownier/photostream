@@ -22,22 +22,22 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         applyGradientBackground()
         applyCornerRadius()
     }
-    
+
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
 
     @IBAction func login(sender: AnyObject) {
         view.endEditing(false)
-        
+
         loginButton.setTitle("", forState: .Normal)
         view.userInteractionEnabled = false
         addIndicatorView()
-        
+
         let email = emailTextField.text
         let password = passwordTextField.text
         presenter.login(email, password: password)
@@ -47,10 +47,10 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
         loginButton.setTitle("Login", forState: .Normal)
         view.userInteractionEnabled = true
         removeIndicatorView()
-        
+
         presenter.showErrorAlert(error)
     }
-    
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
@@ -59,24 +59,24 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
         }
         return false
     }
-    
+
     private func addIndicatorView() {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .White)
         indicator.startAnimating()
         indicator.tag = 9000
         loginButton.addSubviewAtCenter(indicator)
     }
-    
+
     private func removeIndicatorView() {
         loginButton.viewWithTag(9000)?.removeFromSuperview()
     }
-    
+
     private func applyCornerRadius() {
         emailTextField.cornerRadius = cornerRadius
         passwordTextField.cornerRadius = cornerRadius
         loginButton.cornerRadius = cornerRadius
     }
-    
+
     private func applyGradientBackground() {
         let gradient = CAGradientLayer()
         gradient.colors = [topColor.CGColor, bottomColor.CGColor]

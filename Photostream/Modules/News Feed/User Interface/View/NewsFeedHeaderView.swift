@@ -10,14 +10,14 @@ import UIKit
 import Kingfisher
 
 class NewsFeedHeaderView: UICollectionReusableView {
-        
+
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var displayNameLabel: UILabel!
-    
+
     func setDisplayName(name: String) {
         displayNameLabel.text = name
     }
-    
+
     func setAvatarUrl(url: String) {
         avatarImageView.kf_setImageWithURL(NSURL(string: url))
     }

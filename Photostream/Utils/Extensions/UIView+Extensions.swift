@@ -70,7 +70,7 @@ extension UIView {
 }
 
 extension UIView {
-    
+
     func addSubviewAtCenter(subview: UIView!) {
         let centerX = (width - subview.width) / 2
         let centerY = (height - subview.height) / 2
