@@ -15,4 +15,9 @@ struct User {
     var firstName: String!
     var lastName: String!
     var email: String!
+    var fullName: String! {
+        get {
+            return "\(firstName) \(lastName)"
+        }
+    }
 }
