@@ -1,7 +1,7 @@
 # From https://github.com/github/gitignore/blob/master/Swift.gitignore
 
 GoogleService-Info.plist
-Location.gpx
+*.gpx
 
 # Xcode
 #
