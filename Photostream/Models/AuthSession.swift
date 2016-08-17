@@ -7,11 +7,19 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 struct AuthSession {
 
     var user: User!
 
+    init() {
+        self.user = User()
+        if let u = FIRAuth.auth()?.currentUser {
+            user.id = u.uid
+        }
+    }
+    
     func isValid() -> Bool {
         if let u = user,
             let _ = u.id {
