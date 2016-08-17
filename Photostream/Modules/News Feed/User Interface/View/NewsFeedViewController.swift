@@ -13,12 +13,12 @@ class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: MONUniformFlowLayout!
-    
+
     var presenter: NewsFeedModuleInterface!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         addCustomTitleView()
         presenter.refreshFeed(10)
     }
@@ -43,11 +43,11 @@ class NewsFeedViewController: UIViewController {
 }
 
 extension NewsFeedViewController: NewsFeedViewInterface {
-    
+
     func reloadView() {
         collectionView.reloadData()
     }
-    
+
     func showEmptyView() {
         // TODO: Show empty view
     }
@@ -58,14 +58,14 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
         let i = UInt(section)
         let (post, _) = presenter.getPostAtIndex(i)
-        
+
         let collectionViewWidth = collectionView.width
         let photoWidth = post.photo.width
         let photoHeight = post.photo.height
-        
+
         let ratio = collectionViewWidth / CGFloat(photoWidth)
         let height = CGFloat(photoHeight) * ratio
-        
+
         return height
     }
 
@@ -92,11 +92,11 @@ extension NewsFeedViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewsFeedCell", forIndexPath: indexPath) as! NewsFeedCell
         cell.backgroundColor = UIColor.greenColor()
-        
+
         let i = UInt(indexPath.section)
         let (post, _) = presenter.getPostAtIndex(i)
         cell.setPhotoUrl(post.photo.url)
-        
+
         return cell
     }
 

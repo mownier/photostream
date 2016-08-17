@@ -16,7 +16,7 @@ struct Post {
     var likesCount: Int64!
     var isLiked: Bool!
     var photo: Photo!
-    
+
     init() {
         likesCount = 0
         isLiked = false

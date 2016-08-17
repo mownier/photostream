@@ -13,7 +13,7 @@ struct Photo {
     var url: String!
     var width: Int!
     var height: Int!
-    
+
     init() {
         self.width = 0
         self.height = 0

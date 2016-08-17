@@ -13,7 +13,7 @@ class NewsFeedHeaderView: UICollectionReusableView {
 
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var displayNameLabel: UILabel!
-    
+
     func setDisplayName(name: String) {
         displayNameLabel.text = name
     }
@@ -21,7 +21,7 @@ class NewsFeedHeaderView: UICollectionReusableView {
     func setAvatarUrl(url: String, placeholderImage: UIImage) {
         avatarImageView.kf_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
     }
-    
+
     func createAvatarPlaceholderImage(initial: String) -> UIImage {
         let width = avatarImageView.width
         let height = avatarImageView.height

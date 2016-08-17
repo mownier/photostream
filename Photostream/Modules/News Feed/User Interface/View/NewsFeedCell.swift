@@ -10,9 +10,9 @@ import UIKit
 import Kingfisher
 
 class NewsFeedCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var photoImageView: UIImageView!
-    
+
     func setPhotoUrl(url: String!) {
         photoImageView.kf_setImageWithURL(NSURL(string: url))
     }

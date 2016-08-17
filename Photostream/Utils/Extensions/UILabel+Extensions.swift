@@ -17,7 +17,7 @@ extension UILabel {
         label.text = text
         label.backgroundColor = UIColor.randomColor()
         label.textColor = UIColor.whiteColor()
-        
+
         return label.createImage()
     }
 }

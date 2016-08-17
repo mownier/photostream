@@ -13,11 +13,11 @@ import FirebaseDatabase
 class FileAPIFirebase: FileService {
 
     var session: AuthSession!
-    
+
     required init(session: AuthSession!) {
         self.session = session
     }
-    
+
     func uploadImage(image: UIImage!, callback: FileServiceCallback!) {
         if let error = isOK() {
             callback(nil, error)
@@ -27,7 +27,7 @@ class FileAPIFirebase: FileService {
             let key = Int(NSDate.timeIntervalSinceReferenceDate() * 1000)
             let imagePath = "\(userId)/posts/\(key).jpg"
             let imageData = UIImageJPEGRepresentation(image, 1.0)
-            
+
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             storageRef.child(imagePath).putData(imageData!, metadata: metadata, completion: { (metadata, error) in
@@ -50,7 +50,7 @@ class FileAPIFirebase: FileService {
             })
         }
     }
-    
+
     func isOK() -> NSError? {
         if session.isValid() {
             return nil

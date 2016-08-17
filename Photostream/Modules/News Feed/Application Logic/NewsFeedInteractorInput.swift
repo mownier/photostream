@@ -9,9 +9,9 @@
 import Foundation
 
 protocol NewsFeedInteractorInput: class {
-    
+
     var feedCount: Int! { get }
-    
+
     func fetchNew(limit: UInt!)
     func fetchNext(limit: UInt!)
     func fetchPost(index: UInt!) -> (Post!, User!)

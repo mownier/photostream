@@ -9,11 +9,11 @@
 import UIKit
 
 class NewsFeedWireframe: AnyObject {
-    
+
     weak var newsFeedViewController: NewsFeedViewController!
     var rootWireframe: RootWireframe!
     var newsFeedPresenter: NewsFeedPresenter!
-    
+
     init() {
         let session = AuthSession()
         let service = PostAPIFirebase(session: session)
@@ -21,7 +21,7 @@ class NewsFeedWireframe: AnyObject {
         let presenter = NewsFeedPresenter()
         interactor.output = presenter
         presenter.interactor = interactor
-        
+
         self.newsFeedPresenter = presenter
     }
 }

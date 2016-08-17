@@ -19,7 +19,7 @@ struct AuthSession {
             user.id = u.uid
         }
     }
-    
+
     func isValid() -> Bool {
         if let u = user,
             let _ = u.id {

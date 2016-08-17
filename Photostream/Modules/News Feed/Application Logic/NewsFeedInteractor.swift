@@ -20,7 +20,7 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
             return list.posts.count
         }
     }
-    
+
     init(service: PostService!) {
         self.service = service
         self.currentOffset = 0
@@ -31,19 +31,19 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
         currentOffset = 0
         fetch(currentOffset, limit: limit)
     }
-    
+
     func fetchNext(limit: UInt!) {
         currentOffset = currentOffset + UInt(1)
         fetch(currentOffset, limit: limit)
     }
-    
+
     func fetchPost(index: UInt!) -> (Post!, User!) {
         let i = Int(index)
         let post = list.posts[i]
         let user = list.users[post.userId]
         return (post, user)
     }
-    
+
     private func fetch(offset: UInt!, limit: UInt!) {
         service.fetchNewsFeed(currentOffset, limit: limit) { (feed, error) in
             if let error = error {

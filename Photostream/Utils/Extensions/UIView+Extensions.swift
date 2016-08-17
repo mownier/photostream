@@ -81,13 +81,13 @@ extension UIView {
 }
 
 extension UIView {
-    
+
     func createImage() -> UIImage! {
         UIGraphicsBeginImageContextWithOptions(bounds.size, opaque, 0)
         layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         return image
     }
 }
