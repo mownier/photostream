@@ -27,4 +27,9 @@ struct PostServiceResult {
 
     var posts: [Post]!
     var users: [String: User]!
+    
+    init() {
+        posts =  [Post]()
+        users = [String: User]()
+    }
 }
