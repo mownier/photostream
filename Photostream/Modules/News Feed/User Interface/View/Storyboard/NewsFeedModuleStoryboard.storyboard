@@ -27,14 +27,28 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsFeedCell" id="Zh3-Vz-8RP">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsFeedCell" id="Zh3-Vz-8RP" customClass="NewsFeedCell" customModule="Photostream" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="124" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QpM-9y-3Dg" userLabel="Photo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="QpM-9y-3Dg" secondAttribute="bottom" id="Ehm-ny-s8w"/>
+                                            <constraint firstAttribute="trailing" secondItem="QpM-9y-3Dg" secondAttribute="trailing" id="ZDJ-ex-B8l"/>
+                                            <constraint firstItem="QpM-9y-3Dg" firstAttribute="leading" secondItem="Zh3-Vz-8RP" secondAttribute="leading" id="c4x-7a-Nr3"/>
+                                            <constraint firstItem="QpM-9y-3Dg" firstAttribute="top" secondItem="Zh3-Vz-8RP" secondAttribute="top" id="vDc-lf-Hzl"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="QpM-9y-3Dg" id="SPY-y4-ZmK"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsFeedHeaderView" id="vAE-tm-fd7" customClass="NewsFeedHeaderView" customModule="Photostream" customModuleProvider="target">

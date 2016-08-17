@@ -56,7 +56,17 @@ extension NewsFeedViewController: NewsFeedViewInterface {
 extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
-        return 100.0
+        let i = UInt(section)
+        let (post, _) = presenter.getPostAtIndex(i)
+        
+        let collectionViewWidth = collectionView.width
+        let photoWidth = post.photo.width
+        let photoHeight = post.photo.height
+        
+        let ratio = collectionViewWidth / CGFloat(photoWidth)
+        let height = CGFloat(photoHeight) * ratio
+        
+        return height
     }
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
@@ -80,8 +90,13 @@ extension NewsFeedViewController: UICollectionViewDataSource {
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewsFeedCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewsFeedCell", forIndexPath: indexPath) as! NewsFeedCell
         cell.backgroundColor = UIColor.greenColor()
+        
+        let i = UInt(indexPath.section)
+        let (post, _) = presenter.getPostAtIndex(i)
+        cell.setPhotoUrl(post.photo.url)
+        
         return cell
     }
 
@@ -100,7 +115,9 @@ extension NewsFeedViewController: UICollectionViewDataSource {
             let headerView = reusableView as! NewsFeedHeaderView
             let i = UInt(indexPath.section)
             let (_, user) = presenter.getPostAtIndex(i)
+            let placeholderImage = headerView.createAvatarPlaceholderImage(user.firstName[0])
             headerView.setDisplayName(user.fullName)
+            headerView.setAvatarUrl("", placeholderImage: placeholderImage)
         }
 
         return reusableView
