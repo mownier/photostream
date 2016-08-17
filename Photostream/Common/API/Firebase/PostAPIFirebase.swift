@@ -227,17 +227,18 @@ class PostAPIFirebase: PostService {
             var postUsers = [String: User]()
             for snap in data.children {
                 posts.child(snap.key).observeSingleEventOfType(.Value, withBlock: { (data2) in
-                    users.child(userId).observeSingleEventOfType(.Value, withBlock: { (data3) in
-                        if postUsers[userId] == nil {
+                    let posterId = data2.childSnapshotForPath("uid").value as! String
+                    users.child(posterId).observeSingleEventOfType(.Value, withBlock: { (data3) in
+                        if postUsers[posterId] == nil {
                             var user = User()
-                            user.id = data3.childSnapshotForPath("id").value as! String
+                            user.id = posterId
                             user.firstName = data3.childSnapshotForPath("firstname").value as! String
                             user.lastName = data3.childSnapshotForPath("lastname").value as! String
-                            postUsers[userId] = user
+                            postUsers[posterId] = user
                         }
 
                         var post = Post()
-                        post.userId = userId
+                        post.userId = posterId
                         post.id = data2.childSnapshotForPath("id").value as! String
                         post.image = data2.childSnapshotForPath("imageUrl").value as! String
                         post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
