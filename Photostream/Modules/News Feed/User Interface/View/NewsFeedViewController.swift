@@ -13,11 +13,14 @@ class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: MONUniformFlowLayout!
+    
+    var presenter: NewsFeedModuleInterface!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         addCustomTitleView()
+        presenter.refreshFeed(10)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -36,6 +39,17 @@ class NewsFeedViewController: UIViewController {
         titleView.text = "Photostream"
         titleView.sizeToFit()
         navigationItem.titleView = titleView
+    }
+}
+
+extension NewsFeedViewController: NewsFeedViewInterface {
+    
+    func reloadView() {
+        collectionView.reloadData()
+    }
+    
+    func showEmptyView() {
+        // TODO: Show empty view
     }
 }
 
@@ -62,7 +76,7 @@ extension NewsFeedViewController: UICollectionViewDataSource {
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 10
+        return presenter.feedCount
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -84,7 +98,9 @@ extension NewsFeedViewController: UICollectionViewDataSource {
 
         if reuseId == "NewsFeedHeaderView" {
             let headerView = reusableView as! NewsFeedHeaderView
-            headerView.setDisplayName("Wowowee")
+            let i = UInt(indexPath.section)
+            let (_, user) = presenter.getPostAtIndex(i)
+            headerView.setDisplayName(user.fullName)
         }
 
         return reusableView
