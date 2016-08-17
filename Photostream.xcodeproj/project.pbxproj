@@ -66,6 +66,10 @@
 		B9D3FDDB1D6422F600B7CC2E /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDDA1D6422F600B7CC2E /* FileService.swift */; };
 		B9D3FDDD1D64237C00B7CC2E /* FileAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDDC1D64237C00B7CC2E /* FileAPIFirebase.swift */; };
 		B9D3FDDF1D6438BB00B7CC2E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDDE1D6438BB00B7CC2E /* Photo.swift */; };
+		B9D3FDE11D643B5E00B7CC2E /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE01D643B5E00B7CC2E /* NewsFeedCell.swift */; };
+		B9D3FDE31D64460900B7CC2E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE21D64460900B7CC2E /* String+Extensions.swift */; };
+		B9D3FDE51D6449E800B7CC2E /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */; };
+		B9D3FDE71D644DD400B7CC2E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */; };
 		B9D4A15E1D5C40B5000975C7 /* UserAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4A15D1D5C40B5000975C7 /* UserAPIFirebase.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +151,10 @@
 		B9D3FDDA1D6422F600B7CC2E /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		B9D3FDDC1D64237C00B7CC2E /* FileAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileAPIFirebase.swift; sourceTree = "<group>"; };
 		B9D3FDDE1D6438BB00B7CC2E /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B9D3FDE01D643B5E00B7CC2E /* NewsFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
+		B9D3FDE21D64460900B7CC2E /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B9D4A15D1D5C40B5000975C7 /* UserAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIFirebase.swift; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -478,6 +486,9 @@
 			children = (
 				B98EE6421D61963D00826C37 /* UIView+Extensions.swift */,
 				B98EE6441D619E5900826C37 /* UITextField+Extensions.swift */,
+				B9D3FDE21D64460900B7CC2E /* String+Extensions.swift */,
+				B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */,
+				B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -531,6 +542,7 @@
 		B97FB6EF1D55B48700B68048 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9D3FDE01D643B5E00B7CC2E /* NewsFeedCell.swift */,
 				B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */,
 				B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */,
 				B9D3FDD61D64016B00B7CC2E /* NewsFeedViewInterface.swift */,
@@ -908,6 +920,8 @@
 				B98EE6431D61963D00826C37 /* UIView+Extensions.swift in Sources */,
 				B9706AA11D5EF10C002EE1D2 /* LoginViewController.swift in Sources */,
 				B9D3FDD51D63FBA100B7CC2E /* NewsFeedPresenter.swift in Sources */,
+				B9D3FDE71D644DD400B7CC2E /* UIColor+Extensions.swift in Sources */,
+				B9D3FDE51D6449E800B7CC2E /* UILabel+Extensions.swift in Sources */,
 				B9BFA4BD1D5B18BF000AA368 /* UserService.swift in Sources */,
 				B9706AA31D5EF206002EE1D2 /* RegistrationWireframe.swift in Sources */,
 				B95FFD151D530BCD00085905 /* AuthenticationService.swift in Sources */,
@@ -915,6 +929,7 @@
 				B97FB6F61D55B5A600B68048 /* NewsFeedInteractorOutput.swift in Sources */,
 				B9D3FDDB1D6422F600B7CC2E /* FileService.swift in Sources */,
 				B9706AA51D5EF2A1002EE1D2 /* RegistrationViewInterface.swift in Sources */,
+				B9D3FDE11D643B5E00B7CC2E /* NewsFeedCell.swift in Sources */,
 				B95FFD121D53092000085905 /* User.swift in Sources */,
 				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
 				B9D3FDDF1D6438BB00B7CC2E /* Photo.swift in Sources */,
@@ -922,6 +937,7 @@
 				B9706A991D5EEE7D002EE1D2 /* LoginPresenter.swift in Sources */,
 				B97E3D041D51CCBF00C5E76B /* RootWireframe.swift in Sources */,
 				B961A4B31D584B550052856D /* CommentAPIFirebase.swift in Sources */,
+				B9D3FDE31D64460900B7CC2E /* String+Extensions.swift in Sources */,
 				B961A4B11D5849AB0052856D /* CommentService.swift in Sources */,
 				B95FFD101D53087B00085905 /* LoginInteractorOutput.swift in Sources */,
 				B97FB6F81D55B67E00B68048 /* PostService.swift in Sources */,
