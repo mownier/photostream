@@ -75,7 +75,6 @@ class PostAPIFirebase: PostService {
                             user.lastName = data2.childSnapshotForPath("lastname").value as! String
 
                             var post = Post()
-                            post.image = imageUrl
                             post.id = key
                             post.userId = userId
                             post.timestamp = data.childSnapshotForPath("timestamp").value as! Double
@@ -220,6 +219,7 @@ class PostAPIFirebase: PostService {
         let root = FIRDatabase.database().reference()
         let users = root.child("users")
         let posts = root.child("posts")
+        let photos = root.child("photos")
         let ref = users.child(userId).child(path)
         let uid = session!.user.id
         ref.queryLimitedToFirst(limit).observeSingleEventOfType(.Value, withBlock: { (data) in
@@ -227,39 +227,51 @@ class PostAPIFirebase: PostService {
             var postUsers = [String: User]()
             for snap in data.children {
                 posts.child(snap.key).observeSingleEventOfType(.Value, withBlock: { (data2) in
+                    
                     let posterId = data2.childSnapshotForPath("uid").value as! String
+                    let photoId = data2.childSnapshotForPath("photo_id").value as! String
+                    
                     users.child(posterId).observeSingleEventOfType(.Value, withBlock: { (data3) in
-                        if postUsers[posterId] == nil {
-                            var user = User()
-                            user.id = posterId
-                            user.firstName = data3.childSnapshotForPath("firstname").value as! String
-                            user.lastName = data3.childSnapshotForPath("lastname").value as! String
-                            postUsers[posterId] = user
-                        }
-
-                        var post = Post()
-                        post.userId = posterId
-                        post.id = data2.childSnapshotForPath("id").value as! String
-                        post.image = data2.childSnapshotForPath("imageUrl").value as! String
-                        post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
-
-                        if data2.hasChild("likes_count") {
-                            post.likesCount = (data2.childSnapshotForPath("likes_count").value as! NSNumber).longLongValue
-                        }
-
-                        if data2.hasChild("likes/\(uid)") {
-                           post.isLiked = true
-                        }
-
-                        postList.append(post)
-
-
-                        if UInt(postList.count) == data.childrenCount {
-                            var result = PostServiceResult()
-                            result.posts = postList
-                            result.users = postUsers
-                            callback(result, nil)
-                        }
+                        
+                        photos.child(photoId).observeSingleEventOfType(.Value, withBlock: { (data4) in
+                            
+                            if postUsers[posterId] == nil {
+                                var user = User()
+                                user.id = posterId
+                                user.firstName = data3.childSnapshotForPath("firstname").value as! String
+                                user.lastName = data3.childSnapshotForPath("lastname").value as! String
+                                postUsers[posterId] = user
+                            }
+                            
+                            var photo = Photo()
+                            photo.url = data4.childSnapshotForPath("url").value as! String
+                            photo.height = data4.childSnapshotForPath("height").value as! Int
+                            photo.width = data4.childSnapshotForPath("width").value as! Int
+                            
+                            var post = Post()
+                            post.userId = posterId
+                            post.id = data2.childSnapshotForPath("id").value as! String
+                            post.timestamp = data2.childSnapshotForPath("timestamp").value as! Double
+                            post.photo = photo
+                            
+                            if data2.hasChild("likes_count") {
+                                post.likesCount = (data2.childSnapshotForPath("likes_count").value as! NSNumber).longLongValue
+                            }
+                            
+                            if data2.hasChild("likes/\(uid)") {
+                                post.isLiked = true
+                            }
+                            
+                            postList.append(post)
+                            
+                            
+                            if UInt(postList.count) == data.childrenCount {
+                                var result = PostServiceResult()
+                                result.posts = postList
+                                result.users = postUsers
+                                callback(result, nil)
+                            }
+                        })
                     })
                 })
             }
