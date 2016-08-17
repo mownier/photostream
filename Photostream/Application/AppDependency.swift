@@ -14,28 +14,19 @@ class AppDependency: AnyObject {
     var rootWireframe: RootWireframe!
 
     init() {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch {}
-
         self.rootWireframe = RootWireframe()
     }
 
     func attachRootViewControllerInWindow(window: UIWindow!) {
-//        if isOK() {
-//            let homeWireframe = HomeWireframe()
-//            homeWireframe.rootWireframe = rootWireframe
-//            homeWireframe.navigateHomeInterfaceFromWindow(window)
-//        } else {
-//            let loginWireframe = LoginWireframe()
-//            loginWireframe.rootWireframe = rootWireframe
-//            loginWireframe.navigateLoginInterfaceFromWindow(window)
-//        }
-
-        // Temporary
-        let homeWireframe = HomeWireframe()
-        homeWireframe.rootWireframe = rootWireframe
-        homeWireframe.navigateHomeInterfaceFromWindow(window)
+        if isOK() {
+            let homeWireframe = HomeWireframe()
+            homeWireframe.rootWireframe = rootWireframe
+            homeWireframe.navigateHomeInterfaceFromWindow(window)
+        } else {
+            let loginWireframe = LoginWireframe()
+            loginWireframe.rootWireframe = rootWireframe
+            loginWireframe.navigateLoginInterfaceFromWindow(window)
+        }
     }
 
     private func isOK() -> Bool {
