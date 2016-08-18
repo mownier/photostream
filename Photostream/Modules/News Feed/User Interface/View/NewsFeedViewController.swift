@@ -53,6 +53,25 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
 }
 
+extension NewsFeedViewController: NewsFeedCellDelegate {
+    
+    func newsFeedCellDidTapLike(cell: NewsFeedCell) {
+        
+    }
+    
+    func newsFeedCellDidTapLikesCount(cell: NewsFeedCell) {
+        
+    }
+    
+    func newsFeedCellDidTapComment(cell: NewsFeedCell) {
+        
+    }
+    
+    func newsFeedCellDidTapCommentsCount(cell: NewsFeedCell) {
+        
+    }
+}
+
 extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
@@ -66,11 +85,11 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
         let ratio = collectionViewWidth / CGFloat(photoWidth)
         let height = CGFloat(photoHeight) * ratio
 
-        return height
+        return height + 171
     }
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
-        return 60
+        return 54
     }
 }
 
@@ -91,11 +110,12 @@ extension NewsFeedViewController: UICollectionViewDataSource {
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewsFeedCell", forIndexPath: indexPath) as! NewsFeedCell
-        cell.backgroundColor = UIColor.greenColor()
 
         let i = UInt(indexPath.section)
         let (post, _) = presenter.getPostAtIndex(i)
         cell.setPhotoUrl(post.photo.url)
+        cell.setLikesCount(1)
+        cell.delegate = self
 
         return cell
     }
