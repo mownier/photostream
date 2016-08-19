@@ -261,6 +261,14 @@ class PostAPIFirebase: PostService {
                             if data2.hasChild("likes/\(uid)") {
                                 post.isLiked = true
                             }
+                            
+                            if data2.hasChild("comments_count") {
+                                post.commentsCount = (data2.childSnapshotForPath("comments_count").value as! NSNumber).longLongValue
+                            }
+                            
+                            if data2.hasChild("message") {
+                                post.message = data2.childSnapshotForPath("message").value as! String
+                            }
 
                             postList.append(post)
 
