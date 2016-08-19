@@ -62,27 +62,38 @@ class NewsFeedCell: UICollectionViewCell {
     }
     
     class func expectedHeight(msg: String!, _ likesCount: Int64!, _ commentsCount: Int64!, _ maxWidth: CGFloat!, _ font: UIFont!) -> CGFloat {
-        var height: CGFloat = 49.0
+        var height: CGFloat = 287 - 116
         
         var heartIconTop: CGFloat = 0
         var heartIconHeight: CGFloat = 0
-        if likesCount > 0 {
+        if likesCount < 1 {
             heartIconTop = 12
             heartIconHeight = 16
         }
-        height += heartIconTop + heartIconHeight
+        height -= heartIconTop - heartIconHeight
         
         var commentsCountTop: CGFloat = 0
         var commentsCountHeight: CGFloat = 0
-        if commentsCount > 0 {
+        if commentsCount < 1 {
             commentsCountTop = 12
             commentsCountHeight = 16
         }
-        height += commentsCountTop + commentsCountHeight
+        height -= commentsCountTop - commentsCountHeight
         
         let preferredMaxLayoutWidth = maxWidth - 12 - 12
-        let messageHeight: CGFloat = NewsFeedCell.expectedMessageHeight(msg, preferredMaxLayoutWidth, font)
-        height += messageHeight
+        let expectedMessageHeight: CGFloat = NewsFeedCell.expectedMessageHeight(msg, preferredMaxLayoutWidth, font)
+        
+        var messageTop: CGFloat = 0
+        var messageHeight: CGFloat = 0
+        if expectedMessageHeight < 1 {
+            messageTop = 12
+            messageHeight = 16
+        } else {
+            messageHeight = 16
+        }
+        height -= messageTop - messageHeight
+        
+        height += expectedMessageHeight
         
         return height
     }
@@ -150,9 +161,11 @@ class NewsFeedCell: UICollectionViewCell {
             messageConstraintTop.constant = 0
             messageConstraintHeight.constant = 0
         } else {
-            messageLabel.text = msg
+            messageLabel.attributedText = NSAttributedString(string: msg)
+            messageLabel.setNeedsDisplay()
             messageConstraintTop.constant = COMMON_TOP
-            messageConstraintHeight.constant = NewsFeedCell.expectedMessageHeight(msg, messageLabel.width, messageLabel.font)
+            messageConstraintHeight.constant = messageLabel.intrinsicContentSize().height
+            print(messageLabel.intrinsicContentSize())
         }
     }
 }
