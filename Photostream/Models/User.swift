@@ -20,4 +20,13 @@ struct User {
             return "\(firstName) \(lastName)"
         }
     }
+    var displayName: String! {
+        get {
+            if let uname = username {
+                return uname
+            } else {
+                return firstName
+            }
+        }
+    }
 }
