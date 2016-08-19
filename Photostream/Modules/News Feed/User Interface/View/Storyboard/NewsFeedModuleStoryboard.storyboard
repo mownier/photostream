@@ -87,13 +87,13 @@
                                                         <action selector="didTapLikesCount:" destination="Zh3-Vz-8RP" eventType="touchUpInside" id="bFh-Sf-pny"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iamredrepo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIp-0p-LWa" userLabel="Message">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iamredrepo" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIp-0p-LWa" userLabel="Message">
                                                     <rect key="frame" x="12" y="205" width="296" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="FSJ-HX-kkN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTG-Ft-A7z" userLabel="Comments">
@@ -127,13 +127,12 @@
                                             <constraint firstItem="0yq-TU-jH7" firstAttribute="top" secondItem="QpM-9y-3Dg" secondAttribute="bottom" constant="12" id="7l3-jc-rOg"/>
                                             <constraint firstItem="uf0-tT-00u" firstAttribute="leading" secondItem="Zh3-Vz-8RP" secondAttribute="leading" constant="12" id="8Kw-tS-gAk"/>
                                             <constraint firstItem="uf0-tT-00u" firstAttribute="top" secondItem="Xbe-rf-1AB" secondAttribute="bottom" constant="12" id="CnW-gn-3gD"/>
-                                            <constraint firstItem="gaZ-Kh-Xw7" firstAttribute="top" secondItem="QpM-9y-3Dg" secondAttribute="bottom" constant="12" id="FTL-kz-jhi"/>
-                                            <constraint firstItem="cTG-Ft-A7z" firstAttribute="top" secondItem="LIp-0p-LWa" secondAttribute="bottom" constant="12" id="HBl-uX-BfP"/>
+                                            <constraint firstItem="cTG-Ft-A7z" firstAttribute="top" secondItem="LIp-0p-LWa" secondAttribute="bottom" constant="12" id="FeS-6T-RQF"/>
                                             <constraint firstAttribute="trailing" secondItem="Rm4-2Z-sT5" secondAttribute="trailing" constant="12" id="MUI-ru-A6O"/>
-                                            <constraint firstItem="Rm4-2Z-sT5" firstAttribute="top" secondItem="Xbe-rf-1AB" secondAttribute="bottom" constant="12" id="Q01-7C-1qu"/>
+                                            <constraint firstItem="gaZ-Kh-Xw7" firstAttribute="top" secondItem="0yq-TU-jH7" secondAttribute="top" id="P9L-f3-oBA"/>
                                             <constraint firstItem="Xbe-rf-1AB" firstAttribute="leading" secondItem="Zh3-Vz-8RP" secondAttribute="leadingMargin" constant="4" id="Q9l-eD-qXD"/>
                                             <constraint firstItem="gaZ-Kh-Xw7" firstAttribute="leading" secondItem="0yq-TU-jH7" secondAttribute="trailing" constant="18" id="Rod-XX-m7y"/>
-                                            <constraint firstItem="cTG-Ft-A7z" firstAttribute="top" secondItem="LIp-0p-LWa" secondAttribute="bottom" constant="12" id="ZvF-84-U00"/>
+                                            <constraint firstItem="Rm4-2Z-sT5" firstAttribute="top" secondItem="uf0-tT-00u" secondAttribute="top" id="SFI-Ef-vCO"/>
                                             <constraint firstItem="0yq-TU-jH7" firstAttribute="leading" secondItem="Zh3-Vz-8RP" secondAttribute="leading" constant="12" id="bkS-aZ-LIP"/>
                                             <constraint firstItem="Aug-wW-IKs" firstAttribute="leading" secondItem="Zh3-Vz-8RP" secondAttribute="leading" constant="12" id="cLk-2x-Pjg"/>
                                             <constraint firstItem="LIp-0p-LWa" firstAttribute="top" secondItem="uf0-tT-00u" secondAttribute="bottom" constant="12" id="cei-ei-HT5"/>
@@ -159,11 +158,14 @@
                                         <connections>
                                             <outlet property="commentsCountButton" destination="cTG-Ft-A7z" id="fdg-Cn-JvU"/>
                                             <outlet property="commentsCountConstraintHeight" destination="aOY-ma-s2r" id="ZXo-SK-APD"/>
+                                            <outlet property="commentsCountConstraintTop" destination="FeS-6T-RQF" id="agB-eA-mvL"/>
                                             <outlet property="heartIconConstraintHeight" destination="Gok-Sm-6kh" id="bOh-Dp-e6W"/>
+                                            <outlet property="heartIconConstraintTop" destination="CnW-gn-3gD" id="hii-Od-kJv"/>
                                             <outlet property="likeButton" destination="0yq-TU-jH7" id="zga-dc-4Mb"/>
                                             <outlet property="likesCountButton" destination="Rm4-2Z-sT5" id="CxJ-1o-kTi"/>
                                             <outlet property="likesCountConstraintHeight" destination="vvh-EP-dl4" id="lra-Pc-nL3"/>
                                             <outlet property="messageConstraintHeight" destination="FSJ-HX-kkN" id="bM5-Fp-9Vk"/>
+                                            <outlet property="messageConstraintTop" destination="cei-ei-HT5" id="sVe-qy-dI0"/>
                                             <outlet property="messageLabel" destination="LIp-0p-LWa" id="nib-FP-seE"/>
                                             <outlet property="photoImageView" destination="QpM-9y-3Dg" id="SPY-y4-ZmK"/>
                                             <outlet property="timeLabel" destination="Aug-wW-IKs" id="7pu-Sa-3Kc"/>
