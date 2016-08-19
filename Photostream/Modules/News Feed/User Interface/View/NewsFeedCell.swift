@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import DateTools
 
 enum NewsFeedCellConstants: CGFloat {
     case CommonHeight = 16.0
@@ -33,7 +34,6 @@ class NewsFeedCell: UICollectionViewCell {
     
     @IBOutlet weak var likesCountConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var heartIconConstraintHeight: NSLayoutConstraint!
-    @IBOutlet weak var messageConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var commentsCountConstraintHeight: NSLayoutConstraint!
     
     @IBOutlet weak var commentsCountConstraintTop: NSLayoutConstraint!
@@ -61,7 +61,7 @@ class NewsFeedCell: UICollectionViewCell {
         delegate.newsFeedCellDidTapLikesCount(self)
     }
     
-    class func expectedHeight(msg: String!, _ likesCount: Int64!, _ commentsCount: Int64!, _ maxWidth: CGFloat!, _ font: UIFont!) -> CGFloat {
+    class func expectedHeight(msg: String!, _ displayName: String!, _ likesCount: Int64!, _ commentsCount: Int64!, _ maxWidth: CGFloat!, _ font: UIFont!) -> CGFloat {
         var height: CGFloat = 287 - 116
         
         var heartIconTop: CGFloat = 0
@@ -81,7 +81,7 @@ class NewsFeedCell: UICollectionViewCell {
         height -= commentsCountTop - commentsCountHeight
         
         let preferredMaxLayoutWidth = maxWidth - 12 - 12
-        let expectedMessageHeight: CGFloat = NewsFeedCell.expectedMessageHeight(msg, preferredMaxLayoutWidth, font)
+        let expectedMessageHeight: CGFloat = NewsFeedCell.expectedMessageHeight(msg, displayName, preferredMaxLayoutWidth, font)
         
         var messageTop: CGFloat = 0
         var messageHeight: CGFloat = 0
@@ -98,15 +98,24 @@ class NewsFeedCell: UICollectionViewCell {
         return height
     }
     
-    class func expectedMessageHeight(msg: String!, _ maxWidth: CGFloat, _ font: UIFont) -> CGFloat {
+    class func expectedMessageHeight(msg: String!, _ displayName: String!, _ maxWidth: CGFloat, _ font: UIFont) -> CGFloat {
         if msg.isEmpty {
             return 0
         } else {
+            let semiBold = UIFont.systemFontOfSize(14.0, weight: UIFontWeightSemibold)
+            let regular = UIFont.systemFontOfSize(14.0)
+            let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
+            let message = NSAttributedString(string: msg, attributes: [NSFontAttributeName: regular])
+            let text = NSMutableAttributedString()
+            text.appendAttributedString(name)
+            text.appendAttributedString(NSAttributedString(string: " "))
+            text.appendAttributedString(message)
+            
             let label = UILabel(frame: CGRectMake(0, 0, maxWidth, 16))
             label.numberOfLines = 0
             label.preferredMaxLayoutWidth = maxWidth
-            label.font = font
-            label.text = msg
+            label.attributedText = text
+            
             return label.intrinsicContentSize().height
         }
     }
@@ -156,16 +165,26 @@ class NewsFeedCell: UICollectionViewCell {
         }
     }
     
-    func setMessage(msg: String!) {
+    func setMessage(msg: String!, displayName: String!) {
         if msg.isEmpty {
+            messageLabel.attributedText = NSAttributedString(string: "")
             messageConstraintTop.constant = 0
-            messageConstraintHeight.constant = 0
         } else {
-            messageLabel.attributedText = NSAttributedString(string: msg)
-            messageLabel.setNeedsDisplay()
+            let semiBold = UIFont.systemFontOfSize(14.0, weight: UIFontWeightSemibold)
+            let regular = UIFont.systemFontOfSize(14.0)
+            let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
+            let message = NSAttributedString(string: msg, attributes: [NSFontAttributeName: regular])
+            let text = NSMutableAttributedString()
+            text.appendAttributedString(name)
+            text.appendAttributedString(NSAttributedString(string: " "))
+            text.appendAttributedString(message)
+            messageLabel.attributedText = text
             messageConstraintTop.constant = COMMON_TOP
-            messageConstraintHeight.constant = messageLabel.intrinsicContentSize().height
-            print(messageLabel.intrinsicContentSize())
         }
+    }
+    
+    func setElapsedTime(timestamp: Double!) {
+        let time = NSDate(timeIntervalSince1970: timestamp / 1000)
+        timeLabel.text = time.timeAgoSinceNow().uppercaseString
     }
 }

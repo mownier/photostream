@@ -76,7 +76,7 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
         let i = UInt(section)
-        let (post, _) = presenter.getPostAtIndex(i)
+        let (post, user) = presenter.getPostAtIndex(i)
 
         let collectionViewWidth = collectionView.width
         let photoWidth = post.photo.width
@@ -86,7 +86,7 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
         let height = CGFloat(photoHeight) * ratio
 
         let font = UIFont.systemFontOfSize(14, weight: UIFontWeightRegular)
-        return height + NewsFeedCell.expectedHeight(post.message, post.likesCount, post.commentsCount, collectionViewWidth, font)
+        return height + NewsFeedCell.expectedHeight(post.message, user.displayName, post.likesCount, post.commentsCount, collectionViewWidth, font)
     }
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
@@ -113,11 +113,12 @@ extension NewsFeedViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewsFeedCell", forIndexPath: indexPath) as! NewsFeedCell
 
         let i = UInt(indexPath.section)
-        let (post, _) = presenter.getPostAtIndex(i)
+        let (post, user) = presenter.getPostAtIndex(i)
         cell.setPhotoUrl(post.photo.url)
         cell.setLikesCount(post.likesCount)
         cell.setCommentsCount(post.commentsCount)
-        cell.setMessage(post.message)
+        cell.setMessage(post.message, displayName: user.displayName)
+        cell.setElapsedTime(post.timestamp)
         cell.delegate = self
 
         return cell

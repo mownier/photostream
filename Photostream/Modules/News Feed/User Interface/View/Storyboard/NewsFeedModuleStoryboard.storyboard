@@ -36,10 +36,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QpM-9y-3Dg" userLabel="Photo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yq-TU-jH7" userLabel="Heart">
-                                                    <rect key="frame" x="12" y="128" width="24" height="24"/>
+                                                    <rect key="frame" x="12" y="127" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="FLF-zL-w7n"/>
                                                         <constraint firstAttribute="height" constant="24" id="UTk-Gw-oz3"/>
@@ -50,7 +50,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaZ-Kh-Xw7" userLabel="Comment">
-                                                    <rect key="frame" x="54" y="128" width="24" height="24"/>
+                                                    <rect key="frame" x="54" y="127" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="6MT-Pv-3OR"/>
                                                         <constraint firstAttribute="width" constant="24" id="ZhO-yT-TB6"/>
@@ -61,21 +61,21 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbe-rf-1AB" userLabel="Strip">
-                                                    <rect key="frame" x="12" y="164" width="296" height="1"/>
+                                                    <rect key="frame" x="12" y="163" width="296" height="1"/>
                                                     <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="5mL-yW-W8v"/>
                                                     </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_black" translatesAutoresizingMaskIntoConstraints="NO" id="uf0-tT-00u" userLabel="Heart Icon">
-                                                    <rect key="frame" x="12" y="177" width="16" height="16"/>
+                                                    <rect key="frame" x="12" y="176" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="5OT-al-gZO"/>
                                                         <constraint firstAttribute="height" constant="16" id="Gok-Sm-6kh"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rm4-2Z-sT5" userLabel="Likes">
-                                                    <rect key="frame" x="32" y="177" width="276" height="16"/>
+                                                    <rect key="frame" x="32" y="176" width="276" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="vvh-EP-dl4"/>
                                                     </constraints>
@@ -88,9 +88,9 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iamredrepo" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIp-0p-LWa" userLabel="Message">
-                                                    <rect key="frame" x="12" y="205" width="296" height="16"/>
+                                                    <rect key="frame" x="12" y="204" width="296" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="FSJ-HX-kkN"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="FSJ-HX-kkN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -164,7 +164,6 @@
                                             <outlet property="likeButton" destination="0yq-TU-jH7" id="zga-dc-4Mb"/>
                                             <outlet property="likesCountButton" destination="Rm4-2Z-sT5" id="CxJ-1o-kTi"/>
                                             <outlet property="likesCountConstraintHeight" destination="vvh-EP-dl4" id="lra-Pc-nL3"/>
-                                            <outlet property="messageConstraintHeight" destination="FSJ-HX-kkN" id="bM5-Fp-9Vk"/>
                                             <outlet property="messageConstraintTop" destination="cei-ei-HT5" id="sVe-qy-dI0"/>
                                             <outlet property="messageLabel" destination="LIp-0p-LWa" id="nib-FP-seE"/>
                                             <outlet property="photoImageView" destination="QpM-9y-3Dg" id="SPY-y4-ZmK"/>
