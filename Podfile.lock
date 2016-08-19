@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.4.1)
+  - DateTools (1.7.0)
   - Firebase (3.4.0):
     - Firebase/Core (= 3.4.0)
   - Firebase/Analytics (3.4.0):
@@ -48,6 +49,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - DateTools
   - Firebase
   - Firebase/Auth
   - Firebase/Database
@@ -59,6 +61,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Firebase: 754562547af419cc2f4b15247fee419081924bc2
   FirebaseAnalytics: 228be2991cb28efb96cdafc4d62f64680e615c69
   FirebaseAuth: 26fd291c3b552fc9658420b867520d5ae080421c
@@ -75,6 +78,6 @@ SPEC CHECKSUMS:
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: f59f4e97b91e63428ab05b56918b897d353f5fe4
+PODFILE CHECKSUM: de8dbf7d605f3ef2b700f5834841eb467674a451
 
 COCOAPODS: 1.0.1

@@ -11,6 +11,7 @@ target 'Photostream' do
     pod 'Kingfisher'
     pod 'SnapKit'
     pod 'MONUniformFlowLayout'
+    pod 'DateTools'
 end
 
 target 'PhotostreamTests' do
