@@ -24,6 +24,8 @@
 		B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */; };
 		B961A4B11D5849AB0052856D /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A4B01D5849AB0052856D /* CommentService.swift */; };
 		B961A4B31D584B550052856D /* CommentAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A4B21D584B550052856D /* CommentAPIFirebase.swift */; };
+		B96FCE861D680CC900C2A165 /* NewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96FCE851D680CC900C2A165 /* NewsFeedCell.xib */; };
+		B96FCE881D68191600C2A165 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FCE871D68191600C2A165 /* Array+Extensions.swift */; };
 		B9706A971D5EED93002EE1D2 /* LoginModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */; };
 		B9706A991D5EEE7D002EE1D2 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706A981D5EEE7D002EE1D2 /* LoginPresenter.swift */; };
 		B9706A9B1D5EEEDF002EE1D2 /* LoginViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706A9A1D5EEEDF002EE1D2 /* LoginViewInterface.swift */; };
@@ -105,6 +107,8 @@
 		B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorOutput.swift; sourceTree = "<group>"; };
 		B961A4B01D5849AB0052856D /* CommentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		B961A4B21D584B550052856D /* CommentAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentAPIFirebase.swift; sourceTree = "<group>"; };
+		B96FCE851D680CC900C2A165 /* NewsFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsFeedCell.xib; sourceTree = "<group>"; };
+		B96FCE871D68191600C2A165 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
 		B9706A981D5EEE7D002EE1D2 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		B9706A9A1D5EEEDF002EE1D2 /* LoginViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewInterface.swift; sourceTree = "<group>"; };
@@ -346,6 +350,14 @@
 			path = Wireframe;
 			sourceTree = "<group>";
 		};
+		B96FCE841D67F76400C2A165 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				B96FCE851D680CC900C2A165 /* NewsFeedCell.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
 		B9706AAA1D5EFE77002EE1D2 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +501,7 @@
 				B9D3FDE21D64460900B7CC2E /* String+Extensions.swift */,
 				B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */,
 				B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */,
+				B96FCE871D68191600C2A165 /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -547,6 +560,7 @@
 				B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */,
 				B9D3FDD61D64016B00B7CC2E /* NewsFeedViewInterface.swift */,
 				B95A3D551D62D2F100DA456D /* Storyboard */,
+				B96FCE841D67F76400C2A165 /* Xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -780,6 +794,7 @@
 			files = (
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B95FFD1D1D53184800085905 /* GoogleService-Info.plist in Resources */,
+				B96FCE861D680CC900C2A165 /* NewsFeedCell.xib in Resources */,
 				B95A3D591D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard in Resources */,
 				B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */,
 				B9706AAC1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard in Resources */,
@@ -931,6 +946,7 @@
 				B9706AA51D5EF2A1002EE1D2 /* RegistrationViewInterface.swift in Sources */,
 				B9D3FDE11D643B5E00B7CC2E /* NewsFeedCell.swift in Sources */,
 				B95FFD121D53092000085905 /* User.swift in Sources */,
+				B96FCE881D68191600C2A165 /* Array+Extensions.swift in Sources */,
 				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
 				B9D3FDDF1D6438BB00B7CC2E /* Photo.swift in Sources */,
 				B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */,
