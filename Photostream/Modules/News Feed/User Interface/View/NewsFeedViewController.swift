@@ -15,10 +15,15 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var flowLayout: MONUniformFlowLayout!
 
     var presenter: NewsFeedModuleInterface!
+    var sizingCell: NewsFeedCell!
+    var cellHeights = [CGFloat]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        collectionView.registerNib(UINib(nibName: "NewsFeedCell", bundle: nil), forCellWithReuseIdentifier: "NewsFeedCell")
+        
+        sizingCell = NewsFeedCell.createNew()
         addCustomTitleView()
         presenter.refreshFeed(10)
     }
@@ -40,6 +45,24 @@ class NewsFeedViewController: UIViewController {
         titleView.sizeToFit()
         navigationItem.titleView = titleView
     }
+    
+    private func computeExpectedCellHeight(cell: NewsFeedCell!, index: Int!) -> CGFloat {
+        configureCell(cell, index: index)
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        return size.height
+    }
+    
+    private func computeExpectedPhotoHeight(index: Int!, width: CGFloat) -> CGFloat {
+        let (post, _) = presenter.getPostAtIndex(UInt(index))
+        
+        let photoWidth = post.photo.width
+        let photoHeight = post.photo.height
+        
+        let ratio = width / CGFloat(photoWidth)
+        return  CGFloat(photoHeight) * ratio
+    }
 }
 
 extension NewsFeedViewController: NewsFeedViewInterface {
@@ -50,6 +73,15 @@ extension NewsFeedViewController: NewsFeedViewInterface {
 
     func showEmptyView() {
         // TODO: Show empty view
+    }
+    
+    func configureCell(cell: NewsFeedCell, index: Int) {
+        let (post, user) = presenter.getPostAtIndex(UInt(index))
+        cell.setPhotoUrl(post.photo.url)
+        cell.setLikesCount(post.likesCount)
+        cell.setCommentsCount(post.commentsCount)
+        cell.setMessage(post.message, displayName: user.displayName)
+        cell.setElapsedTime(post.timestamp)
     }
 }
 
@@ -75,20 +107,17 @@ extension NewsFeedViewController: NewsFeedCellDelegate {
 extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
-        let i = UInt(section)
-        let (post, _) = presenter.getPostAtIndex(i)
-
-        let collectionViewWidth = collectionView.width
-        let photoWidth = post.photo.width
-        let photoHeight = post.photo.height
-
-        let ratio = collectionViewWidth / CGFloat(photoWidth)
-        let height = CGFloat(photoHeight) * ratio
-        
-        return height + 287 - 116
+        if cellHeights.isValid(section) {
+            return cellHeights[section]
+        } else {
+            let cellHeight = computeExpectedCellHeight(sizingCell, index: section)
+            let photoHeight = computeExpectedPhotoHeight(section, width: collectionView.width)
+            let height = photoHeight + cellHeight
+            cellHeights.append(height)
+            return height
+        }
     }
     
-
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
         return 54
     }
@@ -112,15 +141,9 @@ extension NewsFeedViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewsFeedCell", forIndexPath: indexPath) as! NewsFeedCell
 
-        let i = UInt(indexPath.section)
-        let (post, user) = presenter.getPostAtIndex(i)
-        cell.setPhotoUrl(post.photo.url)
-        cell.setLikesCount(post.likesCount)
-        cell.setCommentsCount(post.commentsCount)
-        cell.setMessage(post.message, displayName: user.displayName)
-        cell.setElapsedTime(post.timestamp)
+        configureCell(cell, index: indexPath.section)
         cell.delegate = self
-
+        
         return cell
     }
 
@@ -145,14 +168,5 @@ extension NewsFeedViewController: UICollectionViewDataSource {
         }
 
         return reusableView
-    }
-}
-
-extension UICollectionView {
-
-    func headerHeightInSection(section: Int) -> CGFloat {
-        let del = delegate as! MONUniformFlowLayoutDelegate
-        let layout = collectionViewLayout as! MONUniformFlowLayout
-        return del.collectionView!(self, layout: layout, headerHeightInSection: section)
     }
 }
