@@ -25,6 +25,9 @@ protocol NewsFeedCellDelegate: class {
 
 class NewsFeedCell: UICollectionViewCell {
 
+    private let COMMON_HEIGHT: CGFloat = 16.0
+    private let COMMON_TOP: CGFloat = 12.0
+    
     @IBOutlet weak var commentsCountButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
@@ -42,9 +45,6 @@ class NewsFeedCell: UICollectionViewCell {
     
     weak var delegate: NewsFeedCellDelegate!
     
-    private let COMMON_HEIGHT: CGFloat = 16.0
-    private let COMMON_TOP: CGFloat = 12.0
-    
     @IBAction func didTapComment(sender: AnyObject) {
         delegate.newsFeedCellDidTapComment(self)
     }
@@ -59,65 +59,6 @@ class NewsFeedCell: UICollectionViewCell {
     
     @IBAction func didTapLikesCount(sender: AnyObject) {
         delegate.newsFeedCellDidTapLikesCount(self)
-    }
-    
-    class func expectedHeight(msg: String!, _ displayName: String!, _ likesCount: Int64!, _ commentsCount: Int64!, _ maxWidth: CGFloat!, _ font: UIFont!) -> CGFloat {
-        var height: CGFloat = 287 - 116
-        
-        var heartIconTop: CGFloat = 0
-        var heartIconHeight: CGFloat = 0
-        if likesCount < 1 {
-            heartIconTop = 12
-            heartIconHeight = 16
-        }
-        height -= heartIconTop - heartIconHeight
-        
-        var commentsCountTop: CGFloat = 0
-        var commentsCountHeight: CGFloat = 0
-        if commentsCount < 1 {
-            commentsCountTop = 12
-            commentsCountHeight = 16
-        }
-        height -= commentsCountTop - commentsCountHeight
-        
-        let preferredMaxLayoutWidth = maxWidth - 12 - 12
-        let expectedMessageHeight: CGFloat = NewsFeedCell.expectedMessageHeight(msg, displayName, preferredMaxLayoutWidth, font)
-        
-        var messageTop: CGFloat = 0
-        var messageHeight: CGFloat = 0
-        if expectedMessageHeight < 1 {
-            messageTop = 12
-            messageHeight = 16
-        } else {
-            messageHeight = 16
-        }
-        height -= messageTop - messageHeight
-        
-        height += expectedMessageHeight
-        
-        return height
-    }
-    
-    class func expectedMessageHeight(msg: String!, _ displayName: String!, _ maxWidth: CGFloat, _ font: UIFont) -> CGFloat {
-        if msg.isEmpty {
-            return 0
-        } else {
-            let semiBold = UIFont.systemFontOfSize(14.0, weight: UIFontWeightSemibold)
-            let regular = UIFont.systemFontOfSize(14.0)
-            let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
-            let message = NSAttributedString(string: msg, attributes: [NSFontAttributeName: regular])
-            let text = NSMutableAttributedString()
-            text.appendAttributedString(name)
-            text.appendAttributedString(NSAttributedString(string: " "))
-            text.appendAttributedString(message)
-            
-            let label = UILabel(frame: CGRectMake(0, 0, maxWidth, 16))
-            label.numberOfLines = 0
-            label.preferredMaxLayoutWidth = maxWidth
-            label.attributedText = text
-            
-            return label.intrinsicContentSize().height
-        }
     }
     
     func setPhotoUrl(url: String!) {
@@ -186,5 +127,12 @@ class NewsFeedCell: UICollectionViewCell {
     func setElapsedTime(timestamp: Double!) {
         let time = NSDate(timeIntervalSince1970: timestamp / 1000)
         timeLabel.text = time.timeAgoSinceNow().uppercaseString
+    }
+    
+    class func createNew() -> NewsFeedCell! {
+        let bundle = NSBundle.mainBundle()
+        let views = bundle.loadNibNamed("NewsFeedCell", owner: nil, options: nil)
+        let cell = views[0] as! NewsFeedCell
+        return cell
     }
 }
