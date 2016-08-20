@@ -76,7 +76,7 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
         let i = UInt(section)
-        let (post, user) = presenter.getPostAtIndex(i)
+        let (post, _) = presenter.getPostAtIndex(i)
 
         let collectionViewWidth = collectionView.width
         let photoWidth = post.photo.width
@@ -84,10 +84,10 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 
         let ratio = collectionViewWidth / CGFloat(photoWidth)
         let height = CGFloat(photoHeight) * ratio
-
-        let font = UIFont.systemFontOfSize(14, weight: UIFontWeightRegular)
-        return height + NewsFeedCell.expectedHeight(post.message, user.displayName, post.likesCount, post.commentsCount, collectionViewWidth, font)
+        
+        return height + 287 - 116
     }
+    
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
         return 54
