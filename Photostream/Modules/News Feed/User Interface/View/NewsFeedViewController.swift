@@ -22,7 +22,7 @@ class NewsFeedViewController: UIViewController {
         super.viewDidLoad()
 
         collectionView.registerNib(UINib(nibName: "NewsFeedCell", bundle: nil), forCellWithReuseIdentifier: "NewsFeedCell")
-        
+
         sizingCell = NewsFeedCell.createNew()
         addCustomTitleView()
         presenter.refreshFeed(10)
@@ -45,7 +45,7 @@ class NewsFeedViewController: UIViewController {
         titleView.sizeToFit()
         navigationItem.titleView = titleView
     }
-    
+
     private func computeExpectedCellHeight(cell: NewsFeedCell!, index: Int!) -> CGFloat {
         configureCell(cell, index: index)
         cell.setNeedsLayout()
@@ -53,13 +53,13 @@ class NewsFeedViewController: UIViewController {
         let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         return size.height
     }
-    
+
     private func computeExpectedPhotoHeight(index: Int!, width: CGFloat) -> CGFloat {
         let (post, _) = presenter.getPostAtIndex(UInt(index))
-        
+
         let photoWidth = post.photo.width
         let photoHeight = post.photo.height
-        
+
         let ratio = width / CGFloat(photoWidth)
         return  CGFloat(photoHeight) * ratio
     }
@@ -74,7 +74,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     func showEmptyView() {
         // TODO: Show empty view
     }
-    
+
     func configureCell(cell: NewsFeedCell, index: Int) {
         let (post, user) = presenter.getPostAtIndex(UInt(index))
         cell.setPhotoUrl(post.photo.url)
@@ -86,21 +86,21 @@ extension NewsFeedViewController: NewsFeedViewInterface {
 }
 
 extension NewsFeedViewController: NewsFeedCellDelegate {
-    
+
     func newsFeedCellDidTapLike(cell: NewsFeedCell) {
-        
+
     }
-    
+
     func newsFeedCellDidTapLikesCount(cell: NewsFeedCell) {
-        
+
     }
-    
+
     func newsFeedCellDidTapComment(cell: NewsFeedCell) {
-        
+
     }
-    
+
     func newsFeedCellDidTapCommentsCount(cell: NewsFeedCell) {
-        
+
     }
 }
 
@@ -117,7 +117,7 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
             return height
         }
     }
-    
+
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
         return 54
     }
@@ -143,7 +143,7 @@ extension NewsFeedViewController: UICollectionViewDataSource {
 
         configureCell(cell, index: indexPath.section)
         cell.delegate = self
-        
+
         return cell
     }
 

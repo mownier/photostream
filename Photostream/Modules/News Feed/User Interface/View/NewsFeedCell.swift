@@ -16,7 +16,7 @@ enum NewsFeedCellConstants: CGFloat {
 }
 
 protocol NewsFeedCellDelegate: class {
-    
+
     func newsFeedCellDidTapLike(cell: NewsFeedCell)
     func newsFeedCellDidTapLikesCount(cell: NewsFeedCell)
     func newsFeedCellDidTapComment(cell: NewsFeedCell)
@@ -27,44 +27,44 @@ class NewsFeedCell: UICollectionViewCell {
 
     private let COMMON_HEIGHT: CGFloat = 16.0
     private let COMMON_TOP: CGFloat = 12.0
-    
+
     @IBOutlet weak var commentsCountButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var likesCountButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
-    
+
     @IBOutlet weak var likesCountConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var heartIconConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var commentsCountConstraintHeight: NSLayoutConstraint!
-    
+
     @IBOutlet weak var commentsCountConstraintTop: NSLayoutConstraint!
     @IBOutlet weak var heartIconConstraintTop: NSLayoutConstraint!
     @IBOutlet weak var messageConstraintTop: NSLayoutConstraint!
-    
+
     weak var delegate: NewsFeedCellDelegate!
-    
+
     @IBAction func didTapComment(sender: AnyObject) {
         delegate.newsFeedCellDidTapComment(self)
     }
-    
+
     @IBAction func didTapLike(sender: AnyObject) {
         delegate.newsFeedCellDidTapLike(self)
     }
-    
+
     @IBAction func didTapCommentsCount(sender: AnyObject) {
         delegate.newsFeedCellDidTapCommentsCount(self)
     }
-    
+
     @IBAction func didTapLikesCount(sender: AnyObject) {
         delegate.newsFeedCellDidTapLikesCount(self)
     }
-    
+
     func setPhotoUrl(url: String!) {
         photoImageView.kf_setImageWithURL(NSURL(string: url))
     }
-    
+
     func setLikesCount(count: Int64) {
         if count < 1 {
             likesCountConstraintHeight.constant = 0
@@ -77,13 +77,13 @@ class NewsFeedCell: UICollectionViewCell {
             }
             likes = "\(count) \(likes)"
             likesCountButton.setTitle(likes, forState: .Normal)
-            
+
             heartIconConstraintTop.constant = COMMON_TOP
             heartIconConstraintHeight.constant = COMMON_HEIGHT
             likesCountConstraintHeight.constant = COMMON_HEIGHT
         }
     }
-    
+
     func setCommentsCount(count: Int64) {
         if count < 1 {
             commentsCountConstraintHeight.constant = 0
@@ -100,12 +100,12 @@ class NewsFeedCell: UICollectionViewCell {
                 }
             }
             commentsCountButton.setTitle(comments, forState: .Normal)
-            
+
             commentsCountConstraintTop.constant = COMMON_TOP
             commentsCountConstraintHeight.constant = COMMON_HEIGHT
         }
     }
-    
+
     func setMessage(msg: String!, displayName: String!) {
         if msg.isEmpty {
             messageLabel.attributedText = NSAttributedString(string: "")
@@ -123,12 +123,12 @@ class NewsFeedCell: UICollectionViewCell {
             messageConstraintTop.constant = COMMON_TOP
         }
     }
-    
+
     func setElapsedTime(timestamp: Double!) {
         let time = NSDate(timeIntervalSince1970: timestamp / 1000)
         timeLabel.text = time.timeAgoSinceNow().uppercaseString
     }
-    
+
     class func createNew() -> NewsFeedCell! {
         let bundle = NSBundle.mainBundle()
         let views = bundle.loadNibNamed("NewsFeedCell", owner: nil, options: nil)
