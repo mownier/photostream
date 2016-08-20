@@ -12,5 +12,4 @@ protocol NewsFeedViewInterface: class {
 
     func reloadView()
     func showEmptyView()
-    func configureCell(cell: NewsFeedCell, index: Int)
 }

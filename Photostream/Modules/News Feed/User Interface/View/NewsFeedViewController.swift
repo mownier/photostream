@@ -46,6 +46,15 @@ class NewsFeedViewController: UIViewController {
         navigationItem.titleView = titleView
     }
 
+    private func configureCell(cell: NewsFeedCell, index: Int) {
+        let (post, user) = presenter.getPostAtIndex(UInt(index))
+        cell.setPhotoUrl(post.photo.url)
+        cell.setLikesCount(post.likesCount)
+        cell.setCommentsCount(post.commentsCount)
+        cell.setMessage(post.message, displayName: user.displayName)
+        cell.setElapsedTime(post.timestamp)
+    }
+    
     private func computeExpectedCellHeight(cell: NewsFeedCell!, index: Int!) -> CGFloat {
         configureCell(cell, index: index)
         cell.setNeedsLayout()
@@ -73,15 +82,6 @@ extension NewsFeedViewController: NewsFeedViewInterface {
 
     func showEmptyView() {
         // TODO: Show empty view
-    }
-
-    func configureCell(cell: NewsFeedCell, index: Int) {
-        let (post, user) = presenter.getPostAtIndex(UInt(index))
-        cell.setPhotoUrl(post.photo.url)
-        cell.setLikesCount(post.likesCount)
-        cell.setCommentsCount(post.commentsCount)
-        cell.setMessage(post.message, displayName: user.displayName)
-        cell.setElapsedTime(post.timestamp)
     }
 }
 
