@@ -13,11 +13,11 @@ class NewsFeedHeaderView: UICollectionReusableView {
 
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var displayNameLabel: UILabel!
-    
+
     class var defaultHeight: CGFloat {
         return 54
     }
-    
+
     class var reuseId: String {
         return "NewsFeedHeaderView"
     }
@@ -39,7 +39,7 @@ class NewsFeedHeaderView: UICollectionReusableView {
         let placeholderImage = UILabel.createPlaceholderImageWithFrame(frame, text: text, font: font)
         return placeholderImage
     }
-    
+
     class func dequeueFromCollectionView(view: UICollectionView, indexPath: NSIndexPath) -> NewsFeedHeaderView {
         let kind = UICollectionElementKindSectionHeader
         let reuseId = NewsFeedHeaderView.reuseId

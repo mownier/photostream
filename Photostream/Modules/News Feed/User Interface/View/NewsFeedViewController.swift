@@ -19,10 +19,10 @@ class NewsFeedViewController: UIViewController {
 
     var sizingCell: NewsFeedCell!
     var cellHeights = [CGFloat]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         NewsFeedCell.registerNibInto(collectionView)
 
         sizingCell = NewsFeedCell.createNew()
@@ -57,7 +57,7 @@ class NewsFeedViewController: UIViewController {
             view.setAvatarUrl(avatarUrl, placeholderImage: placeholderImage)
         }
     }
-    
+
     private func configureCell(cell: NewsFeedCell, index: Int) {
         if let item = displayItems[index] {
             cell.setPhotoUrl(item.cellItem.photoUrl)
@@ -67,7 +67,7 @@ class NewsFeedViewController: UIViewController {
             cell.setElapsedTime(item.cellItem.timestamp.timeAgoSinceNow())
         }
     }
-    
+
     private func computeExpectedCellHeight(cell: NewsFeedCell!, index: Int!, width: CGFloat) -> CGFloat {
         configureCell(cell, index: index)
         cell.setNeedsLayout()
@@ -84,7 +84,7 @@ class NewsFeedViewController: UIViewController {
             let ratio = width / CGFloat(photoWidth)
             return  CGFloat(photoHeight) * ratio
         }
-        
+
         return -1
     }
 }
@@ -98,11 +98,11 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     func showEmptyView() {
 
     }
-    
+
     func showError(error: NSError) {
-        
+
     }
-    
+
     func showItems(items: NewsFeedDisplayItemCollection) {
         displayItems.appendContentsOf(items)
     }
@@ -166,12 +166,12 @@ extension NewsFeedViewController: UICollectionViewDataSource {
         if kind == UICollectionElementKindSectionHeader {
             let headerView = NewsFeedHeaderView.dequeueFromCollectionView(collectionView, indexPath: indexPath)
             configureHeaderView(headerView, index: indexPath.section)
-            
+
             return headerView
         } else {
             let reuseId = "NewsFeedFooterView"
             let reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: reuseId, forIndexPath: indexPath)
-            
+
             return reusableView
         }
     }

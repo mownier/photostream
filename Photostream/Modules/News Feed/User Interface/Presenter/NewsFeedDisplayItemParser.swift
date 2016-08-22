@@ -20,13 +20,13 @@ class NewsFeedDisplayItemParser: NewsFeedDisplayItemSerializer {
         }
         return collection
     }
-    
+
     func serialize(post: NewsFeedPostData, user: NewsFeedUserData) -> NewsFeedDisplayItem {
         var item = NewsFeedDisplayItem()
-        
+
         item.postId = post.postId
         item.userId = user.userId
-        
+
         item.cellItem.displayName = user.displayName
         item.cellItem.isLiked = post.isLiked
         item.cellItem.timestamp = NSDate(timeIntervalSince1970: post.timestamp)
@@ -34,7 +34,7 @@ class NewsFeedDisplayItemParser: NewsFeedDisplayItemSerializer {
         item.cellItem.photoUrl = post.photoUrl
         item.cellItem.photoWidth = post.photoWidth
         item.cellItem.photoHeight = post.photoHeight
-        
+
         if post.commentsCount > 0 {
             if post.commentsCount == 1 {
                 item.cellItem.comments = "View 1 comment"
@@ -46,7 +46,7 @@ class NewsFeedDisplayItemParser: NewsFeedDisplayItemSerializer {
                 }
             }
         }
-        
+
         if post.likesCount > 0 {
             if post.likesCount == 1 {
                 item.cellItem.likes = "1 like"
@@ -54,10 +54,10 @@ class NewsFeedDisplayItemParser: NewsFeedDisplayItemSerializer {
                 item.cellItem.likes = "\(post.likesCount) likes"
             }
         }
-        
+
         item.headerItem.avatarUrl = user.avatarUrl
         item.headerItem.displayName = user.displayName
-        
+
         return item
     }
 }

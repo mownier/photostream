@@ -19,7 +19,7 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
         self.parser = NewsFeedDisplayItemParser()
         self.refreshing = false
     }
-    
+
     func refreshFeed(limit: UInt!) {
         refreshing = true
         interactor.fetchNew(limit)
@@ -28,7 +28,7 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
     func retrieveNextFeed(limit: UInt!) {
         interactor.fetchNext(limit)
     }
-    
+
     func newsFeedDidFetchOk(data: NewsFeedDataCollection) {
         var collection = parseNewsFeedDisplayItems(data)
         if refreshing {
@@ -40,13 +40,12 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
         view.showItems(collection)
         view.reloadView()
     }
-    
+
     func newsFeedDidFetchWithError(error: NSError!) {
         view.showError(error)
     }
-    
+
     private func parseNewsFeedDisplayItems(data: NewsFeedDataCollection) -> NewsFeedDisplayItemCollection {
         return parser.serialize(data)
     }
 }
-

@@ -30,12 +30,12 @@ struct PostServiceResult {
     var count: Int {
         return posts.count
     }
-    
+
     init() {
         posts =  [Post]()
         users = [String: User]()
     }
-    
+
     subscript (index: Int) -> (Post, User)? {
         if posts.isValid(index) {
             let post = posts[index]

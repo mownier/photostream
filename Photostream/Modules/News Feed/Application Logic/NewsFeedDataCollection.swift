@@ -9,28 +9,28 @@
 import Foundation
 
 struct NewsFeedDataCollection {
-    
+
     var posts: [NewsFeedPostData]
     var users: [String: NewsFeedUserData]
-    
+
     var count: Int {
         get {
             return posts.count
         }
     }
-    
+
     init() {
         posts = [NewsFeedPostData]()
         users = [String: NewsFeedUserData]()
     }
-    
+
     mutating func add(postItem: NewsFeedPostData, userItem: NewsFeedUserData) {
         posts.append(postItem)
         if users[postItem.userId] == nil {
             users[postItem.userId] = userItem
         }
     }
-    
+
     subscript (index: Int) -> (NewsFeedPostData, NewsFeedUserData)? {
         if posts.isValid(index) {
             let post = posts[index]
@@ -43,7 +43,7 @@ struct NewsFeedDataCollection {
 }
 
 struct NewsFeedPostData {
-    
+
     var postId: String
     var likesCount: Int64
     var commentsCount: Int64
@@ -54,7 +54,7 @@ struct NewsFeedPostData {
     var photoUrl: String
     var photoWidth: Int
     var photoHeight: Int
-    
+
     init() {
         postId = ""
         likesCount = 0
@@ -70,11 +70,11 @@ struct NewsFeedPostData {
 }
 
 struct NewsFeedUserData {
-    
+
     var userId: String
     var avatarUrl: String
     var displayName: String
-    
+
     init() {
         userId = ""
         avatarUrl = ""

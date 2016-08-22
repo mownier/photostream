@@ -9,18 +9,18 @@
 import Foundation
 
 struct NewsFeedDisplayItemCollection {
-    
+
     var items: [NewsFeedDisplayItem]
     var shouldTruncate: Bool
     var count: Int {
         return items.count
     }
-    
+
     init() {
         items = [NewsFeedDisplayItem]()
         shouldTruncate = false
     }
-    
+
     mutating func appendContentsOf(collection: NewsFeedDisplayItemCollection) {
         if !collection.shouldTruncate {
             items.appendContentsOf(collection.items)
@@ -29,11 +29,11 @@ struct NewsFeedDisplayItemCollection {
             items.appendContentsOf(collection.items)
         }
     }
-    
+
     mutating func append(item: NewsFeedDisplayItem) {
         items.append(item)
     }
-    
+
     subscript (index: Int) -> NewsFeedDisplayItem? {
         set {
             if let val = newValue where isValid(index) {
@@ -47,19 +47,19 @@ struct NewsFeedDisplayItemCollection {
             return nil
         }
     }
-    
+
     func isValid(index: Int) -> Bool {
         return items.isValid(index)
     }
 }
 
 struct NewsFeedDisplayItem {
-    
+
     var userId: String
     var postId: String
     var cellItem: NewsFeedCellDisplayItem
     var headerItem: NewsFeedHeaderDisplayItem
-    
+
     init() {
         userId = ""
         postId = ""
@@ -69,7 +69,7 @@ struct NewsFeedDisplayItem {
 }
 
 struct NewsFeedCellDisplayItem {
-    
+
     var photoUrl: String
     var photoWidth: Int
     var photoHeight: Int
@@ -79,7 +79,7 @@ struct NewsFeedCellDisplayItem {
     var message: String
     var displayName: String
     var timestamp: NSDate
-    
+
     init() {
         photoUrl = ""
         photoWidth = 0
@@ -94,10 +94,10 @@ struct NewsFeedCellDisplayItem {
 }
 
 struct NewsFeedHeaderDisplayItem {
-    
+
     var avatarUrl: String
     var displayName: String
-    
+
     init() {
         avatarUrl = ""
         displayName = ""

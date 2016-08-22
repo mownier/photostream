@@ -44,15 +44,15 @@ class NewsFeedCell: UICollectionViewCell {
     @IBOutlet weak var messageConstraintTop: NSLayoutConstraint!
 
     weak var delegate: NewsFeedCellDelegate!
-    
+
     class var nibName: String {
         return "NewsFeedCell"
     }
-    
+
     class var reuseId: String {
         return "NewsFeedCell"
     }
-    
+
     @IBAction func didTapComment(sender: AnyObject) {
         delegate.newsFeedCellDidTapComment(self)
     }
@@ -127,12 +127,12 @@ class NewsFeedCell: UICollectionViewCell {
         let cell = views[0] as! NewsFeedCell
         return cell
     }
-    
+
     class func dequeueFromCollectionView(view: UICollectionView, indexPath: NSIndexPath) -> NewsFeedCell {
         let cell = view.dequeueReusableCellWithReuseIdentifier(NewsFeedCell.reuseId, forIndexPath: indexPath)
         return cell as! NewsFeedCell
     }
-    
+
     class func registerNibInto(view: UICollectionView) {
         let nibName = NewsFeedCell.nibName
         let reuseId = NewsFeedCell.reuseId

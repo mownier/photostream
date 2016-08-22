@@ -39,10 +39,10 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
             }
         }
     }
-    
+
     private func parseNewsFeedData(feed: PostServiceResult!) -> NewsFeedDataCollection {
         var data = NewsFeedDataCollection()
-        
+
         for i in 0..<feed.count {
             if let (post, user) = feed[i] {
                 var postItem = NewsFeedPostData()
@@ -56,16 +56,16 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
                 postItem.photoUrl = post.photo.url
                 postItem.photoWidth = post.photo.width
                 postItem.photoHeight  = post.photo.height
-                
+
                 var userItem = NewsFeedUserData()
                 userItem.userId = user.id
                 userItem.avatarUrl = user.avatarUrl
                 userItem.displayName = user.displayName
-                
+
                 data.add(postItem, userItem: userItem)
             }
         }
-        
+
         return data
     }
 }
