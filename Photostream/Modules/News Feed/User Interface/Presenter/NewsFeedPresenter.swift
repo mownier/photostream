@@ -12,30 +12,41 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
 
     weak var view: NewsFeedViewInterface!
     var interactor: NewsFeedInteractorInput!
+    var parser: NewsFeedDisplayItemSerializer!
+    var refreshing: Bool
 
-    var feedCount: Int! {
-        get {
-            return interactor.feedCount
-        }
+    init() {
+        self.parser = NewsFeedDisplayItemParser()
+        self.refreshing = false
     }
-
+    
     func refreshFeed(limit: UInt!) {
+        refreshing = true
         interactor.fetchNew(limit)
     }
 
     func retrieveNextFeed(limit: UInt!) {
         interactor.fetchNext(limit)
     }
-
-    func getPostAtIndex(index: UInt!) -> (Post!, User!) {
-        return interactor.fetchPost(index)
-    }
-
-    func newsFeedDidFetchOk() {
+    
+    func newsFeedDidFetchOk(data: NewsFeedDataCollection) {
+        var collection = parseNewsFeedDisplayItems(data)
+        if refreshing {
+            collection.shouldTruncate = false
+        } else {
+            collection.shouldTruncate = true
+        }
+        refreshing = false
+        view.showItems(collection)
         view.reloadView()
     }
-
+    
     func newsFeedDidFetchWithError(error: NSError!) {
-        // TODO: Show error
+        view.showError(error)
+    }
+    
+    private func parseNewsFeedDisplayItems(data: NewsFeedDataCollection) -> NewsFeedDisplayItemCollection {
+        return parser.serialize(data)
     }
 }
+
