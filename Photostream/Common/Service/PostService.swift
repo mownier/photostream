@@ -27,9 +27,22 @@ struct PostServiceResult {
 
     var posts: [Post]!
     var users: [String: User]!
-
+    var count: Int {
+        return posts.count
+    }
+    
     init() {
         posts =  [Post]()
         users = [String: User]()
+    }
+    
+    subscript (index: Int) -> (Post, User)? {
+        if posts.isValid(index) {
+            let post = posts[index]
+            if let user = users[post.userId] {
+                return (post, user)
+            }
+        }
+        return nil
     }
 }
