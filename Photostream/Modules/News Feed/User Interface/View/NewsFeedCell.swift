@@ -44,7 +44,15 @@ class NewsFeedCell: UICollectionViewCell {
     @IBOutlet weak var messageConstraintTop: NSLayoutConstraint!
 
     weak var delegate: NewsFeedCellDelegate!
-
+    
+    class var nibName: String {
+        return "NewsFeedCell"
+    }
+    
+    class var reuseId: String {
+        return "NewsFeedCell"
+    }
+    
     @IBAction func didTapComment(sender: AnyObject) {
         delegate.newsFeedCellDidTapComment(self)
     }
@@ -65,18 +73,13 @@ class NewsFeedCell: UICollectionViewCell {
         photoImageView.kf_setImageWithURL(NSURL(string: url))
     }
 
-    func setLikesCount(count: Int64) {
-        if count < 1 {
+    func setLikesCountText(text: String) {
+        if text.isEmpty {
             likesCountConstraintHeight.constant = 0
             heartIconConstraintHeight.constant = 0
             heartIconConstraintTop.constant = 0
         } else {
-            var likes = "likes"
-            if count == 1 {
-                likes = "like"
-            }
-            likes = "\(count) \(likes)"
-            likesCountButton.setTitle(likes, forState: .Normal)
+            likesCountButton.setTitle(text, forState: .Normal)
 
             heartIconConstraintTop.constant = COMMON_TOP
             heartIconConstraintHeight.constant = COMMON_HEIGHT
@@ -84,22 +87,12 @@ class NewsFeedCell: UICollectionViewCell {
         }
     }
 
-    func setCommentsCount(count: Int64) {
-        if count < 1 {
+    func setCommentsCountText(text: String) {
+        if text.isEmpty {
             commentsCountConstraintHeight.constant = 0
             commentsCountConstraintTop.constant = 0
         } else {
-            var comments = ""
-            if count > 4 {
-                comments = "View all \(count) comments"
-            } else {
-                if count == 1 {
-                    comments = "View \(count) comment"
-                } else {
-                    comments = "View \(count) comments"
-                }
-            }
-            commentsCountButton.setTitle(comments, forState: .Normal)
+            commentsCountButton.setTitle(text, forState: .Normal)
 
             commentsCountConstraintTop.constant = COMMON_TOP
             commentsCountConstraintHeight.constant = COMMON_HEIGHT
@@ -124,15 +117,25 @@ class NewsFeedCell: UICollectionViewCell {
         }
     }
 
-    func setElapsedTime(timestamp: Double!) {
-        let time = NSDate(timeIntervalSince1970: timestamp / 1000)
-        timeLabel.text = time.timeAgoSinceNow().uppercaseString
+    func setElapsedTime(time: String) {
+        timeLabel.text = time
     }
 
     class func createNew() -> NewsFeedCell! {
         let bundle = NSBundle.mainBundle()
-        let views = bundle.loadNibNamed("NewsFeedCell", owner: nil, options: nil)
+        let views = bundle.loadNibNamed(NewsFeedCell.nibName, owner: nil, options: nil)
         let cell = views[0] as! NewsFeedCell
         return cell
+    }
+    
+    class func dequeueFromCollectionView(view: UICollectionView, indexPath: NSIndexPath) -> NewsFeedCell {
+        let cell = view.dequeueReusableCellWithReuseIdentifier(NewsFeedCell.reuseId, forIndexPath: indexPath)
+        return cell as! NewsFeedCell
+    }
+    
+    class func registerNibInto(view: UICollectionView) {
+        let nibName = NewsFeedCell.nibName
+        let reuseId = NewsFeedCell.reuseId
+        view.registerNib(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: reuseId)
     }
 }
