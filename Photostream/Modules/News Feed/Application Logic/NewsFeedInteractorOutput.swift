@@ -10,6 +10,6 @@ import Foundation
 
 protocol NewsFeedInteractorOutput: class {
 
-    func newsFeedDidFetchOk()
+    func newsFeedDidFetchOk(data: NewsFeedDataCollection)
     func newsFeedDidFetchWithError(error: NSError!)
 }
