@@ -15,11 +15,14 @@ struct User {
     var firstName: String!
     var lastName: String!
     var email: String!
+    var avatarUrl: String!
+    
     var fullName: String! {
         get {
             return "\(firstName) \(lastName)"
         }
     }
+    
     var displayName: String! {
         get {
             if let uname = username {
@@ -28,5 +31,9 @@ struct User {
                 return firstName
             }
         }
+    }
+    
+    init() {
+        avatarUrl = ""
     }
 }
