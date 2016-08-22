@@ -13,18 +13,10 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
     var output: NewsFeedInteractorOutput!
     var service: PostService!
     var currentOffset: UInt!
-    var list: PostServiceResult!
-
-    var feedCount: Int! {
-        get {
-            return list.posts.count
-        }
-    }
 
     init(service: PostService!) {
         self.service = service
         self.currentOffset = 0
-        self.list = PostServiceResult()
     }
 
     func fetchNew(limit: UInt!) {
@@ -37,24 +29,43 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
         fetch(currentOffset, limit: limit)
     }
 
-    func fetchPost(index: UInt!) -> (Post!, User!) {
-        let i = Int(index)
-        let post = list.posts[i]
-        let user = list.users[post.userId]
-        return (post, user)
-    }
-
     private func fetch(offset: UInt!, limit: UInt!) {
         service.fetchNewsFeed(currentOffset, limit: limit) { (feed, error) in
             if let error = error {
                 self.output.newsFeedDidFetchWithError(error)
             } else {
-                if let f = feed {
-                    self.list.posts = f.posts
-                    self.list.users = f.users
-                }
-                self.output.newsFeedDidFetchOk()
+                let data = self.parseNewsFeedData(feed)
+                self.output.newsFeedDidFetchOk(data)
             }
         }
+    }
+    
+    private func parseNewsFeedData(feed: PostServiceResult!) -> NewsFeedDataCollection {
+        var data = NewsFeedDataCollection()
+        
+        for i in 0..<feed.count {
+            if let (post, user) = feed[i] {
+                var postItem = NewsFeedPostData()
+                postItem.message = post.message
+                postItem.postId = post.id
+                postItem.commentsCount = post.commentsCount
+                postItem.likesCount = post.likesCount
+                postItem.isLiked = post.isLiked
+                postItem.timestamp = post.timestamp / 1000
+                postItem.userId = user.id
+                postItem.photoUrl = post.photo.url
+                postItem.photoWidth = post.photo.width
+                postItem.photoHeight  = post.photo.height
+                
+                var userItem = NewsFeedUserData()
+                userItem.userId = user.id
+                userItem.avatarUrl = user.avatarUrl
+                userItem.displayName = user.displayName
+                
+                data.add(postItem, userItem: userItem)
+            }
+        }
+        
+        return data
     }
 }
