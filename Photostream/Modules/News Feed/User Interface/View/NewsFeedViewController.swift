@@ -8,6 +8,7 @@
 
 import UIKit
 import MONUniformFlowLayout
+import DateTools
 
 class NewsFeedViewController: UIViewController {
 
@@ -26,7 +27,7 @@ class NewsFeedViewController: UIViewController {
         NewsFeedCell.registerNibInto(collectionView)
 
         sizingCell = NewsFeedCell.createNew()
-        addCustomTitleView()
+        navigationItem.titleView = UILabel.createNavigationTitleView("Photostream")
         presenter.refreshFeed(10)
     }
 
@@ -37,15 +38,6 @@ class NewsFeedViewController: UIViewController {
         collectionView.contentOffset = CGPoint(x: 0, y: 0)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-
-    private func addCustomTitleView() {
-        let titleView = UILabel(frame: CGRect.zero)
-        let fontDesc = UIFontDescriptor(name: "Snell Roundhand", size: 24).fontDescriptorWithSymbolicTraits(.TraitBold)
-        titleView.font = UIFont(descriptor: fontDesc, size: fontDesc.pointSize)
-        titleView.text = "Photostream"
-        titleView.sizeToFit()
-        navigationItem.titleView = titleView
     }
 
     private func configureHeaderView(view: NewsFeedHeaderView, index: Int) {
@@ -125,6 +117,10 @@ extension NewsFeedViewController: NewsFeedCellDelegate {
     func newsFeedCellDidTapCommentsCount(cell: NewsFeedCell) {
 
     }
+    
+    func newsFeedCellDidTapPhoto(cell: NewsFeedCell) {
+        
+    }
 }
 
 extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
@@ -140,7 +136,7 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
     }
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
-        return NewsFeedHeaderView.defaultHeight
+        return kNewsFeedHeaderViewDefaultHeight
     }
 }
 
