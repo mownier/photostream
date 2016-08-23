@@ -40,6 +40,9 @@
 		B9706AA91D5EF320002EE1D2 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */; };
 		B9706AAC1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9706AAB1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard */; };
 		B9706AAE1D5F02D7002EE1D2 /* FeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9706AAD1D5F02D7002EE1D2 /* FeatureTests.swift */; };
+		B9759BBC1D6C136F005AA0B6 /* CommentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9759BBB1D6C136F005AA0B6 /* CommentWireframe.swift */; };
+		B9759BC01D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9759BBF1D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard */; };
+		B9759BC21D6C1467005AA0B6 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */; };
 		B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3CE91D51C78900C5E76B /* AppDelegate.swift */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
@@ -127,6 +130,9 @@
 		B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		B9706AAB1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9706AAD1D5F02D7002EE1D2 /* FeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTests.swift; sourceTree = "<group>"; };
+		B9759BBB1D6C136F005AA0B6 /* CommentWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWireframe.swift; sourceTree = "<group>"; };
+		B9759BBF1D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommentModuleStoryboard.storyboard; sourceTree = "<group>"; };
+		B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		B97E3CE91D51C78900C5E76B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -374,6 +380,80 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		B9759BB41D6C136F005AA0B6 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				B9759BB51D6C136F005AA0B6 /* Application Logic */,
+				B9759BB61D6C136F005AA0B6 /* Module Interface */,
+				B9759BB71D6C136F005AA0B6 /* User Interface */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		B9759BB51D6C136F005AA0B6 /* Application Logic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Application Logic";
+			sourceTree = "<group>";
+		};
+		B9759BB61D6C136F005AA0B6 /* Module Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Module Interface";
+			sourceTree = "<group>";
+		};
+		B9759BB71D6C136F005AA0B6 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				B9759BB81D6C136F005AA0B6 /* Presenter */,
+				B9759BB91D6C136F005AA0B6 /* View */,
+				B9759BBA1D6C136F005AA0B6 /* Wireframe */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		B9759BB81D6C136F005AA0B6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B9759BB91D6C136F005AA0B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9759BBD1D6C1424005AA0B6 /* Storyboard */,
+				B9759BBE1D6C1424005AA0B6 /* Xib */,
+				B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9759BBA1D6C136F005AA0B6 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B9759BBB1D6C136F005AA0B6 /* CommentWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B9759BBD1D6C1424005AA0B6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B9759BBF1D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		B9759BBE1D6C1424005AA0B6 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
 		B97E3CE81D51C78900C5E76B /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +477,7 @@
 		B97E3CF41D51C93600C5E76B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B9759BB41D6C136F005AA0B6 /* Comment */,
 				B97E3CF51D51C93600C5E76B /* Default */,
 				B98EE6341D616FD800826C37 /* Home */,
 				B95FFD041D53048700085905 /* Login */,
@@ -804,6 +885,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9759BC01D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B95FFD1D1D53184800085905 /* GoogleService-Info.plist in Resources */,
 				B96FCE861D680CC900C2A165 /* NewsFeedCell.xib in Resources */,
@@ -935,6 +1017,7 @@
 				B9706AA71D5EF2BF002EE1D2 /* RegistrationViewController.swift in Sources */,
 				B9D3FDD31D63FB5100B7CC2E /* NewsFeedModuleInterface.swift in Sources */,
 				B98EE6451D619E5900826C37 /* UITextField+Extensions.swift in Sources */,
+				B9759BC21D6C1467005AA0B6 /* CommentsViewController.swift in Sources */,
 				B9D4A15E1D5C40B5000975C7 /* UserAPIFirebase.swift in Sources */,
 				B97E3D061D51CE5300C5E76B /* AppDependency.swift in Sources */,
 				B95FFD211D532D3400085905 /* AuthenticationAPIFirebase.swift in Sources */,
@@ -980,6 +1063,7 @@
 				B9D331AB1D5D938D0010A8C1 /* AuthSession.swift in Sources */,
 				B96FCE8A1D68336C00C2A165 /* NewsFeedDataCollection.swift in Sources */,
 				B97FB6FA1D55B7DE00B68048 /* Post.swift in Sources */,
+				B9759BBC1D6C136F005AA0B6 /* CommentWireframe.swift in Sources */,
 				B95A3D571D62D32200DA456D /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
