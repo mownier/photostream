@@ -24,20 +24,12 @@ class NewsFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        flowLayout.enableStickyHeader = true
         NewsFeedCell.registerNibInto(collectionView)
 
         sizingCell = NewsFeedCell.createNew()
         navigationItem.titleView = UILabel.createNavigationTitleView("Photostream")
         presenter.refreshFeed(10)
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
-        flowLayout.enableStickyHeader = true
-        collectionView.contentOffset = CGPoint(x: 0, y: 0)
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     private func configureHeaderView(view: NewsFeedHeaderView, index: Int) {
