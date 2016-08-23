@@ -24,6 +24,8 @@ class HomeWireframe: AnyObject {
         let nav = homeViewController.viewControllers?[0] as! UINavigationController
         let vc = nav.viewControllers[0] as! NewsFeedViewController
         let newsFeedWireframe = NewsFeedWireframe()
+        newsFeedWireframe.newsFeedViewController = vc
+        newsFeedWireframe.rootWireframe = rootWireframe
         newsFeedWireframe.newsFeedPresenter.view = vc
         vc.presenter = newsFeedWireframe.newsFeedPresenter
 
