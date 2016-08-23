@@ -8,12 +8,9 @@
 
 import UIKit
 import Kingfisher
-import DateTools
 
-enum NewsFeedCellConstants: CGFloat {
-    case CommonHeight = 16.0
-    case CommonTop = 12.0
-}
+let kNewsFeedCellNibName = "NewsFeedCell"
+let kNewsFeedCellReuseId = "NewsFeedCell"
 
 protocol NewsFeedCellDelegate: class {
 
@@ -21,6 +18,7 @@ protocol NewsFeedCellDelegate: class {
     func newsFeedCellDidTapLikesCount(cell: NewsFeedCell)
     func newsFeedCellDidTapComment(cell: NewsFeedCell)
     func newsFeedCellDidTapCommentsCount(cell: NewsFeedCell)
+    func newsFeedCellDidTapPhoto(cell: NewsFeedCell)
 }
 
 class NewsFeedCell: UICollectionViewCell {
@@ -44,15 +42,21 @@ class NewsFeedCell: UICollectionViewCell {
     @IBOutlet weak var messageConstraintTop: NSLayoutConstraint!
 
     weak var delegate: NewsFeedCellDelegate!
-
-    class var nibName: String {
-        return "NewsFeedCell"
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        photoImageView.userInteractionEnabled = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(NewsFeedCell.didTapPhoto(_:)))
+        tap.numberOfTapsRequired = 2
+        photoImageView.addGestureRecognizer(tap)
     }
 
-    class var reuseId: String {
-        return "NewsFeedCell"
+    @IBAction func didTapPhoto(sender: AnyObject) {
+        delegate.newsFeedCellDidTapPhoto(self)
     }
-
+    
     @IBAction func didTapComment(sender: AnyObject) {
         delegate.newsFeedCellDidTapComment(self)
     }
@@ -123,19 +127,17 @@ class NewsFeedCell: UICollectionViewCell {
 
     class func createNew() -> NewsFeedCell! {
         let bundle = NSBundle.mainBundle()
-        let views = bundle.loadNibNamed(NewsFeedCell.nibName, owner: nil, options: nil)
+        let views = bundle.loadNibNamed(kNewsFeedCellNibName, owner: nil, options: nil)
         let cell = views[0] as! NewsFeedCell
         return cell
     }
 
     class func dequeueFromCollectionView(view: UICollectionView, indexPath: NSIndexPath) -> NewsFeedCell {
-        let cell = view.dequeueReusableCellWithReuseIdentifier(NewsFeedCell.reuseId, forIndexPath: indexPath)
+        let cell = view.dequeueReusableCellWithReuseIdentifier(kNewsFeedCellReuseId, forIndexPath: indexPath)
         return cell as! NewsFeedCell
     }
 
     class func registerNibInto(view: UICollectionView) {
-        let nibName = NewsFeedCell.nibName
-        let reuseId = NewsFeedCell.reuseId
-        view.registerNib(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: reuseId)
+        view.registerNib(UINib(nibName: kNewsFeedCellNibName, bundle: nil), forCellWithReuseIdentifier: kNewsFeedCellReuseId)
     }
 }
