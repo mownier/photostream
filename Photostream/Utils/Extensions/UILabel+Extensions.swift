@@ -20,4 +20,13 @@ extension UILabel {
 
         return label.createImage()
     }
+    
+    class func createNavigationTitleView(text: String) -> UILabel {
+        let titleView = UILabel(frame: CGRect.zero)
+        let fontDesc = UIFontDescriptor(name: "Snell Roundhand", size: 24).fontDescriptorWithSymbolicTraits(.TraitBold)
+        titleView.font = UIFont(descriptor: fontDesc, size: fontDesc.pointSize)
+        titleView.text = text
+        titleView.sizeToFit()
+        return titleView
+    }
 }
