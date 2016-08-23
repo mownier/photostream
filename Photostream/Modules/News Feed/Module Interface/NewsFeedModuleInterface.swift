@@ -12,4 +12,6 @@ protocol NewsFeedModuleInterface: class {
 
     func refreshFeed(limit: UInt!)
     func retrieveNextFeed(limit: UInt!)
+    
+    func presentCommentsInterface(shouldComment: Bool)
 }
