@@ -115,7 +115,7 @@ extension NewsFeedViewController: NewsFeedCellDelegate {
     }
 
     func newsFeedCellDidTapCommentsCount(cell: NewsFeedCell) {
-
+        presenter.presentCommentsInterface(false)
     }
     
     func newsFeedCellDidTapPhoto(cell: NewsFeedCell) {
