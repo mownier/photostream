@@ -9,7 +9,9 @@
         <scene sceneID="tGS-ZE-5Ev">
             <objects>
                 <viewControllerPlaceholder storyboardName="NewsFeedModuleStoryboard" referencedIdentifier="NewsFeedModuleRoot" id="Aca-U4-N0C" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Zgj-fP-6cB"/>
+                    <tabBarItem key="tabBarItem" title="" image="home_line_icon" selectedImage="home_black_icon" id="Zgj-fP-6cB">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                    </tabBarItem>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9w-9B-btd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -19,10 +21,10 @@
         <scene sceneID="Rbu-cy-Rhq">
             <objects>
                 <tabBarController storyboardIdentifier="HomeViewController" id="X7g-Bw-5LY" customClass="HomeViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="b1W-Yv-rTt">
+                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="b1W-Yv-rTt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.4321257503" blue="0.76767538589999995" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Aca-U4-N0C" kind="relationship" relationship="viewControllers" id="pZ9-Vj-C6R"/>
@@ -33,4 +35,8 @@
             <point key="canvasLocation" x="-553" y="116"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home_black_icon" width="24" height="24"/>
+        <image name="home_line_icon" width="24" height="24"/>
+    </resources>
 </document>

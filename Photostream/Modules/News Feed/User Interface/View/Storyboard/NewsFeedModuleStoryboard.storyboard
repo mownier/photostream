@@ -88,7 +88,11 @@
         <scene sceneID="Obd-2b-ETe">
             <objects>
                 <navigationController storyboardIdentifier="NewsFeedModuleRoot" automaticallyAdjustsScrollViewInsets="NO" id="C7W-Ri-swz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="home_line_icon" selectedImage="home_black_icon" id="oHC-Ec-1ub">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                    </tabBarItem>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="KBe-Rn-OnP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -104,4 +108,8 @@
             <point key="canvasLocation" x="957" y="794"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home_black_icon" width="24" height="24"/>
+        <image name="home_line_icon" width="24" height="24"/>
+    </resources>
 </document>
