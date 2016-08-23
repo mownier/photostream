@@ -11,6 +11,7 @@ import Foundation
 class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
 
     weak var view: NewsFeedViewInterface!
+    var wireframe: NewsFeedWireframe!
     var interactor: NewsFeedInteractorInput!
     var parser: NewsFeedDisplayItemSerializer!
     var refreshing: Bool
@@ -27,6 +28,10 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
 
     func retrieveNextFeed(limit: UInt!) {
         interactor.fetchNext(limit)
+    }
+    
+    func presentCommentsInterface(shouldComment: Bool) {
+        wireframe.navigateCommentsInterface(shouldComment)
     }
 
     func newsFeedDidFetchOk(data: NewsFeedDataCollection) {
