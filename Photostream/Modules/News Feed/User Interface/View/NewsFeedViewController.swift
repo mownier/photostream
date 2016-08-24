@@ -49,6 +49,7 @@ class NewsFeedViewController: UIViewController {
             cell.setCommentsCountText(item.cellItem.comments)
             cell.setMessage(item.cellItem.message, displayName: item.headerItem.displayName)
             cell.setElapsedTime(item.cellItem.timestamp.timeAgoSinceNow())
+            cell.shouldHighlightLikeButton(item.cellItem.isLiked)
         }
     }
 
@@ -57,7 +58,8 @@ class NewsFeedViewController: UIViewController {
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        let photoHeight = computeExpectedPhotoHeight(index, width: width)
+        let photoHeight = computeExpectedPhotoHeight(index, width: collectionView.width)
+        
         return size.height + photoHeight
     }
 
@@ -70,6 +72,14 @@ class NewsFeedViewController: UIViewController {
         }
 
         return -1
+    }
+    
+    private func displayItemForCell(cell: NewsFeedCell) -> NewsFeedDisplayItem? {
+        if let indexPath = collectionView.indexPathForCell(cell) {
+            return displayItems[indexPath.section]
+        }
+        
+        return nil
     }
 }
 
@@ -90,12 +100,26 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     func showItems(items: NewsFeedDisplayItemCollection) {
         displayItems.appendContentsOf(items)
     }
+    
+    func updateCell(postId: String, isLiked: Bool) {
+        let (i, valid) = displayItems.isValid(postId)
+        if valid {
+            displayItems[i]!.cellItem.isLiked = isLiked
+
+            let set = NSIndexSet(index: i)
+            UIView.performWithoutAnimation({
+                self.collectionView.reloadSections(set)
+            })
+        }
+    }
 }
 
 extension NewsFeedViewController: NewsFeedCellDelegate {
 
     func newsFeedCellDidTapLike(cell: NewsFeedCell) {
-
+        if let item = displayItemForCell(cell) {
+            presenter.toggleLike(item.postId, isLiked: item.cellItem.isLiked)
+        }
     }
 
     func newsFeedCellDidTapLikesCount(cell: NewsFeedCell) {
@@ -111,7 +135,9 @@ extension NewsFeedViewController: NewsFeedCellDelegate {
     }
     
     func newsFeedCellDidTapPhoto(cell: NewsFeedCell) {
-        
+        if let item = displayItemForCell(cell) {
+            presenter.likePost(item.postId)
+        }
     }
 }
 
@@ -146,7 +172,7 @@ extension NewsFeedViewController: UICollectionViewDataSource {
         let cell = NewsFeedCell.dequeueFromCollectionView(collectionView, indexPath: indexPath)
         configureCell(cell, index: indexPath.section)
         cell.delegate = self
-
+        
         return cell
     }
 
