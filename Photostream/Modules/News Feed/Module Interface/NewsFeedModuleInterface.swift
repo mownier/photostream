@@ -14,4 +14,8 @@ protocol NewsFeedModuleInterface: class {
     func retrieveNextFeed(limit: UInt!)
     
     func presentCommentsInterface(shouldComment: Bool)
+    
+    func toggleLike(postId: String, isLiked: Bool)
+    func likePost(postId: String)
+    func unlikePost(postId: String)
 }
