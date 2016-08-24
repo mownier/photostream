@@ -14,4 +14,5 @@ protocol NewsFeedViewInterface: class {
     func showEmptyView()
     func showItems(items: NewsFeedDisplayItemCollection)
     func showError(error: NSError)
+    func updateCell(postId: String, isLiked: Bool)
 }
