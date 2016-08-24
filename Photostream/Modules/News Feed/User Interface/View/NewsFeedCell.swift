@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Spring
 
 let kNewsFeedCellNibName = "NewsFeedCell"
 let kNewsFeedCellReuseId = "NewsFeedCell"
@@ -31,12 +32,12 @@ class NewsFeedCell: UICollectionViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var likesCountButton: UIButton!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeButton: SpringButton!
 
     @IBOutlet weak var likesCountConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var heartIconConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var commentsCountConstraintHeight: NSLayoutConstraint!
-
+    
     @IBOutlet weak var commentsCountConstraintTop: NSLayoutConstraint!
     @IBOutlet weak var heartIconConstraintTop: NSLayoutConstraint!
     @IBOutlet weak var messageConstraintTop: NSLayoutConstraint!
@@ -54,7 +55,25 @@ class NewsFeedCell: UICollectionViewCell {
     }
 
     @IBAction func didTapPhoto(sender: AnyObject) {
-        delegate.newsFeedCellDidTapPhoto(self)
+        let heart = SpringImageView(image: UIImage(named: "heart_pink"))
+        heart.frame = CGRectMake(0, 0, 48, 48)
+        photoImageView.addSubviewAtCenter(heart)
+        heart.autohide = true
+        heart.autostart = false
+        heart.animation = "pop"
+        heart.duration = 1.0
+        heart.animateToNext {
+            heart.animation = "fadeOut"
+            heart.duration = 0.5
+            heart.animateToNext({ 
+                heart.removeFromSuperview()
+                self.delegate.newsFeedCellDidTapPhoto(self)
+            })
+        }
+        shouldHighlightLikeButton(true)
+        likeButton.animation = "pop"
+        likeButton.duration = 1.0
+        likeButton.animate()
     }
     
     @IBAction func didTapComment(sender: AnyObject) {
@@ -123,6 +142,14 @@ class NewsFeedCell: UICollectionViewCell {
 
     func setElapsedTime(time: String) {
         timeLabel.text = time
+    }
+    
+    func shouldHighlightLikeButton(should: Bool) {
+        if should {
+            likeButton.setImage(UIImage(named: "heart_pink"), forState: .Normal)
+        } else {
+            likeButton.setImage(UIImage(named: "heart"), forState: .Normal)
+        }
     }
 
     class func createNew() -> NewsFeedCell! {

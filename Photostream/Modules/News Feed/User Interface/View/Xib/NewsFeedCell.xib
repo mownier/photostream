@@ -15,16 +15,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="287"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fC1-F7-tz7" userLabel="Photo">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fC1-F7-tz7" userLabel="Photo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG8-vN-pAh" userLabel="Heart">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG8-vN-pAh" userLabel="Heart" customClass="SpringButton" customModule="Spring">
                         <rect key="frame" x="12" y="127" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="ECV-dj-26g"/>
                             <constraint firstAttribute="width" constant="24" id="ZHh-fg-MDl"/>
                         </constraints>
                         <state key="normal" image="heart"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="animation" value="pop"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="didTapLike:" destination="tqt-W0-7hV" eventType="touchUpInside" id="dvS-7n-nrY"/>
                         </connections>
@@ -75,6 +82,11 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6Dh-dL-0ah"/>
+                            </mask>
+                        </variation>
                     </label>
                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ca3-KF-2oX" userLabel="Comments">
                         <rect key="frame" x="12" y="233" width="296" height="16"/>
@@ -118,9 +130,9 @@
                 <constraint firstAttribute="bottom" secondItem="fuq-rv-Hex" secondAttribute="bottom" constant="8" id="ZxR-AO-1M2"/>
                 <constraint firstItem="LrX-4H-3Ie" firstAttribute="leading" secondItem="tqt-W0-7hV" secondAttribute="leading" constant="12" id="a4i-hM-aeo"/>
                 <constraint firstItem="eKW-Pk-5aF" firstAttribute="leading" secondItem="tqt-W0-7hV" secondAttribute="leading" constant="12" id="cmK-3d-Lie"/>
-                <constraint firstItem="Ca3-KF-2oX" firstAttribute="top" secondItem="ZMt-vR-29f" secondAttribute="bottom" constant="12" id="gVj-TS-aaG"/>
                 <constraint firstItem="Ajg-2C-Z9E" firstAttribute="leading" secondItem="cG8-vN-pAh" secondAttribute="trailing" constant="18" id="jTU-XK-dxE"/>
                 <constraint firstAttribute="trailingMargin" secondItem="fuq-rv-Hex" secondAttribute="trailing" constant="4" id="jh2-C6-lgL"/>
+                <constraint firstItem="Ca3-KF-2oX" firstAttribute="top" secondItem="ZMt-vR-29f" secondAttribute="bottom" constant="12" id="jl4-sg-YON"/>
                 <constraint firstAttribute="trailing" secondItem="Ca3-KF-2oX" secondAttribute="trailing" constant="12" id="kqe-gh-Psu"/>
                 <constraint firstItem="Ca3-KF-2oX" firstAttribute="leading" secondItem="tqt-W0-7hV" secondAttribute="leading" constant="12" id="lyy-sS-kK0"/>
                 <constraint firstItem="fC1-F7-tz7" firstAttribute="leading" secondItem="tqt-W0-7hV" secondAttribute="leading" id="mFd-f5-RcG"/>
@@ -138,7 +150,7 @@
             <connections>
                 <outlet property="commentsCountButton" destination="Ca3-KF-2oX" id="kia-3o-tv0"/>
                 <outlet property="commentsCountConstraintHeight" destination="x0a-Q9-zDu" id="QE9-Fe-Ogk"/>
-                <outlet property="commentsCountConstraintTop" destination="gVj-TS-aaG" id="9ph-Ru-R5D"/>
+                <outlet property="commentsCountConstraintTop" destination="jl4-sg-YON" id="vuH-QH-Bem"/>
                 <outlet property="heartIconConstraintHeight" destination="2WU-rs-Z8R" id="gRf-Sa-MK6"/>
                 <outlet property="heartIconConstraintTop" destination="IOH-wb-XIW" id="5dj-gT-wnc"/>
                 <outlet property="likeButton" destination="cG8-vN-pAh" id="aSi-V1-oaT"/>
