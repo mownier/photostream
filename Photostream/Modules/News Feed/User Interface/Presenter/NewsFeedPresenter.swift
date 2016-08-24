@@ -33,6 +33,22 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
     func presentCommentsInterface(shouldComment: Bool) {
         wireframe.navigateCommentsInterface(shouldComment)
     }
+    
+    func toggleLike(postId: String, isLiked: Bool) {
+        if isLiked {
+            unlikePost(postId)
+        } else {
+            likePost(postId) 
+        }
+    }
+    
+    func likePost(postId: String) {
+        view.updateCell(postId, isLiked: true)
+    }
+    
+    func unlikePost(postId : String) {
+        view.updateCell(postId, isLiked: false)
+    }
 
     func newsFeedDidFetchOk(data: NewsFeedDataCollection) {
         var collection = parseNewsFeedDisplayItems(data)
