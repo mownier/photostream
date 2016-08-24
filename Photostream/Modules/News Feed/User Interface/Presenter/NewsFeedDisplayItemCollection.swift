@@ -51,6 +51,17 @@ struct NewsFeedDisplayItemCollection {
     func isValid(index: Int) -> Bool {
         return items.isValid(index)
     }
+    
+    func isValid(postId: String) -> (Int, Bool) {
+        let index = items.indexOf { (item) -> Bool in
+            return item.postId == postId
+        }
+        if let i = index {
+            return (i, true)
+        } else {
+            return (-1, false)
+        }
+    }
 }
 
 struct NewsFeedDisplayItem {
