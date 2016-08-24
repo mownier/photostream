@@ -12,6 +12,8 @@ import Spring
 
 let kNewsFeedCellNibName = "NewsFeedCell"
 let kNewsFeedCellReuseId = "NewsFeedCell"
+let kNewsFeedCellCommonHeight: CGFloat = 16.0
+let kNewsFeedCellCommonTop: CGFloat = 12.0
 
 protocol NewsFeedCellDelegate: class {
 
@@ -23,9 +25,6 @@ protocol NewsFeedCellDelegate: class {
 }
 
 class NewsFeedCell: UICollectionViewCell {
-
-    private let COMMON_HEIGHT: CGFloat = 16.0
-    private let COMMON_TOP: CGFloat = 12.0
 
     @IBOutlet weak var commentsCountButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
@@ -104,9 +103,9 @@ class NewsFeedCell: UICollectionViewCell {
         } else {
             likesCountButton.setTitle(text, forState: .Normal)
 
-            heartIconConstraintTop.constant = COMMON_TOP
-            heartIconConstraintHeight.constant = COMMON_HEIGHT
-            likesCountConstraintHeight.constant = COMMON_HEIGHT
+            heartIconConstraintTop.constant = kNewsFeedCellCommonTop
+            heartIconConstraintHeight.constant = kNewsFeedCellCommonHeight
+            likesCountConstraintHeight.constant = kNewsFeedCellCommonHeight
         }
     }
 
@@ -117,8 +116,8 @@ class NewsFeedCell: UICollectionViewCell {
         } else {
             commentsCountButton.setTitle(text, forState: .Normal)
 
-            commentsCountConstraintTop.constant = COMMON_TOP
-            commentsCountConstraintHeight.constant = COMMON_HEIGHT
+            commentsCountConstraintTop.constant = kNewsFeedCellCommonTop
+            commentsCountConstraintHeight.constant = kNewsFeedCellCommonHeight
         }
     }
 
@@ -136,7 +135,7 @@ class NewsFeedCell: UICollectionViewCell {
             text.appendAttributedString(NSAttributedString(string: " "))
             text.appendAttributedString(message)
             messageLabel.attributedText = text
-            messageConstraintTop.constant = COMMON_TOP
+            messageConstraintTop.constant = kNewsFeedCellCommonTop
         }
     }
 
