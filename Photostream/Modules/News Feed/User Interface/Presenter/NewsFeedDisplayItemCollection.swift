@@ -85,22 +85,60 @@ struct NewsFeedCellDisplayItem {
     var photoWidth: Int
     var photoHeight: Int
     var isLiked: Bool
-    var likes: String
-    var comments: String
     var message: String
     var displayName: String
     var timestamp: NSDate
+    var likesCount: Int64
+    var commentsCount: Int64
+    var likes: String {
+        if likesCount > 0 {
+            if likesCount == 1 {
+                return "1 like"
+            } else {
+                return "\(likesCount) likes"
+            }
+        }
+        
+        return ""
+    }
+    
+    var comments: String {
+        if commentsCount > 0 {
+            if commentsCount == 1 {
+                return "View 1 comment"
+            } else {
+                if commentsCount > 3 {
+                   return "View \(commentsCount) comments"
+                } else {
+                    return "View all \(commentsCount) comments"
+                }
+            }
+        }
+        
+        return ""
+    }
 
     init() {
         photoUrl = ""
         photoWidth = 0
         photoHeight = 0
+        likesCount = 0
+        commentsCount = 0
         isLiked = false
-        likes = ""
-        comments = ""
         message = ""
         displayName = ""
         timestamp = NSDate()
+    }
+    
+    mutating func updateLike(state: Bool) {
+        if isLiked != state {
+            isLiked = state
+            if !isLiked {
+                likesCount -= 1
+            } else {
+                likesCount += 1
+            }
+        }
     }
 }
 
