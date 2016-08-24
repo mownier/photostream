@@ -104,8 +104,13 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     func updateCell(postId: String, isLiked: Bool) {
         let (i, valid) = displayItems.isValid(postId)
         if valid {
-            displayItems[i]!.cellItem.isLiked = isLiked
-
+            displayItems[i]!.cellItem.updateLike(isLiked)
+            var updatedHeight = kNewsFeedCellCommonHeight + kNewsFeedCellCommonTop
+            if displayItems[i]!.cellItem.likesCount < 1 {
+                updatedHeight *= -1
+            }
+            cellHeights[i] += updatedHeight
+            
             let set = NSIndexSet(index: i)
             UIView.performWithoutAnimation({
                 self.collectionView.reloadSections(set)
@@ -144,7 +149,7 @@ extension NewsFeedViewController: NewsFeedCellDelegate {
 extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 
     func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
-        if cellHeights.isValid(section) {
+        if cellHeights.isValid(section) && cellHeights[section] > -1 {
             return cellHeights[section]
         } else {
             let height = computeExpectedCellHeight(sizingCell, index: section, width: collectionView.width)
