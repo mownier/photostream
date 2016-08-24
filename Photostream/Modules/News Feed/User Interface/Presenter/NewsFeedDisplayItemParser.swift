@@ -34,26 +34,8 @@ class NewsFeedDisplayItemParser: NewsFeedDisplayItemSerializer {
         item.cellItem.photoUrl = post.photoUrl
         item.cellItem.photoWidth = post.photoWidth
         item.cellItem.photoHeight = post.photoHeight
-
-        if post.commentsCount > 0 {
-            if post.commentsCount == 1 {
-                item.cellItem.comments = "View 1 comment"
-            } else {
-                if post.commentsCount > 3 {
-                    item.cellItem.comments = "View \(post.commentsCount) comments"
-                } else {
-                    item.cellItem.comments = "View all \(post.commentsCount) comments"
-                }
-            }
-        }
-
-        if post.likesCount > 0 {
-            if post.likesCount == 1 {
-                item.cellItem.likes = "1 like"
-            } else {
-                item.cellItem.likes = "\(post.likesCount) likes"
-            }
-        }
+        item.cellItem.commentsCount = post.commentsCount
+        item.cellItem.likesCount = post.likesCount
 
         item.headerItem.avatarUrl = user.avatarUrl
         item.headerItem.displayName = user.displayName
