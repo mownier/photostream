@@ -130,7 +130,7 @@ struct NewsFeedCellDisplayItem {
         timestamp = NSDate()
     }
     
-    mutating func updateLike(state: Bool) {
+    mutating func updateLike(state: Bool) -> Bool{
         if isLiked != state {
             isLiked = state
             if !isLiked {
@@ -138,7 +138,11 @@ struct NewsFeedCellDisplayItem {
             } else {
                 likesCount += 1
             }
+            
+            return true
         }
+        
+        return false
     }
 }
 
