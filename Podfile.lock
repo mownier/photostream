@@ -45,6 +45,7 @@ PODS:
   - Kingfisher (2.4.2)
   - MONUniformFlowLayout (0.0.1)
   - SnapKit (0.21.1)
+  - Spring (1.0.3)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -57,7 +58,18 @@ DEPENDENCIES:
   - Kingfisher
   - MONUniformFlowLayout
   - SnapKit
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
   - SwiftyJSON
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift2
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
+    :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
@@ -76,8 +88,9 @@ SPEC CHECKSUMS:
   Kingfisher: 05bf8d04408aaa70fcd2c8c81b9f1d0f1ad313dd
   MONUniformFlowLayout: 30d902f87b57bd5e0eb6591d95cb298f9db497ef
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: de8dbf7d605f3ef2b700f5834841eb467674a451
+PODFILE CHECKSUM: b05c37846349afe06820800079dcbc4d2cdf2eed
 
 COCOAPODS: 1.0.1

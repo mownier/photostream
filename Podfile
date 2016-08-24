@@ -12,6 +12,7 @@ target 'Photostream' do
     pod 'SnapKit'
     pod 'MONUniformFlowLayout'
     pod 'DateTools'
+    pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
 end
 
 target 'PhotostreamTests' do
