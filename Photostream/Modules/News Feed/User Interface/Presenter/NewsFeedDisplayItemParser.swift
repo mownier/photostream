@@ -10,35 +10,35 @@ import UIKit
 
 class NewsFeedDisplayItemParser: NewsFeedDisplayItemSerializer {
 
-    func serialize(data: NewsFeedDataCollection) -> NewsFeedDisplayItemCollection {
-        var collection = NewsFeedDisplayItemCollection()
+    func serialize(data: NewsFeedDataCollection) -> PostCellItemList {
+        var list = PostCellItemList()
         for i in 0..<data.count {
             if let (post, user) = data[i] {
                 let item = serialize(post, user: user)
-                collection.append(item)
+                list.append(item)
             }
         }
-        return collection
+        return list
     }
 
-    func serialize(post: NewsFeedPostData, user: NewsFeedUserData) -> NewsFeedDisplayItem {
-        var item = NewsFeedDisplayItem()
+    func serialize(post: NewsFeedPostData, user: NewsFeedUserData) -> PostCellItem {
+        var item = PostCellItem()
 
         item.postId = post.postId
         item.userId = user.userId
 
-        item.cellItem.displayName = user.displayName
-        item.cellItem.isLiked = post.isLiked
-        item.cellItem.timestamp = NSDate(timeIntervalSince1970: post.timestamp)
-        item.cellItem.message = post.message
-        item.cellItem.photoUrl = post.photoUrl
-        item.cellItem.photoWidth = post.photoWidth
-        item.cellItem.photoHeight = post.photoHeight
-        item.cellItem.commentsCount = post.commentsCount
-        item.cellItem.likesCount = post.likesCount
+        item.displayName = user.displayName
+        item.isLiked = post.isLiked
+        item.timestamp = NSDate(timeIntervalSince1970: post.timestamp)
+        item.message = post.message
+        item.photoUrl = post.photoUrl
+        item.photoWidth = Float(post.photoWidth)
+        item.photoHeight = Float(post.photoHeight)
+        item.commentsCount = Int(post.commentsCount)
+        item.likesCount = Int(post.likesCount)
 
-        item.headerItem.avatarUrl = user.avatarUrl
-        item.headerItem.displayName = user.displayName
+        item.avatarUrl = user.avatarUrl
+        item.displayName = user.displayName
 
         return item
     }

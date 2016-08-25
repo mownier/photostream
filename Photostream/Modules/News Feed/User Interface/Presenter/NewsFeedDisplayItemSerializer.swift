@@ -10,6 +10,7 @@ import UIKit
 
 protocol NewsFeedDisplayItemSerializer: class {
 
-    func serialize(data: NewsFeedDataCollection) -> NewsFeedDisplayItemCollection
-    func serialize(post: NewsFeedPostData, user: NewsFeedUserData) -> NewsFeedDisplayItem
+    func serialize(post: NewsFeedPostData, user: NewsFeedUserData) -> PostCellItem
+    
+    func serialize(data: NewsFeedDataCollection) -> PostCellItemList
 }

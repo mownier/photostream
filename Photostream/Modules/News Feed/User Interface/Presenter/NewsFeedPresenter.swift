@@ -51,22 +51,18 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
     }
 
     func newsFeedDidFetchOk(data: NewsFeedDataCollection) {
-        var collection = parseNewsFeedDisplayItems(data)
+        var list = parser.serialize(data)
         if refreshing {
-            collection.shouldTruncate = false
+            list.mode = .Truncate
         } else {
-            collection.shouldTruncate = true
+            list.mode = .Default
         }
         refreshing = false
-        view.showItems(collection)
+        view.showItems(list)
         view.reloadView()
     }
 
     func newsFeedDidFetchWithError(error: NSError!) {
         view.showError(error)
-    }
-
-    private func parseNewsFeedDisplayItems(data: NewsFeedDataCollection) -> NewsFeedDisplayItemCollection {
-        return parser.serialize(data)
     }
 }
