@@ -191,15 +191,15 @@ class UserAPIFirebase: UserService {
                     profile.userId = user.id
 
                     if data2.hasChild("posts_count") {
-                        profile.postsCount = (data2.childSnapshotForPath("posts_count").value as! NSNumber).longLongValue
+                        profile.postsCount = data2.childSnapshotForPath("posts_count").value as! Int
                     }
 
                     if data2.hasChild("followers_count") {
-                        profile.followersCount = (data2.childSnapshotForPath("followers_count").value as! NSNumber).longLongValue
+                        profile.followersCount = data2.childSnapshotForPath("followers_count").value as! Int
                     }
 
                     if data2.hasChild("following_count") {
-                        profile.followingCount = (data2.childSnapshotForPath("following_count").value as! NSNumber).longLongValue
+                        profile.followingCount = data2.childSnapshotForPath("following_count").value as! Int
                     }
 
                     var result = UserServiceProfileResult()

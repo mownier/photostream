@@ -255,7 +255,7 @@ class PostAPIFirebase: PostService {
                             post.photo = photo
 
                             if data2.hasChild("likes_count") {
-                                post.likesCount = (data2.childSnapshotForPath("likes_count").value as! NSNumber).longLongValue
+                                post.likesCount = data2.childSnapshotForPath("likes_count").value as! Int
                             }
 
                             if data2.hasChild("likes/\(uid)") {
@@ -263,7 +263,7 @@ class PostAPIFirebase: PostService {
                             }
 
                             if data2.hasChild("comments_count") {
-                                post.commentsCount = (data2.childSnapshotForPath("comments_count").value as! NSNumber).longLongValue
+                                post.commentsCount = data2.childSnapshotForPath("comments_count").value as! Int
                             }
 
                             if data2.hasChild("message") {
