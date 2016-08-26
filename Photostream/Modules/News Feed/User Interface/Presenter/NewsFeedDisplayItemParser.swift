@@ -6,27 +6,24 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class NewsFeedDisplayItemParser: NewsFeedDisplayItemSerializer {
+class NewsFeedDisplayItemParser: PostCellItemSerializer {
 
-    func serialize(data: NewsFeedDataCollection) -> PostCellItemList {
-        var list = PostCellItemList()
-        for i in 0..<data.count {
-            if let (post, user) = data[i] {
-                let item = serialize(post, user: user)
-                list.append(item)
-            }
-        }
-        return list
+    var post: NewsFeedPostData
+    var user: NewsFeedUserData
+    
+    init(post: NewsFeedPostData, user: NewsFeedUserData) {
+        self.post = post
+        self.user = user
     }
-
-    func serialize(post: NewsFeedPostData, user: NewsFeedUserData) -> PostCellItem {
+    
+    func serializeCellItem() -> PostCellItem {
         var item = PostCellItem()
-
+        
         item.postId = post.postId
         item.userId = user.userId
-
+        
         item.displayName = user.displayName
         item.isLiked = post.isLiked
         item.timestamp = NSDate(timeIntervalSince1970: post.timestamp)
@@ -36,10 +33,10 @@ class NewsFeedDisplayItemParser: NewsFeedDisplayItemSerializer {
         item.photoHeight = Float(post.photoHeight)
         item.commentsCount = Int(post.commentsCount)
         item.likesCount = Int(post.likesCount)
-
+        
         item.avatarUrl = user.avatarUrl
         item.displayName = user.displayName
-
+        
         return item
     }
 }

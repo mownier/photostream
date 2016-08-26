@@ -13,11 +13,9 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
     weak var view: NewsFeedViewInterface!
     var wireframe: NewsFeedWireframe!
     var interactor: NewsFeedInteractorInput!
-    var parser: NewsFeedDisplayItemSerializer!
     var refreshing: Bool
 
     init() {
-        self.parser = NewsFeedDisplayItemParser()
         self.refreshing = false
     }
 
@@ -51,7 +49,7 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
     }
 
     func newsFeedDidFetchOk(data: NewsFeedDataCollection) {
-        var list = parser.serialize(data)
+        var list = parseList(data)
         if refreshing {
             list.mode = .Truncate
         } else {
@@ -64,5 +62,17 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
 
     func newsFeedDidFetchWithError(error: NSError!) {
         view.showError(error)
+    }
+    
+    private func parseList(data: NewsFeedDataCollection) -> PostCellItemList {
+        var list = PostCellItemList()
+        for i in 0..<data.count {
+            if let (post, user) = data[i] {
+                let parser = NewsFeedDisplayItemParser(post: post, user: user)
+                let item =  parser.serializeCellItem()
+                list.append(item)
+            }
+        }
+        return list
     }
 }

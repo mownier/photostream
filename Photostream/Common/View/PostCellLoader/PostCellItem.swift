@@ -8,6 +8,11 @@
 
 import Foundation
 
+public protocol PostCellItemSerializer {
+    
+    func serializeCellItem() -> PostCellItem
+}
+
 public struct PostCellItem {
 
     public var userId: String
