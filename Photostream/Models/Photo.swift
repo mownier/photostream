@@ -10,12 +10,13 @@ import Foundation
 
 struct Photo {
 
-    var url: String!
-    var width: Int!
-    var height: Int!
+    var url: String
+    var width: Int
+    var height: Int
 
     init() {
-        self.width = 0
-        self.height = 0
+        url = ""
+        width = 0
+        height = 0
     }
 }

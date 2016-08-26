@@ -21,11 +21,9 @@ struct AuthSession {
     }
 
     func isValid() -> Bool {
-        if let u = user,
-            let _ = u.id {
-            return true
-        } else {
-            return false
+        if let u = user where !u.id.isEmpty {
+           return true
         }
+        return false
     }
 }

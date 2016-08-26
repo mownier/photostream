@@ -10,23 +10,23 @@ import Foundation
 
 struct User {
 
-    var id: String!
-    var username: String!
-    var firstName: String!
-    var lastName: String!
-    var email: String!
-    var avatarUrl: String!
+    var id: String
+    var username: String
+    var firstName: String
+    var lastName: String
+    var email: String
+    var avatarUrl: String
 
-    var fullName: String! {
+    var fullName: String {
         get {
             return "\(firstName) \(lastName)"
         }
     }
 
-    var displayName: String! {
+    var displayName: String {
         get {
-            if let uname = username {
-                return uname
+            if !username.isEmpty {
+                return username
             } else {
                 return firstName
             }
@@ -34,6 +34,11 @@ struct User {
     }
 
     init() {
+        id = ""
+        username = ""
+        firstName = ""
+        lastName = ""
+        email = ""
         avatarUrl = ""
     }
 }
