@@ -45,8 +45,8 @@ struct NewsFeedDataCollection {
 struct NewsFeedPostData {
 
     var postId: String
-    var likesCount: Int64
-    var commentsCount: Int64
+    var likesCount: Int
+    var commentsCount: Int
     var message: String
     var timestamp: Double
     var isLiked: Bool
