@@ -8,15 +8,17 @@
 
 import Foundation
 
+public typealias PostCellItemArray = PostCellDisplayItemArray<PostCellItem>
+
 public protocol PostCellItemSerializer {
     
     func serializeCellItem() -> PostCellItem
 }
 
-public struct PostCellItem {
+public struct PostCellItem: PostCellDisplayItemProtocol {
 
-    public var userId: String
     public var postId: String
+    public var userId: String
     public var message: String
     public var displayName: String
     public var avatarUrl: String

@@ -4,14 +4,15 @@
 //
 //  Created by Mounir Ybanez on 25/08/2016.
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
-//
+//x
 
 import UIKit
 import MONUniformFlowLayout
 
-public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate {
+public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellLoaderDelegateProtocol {
 
     public var config: PostCellConfiguration!
+    public var dataSource: PostCellLoaderDataSourceProtocol!
     private var sizingCell: PostCell
     private var cellHeights: [CGFloat]
     
@@ -40,16 +41,39 @@ public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate {
         cellHeights[index] += height
     }
     
+    public func recalculateCellHeight() {
+        cellHeights.removeAll()
+    }
+    
     private func computeExpectedCellHeight(index: Int, width: CGFloat) -> CGFloat {
-        if let item = config[index] {
+        if let item = dataSource[index] as? PostCellItem {
             config.configureCell(sizingCell, item: item)
+            sizingCell.bounds = CGRectMake(0, 0, width, sizingCell.bounds.height)
             sizingCell.setNeedsLayout()
             sizingCell.layoutIfNeeded()
-            let size = sizingCell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+            sizingCell.sizeToFit()
+
             let photoWidth = CGFloat(item.photoWidth)
-            var photoHeight = CGFloat(item.photoHeight)
-            photoHeight = computeExpectedPhotoHeight(width, photoWidth: photoWidth, photoHeight: photoHeight)
-            return size.height + photoHeight
+            let photoHeight = CGFloat(item.photoHeight)
+            let pHeight = computeExpectedPhotoHeight(width, photoWidth: photoWidth, photoHeight: photoHeight)
+//            let size = sizingCell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+//            return size.height + pHeight
+            
+            var height = kPostCellInitialHeight
+            if item.likesCount == 0 {
+                height -= (kPostCellCommonTop + kPostCellCommonHeight)
+            }
+            if item.commentsCount == 0 {
+                height -= (kPostCellCommonTop + kPostCellCommonHeight)
+            }
+            
+            height -= (kPostCellCommonTop + kPostCellCommonHeight)
+            if !item.message.isEmpty {
+               height += sizingCell.messageLabel.intrinsicContentSize().height
+            }
+            
+            height -= kPostCellInitialPhotoHeight
+            return height + pHeight
         }
         return 0
     }

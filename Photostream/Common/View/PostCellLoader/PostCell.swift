@@ -14,6 +14,8 @@ let kPostCellNibName = "PostCell"
 let kPostCellReuseId = "PostCell"
 let kPostCellCommonHeight: CGFloat = 16.0
 let kPostCellCommonTop: CGFloat = 12.0
+let kPostCellInitialHeight: CGFloat = 287.0
+let kPostCellInitialPhotoHeight: CGFloat = 115.0
 
 public protocol PostCellActionHandler {
     
