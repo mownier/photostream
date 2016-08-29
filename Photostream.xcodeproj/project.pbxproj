@@ -29,7 +29,6 @@
 		B96AB3311D6EAE2800FF8961 /* PostCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AB3291D6EAE2800FF8961 /* PostCellDataSource.swift */; };
 		B96AB3321D6EAE2800FF8961 /* PostCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AB32A1D6EAE2800FF8961 /* PostCellDelegate.swift */; };
 		B96AB3331D6EAE2800FF8961 /* PostCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AB32B1D6EAE2800FF8961 /* PostCellItem.swift */; };
-		B96AB3341D6EAE2800FF8961 /* PostCellItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AB32C1D6EAE2800FF8961 /* PostCellItemList.swift */; };
 		B96AB3351D6EAE2800FF8961 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96AB32E1D6EAE2800FF8961 /* PostCell.xib */; };
 		B96AB3371D6EB7C700FF8961 /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AB3361D6EB7C700FF8961 /* PostHeaderView.swift */; };
 		B96AB3391D6EB7D300FF8961 /* PostFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AB3381D6EB7D300FF8961 /* PostFooterView.swift */; };
@@ -63,6 +62,18 @@
 		B9759BBC1D6C136F005AA0B6 /* CommentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9759BBB1D6C136F005AA0B6 /* CommentWireframe.swift */; };
 		B9759BC01D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9759BBF1D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard */; };
 		B9759BC21D6C1467005AA0B6 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */; };
+		B978B0551D73E337006FE0A4 /* PostGridCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B0541D73E337006FE0A4 /* PostGridCellDelegate.swift */; };
+		B978B0571D73E34D006FE0A4 /* PostGridCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B0561D73E34D006FE0A4 /* PostGridCellDataSource.swift */; };
+		B978B0591D73E5BB006FE0A4 /* PostGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B0581D73E5BB006FE0A4 /* PostGridCell.swift */; };
+		B978B05B1D73E6AF006FE0A4 /* PostGridCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B05A1D73E6AF006FE0A4 /* PostGridCellItem.swift */; };
+		B978B05F1D73E8F3006FE0A4 /* PostCellDisplayItemArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B05E1D73E8F3006FE0A4 /* PostCellDisplayItemArray.swift */; };
+		B978B0611D73F823006FE0A4 /* PostGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B978B0601D73F823006FE0A4 /* PostGridCell.xib */; };
+		B978B0631D740C04006FE0A4 /* PostCellLoaderCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B0621D740C04006FE0A4 /* PostCellLoaderCallback.swift */; };
+		B978B0651D740C2D006FE0A4 /* PostCellLoaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B0641D740C2D006FE0A4 /* PostCellLoaderConfiguration.swift */; };
+		B97D1B9C1D7149C800246D85 /* UserProfileViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D1B9B1D7149C800246D85 /* UserProfileViewInterface.swift */; };
+		B97D1B9E1D715ADC00246D85 /* UserProfileDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D1B9D1D715ADC00246D85 /* UserProfileDisplayItem.swift */; };
+		B97D1BA01D71609600246D85 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D1B9F1D71609600246D85 /* UIViewController+Extensions.swift */; };
+		B97D1BA21D716E9400246D85 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D1BA11D716E9400246D85 /* UserProfileService.swift */; };
 		B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3CE91D51C78900C5E76B /* AppDelegate.swift */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
@@ -138,7 +149,6 @@
 		B96AB3291D6EAE2800FF8961 /* PostCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellDataSource.swift; sourceTree = "<group>"; };
 		B96AB32A1D6EAE2800FF8961 /* PostCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellDelegate.swift; sourceTree = "<group>"; };
 		B96AB32B1D6EAE2800FF8961 /* PostCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellItem.swift; sourceTree = "<group>"; };
-		B96AB32C1D6EAE2800FF8961 /* PostCellItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellItemList.swift; sourceTree = "<group>"; };
 		B96AB32E1D6EAE2800FF8961 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		B96AB3361D6EB7C700FF8961 /* PostHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostHeaderView.swift; sourceTree = "<group>"; };
 		B96AB3381D6EB7D300FF8961 /* PostFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFooterView.swift; sourceTree = "<group>"; };
@@ -172,6 +182,18 @@
 		B9759BBB1D6C136F005AA0B6 /* CommentWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWireframe.swift; sourceTree = "<group>"; };
 		B9759BBF1D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommentModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		B978B0541D73E337006FE0A4 /* PostGridCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCellDelegate.swift; sourceTree = "<group>"; };
+		B978B0561D73E34D006FE0A4 /* PostGridCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCellDataSource.swift; sourceTree = "<group>"; };
+		B978B0581D73E5BB006FE0A4 /* PostGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCell.swift; sourceTree = "<group>"; };
+		B978B05A1D73E6AF006FE0A4 /* PostGridCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCellItem.swift; sourceTree = "<group>"; };
+		B978B05E1D73E8F3006FE0A4 /* PostCellDisplayItemArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellDisplayItemArray.swift; sourceTree = "<group>"; };
+		B978B0601D73F823006FE0A4 /* PostGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostGridCell.xib; sourceTree = "<group>"; };
+		B978B0621D740C04006FE0A4 /* PostCellLoaderCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellLoaderCallback.swift; sourceTree = "<group>"; };
+		B978B0641D740C2D006FE0A4 /* PostCellLoaderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellLoaderConfiguration.swift; sourceTree = "<group>"; };
+		B97D1B9B1D7149C800246D85 /* UserProfileViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewInterface.swift; sourceTree = "<group>"; };
+		B97D1B9D1D715ADC00246D85 /* UserProfileDisplayItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDisplayItem.swift; sourceTree = "<group>"; };
+		B97D1B9F1D71609600246D85 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		B97D1BA11D716E9400246D85 /* UserProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
 		B97E3CE91D51C78900C5E76B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -408,10 +430,16 @@
 				B96AB3271D6EAE2800FF8961 /* PostCell.swift */,
 				B96AB3291D6EAE2800FF8961 /* PostCellDataSource.swift */,
 				B96AB32A1D6EAE2800FF8961 /* PostCellDelegate.swift */,
+				B978B05E1D73E8F3006FE0A4 /* PostCellDisplayItemArray.swift */,
 				B96AB32B1D6EAE2800FF8961 /* PostCellItem.swift */,
-				B96AB32C1D6EAE2800FF8961 /* PostCellItemList.swift */,
 				B96AB3281D6EAE2800FF8961 /* PostCellLoader.swift */,
+				B978B0621D740C04006FE0A4 /* PostCellLoaderCallback.swift */,
+				B978B0641D740C2D006FE0A4 /* PostCellLoaderConfiguration.swift */,
 				B96AB3381D6EB7D300FF8961 /* PostFooterView.swift */,
+				B978B0581D73E5BB006FE0A4 /* PostGridCell.swift */,
+				B978B0561D73E34D006FE0A4 /* PostGridCellDataSource.swift */,
+				B978B0541D73E337006FE0A4 /* PostGridCellDelegate.swift */,
+				B978B05A1D73E6AF006FE0A4 /* PostGridCellItem.swift */,
 				B96AB3361D6EB7C700FF8961 /* PostHeaderView.swift */,
 				B96AB32D1D6EAE2800FF8961 /* Xib */,
 			);
@@ -424,6 +452,7 @@
 				B96AB32E1D6EAE2800FF8961 /* PostCell.xib */,
 				B96AB33A1D6EB87500FF8961 /* PostHeaderView.xib */,
 				B96AB33C1D6EB93800FF8961 /* PostFooterView.xib */,
+				B978B0601D73F823006FE0A4 /* PostGridCell.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -445,6 +474,7 @@
 				B96F13AE1D6FE9C500D59E3F /* UserProfileInteractorInput.swift */,
 				B96F13B01D6FE9D100D59E3F /* UserProfileInteractorOutput.swift */,
 				B96F13B21D6FEAEA00D59E3F /* UserProfileData.swift */,
+				B97D1BA11D716E9400246D85 /* UserProfileService.swift */,
 			);
 			path = "Application Logic";
 			sourceTree = "<group>";
@@ -471,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				B96F13A81D6FE95200D59E3F /* UserProfilePresenter.swift */,
+				B97D1B9D1D715ADC00246D85 /* UserProfileDisplayItem.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -479,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				B96F13A61D6FE93000D59E3F /* UserProfileViewController.swift */,
+				B97D1B9B1D7149C800246D85 /* UserProfileViewInterface.swift */,
 				B96F13B71D6FEF7400D59E3F /* Storyboard */,
 			);
 			path = View;
@@ -729,6 +761,7 @@
 				B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */,
 				B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */,
 				B96FCE871D68191600C2A165 /* Array+Extensions.swift */,
+				B97D1B9F1D71609600246D85 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1025,6 +1058,7 @@
 				B9759BC01D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B95FFD1D1D53184800085905 /* GoogleService-Info.plist in Resources */,
+				B978B0611D73F823006FE0A4 /* PostGridCell.xib in Resources */,
 				B96AB33D1D6EB93800FF8961 /* PostFooterView.xib in Resources */,
 				B96F13B91D6FEF7400D59E3F /* UserProfileModuleStoryboard.storyboard in Resources */,
 				B96AB33B1D6EB87500FF8961 /* PostHeaderView.xib in Resources */,
@@ -1145,7 +1179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B978B0651D740C2D006FE0A4 /* PostCellLoaderConfiguration.swift in Sources */,
 				B9D3FDDD1D64237C00B7CC2E /* FileAPIFirebase.swift in Sources */,
+				B97D1B9C1D7149C800246D85 /* UserProfileViewInterface.swift in Sources */,
 				B9706A971D5EED93002EE1D2 /* LoginModuleInterface.swift in Sources */,
 				B98EE63C1D616FEE00826C37 /* HomeWireframe.swift in Sources */,
 				B9706AA91D5EF320002EE1D2 /* RegistrationPresenter.swift in Sources */,
@@ -1154,11 +1190,13 @@
 				B96AB3391D6EB7D300FF8961 /* PostFooterView.swift in Sources */,
 				B9706AAE1D5F02D7002EE1D2 /* FeatureTests.swift in Sources */,
 				B9BFA4BF1D5B1B9A000AA368 /* Profile.swift in Sources */,
+				B97D1B9E1D715ADC00246D85 /* UserProfileDisplayItem.swift in Sources */,
 				B97E3CEA1D51C78900C5E76B /* AppDelegate.swift in Sources */,
 				B96FCE8C1D683DC500C2A165 /* NewsFeedDisplayItemCollection.swift in Sources */,
 				B9D3FDD71D64016B00B7CC2E /* NewsFeedViewInterface.swift in Sources */,
 				B9706AA71D5EF2BF002EE1D2 /* RegistrationViewController.swift in Sources */,
 				B9D3FDD31D63FB5100B7CC2E /* NewsFeedModuleInterface.swift in Sources */,
+				B978B0571D73E34D006FE0A4 /* PostGridCellDataSource.swift in Sources */,
 				B98EE6451D619E5900826C37 /* UITextField+Extensions.swift in Sources */,
 				B9759BC21D6C1467005AA0B6 /* CommentsViewController.swift in Sources */,
 				B9D4A15E1D5C40B5000975C7 /* UserAPIFirebase.swift in Sources */,
@@ -1168,20 +1206,23 @@
 				B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */,
 				B9706A9D1D5EEF19002EE1D2 /* LoginWireframe.swift in Sources */,
 				B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */,
-				B96AB3341D6EAE2800FF8961 /* PostCellItemList.swift in Sources */,
 				B9706A9B1D5EEEDF002EE1D2 /* LoginViewInterface.swift in Sources */,
 				B9D3FDD91D640A1300B7CC2E /* NewsFeedWireframe.swift in Sources */,
 				B95FFD0E1D5306F500085905 /* LoginInteractorInput.swift in Sources */,
 				B98EE6431D61963D00826C37 /* UIView+Extensions.swift in Sources */,
 				B96F13AB1D6FE96900D59E3F /* UserProfileModuleInterface.swift in Sources */,
+				B978B0591D73E5BB006FE0A4 /* PostGridCell.swift in Sources */,
 				B9706AA11D5EF10C002EE1D2 /* LoginViewController.swift in Sources */,
 				B9D3FDD51D63FBA100B7CC2E /* NewsFeedPresenter.swift in Sources */,
 				B9D3FDE71D644DD400B7CC2E /* UIColor+Extensions.swift in Sources */,
 				B96F13AF1D6FE9C500D59E3F /* UserProfileInteractorInput.swift in Sources */,
 				B9D3FDE51D6449E800B7CC2E /* UILabel+Extensions.swift in Sources */,
+				B97D1BA21D716E9400246D85 /* UserProfileService.swift in Sources */,
 				B96F13A51D6FE91A00D59E3F /* UserProfileWireframe.swift in Sources */,
 				B9BFA4BD1D5B18BF000AA368 /* UserService.swift in Sources */,
+				B978B05F1D73E8F3006FE0A4 /* PostCellDisplayItemArray.swift in Sources */,
 				B9706AA31D5EF206002EE1D2 /* RegistrationWireframe.swift in Sources */,
+				B978B0631D740C04006FE0A4 /* PostCellLoaderCallback.swift in Sources */,
 				B95FFD151D530BCD00085905 /* AuthenticationService.swift in Sources */,
 				B95A3D5B1D62F7B300DA456D /* NewsFeedHeaderView.swift in Sources */,
 				B97FB6F61D55B5A600B68048 /* NewsFeedInteractorOutput.swift in Sources */,
@@ -1189,7 +1230,9 @@
 				B9706AA51D5EF2A1002EE1D2 /* RegistrationViewInterface.swift in Sources */,
 				B96F13B31D6FEAEA00D59E3F /* UserProfileData.swift in Sources */,
 				B9D3FDE11D643B5E00B7CC2E /* NewsFeedCell.swift in Sources */,
+				B97D1BA01D71609600246D85 /* UIViewController+Extensions.swift in Sources */,
 				B96F13B11D6FE9D100D59E3F /* UserProfileInteractorOutput.swift in Sources */,
+				B978B0551D73E337006FE0A4 /* PostGridCellDelegate.swift in Sources */,
 				B95FFD121D53092000085905 /* User.swift in Sources */,
 				B96FCE881D68191600C2A165 /* Array+Extensions.swift in Sources */,
 				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
@@ -1210,6 +1253,7 @@
 				B97FB6F81D55B67E00B68048 /* PostService.swift in Sources */,
 				B97FB6F41D55B4E400B68048 /* NewsFeedInteractorInput.swift in Sources */,
 				B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */,
+				B978B05B1D73E6AF006FE0A4 /* PostGridCellItem.swift in Sources */,
 				B9706A9F1D5EF067002EE1D2 /* LoginWireframeInput.swift in Sources */,
 				B96AB3331D6EAE2800FF8961 /* PostCellItem.swift in Sources */,
 				B98032291D6ABFEF00EAEF51 /* NewsFeedDisplayItemParser.swift in Sources */,
