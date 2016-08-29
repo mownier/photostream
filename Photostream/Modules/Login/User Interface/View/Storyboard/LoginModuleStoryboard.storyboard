@@ -91,7 +91,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="yzj-bl-Jme"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="37"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
