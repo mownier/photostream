@@ -49,7 +49,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whf-I3-zyN" userLabel="Followers Count">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whf-I3-zyN" userLabel="Followers Count">
                                         <rect key="frame" x="177" y="12" width="63" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="o8p-UP-du4"/>
@@ -58,7 +58,7 @@
                                         <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-to-bLV" userLabel="Following Count">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-to-bLV" userLabel="Following Count">
                                         <rect key="frame" x="248" y="12" width="64" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="sYV-1a-57m"/>
@@ -67,7 +67,7 @@
                                         <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="122" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxo-Th-YdD" userLabel="Posts Count">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxo-Th-YdD" userLabel="Posts Count">
                                         <rect key="frame" x="106" y="12" width="63.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="x0u-ZN-ON7"/>
@@ -103,7 +103,7 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyl-3Q-3n6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyl-3Q-3n6">
                                         <rect key="frame" x="12" y="96" width="296" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="1yD-Cv-anZ"/>
@@ -112,13 +112,13 @@
                                         <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write some description here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rU3-4N-Ck3" userLabel="Description">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write your bio here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rU3-4N-Ck3" userLabel="Description">
                                         <rect key="frame" x="12" y="112" width="296" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="hMx-EI-Pdj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nD3-Du-trt">
@@ -128,13 +128,23 @@
                                         </constraints>
                                         <items>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="20k-Gc-baq"/>
-                                            <barButtonItem image="grid_icon" id="3Bu-w5-B6G" userLabel="Grid">
-                                                <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
+                                            <barButtonItem image="list_icon" id="2Su-5H-okA" userLabel="List">
+                                                <connections>
+                                                    <action selector="showList:" destination="ST5-yz-y96" id="6cW-x7-dzB"/>
+                                                </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="lM3-fW-SSc"/>
-                                            <barButtonItem image="list_icon" id="2Su-5H-okA" userLabel="List"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="sVh-3w-CQi"/>
+                                            <barButtonItem image="grid_icon" id="3Bu-w5-B6G" userLabel="Grid">
+                                                <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
+                                                <connections>
+                                                    <action selector="showGrid:" destination="ST5-yz-y96" id="FWA-Pk-nXA"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="q5J-fk-iPH"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="ICJ-gL-cH1"/>
                                             <barButtonItem image="map_icon" id="JMv-dv-0Ny" userLabel="Geotagged"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="0oo-5X-pDy"/>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="of7-Pt-KYM"/>
                                             <barButtonItem image="tagged_icon" id="lQu-u2-Xs2" userLabel="Tagged"/>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="m1E-55-Jvb"/>
@@ -199,31 +209,58 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha4-b8-Vyz">
-                                <rect key="frame" x="20" y="265" width="103" height="30"/>
-                                <state key="normal" title="Sign Out"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="signout" destination="ST5-yz-y96" eventType="touchUpInside" id="WaX-Kr-T0J"/>
-                                </connections>
-                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oIx-R3-Yvb" userLabel="Grid Collection View">
+                                <rect key="frame" x="0.0" y="185" width="320" height="270"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xes-vH-Vsy">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QzG-K8-YFe">
+                                <rect key="frame" x="0.0" y="185" width="320" height="270"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gsG-3s-2pw">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Avk-wF-cXN" firstAttribute="leading" secondItem="FV8-a8-u34" secondAttribute="leading" id="67P-gl-qDn"/>
                             <constraint firstItem="Avk-wF-cXN" firstAttribute="top" secondItem="IiS-C2-pZv" secondAttribute="bottom" id="C3E-tz-0VI"/>
+                            <constraint firstItem="oIx-R3-Yvb" firstAttribute="leading" secondItem="QzG-K8-YFe" secondAttribute="leading" id="CZq-Fz-tSX"/>
                             <constraint firstAttribute="trailing" secondItem="Avk-wF-cXN" secondAttribute="trailing" id="IPt-yl-LNz"/>
+                            <constraint firstItem="QzG-K8-YFe" firstAttribute="top" secondItem="Avk-wF-cXN" secondAttribute="bottom" id="JA0-bb-Kxm"/>
+                            <constraint firstItem="oIx-R3-Yvb" firstAttribute="trailing" secondItem="QzG-K8-YFe" secondAttribute="trailing" id="MbF-Ou-Vkg"/>
+                            <constraint firstItem="oIx-R3-Yvb" firstAttribute="top" secondItem="QzG-K8-YFe" secondAttribute="top" id="Urf-73-65t"/>
+                            <constraint firstItem="QzG-K8-YFe" firstAttribute="leading" secondItem="FV8-a8-u34" secondAttribute="leading" id="XfK-N9-Oas"/>
+                            <constraint firstAttribute="trailing" secondItem="QzG-K8-YFe" secondAttribute="trailing" id="d62-lq-Wl8"/>
+                            <constraint firstItem="AyT-tV-Wbp" firstAttribute="top" secondItem="QzG-K8-YFe" secondAttribute="bottom" id="fYg-l6-2p1"/>
+                            <constraint firstItem="oIx-R3-Yvb" firstAttribute="bottom" secondItem="QzG-K8-YFe" secondAttribute="bottom" id="jbr-YT-d1W"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="GbI-Cg-t1n"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="Yfe-Fk-3EG" id="EYV-EV-NgW"/>
+                        <outlet property="collectionView" destination="QzG-K8-YFe" id="IGk-dk-dRp"/>
+                        <outlet property="descriptionLabel" destination="rU3-4N-Ck3" id="kee-Rz-q9G"/>
+                        <outlet property="displayNameLabel" destination="Cyl-3Q-3n6" id="eKf-62-YCF"/>
+                        <outlet property="followersCountLabel" destination="Whf-I3-zyN" id="Eou-2p-LnM"/>
+                        <outlet property="followingCountLabel" destination="G3w-to-bLV" id="CGP-bG-Rk6"/>
+                        <outlet property="gridCollectionView" destination="oIx-R3-Yvb" id="gVi-aX-0Lk"/>
+                        <outlet property="headerView" destination="Avk-wF-cXN" id="TDT-v2-x1x"/>
+                        <outlet property="headerViewConstraintTop" destination="C3E-tz-0VI" id="my5-Gu-baD"/>
+                        <outlet property="postsCountLabel" destination="Gxo-Th-YdD" id="Zbz-gU-s4y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHz-nj-FJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -255,7 +292,7 @@
     </scenes>
     <resources>
         <image name="grid_icon" width="24" height="24"/>
-        <image name="list_icon" width="24" height="15"/>
+        <image name="list_icon" width="24" height="24"/>
         <image name="map_icon" width="20" height="24"/>
         <image name="tagged_icon" width="24" height="24"/>
         <image name="user_black_icon" width="24" height="24"/>

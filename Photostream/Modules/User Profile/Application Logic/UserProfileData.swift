@@ -17,12 +17,14 @@ struct UserProfileData {
     var postsCount: Int
     var followersCount: Int
     var followingCount: Int
+    var bio: String
     
     init() {
         userId = ""
         fullName = ""
         username = ""
         avatarUrl = ""
+        bio = ""
         postsCount = 0
         followersCount = 0
         followingCount = 0
