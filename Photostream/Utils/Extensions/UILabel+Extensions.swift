@@ -29,4 +29,10 @@ extension UILabel {
         titleView.sizeToFit()
         return titleView
     }
+    
+    override public var bounds: CGRect {
+        didSet {
+            self.preferredMaxLayoutWidth = self.bounds.width
+        }
+    }
 }
