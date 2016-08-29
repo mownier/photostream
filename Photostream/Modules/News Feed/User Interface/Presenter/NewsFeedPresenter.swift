@@ -64,8 +64,8 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
         view.showError(error)
     }
     
-    private func parseList(data: NewsFeedDataCollection) -> PostCellItemList {
-        var list = PostCellItemList()
+    private func parseList(data: NewsFeedDataCollection) -> PostCellItemArray {
+        var list = PostCellItemArray()
         for i in 0..<data.count {
             if let (post, user) = data[i] {
                 let parser = NewsFeedDisplayItemParser(post: post, user: user)

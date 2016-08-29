@@ -16,16 +16,17 @@ class NewsFeedViewController: UIViewController {
 
     var presenter: NewsFeedModuleInterface!
     
-    private lazy var loader: PostCellLoader = PostCellLoader(collectionView: self.collectionView)
+    private var loader: PostCellLoader!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loader.callback = self
+        loader = PostCellLoader(collectionView: collectionView, type: .List)
+        loader.listCellCallback = self
         loader.shouldEnableStickyHeader(true)
         loader.reload()
         
-        navigationItem.titleView = UILabel.createNavigationTitleView("Photostream")
+        // navigationItem.titleView = UILabel.createNavigationTitleView("Photostream")
         presenter.refreshFeed(10)
     }
 }
@@ -33,7 +34,7 @@ class NewsFeedViewController: UIViewController {
 extension NewsFeedViewController: NewsFeedViewInterface {
 
     func reloadView() {
-        collectionView.reloadData()
+        loader.reload()
     }
 
     func showEmptyView() {
@@ -44,7 +45,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
 
     }
 
-    func showItems(items: PostCellItemList) {
+    func showItems(items: PostCellItemArray) {
         loader.append(items)
     }
     
@@ -53,7 +54,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
 }
 
-extension NewsFeedViewController: PostCellLoaderCallback {
+extension NewsFeedViewController: PostListCellLoaderCallback {
     
     func postCellLoaderDidUnlikePost(postId: String) {
         presenter.unlikePost(postId)
