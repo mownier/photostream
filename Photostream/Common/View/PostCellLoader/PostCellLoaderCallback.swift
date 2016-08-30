@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol PostListCellLoaderCallback {
     
@@ -19,4 +19,10 @@ public protocol PostListCellLoaderCallback {
 public protocol PostGridCellLoaderCallback {
     
     func postCellLoaderWillShowPostDetails(postId: String)
+}
+
+public protocol PostCellLoaderScrollCallback {
+    
+    func postCellLoaderDidScrollDown(offsetY: CGFloat) -> Bool
+    func postCellLoaderDidScrollUp(offsetY: CGFloat) -> Bool
 }

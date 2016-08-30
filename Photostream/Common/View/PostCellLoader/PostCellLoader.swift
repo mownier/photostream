@@ -19,8 +19,15 @@ public protocol PostCellLoaderDataSourceProtocol {
 
 public protocol PostCellLoaderDelegateProtocol {
     
+    var scrollProtocol: PostCellLoaderScrollProtocol? { get set }
     func recalculateCellHeight()
     func updateCellHeight(index: Int, height: CGFloat)
+}
+
+public protocol PostCellLoaderScrollProtocol {
+    
+    func didScroll(view: UIScrollView)
+    func willBeginDragging(view: UIScrollView)
 }
 
 public enum PostCellLoaderType {
@@ -34,10 +41,15 @@ public class PostCellLoader: AnyObject {
     private var dataSource: UICollectionViewDataSource!
     private var delegate: UICollectionViewDelegate!
     private var type: PostCellLoaderType = .List
+    private var lastContentOffsetY: CGFloat = 0
     private lazy var flowLayout = MONUniformFlowLayout()
     
     public var listCellCallback: PostListCellLoaderCallback!
     public var gridCellCallback: PostGridCellLoaderCallback!
+    public var scrollCallback: PostCellLoaderScrollCallback?
+    public var contentOffset: CGPoint {
+        return collectionView.contentOffset
+    }
     
     init(collectionView: UICollectionView, type: PostCellLoaderType) {
         self.type = type
@@ -52,6 +64,7 @@ public class PostCellLoader: AnyObject {
             let listDelegate = PostCellDelegate()
             listDelegate.config = listDataSource
             listDelegate.dataSource = listDataSource
+            listDelegate.scrollProtocol = self
             
             self.dataSource = listDataSource
             self.delegate = listDelegate
@@ -68,6 +81,7 @@ public class PostCellLoader: AnyObject {
         case .Grid:
             let gridDataSource = PostGridCellDataSource(items: PostGridCellItemArray())
             let gridDelegate = PostGridCellDelegate(actionHandler: self)
+            gridDelegate.scrollProtocol = self
             self.dataSource = gridDataSource
             self.delegate = gridDelegate
             self.collectionView.dataSource = gridDataSource
@@ -134,6 +148,18 @@ public class PostCellLoader: AnyObject {
             break
         }
         
+    }
+    
+    public func isContentScrollable() -> Bool {
+        return collectionView.contentSize.height > collectionView.height + 1
+    }
+    
+    public func killScroll() {
+        updateContentOffset(collectionView.contentOffset, animated: false)
+    }
+    
+    public func updateContentOffset(offset: CGPoint, animated: Bool) {
+        collectionView.setContentOffset(offset, animated: animated)
     }
     
     private subscript (cell: PostCell) -> PostCellItem? {
@@ -206,5 +232,27 @@ extension PostCellLoader: PostGridCellActionHandler {
                 gridCellCallback.postCellLoaderWillShowPostDetails(item.postId)
             }
         }
+    }
+}
+
+extension PostCellLoader: PostCellLoaderScrollProtocol {
+    
+    public func didScroll(view: UIScrollView) {
+        if view.contentSize.height > view.height + 1 {
+            let currentOffsetY = view.contentOffset.y
+            if let callback = scrollCallback {
+                let delta = abs(lastContentOffsetY) - abs(currentOffsetY)
+                if lastContentOffsetY > currentOffsetY && lastContentOffsetY < (view.contentSize.height - view.height) {
+                    callback.postCellLoaderDidScrollUp(abs(delta))
+                } else if lastContentOffsetY < currentOffsetY && currentOffsetY > 0 {
+                    callback.postCellLoaderDidScrollDown(abs(delta))
+                }
+            }
+            lastContentOffsetY = currentOffsetY
+        }
+    }
+    
+    public func willBeginDragging(view: UIScrollView) {
+        lastContentOffsetY = view.contentOffset.y
     }
 }

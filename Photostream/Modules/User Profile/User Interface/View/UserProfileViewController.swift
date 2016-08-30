@@ -34,23 +34,57 @@ class UserProfileViewController: UIViewController {
         
         listLoader = PostCellLoader(collectionView: collectionView, type: .List)
         listLoader.listCellCallback = self
+        listLoader.scrollCallback = self
         listLoader.shouldEnableStickyHeader(false)
         
         gridLoader = PostCellLoader(collectionView: gridCollectionView, type: .Grid)
         gridLoader.gridCellCallback = self
+        gridLoader.scrollCallback = self
         
         presenter.fetchUserProfile()
         presenter.fetchUserPosts(10)
     }
     
     @IBAction func showList(sender: AnyObject) {
-        collectionView.hidden = false
-        gridCollectionView.hidden = true
+        toggleCollectionViewVisibility(collectionView, willHide: gridCollectionView)
+        updateLoader(gridLoader, next: listLoader)
     }
     
     @IBAction func showGrid(sender: AnyObject) {
-        collectionView.hidden = true
-        gridCollectionView.hidden = false
+        toggleCollectionViewVisibility(gridCollectionView, willHide: collectionView)
+        updateLoader(listLoader, next: gridLoader)
+    }
+    
+    private func toggleCollectionViewVisibility(willShow: UIView, willHide: UIView) {
+        willShow.hidden = false
+        willHide.hidden = true
+    }
+    
+    private func updateLoader(current: PostCellLoader, next: PostCellLoader) {
+        current.killScroll()
+        if !next.isContentScrollable() {
+            changeRelativeOffset(current)
+            putBackHeaderView()
+        }
+    }
+    
+    private func putBackHeaderView() {
+        UIView.animateWithDuration(0.3, animations: {
+            self.headerViewConstraintTop.constant = 0
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func changeRelativeOffset(loader: PostCellLoader) {
+        if loader.isContentScrollable() {
+            let offset = loader.contentOffset
+            let newOffset = CGPointMake(0, offset.y + headerViewConstraintTop.constant)
+            loader.updateContentOffset(newOffset, animated: false)
+        } else {
+            let newOffset = CGPointMake(0, 0)
+            loader.updateContentOffset(newOffset, animated: false)
+        }
     }
 }
 
@@ -106,5 +140,22 @@ extension UserProfileViewController: PostGridCellLoaderCallback {
     
     func postCellLoaderWillShowPostDetails(postId: String) {
         
+    }
+}
+
+extension UserProfileViewController: PostCellLoaderScrollCallback {
+    
+    func postCellLoaderDidScrollUp(deltaOffsetY: CGFloat) -> Bool {
+        let delta: CGFloat = headerViewConstraintTop.constant + deltaOffsetY
+        let minDelta: CGFloat = min(delta, 0)
+        headerViewConstraintTop.constant = minDelta
+        return minDelta == 0
+    }
+    
+    func postCellLoaderDidScrollDown(deltaOffsetY: CGFloat) -> Bool {
+        let delta: CGFloat = headerViewConstraintTop.constant - deltaOffsetY
+        let maxDelta: CGFloat = max(delta, -(185-44))
+        headerViewConstraintTop.constant = maxDelta
+        return maxDelta == -(185-44)
     }
 }

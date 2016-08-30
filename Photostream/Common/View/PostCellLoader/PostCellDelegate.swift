@@ -13,6 +13,7 @@ public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellL
 
     public var config: PostCellConfiguration!
     public var dataSource: PostCellLoaderDataSourceProtocol!
+    public var scrollProtocol: PostCellLoaderScrollProtocol?
     private var sizingCell: PostCell
     private var cellHeights: [CGFloat]
     
@@ -82,5 +83,16 @@ public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellL
         let ratio = maxWidth / photoWidth
         let height = CGFloat(photoHeight * ratio)
         return  height
+    }
+}
+
+extension PostCellDelegate {
+    
+    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        scrollProtocol?.willBeginDragging(scrollView)
+    }
+    
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
+        scrollProtocol?.didScroll(scrollView)
     }
 }

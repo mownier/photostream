@@ -14,6 +14,8 @@ public class PostGridCellDelegate: NSObject, MONUniformFlowLayoutDelegate {
     private let kColumnCount: UInt = 3
     private let actionHandler: PostGridCellActionHandler
     
+    public var scrollProtocol: PostCellLoaderScrollProtocol?
+    
     init(actionHandler: PostGridCellActionHandler) {
         self.actionHandler = actionHandler
     }
@@ -39,5 +41,16 @@ extension PostGridCellDelegate: PostCellLoaderDelegateProtocol {
     
     public func updateCellHeight(index: Int, height: CGFloat) {
         
+    }
+}
+
+extension PostGridCellDelegate {
+    
+    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        scrollProtocol?.willBeginDragging(scrollView)
+    }
+    
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
+        scrollProtocol?.didScroll(scrollView)
     }
 }
