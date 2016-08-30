@@ -9,9 +9,7 @@
         <scene sceneID="tGS-ZE-5Ev">
             <objects>
                 <viewControllerPlaceholder storyboardName="NewsFeedModuleStoryboard" referencedIdentifier="NewsFeedModuleRoot" id="Aca-U4-N0C" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="home_line_icon" selectedImage="home_black_icon" id="Zgj-fP-6cB">
-                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Item" id="Zgj-fP-6cB"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9w-9B-btd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,8 +44,4 @@
             <point key="canvasLocation" x="-553" y="116"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="home_black_icon" width="24" height="24"/>
-        <image name="home_line_icon" width="24" height="24"/>
-    </resources>
 </document>
