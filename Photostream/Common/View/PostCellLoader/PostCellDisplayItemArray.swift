@@ -14,27 +14,27 @@ public enum AppendMode: UInt {
 }
 
 public protocol PostCellDisplayItemProtocol {
-    
+
     var postId: String { get set }
 }
 
 public struct PostCellDisplayItemArray<Element> {
-    
+
     private var items: [Element]
     public var mode: AppendMode
     public var count: Int {
         return items.count
     }
-    
+
     init() {
         items = [Element]()
         mode = .Default
     }
-    
+
     public mutating func append(item: Element) {
         items.append(item)
     }
-    
+
     public subscript (index: Int) -> Element? {
         set {
             if let val = newValue {
@@ -48,13 +48,13 @@ public struct PostCellDisplayItemArray<Element> {
             return nil
         }
     }
-    
+
     public mutating func appendContentsOf(array: PostCellDisplayItemArray) {
         switch mode {
-            
+
         case .Default:
             self.items.appendContentsOf(array.items)
-            
+
         case .Truncate:
             self.items.removeAll()
             self.items.appendContentsOf(array.items)
@@ -63,7 +63,7 @@ public struct PostCellDisplayItemArray<Element> {
 }
 
 extension PostCellDisplayItemArray where Element: PostCellDisplayItemProtocol {
-    
+
     public subscript (postId: String) -> Int? {
         let index = items.indexOf { (item) -> Bool in
             return item.postId == postId

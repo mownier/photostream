@@ -24,7 +24,7 @@ class HomeWireframe: AnyObject {
         configureUserProfileModule()
         rootWireframe.showRootViewController(homeViewController, window: window)
     }
-    
+
     private func configureNewsFeedModule() {
         let nav = homeViewController.viewControllers![0] as! UINavigationController
         let vc = nav.viewControllers[0] as! NewsFeedViewController
@@ -34,7 +34,7 @@ class HomeWireframe: AnyObject {
         wireframe.newsFeedPresenter.view = vc
         vc.presenter = wireframe.newsFeedPresenter
     }
-    
+
     private func configureUserProfileModule() {
         let nav = homeViewController.viewControllers![2] as! UINavigationController
         let vc = nav.viewControllers[0] as! UserProfileViewController

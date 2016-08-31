@@ -25,7 +25,7 @@ class NewsFeedWireframe: AnyObject {
 
         self.newsFeedPresenter = presenter
     }
-    
+
     func navigateCommentsInterface(shouldComment: Bool) {
         rootWireframe.navigateCommentsModule(newsFeedViewController, shouldComment: shouldComment)
     }

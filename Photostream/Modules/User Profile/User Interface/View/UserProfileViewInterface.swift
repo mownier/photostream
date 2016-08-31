@@ -12,7 +12,7 @@ protocol UserProfileViewInterface {
 
     func showError(error: NSError)
     func showUserProfile(item: UserProfileDisplayItem)
-    
+
     func reloadUserPosts()
     func showUserPosts(list: UserProfilePostListItemArray, grid: UserProfilePostGridItemArray)
 }

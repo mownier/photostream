@@ -16,15 +16,15 @@ public class PostHeaderView: UICollectionReusableView {
 
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var displayNameLabel: UILabel!
-    
+
     public func setDisplayName(name: String) {
         displayNameLabel.text = name
     }
-    
+
     public func setAvatarUrl(url: String, placeholderImage: UIImage) {
         avatarImageView.kf_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
     }
-    
+
     public func createAvatarPlaceholderImage(initial: String) -> UIImage {
         let width = avatarImageView.width
         let height = avatarImageView.height

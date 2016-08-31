@@ -14,7 +14,7 @@ struct Comment {
     var message: String
     var timestamp: Double
     var userId: String
-    
+
     init() {
         id = ""
         message = ""

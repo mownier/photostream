@@ -11,7 +11,7 @@ import Foundation
 public typealias PostCellItemArray = PostCellDisplayItemArray<PostCellItem>
 
 public protocol PostCellItemSerializer {
-    
+
     func serializeCellItem() -> PostCellItem
 }
 
@@ -53,7 +53,7 @@ public struct PostCellItem: PostCellDisplayItemProtocol {
         }
         return ""
     }
-    
+
     init() {
         userId = ""
         postId = ""
@@ -68,8 +68,8 @@ public struct PostCellItem: PostCellDisplayItemProtocol {
         isLiked = false
         timestamp = NSDate()
     }
-    
-    public mutating func updateLike(state: Bool) -> Bool{
+
+    public mutating func updateLike(state: Bool) -> Bool {
         if isLiked != state {
             isLiked = state
             if !isLiked {

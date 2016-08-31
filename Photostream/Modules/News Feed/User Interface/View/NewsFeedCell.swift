@@ -36,18 +36,18 @@ class NewsFeedCell: UICollectionViewCell {
     @IBOutlet weak var likesCountConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var heartIconConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var commentsCountConstraintHeight: NSLayoutConstraint!
-    
+
     @IBOutlet weak var commentsCountConstraintTop: NSLayoutConstraint!
     @IBOutlet weak var heartIconConstraintTop: NSLayoutConstraint!
     @IBOutlet weak var messageConstraintTop: NSLayoutConstraint!
 
     weak var delegate: NewsFeedCellDelegate!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         photoImageView.userInteractionEnabled = true
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(NewsFeedCell.didTapPhoto(_:)))
         tap.numberOfTapsRequired = 2
         photoImageView.addGestureRecognizer(tap)
@@ -55,7 +55,7 @@ class NewsFeedCell: UICollectionViewCell {
 
     @IBAction func didTapPhoto(sender: AnyObject) {
         let heart = SpringImageView(image: UIImage(named: "heart_pink"))
-        heart.frame = CGRectMake(0, 0, 48, 48)
+        heart.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
         photoImageView.addSubviewAtCenter(heart)
         heart.autohide = true
         heart.autostart = false
@@ -64,7 +64,7 @@ class NewsFeedCell: UICollectionViewCell {
         heart.animateToNext {
             heart.animation = "fadeOut"
             heart.duration = 0.5
-            heart.animateToNext({ 
+            heart.animateToNext({
                 heart.removeFromSuperview()
                 self.delegate.newsFeedCellDidTapPhoto(self)
             })
@@ -74,7 +74,7 @@ class NewsFeedCell: UICollectionViewCell {
         likeButton.duration = 1.0
         likeButton.animate()
     }
-    
+
     @IBAction func didTapComment(sender: AnyObject) {
         delegate.newsFeedCellDidTapComment(self)
     }
@@ -142,7 +142,7 @@ class NewsFeedCell: UICollectionViewCell {
     func setElapsedTime(time: String) {
         timeLabel.text = time
     }
-    
+
     func shouldHighlightLikeButton(should: Bool) {
         if should {
             likeButton.setImage(UIImage(named: "heart_pink"), forState: .Normal)

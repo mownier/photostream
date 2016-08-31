@@ -15,7 +15,7 @@ class RootWireframe: AnyObject {
         nav.setNavigationBarHidden(true, animated: false)
         window.rootViewController = nav
     }
-    
+
     func navigateCommentsModule(viewController: UIViewController, shouldComment: Bool) {
         let wireframe = CommentWireframe()
         wireframe.rootWireframe = self

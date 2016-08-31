@@ -11,7 +11,7 @@ import UIKit
 class CommentsViewController: UIViewController {
 
     var shouldComment: Bool = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

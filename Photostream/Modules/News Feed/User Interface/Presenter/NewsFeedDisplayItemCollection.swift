@@ -51,7 +51,7 @@ struct NewsFeedDisplayItemCollection {
     func isValid(index: Int) -> Bool {
         return items.isValid(index)
     }
-    
+
     func isValid(postId: String) -> (Int, Bool) {
         let index = items.indexOf { (item) -> Bool in
             return item.postId == postId
@@ -98,10 +98,10 @@ struct NewsFeedCellDisplayItem {
                 return "\(likesCount) likes"
             }
         }
-        
+
         return ""
     }
-    
+
     var comments: String {
         if commentsCount > 0 {
             if commentsCount == 1 {
@@ -114,7 +114,7 @@ struct NewsFeedCellDisplayItem {
                 }
             }
         }
-        
+
         return ""
     }
 
@@ -129,8 +129,8 @@ struct NewsFeedCellDisplayItem {
         displayName = ""
         timestamp = NSDate()
     }
-    
-    mutating func updateLike(state: Bool) -> Bool{
+
+    mutating func updateLike(state: Bool) -> Bool {
         if isLiked != state {
             isLiked = state
             if !isLiked {
@@ -138,10 +138,10 @@ struct NewsFeedCellDisplayItem {
             } else {
                 likesCount += 1
             }
-            
+
             return true
         }
-        
+
         return false
     }
 }

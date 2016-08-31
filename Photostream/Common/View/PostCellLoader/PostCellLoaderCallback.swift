@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol PostListCellLoaderCallback {
-    
+
     func postCellLoaderDidLikePost(postId: String)
     func postCellLoaderDidUnlikePost(postId: String)
     func postCellLoaderWillShowLikes(postId: String)
@@ -17,12 +17,12 @@ public protocol PostListCellLoaderCallback {
 }
 
 public protocol PostGridCellLoaderCallback {
-    
+
     func postCellLoaderWillShowPostDetails(postId: String)
 }
 
 public protocol PostCellLoaderScrollCallback {
-    
+
     func postCellLoaderDidScrollDown(offsetY: CGFloat, loader: PostCellLoader) -> Bool
     func postCellLoaderDidScrollUp(offsetY: CGFloat, loader: PostCellLoader) -> Bool
 }

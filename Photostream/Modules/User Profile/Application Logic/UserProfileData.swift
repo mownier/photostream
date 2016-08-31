@@ -9,7 +9,7 @@
 import UIKit
 
 struct UserProfileData {
-    
+
     var userId: String
     var fullName: String
     var username: String
@@ -18,7 +18,7 @@ struct UserProfileData {
     var followersCount: Int
     var followingCount: Int
     var bio: String
-    
+
     init() {
         userId = ""
         fullName = ""

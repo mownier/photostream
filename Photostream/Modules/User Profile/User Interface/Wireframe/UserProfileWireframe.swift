@@ -13,7 +13,7 @@ class UserProfileWireframe: AnyObject {
     weak var userProfileViewController: UserProfileViewController!
     var userProfilePresenter: UserProfilePresenter!
     var rootWireframe: RootWireframe!
-    
+
     init(userId: String) {
         let session = AuthSession()
         let user = UserAPIFirebase(session: session)
@@ -24,15 +24,15 @@ class UserProfileWireframe: AnyObject {
         interactor.output = presenter
         presenter.interactor = interactor
         presenter.wireframe = self
-        
+
         self.userProfilePresenter = presenter
     }
-    
+
     func navigateCommentsInterface(postId: String, shouldComment: Bool) {
-        
+
     }
-    
+
     func navigateLikesInterface(postId: String) {
-        
+
     }
 }

@@ -12,7 +12,7 @@ struct UserProfileService {
 
     var user: UserService
     var post: PostService
-    
+
     init(user: UserService, post: PostService) {
         self.user = user
         self.post = post

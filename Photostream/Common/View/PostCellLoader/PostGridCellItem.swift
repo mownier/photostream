@@ -11,10 +11,10 @@ import UIKit
 public typealias PostGridCellItemArray = PostCellDisplayItemArray<PostGridCellItem>
 
 public struct PostGridCellItem: PostCellDisplayItemProtocol {
-    
+
     public var postId: String
     public var photoUrl: String
-    
+
     init() {
         postId = ""
         photoUrl = ""

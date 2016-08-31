@@ -9,17 +9,17 @@
 import Foundation
 
 class UserProfileInteractor: UserProfileInteractorInput {
-    
+
     var output: UserProfileInteractorOutput!
     var service: UserProfileService!
     var postService: PostService!
     var userId: String!
-    
+
     init(service: UserProfileService, userId: String) {
         self.service = service
         self.userId = userId
     }
-    
+
     func fetchUserProfile() {
         service.user.fetchProfile(userId) { (result, error) in
             if let error = error {
@@ -30,7 +30,7 @@ class UserProfileInteractor: UserProfileInteractorInput {
             }
         }
     }
-    
+
     func fetchUserPosts(limit: Int) {
         service.post.fetchPosts(userId, offset: 0, limit: 10) { (result, error) in
             if let error = error {
@@ -41,15 +41,15 @@ class UserProfileInteractor: UserProfileInteractorInput {
             }
         }
     }
-    
+
     func likePost(postId: String) {
-        
+
     }
-    
+
     func unlikePost(postId: String) {
-        
+
     }
-    
+
     private func parseUserProfileData(result: UserServiceProfileResult) -> UserProfileData {
         var data = UserProfileData()
         data.followersCount = result.profile.followersCount
@@ -62,10 +62,10 @@ class UserProfileInteractor: UserProfileInteractorInput {
         data.bio = result.profile.bio
         return data
     }
-    
+
     private func parseUserPostDataList(feed: PostServiceResult!) -> UserProfilePostDataList {
         var data = UserProfilePostDataList()
-        
+
         for i in 0..<feed.count {
             if let (post, user) = feed[i] {
                 var postItem = UserProfilePostData()
@@ -79,16 +79,16 @@ class UserProfileInteractor: UserProfileInteractorInput {
                 postItem.photoUrl = post.photo.url
                 postItem.photoWidth = post.photo.width
                 postItem.photoHeight  = post.photo.height
-                
+
                 var userItem = UserProfilePostAuthorData()
                 userItem.userId = user.id
                 userItem.avatarUrl = user.avatarUrl
                 userItem.displayName = user.displayName
-                
+
                 data.add(postItem, userItem: userItem)
             }
         }
-        
+
         return data
     }
 }

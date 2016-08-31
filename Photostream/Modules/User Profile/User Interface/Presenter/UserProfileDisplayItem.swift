@@ -17,7 +17,7 @@ struct UserProfileDisplayItem {
     var displayName: String
     var username: String
     var bio: String
-    
+
     init() {
         avatarUrl = ""
         postsCountText = ""
@@ -27,7 +27,7 @@ struct UserProfileDisplayItem {
         username = ""
         bio = ""
     }
-    
+
     func getBio() -> String {
         if !bio.isEmpty {
             return bio

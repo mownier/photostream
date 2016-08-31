@@ -19,7 +19,7 @@ protocol UserProfileModuleInterface {
 
     func fetchUserProfile()
     func fetchUserPosts(limit: Int)
-    
+
     func likePost(postId: String)
     func unlikePost(postId: String)
     func showComments(postId: String, shouldComment: Bool)

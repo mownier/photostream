@@ -20,7 +20,7 @@ extension UILabel {
 
         return label.createImage()
     }
-    
+
     class func createNavigationTitleView(text: String) -> UILabel {
         let titleView = UILabel(frame: CGRect.zero)
         let fontDesc = UIFontDescriptor(name: "Snell Roundhand", size: 24).fontDescriptorWithSymbolicTraits(.TraitBold)
@@ -29,7 +29,7 @@ extension UILabel {
         titleView.sizeToFit()
         return titleView
     }
-    
+
     override public var bounds: CGRect {
         didSet {
             self.preferredMaxLayoutWidth = self.bounds.width

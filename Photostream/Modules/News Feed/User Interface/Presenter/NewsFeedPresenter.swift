@@ -27,24 +27,24 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
     func retrieveNextFeed(limit: UInt!) {
         interactor.fetchNext(limit)
     }
-    
+
     func presentCommentsInterface(shouldComment: Bool) {
         wireframe.navigateCommentsInterface(shouldComment)
     }
-    
+
     func toggleLike(postId: String, isLiked: Bool) {
         if isLiked {
             unlikePost(postId)
         } else {
-            likePost(postId) 
+            likePost(postId)
         }
     }
-    
+
     func likePost(postId: String) {
         view.updateCell(postId, isLiked: true)
     }
-    
-    func unlikePost(postId : String) {
+
+    func unlikePost(postId: String) {
         view.updateCell(postId, isLiked: false)
     }
 
@@ -63,7 +63,7 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
     func newsFeedDidFetchWithError(error: NSError!) {
         view.showError(error)
     }
-    
+
     private func parseList(data: NewsFeedDataCollection) -> PostCellItemArray {
         var list = PostCellItemArray()
         for i in 0..<data.count {
