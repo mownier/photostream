@@ -36,7 +36,7 @@ class HomeWireframe: AnyObject {
     }
     
     private func configureUserProfileModule() {
-        let nav = homeViewController.viewControllers![1] as! UINavigationController
+        let nav = homeViewController.viewControllers![2] as! UINavigationController
         let vc = nav.viewControllers[0] as! UserProfileViewController
         let auth = AuthSession()
         let wireframe = UserProfileWireframe(userId: auth.user.id)
