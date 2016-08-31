@@ -23,6 +23,6 @@ public protocol PostGridCellLoaderCallback {
 
 public protocol PostCellLoaderScrollCallback {
     
-    func postCellLoaderDidScrollDown(offsetY: CGFloat) -> Bool
-    func postCellLoaderDidScrollUp(offsetY: CGFloat) -> Bool
+    func postCellLoaderDidScrollDown(offsetY: CGFloat, loader: PostCellLoader) -> Bool
+    func postCellLoaderDidScrollUp(offsetY: CGFloat, loader: PostCellLoader) -> Bool
 }

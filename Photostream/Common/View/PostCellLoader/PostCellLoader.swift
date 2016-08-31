@@ -55,7 +55,7 @@ public class PostCellLoader: AnyObject {
         self.type = type
         self.collectionView = collectionView
         self.collectionView.collectionViewLayout = flowLayout
-        
+        self.collectionView.alwaysBounceVertical = true
         switch type {
         case .List:
             let listDataSource = PostCellDataSource(items: PostCellItemArray())
@@ -151,7 +151,7 @@ public class PostCellLoader: AnyObject {
     }
     
     public func isContentScrollable() -> Bool {
-        return collectionView.contentSize.height > collectionView.height + 1
+        return collectionView.contentSize.height > collectionView.height
     }
     
     public func killScroll() {
@@ -238,14 +238,14 @@ extension PostCellLoader: PostGridCellActionHandler {
 extension PostCellLoader: PostCellLoaderScrollProtocol {
     
     public func didScroll(view: UIScrollView) {
-        if view.contentSize.height > view.height + 1 {
+        if isContentScrollable() {
             let currentOffsetY = view.contentOffset.y
             if let callback = scrollCallback {
                 let delta = abs(lastContentOffsetY) - abs(currentOffsetY)
                 if lastContentOffsetY > currentOffsetY && lastContentOffsetY < (view.contentSize.height - view.height) {
-                    callback.postCellLoaderDidScrollUp(abs(delta))
-                } else if lastContentOffsetY < currentOffsetY && currentOffsetY > 0 {
-                    callback.postCellLoaderDidScrollDown(abs(delta))
+                    callback.postCellLoaderDidScrollUp(abs(delta), loader: self)
+                } else if lastContentOffsetY < currentOffsetY && currentOffsetY > -(view.contentInset.top + view.contentInset.bottom) {
+                    callback.postCellLoaderDidScrollDown(abs(delta), loader: self)
                 }
             }
             lastContentOffsetY = currentOffsetY
