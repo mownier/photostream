@@ -17,7 +17,6 @@
 		B95FFD101D53087B00085905 /* LoginInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */; };
 		B95FFD121D53092000085905 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD111D53092000085905 /* User.swift */; };
 		B95FFD151D530BCD00085905 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD141D530BCD00085905 /* AuthenticationService.swift */; };
-		B95FFD1D1D53184800085905 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B95FFD1C1D53184800085905 /* GoogleService-Info.plist */; };
 		B95FFD211D532D3400085905 /* AuthenticationAPIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD201D532D3400085905 /* AuthenticationAPIFirebase.swift */; };
 		B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */; };
 		B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */; };
@@ -70,6 +69,7 @@
 		B978B0611D73F823006FE0A4 /* PostGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B978B0601D73F823006FE0A4 /* PostGridCell.xib */; };
 		B978B0631D740C04006FE0A4 /* PostCellLoaderCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B0621D740C04006FE0A4 /* PostCellLoaderCallback.swift */; };
 		B978B0651D740C2D006FE0A4 /* PostCellLoaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978B0641D740C2D006FE0A4 /* PostCellLoaderConfiguration.swift */; };
+		B97AE8191D76BC3B009FC88B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */; };
 		B97D1B9C1D7149C800246D85 /* UserProfileViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D1B9B1D7149C800246D85 /* UserProfileViewInterface.swift */; };
 		B97D1B9E1D715ADC00246D85 /* UserProfileDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D1B9D1D715ADC00246D85 /* UserProfileDisplayItem.swift */; };
 		B97D1BA01D71609600246D85 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D1B9F1D71609600246D85 /* UIViewController+Extensions.swift */; };
@@ -128,7 +128,6 @@
 		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B93F1F1D1D58810A006C6662 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedHeaderView.swift; sourceTree = "<group>"; };
@@ -137,7 +136,6 @@
 		B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorOutput.swift; sourceTree = "<group>"; };
 		B95FFD111D53092000085905 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B95FFD141D530BCD00085905 /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		B95FFD1C1D53184800085905 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B95FFD201D532D3400085905 /* AuthenticationAPIFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationAPIFirebase.swift; sourceTree = "<group>"; };
 		B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
 		B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorInput.swift; sourceTree = "<group>"; };
@@ -190,6 +188,7 @@
 		B978B0601D73F823006FE0A4 /* PostGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostGridCell.xib; sourceTree = "<group>"; };
 		B978B0621D740C04006FE0A4 /* PostCellLoaderCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellLoaderCallback.swift; sourceTree = "<group>"; };
 		B978B0641D740C2D006FE0A4 /* PostCellLoaderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellLoaderConfiguration.swift; sourceTree = "<group>"; };
+		B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B97D1B9B1D7149C800246D85 /* UserProfileViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewInterface.swift; sourceTree = "<group>"; };
 		B97D1B9D1D715ADC00246D85 /* UserProfileDisplayItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDisplayItem.swift; sourceTree = "<group>"; };
 		B97D1B9F1D71609600246D85 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -925,8 +924,7 @@
 		B9C1E4B01D507843000925FA /* Photostream */ = {
 			isa = PBXGroup;
 			children = (
-				B93F1F1D1D58810A006C6662 /* Location.gpx */,
-				B95FFD1C1D53184800085905 /* GoogleService-Info.plist */,
+				B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */,
 				B9C1E4BD1D507843000925FA /* Info.plist */,
 				B97E3CE81D51C78900C5E76B /* Application */,
 				B97E3CEB1D51C79300C5E76B /* Assets */,
@@ -1057,7 +1055,6 @@
 			files = (
 				B9759BC01D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
-				B95FFD1D1D53184800085905 /* GoogleService-Info.plist in Resources */,
 				B978B0611D73F823006FE0A4 /* PostGridCell.xib in Resources */,
 				B96AB33D1D6EB93800FF8961 /* PostFooterView.xib in Resources */,
 				B96F13B91D6FEF7400D59E3F /* UserProfileModuleStoryboard.storyboard in Resources */,
@@ -1069,6 +1066,7 @@
 				B96AB3351D6EAE2800FF8961 /* PostCell.xib in Resources */,
 				B98EE6411D61747400826C37 /* HomeModuleStoryboard.storyboard in Resources */,
 				B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */,
+				B97AE8191D76BC3B009FC88B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
