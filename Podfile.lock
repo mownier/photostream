@@ -56,17 +56,23 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Kingfisher
-  - MONUniformFlowLayout
+  - MONUniformFlowLayout (from `https://github.com/mownier/MONUniformFlowLayout.git`, branch `master`)
   - SnapKit
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
   - SwiftyJSON
 
 EXTERNAL SOURCES:
+  MONUniformFlowLayout:
+    :branch: master
+    :git: https://github.com/mownier/MONUniformFlowLayout.git
   Spring:
     :branch: swift2
     :git: https://github.com/MengTo/Spring.git
 
 CHECKOUT OPTIONS:
+  MONUniformFlowLayout:
+    :commit: f069a156c3675a4ad33c07960017a3cc2040d916
+    :git: https://github.com/mownier/MONUniformFlowLayout.git
   Spring:
     :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
     :git: https://github.com/MengTo/Spring.git
@@ -91,6 +97,6 @@ SPEC CHECKSUMS:
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: b05c37846349afe06820800079dcbc4d2cdf2eed
+PODFILE CHECKSUM: ada0295ba62e2335dc2fddbf7d4f1ca56b1750f5
 
 COCOAPODS: 1.0.1

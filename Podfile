@@ -10,7 +10,7 @@ target 'Photostream' do
     pod 'Firebase/Storage'
     pod 'Kingfisher'
     pod 'SnapKit'
-    pod 'MONUniformFlowLayout'
+    pod 'MONUniformFlowLayout', :git => 'https://github.com/mownier/MONUniformFlowLayout.git', :branch => 'master'
     pod 'DateTools'
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
 end
