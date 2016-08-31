@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Profile-->
@@ -17,6 +18,28 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oIx-R3-Yvb" userLabel="Grid Collection View">
+                                <rect key="frame" x="0.0" y="44" width="320" height="411"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xes-vH-Vsy">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QzG-K8-YFe">
+                                <rect key="frame" x="0.0" y="44" width="320" height="411"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gsG-3s-2pw">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Avk-wF-cXN" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
                                 <subviews>
@@ -159,6 +182,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="8BT-an-kCl" firstAttribute="leading" secondItem="mdf-bk-UjY" secondAttribute="trailing" constant="8" id="0YC-xT-1Xg"/>
                                     <constraint firstItem="rU3-4N-Ck3" firstAttribute="top" secondItem="Cyl-3Q-3n6" secondAttribute="bottom" id="1FR-A5-EkK"/>
@@ -209,28 +233,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oIx-R3-Yvb" userLabel="Grid Collection View">
-                                <rect key="frame" x="0.0" y="185" width="320" height="270"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xes-vH-Vsy">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QzG-K8-YFe">
-                                <rect key="frame" x="0.0" y="185" width="320" height="270"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gsG-3s-2pw">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -241,11 +243,17 @@
                             <constraint firstItem="QzG-K8-YFe" firstAttribute="top" secondItem="Avk-wF-cXN" secondAttribute="bottom" id="JA0-bb-Kxm"/>
                             <constraint firstItem="oIx-R3-Yvb" firstAttribute="trailing" secondItem="QzG-K8-YFe" secondAttribute="trailing" id="MbF-Ou-Vkg"/>
                             <constraint firstItem="oIx-R3-Yvb" firstAttribute="top" secondItem="QzG-K8-YFe" secondAttribute="top" id="Urf-73-65t"/>
+                            <constraint firstItem="QzG-K8-YFe" firstAttribute="top" secondItem="FV8-a8-u34" secondAttribute="topMargin" constant="44" id="Usk-9x-N1L"/>
                             <constraint firstItem="QzG-K8-YFe" firstAttribute="leading" secondItem="FV8-a8-u34" secondAttribute="leading" id="XfK-N9-Oas"/>
                             <constraint firstAttribute="trailing" secondItem="QzG-K8-YFe" secondAttribute="trailing" id="d62-lq-Wl8"/>
                             <constraint firstItem="AyT-tV-Wbp" firstAttribute="top" secondItem="QzG-K8-YFe" secondAttribute="bottom" id="fYg-l6-2p1"/>
                             <constraint firstItem="oIx-R3-Yvb" firstAttribute="bottom" secondItem="QzG-K8-YFe" secondAttribute="bottom" id="jbr-YT-d1W"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JA0-bb-Kxm"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="GbI-Cg-t1n"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
