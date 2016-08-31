@@ -41,6 +41,12 @@ class UserProfileViewController: UIViewController {
         gridLoader.gridCellCallback = self
         gridLoader.scrollCallback = self
         
+        let inset = UIEdgeInsetsMake(185-44, 0, 0, 0)
+        collectionView.contentInset = inset
+        collectionView.scrollIndicatorInsets = inset
+        gridCollectionView.contentInset = inset
+        gridCollectionView.scrollIndicatorInsets = inset
+        
         presenter.fetchUserProfile()
         presenter.fetchUserPosts(10)
     }
@@ -69,7 +75,7 @@ class UserProfileViewController: UIViewController {
     }
     
     private func putBackHeaderView() {
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animateWithDuration(0.25, animations: {
             self.headerViewConstraintTop.constant = 0
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
@@ -113,7 +119,7 @@ extension UserProfileViewController: UserProfileViewInterface {
     }
     
     func showError(error: NSError) {
-        print("user profile:", error)
+        
     }
 }
 
@@ -145,14 +151,17 @@ extension UserProfileViewController: PostGridCellLoaderCallback {
 
 extension UserProfileViewController: PostCellLoaderScrollCallback {
     
-    func postCellLoaderDidScrollUp(deltaOffsetY: CGFloat) -> Bool {
-        let delta: CGFloat = headerViewConstraintTop.constant + deltaOffsetY
-        let minDelta: CGFloat = min(delta, 0)
-        headerViewConstraintTop.constant = minDelta
-        return minDelta == 0
+    func postCellLoaderDidScrollUp(deltaOffsetY: CGFloat, loader: PostCellLoader) -> Bool {
+        if loader.contentOffset.y < 0 {
+            let delta: CGFloat = headerViewConstraintTop.constant + deltaOffsetY
+            let minDelta: CGFloat = min(delta, 0)
+            headerViewConstraintTop.constant = minDelta
+            return minDelta == 0
+        }
+        return false
     }
     
-    func postCellLoaderDidScrollDown(deltaOffsetY: CGFloat) -> Bool {
+    func postCellLoaderDidScrollDown(deltaOffsetY: CGFloat, loader: PostCellLoader) -> Bool {
         let delta: CGFloat = headerViewConstraintTop.constant - deltaOffsetY
         let maxDelta: CGFloat = max(delta, -(185-44))
         headerViewConstraintTop.constant = maxDelta
