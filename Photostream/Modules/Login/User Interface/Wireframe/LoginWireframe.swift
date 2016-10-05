@@ -25,9 +25,9 @@ class LoginWireframe: LoginWireframeInput {
         self.loginPresenter = presenter
     }
 
-    func navigateLoginInterfaceFromWindow(window: UIWindow!) {
+    func navigateLoginInterfaceFromWindow(_ window: UIWindow!) {
         let sb = UIStoryboard(name: "LoginModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        let vc = sb.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         loginViewController = vc
         loginPresenter.view = vc
         vc.presenter = loginPresenter
@@ -45,10 +45,10 @@ class LoginWireframe: LoginWireframeInput {
         registrationWireframe.navigateRegistrationInterfaceFromViewController(loginViewController)
     }
 
-    func navigateLoginErrorAlert(error: NSError!) {
-        let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+    func navigateLoginErrorAlert(_ error: NSError!) {
+        let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
-        loginViewController.presentViewController(alert, animated: true, completion: nil)
+        loginViewController.present(alert, animated: true, completion: nil)
     }
 }

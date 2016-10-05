@@ -12,11 +12,11 @@ import FirebaseDatabase
 
 class AuthenticationAPIFirebase: AuthenticationService {
 
-    func login(email: String!, password: String!, callback: AuthenticationServiceCallback!) {
+    func login(_ email: String!, password: String!, callback: AuthenticationServiceCallback!) {
         if let auth = FIRAuth.auth() {
-            auth.signInWithEmail(email, password: password) { (user, error) in
+            auth.signIn(withEmail: email, password: password) { (user, error) in
                 if let error = error {
-                    callback(nil, error)
+                    callback(nil, error as NSError)
                 } else {
                     guard let user = user else {
                         callback(nil, NSError(domain: "LoginAPIFirebase", code: 1, userInfo: ["message": "FIRUser is nil."]))
@@ -26,8 +26,8 @@ class AuthenticationAPIFirebase: AuthenticationService {
                     let id = user.uid
                     let ref = FIRDatabase.database().reference()
                     let path = "users/\(id)"
-                    ref.child(path).observeSingleEventOfType(.Value, withBlock: { (data) in
-                        guard let value = data.value else {
+                    ref.child(path).observeSingleEvent(of: .value, with: { (data) in
+                        guard let value = data.value as? [String: AnyObject] else {
                             callback(nil, NSError(domain: "LoginAPIFirebase", code: 2, userInfo: ["message": "FIRDataSnapshot is nil."]))
                             return
                         }
@@ -45,11 +45,11 @@ class AuthenticationAPIFirebase: AuthenticationService {
         }
     }
 
-    func register(email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceCallback!) {
+    func register(_ email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceCallback!) {
         if let auth = FIRAuth.auth() {
-            auth.createUserWithEmail(email, password: password, completion: { (user, error) in
+            auth.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if let error = error {
-                    callback(nil, error)
+                    callback(nil, error as NSError)
                 } else {
                     guard let user = user else {
                         callback(nil, NSError(domain: "RegistrationAPIFirebase", code: 1, userInfo: ["message": "FIRUser is nil."]))

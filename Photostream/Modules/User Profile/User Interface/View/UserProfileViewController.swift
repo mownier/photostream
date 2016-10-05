@@ -26,18 +26,18 @@ class UserProfileViewController: UIViewController {
 
     @IBOutlet weak var headerViewConstraintTop: NSLayoutConstraint!
 
-    private var listLoader: PostCellLoader!
-    private var gridLoader: PostCellLoader!
+    fileprivate var listLoader: PostCellLoader!
+    fileprivate var gridLoader: PostCellLoader!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        listLoader = PostCellLoader(collectionView: collectionView, type: .List)
+        listLoader = PostCellLoader(collectionView: collectionView, type: .list)
         listLoader.listCellCallback = self
         listLoader.scrollCallback = self
         listLoader.shouldEnableStickyHeader(false)
 
-        gridLoader = PostCellLoader(collectionView: gridCollectionView, type: .Grid)
+        gridLoader = PostCellLoader(collectionView: gridCollectionView, type: .grid)
         gridLoader.gridCellCallback = self
         gridLoader.scrollCallback = self
 
@@ -51,22 +51,22 @@ class UserProfileViewController: UIViewController {
         presenter.fetchUserPosts(10)
     }
 
-    @IBAction func showList(sender: AnyObject) {
+    @IBAction func showList(_ sender: AnyObject) {
         toggleCollectionViewVisibility(collectionView, willHide: gridCollectionView)
         updateLoader(gridLoader, next: listLoader)
     }
 
-    @IBAction func showGrid(sender: AnyObject) {
+    @IBAction func showGrid(_ sender: AnyObject) {
         toggleCollectionViewVisibility(gridCollectionView, willHide: collectionView)
         updateLoader(listLoader, next: gridLoader)
     }
 
-    private func toggleCollectionViewVisibility(willShow: UIView, willHide: UIView) {
-        willShow.hidden = false
-        willHide.hidden = true
+    fileprivate func toggleCollectionViewVisibility(_ willShow: UIView, willHide: UIView) {
+        willShow.isHidden = false
+        willHide.isHidden = true
     }
 
-    private func updateLoader(current: PostCellLoader, next: PostCellLoader) {
+    fileprivate func updateLoader(_ current: PostCellLoader, next: PostCellLoader) {
         current.killScroll()
         if !next.isContentScrollable() {
             changeRelativeOffset(current)
@@ -74,18 +74,18 @@ class UserProfileViewController: UIViewController {
         }
     }
 
-    private func putBackHeaderView() {
-        UIView.animateWithDuration(0.25, animations: {
+    fileprivate func putBackHeaderView() {
+        UIView.animate(withDuration: 0.25, animations: {
             self.headerViewConstraintTop.constant = 0
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         })
     }
 
-    private func changeRelativeOffset(loader: PostCellLoader) {
+    fileprivate func changeRelativeOffset(_ loader: PostCellLoader) {
         if loader.isContentScrollable() {
             let offset = loader.contentOffset
-            let newOffset = CGPointMake(0, offset.y + headerViewConstraintTop.constant)
+            let newOffset = CGPoint(x: 0, y: offset.y + headerViewConstraintTop.constant)
             loader.updateContentOffset(newOffset, animated: false)
         } else {
             let newOffset = CGPoint(x: 0, y: 0)
@@ -96,11 +96,12 @@ class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController: UserProfileViewInterface {
 
-    func showUserProfile(item: UserProfileDisplayItem) {
+    func showUserProfile(_ item: UserProfileDisplayItem) {
         let text: String = item.displayName[0]
-        let font = UIFont.systemFontOfSize(28, weight: UIFontWeightMedium)
+        let font = UIFont.systemFont(ofSize: 28, weight: UIFontWeightMedium)
         let image = UILabel.createPlaceholderImageWithFrame(avatarImageView.bounds, text: text, font: font)
-        avatarImageView.kf_setImageWithURL(NSURL(string: item.avatarUrl), placeholderImage: image, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
+        let resource = ImageResource(downloadURL: URL(string: item.avatarUrl)!)
+        avatarImageView.kf.setImage(with: resource, placeholder: image)
         postsCountLabel.text = item.postsCountText
         followersCountLabel.text = item.followersCountText
         followingCountLabel.text = item.followingCountText
@@ -108,7 +109,7 @@ extension UserProfileViewController: UserProfileViewInterface {
         descriptionLabel.text = item.getBio()
     }
 
-    func showUserPosts(list: UserProfilePostListItemArray, grid: UserProfilePostGridItemArray) {
+    func showUserPosts(_ list: UserProfilePostListItemArray, grid: UserProfilePostGridItemArray) {
         listLoader.append(list)
         gridLoader.append(grid)
     }
@@ -118,53 +119,50 @@ extension UserProfileViewController: UserProfileViewInterface {
         gridLoader.reload()
     }
 
-    func showError(error: NSError) {
+    func showError(_ error: NSError) {
 
     }
 }
 
 extension UserProfileViewController: PostListCellLoaderCallback {
 
-    func postCellLoaderDidLikePost(postId: String) {
+    func postCellLoaderDidLikePost(_ postId: String) {
         presenter.likePost(postId)
     }
 
-    func postCellLoaderDidUnlikePost(postId: String) {
+    func postCellLoaderDidUnlikePost(_ postId: String) {
         presenter.unlikePost(postId)
     }
 
-    func postCellLoaderWillShowLikes(postId: String) {
+    func postCellLoaderWillShowLikes(_ postId: String) {
         presenter.showLikes(postId)
     }
 
-    func postCellLoaderWillShowComments(postId: String, shouldComment: Bool) {
+    func postCellLoaderWillShowComments(_ postId: String, shouldComment: Bool) {
         presenter.showComments(postId, shouldComment: shouldComment)
     }
 }
 
 extension UserProfileViewController: PostGridCellLoaderCallback {
 
-    func postCellLoaderWillShowPostDetails(postId: String) {
+    func postCellLoaderWillShowPostDetails(_ postId: String) {
 
     }
 }
 
 extension UserProfileViewController: PostCellLoaderScrollCallback {
 
-    func postCellLoaderDidScrollUp(deltaOffsetY: CGFloat, loader: PostCellLoader) -> Bool {
+    func postCellLoaderDidScrollUp(_ deltaOffsetY: CGFloat, loader: PostCellLoader) {
         if loader.contentOffset.y < 0 {
             let delta: CGFloat = headerViewConstraintTop.constant + deltaOffsetY
             let minDelta: CGFloat = min(delta, 0)
             headerViewConstraintTop.constant = minDelta
-            return minDelta == 0
         }
-        return false
     }
 
-    func postCellLoaderDidScrollDown(deltaOffsetY: CGFloat, loader: PostCellLoader) -> Bool {
+    func postCellLoaderDidScrollDown(_ deltaOffsetY: CGFloat, loader: PostCellLoader) {
         let delta: CGFloat = headerViewConstraintTop.constant - deltaOffsetY
         let maxDelta: CGFloat = max(delta, -(185-44))
         headerViewConstraintTop.constant = maxDelta
-        return maxDelta == -(185-44)
     }
 }

@@ -16,12 +16,12 @@ class NewsFeedViewController: UIViewController {
 
     var presenter: NewsFeedModuleInterface!
 
-    private var loader: PostCellLoader!
+    fileprivate var loader: PostCellLoader!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loader = PostCellLoader(collectionView: collectionView, type: .List)
+        loader = PostCellLoader(collectionView: collectionView, type: .list)
         loader.listCellCallback = self
         loader.shouldEnableStickyHeader(true)
         loader.reload()
@@ -41,34 +41,34 @@ extension NewsFeedViewController: NewsFeedViewInterface {
 
     }
 
-    func showError(error: NSError) {
+    func showError(_ error: NSError) {
 
     }
 
-    func showItems(items: PostCellItemArray) {
+    func showItems(_ items: PostCellItemArray) {
         loader.append(items)
     }
 
-    func updateCell(postId: String, isLiked: Bool) {
+    func updateCell(_ postId: String, isLiked: Bool) {
         loader.reloadCell(postId, likeState: isLiked)
     }
 }
 
 extension NewsFeedViewController: PostListCellLoaderCallback {
 
-    func postCellLoaderDidUnlikePost(postId: String) {
+    func postCellLoaderDidUnlikePost(_ postId: String) {
         presenter.unlikePost(postId)
     }
 
-    func postCellLoaderDidLikePost(postId: String) {
+    func postCellLoaderDidLikePost(_ postId: String) {
         presenter.likePost(postId)
     }
 
-    func postCellLoaderWillShowLikes(postId: String) {
+    func postCellLoaderWillShowLikes(_ postId: String) {
 
     }
 
-    func postCellLoaderWillShowComments(postId: String, shouldComment: Bool) {
+    func postCellLoaderWillShowComments(_ postId: String, shouldComment: Bool) {
         presenter.presentCommentsInterface(shouldComment)
     }
 }

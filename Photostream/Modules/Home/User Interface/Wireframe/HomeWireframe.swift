@@ -16,16 +16,16 @@ class HomeWireframe: AnyObject {
 
     init() {
         let sb = UIStoryboard(name: "HomeModuleStoryboard", bundle: nil)
-        homeViewController = sb.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+        homeViewController = sb.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
     }
 
-    func navigateHomeInterfaceFromWindow(window: UIWindow!) {
+    func navigateHomeInterfaceFromWindow(_ window: UIWindow!) {
         configureNewsFeedModule()
         configureUserProfileModule()
         rootWireframe.showRootViewController(homeViewController, window: window)
     }
 
-    private func configureNewsFeedModule() {
+    fileprivate func configureNewsFeedModule() {
         let nav = homeViewController.viewControllers![0] as! UINavigationController
         let vc = nav.viewControllers[0] as! NewsFeedViewController
         let wireframe = NewsFeedWireframe()
@@ -35,7 +35,7 @@ class HomeWireframe: AnyObject {
         vc.presenter = wireframe.newsFeedPresenter
     }
 
-    private func configureUserProfileModule() {
+    fileprivate func configureUserProfileModule() {
         let nav = homeViewController.viewControllers![2] as! UINavigationController
         let vc = nav.viewControllers[0] as! UserProfileViewController
         let auth = AuthSession()

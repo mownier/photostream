@@ -8,21 +8,21 @@
 
 import UIKit
 
-public class PostCellDataSource: NSObject, PostCellLoaderDataSourceProtocol {
+open class PostCellDataSource: NSObject, PostCellLoaderDataSourceProtocol {
 
-    private var items: PostCellItemArray
-    public var actionHander: PostCellActionHandler?
+    fileprivate var items: PostCellItemArray
+    open var actionHander: PostCellActionHandler?
 
     init(items: PostCellItemArray) {
         self.items = items
     }
 
 
-    public func appendContentsOf(array: PostCellItemArray) {
+    open func appendContentsOf(_ array: PostCellItemArray) {
         items.appendContentsOf(array)
     }
 
-    public subscript (index: Int) -> PostCellDisplayItemProtocol? {
+    open subscript (index: Int) -> PostCellDisplayItemProtocol? {
         set {
             if let val = newValue as? PostCellItem {
                 items[index] = val
@@ -33,21 +33,21 @@ public class PostCellDataSource: NSObject, PostCellLoaderDataSourceProtocol {
         }
     }
 
-    public subscript (postId: String) -> (Int, PostCellDisplayItemProtocol)? {
+    open subscript (postId: String) -> (Int, PostCellDisplayItemProtocol)? {
         if let index = items[postId] {
             return (index, items[index]!)
         }
         return nil
     }
 
-    public func updateLike(index: Int, state: Bool) -> Bool {
+    open func updateLike(_ index: Int, state: Bool) -> Bool {
         if let _ = items[index] {
             return items[index]!.updateLike(state)
         }
         return false
     }
 
-    public func likesCount(index: Int) -> Int {
+    open func likesCount(_ index: Int) -> Int {
         if let item = items[index] {
             return item.likesCount
         }
@@ -56,33 +56,33 @@ public class PostCellDataSource: NSObject, PostCellLoaderDataSourceProtocol {
 }
 
 extension PostCellDataSource: UICollectionViewDataSource {
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
 
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kPostCellReuseId, forIndexPath: indexPath) as! PostCell
-        if let item = items[indexPath.section] {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPostCellReuseId, for: indexPath) as! PostCell
+        if let item = items[(indexPath as NSIndexPath).section] {
             configureCell(cell, item: item)
             cell.actionHandler = actionHander
         }
         return cell
     }
 
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return items.count
     }
 
-    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kPostHeaderViewReuseId, forIndexPath: indexPath) as! PostHeaderView
-            if let item = items[indexPath.section] {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kPostHeaderViewReuseId, for: indexPath) as! PostHeaderView
+            if let item = items[(indexPath as NSIndexPath).section] {
                 configureHeaderView(headerView, item: item)
             }
 
             return headerView
         } else {
-            let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kPostFooterViewReuseId, forIndexPath: indexPath) as! PostFooterView
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kPostFooterViewReuseId, for: indexPath) as! PostFooterView
             return footerView
         }
     }
@@ -90,16 +90,16 @@ extension PostCellDataSource: UICollectionViewDataSource {
 
 extension PostCellDataSource: PostCellConfiguration {
 
-    public func configureCell(cell: PostCell, item: PostCellItem) {
+    public func configureCell(_ cell: PostCell, item: PostCellItem) {
         cell.setPhotoUrl(item.photoUrl)
         cell.setLikesCountText(item.likes)
         cell.setCommentsCountText(item.comments)
         cell.setMessage(item.message, displayName: item.displayName)
-        cell.setElapsedTime(item.timestamp.timeAgoSinceNow())
+        cell.setElapsedTime((item.timestamp as NSDate).timeAgoSinceNow())
         cell.shouldHighlightLikeButton(item.isLiked)
     }
 
-    public func configureHeaderView(view: PostHeaderView, item: PostCellItem) {
+    public func configureHeaderView(_ view: PostHeaderView, item: PostCellItem) {
         let displayName = item.displayName
         let avatarUrl = item.avatarUrl
         let image = view.createAvatarPlaceholderImage(displayName[0])

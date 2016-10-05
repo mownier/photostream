@@ -13,5 +13,5 @@ typealias FileServiceCallback = (String?, NSError?) -> Void
 protocol FileService: class {
 
     init(session: AuthSession!)
-    func uploadImage(image: UIImage!, callback: FileServiceCallback!)
+    func uploadImage(_ image: UIImage!, callback: FileServiceCallback!)
 }

@@ -12,9 +12,9 @@ class CommentWireframe: AnyObject {
 
     var rootWireframe: RootWireframe!
 
-    func navigateCommentInterfaceFromViewController(viewController: UIViewController, shouldComment: Bool) {
+    func navigateCommentInterfaceFromViewController(_ viewController: UIViewController, shouldComment: Bool) {
         let sb = UIStoryboard(name: "CommentModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("CommentsViewController") as! CommentsViewController
+        let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
         vc.shouldComment = shouldComment
         viewController.navigationController?.pushViewController(vc, animated: true)
     }

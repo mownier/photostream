@@ -17,7 +17,7 @@ class LoginInteractor: LoginInteractorInput {
         self.service = service
     }
 
-    func login(email: String!, password: String!) {
+    func login(_ email: String!, password: String!) {
         service.login(email, password: password) { (user, error) in
             if let error = error {
                 self.output.loginDidFail(error)
@@ -28,7 +28,7 @@ class LoginInteractor: LoginInteractorInput {
         }
     }
 
-    private func saveUser(user: User!) {
+    fileprivate func saveUser(_ user: User!) {
         // TODO: Save user into the keychain or any encrpted storage
     }
 }

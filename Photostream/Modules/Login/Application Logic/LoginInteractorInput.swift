@@ -10,5 +10,5 @@ import Foundation
 
 protocol LoginInteractorInput: class {
 
-    func login(email: String!, password: String!)
+    func login(_ email: String!, password: String!)
 }

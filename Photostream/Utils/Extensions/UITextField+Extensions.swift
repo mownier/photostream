@@ -17,7 +17,7 @@ extension UITextField {
             }
         }
         get {
-            let attr = attributedPlaceholder?.attributesAtIndex(0, longestEffectiveRange: nil, inRange: NSMakeRange(0, attributedPlaceholder!.length))
+            let attr = attributedPlaceholder?.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, attributedPlaceholder!.length))
             return attr?[NSForegroundColorAttributeName] as? UIColor
         }
     }
@@ -31,9 +31,9 @@ extension UITextField {
             if newValue > 0 {
                 left = newValue
             }
-            let view = UIView(frame: CGRectMake(0, 0, left, height))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: left, height: height))
             leftView = view
-            leftViewMode = .Always
+            leftViewMode = .always
         }
         get {
             if let leftView = leftView {

@@ -18,46 +18,46 @@ class UserProfilePresenter: UserProfileModuleInterface, UserProfileInteractorOut
         interactor.fetchUserProfile()
     }
 
-    func fetchUserPosts(limit: Int) {
+    func fetchUserPosts(_ limit: Int) {
         interactor.fetchUserPosts(limit)
     }
 
-    func likePost(postId: String) {
+    func likePost(_ postId: String) {
         interactor.likePost(postId)
     }
 
-    func unlikePost(postId: String) {
+    func unlikePost(_ postId: String) {
         interactor.unlikePost(postId)
     }
 
-    func showComments(postId: String, shouldComment: Bool) {
+    func showComments(_ postId: String, shouldComment: Bool) {
         wireframe.navigateCommentsInterface(postId, shouldComment: shouldComment)
     }
 
-    func showLikes(postId: String) {
+    func showLikes(_ postId: String) {
         wireframe.navigateLikesInterface(postId)
     }
 
-    func userProfileDidFetchOk(data: UserProfileData) {
+    func userProfileDidFetchOk(_ data: UserProfileData) {
         let item = serialize(data)
         view.showUserProfile(item)
     }
 
-    func userProfileDidFetchWithError(error: NSError) {
+    func userProfileDidFetchWithError(_ error: NSError) {
         view.showError(error)
     }
 
-    func userProfileDidFetchPostsOk(data: UserProfilePostDataList) {
+    func userProfileDidFetchPostsOk(_ data: UserProfilePostDataList) {
         let (list, grid) = parseList(data)
         view.showUserPosts(list, grid: grid)
         view.reloadUserPosts()
     }
 
-    func userProfileDidFetchPostsWithError(error: NSError) {
+    func userProfileDidFetchPostsWithError(_ error: NSError) {
         view.showError(error)
     }
 
-    private func serialize(data: UserProfileData) -> UserProfileDisplayItem {
+    fileprivate func serialize(_ data: UserProfileData) -> UserProfileDisplayItem {
         var item = UserProfileDisplayItem()
         item.avatarUrl = data.avatarUrl
         item.bio = data.bio
@@ -69,7 +69,7 @@ class UserProfilePresenter: UserProfileModuleInterface, UserProfileInteractorOut
         return item
     }
 
-    private func parseList(data: UserProfilePostDataList) -> (UserProfilePostListItemArray, UserProfilePostGridItemArray) {
+    fileprivate func parseList(_ data: UserProfilePostDataList) -> (UserProfilePostListItemArray, UserProfilePostGridItemArray) {
         var list = UserProfilePostListItemArray()
         var grid = UserProfilePostGridItemArray()
         for i in 0..<data.count {

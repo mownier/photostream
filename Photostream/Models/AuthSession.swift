@@ -16,12 +16,12 @@ struct AuthSession {
     init() {
         self.user = User()
         if let u = FIRAuth.auth()?.currentUser {
-            user.id = u.uid
+            self.user.id = u.uid
         }
     }
 
     func isValid() -> Bool {
-        if let u = user where !u.id.isEmpty {
+        if let u = user , !u.id.isEmpty {
            return true
         }
         return false

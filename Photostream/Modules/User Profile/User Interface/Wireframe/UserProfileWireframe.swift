@@ -28,11 +28,11 @@ class UserProfileWireframe: AnyObject {
         self.userProfilePresenter = presenter
     }
 
-    func navigateCommentsInterface(postId: String, shouldComment: Bool) {
+    func navigateCommentsInterface(_ postId: String, shouldComment: Bool) {
 
     }
 
-    func navigateLikesInterface(postId: String) {
+    func navigateLikesInterface(_ postId: String) {
 
     }
 }

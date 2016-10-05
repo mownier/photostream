@@ -10,19 +10,19 @@ import UIKit
 
 public protocol PostListCellLoaderCallback {
 
-    func postCellLoaderDidLikePost(postId: String)
-    func postCellLoaderDidUnlikePost(postId: String)
-    func postCellLoaderWillShowLikes(postId: String)
-    func postCellLoaderWillShowComments(postId: String, shouldComment: Bool)
+    func postCellLoaderDidLikePost(_ postId: String)
+    func postCellLoaderDidUnlikePost(_ postId: String)
+    func postCellLoaderWillShowLikes(_ postId: String)
+    func postCellLoaderWillShowComments(_ postId: String, shouldComment: Bool)
 }
 
 public protocol PostGridCellLoaderCallback {
 
-    func postCellLoaderWillShowPostDetails(postId: String)
+    func postCellLoaderWillShowPostDetails(_ postId: String)
 }
 
 public protocol PostCellLoaderScrollCallback {
 
-    func postCellLoaderDidScrollDown(offsetY: CGFloat, loader: PostCellLoader) -> Bool
-    func postCellLoaderDidScrollUp(offsetY: CGFloat, loader: PostCellLoader) -> Bool
+    func postCellLoaderDidScrollDown(_ offsetY: CGFloat, loader: PostCellLoader)
+    func postCellLoaderDidScrollUp(_ offsetY: CGFloat, loader: PostCellLoader)
 }

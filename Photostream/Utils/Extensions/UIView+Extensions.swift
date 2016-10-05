@@ -34,10 +34,10 @@ extension UIView {
 
     @IBInspectable var borderColor: UIColor {
         set {
-            layer.borderColor = newValue.CGColor
+            layer.borderColor = newValue.cgColor
         }
         get {
-            return UIColor(CGColor: layer.borderColor!)
+            return UIColor(cgColor: layer.borderColor!)
         }
     }
 }
@@ -71,10 +71,10 @@ extension UIView {
 
 extension UIView {
 
-    func addSubviewAtCenter(subview: UIView!) {
+    func addSubviewAtCenter(_ subview: UIView!) {
         let centerX = (width - subview.width) / 2
         let centerY = (height - subview.height) / 2
-        let centerFrame = CGRectMake(centerX, centerY, subview.width, subview.height)
+        let centerFrame = CGRect(x: centerX, y: centerY, width: subview.width, height: subview.height)
         subview.frame = centerFrame
         addSubview(subview)
     }
@@ -83,8 +83,8 @@ extension UIView {
 extension UIView {
 
     func createImage() -> UIImage! {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, opaque, 0)
-        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 

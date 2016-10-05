@@ -10,11 +10,11 @@ import UIKit
 
 public protocol PostCellConfiguration {
 
-    func configureHeaderView(view: PostHeaderView, item: PostCellItem)
-    func configureCell(cell: PostCell, item: PostCellItem)
+    func configureHeaderView(_ view: PostHeaderView, item: PostCellItem)
+    func configureCell(_ cell: PostCell, item: PostCellItem)
 }
 
 public protocol PostGridCellConfiguration {
 
-    func configureCell(cell: PostGridCell, item: PostGridCellItem)
+    func configureCell(_ cell: PostGridCell, item: PostGridCellItem)
 }

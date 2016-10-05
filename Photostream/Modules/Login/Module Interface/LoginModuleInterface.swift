@@ -10,7 +10,7 @@ import Foundation
 
 protocol LoginModuleInterface: class {
 
-    func login(email: String!, password: String!)
+    func login(_ email: String!, password: String!)
     func showRegistration()
-    func showErrorAlert(error: NSError!)
+    func showErrorAlert(_ error: NSError!)
 }

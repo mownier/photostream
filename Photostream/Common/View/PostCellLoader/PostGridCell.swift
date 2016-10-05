@@ -14,14 +14,15 @@ let kPostGridCellNibName = "PostGridCell"
 
 public protocol PostGridCellActionHandler {
 
-    func postGridCellWillShowPostDetails(index: Int)
+    func postGridCellWillShowPostDetails(_ index: Int)
 }
 
-public class PostGridCell: UICollectionViewCell {
+open class PostGridCell: UICollectionViewCell {
 
-    @IBOutlet private weak var photoImageView: UIImageView!
+    @IBOutlet fileprivate weak var photoImageView: UIImageView!
 
-    public func setPhotoUrl(url: String, placeholderImage: UIImage?) {
-        photoImageView.kf_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
+    open func setPhotoUrl(_ url: String, placeholderImage: UIImage?) {
+        let resource = ImageResource(downloadURL: URL(string: url)!)
+        photoImageView.kf.setImage(with: resource, placeholder: placeholderImage, options: nil, progressBlock: nil, completionHandler: nil)
     }
 }

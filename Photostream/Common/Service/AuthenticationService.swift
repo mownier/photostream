@@ -12,6 +12,6 @@ typealias AuthenticationServiceCallback = (User?, NSError?) -> Void
 
 protocol AuthenticationService: class {
 
-    func login(email: String!, password: String!, callback: AuthenticationServiceCallback!)
-    func register(email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceCallback!)
+    func login(_ email: String!, password: String!, callback: AuthenticationServiceCallback!)
+    func register(_ email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceCallback!)
 }

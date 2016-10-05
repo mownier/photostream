@@ -9,8 +9,8 @@
 import Foundation
 
 public enum AppendMode: UInt {
-    case Default = 0
-    case Truncate = 1
+    case `default` = 0
+    case truncate = 1
 }
 
 public protocol PostCellDisplayItemProtocol {
@@ -20,7 +20,7 @@ public protocol PostCellDisplayItemProtocol {
 
 public struct PostCellDisplayItemArray<Element> {
 
-    private var items: [Element]
+    fileprivate var items: [Element]
     public var mode: AppendMode
     public var count: Int {
         return items.count
@@ -28,10 +28,10 @@ public struct PostCellDisplayItemArray<Element> {
 
     init() {
         items = [Element]()
-        mode = .Default
+        mode = .default
     }
 
-    public mutating func append(item: Element) {
+    public mutating func append(_ item: Element) {
         items.append(item)
     }
 
@@ -49,15 +49,15 @@ public struct PostCellDisplayItemArray<Element> {
         }
     }
 
-    public mutating func appendContentsOf(array: PostCellDisplayItemArray) {
+    public mutating func appendContentsOf(_ array: PostCellDisplayItemArray) {
         switch mode {
 
-        case .Default:
-            self.items.appendContentsOf(array.items)
+        case .default:
+            self.items.append(contentsOf: array.items)
 
-        case .Truncate:
+        case .truncate:
             self.items.removeAll()
-            self.items.appendContentsOf(array.items)
+            self.items.append(contentsOf: array.items)
         }
     }
 }
@@ -65,7 +65,7 @@ public struct PostCellDisplayItemArray<Element> {
 extension PostCellDisplayItemArray where Element: PostCellDisplayItemProtocol {
 
     public subscript (postId: String) -> Int? {
-        let index = items.indexOf { (item) -> Bool in
+        let index = items.index { (item) -> Bool in
             return item.postId == postId
         }
         return index

@@ -10,13 +10,13 @@ import UIKit
 
 class RootWireframe: AnyObject {
 
-    func showRootViewController(viewController: UIViewController, window: UIWindow) {
+    func showRootViewController(_ viewController: UIViewController, window: UIWindow) {
         let nav = UINavigationController(rootViewController: viewController)
         nav.setNavigationBarHidden(true, animated: false)
         window.rootViewController = nav
     }
 
-    func navigateCommentsModule(viewController: UIViewController, shouldComment: Bool) {
+    func navigateCommentsModule(_ viewController: UIViewController, shouldComment: Bool) {
         let wireframe = CommentWireframe()
         wireframe.rootWireframe = self
         wireframe.navigateCommentInterfaceFromViewController(viewController, shouldComment: shouldComment)

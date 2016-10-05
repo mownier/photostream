@@ -15,12 +15,12 @@ typealias PostServiceLikeListCallback = ([User]?, NSError?) -> Void
 protocol PostService: class {
 
     init(session: AuthSession!)
-    func fetchNewsFeed(offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
-    func fetchPosts(userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
-    func writePost(imageUrl: String!, callback: PostServiceCallback!)
-    func like(postId: String!, callback: PostServiceLikeCallback!)
-    func unlike(postId: String!, callback: PostServiceLikeCallback!)
-    func fetchLikes(postId: String, offset: UInt!, limit: UInt!, callback: PostServiceLikeListCallback!)
+    func fetchNewsFeed(_ offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
+    func fetchPosts(_ userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
+    func writePost(_ imageUrl: String!, callback: PostServiceCallback!)
+    func like(_ postId: String!, callback: PostServiceLikeCallback!)
+    func unlike(_ postId: String!, callback: PostServiceLikeCallback!)
+    func fetchLikes(_ postId: String, offset: UInt!, limit: UInt!, callback: PostServiceLikeListCallback!)
 }
 
 struct PostServiceResult {

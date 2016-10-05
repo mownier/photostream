@@ -27,15 +27,15 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
         applyCornerRadius()
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
-    @IBAction func login(sender: AnyObject) {
+    @IBAction func login(_ sender: AnyObject) {
         view.endEditing(false)
 
-        loginButton.setTitle("", forState: .Normal)
-        view.userInteractionEnabled = false
+        loginButton.setTitle("", for: UIControlState())
+        view.isUserInteractionEnabled = false
         addIndicatorView()
 
         let email = emailTextField.text
@@ -43,15 +43,15 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
         presenter.login(email, password: password)
     }
 
-    func showLoginError(error: NSError!) {
-        loginButton.setTitle("Login", forState: .Normal)
-        view.userInteractionEnabled = true
+    func showLoginError(_ error: NSError!) {
+        loginButton.setTitle("Login", for: UIControlState())
+        view.isUserInteractionEnabled = true
         removeIndicatorView()
 
         presenter.showErrorAlert(error)
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
@@ -60,30 +60,30 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
         return false
     }
 
-    private func addIndicatorView() {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .White)
+    fileprivate func addIndicatorView() {
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
         indicator.startAnimating()
         indicator.tag = 9000
         loginButton.addSubviewAtCenter(indicator)
     }
 
-    private func removeIndicatorView() {
+    fileprivate func removeIndicatorView() {
         loginButton.viewWithTag(9000)?.removeFromSuperview()
     }
 
-    private func applyCornerRadius() {
+    fileprivate func applyCornerRadius() {
         emailTextField.cornerRadius = cornerRadius
         passwordTextField.cornerRadius = cornerRadius
         loginButton.cornerRadius = cornerRadius
     }
 
-    private func applyGradientBackground() {
+    fileprivate func applyGradientBackground() {
         let gradient = CAGradientLayer()
-        gradient.colors = [topColor.CGColor, bottomColor.CGColor]
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.frame = view.frame
-        view.layer.insertSublayer(gradient, atIndex: 0)
+        view.layer.insertSublayer(gradient, at: 0)
     }
 }

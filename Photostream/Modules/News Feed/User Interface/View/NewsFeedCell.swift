@@ -17,11 +17,11 @@ let kNewsFeedCellCommonTop: CGFloat = 12.0
 
 protocol NewsFeedCellDelegate: class {
 
-    func newsFeedCellDidTapLike(cell: NewsFeedCell)
-    func newsFeedCellDidTapLikesCount(cell: NewsFeedCell)
-    func newsFeedCellDidTapComment(cell: NewsFeedCell)
-    func newsFeedCellDidTapCommentsCount(cell: NewsFeedCell)
-    func newsFeedCellDidTapPhoto(cell: NewsFeedCell)
+    func newsFeedCellDidTapLike(_ cell: NewsFeedCell)
+    func newsFeedCellDidTapLikesCount(_ cell: NewsFeedCell)
+    func newsFeedCellDidTapComment(_ cell: NewsFeedCell)
+    func newsFeedCellDidTapCommentsCount(_ cell: NewsFeedCell)
+    func newsFeedCellDidTapPhoto(_ cell: NewsFeedCell)
 }
 
 class NewsFeedCell: UICollectionViewCell {
@@ -46,14 +46,14 @@ class NewsFeedCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        photoImageView.userInteractionEnabled = true
+        photoImageView.isUserInteractionEnabled = true
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(NewsFeedCell.didTapPhoto(_:)))
         tap.numberOfTapsRequired = 2
         photoImageView.addGestureRecognizer(tap)
     }
 
-    @IBAction func didTapPhoto(sender: AnyObject) {
+    @IBAction func didTapPhoto(_ sender: AnyObject) {
         let heart = SpringImageView(image: UIImage(named: "heart_pink"))
         heart.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
         photoImageView.addSubviewAtCenter(heart)
@@ -64,7 +64,7 @@ class NewsFeedCell: UICollectionViewCell {
         heart.animateToNext {
             heart.animation = "fadeOut"
             heart.duration = 0.5
-            heart.animateToNext({
+            heart.animateToNext(completion: {
                 heart.removeFromSuperview()
                 self.delegate.newsFeedCellDidTapPhoto(self)
             })
@@ -75,33 +75,34 @@ class NewsFeedCell: UICollectionViewCell {
         likeButton.animate()
     }
 
-    @IBAction func didTapComment(sender: AnyObject) {
+    @IBAction func didTapComment(_ sender: AnyObject) {
         delegate.newsFeedCellDidTapComment(self)
     }
 
-    @IBAction func didTapLike(sender: AnyObject) {
+    @IBAction func didTapLike(_ sender: AnyObject) {
         delegate.newsFeedCellDidTapLike(self)
     }
 
-    @IBAction func didTapCommentsCount(sender: AnyObject) {
+    @IBAction func didTapCommentsCount(_ sender: AnyObject) {
         delegate.newsFeedCellDidTapCommentsCount(self)
     }
 
-    @IBAction func didTapLikesCount(sender: AnyObject) {
+    @IBAction func didTapLikesCount(_ sender: AnyObject) {
         delegate.newsFeedCellDidTapLikesCount(self)
     }
 
-    func setPhotoUrl(url: String!) {
-        photoImageView.kf_setImageWithURL(NSURL(string: url))
+    func setPhotoUrl(_ url: String!) {
+        let resource = ImageResource(downloadURL: URL(string: url)!)
+        photoImageView.kf.setImage(with: resource)
     }
 
-    func setLikesCountText(text: String) {
+    func setLikesCountText(_ text: String) {
         if text.isEmpty {
             likesCountConstraintHeight.constant = 0
             heartIconConstraintHeight.constant = 0
             heartIconConstraintTop.constant = 0
         } else {
-            likesCountButton.setTitle(text, forState: .Normal)
+            likesCountButton.setTitle(text, for: UIControlState())
 
             heartIconConstraintTop.constant = kNewsFeedCellCommonTop
             heartIconConstraintHeight.constant = kNewsFeedCellCommonHeight
@@ -109,61 +110,61 @@ class NewsFeedCell: UICollectionViewCell {
         }
     }
 
-    func setCommentsCountText(text: String) {
+    func setCommentsCountText(_ text: String) {
         if text.isEmpty {
             commentsCountConstraintHeight.constant = 0
             commentsCountConstraintTop.constant = 0
         } else {
-            commentsCountButton.setTitle(text, forState: .Normal)
+            commentsCountButton.setTitle(text, for: UIControlState())
 
             commentsCountConstraintTop.constant = kNewsFeedCellCommonTop
             commentsCountConstraintHeight.constant = kNewsFeedCellCommonHeight
         }
     }
 
-    func setMessage(msg: String!, displayName: String!) {
+    func setMessage(_ msg: String!, displayName: String!) {
         if msg.isEmpty {
             messageLabel.attributedText = NSAttributedString(string: "")
             messageConstraintTop.constant = 0
         } else {
-            let semiBold = UIFont.systemFontOfSize(14.0, weight: UIFontWeightSemibold)
-            let regular = UIFont.systemFontOfSize(14.0)
+            let semiBold = UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightSemibold)
+            let regular = UIFont.systemFont(ofSize: 14.0)
             let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
             let message = NSAttributedString(string: msg, attributes: [NSFontAttributeName: regular])
             let text = NSMutableAttributedString()
-            text.appendAttributedString(name)
-            text.appendAttributedString(NSAttributedString(string: " "))
-            text.appendAttributedString(message)
+            text.append(name)
+            text.append(NSAttributedString(string: " "))
+            text.append(message)
             messageLabel.attributedText = text
             messageConstraintTop.constant = kNewsFeedCellCommonTop
         }
     }
 
-    func setElapsedTime(time: String) {
+    func setElapsedTime(_ time: String) {
         timeLabel.text = time
     }
 
-    func shouldHighlightLikeButton(should: Bool) {
+    func shouldHighlightLikeButton(_ should: Bool) {
         if should {
-            likeButton.setImage(UIImage(named: "heart_pink"), forState: .Normal)
+            likeButton.setImage(UIImage(named: "heart_pink"), for: UIControlState())
         } else {
-            likeButton.setImage(UIImage(named: "heart"), forState: .Normal)
+            likeButton.setImage(UIImage(named: "heart"), for: UIControlState())
         }
     }
 
     class func createNew() -> NewsFeedCell! {
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let views = bundle.loadNibNamed(kNewsFeedCellNibName, owner: nil, options: nil)
-        let cell = views[0] as! NewsFeedCell
+        let cell = views?[0] as! NewsFeedCell
         return cell
     }
 
-    class func dequeueFromCollectionView(view: UICollectionView, indexPath: NSIndexPath) -> NewsFeedCell {
-        let cell = view.dequeueReusableCellWithReuseIdentifier(kNewsFeedCellReuseId, forIndexPath: indexPath)
+    class func dequeueFromCollectionView(_ view: UICollectionView, indexPath: IndexPath) -> NewsFeedCell {
+        let cell = view.dequeueReusableCell(withReuseIdentifier: kNewsFeedCellReuseId, for: indexPath)
         return cell as! NewsFeedCell
     }
 
-    class func registerNibInto(view: UICollectionView) {
-        view.registerNib(UINib(nibName: kNewsFeedCellNibName, bundle: nil), forCellWithReuseIdentifier: kNewsFeedCellReuseId)
+    class func registerNibInto(_ view: UICollectionView) {
+        view.register(UINib(nibName: kNewsFeedCellNibName, bundle: nil), forCellWithReuseIdentifier: kNewsFeedCellReuseId)
     }
 }

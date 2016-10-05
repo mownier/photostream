@@ -11,8 +11,8 @@ import Foundation
 protocol UserProfileInteractorInput {
 
     func fetchUserProfile()
-    func fetchUserPosts(limit: Int)
+    func fetchUserPosts(_ limit: Int)
 
-    func likePost(postId: String)
-    func unlikePost(postId: String)
+    func likePost(_ postId: String)
+    func unlikePost(_ postId: String)
 }

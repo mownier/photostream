@@ -19,20 +19,20 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
         self.refreshing = false
     }
 
-    func refreshFeed(limit: UInt!) {
+    func refreshFeed(_ limit: UInt!) {
         refreshing = true
         interactor.fetchNew(limit)
     }
 
-    func retrieveNextFeed(limit: UInt!) {
+    func retrieveNextFeed(_ limit: UInt!) {
         interactor.fetchNext(limit)
     }
 
-    func presentCommentsInterface(shouldComment: Bool) {
+    func presentCommentsInterface(_ shouldComment: Bool) {
         wireframe.navigateCommentsInterface(shouldComment)
     }
 
-    func toggleLike(postId: String, isLiked: Bool) {
+    func toggleLike(_ postId: String, isLiked: Bool) {
         if isLiked {
             unlikePost(postId)
         } else {
@@ -40,31 +40,31 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
         }
     }
 
-    func likePost(postId: String) {
+    func likePost(_ postId: String) {
         view.updateCell(postId, isLiked: true)
     }
 
-    func unlikePost(postId: String) {
+    func unlikePost(_ postId: String) {
         view.updateCell(postId, isLiked: false)
     }
 
-    func newsFeedDidFetchOk(data: NewsFeedDataCollection) {
+    func newsFeedDidFetchOk(_ data: NewsFeedDataCollection) {
         var list = parseList(data)
         if refreshing {
-            list.mode = .Truncate
+            list.mode = .truncate
         } else {
-            list.mode = .Default
+            list.mode = .default
         }
         refreshing = false
         view.showItems(list)
         view.reloadView()
     }
 
-    func newsFeedDidFetchWithError(error: NSError!) {
+    func newsFeedDidFetchWithError(_ error: NSError!) {
         view.showError(error)
     }
 
-    private func parseList(data: NewsFeedDataCollection) -> PostCellItemArray {
+    fileprivate func parseList(_ data: NewsFeedDataCollection) -> PostCellItemArray {
         var list = PostCellItemArray()
         for i in 0..<data.count {
             if let (post, user) = data[i] {

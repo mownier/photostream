@@ -31,7 +31,7 @@ class UserProfileInteractor: UserProfileInteractorInput {
         }
     }
 
-    func fetchUserPosts(limit: Int) {
+    func fetchUserPosts(_ limit: Int) {
         service.post.fetchPosts(userId, offset: 0, limit: 10) { (result, error) in
             if let error = error {
                 self.output.userProfileDidFetchPostsWithError(error)
@@ -42,15 +42,15 @@ class UserProfileInteractor: UserProfileInteractorInput {
         }
     }
 
-    func likePost(postId: String) {
+    func likePost(_ postId: String) {
 
     }
 
-    func unlikePost(postId: String) {
+    func unlikePost(_ postId: String) {
 
     }
 
-    private func parseUserProfileData(result: UserServiceProfileResult) -> UserProfileData {
+    fileprivate func parseUserProfileData(_ result: UserServiceProfileResult) -> UserProfileData {
         var data = UserProfileData()
         data.followersCount = result.profile.followersCount
         data.followingCount = result.profile.followingCount
@@ -63,7 +63,7 @@ class UserProfileInteractor: UserProfileInteractorInput {
         return data
     }
 
-    private func parseUserPostDataList(feed: PostServiceResult!) -> UserProfilePostDataList {
+    fileprivate func parseUserPostDataList(_ feed: PostServiceResult!) -> UserProfilePostDataList {
         var data = UserProfilePostDataList()
 
         for i in 0..<feed.count {

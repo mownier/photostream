@@ -10,6 +10,6 @@ import Foundation
 
 protocol NewsFeedInteractorInput: class {
 
-    func fetchNew(limit: UInt!)
-    func fetchNext(limit: UInt!)
+    func fetchNew(_ limit: UInt!)
+    func fetchNext(_ limit: UInt!)
 }

@@ -17,7 +17,7 @@ class RegistrationInteractor: RegistrationInteractorInput {
         self.service = service
     }
 
-    func register(email: String!, password: String!, firstname: String!, lastname: String!) {
+    func register(_ email: String!, password: String!, firstname: String!, lastname: String!) {
         service.register(email, password: password, firstname: firstname, lastname: lastname) { (user, error) in
             if let error = error {
                 self.output.registrationDidFail(error)

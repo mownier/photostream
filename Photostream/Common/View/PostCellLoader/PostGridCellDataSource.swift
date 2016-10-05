@@ -8,19 +8,19 @@
 
 import UIKit
 
-public class PostGridCellDataSource: NSObject, PostCellLoaderDataSourceProtocol {
+open class PostGridCellDataSource: NSObject, PostCellLoaderDataSourceProtocol {
 
-    private var items: PostGridCellItemArray
+    fileprivate var items: PostGridCellItemArray
 
     init(items: PostGridCellItemArray) {
         self.items = items
     }
 
-    public func appendContentsOf(array: PostGridCellItemArray) {
+    open func appendContentsOf(_ array: PostGridCellItemArray) {
         items.appendContentsOf(array)
     }
 
-    public subscript(index: Int) -> PostCellDisplayItemProtocol? {
+    open subscript(index: Int) -> PostCellDisplayItemProtocol? {
         set {
             if let val = newValue as? PostGridCellItem {
                 items[index] = val
@@ -31,7 +31,7 @@ public class PostGridCellDataSource: NSObject, PostCellLoaderDataSourceProtocol 
         }
     }
 
-    public subscript(postId: String) -> (Int, PostCellDisplayItemProtocol)? {
+    open subscript(postId: String) -> (Int, PostCellDisplayItemProtocol)? {
         if let index = items[postId] {
            return (index, items[index]!)
         }
@@ -41,13 +41,13 @@ public class PostGridCellDataSource: NSObject, PostCellLoaderDataSourceProtocol 
 
 extension PostGridCellDataSource: UICollectionViewDataSource {
 
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
 
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kPostGridCellReuseId, forIndexPath: indexPath) as! PostGridCell
-        if let item = items[indexPath.row] {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPostGridCellReuseId, for: indexPath) as! PostGridCell
+        if let item = items[(indexPath as NSIndexPath).row] {
             configureCell(cell, item: item)
         }
         return cell
@@ -56,7 +56,7 @@ extension PostGridCellDataSource: UICollectionViewDataSource {
 
 extension PostGridCellDataSource: PostGridCellConfiguration {
 
-    public func configureCell(cell: PostGridCell, item: PostGridCellItem) {
+    public func configureCell(_ cell: PostGridCell, item: PostGridCellItem) {
         cell.setPhotoUrl(item.photoUrl, placeholderImage: nil)
     }
 }

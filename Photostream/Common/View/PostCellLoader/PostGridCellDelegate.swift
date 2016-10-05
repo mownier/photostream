@@ -9,27 +9,27 @@
 import UIKit
 import MONUniformFlowLayout
 
-public class PostGridCellDelegate: NSObject, MONUniformFlowLayoutDelegate {
+open class PostGridCellDelegate: NSObject, MONUniformFlowLayoutDelegate {
 
-    private let kColumnCount: UInt = 3
-    private let actionHandler: PostGridCellActionHandler
+    fileprivate let kColumnCount: UInt = 3
+    fileprivate let actionHandler: PostGridCellActionHandler
 
-    public var scrollProtocol: PostCellLoaderScrollProtocol?
+    open var scrollProtocol: PostCellLoaderScrollProtocol?
 
     init(actionHandler: PostGridCellActionHandler) {
         self.actionHandler = actionHandler
     }
 
-    public func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
         return collectionView.width / CGFloat(kColumnCount)
     }
 
-    public func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, numberOfColumnsInSection section: Int) -> UInt {
+    open func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, numberOfColumnsInSection section: Int) -> UInt {
         return kColumnCount
     }
 
-    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        actionHandler.postGridCellWillShowPostDetails(indexPath.row)
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        actionHandler.postGridCellWillShowPostDetails((indexPath as NSIndexPath).row)
     }
 }
 
@@ -39,18 +39,18 @@ extension PostGridCellDelegate: PostCellLoaderDelegateProtocol {
 
     }
 
-    public func updateCellHeight(index: Int, height: CGFloat) {
+    public func updateCellHeight(_ index: Int, height: CGFloat) {
 
     }
 }
 
 extension PostGridCellDelegate {
 
-    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollProtocol?.willBeginDragging(scrollView)
     }
 
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollProtocol?.didScroll(scrollView)
     }
 }

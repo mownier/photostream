@@ -26,7 +26,7 @@ class NewsFeedDisplayItemParser: PostCellItemSerializer {
 
         item.displayName = user.displayName
         item.isLiked = post.isLiked
-        item.timestamp = NSDate(timeIntervalSince1970: post.timestamp)
+        item.timestamp = Date(timeIntervalSince1970: post.timestamp)
         item.message = post.message
         item.photoUrl = post.photoUrl
         item.photoWidth = Float(post.photoWidth)

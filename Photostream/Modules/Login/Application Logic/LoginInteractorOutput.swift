@@ -10,6 +10,6 @@ import Foundation
 
 protocol LoginInteractorOutput: class {
 
-    func loginDidSucceed(user: User!)
-    func loginDidFail(error: NSError!)
+    func loginDidSucceed(_ user: User!)
+    func loginDidFail(_ error: NSError!)
 }

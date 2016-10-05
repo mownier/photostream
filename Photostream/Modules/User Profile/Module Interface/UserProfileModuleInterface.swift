@@ -18,10 +18,10 @@ typealias UserProfilePostAuthorData = NewsFeedUserData
 protocol UserProfileModuleInterface {
 
     func fetchUserProfile()
-    func fetchUserPosts(limit: Int)
+    func fetchUserPosts(_ limit: Int)
 
-    func likePost(postId: String)
-    func unlikePost(postId: String)
-    func showComments(postId: String, shouldComment: Bool)
-    func showLikes(postId: String)
+    func likePost(_ postId: String)
+    func unlikePost(_ postId: String)
+    func showComments(_ postId: String, shouldComment: Bool)
+    func showLikes(_ postId: String)
 }

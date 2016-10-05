@@ -21,33 +21,33 @@ public protocol PostCellLoaderDelegateProtocol {
 
     var scrollProtocol: PostCellLoaderScrollProtocol? { get set }
     func recalculateCellHeight()
-    func updateCellHeight(index: Int, height: CGFloat)
+    func updateCellHeight(_ index: Int, height: CGFloat)
 }
 
 public protocol PostCellLoaderScrollProtocol {
 
-    func didScroll(view: UIScrollView)
-    func willBeginDragging(view: UIScrollView)
+    func didScroll(_ view: UIScrollView)
+    func willBeginDragging(_ view: UIScrollView)
 }
 
 public enum PostCellLoaderType {
-    case List
-    case Grid
+    case list
+    case grid
 }
 
-public class PostCellLoader: AnyObject {
+open class PostCellLoader: AnyObject {
 
-    private weak var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDataSource!
-    private var delegate: UICollectionViewDelegate!
-    private var type: PostCellLoaderType = .List
-    private var lastContentOffsetY: CGFloat = 0
-    private lazy var flowLayout = MONUniformFlowLayout()
+    fileprivate weak var collectionView: UICollectionView!
+    fileprivate var dataSource: UICollectionViewDataSource!
+    fileprivate var delegate: UICollectionViewDelegate!
+    fileprivate var type: PostCellLoaderType = .list
+    fileprivate var lastContentOffsetY: CGFloat = 0
+    fileprivate lazy var flowLayout = MONUniformFlowLayout()
 
-    public var listCellCallback: PostListCellLoaderCallback!
-    public var gridCellCallback: PostGridCellLoaderCallback!
-    public var scrollCallback: PostCellLoaderScrollCallback?
-    public var contentOffset: CGPoint {
+    open var listCellCallback: PostListCellLoaderCallback!
+    open var gridCellCallback: PostGridCellLoaderCallback!
+    open var scrollCallback: PostCellLoaderScrollCallback?
+    open var contentOffset: CGPoint {
         return collectionView.contentOffset
     }
 
@@ -57,7 +57,7 @@ public class PostCellLoader: AnyObject {
         self.collectionView.collectionViewLayout = flowLayout
         self.collectionView.alwaysBounceVertical = true
         switch type {
-        case .List:
+        case .list:
             let listDataSource = PostCellDataSource(items: PostCellItemArray())
             listDataSource.actionHander = self
 
@@ -72,13 +72,13 @@ public class PostCellLoader: AnyObject {
             self.collectionView.dataSource = listDataSource
             self.collectionView.delegate = listDelegate
 
-            self.collectionView.registerNib(UINib(nibName: kPostCellNibName, bundle: nil), forCellWithReuseIdentifier: kPostCellReuseId)
-            self.collectionView.registerNib(UINib(nibName: kPostHeaderViewNibName, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kPostHeaderViewReuseId)
-            self.collectionView.registerNib(UINib(nibName: kPostFooterViewReuseId, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: kPostFooterViewReuseId)
+            self.collectionView.register(UINib(nibName: kPostCellNibName, bundle: nil), forCellWithReuseIdentifier: kPostCellReuseId)
+            self.collectionView.register(UINib(nibName: kPostHeaderViewNibName, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kPostHeaderViewReuseId)
+            self.collectionView.register(UINib(nibName: kPostFooterViewReuseId, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: kPostFooterViewReuseId)
 
             break
 
-        case .Grid:
+        case .grid:
             let gridDataSource = PostGridCellDataSource(items: PostGridCellItemArray())
             let gridDelegate = PostGridCellDelegate(actionHandler: self)
             gridDelegate.scrollProtocol = self
@@ -86,7 +86,7 @@ public class PostCellLoader: AnyObject {
             self.delegate = gridDelegate
             self.collectionView.dataSource = gridDataSource
             self.collectionView.delegate = gridDelegate
-            self.collectionView.registerNib(UINib(nibName: kPostGridCellNibName, bundle: nil), forCellWithReuseIdentifier: kPostGridCellReuseId)
+            self.collectionView.register(UINib(nibName: kPostGridCellNibName, bundle: nil), forCellWithReuseIdentifier: kPostGridCellReuseId)
             self.flowLayout.interItemSpacing = MONInterItemSpacingMake(4, 4)
 
             break
@@ -98,14 +98,14 @@ public class PostCellLoader: AnyObject {
         collectionView.delegate = nil
     }
 
-    public func append<T>(items: T) {
+    open func append<T>(_ items: T) {
         switch type {
-        case .List:
+        case .list:
             let listDataSource = dataSource as! PostCellDataSource
             let items = items as! PostCellItemArray
             listDataSource.appendContentsOf(items)
             break
-        case .Grid:
+        case .grid:
             let gridDataSource = dataSource as! PostGridCellDataSource
             let items = items as! PostGridCellItemArray
             gridDataSource.appendContentsOf(items)
@@ -113,23 +113,23 @@ public class PostCellLoader: AnyObject {
         }
     }
 
-    public func reload() {
+    open func reload() {
         collectionView.reloadData()
     }
 
-    public func recalculateCellHeight() {
+    open func recalculateCellHeight() {
         if let delegate = delegate as? PostCellLoaderDelegateProtocol {
             delegate.recalculateCellHeight()
         }
     }
 
-    public func shouldEnableStickyHeader(should: Bool) {
+    open func shouldEnableStickyHeader(_ should: Bool) {
         flowLayout.enableStickyHeader = should
     }
 
-    public func reloadCell(postId: String, likeState: Bool) {
+    open func reloadCell(_ postId: String, likeState: Bool) {
         switch type {
-        case .List:
+        case .list:
             let listDataSource = dataSource as! PostCellDataSource
             if let (index, _) = listDataSource[postId] {
                 if listDataSource.updateLike(index, state: likeState) {
@@ -144,35 +144,35 @@ public class PostCellLoader: AnyObject {
                 }
             }
             break
-        case .Grid:
+        case .grid:
             break
         }
 
     }
 
-    public func isContentScrollable() -> Bool {
+    open func isContentScrollable() -> Bool {
         return collectionView.contentSize.height > collectionView.height
     }
 
-    public func killScroll() {
+    open func killScroll() {
         updateContentOffset(collectionView.contentOffset, animated: false)
     }
 
-    public func updateContentOffset(offset: CGPoint, animated: Bool) {
+    open func updateContentOffset(_ offset: CGPoint, animated: Bool) {
         collectionView.setContentOffset(offset, animated: animated)
     }
 
-    private subscript (cell: PostCell) -> PostCellItem? {
+    fileprivate subscript (cell: PostCell) -> PostCellItem? {
         if let dataSource = dataSource as? PostCellLoaderDataSourceProtocol {
-            if let indexPath = collectionView.indexPathForCell(cell) {
-                let index = indexPath.section
+            if let indexPath = collectionView.indexPath(for: cell) {
+                let index = (indexPath as NSIndexPath).section
                 return dataSource[index] as? PostCellItem
             }
         }
         return nil
     }
 
-    private subscript (cell: PostCell, result: (PostCellItem) -> Void) -> Bool {
+    fileprivate subscript (cell: PostCell, result: (PostCellItem) -> Void) -> Bool {
         if let item = self[cell] {
             result(item)
             return true
@@ -180,7 +180,7 @@ public class PostCellLoader: AnyObject {
         return false
     }
 
-    private func performLoaderCallback(cell: PostCell, result: (PostCellItem) -> Void) {
+    fileprivate func performLoaderCallback(_ cell: PostCell, result: (PostCellItem) -> Void) {
         if let item = self[cell] {
             result(item)
         }
@@ -189,7 +189,7 @@ public class PostCellLoader: AnyObject {
 
 extension PostCellLoader: PostCellActionHandler {
 
-    public func postCellDidTapLike(cell: PostCell) {
+    public func postCellDidTapLike(_ cell: PostCell) {
         performLoaderCallback(cell) { (item) in
             if item.isLiked {
                 self.listCellCallback.postCellLoaderDidUnlikePost(item.postId)
@@ -199,25 +199,25 @@ extension PostCellLoader: PostCellActionHandler {
         }
     }
 
-    public func postCellDidTapPhoto(cell: PostCell) {
+    public func postCellDidTapPhoto(_ cell: PostCell) {
         performLoaderCallback(cell) { (item) in
             self.listCellCallback.postCellLoaderDidLikePost(item.postId)
         }
     }
 
-    public func postCellDidTapComment(cell: PostCell) {
+    public func postCellDidTapComment(_ cell: PostCell) {
         performLoaderCallback(cell) { (item) in
             self.listCellCallback.postCellLoaderWillShowComments(item.postId, shouldComment: true)
         }
     }
 
-    public func postCellDidTapLikesCount(cell: PostCell) {
+    public func postCellDidTapLikesCount(_ cell: PostCell) {
         performLoaderCallback(cell) { (item) in
             self.listCellCallback.postCellLoaderWillShowLikes(item.postId)
         }
     }
 
-    public func postCellDidTapCommentsCount(cell: PostCell) {
+    public func postCellDidTapCommentsCount(_ cell: PostCell) {
         performLoaderCallback(cell) { (item) in
             self.listCellCallback.postCellLoaderWillShowComments(item.postId, shouldComment: false)
         }
@@ -226,7 +226,7 @@ extension PostCellLoader: PostCellActionHandler {
 
 extension PostCellLoader: PostGridCellActionHandler {
 
-    public func postGridCellWillShowPostDetails(index: Int) {
+    public func postGridCellWillShowPostDetails(_ index: Int) {
         if let dataSource = dataSource as? PostCellLoaderDataSourceProtocol {
             if let item = dataSource[index] {
                 gridCellCallback.postCellLoaderWillShowPostDetails(item.postId)
@@ -237,7 +237,7 @@ extension PostCellLoader: PostGridCellActionHandler {
 
 extension PostCellLoader: PostCellLoaderScrollProtocol {
 
-    public func didScroll(view: UIScrollView) {
+    public func didScroll(_ view: UIScrollView) {
         if isContentScrollable() {
             let currentOffsetY = view.contentOffset.y
             if let callback = scrollCallback {
@@ -252,7 +252,7 @@ extension PostCellLoader: PostCellLoaderScrollProtocol {
         }
     }
 
-    public func willBeginDragging(view: UIScrollView) {
+    public func willBeginDragging(_ view: UIScrollView) {
         lastContentOffsetY = view.contentOffset.y
     }
 }

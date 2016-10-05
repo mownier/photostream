@@ -32,7 +32,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         login("redrepo.mail@gmail.com", "mynameisred")
     }
 
-    func fetchLikes(postId: String) {
+    func fetchLikes(_ postId: String) {
         if let user = user {
             var u = User()
             u.id = user.uid
@@ -48,7 +48,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         }
     }
 
-    func likePost(postId: String!) {
+    func likePost(_ postId: String!) {
         if let user = user {
             var u = User()
             u.id = user.uid
@@ -64,7 +64,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         }
     }
 
-    func unlikePost(postId: String!) {
+    func unlikePost(_ postId: String!) {
         if let user = user {
             var u = User()
             u.id = user.uid
@@ -128,7 +128,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         }
     }
 
-    func unfollow(userId: String!) {
+    func unfollow(_ userId: String!) {
         if let user = user {
             var u = User()
             u.id = user.uid
@@ -144,7 +144,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         }
     }
 
-    func follow(userId: String!) {
+    func follow(_ userId: String!) {
         if let user = user {
             var u = User()
             u.id = user.uid
@@ -193,7 +193,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         }
     }
 
-    func getComments(pid: String!) {
+    func getComments(_ pid: String!) {
         if let user = user {
             var u = User()
             u.id = user.uid
@@ -209,7 +209,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         }
     }
 
-    func comment(pid: String!) {
+    func comment(_ pid: String!) {
         if let user = user {
             var u = User()
             u.id = user.uid
@@ -226,7 +226,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         }
     }
 
-    func login(email: String!, _ password: String!) {
+    func login(_ email: String!, _ password: String!) {
         let service = AuthenticationAPIFirebase()
         let interactor = LoginInteractor(service: service)
         interactor.output = self
@@ -234,7 +234,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         interactor.login(email, password: password)
     }
 
-    func register(email: String!, _ password: String!, _ firstname: String!, _ lastname: String!) {
+    func register(_ email: String!, _ password: String!, _ firstname: String!, _ lastname: String!) {
         let service = AuthenticationAPIFirebase()
         let interactor = RegistrationInteractor(service: service)
         interactor.output = self
@@ -242,19 +242,19 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         interactor.register(email, password: password, firstname: firstname, lastname: lastname)
     }
 
-    func registrationDidSucceed(user: User!) {
+    func registrationDidSucceed(_ user: User!) {
         print("registration succeeded: ", user)
     }
 
-    func registrationDidFail(error: NSError!) {
+    func registrationDidFail(_ error: NSError!) {
         print("registration failed: ", error)
     }
 
-    func loginDidSucceed(user: User!) {
+    func loginDidSucceed(_ user: User!) {
         print("login succeeded: ", user)
     }
 
-    func loginDidFail(error: NSError!) {
+    func loginDidFail(_ error: NSError!) {
         print("login failed: ", error)
     }
 }

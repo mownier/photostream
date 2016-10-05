@@ -15,11 +15,11 @@ typealias UserServiceProfileCallback = (UserServiceProfileResult?, NSError?) -> 
 protocol UserService: class {
 
     init(session: AuthSession!)
-    func follow(userId: String!, callback: UserServiceFollowCallback!)
-    func unfollow(userId: String!, callback: UserServiceFollowCallback!)
-    func fetchFollowers(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!)
-    func fetchFollowing(userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!)
-    func fetchProfile(userId: String!, callback: UserServiceProfileCallback)
+    func follow(_ userId: String!, callback: UserServiceFollowCallback!)
+    func unfollow(_ userId: String!, callback: UserServiceFollowCallback!)
+    func fetchFollowers(_ userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!)
+    func fetchFollowing(_ userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!)
+    func fetchProfile(_ userId: String!, callback: @escaping UserServiceProfileCallback)
 }
 
 struct UserServiceProfileResult {

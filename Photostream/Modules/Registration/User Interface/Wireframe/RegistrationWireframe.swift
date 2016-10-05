@@ -17,7 +17,7 @@ class RegistrationWireframe: AnyObject {
         self.registrationPresenter = RegistrationPresenter()
     }
 
-    func navigateRegistrationInterfaceFromViewController(controller: UIViewController) {
+    func navigateRegistrationInterfaceFromViewController(_ controller: UIViewController) {
         // TODO: Present registration interface
     }
 }

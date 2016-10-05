@@ -14,15 +14,15 @@ class LoginPresenter: LoginModuleInterface, LoginInteractorOutput {
     var interactor: LoginInteractorInput!
     var wireframe: LoginWireframe!
 
-    func loginDidSucceed(user: User!) {
+    func loginDidSucceed(_ user: User!) {
         wireframe.navigateHomeInterface()
     }
 
-    func loginDidFail(error: NSError!) {
+    func loginDidFail(_ error: NSError!) {
         view.showLoginError(error)
     }
 
-    func login(email: String!, password: String!) {
+    func login(_ email: String!, password: String!) {
         interactor.login(email, password: password)
     }
 
@@ -30,7 +30,7 @@ class LoginPresenter: LoginModuleInterface, LoginInteractorOutput {
         wireframe.navigateRegistrationInterface()
     }
 
-    func showErrorAlert(error: NSError!) {
+    func showErrorAlert(_ error: NSError!) {
         wireframe.navigateLoginErrorAlert(error)
     }
 }

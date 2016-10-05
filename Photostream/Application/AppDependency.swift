@@ -17,7 +17,7 @@ class AppDependency: AnyObject {
         self.rootWireframe = RootWireframe()
     }
 
-    func attachRootViewControllerInWindow(window: UIWindow!) {
+    func attachRootViewControllerInWindow(_ window: UIWindow!) {
         if isOK() {
             let homeWireframe = HomeWireframe()
             homeWireframe.rootWireframe = rootWireframe
@@ -29,7 +29,7 @@ class AppDependency: AnyObject {
         }
     }
 
-    private func isOK() -> Bool {
+    fileprivate func isOK() -> Bool {
         if let _ = FIRAuth.auth()?.currentUser {
             return true
         } else {

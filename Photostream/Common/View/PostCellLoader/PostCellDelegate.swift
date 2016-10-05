@@ -9,22 +9,22 @@
 import UIKit
 import MONUniformFlowLayout
 
-public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellLoaderDelegateProtocol {
+open class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellLoaderDelegateProtocol {
 
-    public var config: PostCellConfiguration!
-    public var dataSource: PostCellLoaderDataSourceProtocol!
-    public var scrollProtocol: PostCellLoaderScrollProtocol?
-    private var sizingCell: PostCell
-    private var cellHeights: [CGFloat]
+    open var config: PostCellConfiguration!
+    open var dataSource: PostCellLoaderDataSourceProtocol!
+    open var scrollProtocol: PostCellLoaderScrollProtocol?
+    fileprivate var sizingCell: PostCell
+    fileprivate var cellHeights: [CGFloat]
 
     override init() {
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let views = bundle.loadNibNamed(kPostCellNibName, owner: nil, options: nil)
-        self.sizingCell = views[0] as! PostCell
+        self.sizingCell = views?[0] as! PostCell
         self.cellHeights = [CGFloat]()
     }
 
-    public func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
         if cellHeights.isValid(section) {
             return cellHeights[section]
         } else {
@@ -34,22 +34,22 @@ public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellL
         }
     }
 
-    public func collectionView(collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
         return kPostHeaderViewHeight
     }
 
-    public func updateCellHeight(index: Int, height: CGFloat) {
+    open func updateCellHeight(_ index: Int, height: CGFloat) {
         cellHeights[index] += height
     }
 
-    public func recalculateCellHeight() {
+    open func recalculateCellHeight() {
         cellHeights.removeAll()
     }
 
-    private func computeExpectedCellHeight(index: Int, width: CGFloat) -> CGFloat {
+    fileprivate func computeExpectedCellHeight(_ index: Int, width: CGFloat) -> CGFloat {
         if let item = dataSource[index] as? PostCellItem {
             config.configureCell(sizingCell, item: item)
-            sizingCell.bounds = CGRectMake(0, 0, width, sizingCell.bounds.height)
+            sizingCell.bounds = CGRect(x: 0, y: 0, width: width, height: sizingCell.bounds.height)
             sizingCell.setNeedsLayout()
             sizingCell.layoutIfNeeded()
             sizingCell.sizeToFit()
@@ -70,7 +70,7 @@ public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellL
 
             height -= (kPostCellCommonTop + kPostCellCommonHeight)
             if !item.message.isEmpty {
-               height += sizingCell.messageLabel.intrinsicContentSize().height
+               height += sizingCell.messageLabel.intrinsicContentSize.height
             }
 
             height -= kPostCellInitialPhotoHeight
@@ -79,7 +79,7 @@ public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellL
         return 0
     }
 
-    private func computeExpectedPhotoHeight(maxWidth: CGFloat, photoWidth: CGFloat, photoHeight: CGFloat) -> CGFloat {
+    fileprivate func computeExpectedPhotoHeight(_ maxWidth: CGFloat, photoWidth: CGFloat, photoHeight: CGFloat) -> CGFloat {
         let ratio = maxWidth / photoWidth
         let height = CGFloat(photoHeight * ratio)
         return  height
@@ -88,11 +88,11 @@ public class PostCellDelegate: NSObject, MONUniformFlowLayoutDelegate, PostCellL
 
 extension PostCellDelegate {
 
-    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollProtocol?.willBeginDragging(scrollView)
     }
 
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollProtocol?.didScroll(scrollView)
     }
 }

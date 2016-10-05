@@ -19,17 +19,17 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
         self.currentOffset = 0
     }
 
-    func fetchNew(limit: UInt!) {
+    func fetchNew(_ limit: UInt!) {
         currentOffset = 0
         fetch(currentOffset, limit: limit)
     }
 
-    func fetchNext(limit: UInt!) {
+    func fetchNext(_ limit: UInt!) {
         currentOffset = currentOffset + UInt(1)
         fetch(currentOffset, limit: limit)
     }
 
-    private func fetch(offset: UInt!, limit: UInt!) {
+    fileprivate func fetch(_ offset: UInt!, limit: UInt!) {
         service.fetchNewsFeed(currentOffset, limit: limit) { (feed, error) in
             if let error = error {
                 self.output.newsFeedDidFetchWithError(error)
@@ -40,7 +40,7 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
         }
     }
 
-    private func parseNewsFeedData(feed: PostServiceResult!) -> NewsFeedDataCollection {
+    fileprivate func parseNewsFeedData(_ feed: PostServiceResult!) -> NewsFeedDataCollection {
         var data = NewsFeedDataCollection()
 
         for i in 0..<feed.count {

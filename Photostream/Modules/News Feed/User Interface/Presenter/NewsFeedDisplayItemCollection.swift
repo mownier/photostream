@@ -21,22 +21,22 @@ struct NewsFeedDisplayItemCollection {
         shouldTruncate = false
     }
 
-    mutating func appendContentsOf(collection: NewsFeedDisplayItemCollection) {
+    mutating func appendContentsOf(_ collection: NewsFeedDisplayItemCollection) {
         if !collection.shouldTruncate {
-            items.appendContentsOf(collection.items)
+            items.append(contentsOf: collection.items)
         } else {
             items.removeAll()
-            items.appendContentsOf(collection.items)
+            items.append(contentsOf: collection.items)
         }
     }
 
-    mutating func append(item: NewsFeedDisplayItem) {
+    mutating func append(_ item: NewsFeedDisplayItem) {
         items.append(item)
     }
 
     subscript (index: Int) -> NewsFeedDisplayItem? {
         set {
-            if let val = newValue where isValid(index) {
+            if let val = newValue , isValid(index) {
                 items[index] = val
             }
         }
@@ -48,12 +48,12 @@ struct NewsFeedDisplayItemCollection {
         }
     }
 
-    func isValid(index: Int) -> Bool {
+    func isValid(_ index: Int) -> Bool {
         return items.isValid(index)
     }
 
-    func isValid(postId: String) -> (Int, Bool) {
-        let index = items.indexOf { (item) -> Bool in
+    func isValid(_ postId: String) -> (Int, Bool) {
+        let index = items.index { (item) -> Bool in
             return item.postId == postId
         }
         if let i = index {
@@ -87,7 +87,7 @@ struct NewsFeedCellDisplayItem {
     var isLiked: Bool
     var message: String
     var displayName: String
-    var timestamp: NSDate
+    var timestamp: Date
     var likesCount: Int64
     var commentsCount: Int64
     var likes: String {
@@ -127,10 +127,10 @@ struct NewsFeedCellDisplayItem {
         isLiked = false
         message = ""
         displayName = ""
-        timestamp = NSDate()
+        timestamp = Date()
     }
 
-    mutating func updateLike(state: Bool) -> Bool {
+    mutating func updateLike(_ state: Bool) -> Bool {
         if isLiked != state {
             isLiked = state
             if !isLiked {

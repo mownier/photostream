@@ -10,8 +10,8 @@ import Foundation
 
 protocol UserProfileInteractorOutput {
 
-    func userProfileDidFetchOk(data: UserProfileData)
-    func userProfileDidFetchWithError(error: NSError)
-    func userProfileDidFetchPostsOk(data: UserProfilePostDataList)
-    func userProfileDidFetchPostsWithError(error: NSError)
+    func userProfileDidFetchOk(_ data: UserProfileData)
+    func userProfileDidFetchWithError(_ error: NSError)
+    func userProfileDidFetchPostsOk(_ data: UserProfilePostDataList)
+    func userProfileDidFetchPostsWithError(_ error: NSError)
 }

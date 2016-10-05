@@ -28,7 +28,7 @@ public struct PostCellItem: PostCellDisplayItemProtocol {
     public var likesCount: Int
     public var commentsCount: Int
     public var isLiked: Bool
-    public var timestamp: NSDate
+    public var timestamp: Date
     public var likes: String {
         if likesCount > 0 {
             if likesCount == 1 {
@@ -66,10 +66,10 @@ public struct PostCellItem: PostCellDisplayItemProtocol {
         likesCount = 0
         commentsCount = 0
         isLiked = false
-        timestamp = NSDate()
+        timestamp = Date()
     }
 
-    public mutating func updateLike(state: Bool) -> Bool {
+    public mutating func updateLike(_ state: Bool) -> Bool {
         if isLiked != state {
             isLiked = state
             if !isLiked {

@@ -10,7 +10,7 @@ import UIKit
 
 extension Array {
 
-    func isValid(index: Int) -> Bool {
+    func isValid(_ index: Int) -> Bool {
         return index >= 0 && index < count
     }
 }

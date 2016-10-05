@@ -14,30 +14,31 @@ let kNewsFeedHeaderViewDefaultHeight: CGFloat = 54
 
 class NewsFeedHeaderView: UICollectionReusableView {
 
-    @IBOutlet private weak var avatarImageView: UIImageView!
-    @IBOutlet private weak var displayNameLabel: UILabel!
+    @IBOutlet fileprivate weak var avatarImageView: UIImageView!
+    @IBOutlet fileprivate weak var displayNameLabel: UILabel!
 
-    func setDisplayName(name: String) {
+    func setDisplayName(_ name: String) {
         displayNameLabel.text = name
     }
 
-    func setAvatarUrl(url: String, placeholderImage: UIImage) {
-        avatarImageView.kf_setImageWithURL(NSURL(string: url), placeholderImage: placeholderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
+    func setAvatarUrl(_ url: String, placeholderImage: UIImage) {
+        let resource = ImageResource(downloadURL: URL(string: url)!)
+        avatarImageView.kf.setImage(with: resource, placeholder: placeholderImage)
     }
 
-    func createAvatarPlaceholderImage(initial: String) -> UIImage {
+    func createAvatarPlaceholderImage(_ initial: String) -> UIImage {
         let width = avatarImageView.width
         let height = avatarImageView.height
-        let frame = CGRectMake(0, 0, width, height)
-        let font = UIFont.systemFontOfSize(15)
+        let frame = CGRect(x: 0, y: 0, width: width, height: height)
+        let font = UIFont.systemFont(ofSize: 15)
         let text: String = initial
         let placeholderImage = UILabel.createPlaceholderImageWithFrame(frame, text: text, font: font)
         return placeholderImage
     }
 
-    class func dequeueFromCollectionView(view: UICollectionView, indexPath: NSIndexPath) -> NewsFeedHeaderView {
+    class func dequeueFromCollectionView(_ view: UICollectionView, indexPath: IndexPath) -> NewsFeedHeaderView {
         let kind = UICollectionElementKindSectionHeader
-        let headerView = view.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kNewsFeedHeaderViewReuseId, forIndexPath: indexPath)
+        let headerView = view.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kNewsFeedHeaderViewReuseId, for: indexPath)
         return headerView as! NewsFeedHeaderView
     }
 }

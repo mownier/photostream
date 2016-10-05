@@ -10,5 +10,5 @@ import Foundation
 
 protocol RegistrationInteractorInput: class {
 
-    func register(email: String!, password: String!, firstname: String!, lastname: String!)
+    func register(_ email: String!, password: String!, firstname: String!, lastname: String!)
 }

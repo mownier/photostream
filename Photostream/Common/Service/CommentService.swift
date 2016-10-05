@@ -13,8 +13,8 @@ typealias CommentServiceCallback = (CommentServiceResult?, NSError?) -> Void
 protocol CommentService: class {
 
     init(session: AuthSession!)
-    func fetchComments(postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!)
-    func writeComment(postId: String!, message: String!, callback: CommentServiceCallback!)
+    func fetchComments(_ postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!)
+    func writeComment(_ postId: String!, message: String!, callback: CommentServiceCallback!)
 }
 
 struct CommentServiceResult {

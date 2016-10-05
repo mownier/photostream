@@ -24,7 +24,7 @@ struct NewsFeedDataCollection {
         users = [String: NewsFeedUserData]()
     }
 
-    mutating func add(postItem: NewsFeedPostData, userItem: NewsFeedUserData) {
+    mutating func add(_ postItem: NewsFeedPostData, userItem: NewsFeedUserData) {
         posts.append(postItem)
         if users[postItem.userId] == nil {
             users[postItem.userId] = userItem

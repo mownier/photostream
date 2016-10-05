@@ -10,6 +10,6 @@ import Foundation
 
 protocol RegistrationInteractorOutput: class {
 
-    func registrationDidSucceed(user: User!)
-    func registrationDidFail(error: NSError!)
+    func registrationDidSucceed(_ user: User!)
+    func registrationDidFail(_ error: NSError!)
 }
