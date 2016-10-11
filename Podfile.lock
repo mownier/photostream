@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.0.1)
   - DateTools (1.7.0)
+  - Fabric (1.6.7)
   - Firebase (3.4.0):
     - Firebase/Core (= 3.4.0)
   - Firebase/Analytics (3.4.0):
@@ -50,6 +51,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, tag `4.0.1`)
   - DateTools
+  - Fabric
   - Firebase
   - Firebase/Auth
   - Firebase/Database
@@ -96,6 +98,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   Firebase: 754562547af419cc2f4b15247fee419081924bc2
   FirebaseAnalytics: 228be2991cb28efb96cdafc4d62f64680e615c69
   FirebaseAuth: 26fd291c3b552fc9658420b867520d5ae080421c
@@ -112,6 +115,6 @@ SPEC CHECKSUMS:
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: 64ab58d27880a1b75ea7d2e03c9653911e4e0653
+PODFILE CHECKSUM: 9c18c76693d3dfc72016eab77299f73fbec4e456
 
 COCOAPODS: 1.1.0.rc.2

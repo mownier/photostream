@@ -12,6 +12,7 @@ target 'Photostream' do
     pod 'MONUniformFlowLayout', :git => 'https://github.com/mownier/MONUniformFlowLayout.git', :branch => 'master'
     pod 'DateTools'
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
+    pod 'Fabric'
 end
 
 target 'PhotostreamTests' do
