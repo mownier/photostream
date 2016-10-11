@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.0.1)
+  - Crashlytics (3.7.2):
+    - Fabric (~> 1.6.3)
   - DateTools (1.7.0)
   - Fabric (1.6.7)
   - Firebase (3.4.0):
@@ -50,6 +52,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, tag `4.0.1`)
+  - Crashlytics
   - DateTools
   - Fabric
   - Firebase
@@ -97,6 +100,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   Firebase: 754562547af419cc2f4b15247fee419081924bc2
@@ -115,6 +119,6 @@ SPEC CHECKSUMS:
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: 9c18c76693d3dfc72016eab77299f73fbec4e456
+PODFILE CHECKSUM: 8afa6897b6f91b624d65de7b2c1c5688293bc965
 
 COCOAPODS: 1.1.0.rc.2

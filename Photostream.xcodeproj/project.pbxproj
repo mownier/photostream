@@ -978,6 +978,7 @@
 				B9C1E4AC1D507843000925FA /* Resources */,
 				0AA4D3E6B1E1B3D608103861 /* [CP] Embed Pods Frameworks */,
 				CB6E360E9E13880FB70C4A1F /* [CP] Copy Pods Resources */,
+				B9B62D831DACC87B0041EE42 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -1126,6 +1127,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B9B62D831DACC87B0041EE42 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 98aca4b74d3e5d28d01373f849238205c4601674 d818d00ad11303ea3b2edb87141a8c79c06d628ae5492cc11cb82b5e3f673197";
 		};
 		CB6E360E9E13880FB70C4A1F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
