@@ -18,12 +18,15 @@ class LoginInteractor: LoginInteractorInput {
     }
 
     func login(_ email: String!, password: String!) {
-        service.login(email, password: password) { (user, error) in
-            if let error = error {
+        var data = AuthentationServiceLoginData()
+        data.email = email
+        data.password = password
+        service.login(data: data) { (result) in
+            if let error = result.error {
                 self.output.loginDidFail(error)
             } else {
-                self.saveUser(user)
-                self.output.loginDidSucceed(user)
+                self.saveUser(result.user)
+                self.output.loginDidSucceed(result.user)
             }
         }
     }

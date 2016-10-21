@@ -18,11 +18,16 @@ class RegistrationInteractor: RegistrationInteractorInput {
     }
 
     func register(_ email: String!, password: String!, firstname: String!, lastname: String!) {
-        service.register(email, password: password, firstname: firstname, lastname: lastname) { (user, error) in
-            if let error = error {
+        var data = AuthenticationServiceRegisterData()
+        data.email = email
+        data.password = password
+        data.firstName = firstname
+        data.lastName = lastname
+        service.register(data: data) { (result) in
+            if let error = result.error {
                 self.output.registrationDidFail(error)
             } else {
-                self.output.registrationDidSucceed(user)
+                self.output.registrationDidSucceed(result.user)
             }
         }
     }

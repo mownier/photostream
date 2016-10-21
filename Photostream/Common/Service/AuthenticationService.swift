@@ -8,10 +8,28 @@
 
 import Foundation
 
-typealias AuthenticationServiceCallback = (User?, NSError?) -> Void
+protocol AuthenticationService {
 
-protocol AuthenticationService: class {
+    func login(data: AuthentationServiceLoginData, callback: ((AuthenticationServiceResult) -> Void)?)
+    func register(data: AuthenticationServiceRegisterData, callback: ((AuthenticationServiceResult) -> Void)?)
+}
 
-    func login(_ email: String!, password: String!, callback: AuthenticationServiceCallback!)
-    func register(_ email: String!, password: String!, firstname: String!, lastname: String!, callback: AuthenticationServiceCallback!)
+struct AuthentationServiceLoginData {
+    
+    var email: String = ""
+    var password: String = ""
+}
+
+struct AuthenticationServiceRegisterData {
+    
+    var email: String = ""
+    var password: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+}
+
+struct AuthenticationServiceResult {
+    
+    var user: User?
+    var error: NSError?
 }
