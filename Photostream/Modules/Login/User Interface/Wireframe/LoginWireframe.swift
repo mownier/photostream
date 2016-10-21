@@ -46,7 +46,7 @@ class LoginWireframe: LoginWireframeInput {
     }
 
     func navigateLoginErrorAlert(_ error: AuthenticationServiceError) {
-        let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Login Error", message: error.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
         loginViewController.present(alert, animated: true, completion: nil)

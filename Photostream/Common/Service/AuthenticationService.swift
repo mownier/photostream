@@ -34,9 +34,19 @@ struct AuthenticationServiceResult {
     var error: AuthenticationServiceError?
 }
 
-public enum AuthenticationServiceError: Error {
+enum AuthenticationServiceError: Error {
     case authenticationNotFound(message: String)
     case authenticatedUserNotFound(message: String)
     case invalidLoginCredentials(message: String)
     case invalidRegisterCredentials(message: String)
+    
+    var message: String {
+        switch self {
+        case .authenticationNotFound(let message),
+             .authenticatedUserNotFound(let message),
+             .invalidLoginCredentials(let message),
+             .invalidRegisterCredentials(let message):
+            return message
+        }
+    }
 }
