@@ -40,7 +40,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = PostAPIFirebase(session: session)
+            let service = PostServiceProvider(session: session)
             service.fetchLikes(postId, offset: 0, limit: 10, callback: { (likes, error) in
                 print("likes:", likes)
                 print("error:", error)
@@ -56,7 +56,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = PostAPIFirebase(session: session)
+            let service = PostServiceProvider(session: session)
             service.like(postId, callback: { (ok, error) in
                 print("ok like?:", ok)
                 print("error:", error)
@@ -72,7 +72,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = PostAPIFirebase(session: session)
+            let service = PostServiceProvider(session: session)
             service.unlike(postId, callback: { (ok, error) in
                 print("ok unlike?:", ok)
                 print("error:", error)
@@ -88,7 +88,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = UserAPIFirebase(session: session)
+            let service = UserServiceProvider(session: session)
             service.fetchProfile(u.id, callback: { (result, error) in
                 print("profile:", result)
                 print("error:", error)
@@ -104,7 +104,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = UserAPIFirebase(session: session)
+            let service = UserServiceProvider(session: session)
             service.fetchFollowing(u.id, offset: 0, limit: 10, callback: { (following, error) in
                 print("following:", following)
                 print("error:", error)
@@ -120,7 +120,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = UserAPIFirebase(session: session)
+            let service = UserServiceProvider(session: session)
             service.fetchFollowers(u.id, offset: 0, limit: 10, callback: { (followers, error) in
                 print("followers:", followers)
                 print("error:", error)
@@ -136,7 +136,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = UserAPIFirebase(session: session)
+            let service = UserServiceProvider(session: session)
             service.unfollow(userId, callback: { (users, error) in
                 print("unfollowed user:", users)
                 print("error:", error)
@@ -152,7 +152,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = UserAPIFirebase(session: session)
+            let service = UserServiceProvider(session: session)
             service.follow(userId, callback: { (users, error) in
                 print("followed user:", users)
                 print("error:", error)
@@ -168,7 +168,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = PostAPIFirebase(session: session)
+            let service = PostServiceProvider(session: session)
             service.fetchPosts(u.id, offset: 0, limit: 10) { (posts, error) in
                 print("posts:", posts)
                 print("error:", error)
@@ -184,7 +184,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = PostAPIFirebase(session: session)
+            let service = PostServiceProvider(session: session)
             let imageUrl = "http://imageurl.png"
             service.writePost(imageUrl) { (posts, error) in
                 print("posts:", posts)
@@ -201,7 +201,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = CommentAPIFirebase(session: session)
+            let service = CommentServiceProvider(session: session)
             service.fetchComments(pid, offset: 0, limit: 10) { (comments, error) in
                 print("comments:", comments)
                 print("error:", error)
@@ -217,7 +217,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             var session = AuthSession()
             session.user = u
 
-            let service = CommentAPIFirebase(session: session)
+            let service = CommentServiceProvider(session: session)
             let message = "Hello world!"
             service.writeComment(pid, message: message) { (comments, error) in
                 print("comments:", comments)
@@ -227,7 +227,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
     }
 
     func login(_ email: String!, _ password: String!) {
-        let service = AuthenticationAPIFirebase()
+        let service = AuthenticationServiceProvider()
         let interactor = LoginInteractor(service: service)
         interactor.output = self
         // interactor.login("redrepo.mail@gmail.com", password: "mynameisred")
@@ -235,7 +235,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
     }
 
     func register(_ email: String!, _ password: String!, _ firstname: String!, _ lastname: String!) {
-        let service = AuthenticationAPIFirebase()
+        let service = AuthenticationServiceProvider()
         let interactor = RegistrationInteractor(service: service)
         interactor.output = self
         // interactor.register("redrepo.mail@gmail.com", password: "mynameisred", firstname: "Red", lastname: "Repo")

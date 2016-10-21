@@ -1,5 +1,5 @@
 //
-//  CommentAPIFirebase.swift
+//  CommentServiceProvider.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 08/08/2016.
@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class CommentAPIFirebase: CommentService {
+class CommentServiceProvider: CommentService {
 
     var session: AuthSession!
 
@@ -116,7 +116,7 @@ class CommentAPIFirebase: CommentService {
         if session.isValid() {
             return nil
         } else {
-            return NSError(domain: "CommentAPIFirebase", code: 0, userInfo: ["message": "No authenticated user."])
+            return NSError(domain: "CommentServiceProvider", code: 0, userInfo: ["message": "No authenticated user."])
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  FileAPIFirebase.swift
+//  FileServiceProvider.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 17/08/2016.
@@ -10,7 +10,7 @@ import UIKit
 import FirebaseStorage
 import FirebaseDatabase
 
-class FileAPIFirebase: FileService {
+class FileServiceProvider: FileService {
 
     var session: AuthSession!
 
@@ -44,7 +44,7 @@ class FileAPIFirebase: FileService {
                         databaseRef.child(path).setValue(data)
                         callback(key, nil)
                     } else {
-                        callback(nil, NSError(domain: "FileAPIFirebase", code: 0, userInfo: ["message": "No download url."]))
+                        callback(nil, NSError(domain: "FileServiceProvider", code: 0, userInfo: ["message": "No download url."]))
                     }
                 }
             })
@@ -58,7 +58,7 @@ class FileAPIFirebase: FileService {
             if session.isValid() {
                 return nil
             } else {
-                return NSError(domain: "FileAPIFirebase", code: 0, userInfo: ["message": "No authenticated user."])
+                return NSError(domain: "FileServiceProvider", code: 0, userInfo: ["message": "No authenticated user."])
             }
         }
     }

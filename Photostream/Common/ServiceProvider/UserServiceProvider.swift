@@ -1,5 +1,5 @@
 //
-//  UserAPIFirebase.swift
+//  UserServiceProvider.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/08/2016.
@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class UserAPIFirebase: UserService {
+class UserServiceProvider: UserService {
 
     var session: AuthSession!
 
@@ -89,7 +89,7 @@ class UserAPIFirebase: UserService {
                         })
                     })
                 } else {
-                    callback(false, NSError(domain: "UserAPIFirebase", code: 0, userInfo: ["message": "Already followed."]))
+                    callback(false, NSError(domain: "UserServiceProvider", code: 0, userInfo: ["message": "Already followed."]))
                 }
             })
         }
@@ -215,7 +215,7 @@ class UserAPIFirebase: UserService {
         if session.isValid() {
             return nil
         } else {
-            return NSError(domain: "UserAPIFirebase", code: 0, userInfo: ["message": "No authenticated user."])
+            return NSError(domain: "UserServiceProvider", code: 0, userInfo: ["message": "No authenticated user."])
         }
     }
 

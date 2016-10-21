@@ -1,5 +1,5 @@
 //
-//  PostAPIFirebase.swift
+//  PostServiceProvider.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 06/08/2016.
@@ -10,7 +10,7 @@ import Foundation
 import FirebaseDatabase
 import FirebaseAuth
 
-class PostAPIFirebase: PostService {
+class PostServiceProvider: PostService {
 
     var session: AuthSession!
 
@@ -109,7 +109,7 @@ class PostAPIFirebase: PostService {
             rootRef.child(path2).observeSingleEvent(of: .value, with: { (data) in
 
                 if data.exists() {
-                    callback(false, NSError(domain: "PostAPIFirebase", code: 0, userInfo: ["message": "Already liked."]))
+                    callback(false, NSError(domain: "PostServiceProvider", code: 0, userInfo: ["message": "Already liked."]))
                 } else {
                     rootRef.child(path1).runTransactionBlock({ (data2) -> FIRTransactionResult in
 
@@ -147,7 +147,7 @@ class PostAPIFirebase: PostService {
             rootRef.child(path2).observeSingleEvent(of: .value, with: { (data) in
 
                 if !data.exists() {
-                    callback(false, NSError(domain: "PostAPIFirebase", code: 0, userInfo: ["message": "Failed to unlike post."]))
+                    callback(false, NSError(domain: "PostServiceProvider", code: 0, userInfo: ["message": "Failed to unlike post."]))
                 } else {
                     rootRef.child(path1).runTransactionBlock({ (data) -> FIRTransactionResult in
 
@@ -211,7 +211,7 @@ class PostAPIFirebase: PostService {
         if session.isValid() {
             return nil
         } else {
-            return NSError(domain: "PostAPIFirebase", code: 0, userInfo: ["message": "Unauthorized."])
+            return NSError(domain: "PostServiceProvider", code: 0, userInfo: ["message": "Unauthorized."])
         }
     }
 

@@ -16,7 +16,7 @@ class NewsFeedWireframe: AnyObject {
 
     init() {
         let session = AuthSession()
-        let service = PostAPIFirebase(session: session)
+        let service = PostServiceProvider(session: session)
         let interactor = NewsFeedInteractor(service: service)
         let presenter = NewsFeedPresenter()
         interactor.output = presenter

@@ -16,7 +16,7 @@ class LoginWireframe: LoginWireframeInput {
 
     init() {
         let presenter = LoginPresenter()
-        let service = AuthenticationAPIFirebase()
+        let service = AuthenticationServiceProvider()
         let interactor = LoginInteractor(service: service)
         interactor.output = presenter
         presenter.interactor = interactor

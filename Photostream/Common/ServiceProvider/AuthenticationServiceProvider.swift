@@ -1,5 +1,5 @@
 //
-//  AuthenticationAPIFirebase.swift
+//  AuthenticationServiceProvider.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 04/08/2016.
@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class AuthenticationAPIFirebase: AuthenticationService {
+class AuthenticationServiceProvider: AuthenticationService {
 
     func login(_ email: String!, password: String!, callback: AuthenticationServiceCallback!) {
         if let auth = FIRAuth.auth() {

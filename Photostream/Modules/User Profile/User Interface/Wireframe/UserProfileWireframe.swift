@@ -16,8 +16,8 @@ class UserProfileWireframe: AnyObject {
 
     init(userId: String) {
         let session = AuthSession()
-        let user = UserAPIFirebase(session: session)
-        let post = PostAPIFirebase(session: session)
+        let user = UserServiceProvider(session: session)
+        let post = PostServiceProvider(session: session)
         let service = UserProfileService(user: user, post: post)
         let interactor = UserProfileInteractor(service: service, userId: userId)
         let presenter = UserProfilePresenter()
