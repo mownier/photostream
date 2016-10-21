@@ -45,7 +45,7 @@ class LoginWireframe: LoginWireframeInput {
         registrationWireframe.navigateRegistrationInterfaceFromViewController(loginViewController)
     }
 
-    func navigateLoginErrorAlert(_ error: NSError!) {
+    func navigateLoginErrorAlert(_ error: AuthenticationServiceError) {
         let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)

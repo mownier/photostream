@@ -10,5 +10,5 @@ import Foundation
 
 protocol LoginViewInterface: class {
 
-    func showLoginError(_ error: NSError!)
+    func showLoginError(_ error: AuthenticationServiceError)
 }

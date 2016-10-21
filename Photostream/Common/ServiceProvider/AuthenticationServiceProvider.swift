@@ -16,12 +16,12 @@ class AuthenticationServiceProvider: AuthenticationService {
         var result = AuthenticationServiceResult()
         if let auth = FIRAuth.auth() {
             auth.signIn(withEmail: data.email, password: data.password) { (user, error) in
-                if let error = error {
-                    result.error = error as NSError
+                if let _ = error {
+                    result.error = .invalidLoginCredentials(message: "Invalid login credentials")
                     callback?(result)
                 } else {
                     guard let authUser = user else {
-                        result.error = NSError(domain: "AuthenticationServiceProvider", code: 1, userInfo: ["message": "Authenticated user not found."])
+                        result.error = .authenticatedUserNotFound(message: "Authenticated user not found")
                         callback?(result)
                         return
                     }
@@ -45,7 +45,7 @@ class AuthenticationServiceProvider: AuthenticationService {
                 }
             }
         } else {
-            result.error = NSError(domain: "AuthenticationServiceProvider", code: 0, userInfo: ["message": "Firebase auth not found."])
+            result.error = .authenticationNotFound(message: "Authentication not found")
             callback?(result)
         }
     }
@@ -54,12 +54,12 @@ class AuthenticationServiceProvider: AuthenticationService {
         var result = AuthenticationServiceResult()
         if let auth = FIRAuth.auth() {
             auth.createUser(withEmail: data.email, password: data.password, completion: { (user, error) in
-                if let error = error {
-                    result.error = error as NSError
+                if let _ = error {
+                    result.error = .invalidRegisterCredentials(message: "Invalid registration credentials. It might be that username or email already exists already.")
                     callback?(result)
                 } else {
                     guard let authUser = user else {
-                        result.error = NSError(domain: "AuthenticationServiceProvider", code: 1, userInfo: ["message": "Authenticated user not found."])
+                        result.error = .authenticatedUserNotFound(message: "Authenticated user not found.")
                         callback?(result)
                         return
                     }
@@ -81,8 +81,9 @@ class AuthenticationServiceProvider: AuthenticationService {
                 }
             })
         } else {
-            result.error = NSError(domain: "AuthenticationServiceProvider", code: 0, userInfo: ["message": "Firebase auth not found."])
+            result.error = .authenticationNotFound(message: "Authentication not found")
             callback?(result)
+
         }
     }
 }

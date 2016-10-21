@@ -246,7 +246,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         print("registration succeeded: ", user)
     }
 
-    func registrationDidFail(_ error: NSError!) {
+    func registrationDidFail(_ error: AuthenticationServiceError) {
         print("registration failed: ", error)
     }
 
@@ -254,7 +254,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
         print("login succeeded: ", user)
     }
 
-    func loginDidFail(_ error: NSError!) {
+    func loginDidFail(_ error: AuthenticationServiceError) {
         print("login failed: ", error)
     }
 }

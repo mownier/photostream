@@ -43,7 +43,7 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
         presenter.login(email, password: password)
     }
 
-    func showLoginError(_ error: NSError!) {
+    func showLoginError(_ error: AuthenticationServiceError) {
         loginButton.setTitle("Login", for: UIControlState())
         view.isUserInteractionEnabled = true
         removeIndicatorView()

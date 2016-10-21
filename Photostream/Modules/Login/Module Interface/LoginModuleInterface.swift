@@ -12,5 +12,5 @@ protocol LoginModuleInterface: class {
 
     func login(_ email: String!, password: String!)
     func showRegistration()
-    func showErrorAlert(_ error: NSError!)
+    func showErrorAlert(_ error: AuthenticationServiceError)
 }

@@ -31,5 +31,12 @@ struct AuthenticationServiceRegisterData {
 struct AuthenticationServiceResult {
     
     var user: User?
-    var error: NSError?
+    var error: AuthenticationServiceError?
+}
+
+public enum AuthenticationServiceError: Error {
+    case authenticationNotFound(message: String)
+    case authenticatedUserNotFound(message: String)
+    case invalidLoginCredentials(message: String)
+    case invalidRegisterCredentials(message: String)
 }

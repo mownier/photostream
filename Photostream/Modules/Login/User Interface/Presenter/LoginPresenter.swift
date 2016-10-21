@@ -18,7 +18,7 @@ class LoginPresenter: LoginModuleInterface, LoginInteractorOutput {
         wireframe.navigateHomeInterface()
     }
 
-    func loginDidFail(_ error: NSError!) {
+    func loginDidFail(_ error: AuthenticationServiceError) {
         view.showLoginError(error)
     }
 
@@ -30,7 +30,7 @@ class LoginPresenter: LoginModuleInterface, LoginInteractorOutput {
         wireframe.navigateRegistrationInterface()
     }
 
-    func showErrorAlert(_ error: NSError!) {
+    func showErrorAlert(_ error: AuthenticationServiceError) {
         wireframe.navigateLoginErrorAlert(error)
     }
 }

@@ -11,5 +11,5 @@ import Foundation
 protocol RegistrationInteractorOutput: class {
 
     func registrationDidSucceed(_ user: User!)
-    func registrationDidFail(_ error: NSError!)
+    func registrationDidFail(_ error: AuthenticationServiceError)
 }

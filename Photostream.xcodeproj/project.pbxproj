@@ -180,6 +180,7 @@
 		B971CBAB1DB9EC86002166D3 /* FileServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileServiceProvider.swift; sourceTree = "<group>"; };
 		B971CBAC1DB9EC86002166D3 /* PostServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceProvider.swift; sourceTree = "<group>"; };
 		B971CBAD1DB9EC86002166D3 /* UserServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceProvider.swift; sourceTree = "<group>"; };
+		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
 		B9759BBB1D6C136F005AA0B6 /* CommentWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWireframe.swift; sourceTree = "<group>"; };
 		B9759BBF1D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommentModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
@@ -896,6 +897,7 @@
 		B9C1E4A51D507843000925FA = {
 			isa = PBXGroup;
 			children = (
+				B971CBB51DBA0130002166D3 /* codeplay.playground */,
 				B9C1E4B01D507843000925FA /* Photostream */,
 				B9C1E4C51D507843000925FA /* PhotostreamTests */,
 				B9C1E4AF1D507843000925FA /* Products */,

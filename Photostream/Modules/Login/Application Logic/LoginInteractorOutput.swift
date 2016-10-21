@@ -11,5 +11,5 @@ import Foundation
 protocol LoginInteractorOutput: class {
 
     func loginDidSucceed(_ user: User!)
-    func loginDidFail(_ error: NSError!)
+    func loginDidFail(_ error: AuthenticationServiceError)
 }
