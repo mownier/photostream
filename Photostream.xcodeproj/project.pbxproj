@@ -110,6 +110,7 @@
 		B9D3FDE31D64460900B7CC2E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE21D64460900B7CC2E /* String+Extensions.swift */; };
 		B9D3FDE51D6449E800B7CC2E /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */; };
 		B9D3FDE71D644DD400B7CC2E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */; };
+		B9F4343F1DBB4C3C00A7C87D /* NewsFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F4343E1DBB4C3C00A7C87D /* NewsFeedService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +236,7 @@
 		B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
+		B9F4343E1DBB4C3C00A7C87D /* NewsFeedService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedService.swift; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,10 +337,11 @@
 			isa = PBXGroup;
 			children = (
 				B95FFD141D530BCD00085905 /* AuthenticationService.swift */,
-				B97FB6F71D55B67E00B68048 /* PostService.swift */,
 				B961A4B01D5849AB0052856D /* CommentService.swift */,
-				B9BFA4BC1D5B18BF000AA368 /* UserService.swift */,
 				B9D3FDDA1D6422F600B7CC2E /* FileService.swift */,
+				B9F4343E1DBB4C3C00A7C87D /* NewsFeedService.swift */,
+				B97FB6F71D55B67E00B68048 /* PostService.swift */,
+				B9BFA4BC1D5B18BF000AA368 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1202,6 +1205,7 @@
 				B9706A971D5EED93002EE1D2 /* LoginModuleInterface.swift in Sources */,
 				B98EE63C1D616FEE00826C37 /* HomeWireframe.swift in Sources */,
 				B9706AA91D5EF320002EE1D2 /* RegistrationPresenter.swift in Sources */,
+				B9F4343F1DBB4C3C00A7C87D /* NewsFeedService.swift in Sources */,
 				B96AB3311D6EAE2800FF8961 /* PostCellDataSource.swift in Sources */,
 				B97E3CFD1D51C93600C5E76B /* ViewController.swift in Sources */,
 				B96AB3391D6EB7D300FF8961 /* PostFooterView.swift in Sources */,
