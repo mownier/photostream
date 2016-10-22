@@ -21,11 +21,11 @@ class UserProfileInteractor: UserProfileInteractorInput {
     }
 
     func fetchUserProfile() {
-        service.user.fetchProfile(userId) { (result, error) in
-            if let error = error {
+        service.user.fetchProfile(id: userId) { (result) in
+            if let error = result.error {
                 self.output.userProfileDidFetchWithError(error)
             } else {
-                let data = self.parseUserProfileData(result!)
+                let data = self.parseUserProfileData(result)
                 self.output.userProfileDidFetchOk(data)
             }
         }
@@ -52,14 +52,14 @@ class UserProfileInteractor: UserProfileInteractorInput {
 
     fileprivate func parseUserProfileData(_ result: UserServiceProfileResult) -> UserProfileData {
         var data = UserProfileData()
-        data.followersCount = result.profile.followersCount
-        data.followingCount = result.profile.followingCount
-        data.postsCount = result.profile.postsCount
-        data.avatarUrl = result.user.avatarUrl
-        data.fullName = result.user.fullName
-        data.userId = result.user.id
-        data.username = result.user.username
-        data.bio = result.profile.bio
+        data.followersCount = result.profile!.followersCount
+        data.followingCount = result.profile!.followingCount
+        data.postsCount = result.profile!.postsCount
+        data.avatarUrl = result.user!.avatarUrl
+        data.fullName = result.user!.fullName
+        data.userId = result.user!.id
+        data.username = result.user!.username
+        data.bio = result.profile!.bio
         return data
     }
 

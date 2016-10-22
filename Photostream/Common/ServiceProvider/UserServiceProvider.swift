@@ -14,21 +14,27 @@ class UserServiceProvider: UserService {
 
     var session: AuthSession!
 
-    required init(session: AuthSession!) {
+    required init(session: AuthSession) {
         self.session = session
     }
-
-    func follow(_ userId: String!, callback: UserServiceFollowCallback!) {
-        if let error = isOK() {
-            callback(false, error)
+    
+    func fetchBasicInfo(id: String, callback: ((UserServiceBasicResult) -> Void)?) {
+        
+    }
+    
+    func follow(id: String, callback: ((UserServiceError?) -> Void)?) {
+        var error: UserServiceError?
+        if let _ = isOK() {
+            error = .authenticationNotFound(message: "Authentication not found.")
+            callback?(error)
         } else {
             let user = session!.user
             let path1 = "users/\(user?.id)/profile/following_count"
-            let path2 = "users/\(user?.id)/following/\(userId)"
-            let path3 = "users/\(userId)/followers/\(user?.id)"
-            let path4 = "users/\(userId)/profile/followers_count"
+            let path2 = "users/\(user?.id)/following/\(id)"
+            let path3 = "users/\(id)/followers/\(user?.id)"
+            let path4 = "users/\(id)/profile/followers_count"
             let path5 = "users/\(user?.id)/feed"
-            let path6 = "users/\(userId)/feed"
+            let path6 = "users/\(id)/feed"
 
             let rootRef = FIRDatabase.database().reference()
             let followingCountRef = rootRef.child(path1)
@@ -56,10 +62,11 @@ class UserServiceProvider: UserService {
 
                             return FIRTransactionResult.success(withValue: data3)
 
-                            }, andCompletionBlock: { (error, committed, snap) in
+                            }, andCompletionBlock: { (err, committed, snap) in
 
                                 if !committed {
-                                    callback(false, error as? NSError)
+                                    error = .failedToFollow(message: "Failed to follow.")
+                                    callback?(error)
                                 } else {
                                     followerCountRef.runTransactionBlock({ (data4) -> FIRTransactionResult in
 
@@ -71,17 +78,18 @@ class UserServiceProvider: UserService {
 
                                         return FIRTransactionResult.success(withValue: data4)
 
-                                        }, andCompletionBlock: { (error, committed, snap) in
+                                        }, andCompletionBlock: { (err, committed, snap) in
 
                                             if !committed {
-                                                callback(false, error as? NSError)
+                                                error = .failedToFollow(message: "Failed to follow.")
+                                                callback?(error)
                                             } else {
                                                 feed2Ref.observeSingleEvent(of: .value, with: { (data5) in
 
                                                     if let feeds = data5.value as? [String: AnyObject] {
                                                         feed1Ref.updateChildValues(feeds)
                                                     }
-                                                    callback(true, nil)
+                                                    callback?(nil)
                                                 })
                                             }
                                     })
@@ -89,23 +97,26 @@ class UserServiceProvider: UserService {
                         })
                     })
                 } else {
-                    callback(false, NSError(domain: "UserServiceProvider", code: 0, userInfo: ["message": "Already followed."]))
+                    error = .failedToFollow(message: "Already followed")
+                    callback?(error)
                 }
             })
         }
     }
 
-    func unfollow(_ userId: String!, callback: UserServiceFollowCallback!) {
-        if let error = isOK() {
-            callback(false, error)
+    func unfollow(id: String, callback: ((UserServiceError?) -> Void)?) {
+        var error: UserServiceError?
+        if let _ = isOK() {
+            error = .authenticationNotFound(message: "Authentication not found.")
+            callback?(error)
         } else {
             let user = session!.user
             let path1 = "users/\(user?.id)/profile/following_count"
-            let path2 = "users/\(user?.id)/following/\(userId)"
-            let path3 = "users/\(userId)/followers/\(user?.id)"
-            let path4 = "users/\(userId)/profile/followers_count"
+            let path2 = "users/\(user?.id)/following/\(id)"
+            let path3 = "users/\(id)/followers/\(user?.id)"
+            let path4 = "users/\(id)/profile/followers_count"
             let path5 = "users/\(user?.id)/feed"
-            let path6 = "users/\(userId)/feed"
+            let path6 = "users/\(id)/feed"
 
             let rootRef = FIRDatabase.database().reference()
             let followingCountRef = rootRef.child(path1)
@@ -127,10 +138,11 @@ class UserServiceProvider: UserService {
 
                 return FIRTransactionResult.success(withValue: data)
 
-                }, andCompletionBlock: { (error, committed, snap) in
+                }, andCompletionBlock: { (err, committed, snap) in
 
                     if !committed {
-                        callback(false, error as? NSError)
+                        error = .failedToUnfollow(message: "Failed to unfollow.")
+                        callback?(error)
                     } else {
                         followerCountRef.runTransactionBlock({ (data2) -> FIRTransactionResult in
 
@@ -142,17 +154,18 @@ class UserServiceProvider: UserService {
 
                             return FIRTransactionResult.success(withValue: data2)
 
-                            }, andCompletionBlock: { (error, committed, snap) in
+                            }, andCompletionBlock: { (err, committed, snap) in
 
                                 if !committed {
-                                    callback(false, error as? NSError)
+                                    error = .failedToUnfollow(message: "Failed to unfollow.")
+                                    callback?(error)
                                 } else {
                                     feed2Ref.observeSingleEvent(of: .value, with: { (data3) in
 
                                         for child in data3.children {
                                             feed1Ref.child((child as AnyObject).key).removeValue()
                                         }
-                                        callback(true, nil)
+                                        callback?(nil)
                                     })
                                 }
                         })
@@ -160,20 +173,21 @@ class UserServiceProvider: UserService {
             })
         }
     }
-
-    func fetchFollowers(_ userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!) {
-        fetchFollowList(path: "followers", userId: userId, offset: offset, limit: limit, callback: callback)
+    
+    func fetchFollowers(id: String, offset: UInt, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?) {
+        fetchFollowList(path: "followers", userId: id, offset: offset, limit: limit, callback: callback)
     }
 
-    func fetchFollowing(_ userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!) {
-        fetchFollowList(path: "following", userId: userId, offset: offset, limit: limit, callback: callback)
+    func fetchFollowing(id: String, offset: UInt, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?) {        fetchFollowList(path: "following", userId: id, offset: offset, limit: limit, callback: callback)
     }
 
-    func fetchProfile(_ userId: String!, callback: @escaping UserServiceProfileCallback) {
-        if let error = isOK() {
-            callback(nil, error)
+    func fetchProfile(id: String, callback: ((UserServiceProfileResult) -> Void)?) {
+        var result = UserServiceProfileResult()
+        if let _ = isOK() {
+            result.error = .authenticationNotFound(message: "Authentication not found.")
+            callback?(result)
         } else {
-            let path1 = "users/\(userId)/"
+            let path1 = "users/\(id)/"
             let path2 = "profile"
             let rootRef = FIRDatabase.database().reference()
             let userRef = rootRef.child(path1)
@@ -202,10 +216,9 @@ class UserServiceProvider: UserService {
                         profile.followingCount = data2.childSnapshot(forPath: "following_count").value as! Int
                     }
 
-                    var result = UserServiceProfileResult()
                     result.user = user
                     result.profile = profile
-                    callback(result, nil)
+                    callback?(result)
                 })
             })
         }
@@ -219,9 +232,11 @@ class UserServiceProvider: UserService {
         }
     }
 
-    private func fetchFollowList(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: UserServiceFollowListCallback!) {
-        if let error = isOK() {
-            callback(nil, error)
+    private func fetchFollowList(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: ((UserServiceFollowListResult) -> Void)?) {
+        var result = UserServiceFollowListResult()
+        if let _ = isOK() {
+            result.error = .authenticationNotFound(message: "Authentication not found.")
+            callback?(result)
         } else {
             let path1 = "users"
             let path2 = "users/\(userId)/\(path)"
@@ -234,7 +249,8 @@ class UserServiceProvider: UserService {
                 var userList = [User]()
 
                 if !data.exists() {
-                    callback(userList, nil)
+                    result.users = userList
+                    callback?(result)
                 } else {
                     for child in data.children {
                         userRef.child((child as AnyObject).key).observeSingleEvent(of: .value, with: { (data2) in
@@ -247,7 +263,8 @@ class UserServiceProvider: UserService {
                             userList.append(user)
 
                             if UInt(userList.count) == data.childrenCount {
-                                callback(userList, nil)
+                                result.users = userList
+                                callback?(result)
                             }
                         })
                     }

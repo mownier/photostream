@@ -10,7 +10,7 @@ import UIKit
 
 protocol UserProfileViewInterface {
 
-    func showError(_ error: NSError)
+    func showError(_ message: String)
     func showUserProfile(_ item: UserProfileDisplayItem)
 
     func reloadUserPosts()

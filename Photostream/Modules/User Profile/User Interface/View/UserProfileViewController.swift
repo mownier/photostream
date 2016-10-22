@@ -119,7 +119,7 @@ extension UserProfileViewController: UserProfileViewInterface {
         gridLoader.reload()
     }
 
-    func showError(_ error: NSError) {
+    func showError(_ message: String) {
 
     }
 }

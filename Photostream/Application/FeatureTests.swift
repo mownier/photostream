@@ -89,9 +89,9 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             session.user = u
 
             let service = UserServiceProvider(session: session)
-            service.fetchProfile(u.id, callback: { (result, error) in
-                print("profile:", result)
-                print("error:", error)
+            service.fetchProfile(id: u.id, callback: { (result) in
+                print("profile:", result.profile)
+                print("error:", result.error)
             })
         }
     }
@@ -105,9 +105,9 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             session.user = u
 
             let service = UserServiceProvider(session: session)
-            service.fetchFollowing(u.id, offset: 0, limit: 10, callback: { (following, error) in
-                print("following:", following)
-                print("error:", error)
+            service.fetchFollowing(id: u.id, offset: 0, limit: 10, callback: { (result) in
+                print("following:", result.users)
+                print("error:", result.error)
             })
         }
     }
@@ -121,9 +121,9 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             session.user = u
 
             let service = UserServiceProvider(session: session)
-            service.fetchFollowers(u.id, offset: 0, limit: 10, callback: { (followers, error) in
-                print("followers:", followers)
-                print("error:", error)
+            service.fetchFollowers(id: u.id, offset: 0, limit: 10, callback: { (result) in
+                print("followers:", result.users)
+                print("error:", result.error)
             })
         }
     }
@@ -137,8 +137,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             session.user = u
 
             let service = UserServiceProvider(session: session)
-            service.unfollow(userId, callback: { (users, error) in
-                print("unfollowed user:", users)
+            service.unfollow(id: u.id, callback: { (error) in
                 print("error:", error)
             })
         }
@@ -153,8 +152,7 @@ class FeatureTests: RegistrationInteractorOutput, LoginInteractorOutput {
             session.user = u
 
             let service = UserServiceProvider(session: session)
-            service.follow(userId, callback: { (users, error) in
-                print("followed user:", users)
+            service.follow(id: u.id, callback: { (error) in
                 print("error:", error)
             })
         }

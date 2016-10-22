@@ -43,8 +43,8 @@ class UserProfilePresenter: UserProfileModuleInterface, UserProfileInteractorOut
         view.showUserProfile(item)
     }
 
-    func userProfileDidFetchWithError(_ error: NSError) {
-        view.showError(error)
+    func userProfileDidFetchWithError(_ error: UserServiceError) {
+        view.showError(error.message)
     }
 
     func userProfileDidFetchPostsOk(_ data: UserProfilePostDataList) {
@@ -54,7 +54,7 @@ class UserProfilePresenter: UserProfileModuleInterface, UserProfileInteractorOut
     }
 
     func userProfileDidFetchPostsWithError(_ error: NSError) {
-        view.showError(error)
+        view.showError(error.localizedDescription)
     }
 
     fileprivate func serialize(_ data: UserProfileData) -> UserProfileDisplayItem {
