@@ -8,41 +8,49 @@
 
 import Foundation
 
-typealias PostServiceCallback = (PostServiceResult?, NSError?) -> Void
-typealias PostServiceLikeCallback = (Bool, NSError?) -> Void
-typealias PostServiceLikeListCallback = ([User]?, NSError?) -> Void
+protocol PostService {
 
-protocol PostService: class {
-
-    init(session: AuthSession!)
-
-    func fetchPosts(_ userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
-    func writePost(_ imageUrl: String!, callback: PostServiceCallback!)
-    func like(_ postId: String!, callback: PostServiceLikeCallback!)
-    func unlike(_ postId: String!, callback: PostServiceLikeCallback!)
-    func fetchLikes(_ postId: String, offset: UInt!, limit: UInt!, callback: PostServiceLikeListCallback!)
+    init(session: AuthSession)
+    
+    func fetchPostInfo(id: String, callback: ((PostServiceResult) -> Void)?)
+    func fetchPosts(userId: String, offset: UInt, limit: UInt, callback: ((PostServiceResult) -> Void)?)
+    func writePost(imageUrl: String, callback: ((PostServiceResult) -> Void)?)
+    
+    func fetchLikes(id: String, offset: UInt, limit: UInt, callback: ((PostServiceLikeResult) -> Void)?)
+    func like(id: String, callback: ((PostServiceError?) -> Void)?)
+    func unlike(id: String, callback: ((PostServiceError?) -> Void)?)
 }
 
 struct PostServiceResult {
 
-    var posts: [Post]!
-    var users: [String: User]!
-    var count: Int {
-        return posts.count
-    }
+    var posts: PostList?
+    var error: PostServiceError?
+}
 
-    init() {
-        posts =  [Post]()
-        users = [String: User]()
-    }
+struct PostServiceLikeResult {
+    
+    var likes: [User]?
+    var error: PostServiceError?
+}
 
-    subscript (index: Int) -> (Post, User)? {
-        if posts.isValid(index) {
-            let post = posts[index]
-            if let user = users[post.userId] {
-                return (post, user)
-            }
+enum PostServiceError: Error {
+    
+    case authenticationNotFound(message: String)
+    case failedToFetch(message: String)
+    case failedToWrite(message: String)
+    case failedToLike(message: String)
+    case failedToUnlike(message: String)
+    case failedToFetchLikes(message: String)
+    
+    var message: String {
+        switch self {
+        case .authenticationNotFound(let message),
+             .failedToFetch(let message),
+             .failedToWrite(let message),
+             .failedToLike(let message),
+             .failedToUnlike(let message),
+             .failedToFetchLikes(let message):
+            return message
         }
-        return nil
     }
 }

@@ -13,5 +13,5 @@ protocol UserProfileInteractorOutput {
     func userProfileDidFetchOk(_ data: UserProfileData)
     func userProfileDidFetchWithError(_ error: UserServiceError)
     func userProfileDidFetchPostsOk(_ data: UserProfilePostDataList)
-    func userProfileDidFetchPostsWithError(_ error: NSError)
+    func userProfileDidFetchPostsWithError(_ error: PostServiceError)
 }

@@ -53,8 +53,8 @@ class UserProfilePresenter: UserProfileModuleInterface, UserProfileInteractorOut
         view.reloadUserPosts()
     }
 
-    func userProfileDidFetchPostsWithError(_ error: NSError) {
-        view.showError(error.localizedDescription)
+    func userProfileDidFetchPostsWithError(_ error: PostServiceError) {
+        view.showError(error.message)
     }
 
     fileprivate func serialize(_ data: UserProfileData) -> UserProfileDisplayItem {

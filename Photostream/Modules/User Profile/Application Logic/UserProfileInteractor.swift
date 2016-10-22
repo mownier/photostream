@@ -32,13 +32,14 @@ class UserProfileInteractor: UserProfileInteractorInput {
     }
 
     func fetchUserPosts(_ limit: Int) {
-        service.post.fetchPosts(userId, offset: 0, limit: 10) { (result, error) in
-            if let error = error {
-                self.output.userProfileDidFetchPostsWithError(error)
-            } else {
-                let data = self.parseUserPostDataList(result)
-                self.output.userProfileDidFetchPostsOk(data)
+        service.post.fetchPosts(userId: userId, offset: 0, limit: 10) { (result) in
+            guard result.error != nil  else {
+                self.output.userProfileDidFetchPostsWithError(result.error!)
+                return
             }
+            
+            let data = self.parseUserPostDataList(result.posts)
+            self.output.userProfileDidFetchPostsOk(data)
         }
     }
 
@@ -63,11 +64,14 @@ class UserProfileInteractor: UserProfileInteractorInput {
         return data
     }
 
-    fileprivate func parseUserPostDataList(_ feed: PostServiceResult!) -> UserProfilePostDataList {
+    fileprivate func parseUserPostDataList(_ posts: PostList?) -> UserProfilePostDataList {
+        guard posts != nil else {
+            return UserProfilePostDataList()
+        }
+        
         var data = UserProfilePostDataList()
-
-        for i in 0..<feed.count {
-            if let (post, user) = feed[i] {
+        for i in 0..<posts!.count {
+            if let (post, user) = posts![i] {
                 var postItem = UserProfilePostData()
                 postItem.message = post.message
                 postItem.postId = post.id
@@ -88,7 +92,6 @@ class UserProfileInteractor: UserProfileInteractorInput {
                 data.add(postItem, userItem: userItem)
             }
         }
-
         return data
     }
 }
