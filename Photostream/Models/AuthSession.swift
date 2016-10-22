@@ -11,19 +11,15 @@ import FirebaseAuth
 
 struct AuthSession {
 
-    var user: User!
-
-    init() {
-        self.user = User()
-        if let u = FIRAuth.auth()?.currentUser {
-            self.user.id = u.uid
-        }
+    var user: User
+    var isValid: Bool {
+        return !user.id.isEmpty
     }
 
-    func isValid() -> Bool {
-        if let u = user , !u.id.isEmpty {
-           return true
+    init() {
+        user = User()
+        if let u = FIRAuth.auth()?.currentUser {
+            user.id = u.uid
         }
-        return false
     }
 }

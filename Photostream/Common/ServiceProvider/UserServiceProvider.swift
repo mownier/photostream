@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 class UserServiceProvider: UserService {
 
-    var session: AuthSession!
+    private var session: AuthSession
 
     required init(session: AuthSession) {
         self.session = session
@@ -24,16 +24,16 @@ class UserServiceProvider: UserService {
     
     func follow(id: String, callback: ((UserServiceError?) -> Void)?) {
         var error: UserServiceError?
-        if let _ = isOK() {
+        if !session.isValid {
             error = .authenticationNotFound(message: "Authentication not found.")
             callback?(error)
         } else {
-            let user = session!.user
-            let path1 = "users/\(user?.id)/profile/following_count"
-            let path2 = "users/\(user?.id)/following/\(id)"
-            let path3 = "users/\(id)/followers/\(user?.id)"
+            let user = session.user
+            let path1 = "users/\(user.id)/profile/following_count"
+            let path2 = "users/\(user.id)/following/\(id)"
+            let path3 = "users/\(id)/followers/\(user.id)"
             let path4 = "users/\(id)/profile/followers_count"
-            let path5 = "users/\(user?.id)/feed"
+            let path5 = "users/\(user.id)/feed"
             let path6 = "users/\(id)/feed"
 
             let rootRef = FIRDatabase.database().reference()
@@ -106,16 +106,16 @@ class UserServiceProvider: UserService {
 
     func unfollow(id: String, callback: ((UserServiceError?) -> Void)?) {
         var error: UserServiceError?
-        if let _ = isOK() {
+        if !session.isValid {
             error = .authenticationNotFound(message: "Authentication not found.")
             callback?(error)
         } else {
-            let user = session!.user
-            let path1 = "users/\(user?.id)/profile/following_count"
-            let path2 = "users/\(user?.id)/following/\(id)"
-            let path3 = "users/\(id)/followers/\(user?.id)"
+            let user = session.user
+            let path1 = "users/\(user.id)/profile/following_count"
+            let path2 = "users/\(user.id)/following/\(id)"
+            let path3 = "users/\(id)/followers/\(user.id)"
             let path4 = "users/\(id)/profile/followers_count"
-            let path5 = "users/\(user?.id)/feed"
+            let path5 = "users/\(user.id)/feed"
             let path6 = "users/\(id)/feed"
 
             let rootRef = FIRDatabase.database().reference()
@@ -183,7 +183,7 @@ class UserServiceProvider: UserService {
 
     func fetchProfile(id: String, callback: ((UserServiceProfileResult) -> Void)?) {
         var result = UserServiceProfileResult()
-        if let _ = isOK() {
+        if !session.isValid {
             result.error = .authenticationNotFound(message: "Authentication not found.")
             callback?(result)
         } else {
@@ -224,17 +224,9 @@ class UserServiceProvider: UserService {
         }
     }
 
-    private func isOK() -> NSError? {
-        if session.isValid() {
-            return nil
-        } else {
-            return NSError(domain: "UserServiceProvider", code: 0, userInfo: ["message": "No authenticated user."])
-        }
-    }
-
     private func fetchFollowList(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: ((UserServiceFollowListResult) -> Void)?) {
         var result = UserServiceFollowListResult()
-        if let _ = isOK() {
+        if !session.isValid {
             result.error = .authenticationNotFound(message: "Authentication not found.")
             callback?(result)
         } else {
