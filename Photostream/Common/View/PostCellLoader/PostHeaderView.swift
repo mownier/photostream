@@ -23,7 +23,11 @@ open class PostHeaderView: UICollectionReusableView {
     }
 
     open func setAvatarUrl(_ url: String, placeholderImage: UIImage) {
-        let resource = ImageResource(downloadURL: URL(string: url)!)
+        guard let imageUrl = URL(string: url) else {
+            avatarImageView.image = placeholderImage
+            return
+        }
+        let resource = ImageResource(downloadURL: imageUrl)
         avatarImageView.kf.setImage(with: resource, placeholder: placeholderImage)
     }
 

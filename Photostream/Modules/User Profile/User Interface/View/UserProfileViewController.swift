@@ -100,8 +100,13 @@ extension UserProfileViewController: UserProfileViewInterface {
         let text: String = item.displayName[0]
         let font = UIFont.systemFont(ofSize: 28, weight: UIFontWeightMedium)
         let image = UILabel.createPlaceholderImageWithFrame(avatarImageView.bounds, text: text, font: font)
-        let resource = ImageResource(downloadURL: URL(string: item.avatarUrl)!)
-        avatarImageView.kf.setImage(with: resource, placeholder: image)
+        if let url = URL(string: item.avatarUrl) {
+            let resource = ImageResource(downloadURL: url)
+            avatarImageView.kf.setImage(with: resource, placeholder: image)
+        } else {
+            avatarImageView.image = image
+        }
+        
         postsCountLabel.text = item.postsCountText
         followersCountLabel.text = item.followersCountText
         followingCountLabel.text = item.followingCountText
