@@ -15,7 +15,7 @@ typealias PostServiceLikeListCallback = ([User]?, NSError?) -> Void
 protocol PostService: class {
 
     init(session: AuthSession!)
-    func fetchNewsFeed(_ offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
+
     func fetchPosts(_ userId: String!, offset: UInt!, limit: UInt!, callback: PostServiceCallback!)
     func writePost(_ imageUrl: String!, callback: PostServiceCallback!)
     func like(_ postId: String!, callback: PostServiceLikeCallback!)
