@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol NewsFeedService {
     
@@ -22,11 +22,13 @@ struct NewsFeedServiceResult {
 
 enum NewsFeedServiceError: Error {
     
+    case authenticationNotFound(message: String)
     case failedToFetchNewsFeed(message: String)
     
     var message: String {
         switch self {
-        case .failedToFetchNewsFeed(let message):
+        case .authenticationNotFound(let message),
+             .failedToFetchNewsFeed(let message):
             return message
         }
     }
