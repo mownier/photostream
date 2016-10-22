@@ -16,7 +16,7 @@ protocol NewsFeedService {
 
 struct NewsFeedServiceResult {
     
-    var posts: [Post]?
+    var posts: PostList?
     var error: NewsFeedServiceError?
 }
 

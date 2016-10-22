@@ -41,7 +41,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
 
     }
 
-    func showError(_ error: NSError) {
+    func showError(_ error: String) {
 
     }
 

@@ -60,8 +60,8 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
         view.reloadView()
     }
 
-    func newsFeedDidFetchWithError(_ error: NSError!) {
-        view.showError(error)
+    func newsFeedDidFetchWithError(_ error: NewsFeedServiceError) {
+        view.showError(error.message)
     }
 
     fileprivate func parseList(_ data: NewsFeedDataCollection) -> PostCellItemArray {

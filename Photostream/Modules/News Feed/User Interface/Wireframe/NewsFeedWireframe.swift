@@ -16,7 +16,7 @@ class NewsFeedWireframe: AnyObject {
 
     init() {
         let session = AuthSession()
-        let service = PostServiceProvider(session: session)
+        let service = NewsFeedServiceProvider(session: session)
         let interactor = NewsFeedInteractor(service: service)
         let presenter = NewsFeedPresenter()
         interactor.output = presenter

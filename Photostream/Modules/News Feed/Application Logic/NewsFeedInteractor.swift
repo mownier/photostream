@@ -11,10 +11,10 @@ import Foundation
 class NewsFeedInteractor: NewsFeedInteractorInput {
 
     var output: NewsFeedInteractorOutput!
-    var service: PostService!
+    var service: NewsFeedService!
     var currentOffset: UInt!
 
-    init(service: PostService!) {
+    init(service: NewsFeedService!) {
         self.service = service
         self.currentOffset = 0
     }
@@ -30,21 +30,25 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
     }
 
     fileprivate func fetch(_ offset: UInt!, limit: UInt!) {
-        service.fetchNewsFeed(currentOffset, limit: limit) { (feed, error) in
-            if let error = error {
-                self.output.newsFeedDidFetchWithError(error)
-            } else {
-                let data = self.parseNewsFeedData(feed)
-                self.output.newsFeedDidFetchOk(data)
+        service.fetchNewsFeed(offset: offset, limit: limit) { (result) in
+            guard result.error != nil else {
+                self.output.newsFeedDidFetchWithError(result.error!)
+                return
             }
+            
+            let data = self.parseNewsFeedData(result.posts)
+            self.output.newsFeedDidFetchOk(data)
         }
     }
 
-    fileprivate func parseNewsFeedData(_ feed: PostServiceResult!) -> NewsFeedDataCollection {
+    fileprivate func parseNewsFeedData(_ posts: PostList?) -> NewsFeedDataCollection {
+        guard posts != nil else {
+            return NewsFeedDataCollection()
+        }
+        
         var data = NewsFeedDataCollection()
-
-        for i in 0..<feed.count {
-            if let (post, user) = feed[i] {
+        for i in 0..<posts!.count {
+            if let (post, user) = posts![i] {
                 var postItem = NewsFeedPostData()
                 postItem.message = post.message
                 postItem.postId = post.id
@@ -65,7 +69,6 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
                 data.add(postItem, userItem: userItem)
             }
         }
-
         return data
     }
 }

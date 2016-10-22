@@ -13,6 +13,6 @@ protocol NewsFeedViewInterface: class {
     func reloadView()
     func showEmptyView()
     func showItems(_ items: PostCellItemArray)
-    func showError(_ error: NSError)
+    func showError(_ error: String)
     func updateCell(_ postId: String, isLiked: Bool)
 }
