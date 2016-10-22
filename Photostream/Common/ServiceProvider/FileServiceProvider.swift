@@ -52,10 +52,10 @@ class FileServiceProvider: FileService {
     }
 
     func isOK() -> NSError? {
-        if session.isValid() {
+        if session.isValid {
             return nil
         } else {
-            if session.isValid() {
+            if session.isValid {
                 return nil
             } else {
                 return NSError(domain: "FileServiceProvider", code: 0, userInfo: ["message": "No authenticated user."])

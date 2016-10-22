@@ -113,7 +113,7 @@ class CommentServiceProvider: CommentService {
     }
 
     fileprivate func isOK() -> NSError? {
-        if session.isValid() {
+        if session.isValid {
             return nil
         } else {
             return NSError(domain: "CommentServiceProvider", code: 0, userInfo: ["message": "No authenticated user."])
