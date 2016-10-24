@@ -81,7 +81,7 @@
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
 		B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEF1D51C79300C5E76B /* Main.storyboard */; };
 		B97E3CFD1D51C93600C5E76B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3CFB1D51C93600C5E76B /* ViewController.swift */; };
-		B97E3D041D51CCBF00C5E76B /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */; };
+		B97E3D041D51CCBF00C5E76B /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3D031D51CCBF00C5E76B /* AppWireframe.swift */; };
 		B97E3D061D51CE5300C5E76B /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E3D051D51CE5300C5E76B /* AppDependency.swift */; };
 		B97FB6F21D55B4B700B68048 /* NewsFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6F11D55B4B700B68048 /* NewsFeedInteractor.swift */; };
 		B97FB6F41D55B4E400B68048 /* NewsFeedInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97FB6F31D55B4E400B68048 /* NewsFeedInteractorInput.swift */; };
@@ -202,7 +202,7 @@
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97E3CF01D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B97E3CFB1D51C93600C5E76B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Modules/Default/User Interface/View/ViewController.swift"; sourceTree = "<group>"; };
-		B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootWireframe.swift; path = ../Common/View/RootWireframe.swift; sourceTree = "<group>"; };
+		B97E3D031D51CCBF00C5E76B /* AppWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppWireframe.swift; path = ../Common/View/AppWireframe.swift; sourceTree = "<group>"; };
 		B97E3D051D51CE5300C5E76B /* AppDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		B97FB6F11D55B4B700B68048 /* NewsFeedInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractor.swift; sourceTree = "<group>"; };
 		B97FB6F31D55B4E400B68048 /* NewsFeedInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractorInput.swift; sourceTree = "<group>"; };
@@ -567,7 +567,7 @@
 		B97E3CE81D51C78900C5E76B /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */,
+				B97E3D031D51CCBF00C5E76B /* AppWireframe.swift */,
 				B97E3CE91D51C78900C5E76B /* AppDelegate.swift */,
 				B97E3D051D51CE5300C5E76B /* AppDependency.swift */,
 			);
@@ -1241,7 +1241,7 @@
 				B9D3FDDF1D6438BB00B7CC2E /* Photo.swift in Sources */,
 				B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */,
 				B9706A991D5EEE7D002EE1D2 /* LoginPresenter.swift in Sources */,
-				B97E3D041D51CCBF00C5E76B /* RootWireframe.swift in Sources */,
+				B97E3D041D51CCBF00C5E76B /* AppWireframe.swift in Sources */,
 				B9D3FDE31D64460900B7CC2E /* String+Extensions.swift in Sources */,
 				B96AB3371D6EB7C700FF8961 /* PostHeaderView.swift in Sources */,
 				B971CBB11DB9EC86002166D3 /* PostServiceProvider.swift in Sources */,

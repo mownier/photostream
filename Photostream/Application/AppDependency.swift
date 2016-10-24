@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class AppDependency: AnyObject {
 
-    var rootWireframe: RootWireframe!
+    var appWireframe: AppWireframe!
     var loginViewController: LoginViewController {
         let sb = UIStoryboard(name: "LoginModuleStoryboard", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "LoginViewController")
@@ -19,17 +19,17 @@ class AppDependency: AnyObject {
     }
 
     init() {
-        self.rootWireframe = RootWireframe()
+        self.appWireframe = AppWireframe()
     }
 
     func attachRootViewControllerInWindow(_ window: UIWindow!) {
         if isOK() {
             let homeWireframe = HomeWireframe()
-            homeWireframe.rootWireframe = rootWireframe
+            homeWireframe.appWireframe = appWireframe
             homeWireframe.navigateHomeInterfaceFromWindow(window)
         } else {
             let loginWireframe = LoginWireframe(view: loginViewController)
-            loginWireframe.rootWireframe = rootWireframe
+            loginWireframe.appWireframe = appWireframe
             loginWireframe.attachAsNavigationRoot(in: window)
         }
     }

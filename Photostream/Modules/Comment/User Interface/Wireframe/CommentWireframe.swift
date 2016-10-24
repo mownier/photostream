@@ -10,7 +10,7 @@ import UIKit
 
 class CommentWireframe: AnyObject {
 
-    var rootWireframe: RootWireframe!
+    var appWireframe: AppWireframe!
 
     func navigateCommentInterfaceFromViewController(_ viewController: UIViewController, shouldComment: Bool) {
         let sb = UIStoryboard(name: "CommentModuleStoryboard", bundle: nil)

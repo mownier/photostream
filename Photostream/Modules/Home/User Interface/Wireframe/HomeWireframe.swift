@@ -12,7 +12,7 @@ class HomeWireframe: AnyObject {
 
     weak var homeViewController: HomeViewController!
 
-    var rootWireframe: RootWireframe!
+    var appWireframe: AppWireframe!
 
     init() {
         let sb = UIStoryboard(name: "HomeModuleStoryboard", bundle: nil)
@@ -22,7 +22,7 @@ class HomeWireframe: AnyObject {
     func navigateHomeInterfaceFromWindow(_ window: UIWindow!) {
         configureNewsFeedModule()
         configureUserProfileModule()
-        rootWireframe.showRootViewController(homeViewController, window: window)
+        appWireframe.showRootViewController(homeViewController, window: window)
     }
 
     fileprivate func configureNewsFeedModule() {
@@ -30,7 +30,7 @@ class HomeWireframe: AnyObject {
         let vc = nav.viewControllers[0] as! NewsFeedViewController
         let wireframe = NewsFeedWireframe()
         wireframe.newsFeedViewController = vc
-        wireframe.rootWireframe = rootWireframe
+        wireframe.appWireframe = appWireframe
         wireframe.newsFeedPresenter.view = vc
         vc.presenter = wireframe.newsFeedPresenter
     }
@@ -41,7 +41,7 @@ class HomeWireframe: AnyObject {
         let auth = AuthSession()
         let wireframe = UserProfileWireframe(userId: auth.user.id)
         wireframe.userProfileViewController = vc
-        wireframe.rootWireframe = rootWireframe
+        wireframe.appWireframe = appWireframe
         wireframe.userProfilePresenter.view = vc
         vc.presenter = wireframe.userProfilePresenter
         vc.preloadView()

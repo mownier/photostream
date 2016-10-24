@@ -1,5 +1,5 @@
 //
-//  RootWireframe.swift
+//  AppWireframe.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 03/08/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootWireframe: AnyObject {
+class AppWireframe: AnyObject {
 
     func showRootViewController(_ viewController: UIViewController, window: UIWindow) {
         let nav = UINavigationController(rootViewController: viewController)
@@ -18,7 +18,7 @@ class RootWireframe: AnyObject {
 
     func navigateCommentsModule(_ viewController: UIViewController, shouldComment: Bool) {
         let wireframe = CommentWireframe()
-        wireframe.rootWireframe = self
+        wireframe.appWireframe = self
         wireframe.navigateCommentInterfaceFromViewController(viewController, shouldComment: shouldComment)
     }
 }

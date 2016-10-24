@@ -12,7 +12,7 @@ class UserProfileWireframe: AnyObject {
 
     weak var userProfileViewController: UserProfileViewController!
     var userProfilePresenter: UserProfilePresenter!
-    var rootWireframe: RootWireframe!
+    var appWireframe: AppWireframe!
 
     init(userId: String) {
         let session = AuthSession()
