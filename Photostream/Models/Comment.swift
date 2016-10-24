@@ -22,3 +22,14 @@ struct Comment {
         userId = ""
     }
 }
+
+struct CommentList {
+    
+    var comments: [Comment]
+    var users: [String: User]
+    
+    init() {
+        comments = [Comment]()
+        users = [String: User]()
+    }
+}

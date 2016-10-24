@@ -8,17 +8,32 @@
 
 import Foundation
 
-typealias CommentServiceCallback = (CommentServiceResult?, NSError?) -> Void
+protocol CommentService {
 
-protocol CommentService: class {
-
-    init(session: AuthSession!)
-    func fetchComments(_ postId: String!, offset: UInt!, limit: UInt!, callback: CommentServiceCallback!)
-    func writeComment(_ postId: String!, message: String!, callback: CommentServiceCallback!)
+    init(session: AuthSession)
+    
+    func fetchComments(postId: String, offset: UInt, limit: UInt, callback: ((CommentServiceResult) -> Void)?)
+    func writeComment(postId: String, message: String, callback: ((CommentServiceResult) -> Void)?)
 }
 
 struct CommentServiceResult {
 
-    var comments: [Comment]!
-    var users: [String: User]!
+    var comments: CommentList?
+    var error: CommentServiceError?
+}
+
+enum CommentServiceError: Error {
+    
+    case authenticationNotFound(message: String)
+    case failedToFetch(message: String)
+    case failedToWrite(message: String)
+    
+    var message: String {
+        switch self {
+        case .authenticationNotFound(let message),
+             .failedToFetch(let message),
+             .failedToWrite(let message):
+            return message
+        }
+    }
 }
