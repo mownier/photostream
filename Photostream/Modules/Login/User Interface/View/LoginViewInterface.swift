@@ -6,9 +6,13 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol LoginViewInterface: class {
-
-    func showLoginError(_ error: AuthenticationServiceError)
+protocol LoginViewInterface: NSObjectProtocol {
+    
+    weak var controller: UIViewController? { get }
+    var presenter: LoginPresenterInterface! { set get }
+    
+    func didTapLogin()
+    func didReceiveError(message: String)
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDelegate {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,7 +18,7 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
     @IBInspectable var bottomColor: UIColor!
     @IBInspectable var cornerRadius: CGFloat = 0
 
-    var presenter: LoginModuleInterface!
+    var presenter: LoginPresenterInterface!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,35 +29,6 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
 
     override var prefersStatusBarHidden : Bool {
         return true
-    }
-
-    @IBAction func login(_ sender: AnyObject) {
-        view.endEditing(false)
-
-        loginButton.setTitle("", for: UIControlState())
-        view.isUserInteractionEnabled = false
-        addIndicatorView()
-
-        let email = emailTextField.text
-        let password = passwordTextField.text
-        presenter.login(email, password: password)
-    }
-
-    func showLoginError(_ error: AuthenticationServiceError) {
-        loginButton.setTitle("Login", for: UIControlState())
-        view.isUserInteractionEnabled = true
-        removeIndicatorView()
-
-        presenter.showErrorAlert(error)
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            login(loginButton)
-        }
-        return false
     }
 
     fileprivate func addIndicatorView() {
@@ -85,5 +56,49 @@ class LoginViewController: UIViewController, LoginViewInterface, UITextFieldDele
         gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.frame = view.frame
         view.layer.insertSublayer(gradient, at: 0)
+    }
+}
+
+extension LoginViewController: LoginViewInterface {
+    
+    weak internal var controller: UIViewController? {
+        return self
+    }
+    
+    @IBAction func didTapLogin() {
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text,
+            !email.isEmpty,
+            !password.isEmpty else {
+            return
+        }
+        
+        view.endEditing(false)
+        
+        loginButton.setTitle("", for: UIControlState())
+        view.isUserInteractionEnabled = false
+        addIndicatorView()
+
+        presenter.login(email: email, password: password)
+    }
+    
+    func didReceiveError(message: String) {
+        loginButton.setTitle("Login", for: UIControlState())
+        view.isUserInteractionEnabled = true
+        removeIndicatorView()
+        
+        presenter.presentErrorAlert(message: message)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            didTapLogin()
+        }
+        return false
     }
 }

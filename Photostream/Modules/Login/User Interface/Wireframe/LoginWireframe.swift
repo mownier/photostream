@@ -8,47 +8,62 @@
 
 import UIKit
 
-class LoginWireframe: LoginWireframeInput {
+class LoginWireframe: LoginWireframeInterface {
 
-    weak var loginViewController: LoginViewController!
-    var loginPresenter: LoginPresenter!
+    var loginPresenter: LoginPresenterInterface
     var rootWireframe: RootWireframe!
 
-    init() {
+    required init(view: LoginViewInterface) {
         let presenter = LoginPresenter()
         let service = AuthenticationServiceProvider()
         let interactor = LoginInteractor(service: service)
         interactor.output = presenter
         presenter.interactor = interactor
-        presenter.wireframe = self
+        presenter.view = view
+        view.presenter = presenter
 
         self.loginPresenter = presenter
+        self.loginPresenter.wireframe = self
     }
-
-    func navigateLoginInterfaceFromWindow(_ window: UIWindow!) {
-        let sb = UIStoryboard(name: "LoginModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        loginViewController = vc
-        loginPresenter.view = vc
-        vc.presenter = loginPresenter
-        rootWireframe.showRootViewController(vc, window: window)
+    
+    func attachAsNavigationRoot(in window: UIWindow) {
+        guard let controller = loginPresenter.view?.controller else {
+            return
+        }
+        
+        rootWireframe.showRootViewController(controller, window: window)
     }
-
-    func navigateHomeInterface() {
-        let homeWireframe = HomeWireframe()
-        homeWireframe.rootWireframe = rootWireframe
-        homeWireframe.navigateHomeInterfaceFromWindow(loginViewController.view.window)
-    }
-
-    func navigateRegistrationInterface() {
-        let registrationWireframe = RegistrationWireframe()
-        registrationWireframe.navigateRegistrationInterfaceFromViewController(loginViewController)
-    }
-
-    func navigateLoginErrorAlert(_ error: AuthenticationServiceError) {
-        let alert = UIAlertController(title: "Login Error", message: error.message, preferredStyle: .alert)
+    
+    func showErrorAlert(title: String, message: String) {
+        guard let controller = loginPresenter.view?.controller else {
+            return
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
-        loginViewController.present(alert, animated: true, completion: nil)
+        controller.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LoginWireframe: LoginWireframeModuleNavigator {
+    
+    func navigateToRegistration() {
+        guard let controller = loginPresenter.view?.controller else {
+            return
+        }
+        
+        let registrationWireframe = RegistrationWireframe()
+        registrationWireframe.navigateRegistrationInterfaceFromViewController(controller)
+    }
+    
+    func navigateToHome() {
+        guard let controller = loginPresenter.view?.controller else {
+            return
+        }
+        
+        let homeWireframe = HomeWireframe()
+        homeWireframe.rootWireframe = rootWireframe
+        homeWireframe.navigateHomeInterfaceFromWindow(controller.view.window)
     }
 }

@@ -8,29 +8,32 @@
 
 import Foundation
 
-class LoginPresenter: LoginModuleInterface, LoginInteractorOutput {
+class LoginPresenter: LoginPresenterInterface {
 
     weak var view: LoginViewInterface!
     var interactor: LoginInteractorInput!
     var wireframe: LoginWireframe!
-
-    func loginDidSucceed(_ user: User!) {
-        wireframe.navigateHomeInterface()
-    }
-
-    func loginDidFail(_ error: AuthenticationServiceError) {
-        view.showLoginError(error)
-    }
-
-    func login(_ email: String!, password: String!) {
+    
+    func login(email: String, password: String) {
         interactor.login(email, password: password)
     }
 
-    func showRegistration() {
-        wireframe.navigateRegistrationInterface()
+    func presentRegistration() {
+        wireframe.navigateToRegistration()
     }
 
-    func showErrorAlert(_ error: AuthenticationServiceError) {
-        wireframe.navigateLoginErrorAlert(error)
+    func presentErrorAlert(message: String) {
+        wireframe.showErrorAlert(title: "Login Error", message: message)
+    }
+}
+
+extension LoginPresenter: LoginInteractorOutput {
+    
+    func loginDidFail(_ error: AuthenticationServiceError) {
+        view.didReceiveError(message: error.message)
+    }
+    
+    func loginDidSucceed(_ user: User!) {
+        wireframe.navigateToHome()
     }
 }
