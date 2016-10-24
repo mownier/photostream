@@ -129,9 +129,9 @@
 		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedViewController.swift; path = "Modules/News Feed/User Interface/View/NewsFeedViewController.swift"; sourceTree = "<group>"; };
 		B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
-		B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedHeaderView.swift; sourceTree = "<group>"; };
+		B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedHeaderView.swift; path = "Modules/News Feed/User Interface/View/NewsFeedHeaderView.swift"; sourceTree = "<group>"; };
 		B95FFD0B1D5306E700085905 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		B95FFD0D1D5306F500085905 /* LoginInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorInput.swift; sourceTree = "<group>"; };
 		B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorOutput.swift; sourceTree = "<group>"; };
@@ -152,9 +152,9 @@
 		B96AB33A1D6EB87500FF8961 /* PostHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostHeaderView.xib; sourceTree = "<group>"; };
 		B96AB33C1D6EB93800FF8961 /* PostFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostFooterView.xib; sourceTree = "<group>"; };
 		B96F13A41D6FE91A00D59E3F /* UserProfileWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileWireframe.swift; sourceTree = "<group>"; };
-		B96F13A61D6FE93000D59E3F /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		B96F13A61D6FE93000D59E3F /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = "Modules/User Profile/User Interface/View/UserProfileViewController.swift"; sourceTree = "<group>"; };
 		B96F13A81D6FE95200D59E3F /* UserProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
-		B96F13AA1D6FE96900D59E3F /* UserProfileModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileModuleInterface.swift; sourceTree = "<group>"; };
+		B96F13AA1D6FE96900D59E3F /* UserProfileModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileModuleInterface.swift; path = "Module Interface/UserProfileModuleInterface.swift"; sourceTree = "<group>"; };
 		B96F13AC1D6FE99500D59E3F /* UserProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
 		B96F13AE1D6FE9C500D59E3F /* UserProfileInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileInteractorInput.swift; sourceTree = "<group>"; };
 		B96F13B01D6FE9D100D59E3F /* UserProfileInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileInteractorOutput.swift; sourceTree = "<group>"; };
@@ -164,15 +164,15 @@
 		B96FCE871D68191600C2A165 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		B96FCE891D68336C00C2A165 /* NewsFeedDataCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedDataCollection.swift; sourceTree = "<group>"; };
 		B96FCE8B1D683DC500C2A165 /* NewsFeedDisplayItemCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedDisplayItemCollection.swift; sourceTree = "<group>"; };
-		B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
+		B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginModuleInterface.swift; path = "Module Interface/LoginModuleInterface.swift"; sourceTree = "<group>"; };
 		B9706A981D5EEE7D002EE1D2 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		B9706A9A1D5EEEDF002EE1D2 /* LoginViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewInterface.swift; sourceTree = "<group>"; };
 		B9706A9C1D5EEF19002EE1D2 /* LoginWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
 		B9706A9E1D5EF067002EE1D2 /* LoginWireframeInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireframeInput.swift; sourceTree = "<group>"; };
-		B9706AA01D5EF10C002EE1D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B9706AA01D5EF10C002EE1D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = "Modules/Login/User Interface/View/LoginViewController.swift"; sourceTree = "<group>"; };
 		B9706AA21D5EF206002EE1D2 /* RegistrationWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationWireframe.swift; sourceTree = "<group>"; };
 		B9706AA41D5EF2A1002EE1D2 /* RegistrationViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewInterface.swift; sourceTree = "<group>"; };
-		B9706AA61D5EF2BF002EE1D2 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		B9706AA61D5EF2BF002EE1D2 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = "Modules/Registration/User Interface/View/RegistrationViewController.swift"; sourceTree = "<group>"; };
 		B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		B9706AAB1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B971CBA91DB9EC86002166D3 /* AuthenticationServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceProvider.swift; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
 		B9759BBB1D6C136F005AA0B6 /* CommentWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWireframe.swift; sourceTree = "<group>"; };
 		B9759BBF1D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommentModuleStoryboard.storyboard; sourceTree = "<group>"; };
-		B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentsViewController.swift; path = "Modules/Comment/User Interface/View/CommentsViewController.swift"; sourceTree = "<group>"; };
 		B978B0541D73E337006FE0A4 /* PostGridCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCellDelegate.swift; sourceTree = "<group>"; };
 		B978B0561D73E34D006FE0A4 /* PostGridCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCellDataSource.swift; sourceTree = "<group>"; };
 		B978B0581D73E5BB006FE0A4 /* PostGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCell.swift; sourceTree = "<group>"; };
@@ -201,8 +201,8 @@
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97E3CF01D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B97E3CFB1D51C93600C5E76B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
+		B97E3CFB1D51C93600C5E76B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Modules/Default/User Interface/View/ViewController.swift"; sourceTree = "<group>"; };
+		B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootWireframe.swift; path = ../Common/View/RootWireframe.swift; sourceTree = "<group>"; };
 		B97E3D051D51CE5300C5E76B /* AppDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		B97FB6F11D55B4B700B68048 /* NewsFeedInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractor.swift; sourceTree = "<group>"; };
 		B97FB6F31D55B4E400B68048 /* NewsFeedInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractorInput.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		B97FB6FB1D55B8E800B68048 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		B98032281D6ABFEF00EAEF51 /* NewsFeedDisplayItemParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedDisplayItemParser.swift; sourceTree = "<group>"; };
 		B98EE63B1D616FEE00826C37 /* HomeWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
-		B98EE63D1D61743B00826C37 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B98EE63D1D61743B00826C37 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Modules/Home/User Interface/View/HomeViewController.swift"; sourceTree = "<group>"; };
 		B98EE6401D61747400826C37 /* HomeModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B98EE6421D61963D00826C37 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		B98EE6441D619E5900826C37 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
@@ -224,13 +224,13 @@
 		B9C1E4C61D507843000925FA /* PhotostreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotostreamTests.swift; sourceTree = "<group>"; };
 		B9C1E4C81D507843000925FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9D331AA1D5D938D0010A8C1 /* AuthSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthSession.swift; sourceTree = "<group>"; };
-		B9D3FDD21D63FB5100B7CC2E /* NewsFeedModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedModuleInterface.swift; sourceTree = "<group>"; };
+		B9D3FDD21D63FB5100B7CC2E /* NewsFeedModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedModuleInterface.swift; path = "Module Interface/NewsFeedModuleInterface.swift"; sourceTree = "<group>"; };
 		B9D3FDD41D63FBA100B7CC2E /* NewsFeedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedPresenter.swift; sourceTree = "<group>"; };
 		B9D3FDD61D64016B00B7CC2E /* NewsFeedViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewInterface.swift; sourceTree = "<group>"; };
 		B9D3FDD81D640A1300B7CC2E /* NewsFeedWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedWireframe.swift; sourceTree = "<group>"; };
 		B9D3FDDA1D6422F600B7CC2E /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		B9D3FDDE1D6438BB00B7CC2E /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		B9D3FDE01D643B5E00B7CC2E /* NewsFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
+		B9D3FDE01D643B5E00B7CC2E /* NewsFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedCell.swift; path = "Modules/News Feed/User Interface/View/NewsFeedCell.swift"; sourceTree = "<group>"; };
 		B9D3FDE21D64460900B7CC2E /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -265,45 +265,31 @@
 			children = (
 				B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */,
 			);
-			path = Storyboard;
+			name = Storyboard;
+			path = "Modules/News Feed/User Interface/View/Storyboard";
 			sourceTree = "<group>";
 		};
 		B95FFD041D53048700085905 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B95FFD051D53048700085905 /* Application Logic */,
-				B95FFD061D53048700085905 /* Module Interface */,
-				B95FFD071D53048700085905 /* User Interface */,
+				B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */,
+				B95FFD051D53048700085905 /* Interactor */,
+				B95FFD081D53068300085905 /* Presenter */,
+				B95FFD091D53068300085905 /* View */,
+				B95FFD0A1D53068300085905 /* Wireframe */,
 			);
 			path = Login;
 			sourceTree = "<group>";
 		};
-		B95FFD051D53048700085905 /* Application Logic */ = {
+		B95FFD051D53048700085905 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
 				B95FFD0B1D5306E700085905 /* LoginInteractor.swift */,
 				B95FFD0D1D5306F500085905 /* LoginInteractorInput.swift */,
 				B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */,
 			);
+			name = Interactor;
 			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		B95FFD061D53048700085905 /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-				B9706A961D5EED93002EE1D2 /* LoginModuleInterface.swift */,
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		B95FFD071D53048700085905 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				B95FFD081D53068300085905 /* Presenter */,
-				B95FFD091D53068300085905 /* View */,
-				B95FFD0A1D53068300085905 /* Wireframe */,
-			);
-			path = "User Interface";
 			sourceTree = "<group>";
 		};
 		B95FFD081D53068300085905 /* Presenter */ = {
@@ -311,17 +297,17 @@
 			children = (
 				B9706A981D5EEE7D002EE1D2 /* LoginPresenter.swift */,
 			);
-			path = Presenter;
+			name = Presenter;
+			path = "User Interface/Presenter";
 			sourceTree = "<group>";
 		};
 		B95FFD091D53068300085905 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9706AA01D5EF10C002EE1D2 /* LoginViewController.swift */,
 				B9706A9A1D5EEEDF002EE1D2 /* LoginViewInterface.swift */,
-				B9706AAA1D5EFE77002EE1D2 /* Storyboard */,
 			);
-			path = View;
+			name = View;
+			path = "User Interface/View";
 			sourceTree = "<group>";
 		};
 		B95FFD0A1D53068300085905 /* Wireframe */ = {
@@ -330,7 +316,8 @@
 				B9706A9C1D5EEF19002EE1D2 /* LoginWireframe.swift */,
 				B9706A9E1D5EF067002EE1D2 /* LoginWireframeInput.swift */,
 			);
-			path = Wireframe;
+			name = Wireframe;
+			path = "User Interface/Wireframe";
 			sourceTree = "<group>";
 		};
 		B95FFD131D530BBD00085905 /* Service */ = {
@@ -343,44 +330,30 @@
 				B97FB6F71D55B67E00B68048 /* PostService.swift */,
 				B9BFA4BC1D5B18BF000AA368 /* UserService.swift */,
 			);
-			path = Service;
+			name = Service;
+			path = Common/Service;
 			sourceTree = "<group>";
 		};
 		B961A2BD1D545D6800651D35 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				B961A2BE1D545D6800651D35 /* Application Logic */,
-				B961A2BF1D545D6800651D35 /* Module Interface */,
-				B961A2C01D545D6800651D35 /* User Interface */,
+				B961A2BE1D545D6800651D35 /* Interactor */,
+				B961A2C11D545D6800651D35 /* Presenter */,
+				B961A2C21D545D6800651D35 /* View */,
+				B961A2C31D545D6800651D35 /* Wireframe */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
 		};
-		B961A2BE1D545D6800651D35 /* Application Logic */ = {
+		B961A2BE1D545D6800651D35 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
 				B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */,
 				B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */,
 				B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */,
 			);
+			name = Interactor;
 			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		B961A2BF1D545D6800651D35 /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		B961A2C01D545D6800651D35 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				B961A2C11D545D6800651D35 /* Presenter */,
-				B961A2C21D545D6800651D35 /* View */,
-				B961A2C31D545D6800651D35 /* Wireframe */,
-			);
-			path = "User Interface";
 			sourceTree = "<group>";
 		};
 		B961A2C11D545D6800651D35 /* Presenter */ = {
@@ -388,16 +361,17 @@
 			children = (
 				B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */,
 			);
-			path = Presenter;
+			name = Presenter;
+			path = "User Interface/Presenter";
 			sourceTree = "<group>";
 		};
 		B961A2C21D545D6800651D35 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				B9706AA41D5EF2A1002EE1D2 /* RegistrationViewInterface.swift */,
-				B9706AA61D5EF2BF002EE1D2 /* RegistrationViewController.swift */,
 			);
-			path = View;
+			name = View;
+			path = "User Interface/View";
 			sourceTree = "<group>";
 		};
 		B961A2C31D545D6800651D35 /* Wireframe */ = {
@@ -405,7 +379,8 @@
 			children = (
 				B9706AA21D5EF206002EE1D2 /* RegistrationWireframe.swift */,
 			);
-			path = Wireframe;
+			name = Wireframe;
+			path = "User Interface/Wireframe";
 			sourceTree = "<group>";
 		};
 		B96AB3261D6EAE2800FF8961 /* PostCellLoader */ = {
@@ -427,7 +402,8 @@
 				B96AB3361D6EB7C700FF8961 /* PostHeaderView.swift */,
 				B96AB32D1D6EAE2800FF8961 /* Xib */,
 			);
-			path = PostCellLoader;
+			name = PostCellLoader;
+			path = Common/View/PostCellLoader;
 			sourceTree = "<group>";
 		};
 		B96AB32D1D6EAE2800FF8961 /* Xib */ = {
@@ -444,14 +420,16 @@
 		B96F139D1D6FE90900D59E3F /* User Profile */ = {
 			isa = PBXGroup;
 			children = (
-				B96F139E1D6FE90900D59E3F /* Application Logic */,
-				B96F139F1D6FE90900D59E3F /* Module Interface */,
-				B96F13A01D6FE90900D59E3F /* User Interface */,
+				B96F13AA1D6FE96900D59E3F /* UserProfileModuleInterface.swift */,
+				B96F139E1D6FE90900D59E3F /* Interactor */,
+				B96F13A11D6FE90900D59E3F /* Presenter */,
+				B96F13A21D6FE90900D59E3F /* View */,
+				B96F13A31D6FE90900D59E3F /* Wireframe */,
 			);
 			path = "User Profile";
 			sourceTree = "<group>";
 		};
-		B96F139E1D6FE90900D59E3F /* Application Logic */ = {
+		B96F139E1D6FE90900D59E3F /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
 				B96F13AC1D6FE99500D59E3F /* UserProfileInteractor.swift */,
@@ -460,25 +438,8 @@
 				B96F13B21D6FEAEA00D59E3F /* UserProfileData.swift */,
 				B97D1BA11D716E9400246D85 /* UserProfileService.swift */,
 			);
+			name = Interactor;
 			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		B96F139F1D6FE90900D59E3F /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-				B96F13AA1D6FE96900D59E3F /* UserProfileModuleInterface.swift */,
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		B96F13A01D6FE90900D59E3F /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				B96F13A11D6FE90900D59E3F /* Presenter */,
-				B96F13A21D6FE90900D59E3F /* View */,
-				B96F13A31D6FE90900D59E3F /* Wireframe */,
-			);
-			path = "User Interface";
 			sourceTree = "<group>";
 		};
 		B96F13A11D6FE90900D59E3F /* Presenter */ = {
@@ -487,17 +448,17 @@
 				B96F13A81D6FE95200D59E3F /* UserProfilePresenter.swift */,
 				B97D1B9D1D715ADC00246D85 /* UserProfileDisplayItem.swift */,
 			);
-			path = Presenter;
+			name = Presenter;
+			path = "User Interface/Presenter";
 			sourceTree = "<group>";
 		};
 		B96F13A21D6FE90900D59E3F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B96F13A61D6FE93000D59E3F /* UserProfileViewController.swift */,
 				B97D1B9B1D7149C800246D85 /* UserProfileViewInterface.swift */,
-				B96F13B71D6FEF7400D59E3F /* Storyboard */,
 			);
-			path = View;
+			name = View;
+			path = "User Interface/View";
 			sourceTree = "<group>";
 		};
 		B96F13A31D6FE90900D59E3F /* Wireframe */ = {
@@ -505,7 +466,8 @@
 			children = (
 				B96F13A41D6FE91A00D59E3F /* UserProfileWireframe.swift */,
 			);
-			path = Wireframe;
+			name = Wireframe;
+			path = "User Interface/Wireframe";
 			sourceTree = "<group>";
 		};
 		B96F13B71D6FEF7400D59E3F /* Storyboard */ = {
@@ -513,7 +475,8 @@
 			children = (
 				B96F13B81D6FEF7400D59E3F /* UserProfileModuleStoryboard.storyboard */,
 			);
-			path = Storyboard;
+			name = Storyboard;
+			path = "Modules/User Profile/User Interface/View/Storyboard";
 			sourceTree = "<group>";
 		};
 		B96FCE841D67F76400C2A165 /* Xib */ = {
@@ -521,7 +484,8 @@
 			children = (
 				B96FCE851D680CC900C2A165 /* NewsFeedCell.xib */,
 			);
-			path = Xib;
+			name = Xib;
+			path = "Modules/News Feed/User Interface/View/Xib";
 			sourceTree = "<group>";
 		};
 		B9706AAA1D5EFE77002EE1D2 /* Storyboard */ = {
@@ -529,7 +493,8 @@
 			children = (
 				B9706AAB1D5F0125002EE1D2 /* LoginModuleStoryboard.storyboard */,
 			);
-			path = Storyboard;
+			name = Storyboard;
+			path = "Modules/Login/User Interface/View/Storyboard";
 			sourceTree = "<group>";
 		};
 		B971CBA81DB9EC86002166D3 /* ServiceProvider */ = {
@@ -542,58 +507,43 @@
 				B971CBAD1DB9EC86002166D3 /* UserServiceProvider.swift */,
 				B9F434401DBB528500A7C87D /* NewsFeedServiceProvider.swift */,
 			);
-			path = ServiceProvider;
+			name = ServiceProvider;
+			path = Common/ServiceProvider;
 			sourceTree = "<group>";
 		};
 		B9759BB41D6C136F005AA0B6 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
-				B9759BB51D6C136F005AA0B6 /* Application Logic */,
-				B9759BB61D6C136F005AA0B6 /* Module Interface */,
-				B9759BB71D6C136F005AA0B6 /* User Interface */,
-			);
-			path = Comment;
-			sourceTree = "<group>";
-		};
-		B9759BB51D6C136F005AA0B6 /* Application Logic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		B9759BB61D6C136F005AA0B6 /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		B9759BB71D6C136F005AA0B6 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
+				B9759BB51D6C136F005AA0B6 /* Interactor */,
 				B9759BB81D6C136F005AA0B6 /* Presenter */,
 				B9759BB91D6C136F005AA0B6 /* View */,
 				B9759BBA1D6C136F005AA0B6 /* Wireframe */,
 			);
-			path = "User Interface";
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		B9759BB51D6C136F005AA0B6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interactor;
+			path = "Application Logic";
 			sourceTree = "<group>";
 		};
 		B9759BB81D6C136F005AA0B6 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Presenter;
+			name = Presenter;
+			path = "User Interface/Presenter";
 			sourceTree = "<group>";
 		};
 		B9759BB91D6C136F005AA0B6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9759BBD1D6C1424005AA0B6 /* Storyboard */,
-				B9759BBE1D6C1424005AA0B6 /* Xib */,
-				B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */,
 			);
-			path = View;
+			name = View;
+			path = "User Interface/View";
 			sourceTree = "<group>";
 		};
 		B9759BBA1D6C136F005AA0B6 /* Wireframe */ = {
@@ -601,7 +551,8 @@
 			children = (
 				B9759BBB1D6C136F005AA0B6 /* CommentWireframe.swift */,
 			);
-			path = Wireframe;
+			name = Wireframe;
+			path = "User Interface/Wireframe";
 			sourceTree = "<group>";
 		};
 		B9759BBD1D6C1424005AA0B6 /* Storyboard */ = {
@@ -609,19 +560,14 @@
 			children = (
 				B9759BBF1D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard */,
 			);
-			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		B9759BBE1D6C1424005AA0B6 /* Xib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Xib;
+			name = Storyboard;
+			path = "Modules/Comment/User Interface/View/Storyboard";
 			sourceTree = "<group>";
 		};
 		B97E3CE81D51C78900C5E76B /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */,
 				B97E3CE91D51C78900C5E76B /* AppDelegate.swift */,
 				B97E3D051D51CE5300C5E76B /* AppDependency.swift */,
 			);
@@ -641,13 +587,13 @@
 		B97E3CF41D51C93600C5E76B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B96F139D1D6FE90900D59E3F /* User Profile */,
 				B9759BB41D6C136F005AA0B6 /* Comment */,
 				B97E3CF51D51C93600C5E76B /* Default */,
 				B98EE6341D616FD800826C37 /* Home */,
 				B95FFD041D53048700085905 /* Login */,
 				B97FB6EA1D55B48700B68048 /* News Feed */,
 				B961A2BD1D545D6800651D35 /* Registration */,
+				B96F139D1D6FE90900D59E3F /* User Profile */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -655,76 +601,44 @@
 		B97E3CF51D51C93600C5E76B /* Default */ = {
 			isa = PBXGroup;
 			children = (
-				B97E3CF61D51C93600C5E76B /* Application Logic */,
-				B97E3CF71D51C93600C5E76B /* Module Interface */,
-				B97E3CF81D51C93600C5E76B /* User Interface */,
-			);
-			path = Default;
-			sourceTree = "<group>";
-		};
-		B97E3CF61D51C93600C5E76B /* Application Logic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		B97E3CF71D51C93600C5E76B /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		B97E3CF81D51C93600C5E76B /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
+				B97E3CF61D51C93600C5E76B /* Interactor */,
 				B97E3CF91D51C93600C5E76B /* Presenter */,
 				B97E3CFA1D51C93600C5E76B /* View */,
 				B97E3CFC1D51C93600C5E76B /* Wireframe */,
 			);
-			path = "User Interface";
+			path = Default;
+			sourceTree = "<group>";
+		};
+		B97E3CF61D51C93600C5E76B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interactor;
+			path = "Application Logic";
 			sourceTree = "<group>";
 		};
 		B97E3CF91D51C93600C5E76B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Presenter;
+			name = Presenter;
+			path = "User Interface/Presenter";
 			sourceTree = "<group>";
 		};
 		B97E3CFA1D51C93600C5E76B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B97E3CFB1D51C93600C5E76B /* ViewController.swift */,
 			);
-			path = View;
+			name = View;
+			path = "User Interface/View";
 			sourceTree = "<group>";
 		};
 		B97E3CFC1D51C93600C5E76B /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Wireframe;
-			sourceTree = "<group>";
-		};
-		B97E3CFE1D51CAA600C5E76B /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				B971CBA81DB9EC86002166D3 /* ServiceProvider */,
-				B95FFD131D530BBD00085905 /* Service */,
-				B97E3CFF1D51CAA600C5E76B /* View */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		B97E3CFF1D51CAA600C5E76B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B96AB3261D6EAE2800FF8961 /* PostCellLoader */,
-				B97E3D031D51CCBF00C5E76B /* RootWireframe.swift */,
-			);
-			path = View;
+			name = Wireframe;
+			path = "User Interface/Wireframe";
 			sourceTree = "<group>";
 		};
 		B97E3D001D51CABB00C5E76B /* Models */ = {
@@ -765,14 +679,16 @@
 		B97FB6EA1D55B48700B68048 /* News Feed */ = {
 			isa = PBXGroup;
 			children = (
-				B97FB6EB1D55B48700B68048 /* Application Logic */,
-				B97FB6EC1D55B48700B68048 /* Module Interface */,
-				B97FB6ED1D55B48700B68048 /* User Interface */,
+				B9D3FDD21D63FB5100B7CC2E /* NewsFeedModuleInterface.swift */,
+				B97FB6EB1D55B48700B68048 /* Interactor */,
+				B97FB6EE1D55B48700B68048 /* Presenter */,
+				B97FB6EF1D55B48700B68048 /* View */,
+				B97FB6F01D55B48700B68048 /* Wireframe */,
 			);
 			path = "News Feed";
 			sourceTree = "<group>";
 		};
-		B97FB6EB1D55B48700B68048 /* Application Logic */ = {
+		B97FB6EB1D55B48700B68048 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
 				B97FB6F11D55B4B700B68048 /* NewsFeedInteractor.swift */,
@@ -780,25 +696,8 @@
 				B97FB6F51D55B5A600B68048 /* NewsFeedInteractorOutput.swift */,
 				B96FCE891D68336C00C2A165 /* NewsFeedDataCollection.swift */,
 			);
+			name = Interactor;
 			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		B97FB6EC1D55B48700B68048 /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-				B9D3FDD21D63FB5100B7CC2E /* NewsFeedModuleInterface.swift */,
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		B97FB6ED1D55B48700B68048 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				B97FB6EE1D55B48700B68048 /* Presenter */,
-				B97FB6EF1D55B48700B68048 /* View */,
-				B97FB6F01D55B48700B68048 /* Wireframe */,
-			);
-			path = "User Interface";
 			sourceTree = "<group>";
 		};
 		B97FB6EE1D55B48700B68048 /* Presenter */ = {
@@ -808,20 +707,17 @@
 				B96FCE8B1D683DC500C2A165 /* NewsFeedDisplayItemCollection.swift */,
 				B98032281D6ABFEF00EAEF51 /* NewsFeedDisplayItemParser.swift */,
 			);
-			path = Presenter;
+			name = Presenter;
+			path = "User Interface/Presenter";
 			sourceTree = "<group>";
 		};
 		B97FB6EF1D55B48700B68048 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9D3FDE01D643B5E00B7CC2E /* NewsFeedCell.swift */,
-				B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */,
-				B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */,
 				B9D3FDD61D64016B00B7CC2E /* NewsFeedViewInterface.swift */,
-				B95A3D551D62D2F100DA456D /* Storyboard */,
-				B96FCE841D67F76400C2A165 /* Xib */,
 			);
-			path = View;
+			name = View;
+			path = "User Interface/View";
 			sourceTree = "<group>";
 		};
 		B97FB6F01D55B48700B68048 /* Wireframe */ = {
@@ -829,57 +725,43 @@
 			children = (
 				B9D3FDD81D640A1300B7CC2E /* NewsFeedWireframe.swift */,
 			);
-			path = Wireframe;
+			name = Wireframe;
+			path = "User Interface/Wireframe";
 			sourceTree = "<group>";
 		};
 		B98EE6341D616FD800826C37 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B98EE6351D616FD800826C37 /* Application Logic */,
-				B98EE6361D616FD800826C37 /* Module Interface */,
-				B98EE6371D616FD800826C37 /* User Interface */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		B98EE6351D616FD800826C37 /* Application Logic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Application Logic";
-			sourceTree = "<group>";
-		};
-		B98EE6361D616FD800826C37 /* Module Interface */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Module Interface";
-			sourceTree = "<group>";
-		};
-		B98EE6371D616FD800826C37 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
+				B98EE6351D616FD800826C37 /* Interactor */,
 				B98EE6381D616FD800826C37 /* Presenter */,
 				B98EE6391D616FD800826C37 /* View */,
 				B98EE63A1D616FD800826C37 /* Wireframe */,
 			);
-			path = "User Interface";
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B98EE6351D616FD800826C37 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interactor;
+			path = "Application Logic";
 			sourceTree = "<group>";
 		};
 		B98EE6381D616FD800826C37 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Presenter;
+			name = Presenter;
+			path = "User Interface/Presenter";
 			sourceTree = "<group>";
 		};
 		B98EE6391D616FD800826C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B98EE63D1D61743B00826C37 /* HomeViewController.swift */,
-				B98EE63F1D61745F00826C37 /* Storyboard */,
 			);
-			path = View;
+			name = View;
+			path = "User Interface/View";
 			sourceTree = "<group>";
 		};
 		B98EE63A1D616FD800826C37 /* Wireframe */ = {
@@ -887,7 +769,8 @@
 			children = (
 				B98EE63B1D616FEE00826C37 /* HomeWireframe.swift */,
 			);
-			path = Wireframe;
+			name = Wireframe;
+			path = "User Interface/Wireframe";
 			sourceTree = "<group>";
 		};
 		B98EE63F1D61745F00826C37 /* Storyboard */ = {
@@ -895,7 +778,105 @@
 			children = (
 				B98EE6401D61747400826C37 /* HomeModuleStoryboard.storyboard */,
 			);
-			path = Storyboard;
+			name = Storyboard;
+			path = "Modules/Home/User Interface/View/Storyboard";
+			sourceTree = "<group>";
+		};
+		B99732581DBDBAA8004FFAD0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B99732641DBDBD56004FFAD0 /* Comment */,
+				B99732661DBDBD72004FFAD0 /* Default */,
+				B99732651DBDBD6C004FFAD0 /* Home */,
+				B99732671DBDBD79004FFAD0 /* Login */,
+				B99732681DBDBD80004FFAD0 /* News Feed */,
+				B99732691DBDBD87004FFAD0 /* Registration */,
+				B997325F1DBDBBC9004FFAD0 /* Shared */,
+				B99732631DBDBD4F004FFAD0 /* User Profile */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		B99732591DBDBACD004FFAD0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B97E3D001D51CABB00C5E76B /* Models */,
+				B971CBA81DB9EC86002166D3 /* ServiceProvider */,
+				B95FFD131D530BBD00085905 /* Service */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		B997325F1DBDBBC9004FFAD0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B96AB3261D6EAE2800FF8961 /* PostCellLoader */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		B99732631DBDBD4F004FFAD0 /* User Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B96F13A61D6FE93000D59E3F /* UserProfileViewController.swift */,
+				B96F13B71D6FEF7400D59E3F /* Storyboard */,
+			);
+			name = "User Profile";
+			sourceTree = "<group>";
+		};
+		B99732641DBDBD56004FFAD0 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				B9759BC11D6C1467005AA0B6 /* CommentsViewController.swift */,
+				B9759BBD1D6C1424005AA0B6 /* Storyboard */,
+			);
+			name = Comment;
+			sourceTree = "<group>";
+		};
+		B99732651DBDBD6C004FFAD0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B98EE63D1D61743B00826C37 /* HomeViewController.swift */,
+				B98EE63F1D61745F00826C37 /* Storyboard */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		B99732661DBDBD72004FFAD0 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				B97E3CFB1D51C93600C5E76B /* ViewController.swift */,
+			);
+			name = Default;
+			sourceTree = "<group>";
+		};
+		B99732671DBDBD79004FFAD0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B9706AA01D5EF10C002EE1D2 /* LoginViewController.swift */,
+				B9706AAA1D5EFE77002EE1D2 /* Storyboard */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		B99732681DBDBD80004FFAD0 /* News Feed */ = {
+			isa = PBXGroup;
+			children = (
+				B9D3FDE01D643B5E00B7CC2E /* NewsFeedCell.swift */,
+				B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */,
+				B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */,
+				B95A3D551D62D2F100DA456D /* Storyboard */,
+				B96FCE841D67F76400C2A165 /* Xib */,
+			);
+			name = "News Feed";
+			sourceTree = "<group>";
+		};
+		B99732691DBDBD87004FFAD0 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B9706AA61D5EF2BF002EE1D2 /* RegistrationViewController.swift */,
+			);
+			name = Registration;
 			sourceTree = "<group>";
 		};
 		B9C1E4A51D507843000925FA = {
@@ -927,9 +908,9 @@
 				B9C1E4BD1D507843000925FA /* Info.plist */,
 				B97E3CE81D51C78900C5E76B /* Application */,
 				B97E3CEB1D51C79300C5E76B /* Assets */,
-				B97E3CFE1D51CAA600C5E76B /* Common */,
-				B97E3D001D51CABB00C5E76B /* Models */,
 				B97E3CF41D51C93600C5E76B /* Modules */,
+				B99732591DBDBACD004FFAD0 /* Services */,
+				B99732581DBDBAA8004FFAD0 /* UI */,
 				B97E3D011D51CAC500C5E76B /* Utils */,
 			);
 			path = Photostream;
