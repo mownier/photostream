@@ -16,6 +16,7 @@
 		B91FA4731DBF262400A0B131 /* RegistrationWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4721DBF262400A0B131 /* RegistrationWireframeInterface.swift */; };
 		B91FA4751DBF28F900A0B131 /* RegistrationInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4741DBF28F900A0B131 /* RegistrationInteractorInterface.swift */; };
 		B91FA4771DBF2CDA00A0B131 /* RegistrationModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4761DBF2CDA00A0B131 /* RegistrationModuleExtension.swift */; };
+		B91FA4791DBF478B00A0B131 /* UserProfileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4781DBF478B00A0B131 /* UserProfileExtension.swift */; };
 		B95A3D571D62D32200DA456D /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */; };
 		B95A3D591D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */; };
 		B95A3D5B1D62F7B300DA456D /* NewsFeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */; };
@@ -143,6 +144,7 @@
 		B91FA4721DBF262400A0B131 /* RegistrationWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationWireframeInterface.swift; sourceTree = "<group>"; };
 		B91FA4741DBF28F900A0B131 /* RegistrationInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorInterface.swift; sourceTree = "<group>"; };
 		B91FA4761DBF2CDA00A0B131 /* RegistrationModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationModuleExtension.swift; sourceTree = "<group>"; };
+		B91FA4781DBF478B00A0B131 /* UserProfileExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileExtension.swift; sourceTree = "<group>"; };
 		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedViewController.swift; path = "Modules/News Feed/User Interface/View/NewsFeedViewController.swift"; sourceTree = "<group>"; };
 		B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedHeaderView.swift; path = "Modules/News Feed/User Interface/View/NewsFeedHeaderView.swift"; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				B91FA4681DBF062000A0B131 /* LoginModuleExtension.swift */,
 				B91FA4761DBF2CDA00A0B131 /* RegistrationModuleExtension.swift */,
+				B91FA4781DBF478B00A0B131 /* UserProfileExtension.swift */,
 			);
 			name = "Module Extensions";
 			sourceTree = "<group>";
@@ -1293,6 +1296,7 @@
 				B9706A991D5EEE7D002EE1D2 /* LoginPresenter.swift in Sources */,
 				B97E3D041D51CCBF00C5E76B /* AppWireframe.swift in Sources */,
 				B9D3FDE31D64460900B7CC2E /* String+Extensions.swift in Sources */,
+				B91FA4791DBF478B00A0B131 /* UserProfileExtension.swift in Sources */,
 				B96AB3371D6EB7C700FF8961 /* PostHeaderView.swift in Sources */,
 				B91FA4711DBF256B00A0B131 /* RegistrationPresenterInterface.swift in Sources */,
 				B971CBB11DB9EC86002166D3 /* PostServiceProvider.swift in Sources */,

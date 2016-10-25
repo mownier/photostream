@@ -61,6 +61,10 @@ class UserProfileViewController: UIViewController {
         updateLoader(listLoader, next: gridLoader)
     }
 
+    @IBAction func didTapSignOut() {
+        (presenter as? UserProfilePresenter)?.presentLogin()
+    }
+    
     fileprivate func toggleCollectionViewVisibility(_ willShow: UIView, willHide: UIView) {
         willShow.isHidden = false
         willHide.isHidden = true
