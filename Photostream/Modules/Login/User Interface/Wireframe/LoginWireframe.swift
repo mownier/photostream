@@ -11,7 +11,7 @@ import UIKit
 class LoginWireframe: LoginWireframeInterface {
 
     var loginPresenter: LoginPresenterInterface
-    var appWireframe: AppWireframe!
+    var rootWireframe: RootWireframeInterface!
 
     required init(view: LoginViewInterface) {
         let presenter = LoginPresenter()
@@ -31,7 +31,7 @@ class LoginWireframe: LoginWireframeInterface {
             return
         }
         
-        appWireframe.showRootViewController(controller, window: window)
+        rootWireframe.showRoot(with: controller, in: window)
     }
     
     func showErrorAlert(title: String, message: String) {

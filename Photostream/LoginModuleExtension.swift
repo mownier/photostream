@@ -40,7 +40,7 @@ extension LoginWireframe {
         }
         
         let homeWireframe = HomeWireframe()
-        homeWireframe.appWireframe = appWireframe
+        homeWireframe.rootWireframe = rootWireframe
         homeWireframe.navigateHomeInterfaceFromWindow(controller.view.window)
     }
 }

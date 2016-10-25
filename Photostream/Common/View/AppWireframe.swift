@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AppWireframe: AnyObject {
-
-    func showRootViewController(_ viewController: UIViewController, window: UIWindow) {
+class AppWireframe: RootWireframeInterface {
+    
+    func showRoot(with viewController: UIViewController, in window: UIWindow) {
         let nav = UINavigationController(rootViewController: viewController)
         nav.setNavigationBarHidden(true, animated: false)
         window.rootViewController = nav

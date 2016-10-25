@@ -11,7 +11,7 @@ import UIKit
 class NewsFeedWireframe: AnyObject {
 
     weak var newsFeedViewController: NewsFeedViewController!
-    var appWireframe: AppWireframe!
+    var rootWireframe: RootWireframeInterface!
     var newsFeedPresenter: NewsFeedPresenter!
 
     init() {
@@ -27,6 +27,6 @@ class NewsFeedWireframe: AnyObject {
     }
 
     func navigateCommentsInterface(_ shouldComment: Bool) {
-        appWireframe.navigateCommentsModule(newsFeedViewController, shouldComment: shouldComment)
+        // appWireframe.navigateCommentsModule(newsFeedViewController, shouldComment: shouldComment)
     }
 }

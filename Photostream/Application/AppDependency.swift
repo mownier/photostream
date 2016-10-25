@@ -25,11 +25,11 @@ class AppDependency: AnyObject {
     func attachRootViewControllerInWindow(_ window: UIWindow!) {
         if isOK() {
             let homeWireframe = HomeWireframe()
-            homeWireframe.appWireframe = appWireframe
+            homeWireframe.rootWireframe = appWireframe
             homeWireframe.navigateHomeInterfaceFromWindow(window)
         } else {
             let loginWireframe = LoginWireframe(view: loginViewController)
-            loginWireframe.appWireframe = appWireframe
+            loginWireframe.rootWireframe = appWireframe
             loginWireframe.attachAsNavigationRoot(in: window)
         }
     }
