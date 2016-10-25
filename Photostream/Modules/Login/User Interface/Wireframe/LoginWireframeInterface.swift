@@ -15,5 +15,5 @@ protocol LoginWireframeInterface {
     var loginPresenter: LoginPresenterInterface { set get }
     
     func showErrorAlert(title: String, message: String)
-    func attachAsNavigationRoot(in window: UIWindow)
+    func attachAsRoot(in window: UIWindow)
 }

@@ -30,7 +30,7 @@ class AppDependency: AnyObject {
         } else {
             let loginWireframe = LoginWireframe(view: loginViewController)
             loginWireframe.rootWireframe = appWireframe
-            loginWireframe.attachAsNavigationRoot(in: window)
+            loginWireframe.attachAsRoot(in: window)
         }
     }
 
