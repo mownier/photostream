@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol RegistrationInteractorOutput: class {
+protocol RegistrationInteractorOutput {
 
-    func registrationDidSucceed(_ user: User!)
-    func registrationDidFail(_ error: AuthenticationServiceError)
+    func registrationDidSucceed(user: User)
+    func registrationDidFail(error: AuthenticationServiceError)
 }

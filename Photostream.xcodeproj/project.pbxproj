@@ -11,6 +11,11 @@
 		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
 		B91FA4691DBF062000A0B131 /* LoginModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4681DBF062000A0B131 /* LoginModuleExtension.swift */; };
 		B91FA46C1DBF0BCB00A0B131 /* RootWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA46B1DBF0BCB00A0B131 /* RootWireframeInterface.swift */; };
+		B91FA46F1DBF22D800A0B131 /* RegistrationModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B91FA46E1DBF22D800A0B131 /* RegistrationModuleStoryboard.storyboard */; };
+		B91FA4711DBF256B00A0B131 /* RegistrationPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4701DBF256B00A0B131 /* RegistrationPresenterInterface.swift */; };
+		B91FA4731DBF262400A0B131 /* RegistrationWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4721DBF262400A0B131 /* RegistrationWireframeInterface.swift */; };
+		B91FA4751DBF28F900A0B131 /* RegistrationInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4741DBF28F900A0B131 /* RegistrationInteractorInterface.swift */; };
+		B91FA4771DBF2CDA00A0B131 /* RegistrationModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4761DBF2CDA00A0B131 /* RegistrationModuleExtension.swift */; };
 		B95A3D571D62D32200DA456D /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */; };
 		B95A3D591D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */; };
 		B95A3D5B1D62F7B300DA456D /* NewsFeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */; };
@@ -133,6 +138,11 @@
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B91FA4681DBF062000A0B131 /* LoginModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleExtension.swift; sourceTree = "<group>"; };
 		B91FA46B1DBF0BCB00A0B131 /* RootWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframeInterface.swift; sourceTree = "<group>"; };
+		B91FA46E1DBF22D800A0B131 /* RegistrationModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationModuleStoryboard.storyboard; sourceTree = "<group>"; };
+		B91FA4701DBF256B00A0B131 /* RegistrationPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPresenterInterface.swift; sourceTree = "<group>"; };
+		B91FA4721DBF262400A0B131 /* RegistrationWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationWireframeInterface.swift; sourceTree = "<group>"; };
+		B91FA4741DBF28F900A0B131 /* RegistrationInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorInterface.swift; sourceTree = "<group>"; };
+		B91FA4761DBF2CDA00A0B131 /* RegistrationModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationModuleExtension.swift; sourceTree = "<group>"; };
 		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedViewController.swift; path = "Modules/News Feed/User Interface/View/NewsFeedViewController.swift"; sourceTree = "<group>"; };
 		B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedHeaderView.swift; path = "Modules/News Feed/User Interface/View/NewsFeedHeaderView.swift"; sourceTree = "<group>"; };
@@ -268,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				B91FA4681DBF062000A0B131 /* LoginModuleExtension.swift */,
+				B91FA4761DBF2CDA00A0B131 /* RegistrationModuleExtension.swift */,
 			);
 			name = "Module Extensions";
 			sourceTree = "<group>";
@@ -278,6 +289,14 @@
 				B91FA46B1DBF0BCB00A0B131 /* RootWireframeInterface.swift */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		B91FA46D1DBF22BF00A0B131 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B91FA46E1DBF22D800A0B131 /* RegistrationModuleStoryboard.storyboard */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 		B95A3D551D62D2F100DA456D /* Storyboard */ = {
@@ -370,6 +389,7 @@
 			children = (
 				B961A2C41D545D7F00651D35 /* RegistrationInteractor.swift */,
 				B961A2C61D545D9700651D35 /* RegistrationInteractorInput.swift */,
+				B91FA4741DBF28F900A0B131 /* RegistrationInteractorInterface.swift */,
 				B961A2C81D545DAA00651D35 /* RegistrationInteractorOutput.swift */,
 			);
 			name = Interactor;
@@ -380,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */,
+				B91FA4701DBF256B00A0B131 /* RegistrationPresenterInterface.swift */,
 			);
 			name = Presenter;
 			path = "User Interface/Presenter";
@@ -398,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				B9706AA21D5EF206002EE1D2 /* RegistrationWireframe.swift */,
+				B91FA4721DBF262400A0B131 /* RegistrationWireframeInterface.swift */,
 			);
 			name = Wireframe;
 			path = "User Interface/Wireframe";
@@ -896,6 +918,7 @@
 			isa = PBXGroup;
 			children = (
 				B9706AA61D5EF2BF002EE1D2 /* RegistrationViewController.swift */,
+				B91FA46D1DBF22BF00A0B131 /* Storyboard */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -1064,6 +1087,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9759BC01D6C1437005AA0B6 /* CommentModuleStoryboard.storyboard in Resources */,
+				B91FA46F1DBF22D800A0B131 /* RegistrationModuleStoryboard.storyboard in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B978B0611D73F823006FE0A4 /* PostGridCell.xib in Resources */,
 				B96AB33D1D6EB93800FF8961 /* PostFooterView.xib in Resources */,
@@ -1240,6 +1264,7 @@
 				B96F13AF1D6FE9C500D59E3F /* UserProfileInteractorInput.swift in Sources */,
 				B971CBB01DB9EC86002166D3 /* FileServiceProvider.swift in Sources */,
 				B9D3FDE51D6449E800B7CC2E /* UILabel+Extensions.swift in Sources */,
+				B91FA4771DBF2CDA00A0B131 /* RegistrationModuleExtension.swift in Sources */,
 				B97D1BA21D716E9400246D85 /* UserProfileService.swift in Sources */,
 				B96F13A51D6FE91A00D59E3F /* UserProfileWireframe.swift in Sources */,
 				B9BFA4BD1D5B18BF000AA368 /* UserService.swift in Sources */,
@@ -1254,6 +1279,7 @@
 				B9706AA51D5EF2A1002EE1D2 /* RegistrationViewInterface.swift in Sources */,
 				B96F13B31D6FEAEA00D59E3F /* UserProfileData.swift in Sources */,
 				B9D3FDE11D643B5E00B7CC2E /* NewsFeedCell.swift in Sources */,
+				B91FA4731DBF262400A0B131 /* RegistrationWireframeInterface.swift in Sources */,
 				B97D1BA01D71609600246D85 /* UIViewController+Extensions.swift in Sources */,
 				B91FA4691DBF062000A0B131 /* LoginModuleExtension.swift in Sources */,
 				B96F13B11D6FE9D100D59E3F /* UserProfileInteractorOutput.swift in Sources */,
@@ -1268,6 +1294,7 @@
 				B97E3D041D51CCBF00C5E76B /* AppWireframe.swift in Sources */,
 				B9D3FDE31D64460900B7CC2E /* String+Extensions.swift in Sources */,
 				B96AB3371D6EB7C700FF8961 /* PostHeaderView.swift in Sources */,
+				B91FA4711DBF256B00A0B131 /* RegistrationPresenterInterface.swift in Sources */,
 				B971CBB11DB9EC86002166D3 /* PostServiceProvider.swift in Sources */,
 				B96F13AD1D6FE99500D59E3F /* UserProfileInteractor.swift in Sources */,
 				B96F13A91D6FE95200D59E3F /* UserProfilePresenter.swift in Sources */,
@@ -1278,6 +1305,7 @@
 				B96AB3321D6EAE2800FF8961 /* PostCellDelegate.swift in Sources */,
 				B97FB6F81D55B67E00B68048 /* PostService.swift in Sources */,
 				B97FB6F41D55B4E400B68048 /* NewsFeedInteractorInput.swift in Sources */,
+				B91FA4751DBF28F900A0B131 /* RegistrationInteractorInterface.swift in Sources */,
 				B961A2C71D545D9700651D35 /* RegistrationInteractorInput.swift in Sources */,
 				B978B05B1D73E6AF006FE0A4 /* PostGridCellItem.swift in Sources */,
 				B9706A9F1D5EF067002EE1D2 /* LoginWireframeInterface.swift in Sources */,

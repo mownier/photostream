@@ -6,8 +6,14 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol RegistrationViewInterface: class {
-
+protocol RegistrationViewInterface: NSObjectProtocol {
+    
+    weak var controller: UIViewController? { get }
+    var presenter: RegistrationPresenterInterface! { set get }
+    
+    func didTapRegister()
+    func didReceiveError(message: String)
+    func didRegisterOk()
 }

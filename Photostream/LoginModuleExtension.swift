@@ -30,8 +30,10 @@ extension LoginWireframe {
             return
         }
         
-        let registrationWireframe = RegistrationWireframe()
-        registrationWireframe.navigateRegistrationInterfaceFromViewController(controller)
+        let vc = RegistrationWireframe.createViewController()
+        let registrationWireframe = RegistrationWireframe(view: vc)
+        registrationWireframe.rootWireframe = rootWireframe
+        registrationWireframe.push(from: controller)
     }
     
     func navigateToHome() {

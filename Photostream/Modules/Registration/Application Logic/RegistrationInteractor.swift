@@ -8,26 +8,29 @@
 
 import Foundation
 
-class RegistrationInteractor: RegistrationInteractorInput {
+class RegistrationInteractor: RegistrationInteractorInterface {
 
-    var output: RegistrationInteractorOutput!
-    var service: AuthenticationService!
+    var output: RegistrationInteractorOutput?
+    var service: AuthenticationService
 
-    init(service: AuthenticationService!) {
+    required init(service: AuthenticationService) {
         self.service = service
     }
+}
 
-    func register(_ email: String!, password: String!, firstname: String!, lastname: String!) {
+extension RegistrationInteractor: RegistrationInteractorInput {
+    
+    func register(email: String, password: String, firstName: String, lastName: String) {
         var data = AuthenticationServiceRegisterData()
         data.email = email
         data.password = password
-        data.firstName = firstname
-        data.lastName = lastname
+        data.firstName = firstName
+        data.lastName = lastName
         service.register(data: data) { (result) in
             if let error = result.error {
-                self.output.registrationDidFail(error)
+                self.output?.registrationDidFail(error: error)
             } else {
-                self.output.registrationDidSucceed(result.user)
+                self.output?.registrationDidSucceed(user: result.user!)
             }
         }
     }

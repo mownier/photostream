@@ -30,6 +30,10 @@ class LoginViewController: UIViewController {
     override var prefersStatusBarHidden : Bool {
         return true
     }
+    
+    @IBAction func didTapRegister() {
+        (presenter as? LoginPresenter)?.presentRegistration()
+    }
 
     fileprivate func addIndicatorView() {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
