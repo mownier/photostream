@@ -15,7 +15,7 @@ class LoginPresenter: LoginPresenterInterface {
     var wireframe: LoginWireframeInterface!
     
     func login(email: String, password: String) {
-        interactor.login(email, password: password)
+        interactor.login(email: email, password: password)
     }
 
     func presentErrorAlert(message: String) {
@@ -25,11 +25,11 @@ class LoginPresenter: LoginPresenterInterface {
 
 extension LoginPresenter: LoginInteractorOutput {
     
-    func loginDidFail(_ error: AuthenticationServiceError) {
+    func loginDidFail(error: AuthenticationServiceError) {
         view.didReceiveError(message: error.message)
     }
     
-    func loginDidSucceed(_ user: User!) {
+    func loginDidSucceed(user: User) {
         view.didLoginOk()
     }
 }

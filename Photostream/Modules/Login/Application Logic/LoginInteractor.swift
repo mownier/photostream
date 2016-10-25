@@ -10,23 +10,23 @@ import Foundation
 
 class LoginInteractor: LoginInteractorInput {
 
-    var service: AuthenticationService!
-    var output: LoginInteractorOutput!
+    var service: AuthenticationService
+    var output: LoginInteractorOutput?
 
-    init(service: AuthenticationService!) {
+    init(service: AuthenticationService) {
         self.service = service
     }
 
-    func login(_ email: String!, password: String!) {
+    func login(email: String, password: String) {
         var data = AuthentationServiceLoginData()
         data.email = email
         data.password = password
         service.login(data: data) { (result) in
             if let error = result.error {
-                self.output.loginDidFail(error)
+                self.output?.loginDidFail(error: error)
             } else {
                 self.saveUser(result.user)
-                self.output.loginDidSucceed(result.user)
+                self.output?.loginDidSucceed(user: result.user!)
             }
         }
     }

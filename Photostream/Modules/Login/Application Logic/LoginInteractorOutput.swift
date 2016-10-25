@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol LoginInteractorOutput: class {
+protocol LoginInteractorOutput {
 
-    func loginDidSucceed(_ user: User!)
-    func loginDidFail(_ error: AuthenticationServiceError)
+    func loginDidSucceed(user: User)
+    func loginDidFail(error: AuthenticationServiceError)
 }
