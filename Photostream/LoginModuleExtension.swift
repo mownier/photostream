@@ -25,6 +25,12 @@ extension LoginPresenter {
 
 extension LoginWireframe {
     
+    class func createViewController() -> LoginViewController {
+        let sb = UIStoryboard(name: "LoginModuleStoryboard", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "LoginViewController")
+        return vc as! LoginViewController
+    }
+    
     func navigateToRegistration() {
         guard let controller = loginPresenter.view?.controller else {
             return
