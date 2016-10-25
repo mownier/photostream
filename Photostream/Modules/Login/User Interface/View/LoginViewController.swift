@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     @IBInspectable var bottomColor: UIColor!
     @IBInspectable var cornerRadius: CGFloat = 0
 
-    var presenter: LoginPresenter!
+    var presenter: LoginPresenterInterface!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +88,10 @@ extension LoginViewController: LoginViewInterface {
         removeIndicatorView()
         
         presenter.presentErrorAlert(message: message)
+    }
+    
+    func didLoginOk() {
+        (presenter as? LoginPresenter)?.presentHome()
     }
 }
 

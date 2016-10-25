@@ -10,8 +10,16 @@ import UIKit
 
 extension LoginPresenter {
     
+    var router: LoginWireframe? {
+        return wireframe as? LoginWireframe
+    }
+    
     func presentRegistration() {
-        wireframe.navigateToRegistration()
+        router?.navigateToRegistration()
+    }
+    
+    func presentHome() {
+        router?.navigateToHome()
     }
 }
 

@@ -11,8 +11,9 @@ import UIKit
 protocol LoginViewInterface: NSObjectProtocol {
     
     weak var controller: UIViewController? { get }
-    var presenter: LoginPresenter! { set get }
+    var presenter: LoginPresenterInterface! { set get }
     
     func didTapLogin()
     func didReceiveError(message: String)
+    func didLoginOk()
 }

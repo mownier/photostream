@@ -12,7 +12,7 @@ class LoginPresenter: LoginPresenterInterface {
 
     weak var view: LoginViewInterface!
     var interactor: LoginInteractorInput!
-    var wireframe: LoginWireframe!
+    var wireframe: LoginWireframeInterface!
     
     func login(email: String, password: String) {
         interactor.login(email, password: password)
@@ -30,6 +30,6 @@ extension LoginPresenter: LoginInteractorOutput {
     }
     
     func loginDidSucceed(_ user: User!) {
-        wireframe.navigateToHome()
+        view.didLoginOk()
     }
 }
