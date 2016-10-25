@@ -18,10 +18,6 @@ class LoginPresenter: LoginPresenterInterface {
         interactor.login(email, password: password)
     }
 
-    func presentRegistration() {
-        wireframe.navigateToRegistration()
-    }
-
     func presentErrorAlert(message: String) {
         wireframe.showErrorAlert(title: "Login Error", message: message)
     }

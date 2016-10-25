@@ -46,24 +46,4 @@ class LoginWireframe: LoginWireframeInterface {
     }
 }
 
-extension LoginWireframe: LoginWireframeModuleNavigator {
-    
-    func navigateToRegistration() {
-        guard let controller = loginPresenter.view?.controller else {
-            return
-        }
-        
-        let registrationWireframe = RegistrationWireframe()
-        registrationWireframe.navigateRegistrationInterfaceFromViewController(controller)
-    }
-    
-    func navigateToHome() {
-        guard let controller = loginPresenter.view?.controller else {
-            return
-        }
-        
-        let homeWireframe = HomeWireframe()
-        homeWireframe.appWireframe = appWireframe
-        homeWireframe.navigateHomeInterfaceFromWindow(controller.view.window)
-    }
-}
+

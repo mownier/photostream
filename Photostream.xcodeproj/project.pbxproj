@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */; };
 		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
+		B91FA4691DBF062000A0B131 /* LoginModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4681DBF062000A0B131 /* LoginModuleExtension.swift */; };
 		B95A3D571D62D32200DA456D /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */; };
 		B95A3D591D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */; };
 		B95A3D5B1D62F7B300DA456D /* NewsFeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */; };
@@ -129,6 +130,7 @@
 		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B91FA4681DBF062000A0B131 /* LoginModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleExtension.swift; sourceTree = "<group>"; };
 		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedViewController.swift; path = "Modules/News Feed/User Interface/View/NewsFeedViewController.swift"; sourceTree = "<group>"; };
 		B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedHeaderView.swift; path = "Modules/News Feed/User Interface/View/NewsFeedHeaderView.swift"; sourceTree = "<group>"; };
@@ -260,6 +262,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B91FA4671DBF05FC00A0B131 /* Module Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B91FA4681DBF062000A0B131 /* LoginModuleExtension.swift */,
+			);
+			name = "Module Extensions";
+			sourceTree = "<group>";
+		};
 		B95A3D551D62D2F100DA456D /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -908,6 +918,7 @@
 				B9C1E4BD1D507843000925FA /* Info.plist */,
 				B97E3CE81D51C78900C5E76B /* Application */,
 				B97E3CEB1D51C79300C5E76B /* Assets */,
+				B91FA4671DBF05FC00A0B131 /* Module Extensions */,
 				B97E3CF41D51C93600C5E76B /* Modules */,
 				B99732591DBDBACD004FFAD0 /* Services */,
 				B99732581DBDBAA8004FFAD0 /* UI */,
@@ -1232,6 +1243,7 @@
 				B96F13B31D6FEAEA00D59E3F /* UserProfileData.swift in Sources */,
 				B9D3FDE11D643B5E00B7CC2E /* NewsFeedCell.swift in Sources */,
 				B97D1BA01D71609600246D85 /* UIViewController+Extensions.swift in Sources */,
+				B91FA4691DBF062000A0B131 /* LoginModuleExtension.swift in Sources */,
 				B96F13B11D6FE9D100D59E3F /* UserProfileInteractorOutput.swift in Sources */,
 				B978B0551D73E337006FE0A4 /* PostGridCellDelegate.swift in Sources */,
 				B95FFD121D53092000085905 /* User.swift in Sources */,

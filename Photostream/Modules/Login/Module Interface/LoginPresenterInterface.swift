@@ -15,6 +15,5 @@ protocol LoginPresenterInterface {
     var wireframe: LoginWireframe! { set get }
     
     func login(email: String, password: String)
-    func presentRegistration()
     func presentErrorAlert(message: String)
 }

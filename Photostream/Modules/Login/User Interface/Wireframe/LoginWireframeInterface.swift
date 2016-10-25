@@ -17,9 +17,3 @@ protocol LoginWireframeInterface {
     func showErrorAlert(title: String, message: String)
     func attachAsNavigationRoot(in window: UIWindow)
 }
-
-protocol LoginWireframeModuleNavigator {
-    
-    func navigateToRegistration()
-    func navigateToHome()
-}
