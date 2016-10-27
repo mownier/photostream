@@ -20,6 +20,7 @@
 		B95A3D571D62D32200DA456D /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */; };
 		B95A3D591D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */; };
 		B95A3D5B1D62F7B300DA456D /* NewsFeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */; };
+		B95E197B1DC1EC2400BEE2C6 /* LoginInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95E197A1DC1EC2400BEE2C6 /* LoginInteractorInterface.swift */; };
 		B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD0B1D5306E700085905 /* LoginInteractor.swift */; };
 		B95FFD0E1D5306F500085905 /* LoginInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD0D1D5306F500085905 /* LoginInteractorInput.swift */; };
 		B95FFD101D53087B00085905 /* LoginInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */; };
@@ -148,6 +149,7 @@
 		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedViewController.swift; path = "Modules/News Feed/User Interface/View/NewsFeedViewController.swift"; sourceTree = "<group>"; };
 		B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B95A3D5A1D62F7B300DA456D /* NewsFeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedHeaderView.swift; path = "Modules/News Feed/User Interface/View/NewsFeedHeaderView.swift"; sourceTree = "<group>"; };
+		B95E197A1DC1EC2400BEE2C6 /* LoginInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorInterface.swift; sourceTree = "<group>"; };
 		B95FFD0B1D5306E700085905 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		B95FFD0D1D5306F500085905 /* LoginInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorInput.swift; sourceTree = "<group>"; };
 		B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorOutput.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				B95FFD0B1D5306E700085905 /* LoginInteractor.swift */,
 				B95FFD0D1D5306F500085905 /* LoginInteractorInput.swift */,
 				B95FFD0F1D53087B00085905 /* LoginInteractorOutput.swift */,
+				B95E197A1DC1EC2400BEE2C6 /* LoginInteractorInterface.swift */,
 			);
 			name = Interactor;
 			path = "Application Logic";
@@ -1255,6 +1258,7 @@
 				B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */,
 				B9706A9D1D5EEF19002EE1D2 /* LoginWireframe.swift in Sources */,
 				B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */,
+				B95E197B1DC1EC2400BEE2C6 /* LoginInteractorInterface.swift in Sources */,
 				B9706A9B1D5EEEDF002EE1D2 /* LoginViewInterface.swift in Sources */,
 				B9D3FDD91D640A1300B7CC2E /* NewsFeedWireframe.swift in Sources */,
 				B95FFD0E1D5306F500085905 /* LoginInteractorInput.swift in Sources */,

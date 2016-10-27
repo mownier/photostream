@@ -8,15 +8,22 @@
 
 import Foundation
 
-class LoginInteractor: LoginInteractorInput {
+class LoginInteractor: LoginInteractorInterface {
 
-    var service: AuthenticationService
+    var service: AuthenticationService!
     var output: LoginInteractorOutput?
 
-    init(service: AuthenticationService) {
+    required init(service: AuthenticationService) {
         self.service = service
     }
 
+    fileprivate func saveUser(_ user: User!) {
+        // TODO: Save user into the keychain or any encrpted storage
+    }
+}
+
+extension LoginInteractor: LoginInteractorInput {
+    
     func login(email: String, password: String) {
         var data = AuthentationServiceLoginData()
         data.email = email
@@ -29,9 +36,5 @@ class LoginInteractor: LoginInteractorInput {
                 self.output?.loginDidSucceed(user: result.user!)
             }
         }
-    }
-
-    fileprivate func saveUser(_ user: User!) {
-        // TODO: Save user into the keychain or any encrpted storage
     }
 }
