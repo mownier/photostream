@@ -10,9 +10,9 @@ import UIKit
 
 protocol LoginWireframeInterface {
     
-    init(view: LoginViewInterface)
+    var loginPresenter: LoginPresenterInterface! { set get }
     
-    var loginPresenter: LoginPresenterInterface { set get }
+    init(view: LoginViewInterface)
     
     func showErrorAlert(title: String, message: String)
     func attachAsRoot(in window: UIWindow)

@@ -10,7 +10,7 @@ import UIKit
 
 class LoginWireframe: LoginWireframeInterface {
 
-    var loginPresenter: LoginPresenterInterface
+    var loginPresenter: LoginPresenterInterface!
     var rootWireframe: RootWireframeInterface?
 
     required init(view: LoginViewInterface) {
@@ -24,6 +24,11 @@ class LoginWireframe: LoginWireframeInterface {
 
         self.loginPresenter = presenter
         self.loginPresenter.wireframe = self
+    }
+    
+    deinit {
+        loginPresenter = nil
+        rootWireframe = nil
     }
     
     func attachAsRoot(in window: UIWindow) {

@@ -16,6 +16,11 @@ class LoginInteractor: LoginInteractorInterface {
     required init(service: AuthenticationService) {
         self.service = service
     }
+    
+    deinit {
+        service = nil
+        output = nil
+    }
 
     fileprivate func saveUser(_ user: User!) {
         // TODO: Save user into the keychain or any encrpted storage

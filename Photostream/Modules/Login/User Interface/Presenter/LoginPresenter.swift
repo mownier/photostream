@@ -14,6 +14,12 @@ class LoginPresenter: LoginPresenterInterface {
     var interactor: LoginInteractorInput!
     var wireframe: LoginWireframeInterface!
     
+    deinit {
+        view = nil
+        interactor = nil
+        wireframe = nil
+    }
+    
     func login(email: String, password: String) {
         interactor.login(email: email, password: password)
     }
