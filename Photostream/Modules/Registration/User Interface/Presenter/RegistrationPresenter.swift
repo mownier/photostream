@@ -10,7 +10,7 @@ import UIKit
 
 class RegistrationPresenter: RegistrationPresenterInterface {
 
-    var view: RegistrationViewInterface!
+    weak var view: RegistrationViewInterface!
     var interactor: RegistrationInteractorInput!
     var wireframe: RegistrationWireframeInterface!
     
