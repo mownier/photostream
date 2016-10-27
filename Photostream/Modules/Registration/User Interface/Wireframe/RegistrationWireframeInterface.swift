@@ -10,7 +10,7 @@ import UIKit
 
 protocol RegistrationWireframeInterface {
 
-    var registrationPresenter: RegistrationPresenterInterface { set get }
+    var registrationPresenter: RegistrationPresenterInterface! { set get }
     var rootWireframe: RootWireframeInterface? { set get }
     
     init(view: RegistrationViewInterface)

@@ -11,7 +11,7 @@ import Foundation
 protocol RegistrationInteractorInterface {
     
     var output: RegistrationInteractorOutput? { set get }
-    var service: AuthenticationService { set get }
+    var service: AuthenticationService! { set get }
     
     init(service: AuthenticationService)
 }

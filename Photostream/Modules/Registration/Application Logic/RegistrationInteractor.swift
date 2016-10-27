@@ -11,10 +11,15 @@ import Foundation
 class RegistrationInteractor: RegistrationInteractorInterface {
 
     var output: RegistrationInteractorOutput?
-    var service: AuthenticationService
+    var service: AuthenticationService!
 
     required init(service: AuthenticationService) {
         self.service = service
+    }
+    
+    deinit {
+        output = nil
+        service = nil
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 class RegistrationWireframe: RegistrationWireframeInterface {
 
-    var registrationPresenter: RegistrationPresenterInterface
+    var registrationPresenter: RegistrationPresenterInterface!
     var rootWireframe: RootWireframeInterface?
 
     required init(view: RegistrationViewInterface) {
@@ -25,6 +25,11 @@ class RegistrationWireframe: RegistrationWireframeInterface {
         
         self.registrationPresenter = presenter
         self.registrationPresenter.wireframe = self
+    }
+    
+    deinit {
+        registrationPresenter = nil
+        rootWireframe = nil
     }
     
     func attachAsRoot(in window: UIWindow) {
