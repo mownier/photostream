@@ -34,6 +34,10 @@ class RegistrationViewController: UIViewController {
         return (email, password, firstName, lastName)
     }
     
+    deinit {
+        presenter = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

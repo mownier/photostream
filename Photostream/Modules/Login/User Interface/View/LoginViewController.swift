@@ -20,6 +20,10 @@ class LoginViewController: UIViewController {
 
     var presenter: LoginPresenterInterface!
 
+    deinit {
+        presenter = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
