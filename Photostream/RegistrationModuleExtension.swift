@@ -15,11 +15,11 @@ extension RegistrationPresenter {
     }
     
     func exit() {
-        router?.pop()
+        router?.pop(controller: view.controller)
     }
     
     func presentHome() {
-        router?.navigateToHome()
+        router?.changeHomeAsRoot(in: view.controller?.view.window)
     }
 }
 
@@ -31,30 +31,28 @@ extension RegistrationWireframe {
         return vc as! RegistrationViewController
     }
     
-    func push(from: UIViewController) {
-        guard let nav = from.navigationController,
-            let controller = presenter.view?.controller else {
+    func push(controller: UIViewController, from: UIViewController?) {
+        guard let nav = from?.navigationController else {
             return
         }
     
         nav.pushViewController(controller, animated: true)
     }
     
-    func pop() {
-        guard let nav = presenter.view?.controller?.navigationController else {
+    func pop(controller: UIViewController?) {
+        guard let nav = controller?.navigationController else {
             return
         }
         
         let _ = nav.popViewController(animated: true)
     }
     
-    func navigateToHome() {
-        guard let controller = presenter.view?.controller else {
+    func changeHomeAsRoot(in window: UIWindow?) {
+        guard window != nil else {
             return
         }
-        
         let homeWireframe = HomeWireframe()
         homeWireframe.rootWireframe = root
-        homeWireframe.navigateHomeInterfaceFromWindow(controller.view.window)
+        homeWireframe.navigateHomeInterfaceFromWindow(window!)
     }
 }

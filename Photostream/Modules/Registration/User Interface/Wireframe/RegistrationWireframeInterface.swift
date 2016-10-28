@@ -10,11 +10,10 @@ import UIKit
 
 protocol RegistrationWireframeInterface {
 
-    var presenter: RegistrationPresenterInterface! { set get }
     var root: RootWireframeInterface? { set get }
     
-    init(view: RegistrationViewInterface)
+    init(root: RootWireframeInterface?, view: RegistrationViewInterface)
     
-    func showErrorAlert(title: String, message: String)
-    func attachAsRoot(in window: UIWindow)
+    func showErrorAlert(title: String, message: String, from controller: UIViewController?)
+    func attachRoot(with: UIViewController, in window: UIWindow)
 }

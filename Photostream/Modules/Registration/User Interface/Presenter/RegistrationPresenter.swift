@@ -19,7 +19,7 @@ struct RegistrationPresenter: RegistrationPresenterInterface {
     }
     
     func presentErrorAlert(message: String) {
-        wireframe.showErrorAlert(title: "Registration Error", message: message)
+        wireframe.showErrorAlert(title: "Registration Error", message: message, from: view.controller)
     }
 }
 

@@ -37,10 +37,8 @@ extension LoginWireframe {
         }
         
         let vc = RegistrationWireframe.createViewController()
-        var wireframe = RegistrationWireframe(view: vc)
-        wireframe.presenter.wireframe.root = rootWireframe
-        vc.presenter = wireframe.presenter
-        wireframe.push(from: controller)
+        let wireframe = RegistrationWireframe(root: rootWireframe, view: vc)
+        wireframe.push(controller: vc, from: controller)
     }
     
     func navigateToHome() {
