@@ -10,11 +10,11 @@ import UIKit
 import FirebaseStorage
 import FirebaseDatabase
 
-class FileServiceProvider: FileService {
+struct FileServiceProvider: FileService {
 
     var session: AuthSession
 
-    required init(session: AuthSession) {
+    init(session: AuthSession) {
         self.session = session
     }
     

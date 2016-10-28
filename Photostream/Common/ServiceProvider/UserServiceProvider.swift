@@ -10,11 +10,11 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class UserServiceProvider: UserService {
+struct UserServiceProvider: UserService {
 
     private var session: AuthSession
 
-    required init(session: AuthSession) {
+    init(session: AuthSession) {
         self.session = session
     }
     

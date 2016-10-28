@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class AuthenticationServiceProvider: AuthenticationService {
+struct AuthenticationServiceProvider: AuthenticationService {
 
     func login(data: AuthentationServiceLoginData, callback: ((AuthenticationServiceResult) -> Void)?) {
         var result = AuthenticationServiceResult()

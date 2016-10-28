@@ -10,11 +10,11 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class CommentServiceProvider: CommentService {
+struct CommentServiceProvider: CommentService {
 
     var session: AuthSession
 
-    required init(session: AuthSession) {
+    init(session: AuthSession) {
         self.session = session
     }
     

@@ -8,11 +8,11 @@
 
 import Foundation
 
-class NewsFeedServiceProvider: NewsFeedService {
+struct NewsFeedServiceProvider: NewsFeedService {
 
     var session: AuthSession
     
-    required init(session: AuthSession) {
+    init(session: AuthSession) {
         self.session = session
     }
     
