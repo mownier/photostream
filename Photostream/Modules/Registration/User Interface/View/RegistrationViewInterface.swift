@@ -10,7 +10,7 @@ import UIKit
 
 protocol RegistrationViewInterface: NSObjectProtocol {
     
-    weak var controller: UIViewController? { get }
+    var controller: UIViewController? { get }
     var presenter: RegistrationPresenterInterface! { set get }
     
     func didTapRegister()
