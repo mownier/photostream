@@ -33,7 +33,7 @@ extension RegistrationWireframe {
     
     func push(from: UIViewController) {
         guard let nav = from.navigationController,
-            let controller = registrationPresenter.view?.controller else {
+            let controller = presenter.view?.controller else {
             return
         }
     
@@ -41,7 +41,7 @@ extension RegistrationWireframe {
     }
     
     func pop() {
-        guard let nav = registrationPresenter.view?.controller?.navigationController else {
+        guard let nav = presenter.view?.controller?.navigationController else {
             return
         }
         
@@ -49,12 +49,12 @@ extension RegistrationWireframe {
     }
     
     func navigateToHome() {
-        guard let controller = registrationPresenter.view?.controller else {
+        guard let controller = presenter.view?.controller else {
             return
         }
         
         let homeWireframe = HomeWireframe()
-        homeWireframe.rootWireframe = rootWireframe
+        homeWireframe.rootWireframe = root
         homeWireframe.navigateHomeInterfaceFromWindow(controller.view.window)
     }
 }

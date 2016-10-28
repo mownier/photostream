@@ -10,33 +10,29 @@ import UIKit
 
 struct RegistrationWireframe: RegistrationWireframeInterface {
 
-    var registrationPresenter: RegistrationPresenterInterface!
-    var rootWireframe: RootWireframeInterface?
-
+    var presenter: RegistrationPresenterInterface!
+    var root: RootWireframeInterface?
+    
     init(view: RegistrationViewInterface) {
-        var presenter = RegistrationPresenter()
+        presenter = RegistrationPresenter()
+        presenter.view = view
+        presenter.wireframe = self
         let service = AuthenticationServiceProvider()
         var interactor = RegistrationInteractor(service: service)
-        
-        interactor.output = presenter
+        interactor.output = presenter as! RegistrationInteractorOutput?
         presenter.interactor = interactor
-        presenter.view = view
-        view.presenter = presenter
-        
-        self.registrationPresenter = presenter
-        self.registrationPresenter.wireframe = self
     }
     
     func attachAsRoot(in window: UIWindow) {
-        guard let controller = registrationPresenter.view?.controller else {
+        guard let controller = presenter.view?.controller else {
             return
         }
         
-        rootWireframe?.showRoot(with: controller, in: window)
+        root?.showRoot(with: controller, in: window)
     }
     
     func showErrorAlert(title: String, message: String) {
-        guard let controller = registrationPresenter.view?.controller else {
+        guard let controller = presenter.view?.controller else {
             return
         }
         
