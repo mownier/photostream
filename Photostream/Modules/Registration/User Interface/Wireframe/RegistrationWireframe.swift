@@ -21,9 +21,9 @@ struct RegistrationWireframe: RegistrationWireframeInterface {
 
         presenter.view = view
         presenter.wireframe = self
-        presenter.interactor = intearctor
         
         intearctor.output = presenter
+        presenter.interactor = intearctor
         
         view.presenter = presenter
     }

@@ -19,11 +19,11 @@ struct LoginWireframe: LoginWireframeInterface {
         var interactor = LoginInteractor(service: service)
         var presenter = LoginPresenter()
         
-        presenter.interactor = interactor
         presenter.view = view
         presenter.wireframe = self
-
+        
         interactor.output = presenter
+        presenter.interactor = interactor
         
         view.presenter = presenter
     }
