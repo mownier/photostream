@@ -25,7 +25,7 @@ extension RegistrationPresenter {
 
 extension RegistrationWireframe {
     
-    class func createViewController() -> RegistrationViewController {
+    static func createViewController() -> RegistrationViewController {
         let sb = UIStoryboard(name: "RegistrationModuleStoryboard", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "RegistrationViewController")
         return vc as! RegistrationViewController

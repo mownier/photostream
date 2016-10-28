@@ -8,18 +8,13 @@
 
 import Foundation
 
-class RegistrationInteractor: RegistrationInteractorInterface {
+struct RegistrationInteractor: RegistrationInteractorInterface {
 
     var output: RegistrationInteractorOutput?
     var service: AuthenticationService!
 
-    required init(service: AuthenticationService) {
+    init(service: AuthenticationService) {
         self.service = service
-    }
-    
-    deinit {
-        output = nil
-        service = nil
     }
 }
 

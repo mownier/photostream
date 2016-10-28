@@ -8,15 +8,15 @@
 
 import UIKit
 
-class RegistrationWireframe: RegistrationWireframeInterface {
+struct RegistrationWireframe: RegistrationWireframeInterface {
 
     var registrationPresenter: RegistrationPresenterInterface!
     var rootWireframe: RootWireframeInterface?
 
-    required init(view: RegistrationViewInterface) {
-        let presenter = RegistrationPresenter()
+    init(view: RegistrationViewInterface) {
+        var presenter = RegistrationPresenter()
         let service = AuthenticationServiceProvider()
-        let interactor = RegistrationInteractor(service: service)
+        var interactor = RegistrationInteractor(service: service)
         
         interactor.output = presenter
         presenter.interactor = interactor
@@ -25,11 +25,6 @@ class RegistrationWireframe: RegistrationWireframeInterface {
         
         self.registrationPresenter = presenter
         self.registrationPresenter.wireframe = self
-    }
-    
-    deinit {
-        registrationPresenter = nil
-        rootWireframe = nil
     }
     
     func attachAsRoot(in window: UIWindow) {

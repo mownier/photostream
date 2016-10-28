@@ -8,17 +8,11 @@
 
 import UIKit
 
-class RegistrationPresenter: RegistrationPresenterInterface {
+struct RegistrationPresenter: RegistrationPresenterInterface {
 
-    weak var view: RegistrationViewInterface!
+    var view: RegistrationViewInterface!
     var interactor: RegistrationInteractorInput!
     var wireframe: RegistrationWireframeInterface!
-    
-    deinit {
-        view = nil
-        interactor = nil
-        wireframe = nil
-    }
     
     func register(email: String, password: String, firstName: String, lastName: String) {
         interactor.register(email: email, password: password, firstName: firstName, lastName: lastName)

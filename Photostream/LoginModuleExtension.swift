@@ -37,7 +37,7 @@ extension LoginWireframe {
         }
         
         let vc = RegistrationWireframe.createViewController()
-        let registrationWireframe = RegistrationWireframe(view: vc)
+        var registrationWireframe = RegistrationWireframe(view: vc)
         registrationWireframe.rootWireframe = rootWireframe
         registrationWireframe.push(from: controller)
     }

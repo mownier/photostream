@@ -10,7 +10,7 @@ import UIKit
 
 protocol RegistrationPresenterInterface {
     
-    weak var view: RegistrationViewInterface! { set get }
+    var view: RegistrationViewInterface! { set get }
     var interactor: RegistrationInteractorInput! { set get }
     var wireframe: RegistrationWireframeInterface! { set get }
     
