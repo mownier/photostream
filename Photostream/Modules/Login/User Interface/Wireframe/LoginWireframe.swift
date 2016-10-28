@@ -8,46 +8,39 @@
 
 import UIKit
 
-class LoginWireframe: LoginWireframeInterface {
+struct LoginWireframe: LoginWireframeInterface {
 
-    var loginPresenter: LoginPresenterInterface!
-    var rootWireframe: RootWireframeInterface?
+    var root: RootWireframeInterface?
 
-    required init(view: LoginViewInterface) {
-        let presenter = LoginPresenter()
+    init(root: RootWireframeInterface?, view: LoginViewInterface) {
+        self.root = root
+
         let service = AuthenticationServiceProvider()
-        let interactor = LoginInteractor(service: service)
-        interactor.output = presenter
+        var interactor = LoginInteractor(service: service)
+        var presenter = LoginPresenter()
+        
         presenter.interactor = interactor
         presenter.view = view
-        view.presenter = presenter
+        presenter.wireframe = self
 
-        self.loginPresenter = presenter
-        self.loginPresenter.wireframe = self
-    }
-    
-    deinit {
-        loginPresenter = nil
-        rootWireframe = nil
-    }
-    
-    func attachAsRoot(in window: UIWindow) {
-        guard let controller = loginPresenter.view?.controller else {
-            return
-        }
+        interactor.output = presenter
         
-        rootWireframe?.showRoot(with: controller, in: window)
+        view.presenter = presenter
     }
     
-    func showErrorAlert(title: String, message: String) {
-        guard let controller = loginPresenter.view?.controller else {
+    func attachRoot(with controller: UIViewController, in window: UIWindow) {
+        root?.showRoot(with: controller, in: window)
+    }
+    
+    func showErrorAlert(title: String, message: String, from controller: UIViewController?) {
+        guard controller != nil else {
             return
         }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
-        controller.present(alert, animated: true, completion: nil)
+        controller!.present(alert, animated: true, completion: nil)
     }
 }
 

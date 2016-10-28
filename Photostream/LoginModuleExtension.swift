@@ -15,40 +15,40 @@ extension LoginPresenter {
     }
     
     func presentRegistration() {
-        router?.navigateToRegistration()
+        router?.pushRegistration(from: view.controller)
     }
     
     func presentHome() {
-        router?.navigateToHome()
+        router?.changeRootAsHome(in: view.controller?.view.window)
     }
 }
 
 extension LoginWireframe {
     
-    class func createViewController() -> LoginViewController {
+    static func createViewController() -> LoginViewController {
         let sb = UIStoryboard(name: "LoginModuleStoryboard", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "LoginViewController")
         return vc as! LoginViewController
     }
     
-    func navigateToRegistration() {
-        guard let controller = loginPresenter.view?.controller else {
+    func pushRegistration(from controller: UIViewController?) {
+        guard controller != nil else {
             return
         }
         
         let vc = RegistrationWireframe.createViewController()
-        let wireframe = RegistrationWireframe(root: rootWireframe, view: vc)
-        wireframe.push(controller: vc, from: controller)
+        let wireframe = RegistrationWireframe(root: root, view: vc)
+        wireframe.push(controller: vc, from: controller!)
     }
     
-    func navigateToHome() {
-        guard let controller = loginPresenter.view?.controller else {
+    func changeRootAsHome(in window: UIWindow?) {
+        guard window != nil else {
             return
         }
         
         let homeWireframe = HomeWireframe()
-        homeWireframe.rootWireframe = rootWireframe
-        homeWireframe.navigateHomeInterfaceFromWindow(controller.view.window)
+        homeWireframe.rootWireframe = root
+        homeWireframe.navigateHomeInterfaceFromWindow(window!)
     }
 }
 

@@ -24,9 +24,8 @@ class AppDependency: AnyObject {
             homeWireframe.navigateHomeInterfaceFromWindow(window)
         } else {
             let vc = LoginWireframe.createViewController()
-            let loginWireframe = LoginWireframe(view: vc)
-            loginWireframe.rootWireframe = appWireframe
-            loginWireframe.attachAsRoot(in: window)
+            let loginWireframe = LoginWireframe(root: appWireframe, view: vc)
+            loginWireframe.attachRoot(with: vc, in: window)
         }
     }
 

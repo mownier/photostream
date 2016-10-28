@@ -24,9 +24,8 @@ extension UserProfileWireframe {
             return
         }
         let vc = LoginWireframe.createViewController()
-        let wireframe = LoginWireframe(view: vc)
-        wireframe.rootWireframe = rootWireframe
-        wireframe.attachAsRoot(in: window)
+        let wireframe = LoginWireframe(root: rootWireframe, view: vc)
+        wireframe.attachRoot(with: vc, in: window)
     }
 }
 

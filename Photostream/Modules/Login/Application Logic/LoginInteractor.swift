@@ -8,18 +8,13 @@
 
 import Foundation
 
-class LoginInteractor: LoginInteractorInterface {
+struct LoginInteractor: LoginInteractorInterface {
 
     var service: AuthenticationService!
     var output: LoginInteractorOutput?
 
-    required init(service: AuthenticationService) {
+    init(service: AuthenticationService) {
         self.service = service
-    }
-    
-    deinit {
-        service = nil
-        output = nil
     }
 
     fileprivate func saveUser(_ user: User!) {

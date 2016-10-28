@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginViewInterface: NSObjectProtocol {
     
-    weak var controller: UIViewController? { get }
+    var controller: UIViewController? { get }
     var presenter: LoginPresenterInterface! { set get }
     
     func didTapLogin()

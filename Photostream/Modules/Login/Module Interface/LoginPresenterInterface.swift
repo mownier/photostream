@@ -10,7 +10,7 @@ import Foundation
 
 protocol LoginPresenterInterface {
     
-    weak var view: LoginViewInterface! { set get }
+    var view: LoginViewInterface! { set get }
     var interactor: LoginInteractorInput! { set get }
     var wireframe: LoginWireframeInterface! { set get }
     
