@@ -14,6 +14,12 @@ struct HomeWireframe: HomeWireframeInterface {
     
     init(root: RootWireframeInterface?, view: HomeViewInterface) {
         self.root = root
+        
+        var presenter = HomePresenter()
+        presenter.view = view
+        presenter.wireframe = self
+        
+        view.presenter = presenter
     }
     
     func attachRoot(with controller: UIViewController, in window: UIWindow) {

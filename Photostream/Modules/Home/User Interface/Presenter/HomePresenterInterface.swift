@@ -11,6 +11,5 @@ import UIKit
 protocol HomePresenterInterface {
 
     var view: HomeViewInterface! { set get }
-    var interactor: HomeInteractorInput? { set get }
     var wireframe: HomeWireframeInterface! { set get }
 }

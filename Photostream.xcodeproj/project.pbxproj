@@ -123,7 +123,6 @@
 		B9FAB2B41DC442C700E43FCE /* HomeWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2B31DC442C700E43FCE /* HomeWireframeInterface.swift */; };
 		B9FAB2B61DC4439A00E43FCE /* HomeViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2B51DC4439A00E43FCE /* HomeViewInterface.swift */; };
 		B9FAB2B81DC443D100E43FCE /* HomePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2B71DC443D100E43FCE /* HomePresenterInterface.swift */; };
-		B9FAB2BA1DC4443C00E43FCE /* HomeIntearctorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2B91DC4443C00E43FCE /* HomeIntearctorInput.swift */; };
 		B9FAB2BE1DC446CF00E43FCE /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2BD1DC446CF00E43FCE /* HomePresenter.swift */; };
 		B9FAB2C01DC4496D00E43FCE /* HomeModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2BF1DC4496D00E43FCE /* HomeModuleExtension.swift */; };
 		B9FAB2C21DC4516000E43FCE /* NewsFeedModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2C11DC4516000E43FCE /* NewsFeedModuleExtension.swift */; };
@@ -265,7 +264,6 @@
 		B9FAB2B31DC442C700E43FCE /* HomeWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWireframeInterface.swift; sourceTree = "<group>"; };
 		B9FAB2B51DC4439A00E43FCE /* HomeViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewInterface.swift; sourceTree = "<group>"; };
 		B9FAB2B71DC443D100E43FCE /* HomePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterInterface.swift; sourceTree = "<group>"; };
-		B9FAB2B91DC4443C00E43FCE /* HomeIntearctorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIntearctorInput.swift; sourceTree = "<group>"; };
 		B9FAB2BD1DC446CF00E43FCE /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		B9FAB2BF1DC4496D00E43FCE /* HomeModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModuleExtension.swift; sourceTree = "<group>"; };
 		B9FAB2C11DC4516000E43FCE /* NewsFeedModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedModuleExtension.swift; sourceTree = "<group>"; };
@@ -797,21 +795,11 @@
 		B98EE6341D616FD800826C37 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B98EE6351D616FD800826C37 /* Interactor */,
 				B98EE6381D616FD800826C37 /* Presenter */,
 				B98EE6391D616FD800826C37 /* View */,
 				B98EE63A1D616FD800826C37 /* Wireframe */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		B98EE6351D616FD800826C37 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				B9FAB2B91DC4443C00E43FCE /* HomeIntearctorInput.swift */,
-			);
-			name = Interactor;
-			path = "Application Logic";
 			sourceTree = "<group>";
 		};
 		B98EE6381D616FD800826C37 /* Presenter */ = {
@@ -1319,7 +1307,6 @@
 				B95FFD121D53092000085905 /* User.swift in Sources */,
 				B971CBB21DB9EC86002166D3 /* UserServiceProvider.swift in Sources */,
 				B96FCE881D68191600C2A165 /* Array+Extensions.swift in Sources */,
-				B9FAB2BA1DC4443C00E43FCE /* HomeIntearctorInput.swift in Sources */,
 				B9FAB2B81DC443D100E43FCE /* HomePresenterInterface.swift in Sources */,
 				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
 				B9D3FDDF1D6438BB00B7CC2E /* Photo.swift in Sources */,

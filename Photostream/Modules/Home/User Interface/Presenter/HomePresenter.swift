@@ -11,6 +11,5 @@ import UIKit
 struct HomePresenter: HomePresenterInterface {
     
     var view: HomeViewInterface!
-    var interactor: HomeInteractorInput?
     var wireframe: HomeWireframeInterface!
 }
