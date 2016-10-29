@@ -120,6 +120,13 @@
 		B9D3FDE71D644DD400B7CC2E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */; };
 		B9F4343F1DBB4C3C00A7C87D /* NewsFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F4343E1DBB4C3C00A7C87D /* NewsFeedService.swift */; };
 		B9F434411DBB528500A7C87D /* NewsFeedServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F434401DBB528500A7C87D /* NewsFeedServiceProvider.swift */; };
+		B9FAB2B41DC442C700E43FCE /* HomeWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2B31DC442C700E43FCE /* HomeWireframeInterface.swift */; };
+		B9FAB2B61DC4439A00E43FCE /* HomeViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2B51DC4439A00E43FCE /* HomeViewInterface.swift */; };
+		B9FAB2B81DC443D100E43FCE /* HomePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2B71DC443D100E43FCE /* HomePresenterInterface.swift */; };
+		B9FAB2BA1DC4443C00E43FCE /* HomeIntearctorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2B91DC4443C00E43FCE /* HomeIntearctorInput.swift */; };
+		B9FAB2BE1DC446CF00E43FCE /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2BD1DC446CF00E43FCE /* HomePresenter.swift */; };
+		B9FAB2C01DC4496D00E43FCE /* HomeModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2BF1DC4496D00E43FCE /* HomeModuleExtension.swift */; };
+		B9FAB2C21DC4516000E43FCE /* NewsFeedModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FAB2C11DC4516000E43FCE /* NewsFeedModuleExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +262,13 @@
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
 		B9F4343E1DBB4C3C00A7C87D /* NewsFeedService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedService.swift; sourceTree = "<group>"; };
 		B9F434401DBB528500A7C87D /* NewsFeedServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedServiceProvider.swift; sourceTree = "<group>"; };
+		B9FAB2B31DC442C700E43FCE /* HomeWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWireframeInterface.swift; sourceTree = "<group>"; };
+		B9FAB2B51DC4439A00E43FCE /* HomeViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewInterface.swift; sourceTree = "<group>"; };
+		B9FAB2B71DC443D100E43FCE /* HomePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterInterface.swift; sourceTree = "<group>"; };
+		B9FAB2B91DC4443C00E43FCE /* HomeIntearctorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIntearctorInput.swift; sourceTree = "<group>"; };
+		B9FAB2BD1DC446CF00E43FCE /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		B9FAB2BF1DC4496D00E43FCE /* HomeModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModuleExtension.swift; sourceTree = "<group>"; };
+		B9FAB2C11DC4516000E43FCE /* NewsFeedModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedModuleExtension.swift; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,9 +295,11 @@
 		B91FA4671DBF05FC00A0B131 /* Module Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B9FAB2BF1DC4496D00E43FCE /* HomeModuleExtension.swift */,
 				B91FA4681DBF062000A0B131 /* LoginModuleExtension.swift */,
 				B91FA4761DBF2CDA00A0B131 /* RegistrationModuleExtension.swift */,
 				B91FA4781DBF478B00A0B131 /* UserProfileExtension.swift */,
+				B9FAB2C11DC4516000E43FCE /* NewsFeedModuleExtension.swift */,
 			);
 			name = "Module Extensions";
 			sourceTree = "<group>";
@@ -792,6 +808,7 @@
 		B98EE6351D616FD800826C37 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				B9FAB2B91DC4443C00E43FCE /* HomeIntearctorInput.swift */,
 			);
 			name = Interactor;
 			path = "Application Logic";
@@ -800,6 +817,8 @@
 		B98EE6381D616FD800826C37 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				B9FAB2B71DC443D100E43FCE /* HomePresenterInterface.swift */,
+				B9FAB2BD1DC446CF00E43FCE /* HomePresenter.swift */,
 			);
 			name = Presenter;
 			path = "User Interface/Presenter";
@@ -808,6 +827,7 @@
 		B98EE6391D616FD800826C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9FAB2B51DC4439A00E43FCE /* HomeViewInterface.swift */,
 			);
 			name = View;
 			path = "User Interface/View";
@@ -817,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				B98EE63B1D616FEE00826C37 /* HomeWireframe.swift */,
+				B9FAB2B31DC442C700E43FCE /* HomeWireframeInterface.swift */,
 			);
 			name = Wireframe;
 			path = "User Interface/Wireframe";
@@ -1237,6 +1258,7 @@
 				B971CBAF1DB9EC86002166D3 /* CommentServiceProvider.swift in Sources */,
 				B9706A971D5EED93002EE1D2 /* LoginPresenterInterface.swift in Sources */,
 				B98EE63C1D616FEE00826C37 /* HomeWireframe.swift in Sources */,
+				B9FAB2B61DC4439A00E43FCE /* HomeViewInterface.swift in Sources */,
 				B9706AA91D5EF320002EE1D2 /* RegistrationPresenter.swift in Sources */,
 				B9F4343F1DBB4C3C00A7C87D /* NewsFeedService.swift in Sources */,
 				B96AB3311D6EAE2800FF8961 /* PostCellDataSource.swift in Sources */,
@@ -1250,6 +1272,7 @@
 				B9706AA71D5EF2BF002EE1D2 /* RegistrationViewController.swift in Sources */,
 				B9D3FDD31D63FB5100B7CC2E /* NewsFeedModuleInterface.swift in Sources */,
 				B978B0571D73E34D006FE0A4 /* PostGridCellDataSource.swift in Sources */,
+				B9FAB2B41DC442C700E43FCE /* HomeWireframeInterface.swift in Sources */,
 				B98EE6451D619E5900826C37 /* UITextField+Extensions.swift in Sources */,
 				B9759BC21D6C1467005AA0B6 /* CommentsViewController.swift in Sources */,
 				B91FA46C1DBF0BCB00A0B131 /* RootWireframeInterface.swift in Sources */,
@@ -1273,6 +1296,7 @@
 				B9D3FDE51D6449E800B7CC2E /* UILabel+Extensions.swift in Sources */,
 				B91FA4771DBF2CDA00A0B131 /* RegistrationModuleExtension.swift in Sources */,
 				B97D1BA21D716E9400246D85 /* UserProfileService.swift in Sources */,
+				B9FAB2C21DC4516000E43FCE /* NewsFeedModuleExtension.swift in Sources */,
 				B96F13A51D6FE91A00D59E3F /* UserProfileWireframe.swift in Sources */,
 				B9BFA4BD1D5B18BF000AA368 /* UserService.swift in Sources */,
 				B978B05F1D73E8F3006FE0A4 /* PostCellDisplayItemArray.swift in Sources */,
@@ -1286,6 +1310,7 @@
 				B9706AA51D5EF2A1002EE1D2 /* RegistrationViewInterface.swift in Sources */,
 				B96F13B31D6FEAEA00D59E3F /* UserProfileData.swift in Sources */,
 				B9D3FDE11D643B5E00B7CC2E /* NewsFeedCell.swift in Sources */,
+				B9FAB2C01DC4496D00E43FCE /* HomeModuleExtension.swift in Sources */,
 				B91FA4731DBF262400A0B131 /* RegistrationWireframeInterface.swift in Sources */,
 				B97D1BA01D71609600246D85 /* UIViewController+Extensions.swift in Sources */,
 				B91FA4691DBF062000A0B131 /* LoginModuleExtension.swift in Sources */,
@@ -1294,6 +1319,8 @@
 				B95FFD121D53092000085905 /* User.swift in Sources */,
 				B971CBB21DB9EC86002166D3 /* UserServiceProvider.swift in Sources */,
 				B96FCE881D68191600C2A165 /* Array+Extensions.swift in Sources */,
+				B9FAB2BA1DC4443C00E43FCE /* HomeIntearctorInput.swift in Sources */,
+				B9FAB2B81DC443D100E43FCE /* HomePresenterInterface.swift in Sources */,
 				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
 				B9D3FDDF1D6438BB00B7CC2E /* Photo.swift in Sources */,
 				B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */,
@@ -1302,6 +1329,7 @@
 				B9D3FDE31D64460900B7CC2E /* String+Extensions.swift in Sources */,
 				B91FA4791DBF478B00A0B131 /* UserProfileExtension.swift in Sources */,
 				B96AB3371D6EB7C700FF8961 /* PostHeaderView.swift in Sources */,
+				B9FAB2BE1DC446CF00E43FCE /* HomePresenter.swift in Sources */,
 				B91FA4711DBF256B00A0B131 /* RegistrationPresenterInterface.swift in Sources */,
 				B971CBB11DB9EC86002166D3 /* PostServiceProvider.swift in Sources */,
 				B96F13AD1D6FE99500D59E3F /* UserProfileInteractor.swift in Sources */,

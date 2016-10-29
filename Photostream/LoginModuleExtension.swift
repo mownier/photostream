@@ -46,9 +46,10 @@ extension LoginWireframe {
             return
         }
         
-        let homeWireframe = HomeWireframe()
-        homeWireframe.rootWireframe = root
-        homeWireframe.navigateHomeInterfaceFromWindow(window!)
+        let vc = HomeWireframe.viewController
+        let wireframe = HomeWireframe(root: root, view: vc)
+        wireframe.attachRoot(with: vc, in: window!)
+        wireframe.loadModuleDependency(with: vc)
     }
 }
 

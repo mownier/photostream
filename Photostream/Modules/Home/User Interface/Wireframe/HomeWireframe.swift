@@ -8,42 +8,15 @@
 
 import UIKit
 
-class HomeWireframe: AnyObject {
-
-    weak var homeViewController: HomeViewController!
-
-    var rootWireframe: RootWireframeInterface!
-
-    init() {
-        let sb = UIStoryboard(name: "HomeModuleStoryboard", bundle: nil)
-        homeViewController = sb.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+struct HomeWireframe: HomeWireframeInterface {
+    
+    var root: RootWireframeInterface?
+    
+    init(root: RootWireframeInterface?, view: HomeViewInterface) {
+        self.root = root
     }
-
-    func navigateHomeInterfaceFromWindow(_ window: UIWindow!) {
-        configureNewsFeedModule()
-        configureUserProfileModule()
-        rootWireframe.showRoot(with: homeViewController, in: window)
-    }
-
-    fileprivate func configureNewsFeedModule() {
-        let nav = homeViewController.viewControllers![0] as! UINavigationController
-        let vc = nav.viewControllers[0] as! NewsFeedViewController
-        let wireframe = NewsFeedWireframe()
-        wireframe.newsFeedViewController = vc
-        wireframe.rootWireframe = rootWireframe
-        wireframe.newsFeedPresenter.view = vc
-        vc.presenter = wireframe.newsFeedPresenter
-    }
-
-    fileprivate func configureUserProfileModule() {
-        let nav = homeViewController.viewControllers![2] as! UINavigationController
-        let vc = nav.viewControllers[0] as! UserProfileViewController
-        let auth = AuthSession()
-        let wireframe = UserProfileWireframe(userId: auth.user.id)
-        wireframe.userProfileViewController = vc
-        wireframe.rootWireframe = rootWireframe
-        wireframe.userProfilePresenter.view = vc
-        vc.presenter = wireframe.userProfilePresenter
-        vc.preloadView()
+    
+    func attachRoot(with controller: UIViewController, in window: UIWindow) {
+        root?.showRoot(with: controller, in: window)
     }
 }

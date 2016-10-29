@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class UserProfileInteractor: UserProfileInteractorInput {
 
@@ -15,9 +16,13 @@ class UserProfileInteractor: UserProfileInteractorInput {
     var postService: PostService!
     var userId: String!
 
-    init(service: UserProfileService, userId: String) {
+    init(service: UserProfileService, userId: String?) {
         self.service = service
-        self.userId = userId
+        if userId != nil {
+            self.userId = userId
+        } else {
+            self.userId = FIRAuth.auth()?.currentUser?.uid
+        }
     }
 
     func fetchUserProfile() {

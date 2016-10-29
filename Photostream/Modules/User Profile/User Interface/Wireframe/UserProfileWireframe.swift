@@ -14,7 +14,7 @@ class UserProfileWireframe: AnyObject {
     var userProfilePresenter: UserProfilePresenter!
     var rootWireframe: RootWireframeInterface!
 
-    init(userId: String) {
+    init(userId: String?) {
         let session = AuthSession()
         let user = UserServiceProvider(session: session)
         let post = PostServiceProvider(session: session)

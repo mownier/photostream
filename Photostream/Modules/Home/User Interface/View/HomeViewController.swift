@@ -10,9 +10,18 @@ import UIKit
 
 class HomeViewController: UITabBarController {
 
+    var presenter: HomePresenterInterface!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+}
+
+extension HomeViewController: HomeViewInterface {
+    
+    var controller: UIViewController? {
+        return self
     }
 }
