@@ -45,23 +45,16 @@ extension NewsFeedViewController: NewsFeedViewInterface {
         reloadView()
     }
     
-    func didLike() {
-        reloadView()
-    }
-    
-    func didUnlike() {
-        reloadView()
-    }
-    
     func didFetchWithError(message: String) {
         
     }
     
-    func didFailToLikeWithError(message: String) {
-        
+    func didLikeWithError(message: String?) {
+        reloadView()
     }
     
-    func didFailToUnlikeWithError(message: String) {
-        
+    func didUnlikeWithError(message: String?) {
+        reloadView()
     }
+
 }

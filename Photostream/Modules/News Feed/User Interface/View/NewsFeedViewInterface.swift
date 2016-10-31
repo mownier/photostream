@@ -18,8 +18,6 @@ protocol NewsFeedViewInterface: NSObjectProtocol {
     func didRefreshFeeds()
     func didLoadMoreFeeds()
     func didFetchWithError(message: String)
-    func didLike()
-    func didUnlike()
-    func didFailToLikeWithError(message: String)
-    func didFailToUnlikeWithError(message: String)
+    func didLikeWithError(message: String?)
+    func didUnlikeWithError(message: String?)
 }

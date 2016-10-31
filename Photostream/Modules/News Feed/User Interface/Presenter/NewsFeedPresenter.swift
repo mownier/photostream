@@ -89,20 +89,10 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
     }
     
     func newsFeedDidLike(with error: NewsFeedServiceError?) {
-        guard error == nil else {
-            view.didFailToLikeWithError(message: error!.message)
-            return
-        }
-        
-        view.didLike()
+        view.didLikeWithError(message: error?.message)
     }
     
     func newsFeedDidUnlike(with error: NewsFeedServiceError?) {
-        guard error == nil else {
-            view.didFailToUnlikeWithError(message: error!.message)
-            return
-        }
-        
-        view.didUnlike()
+        view.didUnlikeWithError(message: error?.message)
     }
 }
