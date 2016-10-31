@@ -16,13 +16,9 @@ extension HomeWireframe {
         return vc as! HomeViewController
     }
     
-    
     func loadModuleDependency(with controller: UITabBarController) {
         let feedVC = (controller.viewControllers?[0] as? UINavigationController)?.topViewController as! NewsFeedViewController
-        var feedWireframe = NewsFeedWireframe()
-        feedWireframe.rootWireframe = root
-        feedWireframe.newsFeedViewController = feedVC
-        feedWireframe.newsFeedViewController.presenter = feedWireframe.newsFeedPresenter
+        _ = NewsFeedWireframe(root: root, view: feedVC)
         
         let profileVC = (controller.viewControllers?[2] as? UINavigationController)?.topViewController as! UserProfileViewController
         let profileWireframe = UserProfileWireframe(userId: nil)

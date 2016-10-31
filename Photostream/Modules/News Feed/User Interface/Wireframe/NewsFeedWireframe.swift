@@ -10,23 +10,26 @@ import UIKit
 
 struct NewsFeedWireframe: NewsFeedWireframeInterface {
 
-    weak var newsFeedViewController: NewsFeedViewController!
-    var rootWireframe: RootWireframeInterface!
-    var newsFeedPresenter: NewsFeedPresenter!
-
-    init() {
+    var root: RootWireframeInterface?
+    
+    init(root: RootWireframeInterface?, view: NewsFeedViewInterface) {
+        self.root = root
+        
         let session = AuthSession()
         let service = NewsFeedServiceProvider(session: session)
         var interactor = NewsFeedInteractor(service: service)
         var presenter = NewsFeedPresenter()
+        
+        presenter.view = view
+        presenter.wireframe = self
+        
         interactor.output = presenter
         presenter.interactor = interactor
-        presenter.wireframe = self
-
-        self.newsFeedPresenter = presenter
+        
+        view.presenter = presenter
     }
 
-    func navigateCommentsInterface(_ shouldComment: Bool) {
-        // appWireframe.navigateCommentsModule(newsFeedViewController, shouldComment: shouldComment)
+    func attachRoot(with controller: UIViewController, in window: UIWindow) {
+        root?.showRoot(with: controller, in: window)
     }
 }

@@ -10,4 +10,9 @@ import UIKit
 
 protocol NewsFeedWireframeInterface {
 
+    var root: RootWireframeInterface? { set get }
+    
+    init(root: RootWireframeInterface?, view: NewsFeedViewInterface)
+    
+    func attachRoot(with controller: UIViewController, in window: UIWindow)
 }
