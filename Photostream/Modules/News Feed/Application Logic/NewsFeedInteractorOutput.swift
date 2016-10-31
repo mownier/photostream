@@ -10,8 +10,8 @@ import Foundation
 
 protocol NewsFeedInteractorOutput {
 
-    mutating func newsFeedDidRefresh(data: NewsFeedDataCollection)
-    mutating func newsFeedDidLoadMore(data: NewsFeedDataCollection)
+    mutating func newsFeedDidRefresh(data: NewsFeedData)
+    mutating func newsFeedDidLoadMore(data: NewsFeedData)
     func newsFeedDidFetchWithError(error: NewsFeedServiceError)
     
     mutating func newsFeedDidLike(with error: NewsFeedServiceError?)

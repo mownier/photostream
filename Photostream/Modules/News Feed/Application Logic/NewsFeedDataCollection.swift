@@ -8,76 +8,62 @@
 
 import Foundation
 
-struct NewsFeedDataCollection {
-
-    var posts: [NewsFeedPostData]
-    var users: [String: NewsFeedUserData]
-
-    var count: Int {
-        get {
-            return posts.count
-        }
-    }
-
+struct NewsFeedData {
+    
+    var items: [NewsFeedDataItem]
+    
     init() {
-        posts = [NewsFeedPostData]()
-        users = [String: NewsFeedUserData]()
+        self.items = [NewsFeedDataItem]()
     }
-
-    mutating func add(_ postItem: NewsFeedPostData, userItem: NewsFeedUserData) {
-        posts.append(postItem)
-        if users[postItem.userId] == nil {
-            users[postItem.userId] = userItem
-        }
-    }
-
-    subscript (index: Int) -> (NewsFeedPostData, NewsFeedUserData)? {
-        if posts.isValid(index) {
-            let post = posts[index]
-            if let user = users[post.userId] {
-                return (post, user)
+    
+    subscript(id: String) -> NewsFeedPost? {
+        set {
+            guard let index = indexOf(post: id),
+                let value = newValue else {
+                    return
             }
+            
+            items[index] = value
         }
-        return nil
+        get {
+            guard let index = indexOf(post: id) else {
+                return nil
+            }
+            
+            return items[index] as? NewsFeedPost
+        }
+    }
+    
+    func indexOf(post id: String) -> Int? {
+        let index = items.index { (item) -> Bool in
+            if let post = item as? NewsFeedPost {
+                return post.id == id
+            }
+            return false
+        }
+        return index
     }
 }
 
-struct NewsFeedPostData {
+protocol NewsFeedDataItem {}
 
-    var postId: String
-    var likesCount: Int
-    var commentsCount: Int
-    var message: String
-    var timestamp: Double
-    var isLiked: Bool
-    var userId: String
-    var photoUrl: String
-    var photoWidth: Int
-    var photoHeight: Int
-
-    init() {
-        postId = ""
-        likesCount = 0
-        commentsCount = 0
-        message = ""
-        timestamp = 0
-        isLiked = false
-        userId = ""
-        photoUrl = ""
-        photoWidth = 0
-        photoHeight = 0
-    }
+struct NewsFeedPost: NewsFeedDataItem {
+    
+    var id: String = ""
+    var message: String = ""
+    var timestamp: Double = 0
+    
+    var photoUrl: String = ""
+    var photoWidth: Int = 0
+    var photoHeight: Int = 0
+    
+    var likes: Int = 0
+    var comments: Int = 0
+    var isLiked: Bool = false
+    
+    var userId: String = ""
+    var avatarUrl: String = ""
+    var displayName: String = ""
 }
 
-struct NewsFeedUserData {
-
-    var userId: String
-    var avatarUrl: String
-    var displayName: String
-
-    init() {
-        userId = ""
-        avatarUrl = ""
-        displayName = ""
-    }
-}
+struct NewsFeedAd: NewsFeedDataItem {}

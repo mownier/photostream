@@ -41,32 +41,33 @@ struct NewsFeedInteractor: NewsFeedInteractorInterface {
         }
     }
 
-    fileprivate func parseNewsFeedData(_ posts: PostList?) -> NewsFeedDataCollection {
+    fileprivate func parseNewsFeedData(_ posts: PostList?) -> NewsFeedData {
         guard posts != nil else {
-            return NewsFeedDataCollection()
+            return NewsFeedData()
         }
         
-        var data = NewsFeedDataCollection()
+        var data = NewsFeedData()
         for i in 0..<posts!.count {
             if let (post, user) = posts![i] {
-                var postItem = NewsFeedPostData()
-                postItem.message = post.message
-                postItem.postId = post.id
-                postItem.commentsCount = post.commentsCount
-                postItem.likesCount = post.likesCount
-                postItem.isLiked = post.isLiked
-                postItem.timestamp = post.timestamp / 1000
-                postItem.userId = user.id
-                postItem.photoUrl = post.photo.url
-                postItem.photoWidth = post.photo.width
-                postItem.photoHeight  = post.photo.height
+                var item = NewsFeedPost()
+                
+                item.id = post.id
+                item.message = post.message
+                item.timestamp = post.timestamp / 1000
+                
+                item.likes = post.likesCount
+                item.comments = post.commentsCount
+                item.isLiked = post.isLiked
 
-                var userItem = NewsFeedUserData()
-                userItem.userId = user.id
-                userItem.avatarUrl = user.avatarUrl
-                userItem.displayName = user.displayName
+                item.photoUrl = post.photo.url
+                item.photoWidth = post.photo.width
+                item.photoHeight  = post.photo.height
 
-                data.add(postItem, userItem: userItem)
+                item.userId = user.id
+                item.avatarUrl = user.avatarUrl
+                item.displayName = user.displayName
+
+                data.items.append(item)
             }
         }
         return data

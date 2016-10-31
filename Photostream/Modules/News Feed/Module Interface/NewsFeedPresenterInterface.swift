@@ -14,7 +14,7 @@ protocol NewsFeedPresenterInterface {
     var interactor: NewsFeedInteractorInput! { set get }
     var wireframe: NewsFeedWireframeInterface! { set get }
     var limit: UInt { get }
-    var feeds: PostCellItemArray! { get }
+    var feeds: NewsFeedData! { get }
     
     mutating func likePost(id: String)
     mutating func unlikePost(id: String)

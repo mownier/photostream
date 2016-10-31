@@ -13,13 +13,13 @@ struct NewsFeedPresenter: NewsFeedPresenterInterface {
     weak var view: NewsFeedViewInterface!
     var wireframe: NewsFeedWireframeInterface!
     var interactor: NewsFeedInteractorInput!
-    var feeds: PostCellItemArray!
+    var feeds: NewsFeedData!
     var limit: UInt {
         return 10
     }
     
     init() {
-        self.feeds = PostCellItemArray()
+        self.feeds = NewsFeedData()
     }
 
     mutating func refreshFeeds() {
@@ -31,26 +31,24 @@ struct NewsFeedPresenter: NewsFeedPresenterInterface {
     }
 
     mutating func likePost(id: String) {
-        guard let index = feeds[id],
-            let feed = feeds[index], !feed.isLiked else {
+        guard let feed = feeds[id], !feed.isLiked else {
             return
         }
         
-        feeds[index]!.isLiked = true
+        feeds[id]!.isLiked = true
         interactor.likePost(id: id)
     }
 
     mutating func unlikePost(id: String) {
-        guard let index = feeds[id],
-            let feed = feeds[index], feed.isLiked else {
+        guard let feed = feeds[id], !feed.isLiked else {
             return
         }
         
-        feeds[index]!.isLiked = false
+        feeds[id]!.isLiked = false
         interactor.unlikePost(id: id)
     }
 
-    fileprivate func parseList(_ data: NewsFeedDataCollection) -> PostCellItemArray {
+    fileprivate func parseList(_ data: NewsFeedData) -> PostCellItemArray {
         var list = PostCellItemArray()
         for i in 0..<data.count {
             if let (post, user) = data[i] {
@@ -65,19 +63,19 @@ struct NewsFeedPresenter: NewsFeedPresenterInterface {
 
 extension NewsFeedPresenter: NewsFeedInteractorOutput {
     
-    mutating func newsFeedDidRefresh(data: NewsFeedDataCollection) {
+    mutating func newsFeedDidRefresh(data: NewsFeedData) {
         var list = parseList(data)
         list.mode = .truncate
         feeds.appendContentsOf(list)
         
         view.didRefreshFeeds()
         
-        if feeds.count == 0 {
+        if feeds.items.count == 0 {
             view.showEmptyView()
         }
     }
     
-    mutating func newsFeedDidLoadMore(data: NewsFeedDataCollection) {
+    mutating func newsFeedDidLoadMore(data: NewsFeedData) {
         let list = parseList(data)
         feeds.appendContentsOf(list)
         
