@@ -8,60 +8,46 @@
 
 import Foundation
 
-class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
-
+struct NewsFeedPresenter: NewsFeedPresenterInterface {
+    
     weak var view: NewsFeedViewInterface!
-    var wireframe: NewsFeedWireframe!
+    var wireframe: NewsFeedWireframeInterface!
     var interactor: NewsFeedInteractorInput!
-    var refreshing: Bool
-
+    var feeds: PostCellItemArray!
+    var limit: UInt {
+        return 10
+    }
+    
     init() {
-        self.refreshing = false
+        self.feeds = PostCellItemArray()
     }
 
-    func refreshFeed(_ limit: UInt!) {
-        refreshing = true
-        interactor.fetchNew(limit)
+    mutating func refreshFeeds() {
+        interactor.fetchNew(limit: limit)
     }
 
-    func retrieveNextFeed(_ limit: UInt!) {
-        interactor.fetchNext(limit)
+    mutating func loadMoreFeeds() {
+        interactor.fetchNext(limit: limit)
     }
 
-    func presentCommentsInterface(_ shouldComment: Bool) {
-        wireframe.navigateCommentsInterface(shouldComment)
-    }
-
-    func toggleLike(_ postId: String, isLiked: Bool) {
-        if isLiked {
-            unlikePost(postId)
-        } else {
-            likePost(postId)
+    mutating func likePost(id: String) {
+        guard let index = feeds[id],
+            let feed = feeds[index], !feed.isLiked else {
+            return
         }
+        
+        feeds[index]!.isLiked = true
+        interactor.likePost(id: id)
     }
 
-    func likePost(_ postId: String) {
-        view.updateCell(postId, isLiked: true)
-    }
-
-    func unlikePost(_ postId: String) {
-        view.updateCell(postId, isLiked: false)
-    }
-
-    func newsFeedDidFetchOk(_ data: NewsFeedDataCollection) {
-        var list = parseList(data)
-        if refreshing {
-            list.mode = .truncate
-        } else {
-            list.mode = .default
+    mutating func unlikePost(id: String) {
+        guard let index = feeds[id],
+            let feed = feeds[index], feed.isLiked else {
+            return
         }
-        refreshing = false
-        view.showItems(list)
-        view.reloadView()
-    }
-
-    func newsFeedDidFetchWithError(_ error: NewsFeedServiceError) {
-        view.showError(error.message)
+        
+        feeds[index]!.isLiked = false
+        interactor.unlikePost(id: id)
     }
 
     fileprivate func parseList(_ data: NewsFeedDataCollection) -> PostCellItemArray {
@@ -74,5 +60,49 @@ class NewsFeedPresenter: NewsFeedModuleInterface, NewsFeedInteractorOutput {
             }
         }
         return list
+    }
+}
+
+extension NewsFeedPresenter: NewsFeedInteractorOutput {
+    
+    mutating func newsFeedDidRefresh(data: NewsFeedDataCollection) {
+        var list = parseList(data)
+        list.mode = .truncate
+        feeds.appendContentsOf(list)
+        
+        view.didRefreshFeeds()
+        
+        if feeds.count == 0 {
+            view.showEmptyView()
+        }
+    }
+    
+    mutating func newsFeedDidLoadMore(data: NewsFeedDataCollection) {
+        let list = parseList(data)
+        feeds.appendContentsOf(list)
+        
+        view.didLoadMoreFeeds()
+    }
+    
+    func newsFeedDidFetchWithError(error: NewsFeedServiceError) {
+        view.didFetchWithError(message: error.message)
+    }
+    
+    func newsFeedDidLike(with error: NewsFeedServiceError?) {
+        guard error == nil else {
+            view.didFailToLikeWithError(message: error!.message)
+            return
+        }
+        
+        view.didLike()
+    }
+    
+    func newsFeedDidUnlike(with error: NewsFeedServiceError?) {
+        guard error == nil else {
+            view.didFailToUnlikeWithError(message: error!.message)
+            return
+        }
+        
+        view.didUnlike()
     }
 }

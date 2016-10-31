@@ -19,7 +19,7 @@ extension HomeWireframe {
     
     func loadModuleDependency(with controller: UITabBarController) {
         let feedVC = (controller.viewControllers?[0] as? UINavigationController)?.topViewController as! NewsFeedViewController
-        let feedWireframe = NewsFeedWireframe()
+        var feedWireframe = NewsFeedWireframe()
         feedWireframe.rootWireframe = root
         feedWireframe.newsFeedViewController = feedVC
         feedWireframe.newsFeedViewController.presenter = feedWireframe.newsFeedPresenter

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsFeedWireframe: AnyObject {
+struct NewsFeedWireframe: NewsFeedWireframeInterface {
 
     weak var newsFeedViewController: NewsFeedViewController!
     var rootWireframe: RootWireframeInterface!
@@ -17,8 +17,8 @@ class NewsFeedWireframe: AnyObject {
     init() {
         let session = AuthSession()
         let service = NewsFeedServiceProvider(session: session)
-        let interactor = NewsFeedInteractor(service: service)
-        let presenter = NewsFeedPresenter()
+        var interactor = NewsFeedInteractor(service: service)
+        var presenter = NewsFeedPresenter()
         interactor.output = presenter
         presenter.interactor = interactor
         presenter.wireframe = self

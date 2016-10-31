@@ -6,13 +6,20 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol NewsFeedViewInterface: class {
+protocol NewsFeedViewInterface: NSObjectProtocol {
 
+    var controller: UIViewController? { get }
+    var presenter: NewsFeedPresenterInterface! { set get }
+    
     func reloadView()
     func showEmptyView()
-    func showItems(_ items: PostCellItemArray)
-    func showError(_ error: String)
-    func updateCell(_ postId: String, isLiked: Bool)
+    func didRefreshFeeds()
+    func didLoadMoreFeeds()
+    func didFetchWithError(message: String)
+    func didLike()
+    func didUnlike()
+    func didFailToLikeWithError(message: String)
+    func didFailToUnlikeWithError(message: String)
 }

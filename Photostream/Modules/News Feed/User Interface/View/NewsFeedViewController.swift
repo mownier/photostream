@@ -14,61 +14,54 @@ class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var presenter: NewsFeedModuleInterface!
-
-    fileprivate var loader: PostCellLoader!
+    var presenter: NewsFeedPresenterInterface!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loader = PostCellLoader(collectionView: collectionView, type: .list)
-        loader.listCellCallback = self
-        loader.shouldEnableStickyHeader(true)
-        loader.reload()
-
-        // navigationItem.titleView = UILabel.createNavigationTitleView("Photostream")
-        presenter.refreshFeed(10)
+        presenter.refreshFeeds()
     }
 }
 
 extension NewsFeedViewController: NewsFeedViewInterface {
+    
+    var controller: UIViewController? {
+        return self
+    }
 
     func reloadView() {
-        loader.reload()
+        collectionView.reloadData()
     }
 
     func showEmptyView() {
 
     }
-
-    func showError(_ error: String) {
-
+    
+    func didRefreshFeeds() {
+        reloadView()
     }
-
-    func showItems(_ items: PostCellItemArray) {
-        loader.append(items)
+    
+    func didLoadMoreFeeds() {
+        reloadView()
     }
-
-    func updateCell(_ postId: String, isLiked: Bool) {
-        loader.reloadCell(postId, likeState: isLiked)
+    
+    func didLike() {
+        reloadView()
     }
-}
-
-extension NewsFeedViewController: PostListCellLoaderCallback {
-
-    func postCellLoaderDidUnlikePost(_ postId: String) {
-        presenter.unlikePost(postId)
+    
+    func didUnlike() {
+        reloadView()
     }
-
-    func postCellLoaderDidLikePost(_ postId: String) {
-        presenter.likePost(postId)
+    
+    func didFetchWithError(message: String) {
+        
     }
-
-    func postCellLoaderWillShowLikes(_ postId: String) {
-
+    
+    func didFailToLikeWithError(message: String) {
+        
     }
-
-    func postCellLoaderWillShowComments(_ postId: String, shouldComment: Bool) {
-        presenter.presentCommentsInterface(shouldComment)
+    
+    func didFailToUnlikeWithError(message: String) {
+        
     }
 }

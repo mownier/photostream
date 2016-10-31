@@ -8,36 +8,36 @@
 
 import Foundation
 
-class NewsFeedInteractor: NewsFeedInteractorInput {
-
-    var output: NewsFeedInteractorOutput!
+struct NewsFeedInteractor: NewsFeedInteractorInterface {
+    
+    typealias Offset = UInt
+    
+    var output: NewsFeedInteractorOutput?
     var service: NewsFeedService!
-    var currentOffset: UInt!
+    var offset: Offset
 
-    init(service: NewsFeedService!) {
+    init(service: NewsFeedService) {
         self.service = service
-        self.currentOffset = 0
+        self.offset = 0
     }
 
-    func fetchNew(_ limit: UInt!) {
-        currentOffset = 0
-        fetch(currentOffset, limit: limit)
-    }
-
-    func fetchNext(_ limit: UInt!) {
-        currentOffset = currentOffset + UInt(1)
-        fetch(currentOffset, limit: limit)
-    }
-
-    fileprivate func fetch(_ offset: UInt!, limit: UInt!) {
+    fileprivate mutating func fetch(limit: UInt) {
+        guard var output = output else {
+            return
+        }
+        let this = self
         service.fetchNewsFeed(offset: offset, limit: limit) { (result) in
             guard result.error != nil else {
-                self.output.newsFeedDidFetchWithError(result.error!)
+                output.newsFeedDidFetchWithError(error: result.error!)
                 return
             }
             
-            let data = self.parseNewsFeedData(result.posts)
-            self.output.newsFeedDidFetchOk(data)
+            let data = this.parseNewsFeedData(result.posts)
+            if this.offset == 0 {
+                output.newsFeedDidRefresh(data: data)
+            } else {
+                output.newsFeedDidLoadMore(data: data)
+            }
         }
     }
 
@@ -72,3 +72,25 @@ class NewsFeedInteractor: NewsFeedInteractorInput {
         return data
     }
 }
+
+extension NewsFeedInteractor: NewsFeedInteractorInput {
+    
+    mutating func fetchNew(limit: UInt) {
+        offset = 0
+        fetch(limit: limit)
+    }
+    
+    mutating func fetchNext(limit: UInt) {
+        offset = offset + UInt(1)
+        fetch(limit: limit)
+    }
+    
+    func likePost(id: String) {
+        
+    }
+    
+    func unlikePost(id: String) {
+        
+    }
+}
+
