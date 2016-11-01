@@ -1,5 +1,5 @@
 //
-//  NewsFeedDataCollection.swift
+//  NewsFeedData.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 20/08/2016.

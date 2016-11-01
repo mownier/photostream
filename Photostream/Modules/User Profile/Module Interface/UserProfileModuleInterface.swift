@@ -8,11 +8,11 @@
 
 import UIKit
 
-typealias UserProfilePostDataList = NewsFeedDataCollection
+typealias UserProfilePostDataList = NewsFeedData
 typealias UserProfilePostListItemArray = PostCellItemArray
 typealias UserProfilePostGridItemArray = PostGridCellItemArray
 typealias UserProfilePostDisplayItemParser = NewsFeedDisplayItemParser
-typealias UserProfilePostData = NewsFeedPostData
+typealias UserProfilePostData = NewsFeedPost
 typealias UserProfilePostAuthorData = NewsFeedUserData
 
 protocol UserProfileModuleInterface {
