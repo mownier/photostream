@@ -15,17 +15,17 @@ class UserProfileWireframe: AnyObject {
     var rootWireframe: RootWireframeInterface!
 
     init(userId: String?) {
-        let session = AuthSession()
-        let user = UserServiceProvider(session: session)
-        let post = PostServiceProvider(session: session)
-        let service = UserProfileService(user: user, post: post)
-        let interactor = UserProfileInteractor(service: service, userId: userId)
-        let presenter = UserProfilePresenter()
-        interactor.output = presenter
-        presenter.interactor = interactor
-        presenter.wireframe = self
-
-        self.userProfilePresenter = presenter
+//        let session = AuthSession()
+//        let user = UserServiceProvider(session: session)
+//        let post = PostServiceProvider(session: session)
+//        let service = UserProfileService(user: user, post: post)
+//        let interactor = UserProfileInteractor(service: service, userId: userId)
+//        let presenter = UserProfilePresenter()
+//        interactor.output = presenter
+//        presenter.interactor = interactor
+//        presenter.wireframe = self
+//
+//        self.userProfilePresenter = presenter
     }
 
     func navigateCommentsInterface(_ postId: String, shouldComment: Bool) {

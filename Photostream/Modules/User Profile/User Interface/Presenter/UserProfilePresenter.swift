@@ -70,20 +70,20 @@ class UserProfilePresenter: UserProfileModuleInterface, UserProfileInteractorOut
     }
 
     fileprivate func parseList(_ data: UserProfilePostDataList) -> (UserProfilePostListItemArray, UserProfilePostGridItemArray) {
-        var list = UserProfilePostListItemArray()
-        var grid = UserProfilePostGridItemArray()
-        for i in 0..<data.count {
-            if let (post, user) = data[i] {
-                let parser = UserProfilePostDisplayItemParser(post: post, user: user)
-                let listItem =  parser.serializeCellItem()
-                list.append(listItem)
-
-                var gridItem = PostGridCellItem()
-                gridItem.postId = post.postId
-                gridItem.photoUrl = post.photoUrl
-                grid.append(gridItem)
-            }
-        }
+        let list = UserProfilePostListItemArray()
+        let grid = UserProfilePostGridItemArray()
+//        for i in 0..<data.items.count {
+//            if let item = data.items[i] as? UserProfilePostData {
+//                let parser = UserProfilePostDisplayItemParser(post: item)
+//                let listItem =  parser.serializeCellItem()
+//                list.append(listItem)
+//
+//                var gridItem = PostGridCellItem()
+//                gridItem.postId = post.postId
+//                gridItem.photoUrl = post.photoUrl
+//                grid.append(gridItem)
+//            }
+//        }
         return (list, grid)
     }
 }

@@ -20,11 +20,11 @@ extension HomeWireframe {
         let feedVC = (controller.viewControllers?[0] as? UINavigationController)?.topViewController as! NewsFeedViewController
         _ = NewsFeedWireframe(root: root, view: feedVC)
         
-        let profileVC = (controller.viewControllers?[2] as? UINavigationController)?.topViewController as! UserProfileViewController
-        let profileWireframe = UserProfileWireframe(userId: nil)
-        profileWireframe.rootWireframe = root
-        profileWireframe.userProfileViewController = profileVC
-        profileWireframe.userProfilePresenter.view = profileVC
-        profileWireframe.userProfileViewController.presenter = profileWireframe.userProfilePresenter
+//        let profileVC = (controller.viewControllers?[2] as? UINavigationController)?.topViewController as! UserProfileViewController
+//        let profileWireframe = UserProfileWireframe(userId: nil)
+//        profileWireframe.rootWireframe = root
+//        profileWireframe.userProfileViewController = profileVC
+//        profileWireframe.userProfilePresenter.view = profileVC
+//        profileWireframe.userProfileViewController.presenter = profileWireframe.userProfilePresenter
     }
 }

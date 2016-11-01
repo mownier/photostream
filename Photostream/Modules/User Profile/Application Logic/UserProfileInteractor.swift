@@ -74,29 +74,29 @@ class UserProfileInteractor: UserProfileInteractorInput {
             return UserProfilePostDataList()
         }
         
-        var data = UserProfilePostDataList()
-        for i in 0..<posts!.count {
-            if let (post, user) = posts![i] {
-                var postItem = UserProfilePostData()
-                postItem.message = post.message
-                postItem.postId = post.id
-                postItem.commentsCount = post.commentsCount
-                postItem.likesCount = post.likesCount
-                postItem.isLiked = post.isLiked
-                postItem.timestamp = post.timestamp / 1000
-                postItem.userId = user.id
-                postItem.photoUrl = post.photo.url
-                postItem.photoWidth = post.photo.width
-                postItem.photoHeight  = post.photo.height
-
-                var userItem = UserProfilePostAuthorData()
-                userItem.userId = user.id
-                userItem.avatarUrl = user.avatarUrl
-                userItem.displayName = user.displayName
-
-                data.add(postItem, userItem: userItem)
-            }
-        }
+        let data = UserProfilePostDataList()
+//        for i in 0..<posts!.count {
+//            if let (post, user) = posts![i] {
+//                var postItem = UserProfilePostData()
+//                postItem.message = post.message
+//                postItem.id = post.id
+//                postItem.comments = post.commentsCount
+//                postItem.likes = post.likesCount
+//                postItem.isLiked = post.isLiked
+//                postItem.timestamp = post.timestamp / 1000
+//                postItem.userId = user.id
+//                postItem.photoUrl = post.photo.url
+//                postItem.photoWidth = post.photo.width
+//                postItem.photoHeight  = post.photo.height
+//
+//                var userItem = UserProfilePostAuthorData()
+//                userItem.userId = user.id
+//                userItem.avatarUrl = user.avatarUrl
+//                userItem.displayName = user.displayName
+//
+//                data.add(postItem, userItem: userItem)
+//            }
+//        }
         return data
     }
 }

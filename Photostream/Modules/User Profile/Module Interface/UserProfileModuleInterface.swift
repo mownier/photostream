@@ -13,7 +13,6 @@ typealias UserProfilePostListItemArray = PostCellItemArray
 typealias UserProfilePostGridItemArray = PostGridCellItemArray
 typealias UserProfilePostDisplayItemParser = NewsFeedDisplayItemParser
 typealias UserProfilePostData = NewsFeedPost
-typealias UserProfilePostAuthorData = NewsFeedUserData
 
 protocol UserProfileModuleInterface {
 
