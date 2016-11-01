@@ -13,11 +13,13 @@ struct NewsFeedInteractor: NewsFeedInteractorInterface {
     typealias Offset = UInt
     
     var output: NewsFeedInteractorOutput?
-    var service: NewsFeedService!
+    var feedService: NewsFeedService!
+    var postService: PostService!
     var offset: Offset
 
-    init(service: NewsFeedService) {
-        self.service = service
+    init(feedService: NewsFeedService, postService: PostService) {
+        self.feedService = feedService
+        self.postService = postService
         self.offset = 0
     }
 
@@ -26,7 +28,7 @@ struct NewsFeedInteractor: NewsFeedInteractorInterface {
             return
         }
         let this = self
-        service.fetchNewsFeed(offset: offset, limit: limit) { (result) in
+        feedService.fetchNewsFeed(offset: offset, limit: limit) { (result) in
             guard result.error != nil else {
                 output.newsFeedDidFetchWithError(error: result.error!)
                 return
@@ -87,11 +89,17 @@ extension NewsFeedInteractor: NewsFeedInteractorInput {
     }
     
     func likePost(id: String) {
-        
+        var result = output
+        postService.like(id: id) { (error) in
+            result?.newsFeedDidLike(with: error)
+        }
     }
     
     func unlikePost(id: String) {
-        
+        var result = output
+        postService.unlike(id: id) { (error) in
+            result?.newsFeedDidUnlike(with: error)
+        }
     }
 }
 

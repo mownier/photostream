@@ -12,9 +12,10 @@ protocol NewsFeedInteractorInterface {
     
     var offset: Offset { set get }
     var output: NewsFeedInteractorOutput? { set get }
-    var service: NewsFeedService! { set get }
+    var feedService: NewsFeedService! { set get }
+    var postService: PostService! { set get }
     
-    init(service: NewsFeedService)
+    init(feedService: NewsFeedService, postService: PostService)
     
     associatedtype Offset
 }

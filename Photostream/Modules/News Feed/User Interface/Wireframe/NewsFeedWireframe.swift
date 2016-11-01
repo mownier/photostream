@@ -16,8 +16,9 @@ struct NewsFeedWireframe: NewsFeedWireframeInterface {
         self.root = root
         
         let session = AuthSession()
-        let service = NewsFeedServiceProvider(session: session)
-        var interactor = NewsFeedInteractor(service: service)
+        let feedService = NewsFeedServiceProvider(session: session)
+        let postService = PostServiceProvider(session: session)
+        var interactor = NewsFeedInteractor(feedService: feedService, postService: postService)
         var presenter = NewsFeedPresenter()
         
         presenter.view = view

@@ -14,6 +14,6 @@ protocol NewsFeedInteractorOutput {
     mutating func newsFeedDidLoadMore(data: NewsFeedData)
     func newsFeedDidFetchWithError(error: NewsFeedServiceError)
     
-    mutating func newsFeedDidLike(with error: NewsFeedServiceError?)
-    mutating func newsFeedDidUnlike(with error: NewsFeedServiceError?)
+    mutating func newsFeedDidLike(with error: PostServiceError?)
+    mutating func newsFeedDidUnlike(with error: PostServiceError?)
 }

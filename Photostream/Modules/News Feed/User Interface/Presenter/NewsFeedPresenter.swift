@@ -71,11 +71,11 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
         view.didFetchWithError(message: error.message)
     }
     
-    func newsFeedDidLike(with error: NewsFeedServiceError?) {
+    func newsFeedDidLike(with error: PostServiceError?) {
         view.didLikeWithError(message: error?.message)
     }
     
-    func newsFeedDidUnlike(with error: NewsFeedServiceError?) {
+    func newsFeedDidUnlike(with error: PostServiceError?) {
         view.didUnlikeWithError(message: error?.message)
     }
 }
