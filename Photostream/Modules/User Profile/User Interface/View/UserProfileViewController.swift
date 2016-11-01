@@ -47,6 +47,10 @@ class UserProfileViewController: UIViewController {
         gridCollectionView.contentInset = inset
         gridCollectionView.scrollIndicatorInsets = inset
 
+        // TODO: Delete this after refactoring.
+        guard presenter != nil else {
+            return
+        }
         presenter.fetchUserProfile()
         presenter.fetchUserPosts(10)
     }
@@ -63,6 +67,8 @@ class UserProfileViewController: UIViewController {
 
     @IBAction func didTapSignOut() {
         (presenter as? UserProfilePresenter)?.presentLogin()
+        // TODO: Remove after refactoring.
+        try? FIRAuth.auth()?.signOut()
     }
     
     fileprivate func toggleCollectionViewVisibility(_ willShow: UIView, willHide: UIView) {
