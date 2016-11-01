@@ -47,26 +47,12 @@ struct NewsFeedPresenter: NewsFeedPresenterInterface {
         feeds[id]!.isLiked = false
         interactor.unlikePost(id: id)
     }
-
-    fileprivate func parseList(_ data: NewsFeedData) -> PostCellItemArray {
-        var list = PostCellItemArray()
-        for i in 0..<data.count {
-            if let (post, user) = data[i] {
-                let parser = NewsFeedDisplayItemParser(post: post, user: user)
-                let item =  parser.serializeCellItem()
-                list.append(item)
-            }
-        }
-        return list
-    }
 }
 
 extension NewsFeedPresenter: NewsFeedInteractorOutput {
     
     mutating func newsFeedDidRefresh(data: NewsFeedData) {
-        var list = parseList(data)
-        list.mode = .truncate
-        feeds.appendContentsOf(list)
+        feeds.items.append(contentsOf: data.items)
         
         view.didRefreshFeeds()
         
@@ -76,8 +62,7 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
     }
     
     mutating func newsFeedDidLoadMore(data: NewsFeedData) {
-        let list = parseList(data)
-        feeds.appendContentsOf(list)
+        feeds.items.append(contentsOf: data.items)
         
         view.didLoadMoreFeeds()
     }
