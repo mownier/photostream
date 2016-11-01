@@ -32,7 +32,7 @@ struct NewsFeedInteractor: NewsFeedInteractorInterface {
                 return
             }
             
-            let data = this.parseNewsFeedData(result.posts)
+            let data = this.parseData(with: result.posts)
             if this.offset == 0 {
                 output.newsFeedDidRefresh(data: data)
             } else {
@@ -41,7 +41,7 @@ struct NewsFeedInteractor: NewsFeedInteractorInterface {
         }
     }
 
-    fileprivate func parseNewsFeedData(_ posts: PostList?) -> NewsFeedData {
+    fileprivate func parseData(with posts: PostList?) -> NewsFeedData {
         guard posts != nil else {
             return NewsFeedData()
         }
