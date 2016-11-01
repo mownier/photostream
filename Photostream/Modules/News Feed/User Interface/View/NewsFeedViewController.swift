@@ -13,11 +13,19 @@ import DateTools
 class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: MONUniformFlowLayout!
 
     var presenter: NewsFeedPresenterInterface!
+    lazy var scrollHandler = ScrollHandler()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PostListCell.registerNib(in: collectionView)
+        PostListHeader.registerNib(in: collectionView)
+        PostListFooter.registerClass(in: collectionView)
+        
+        scrollHandler.scrollView = collectionView
 
         presenter.refreshFeeds()
     }
@@ -46,7 +54,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didFetchWithError(message: String) {
-        
+        print("NewsFeedViewController:", message)
     }
     
     func didLikeWithError(message: String?) {
