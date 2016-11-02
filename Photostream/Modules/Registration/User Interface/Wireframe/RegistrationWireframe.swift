@@ -19,13 +19,11 @@ class RegistrationWireframe: RegistrationWireframeInterface {
         let intearctor = RegistrationInteractor(service: service)
         let presenter = RegistrationPresenter()
 
-        presenter.view = view
-        presenter.wireframe = self
-        
-        intearctor.output = presenter
-        presenter.interactor = intearctor
-        
         view.presenter = presenter
+        intearctor.output = presenter
+        presenter.view = view
+        presenter.interactor = intearctor
+        presenter.wireframe = self
     }
     
     func attachRoot(with controller: UIViewController, in window: UIWindow) {

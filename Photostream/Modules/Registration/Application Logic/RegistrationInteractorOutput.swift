@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RegistrationInteractorOutput {
+protocol RegistrationInteractorOutput: class {
 
     func registrationDidSucceed(user: User)
     func registrationDidFail(error: AuthenticationServiceError)

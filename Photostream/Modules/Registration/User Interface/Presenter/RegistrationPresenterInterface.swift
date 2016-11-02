@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RegistrationPresenterInterface {
+protocol RegistrationPresenterInterface: class {
     
     var view: RegistrationViewInterface! { set get }
     var interactor: RegistrationInteractorInput! { set get }

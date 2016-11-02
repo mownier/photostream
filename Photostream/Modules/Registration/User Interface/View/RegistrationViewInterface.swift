@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RegistrationViewInterface: NSObjectProtocol, Destructable {
+protocol RegistrationViewInterface: class {
     
     var controller: UIViewController? { get }
     var presenter: RegistrationEventHandler! { set get }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RegistrationWireframeInterface {
+protocol RegistrationWireframeInterface: class {
 
     var root: RootWireframeInterface? { set get }
     

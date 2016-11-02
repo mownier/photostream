@@ -10,7 +10,7 @@ import Foundation
 
 class RegistrationInteractor: RegistrationInteractorInterface {
 
-    var output: RegistrationInteractorOutput?
+    weak var output: RegistrationInteractorOutput?
     var service: AuthenticationService!
 
     required init(service: AuthenticationService) {

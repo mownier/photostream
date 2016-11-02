@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RegistrationEventHandler: Destructable {
+protocol RegistrationEventHandler: class {
 
     func register(email: String, password: String, firstName: String, lastName: String)
     func presentErrorAlert(message: String)

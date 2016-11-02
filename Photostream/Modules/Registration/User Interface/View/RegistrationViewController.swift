@@ -34,10 +34,6 @@ class RegistrationViewController: UIViewController {
         return (email, password, firstName, lastName)
     }
     
-    deinit {
-        destruct()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,10 +110,5 @@ extension RegistrationViewController: RegistrationViewInterface {
     
     func didRegisterOk() {
         (presenter as? RegistrationPresenter)?.presentHome()
-    }
-    
-    func destruct() {
-        presenter.destruct()
-        presenter = nil
     }
 }

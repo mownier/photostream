@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RegistrationInteractorInterface {
+protocol RegistrationInteractorInterface: class {
     
     var output: RegistrationInteractorOutput? { set get }
     var service: AuthenticationService! { set get }

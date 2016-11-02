@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RegistrationInteractorInput {
+protocol RegistrationInteractorInput: class {
 
     func register(email: String, password: String, firstName: String, lastName: String)
 }
