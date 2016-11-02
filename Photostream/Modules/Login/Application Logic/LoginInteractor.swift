@@ -11,7 +11,7 @@ import Foundation
 class LoginInteractor: LoginInteractorInterface {
 
     var service: AuthenticationService!
-    var output: LoginInteractorOutput?
+    weak var output: LoginInteractorOutput?
 
     required init(service: AuthenticationService) {
         self.service = service
