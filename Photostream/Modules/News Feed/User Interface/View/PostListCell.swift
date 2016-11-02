@@ -11,7 +11,7 @@ import Kingfisher
 import Spring
 
 let kPostListCellNibName = "PostListCell"
-let kPostListCellReuseId = "PostCell"
+let kPostListCellReuseId = "PostListCell"
 let kPostListCellCommonHeight: CGFloat = 16.0
 let kPostListCellCommonTop: CGFloat = 12.0
 

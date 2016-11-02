@@ -19,6 +19,7 @@
 		B91FA4791DBF478B00A0B131 /* UserProfileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91FA4781DBF478B00A0B131 /* UserProfileExtension.swift */; };
 		B93E51CB1DC4712C005FA6AB /* NewsFeedInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93E51CA1DC4712C005FA6AB /* NewsFeedInteractorInterface.swift */; };
 		B93E51CD1DC4782A005FA6AB /* NewsFeedWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93E51CC1DC4782A005FA6AB /* NewsFeedWireframeInterface.swift */; };
+		B9498AD61DC88187005AA9F5 /* DynamicHeightHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9498AD51DC88187005AA9F5 /* DynamicHeightHandler.swift */; };
 		B95A3D571D62D32200DA456D /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */; };
 		B95A3D591D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */; };
 		B95A3D5B1D62F7B300DA456D /* PostListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3D5A1D62F7B300DA456D /* PostListHeader.swift */; };
@@ -161,6 +162,7 @@
 		B91FA4781DBF478B00A0B131 /* UserProfileExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileExtension.swift; sourceTree = "<group>"; };
 		B93E51CA1DC4712C005FA6AB /* NewsFeedInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractorInterface.swift; sourceTree = "<group>"; };
 		B93E51CC1DC4782A005FA6AB /* NewsFeedWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedWireframeInterface.swift; sourceTree = "<group>"; };
+		B9498AD51DC88187005AA9F5 /* DynamicHeightHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightHandler.swift; sourceTree = "<group>"; };
 		B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedViewController.swift; path = "Modules/News Feed/User Interface/View/NewsFeedViewController.swift"; sourceTree = "<group>"; };
 		B95A3D581D62D34D00DA456D /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B95A3D5A1D62F7B300DA456D /* PostListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostListHeader.swift; path = "Modules/News Feed/User Interface/View/PostListHeader.swift"; sourceTree = "<group>"; };
@@ -1042,6 +1044,7 @@
 			isa = PBXGroup;
 			children = (
 				B9F0ECC21DC8755700B3B03F /* ScrollHandler.swift */,
+				B9498AD51DC88187005AA9F5 /* DynamicHeightHandler.swift */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -1307,6 +1310,7 @@
 				B97D1B9C1D7149C800246D85 /* UserProfileViewInterface.swift in Sources */,
 				B971CBAF1DB9EC86002166D3 /* CommentServiceProvider.swift in Sources */,
 				B9706A971D5EED93002EE1D2 /* LoginPresenterInterface.swift in Sources */,
+				B9498AD61DC88187005AA9F5 /* DynamicHeightHandler.swift in Sources */,
 				B98EE63C1D616FEE00826C37 /* HomeWireframe.swift in Sources */,
 				B9FAB2B61DC4439A00E43FCE /* HomeViewInterface.swift in Sources */,
 				B9706AA91D5EF320002EE1D2 /* RegistrationPresenter.swift in Sources */,

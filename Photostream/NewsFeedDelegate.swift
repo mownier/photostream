@@ -13,7 +13,8 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
         // TODO: Compute item height
-        return UICollectionViewFlowLayoutAutomaticSize.height
+        // return UICollectionViewFlowLayoutAutomaticSize.height
+        return 287.0
     }
     
     func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
@@ -28,19 +29,17 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 extension NewsFeedViewController {
     
     func scrollViewWillBeginDragging(_ view: UIScrollView) {
-        scrollHandler.prevContentOffsetY = view.contentOffset.y
-        scrollHandler.nextContentOffsetY = view.contentOffset.y
+        scrollHandler.offsetY = view.contentOffset.y
     }
     
     func scrollViewDidScroll(_ view: UIScrollView) {
         if scrollHandler.isScrollable {
-            scrollHandler.nextContentOffsetY = view.contentOffset.y
             if scrollHandler.isScrollingUp() {
                 didScrollUp(with: scrollHandler.offsetDelta)
             } else if scrollHandler.isScrollingDown() {
                 didScrollDown(with: scrollHandler.offsetDelta)
             }
-            scrollHandler.prevContentOffsetY = scrollHandler.nextContentOffsetY
+            scrollHandler.update()
         }
     }
     

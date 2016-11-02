@@ -29,7 +29,7 @@ struct NewsFeedInteractor: NewsFeedInteractorInterface {
         }
         let this = self
         feedService.fetchNewsFeed(offset: offset, limit: limit) { (result) in
-            guard result.error != nil else {
+            guard result.error == nil else {
                 output.newsFeedDidFetchWithError(error: result.error!)
                 return
             }

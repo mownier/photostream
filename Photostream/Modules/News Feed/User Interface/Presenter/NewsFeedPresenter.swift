@@ -53,7 +53,7 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
     
     mutating func newsFeedDidRefresh(data: NewsFeedData) {
         feeds.items.append(contentsOf: data.items)
-        
+        view.presenter = self
         view.didRefreshFeeds()
         
         if feeds.items.count == 0 {
@@ -63,7 +63,7 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
     
     mutating func newsFeedDidLoadMore(data: NewsFeedData) {
         feeds.items.append(contentsOf: data.items)
-        
+        view.presenter = self
         view.didLoadMoreFeeds()
     }
     
