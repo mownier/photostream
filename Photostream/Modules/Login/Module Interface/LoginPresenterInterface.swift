@@ -8,12 +8,9 @@
 
 import Foundation
 
-protocol LoginPresenterInterface {
+protocol LoginPresenterInterface: class {
     
     var view: LoginViewInterface! { set get }
     var interactor: LoginInteractorInput! { set get }
     var wireframe: LoginWireframeInterface! { set get }
-    
-    func login(email: String, password: String)
-    func presentErrorAlert(message: String)
 }

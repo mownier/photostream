@@ -123,6 +123,7 @@
 		B9D3FDE71D644DD400B7CC2E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */; };
 		B9E6761B1DC9B30800F62EDD /* Destructable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E6761A1DC9B30800F62EDD /* Destructable.swift */; };
 		B9E6761E1DC9B5A500F62EDD /* RegistrationEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E6761D1DC9B5A500F62EDD /* RegistrationEventHandler.swift */; };
+		B9E676201DC9CA8F00F62EDD /* LoginEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E6761F1DC9CA8F00F62EDD /* LoginEventHandler.swift */; };
 		B9F0ECB81DC867E100B3B03F /* PostListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F0ECB71DC867E100B3B03F /* PostListHeader.xib */; };
 		B9F0ECBA1DC86A9D00B3B03F /* NewsFeedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0ECB91DC86A9D00B3B03F /* NewsFeedDataSource.swift */; };
 		B9F0ECBC1DC86AAA00B3B03F /* NewsFeedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0ECBB1DC86AAA00B3B03F /* NewsFeedDelegate.swift */; };
@@ -273,6 +274,7 @@
 		B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B9E6761A1DC9B30800F62EDD /* Destructable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destructable.swift; sourceTree = "<group>"; };
 		B9E6761D1DC9B5A500F62EDD /* RegistrationEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationEventHandler.swift; path = ../../RegistrationEventHandler.swift; sourceTree = "<group>"; };
+		B9E6761F1DC9CA8F00F62EDD /* LoginEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginEventHandler.swift; path = ../View/LoginEventHandler.swift; sourceTree = "<group>"; };
 		B9F0ECB71DC867E100B3B03F /* PostListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostListHeader.xib; sourceTree = "<group>"; };
 		B9F0ECB91DC86A9D00B3B03F /* NewsFeedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedDataSource.swift; sourceTree = "<group>"; };
 		B9F0ECBB1DC86AAA00B3B03F /* NewsFeedDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedDelegate.swift; sourceTree = "<group>"; };
@@ -374,8 +376,9 @@
 		B95FFD081D53068300085905 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				B9706A961D5EED93002EE1D2 /* LoginPresenterInterface.swift */,
+				B9E6761F1DC9CA8F00F62EDD /* LoginEventHandler.swift */,
 				B9706A981D5EEE7D002EE1D2 /* LoginPresenter.swift */,
+				B9706A961D5EED93002EE1D2 /* LoginPresenterInterface.swift */,
 			);
 			name = Presenter;
 			path = "User Interface/Presenter";
@@ -440,6 +443,7 @@
 		B961A2C11D545D6800651D35 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				B9E6761D1DC9B5A500F62EDD /* RegistrationEventHandler.swift */,
 				B9706AA81D5EF320002EE1D2 /* RegistrationPresenter.swift */,
 				B91FA4701DBF256B00A0B131 /* RegistrationPresenterInterface.swift */,
 			);
@@ -450,7 +454,6 @@
 		B961A2C21D545D6800651D35 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9E6761D1DC9B5A500F62EDD /* RegistrationEventHandler.swift */,
 				B9706AA41D5EF2A1002EE1D2 /* RegistrationViewInterface.swift */,
 			);
 			name = View;
@@ -1340,6 +1343,7 @@
 				B97E3D061D51CE5300C5E76B /* AppDependency.swift in Sources */,
 				B98EE63E1D61743B00826C37 /* HomeViewController.swift in Sources */,
 				B961A2C91D545DAA00651D35 /* RegistrationInteractorOutput.swift in Sources */,
+				B9E676201DC9CA8F00F62EDD /* LoginEventHandler.swift in Sources */,
 				B9706A9D1D5EEF19002EE1D2 /* LoginWireframe.swift in Sources */,
 				B961A2C51D545D7F00651D35 /* RegistrationInteractor.swift in Sources */,
 				B95E197B1DC1EC2400BEE2C6 /* LoginInteractorInterface.swift in Sources */,

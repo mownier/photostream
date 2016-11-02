@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LoginInteractorInput {
+protocol LoginInteractorInput: class {
 
     func login(email: String, password: String)
 }

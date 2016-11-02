@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     @IBInspectable var bottomColor: UIColor!
     @IBInspectable var cornerRadius: CGFloat = 0
 
-    var presenter: LoginPresenterInterface!
+    var presenter: LoginEventHandler!
 
     deinit {
         presenter = nil

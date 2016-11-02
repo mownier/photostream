@@ -8,24 +8,22 @@
 
 import UIKit
 
-struct LoginWireframe: LoginWireframeInterface {
+class LoginWireframe: LoginWireframeInterface {
 
     var root: RootWireframeInterface?
 
-    init(root: RootWireframeInterface?, view: LoginViewInterface) {
+    required init(root: RootWireframeInterface?, view: LoginViewInterface) {
         self.root = root
 
         let service = AuthenticationServiceProvider()
-        var interactor = LoginInteractor(service: service)
-        var presenter = LoginPresenter()
-        
-        presenter.view = view
-        presenter.wireframe = self
-        
-        interactor.output = presenter
-        presenter.interactor = interactor
+        let interactor = LoginInteractor(service: service)
+        let presenter = LoginPresenter()
         
         view.presenter = presenter
+        interactor.output = presenter
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.wireframe = self
     }
     
     func attachRoot(with controller: UIViewController, in window: UIWindow) {

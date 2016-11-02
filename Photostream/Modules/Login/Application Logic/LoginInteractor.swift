@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct LoginInteractor: LoginInteractorInterface {
+class LoginInteractor: LoginInteractorInterface {
 
     var service: AuthenticationService!
     var output: LoginInteractorOutput?
 
-    init(service: AuthenticationService) {
+    required init(service: AuthenticationService) {
         self.service = service
     }
 

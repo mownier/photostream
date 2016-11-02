@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LoginInteractorInterface {
+protocol LoginInteractorInterface: class {
 
     var service: AuthenticationService! { set get }
     var output: LoginInteractorOutput? { set get }

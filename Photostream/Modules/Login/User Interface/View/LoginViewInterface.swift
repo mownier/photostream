@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol LoginViewInterface: NSObjectProtocol {
+protocol LoginViewInterface: class {
     
     var controller: UIViewController? { get }
-    var presenter: LoginPresenterInterface! { set get }
+    var presenter: LoginEventHandler! { set get }
     
     func didTapLogin()
     func didReceiveError(message: String)

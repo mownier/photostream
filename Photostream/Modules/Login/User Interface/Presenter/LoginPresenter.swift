@@ -8,16 +8,19 @@
 
 import Foundation
 
-struct LoginPresenter: LoginPresenterInterface {
+class LoginPresenter: LoginPresenterInterface {
 
     weak var view: LoginViewInterface!
     var interactor: LoginInteractorInput!
     var wireframe: LoginWireframeInterface!
+}
+
+extension LoginPresenter: LoginEventHandler {
     
     func login(email: String, password: String) {
         interactor.login(email: email, password: password)
     }
-
+    
     func presentErrorAlert(message: String) {
         wireframe.showErrorAlert(title: "Login Error", message: message, from: view.controller)
     }

@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol LoginWireframeInterface {
+protocol LoginWireframeInterface: class {
     
     var root: RootWireframeInterface? { set get }
     
     init(root: RootWireframeInterface?, view: LoginViewInterface)
     
-    func showErrorAlert(title: String, message: String, from controller: UIViewController?)
     func attachRoot(with controller: UIViewController, in window: UIWindow)
+    func showErrorAlert(title: String, message: String, from controller: UIViewController?)
 }
