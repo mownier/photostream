@@ -8,16 +8,16 @@
 
 import UIKit
 
-struct RegistrationWireframe: RegistrationWireframeInterface {
+class RegistrationWireframe: RegistrationWireframeInterface {
 
     var root: RootWireframeInterface?
     
-    init(root: RootWireframeInterface?, view: RegistrationViewInterface) {
+    required init(root: RootWireframeInterface?, view: RegistrationViewInterface) {
         self.root = root
         
         let service = AuthenticationServiceProvider()
-        var intearctor = RegistrationInteractor(service: service)
-        var presenter = RegistrationPresenter()
+        let intearctor = RegistrationInteractor(service: service)
+        let presenter = RegistrationPresenter()
 
         presenter.view = view
         presenter.wireframe = self

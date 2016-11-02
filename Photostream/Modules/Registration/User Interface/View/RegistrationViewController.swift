@@ -21,7 +21,7 @@ class RegistrationViewController: UIViewController {
     @IBInspectable var bottomColor: UIColor!
     @IBInspectable var cornerRadius: CGFloat = 0
 
-    var presenter: RegistrationPresenterInterface!
+    var presenter: RegistrationEventHandler!
     var isOkToRegister: (String, String, String, String)? {
         guard let email = emailTextField.text,
             let password = passwordTextField.text,
@@ -35,7 +35,7 @@ class RegistrationViewController: UIViewController {
     }
     
     deinit {
-        presenter = nil
+        destruct()
     }
     
     override func viewDidLoad() {
@@ -114,5 +114,10 @@ extension RegistrationViewController: RegistrationViewInterface {
     
     func didRegisterOk() {
         (presenter as? RegistrationPresenter)?.presentHome()
+    }
+    
+    func destruct() {
+        presenter.destruct()
+        presenter = nil
     }
 }

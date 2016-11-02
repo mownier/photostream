@@ -6,14 +6,11 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol RegistrationPresenterInterface {
     
     var view: RegistrationViewInterface! { set get }
     var interactor: RegistrationInteractorInput! { set get }
     var wireframe: RegistrationWireframeInterface! { set get }
-    
-    func register(email: String, password: String, firstName: String, lastName: String)
-    func presentErrorAlert(message: String)
 }

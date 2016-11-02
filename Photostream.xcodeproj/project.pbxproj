@@ -121,6 +121,8 @@
 		B9D3FDE31D64460900B7CC2E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE21D64460900B7CC2E /* String+Extensions.swift */; };
 		B9D3FDE51D6449E800B7CC2E /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */; };
 		B9D3FDE71D644DD400B7CC2E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */; };
+		B9E6761B1DC9B30800F62EDD /* Destructable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E6761A1DC9B30800F62EDD /* Destructable.swift */; };
+		B9E6761E1DC9B5A500F62EDD /* RegistrationEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E6761D1DC9B5A500F62EDD /* RegistrationEventHandler.swift */; };
 		B9F0ECB81DC867E100B3B03F /* PostListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F0ECB71DC867E100B3B03F /* PostListHeader.xib */; };
 		B9F0ECBA1DC86A9D00B3B03F /* NewsFeedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0ECB91DC86A9D00B3B03F /* NewsFeedDataSource.swift */; };
 		B9F0ECBC1DC86AAA00B3B03F /* NewsFeedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0ECBB1DC86AAA00B3B03F /* NewsFeedDelegate.swift */; };
@@ -269,6 +271,8 @@
 		B9D3FDE21D64460900B7CC2E /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B9D3FDE41D6449E800B7CC2E /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		B9D3FDE61D644DD400B7CC2E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		B9E6761A1DC9B30800F62EDD /* Destructable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destructable.swift; sourceTree = "<group>"; };
+		B9E6761D1DC9B5A500F62EDD /* RegistrationEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationEventHandler.swift; path = ../../RegistrationEventHandler.swift; sourceTree = "<group>"; };
 		B9F0ECB71DC867E100B3B03F /* PostListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostListHeader.xib; sourceTree = "<group>"; };
 		B9F0ECB91DC86A9D00B3B03F /* NewsFeedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedDataSource.swift; sourceTree = "<group>"; };
 		B9F0ECBB1DC86AAA00B3B03F /* NewsFeedDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedDelegate.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				B91FA46B1DBF0BCB00A0B131 /* RootWireframeInterface.swift */,
+				B9E6761A1DC9B30800F62EDD /* Destructable.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 		B961A2C21D545D6800651D35 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9E6761D1DC9B5A500F62EDD /* RegistrationEventHandler.swift */,
 				B9706AA41D5EF2A1002EE1D2 /* RegistrationViewInterface.swift */,
 			);
 			name = View;
@@ -1341,6 +1347,7 @@
 				B9D3FDD91D640A1300B7CC2E /* NewsFeedWireframe.swift in Sources */,
 				B95FFD0E1D5306F500085905 /* LoginInteractorInput.swift in Sources */,
 				B98EE6431D61963D00826C37 /* UIView+Extensions.swift in Sources */,
+				B9E6761E1DC9B5A500F62EDD /* RegistrationEventHandler.swift in Sources */,
 				B96F13AB1D6FE96900D59E3F /* UserProfileModuleInterface.swift in Sources */,
 				B978B0591D73E5BB006FE0A4 /* PostGridCell.swift in Sources */,
 				B9706AA11D5EF10C002EE1D2 /* LoginViewController.swift in Sources */,
@@ -1374,6 +1381,7 @@
 				B96F13B11D6FE9D100D59E3F /* UserProfileInteractorOutput.swift in Sources */,
 				B978B0551D73E337006FE0A4 /* PostGridCellDelegate.swift in Sources */,
 				B95FFD121D53092000085905 /* User.swift in Sources */,
+				B9E6761B1DC9B30800F62EDD /* Destructable.swift in Sources */,
 				B93E51CB1DC4712C005FA6AB /* NewsFeedInteractorInterface.swift in Sources */,
 				B971CBB21DB9EC86002166D3 /* UserServiceProvider.swift in Sources */,
 				B96FCE881D68191600C2A165 /* Array+Extensions.swift in Sources */,

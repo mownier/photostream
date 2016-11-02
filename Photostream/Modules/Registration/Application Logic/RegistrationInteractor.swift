@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct RegistrationInteractor: RegistrationInteractorInterface {
+class RegistrationInteractor: RegistrationInteractorInterface {
 
     var output: RegistrationInteractorOutput?
     var service: AuthenticationService!
 
-    init(service: AuthenticationService) {
+    required init(service: AuthenticationService) {
         self.service = service
     }
 }

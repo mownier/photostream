@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol RegistrationViewInterface: NSObjectProtocol {
+protocol RegistrationViewInterface: NSObjectProtocol, Destructable {
     
     var controller: UIViewController? { get }
-    var presenter: RegistrationPresenterInterface! { set get }
+    var presenter: RegistrationEventHandler! { set get }
     
     func didTapRegister()
     func didReceiveError(message: String)
