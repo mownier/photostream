@@ -62,21 +62,9 @@ extension NewsFeedViewController {
         guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath), let post = item else {
             return UICollectionViewCell()
         }
-        
-        configure(with: cell, for: post)
-        return cell
-    }
-    
-    func configure(with cell: PostListCell, for item: NewsFeedPost) {
-        cell.setMessage(with: item.message, and: item.displayName)
-        cell.setPhoto(with: item.photoUrl)
-        cell.elapsedTime = item.timeAgo
-        
-        cell.shouldHighlightLikeButton(item.isLiked)
-        cell.likesCountText = item.likesText
-        cell.commentsCountText = item.commentsText
-        
+        cell.configure(for: post)
         cell.delegate = self
+        return cell
     }
     
     func header(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionReusableView {
@@ -84,13 +72,7 @@ extension NewsFeedViewController {
             return UICollectionReusableView()
         }
         
-        configure(with: header, for: post)
+        header.configure(for: post)
         return header
-    }
-    
-    func configure(with header: PostListHeader, for item: NewsFeedPost) {
-        let placeholder = header.createAvatarPlaceholderImage(with: item.displayName[0])
-        header.displayName = item.displayName
-        header.setAvatar(with: item.avatarUrl, and: placeholder)
     }
 }

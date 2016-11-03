@@ -21,3 +21,10 @@ protocol DynamicCellHandler {
     associatedtype KeyType: Hashable
     associatedtype CellType
 }
+
+protocol DynamicHeight: class {
+    
+    func configure(for post: Item)
+    
+    associatedtype Item
+}

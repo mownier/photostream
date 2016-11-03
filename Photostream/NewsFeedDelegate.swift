@@ -44,7 +44,7 @@ extension NewsFeedViewController {
         }
         
         guard let height = dynamicCellHandler.heights[post.id] else {
-            configure(with: cell, for: post)
+            cell.configure(for: post)
             
             cell.bounds = CGRect(x: 0, y: 0, width: maxWidth, height: cell.bounds.height)
             cell.setNeedsLayout()
