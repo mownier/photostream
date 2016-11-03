@@ -12,9 +12,19 @@ import MONUniformFlowLayout
 extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, itemHeightInSection section: Int) -> CGFloat {
-        // TODO: Compute item height
-        // return UICollectionViewFlowLayoutAutomaticSize.height
-        return 287.0
+        let item = presenter.feed(at: section)
+        let maxWidth = collectionView.width
+        
+        switch item {
+        case let post as NewsFeedPost?:
+            return computeCellHeight(for: post, with: maxWidth)
+        
+        case let ad as NewsFeedAd?:
+            return computeCellHeight(for: ad, with: maxWidth)
+            
+        default:
+            return 0.0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, headerHeightInSection section: Int) -> CGFloat {
@@ -22,6 +32,21 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, footerHeightInSection section: Int) -> CGFloat {
+        return 0.0
+    }
+}
+
+extension NewsFeedViewController {
+    
+    func computeCellHeight(for item: NewsFeedPost?, with maxWidth: CGFloat) -> CGFloat {
+        guard item != nil else {
+            return 0.0
+        }
+        
+        return 287
+    }
+    
+    func computeCellHeight(for item: NewsFeedAd?, with maxWidth: CGFloat) -> CGFloat {
         return 0.0
     }
 }
