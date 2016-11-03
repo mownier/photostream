@@ -38,10 +38,11 @@ extension NewsFeedViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
+        let item = presenter.feed(at: indexPath.section)
+        
         switch kind {
         case UICollectionElementKindSectionHeader:
-            let header = PostListHeader.dequeue(from: collectionView, at: indexPath)
-            return header!
+            return header(from: collectionView, at: indexPath, for: item as! NewsFeedPost?)
         case UICollectionElementKindSectionFooter:
             let footer = PostListFooter.dequeue(from: collectionView, at: indexPath)
             return footer!
@@ -53,16 +54,16 @@ extension NewsFeedViewController: UICollectionViewDataSource {
 
 extension NewsFeedViewController {
     
-    func cell(from: UICollectionView, at indexPath: IndexPath, for item: NewsFeedAd?) -> UICollectionViewCell {
+    func cell(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedAd?) -> UICollectionViewCell {
         return UICollectionViewCell()
     }
     
-    func cell(from: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionViewCell {
-        guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath), item != nil else {
+    func cell(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionViewCell {
+        guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath), let post = item else {
             return UICollectionViewCell()
         }
         
-        configure(with: cell, for: item!)
+        configure(with: cell, for: post)
         return cell
     }
     
@@ -76,5 +77,20 @@ extension NewsFeedViewController {
         cell.commentsCountText = item.commentsText
         
         cell.delegate = self
+    }
+    
+    func header(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionReusableView {
+        guard let header = PostListHeader.dequeue(from: collectionView, at: indexPath), let post = item else {
+            return UICollectionReusableView()
+        }
+        
+        configure(with: header, for: post)
+        return header
+    }
+    
+    func configure(with header: PostListHeader, for item: NewsFeedPost) {
+        let placeholder = header.createAvatarPlaceholderImage(with: item.displayName[0])
+        header.displayName = item.displayName
+        header.setAvatar(with: item.avatarUrl, and: placeholder)
     }
 }
