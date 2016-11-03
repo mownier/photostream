@@ -8,6 +8,8 @@
 
 import Foundation
 
+protocol NewsFeedDataItem {}
+
 struct NewsFeedData {
     
     var items: [NewsFeedDataItem]
@@ -44,8 +46,6 @@ struct NewsFeedData {
         return index
     }
 }
-
-protocol NewsFeedDataItem {}
 
 struct NewsFeedPost: NewsFeedDataItem {
     

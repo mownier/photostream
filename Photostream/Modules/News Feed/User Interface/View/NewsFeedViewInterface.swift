@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol NewsFeedViewInterface: NSObjectProtocol {
+protocol NewsFeedViewInterface: class {
 
     var controller: UIViewController? { get }
-    var presenter: NewsFeedPresenterInterface! { set get }
+    var presenter: NewsFeedModuleInterface! { set get }
     
     func reloadView()
     func showEmptyView()

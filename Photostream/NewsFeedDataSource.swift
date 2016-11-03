@@ -15,13 +15,30 @@ extension NewsFeedViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return presenter.feeds.items.count
+        return presenter.feedCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = PostListCell.dequeue(from: collectionView, at: indexPath)
-        cell?.delegate = self
-        return cell!
+        guard let item = presenter.feed(at: indexPath.section) else {
+            return UICollectionViewCell()
+        }
+        
+        switch item {
+        case let post as NewsFeedPost:
+            guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath) else {
+                return UICollectionViewCell()
+            }
+            
+            configure(cell, for: post)
+            return cell
+            
+        case is NewsFeedAd:
+            fallthrough
+            
+        default:
+            return UICollectionViewCell()
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -36,5 +53,20 @@ extension NewsFeedViewController: UICollectionViewDataSource {
         default:
             return UICollectionReusableView()
         }
+    }
+}
+
+extension NewsFeedViewController {
+    
+    func configure(_ cell: PostListCell, for item: NewsFeedPost) {
+        cell.setMessage(with: item.message, and: item.displayName)
+        cell.setPhoto(with: item.photoUrl)
+        cell.elapsedTime = item.timeAgo
+        
+        cell.shouldHighlightLikeButton(item.isLiked)
+        cell.likesCountText = item.likesText
+        cell.commentsCountText = item.commentsText
+        
+        cell.delegate = self
     }
 }

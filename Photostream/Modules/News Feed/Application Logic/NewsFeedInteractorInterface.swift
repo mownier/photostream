@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NewsFeedInteractorInterface {
+protocol NewsFeedInteractorInterface: class {
     
     var offset: Offset { set get }
     var output: NewsFeedInteractorOutput? { set get }

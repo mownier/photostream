@@ -15,7 +15,7 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: MONUniformFlowLayout!
 
-    var presenter: NewsFeedPresenterInterface!
+    var presenter: NewsFeedModuleInterface!
     lazy var scrollHandler = ScrollHandler()
 
     override func viewDidLoad() {
@@ -64,5 +64,4 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     func didUnlikeWithError(message: String?) {
         reloadView()
     }
-
 }

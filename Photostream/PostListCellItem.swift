@@ -1,25 +1,35 @@
 //
-//  NewsFeedModuleExtension.swift
+//  PostListCellItem.swift
 //  Photostream
 //
-//  Created by Mounir Ybanez on 29/10/2016.
+//  Created by Mounir Ybanez on 03/11/2016.
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
 import UIKit
-import DateTools
 
-extension NewsFeedWireframe {
+struct PostListCellItem {
     
-    static var viewController: NewsFeedViewController {
-        let sb = UIStoryboard(name: "NewsFeedModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "NewsFeedViewController")
-        return vc as! NewsFeedViewController
-    }
+    var postId: String?
+    var message: String?
+    var timestamp: Date?
+    
+    var photoUrl: String?
+    var photoWidth: Int = 0
+    var photoHeight: Int = 0
+    
+    var isLiked: Bool = false
+    var likes: Int = 0
+    
+    var comments: Int = 0
+    
+    var userId: String?
+    var displayName: String?
+    var avatarUrl: String?
 }
 
-extension NewsFeedPost {
-    
+extension PostListCellItem {
+
     var likesText: String {
         if likes > 0 {
             if likes == 1 {
@@ -45,9 +55,6 @@ extension NewsFeedPost {
         }
         return ""
     }
-    
-    var timeAgo: String {
-        let date = NSDate(timeIntervalSinceNow: timestamp)
-        return date.timeAgoSinceNow()
-    }
 }
+
+extension PostListCellItem: NewsFeedItem { }

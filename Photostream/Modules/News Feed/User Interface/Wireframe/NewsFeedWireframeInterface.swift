@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol NewsFeedWireframeInterface {
+protocol NewsFeedWireframeInterface: class {
 
     var root: RootWireframeInterface? { set get }
     

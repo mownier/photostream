@@ -8,62 +8,67 @@
 
 import Foundation
 
-struct NewsFeedPresenter: NewsFeedPresenterInterface {
+class NewsFeedPresenter: NewsFeedPresenterInterface {
     
     weak var view: NewsFeedViewInterface!
     var wireframe: NewsFeedWireframeInterface!
     var interactor: NewsFeedInteractorInput!
-    var feeds: NewsFeedData!
+    var feed: NewsFeedData! = NewsFeedData()
     var limit: UInt {
         return 10
     }
+}
+
+extension NewsFeedPresenter: NewsFeedModuleInterface {
     
-    init() {
-        self.feeds = NewsFeedData()
+    func refreshFeeds() {
+        interactor.fetchNew(with: limit)
     }
-
-    mutating func refreshFeeds() {
-        interactor.fetchNew(limit: limit)
+    
+    func loadMoreFeeds() {
+        interactor.fetchNext(with: limit)
     }
-
-    mutating func loadMoreFeeds() {
-        interactor.fetchNext(limit: limit)
-    }
-
-    mutating func likePost(id: String) {
-        guard let feed = feeds[id], !feed.isLiked else {
+    
+    func like(post id: String) {
+        guard let item = feed[id], !item.isLiked else {
             return
         }
         
-        feeds[id]!.isLiked = true
-        interactor.likePost(id: id)
+        feed[id]!.isLiked = true
+        interactor.like(post: id)
     }
-
-    mutating func unlikePost(id: String) {
-        guard let feed = feeds[id], !feed.isLiked else {
+    
+    func unlike(post id: String) {
+        guard let item = feed[id], !item.isLiked else {
             return
         }
         
-        feeds[id]!.isLiked = false
-        interactor.unlikePost(id: id)
+        feed[id]!.isLiked = false
+        interactor.unlike(post: id)
+    }
+    
+    var feedCount: Int {
+        return feed.items.count
+    }
+    
+    func feed(at index: Int) -> NewsFeedDataItem? {
+        return feed.items[index]
     }
 }
 
 extension NewsFeedPresenter: NewsFeedInteractorOutput {
     
-    mutating func newsFeedDidRefresh(data: NewsFeedData) {
-        feeds.items.append(contentsOf: data.items)
-        view.presenter = self
+    func newsFeedDidRefresh(data: NewsFeedData) {
+        feed.items.append(contentsOf: data.items)
         view.didRefreshFeeds()
         
-        if feeds.items.count == 0 {
+        if feed.items.count == 0 {
             view.showEmptyView()
         }
     }
     
-    mutating func newsFeedDidLoadMore(data: NewsFeedData) {
-        feeds.items.append(contentsOf: data.items)
-        view.presenter = self
+    func newsFeedDidLoadMore(data: NewsFeedData) {
+        feed.items.append(contentsOf: data.items)
         view.didLoadMoreFeeds()
     }
     

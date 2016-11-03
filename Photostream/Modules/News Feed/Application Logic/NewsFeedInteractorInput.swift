@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol NewsFeedInteractorInput {
+protocol NewsFeedInteractorInput: class {
     
-    mutating func fetchNew(limit: UInt)
-    mutating func fetchNext(limit: UInt)
-    func likePost(id: String)
-    func unlikePost(id: String)
+    func fetchNew(with limit: UInt)
+    func fetchNext(with limit: UInt)
+    func like(post id: String)
+    func unlike(post id: String)
 }

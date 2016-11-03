@@ -8,16 +8,11 @@
 
 import Foundation
 
-protocol NewsFeedPresenterInterface {
+protocol NewsFeedPresenterInterface: class {
 
     var view: NewsFeedViewInterface! { set get }
     var interactor: NewsFeedInteractorInput! { set get }
     var wireframe: NewsFeedWireframeInterface! { set get }
     var limit: UInt { get }
-    var feeds: NewsFeedData! { get }
-    
-    mutating func likePost(id: String)
-    mutating func unlikePost(id: String)
-    mutating func refreshFeeds()
-    mutating func loadMoreFeeds()
+    var feed: NewsFeedData! { get }
 }

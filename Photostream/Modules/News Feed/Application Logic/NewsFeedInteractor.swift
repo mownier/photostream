@@ -8,37 +8,37 @@
 
 import Foundation
 
-struct NewsFeedInteractor: NewsFeedInteractorInterface {
+class NewsFeedInteractor: NewsFeedInteractorInterface {
     
     typealias Offset = UInt
     
-    var output: NewsFeedInteractorOutput?
+    weak var output: NewsFeedInteractorOutput?
     var feedService: NewsFeedService!
     var postService: PostService!
     var offset: Offset
 
-    init(feedService: NewsFeedService, postService: PostService) {
+    required init(feedService: NewsFeedService, postService: PostService) {
         self.feedService = feedService
         self.postService = postService
         self.offset = 0
     }
 
-    fileprivate mutating func fetch(limit: UInt) {
-        guard var output = output else {
+    fileprivate func fetch(with limit: UInt) {
+        guard output != nil else {
             return
         }
-        let this = self
+        
         feedService.fetchNewsFeed(offset: offset, limit: limit) { (result) in
             guard result.error == nil else {
-                output.newsFeedDidFetchWithError(error: result.error!)
+                self.output?.newsFeedDidFetchWithError(error: result.error!)
                 return
             }
             
-            let data = this.parseData(with: result.posts)
-            if this.offset == 0 {
-                output.newsFeedDidRefresh(data: data)
+            let data = self.parseData(with: result.posts)
+            if self.offset == 0 {
+                self.output?.newsFeedDidRefresh(data: data)
             } else {
-                output.newsFeedDidLoadMore(data: data)
+                self.output?.newsFeedDidLoadMore(data: data)
             }
         }
     }
@@ -78,27 +78,33 @@ struct NewsFeedInteractor: NewsFeedInteractorInterface {
 
 extension NewsFeedInteractor: NewsFeedInteractorInput {
     
-    mutating func fetchNew(limit: UInt) {
+    func fetchNew(with limit: UInt) {
         offset = 0
-        fetch(limit: limit)
+        fetch(with: limit)
     }
     
-    mutating func fetchNext(limit: UInt) {
+    func fetchNext(with limit: UInt) {
         offset = offset + UInt(1)
-        fetch(limit: limit)
+        fetch(with: limit)
     }
     
-    func likePost(id: String) {
-        var result = output
+    func like(post id: String) {
+        guard output != nil else {
+            return
+        }
+        
         postService.like(id: id) { (error) in
-            result?.newsFeedDidLike(with: error)
+            self.output?.newsFeedDidLike(with: error)
         }
     }
     
-    func unlikePost(id: String) {
-        var result = output
+    func unlike(post id: String) {
+        guard output != nil else {
+            return
+        }
+        
         postService.unlike(id: id) { (error) in
-            result?.newsFeedDidUnlike(with: error)
+            self.output?.newsFeedDidUnlike(with: error)
         }
     }
 }
