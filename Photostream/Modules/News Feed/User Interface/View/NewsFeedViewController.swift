@@ -22,6 +22,8 @@ class NewsFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        flowLayout.enableStickyHeader = true
+        
         PostListCell.registerNib(in: collectionView)
         PostListHeader.registerNib(in: collectionView)
         PostListFooter.registerClass(in: collectionView)

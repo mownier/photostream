@@ -33,7 +33,7 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="didTapLike:" destination="tqt-W0-7hV" eventType="touchUpInside" id="dvS-7n-nrY"/>
+                            <action selector="didTapLike" destination="tqt-W0-7hV" eventType="touchUpInside" id="gRq-8e-PHL"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajg-2C-Z9E" userLabel="Comment">
@@ -43,7 +43,7 @@
                         </constraints>
                         <state key="normal" image="comment"/>
                         <connections>
-                            <action selector="didTapComment:" destination="tqt-W0-7hV" eventType="touchUpInside" id="DZW-tf-pju"/>
+                            <action selector="didTapComment" destination="tqt-W0-7hV" eventType="touchUpInside" id="mJ6-P2-5xs"/>
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuq-rv-Hex" userLabel="Strip">
@@ -67,7 +67,7 @@
                             <color key="titleColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
-                            <action selector="didTapLikesCount:" destination="tqt-W0-7hV" eventType="touchUpInside" id="qLI-3f-kxe"/>
+                            <action selector="didTapLikesCount" destination="tqt-W0-7hV" eventType="touchUpOutside" id="0VI-4w-fgJ"/>
                         </connections>
                     </button>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iamredrepo" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMt-vR-29f" userLabel="Message">
@@ -92,7 +92,7 @@
                             <color key="titleColor" red="0.61568627450000002" green="0.61568627450000002" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
-                            <action selector="didTapCommentsCount:" destination="tqt-W0-7hV" eventType="touchUpInside" id="3kC-FH-iux"/>
+                            <action selector="didTapCommentsCount" destination="tqt-W0-7hV" eventType="touchUpInside" id="xCM-Te-fT0"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 MINUTES AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrX-4H-3Ie" userLabel="Time">
