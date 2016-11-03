@@ -17,6 +17,7 @@ class NewsFeedViewController: UIViewController {
 
     var presenter: NewsFeedModuleInterface!
     lazy var scrollHandler = ScrollHandler()
+    lazy var dynamicCellHandler = DynamicPostListCellHandler()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class NewsFeedViewController: UIViewController {
         PostListFooter.registerClass(in: collectionView)
         
         scrollHandler.scrollView = collectionView
+        dynamicCellHandler.cell = PostListCell.createNew()
 
         presenter.refreshFeeds()
     }

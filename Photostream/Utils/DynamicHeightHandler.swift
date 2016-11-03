@@ -8,12 +8,16 @@
 
 import UIKit
 
-protocol DynmaicHeightConfig: NSObjectProtocol {
+protocol DynamicCellDelegate: class {
     
-    func computeHeight() -> CGFloat
+    var dynamicHeight: CGFloat { set get }
 }
 
-struct DynamicHeightHandler {
-
-    var heights = [CGFloat]()
+protocol DynamicCellHandler {
+    
+    var cell: CellType? { set get }
+    var heights: [KeyType: CGFloat]! { set get }
+    
+    associatedtype KeyType: Hashable
+    associatedtype CellType
 }

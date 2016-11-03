@@ -39,11 +39,44 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
 extension NewsFeedViewController {
     
     func computeCellHeight(for item: NewsFeedPost?, with maxWidth: CGFloat) -> CGFloat {
-        guard item != nil else {
+        guard let cell = dynamicCellHandler.cell, let post = item else {
             return 0.0
         }
         
-        return 287
+        guard let height = dynamicCellHandler.heights[post.id] else {
+            configure(with: cell, for: post)
+            
+            cell.bounds = CGRect(x: 0, y: 0, width: maxWidth, height: cell.bounds.height)
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
+            cell.sizeToFit()
+            
+            var height = kPostCellInitialHeight
+            
+            if post.likes == 0 {
+                height -= (kPostCellCommonTop + kPostCellCommonHeight)
+            }
+            if post.comments == 0 {
+                height -= (kPostCellCommonTop + kPostCellCommonHeight)
+            }
+            
+            height -= (kPostCellCommonTop + kPostCellCommonHeight)
+            if !post.message.isEmpty {
+                height += cell.messageLabel.intrinsicContentSize.height
+            }
+            
+            height -= kPostCellInitialPhotoHeight
+            
+            let ratio = maxWidth / CGFloat(post.photoWidth)
+            let photoHeight = CGFloat(post.photoHeight) * ratio
+            
+            let result = height + photoHeight
+            dynamicCellHandler.heights[post.id] = result
+            
+            return result
+        }
+        
+        return height
     }
     
     func computeCellHeight(for item: NewsFeedAd?, with maxWidth: CGFloat) -> CGFloat {

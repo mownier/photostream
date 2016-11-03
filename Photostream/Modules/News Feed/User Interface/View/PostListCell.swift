@@ -14,6 +14,7 @@ let kPostListCellNibName = "PostListCell"
 let kPostListCellReuseId = "PostListCell"
 let kPostListCellCommonHeight: CGFloat = 16.0
 let kPostListCellCommonTop: CGFloat = 12.0
+let kPostListCellInitialHeight: CGFloat = 287.0
 
 protocol PostListCellDelegate: NSObjectProtocol {
 
