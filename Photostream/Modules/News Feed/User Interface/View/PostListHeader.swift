@@ -28,7 +28,12 @@ class PostListHeader: UICollectionReusableView {
     }
 
     func setAvatar(with url: String, and placeholderImage: UIImage) {
-        let resource = ImageResource(downloadURL: URL(string: url)!)
+        guard let avatarUrl = URL(string: url) else {
+            avatarImageView.image = placeholderImage
+            return
+        }
+        
+        let resource = ImageResource(downloadURL: avatarUrl)
         avatarImageView.kf.setImage(with: resource, placeholder: placeholderImage)
     }
 
