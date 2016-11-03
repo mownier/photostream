@@ -38,13 +38,22 @@ class PostListHeader: UICollectionReusableView {
     }
 
     func createAvatarPlaceholderImage(with initial: String) -> UIImage {
-        let width = avatarImageView.width
-        let height = avatarImageView.height
+        let width: CGFloat = 34.0
+        let height: CGFloat = 34.0
         let frame = CGRect(x: 0, y: 0, width: width, height: height)
         let font = UIFont.systemFont(ofSize: 15)
         let text: String = initial
         let placeholderImage = UILabel.createPlaceholderImageWithFrame(frame, text: text, font: font)
         return placeholderImage
+    }
+}
+
+extension PostListHeader {
+    
+    func configure(for item: PostListHeaderItem) {
+        let placeholder = createAvatarPlaceholderImage(with: item.displayName[0])
+        displayName = item.displayName
+        setAvatar(with: item.avatarUrl, and: placeholder)
     }
 }
 

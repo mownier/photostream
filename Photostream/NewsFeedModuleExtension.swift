@@ -51,3 +51,5 @@ extension NewsFeedPost: PostListCellItem {
         return date.timeAgoSinceNow()
     }
 }
+
+extension NewsFeedPost: PostListHeaderItem { }

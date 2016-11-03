@@ -111,7 +111,7 @@
 		B9BA30CC1DCAE85300E11F3E /* NewsFeedItemParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA30CB1DCAE85300E11F3E /* NewsFeedItemParser.swift */; };
 		B9BA30CF1DCAF87600E11F3E /* NewsFeedDisplayItemParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA30CE1DCAF87600E11F3E /* NewsFeedDisplayItemParser.swift */; };
 		B9BA30D11DCB14DB00E11F3E /* DynamicPostListCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA30D01DCB14DB00E11F3E /* DynamicPostListCellHandler.swift */; };
-		B9BA30D71DCB2DDF00E11F3E /* NewsFeedHeaderConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA30D61DCB2DDF00E11F3E /* NewsFeedHeaderConfig.swift */; };
+		B9BA30D91DCB336800E11F3E /* PostListHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA30D81DCB336800E11F3E /* PostListHeaderItem.swift */; };
 		B9BFA4BD1D5B18BF000AA368 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFA4BC1D5B18BF000AA368 /* UserService.swift */; };
 		B9BFA4BF1D5B1B9A000AA368 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFA4BE1D5B1B9A000AA368 /* Profile.swift */; };
 		B9C1E4C71D507843000925FA /* PhotostreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4C61D507843000925FA /* PhotostreamTests.swift */; };
@@ -263,7 +263,7 @@
 		B9BA30CB1DCAE85300E11F3E /* NewsFeedItemParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedItemParser.swift; sourceTree = "<group>"; };
 		B9BA30CE1DCAF87600E11F3E /* NewsFeedDisplayItemParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedDisplayItemParser.swift; sourceTree = "<group>"; };
 		B9BA30D01DCB14DB00E11F3E /* DynamicPostListCellHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicPostListCellHandler.swift; sourceTree = "<group>"; };
-		B9BA30D61DCB2DDF00E11F3E /* NewsFeedHeaderConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedHeaderConfig.swift; sourceTree = "<group>"; };
+		B9BA30D81DCB336800E11F3E /* PostListHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListHeaderItem.swift; sourceTree = "<group>"; };
 		B9BFA4BC1D5B18BF000AA368 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		B9BFA4BE1D5B1B9A000AA368 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B9C1E4AE1D507843000925FA /* Photostream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photostream.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -965,7 +965,6 @@
 			children = (
 				B9F0ECB91DC86A9D00B3B03F /* NewsFeedDataSource.swift */,
 				B9F0ECBB1DC86AAA00B3B03F /* NewsFeedDelegate.swift */,
-				B9BA30D61DCB2DDF00E11F3E /* NewsFeedHeaderConfig.swift */,
 				B95A3D561D62D32200DA456D /* NewsFeedViewController.swift */,
 				B95A3D551D62D2F100DA456D /* Storyboard */,
 			);
@@ -1051,6 +1050,7 @@
 			isa = PBXGroup;
 			children = (
 				B95A3D5A1D62F7B300DA456D /* PostListHeader.swift */,
+				B9BA30D81DCB336800E11F3E /* PostListHeaderItem.swift */,
 				B9F0ECB61DC867CC00B3B03F /* Xib */,
 			);
 			name = PostListHeader;
@@ -1418,7 +1418,6 @@
 				B96FCE881D68191600C2A165 /* Array+Extensions.swift in Sources */,
 				B9FAB2B81DC443D100E43FCE /* HomePresenterInterface.swift in Sources */,
 				B97FB6FC1D55B8E800B68048 /* Comment.swift in Sources */,
-				B9BA30D71DCB2DDF00E11F3E /* NewsFeedHeaderConfig.swift in Sources */,
 				B9D3FDDF1D6438BB00B7CC2E /* Photo.swift in Sources */,
 				B9BA30CF1DCAF87600E11F3E /* NewsFeedDisplayItemParser.swift in Sources */,
 				B95FFD0C1D5306E700085905 /* LoginInteractor.swift in Sources */,
@@ -1437,6 +1436,7 @@
 				B961A4B11D5849AB0052856D /* CommentService.swift in Sources */,
 				B95FFD101D53087B00085905 /* LoginInteractorOutput.swift in Sources */,
 				B9F0ECC31DC8755700B3B03F /* ScrollHandler.swift in Sources */,
+				B9BA30D91DCB336800E11F3E /* PostListHeaderItem.swift in Sources */,
 				B96AB3321D6EAE2800FF8961 /* PostCellDelegate.swift in Sources */,
 				B93E51CD1DC4782A005FA6AB /* NewsFeedWireframeInterface.swift in Sources */,
 				B97FB6F81D55B67E00B68048 /* PostService.swift in Sources */,
