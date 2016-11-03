@@ -19,26 +19,21 @@ extension NewsFeedViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let item = presenter.feed(at: indexPath.section) else {
-            return UICollectionViewCell()
-        }
+        
+        let item = presenter.feed(at: indexPath.section)
         
         switch item {
-        case let post as NewsFeedPost:
-            guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath) else {
-                return UICollectionViewCell()
-            }
-            
-            configure(cell, for: post)
-            return cell
-            
-        case is NewsFeedAd:
-            fallthrough
+        case let post as NewsFeedPost?:
+            return cell(from: collectionView, at: indexPath, for: post)
+        
+        case let ad as NewsFeedAd?:
+            return cell(from: collectionView, at: indexPath, for: ad)
             
         default:
-            return UICollectionViewCell()
+            break
         }
         
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -58,7 +53,20 @@ extension NewsFeedViewController: UICollectionViewDataSource {
 
 extension NewsFeedViewController {
     
-    func configure(_ cell: PostListCell, for item: NewsFeedPost) {
+    func cell(from: UICollectionView, at indexPath: IndexPath, for item: NewsFeedAd?) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+    func cell(from: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionViewCell {
+        guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath), item != nil else {
+            return UICollectionViewCell()
+        }
+        
+        configure(with: cell, for: item!)
+        return cell
+    }
+    
+    func configure(with cell: PostListCell, for item: NewsFeedPost) {
         cell.setMessage(with: item.message, and: item.displayName)
         cell.setPhoto(with: item.photoUrl)
         cell.elapsedTime = item.timeAgo
