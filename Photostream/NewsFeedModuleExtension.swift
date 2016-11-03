@@ -18,7 +18,7 @@ extension NewsFeedWireframe {
     }
 }
 
-extension NewsFeedPost {
+extension NewsFeedPost: PostListCellItem {
     
     var likesText: String {
         if likes > 0 {

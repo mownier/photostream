@@ -59,7 +59,7 @@ extension NewsFeedViewController {
     }
     
     func cell(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionViewCell {
-        guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath), let post = item else {
+        guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath), let post = item as? PostListCellItem else {
             return UICollectionViewCell()
         }
         cell.configure(for: post)

@@ -178,6 +178,19 @@ extension PostListCell {
 
 extension PostListCell {
     
+    func configure(for item: PostListCellItem) {
+        setMessage(with: item.message, and: item.displayName)
+        setPhoto(with: item.photoUrl)
+        elapsedTime = item.timeAgo
+        
+        shouldHighlightLikeButton(item.isLiked)
+        likesCountText = item.likesText
+        commentsCountText = item.commentsText
+    }
+}
+
+extension PostListCell {
+    
     class func createNew() -> PostListCell {
         let bundle = Bundle.main
         let views = bundle.loadNibNamed(kPostListCellNibName, owner: nil, options: nil)
