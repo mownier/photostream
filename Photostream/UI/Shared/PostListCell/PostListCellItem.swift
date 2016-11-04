@@ -22,9 +22,12 @@ protocol PostListCellItem {
 
 extension PostListCell {
     
-    func configure(for item: PostListCellItem) {
+    func configure(for item: PostListCellItem, isPrototype: Bool = false) {
+        if !isPrototype {
+            setPhoto(with: item.photoUrl)
+        }
+        
         setMessage(with: item.message, and: item.displayName)
-        setPhoto(with: item.photoUrl)
         elapsedTime = item.timeAgo
         
         shouldHighlightLikeButton(item.isLiked)
