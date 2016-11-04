@@ -44,33 +44,8 @@ extension NewsFeedViewController {
         }
         
         guard let height = dynamicCellHandler.heights[post.id] else {
-            cell.configure(for: post)
-            
-            cell.bounds = CGRect(x: 0, y: 0, width: maxWidth, height: cell.bounds.height)
-            cell.setNeedsLayout()
-            cell.layoutIfNeeded()
-            cell.sizeToFit()
-            
-            var height = kPostCellInitialHeight
-            
-            if post.likes == 0 {
-                height -= (kPostCellCommonTop + kPostCellCommonHeight)
-            }
-            if post.comments == 0 {
-                height -= (kPostCellCommonTop + kPostCellCommonHeight)
-            }
-            
-            height -= (kPostCellCommonTop + kPostCellCommonHeight)
-            if !post.message.isEmpty {
-                height += cell.messageLabel.intrinsicContentSize.height
-            }
-            
-            height -= kPostCellInitialPhotoHeight
-            
-            let ratio = maxWidth / CGFloat(post.photoWidth)
-            let photoHeight = CGFloat(post.photoHeight) * ratio
-            
-            let result = height + photoHeight
+            let photoSize = CGSize(width: post.photoWidth, height: post.photoHeight)
+            let result = cell.dynamicHeight(for: post, with: maxWidth, and: photoSize)
             dynamicCellHandler.heights[post.id] = result
             
             return result
