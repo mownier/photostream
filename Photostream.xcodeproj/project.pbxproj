@@ -139,8 +139,6 @@
 		B9C218111DCC40F900F617FC /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217911DCC40F900F617FC /* UITextField+Extensions.swift */; };
 		B9C218121DCC40F900F617FC /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217921DCC40F900F617FC /* UIView+Extensions.swift */; };
 		B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217931DCC40F900F617FC /* UIViewController+Extensions.swift */; };
-		B9C218141DCC40F900F617FC /* DynamicHeightHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217951DCC40F900F617FC /* DynamicHeightHandler.swift */; };
-		B9C218151DCC40F900F617FC /* DynamicPostListCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217961DCC40F900F617FC /* DynamicPostListCellHandler.swift */; };
 		B9C218161DCC40F900F617FC /* ScrollHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217971DCC40F900F617FC /* ScrollHandler.swift */; };
 /* End PBXBuildFile section */
 
@@ -295,8 +293,6 @@
 		B9C217911DCC40F900F617FC /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		B9C217921DCC40F900F617FC /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		B9C217931DCC40F900F617FC /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		B9C217951DCC40F900F617FC /* DynamicHeightHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightHandler.swift; sourceTree = "<group>"; };
-		B9C217961DCC40F900F617FC /* DynamicPostListCellHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicPostListCellHandler.swift; sourceTree = "<group>"; };
 		B9C217971DCC40F900F617FC /* ScrollHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollHandler.swift; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
@@ -966,8 +962,6 @@
 			isa = PBXGroup;
 			children = (
 				B9330D801DCC7EEC00B64FDD /* UICollectionViewCellSizeHandler.swift */,
-				B9C217951DCC40F900F617FC /* DynamicHeightHandler.swift */,
-				B9C217961DCC40F900F617FC /* DynamicPostListCellHandler.swift */,
 				B9C217971DCC40F900F617FC /* ScrollHandler.swift */,
 			);
 			path = Handlers;
@@ -1231,7 +1225,6 @@
 			files = (
 				B9C218051DCC40F900F617FC /* PostListCellItem.swift in Sources */,
 				B9C217EA1DCC40F900F617FC /* LoginViewController.swift in Sources */,
-				B9C218151DCC40F900F617FC /* DynamicPostListCellHandler.swift in Sources */,
 				B9C217B71DCC40F900F617FC /* NewsFeedDisplayItemCollection.swift in Sources */,
 				B9C217A81DCC40F900F617FC /* LoginInteractor.swift in Sources */,
 				B9C217A01DCC40F900F617FC /* Destructable.swift in Sources */,
@@ -1276,7 +1269,6 @@
 				B9C217DC1DCC40F900F617FC /* FileService.swift in Sources */,
 				B9C217CA1DCC40F900F617FC /* UserProfileData.swift in Sources */,
 				B9C217F91DCC40F900F617FC /* PostCellLoaderConfiguration.swift in Sources */,
-				B9C218141DCC40F900F617FC /* DynamicHeightHandler.swift in Sources */,
 				B9C217D91DCC40F900F617FC /* User.swift in Sources */,
 				B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */,
 				B9C217AA1DCC40F900F617FC /* LoginInteractorInterface.swift in Sources */,
