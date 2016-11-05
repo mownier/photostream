@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */; };
 		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
+		B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */; };
 		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
 		B97AE8191D76BC3B009FC88B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
@@ -158,6 +159,7 @@
 		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
 		B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -954,6 +956,7 @@
 				B9C217911DCC40F900F617FC /* UITextField+Extensions.swift */,
 				B9C217921DCC40F900F617FC /* UIView+Extensions.swift */,
 				B9C217931DCC40F900F617FC /* UIViewController+Extensions.swift */,
+				B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1302,6 +1305,7 @@
 				B9C217FB1DCC40F900F617FC /* PostGridCell.swift in Sources */,
 				B9C217F81DCC40F900F617FC /* PostCellLoaderCallback.swift in Sources */,
 				B9C217E61DCC40F900F617FC /* CommentsViewController.swift in Sources */,
+				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
 				B9C2180E1DCC40F900F617FC /* String+Extensions.swift in Sources */,
 				B9C217C71DCC40F900F617FC /* RegistrationViewInterface.swift in Sources */,
