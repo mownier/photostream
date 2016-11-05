@@ -82,11 +82,11 @@ extension NewsFeedViewController {
     }
     
     func didScrollUp(with delta: CGFloat) {
-        print("NewsFeedViewController: didScrollUp with", delta)
+
     }
     
     func didScrollDown(with delta: CGFloat) {
-        print("NewsFeedViewController: didScrollDown with", delta)
+
     }
 }
 
@@ -99,11 +99,13 @@ extension NewsFeedViewController: PostListCellDelegate {
         
         if post.isLiked {
             presenter.unlike(post: post.id)
+            cell.shouldHighlightLikeButton(false)
         } else {
             presenter.like(post: post.id)
+            cell.showAnimatedHeart {}
+            cell.shouldHighlightLikeButton(true)
+            cell.animateLikeButton()
         }
-        
-        reloadView()
     }
     
     func postListCellDidTapLikesCount(cell: PostListCell) {
@@ -128,7 +130,6 @@ extension NewsFeedViewController: PostListCellDelegate {
         }
         
         presenter.like(post: post.id)
-        reloadView()
     }
 }
 
