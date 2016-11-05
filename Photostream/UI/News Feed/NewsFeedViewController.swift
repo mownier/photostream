@@ -58,14 +58,14 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didFetchWithError(message: String) {
-        print("NewsFeedViewController:", message)
+    
     }
     
     func didLikeWithError(message: String?) {
-        reloadView()
+    
     }
     
     func didUnlikeWithError(message: String?) {
-        reloadView()
+    
     }
 }
