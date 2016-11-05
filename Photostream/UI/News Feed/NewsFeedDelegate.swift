@@ -93,11 +93,19 @@ extension NewsFeedViewController {
 extension NewsFeedViewController: PostListCellDelegate {
     
     func postListCellDidTapLike(cell: PostListCell) {
+        guard let post = post(for: cell) else {
+            return
+        }
         
+        if post.isLiked {
+            presenter.unlike(post: post.id)
+        } else {
+            presenter.like(post: post.id)
+        }
     }
     
     func postListCellDidTapLikesCount(cell: PostListCell) {
-        
+    
     }
     
     func postListCollectionCellDidTapLikesCount(cell: PostListCell) {
@@ -113,6 +121,22 @@ extension NewsFeedViewController: PostListCellDelegate {
     }
     
     func postListCellDidTapPhoto(cell: PostListCell) {
+        guard let post = post(for: cell) else {
+            return
+        }
         
+        presenter.like(post: post.id)
+    }
+}
+
+extension NewsFeedViewController {
+    
+    func post(for cell: PostListCell) -> NewsFeedPost? {
+        guard let indexPath = collectionView[cell],
+            let post = presenter.feed(at: indexPath.section) as? NewsFeedPost else {
+                return nil
+        }
+        
+        return post
     }
 }
