@@ -193,6 +193,10 @@ extension PostListCell {
     class func registerNib(in view: UICollectionView) {
         view.register(UINib(nibName: kPostListCellNibName, bundle: nil), forCellWithReuseIdentifier: kPostListCellReuseId)
     }
+    
+    class func registerPrototype(in handler: inout DynamicSizeHandler<String,String>) {
+        handler.register(prototype: PostListCell.createNew(), for: kPostListCellReuseId)
+    }
 }
 
 extension PostListCell: DynamicSizeable { }

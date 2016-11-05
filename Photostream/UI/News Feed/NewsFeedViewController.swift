@@ -24,12 +24,12 @@ class NewsFeedViewController: UIViewController {
         
         flowLayout.enableStickyHeader = true
         
+        PostListCell.registerPrototype(in: &sizeHandler)
         PostListCell.registerNib(in: collectionView)
         PostListHeader.registerNib(in: collectionView)
         PostListFooter.registerClass(in: collectionView)
         
         scrollHandler.scrollView = collectionView
-        sizeHandler.register(prototype: PostListCell.createNew(), for: kPostListCellReuseId)
 
         presenter.refreshFeeds()
     }
