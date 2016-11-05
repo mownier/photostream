@@ -30,20 +30,24 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
     }
     
     func like(post id: String) {
-        guard let item = feed[id], !item.isLiked else {
+        guard let index = feed.indexOf(post: id),
+            var post = feed.items[index] as? NewsFeedPost, !post.isLiked else {
             return
         }
         
-        feed[id]!.isLiked = true
+        post.isLiked = true
+        feed.items[index] = post
         interactor.like(post: id)
     }
     
     func unlike(post id: String) {
-        guard let item = feed[id], !item.isLiked else {
+        guard let index = feed.indexOf(post: id),
+            var post = feed.items[index] as? NewsFeedPost, post.isLiked else {
             return
         }
         
-        feed[id]!.isLiked = false
+        post.isLiked = false
+        feed.items[index] = post
         interactor.unlike(post: id)
     }
     
