@@ -12,9 +12,11 @@ struct ScrollHandler {
 
     weak var scrollView: UIScrollView?
     var offsetY: CGFloat = 0.0
+    
     var offsetDelta: CGFloat {
         return abs(offsetY) - abs(currentOffsetY)
     }
+    
     var isScrollable: Bool {
         guard scrollView != nil else {
             return false
@@ -22,6 +24,7 @@ struct ScrollHandler {
         
         return scrollView!.contentSize.height > scrollView!.height
     }
+    
     var currentOffsetY: CGFloat {
         guard scrollView != nil else {
             return 0.0
@@ -30,7 +33,7 @@ struct ScrollHandler {
         return scrollView!.contentOffset.y
     }
     
-    func isScrollingUp() -> Bool {
+    var isScrollingUp: Bool {
         guard scrollView != nil else {
             return false
         }
@@ -40,7 +43,7 @@ struct ScrollHandler {
         return con1 && con2
     }
     
-    func isScrollingDown() -> Bool {
+    var isScrollingDown: Bool {
         guard scrollView != nil else {
             return false
         }

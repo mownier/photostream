@@ -66,9 +66,9 @@ extension NewsFeedViewController {
     
     func scrollViewDidScroll(_ view: UIScrollView) {
         if scrollHandler.isScrollable {
-            if scrollHandler.isScrollingUp() {
+            if scrollHandler.isScrollingUp {
                 didScrollUp(with: scrollHandler.offsetDelta)
-            } else if scrollHandler.isScrollingDown() {
+            } else if scrollHandler.isScrollingDown {
                 didScrollDown(with: scrollHandler.offsetDelta)
             }
             scrollHandler.update()
