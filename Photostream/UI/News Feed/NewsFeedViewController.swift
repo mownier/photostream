@@ -17,7 +17,7 @@ class NewsFeedViewController: UIViewController {
 
     var presenter: NewsFeedModuleInterface!
     lazy var scrollHandler = ScrollHandler()
-    lazy var cellSizeHandler = UICollectionViewCellSizeHandler()
+    lazy var sizeHandler = DynamicSizeHandler<String,String>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class NewsFeedViewController: UIViewController {
         PostListFooter.registerClass(in: collectionView)
         
         scrollHandler.scrollView = collectionView
-        cellSizeHandler.register(cell: PostListCell.createNew(), for: kPostListCellReuseId)
+        sizeHandler.register(prototype: PostListCell.createNew(), for: kPostListCellReuseId)
 
         presenter.refreshFeeds()
     }

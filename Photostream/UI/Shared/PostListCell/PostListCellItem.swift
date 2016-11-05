@@ -34,38 +34,4 @@ extension PostListCell {
         likesCountText = item.likesText
         commentsCountText = item.commentsText
     }
-    
-    func dynamicHeight(for item: PostListCellItem, with maxWidth: CGFloat, and photoSize: CGSize) -> CGFloat {
-        configure(for: item)
-        
-        bounds = CGRect(x: 0, y: 0, width: maxWidth, height: bounds.height)
-        setNeedsLayout()
-        layoutIfNeeded()
-        sizeToFit()
-        
-        var height = kPostCellInitialHeight
-        
-        if item.likesText.isEmpty {
-            height -= (kPostCellCommonTop + kPostCellCommonHeight)
-        }
-        
-        if item.commentsText.isEmpty {
-            height -= (kPostCellCommonTop + kPostCellCommonHeight)
-        }
-        
-        height -= (kPostCellCommonTop + kPostCellCommonHeight)
-        
-        if !item.message.isEmpty {
-            height += messageLabel.intrinsicContentSize.height
-        }
-        
-        height -= kPostCellInitialPhotoHeight
-        
-        let ratio = maxWidth / CGFloat(photoSize.width)
-        let photoHeight = CGFloat(photoSize.height) * ratio
-        
-        let result = height + photoHeight
-        
-        return result
-    }
 }

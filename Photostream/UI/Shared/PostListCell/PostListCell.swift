@@ -194,3 +194,5 @@ extension PostListCell {
         view.register(UINib(nibName: kPostListCellNibName, bundle: nil), forCellWithReuseIdentifier: kPostListCellReuseId)
     }
 }
+
+extension PostListCell: DynamicSizeable { }

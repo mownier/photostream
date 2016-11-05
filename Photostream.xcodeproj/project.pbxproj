@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */; };
 		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
-		B9330D811DCC7EEC00B64FDD /* UICollectionViewCellSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* UICollectionViewCellSizeHandler.swift */; };
+		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
 		B97AE8191D76BC3B009FC88B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
@@ -158,7 +158,7 @@
 		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B9330D801DCC7EEC00B64FDD /* UICollectionViewCellSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellSizeHandler.swift; sourceTree = "<group>"; };
+		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
 		B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -961,7 +961,7 @@
 		B9C217941DCC40F900F617FC /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				B9330D801DCC7EEC00B64FDD /* UICollectionViewCellSizeHandler.swift */,
+				B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */,
 				B9C217971DCC40F900F617FC /* ScrollHandler.swift */,
 			);
 			path = Handlers;
@@ -1244,7 +1244,7 @@
 				B9C217D71DCC40F900F617FC /* Post.swift in Sources */,
 				B9C217A51DCC40F900F617FC /* HomeViewInterface.swift in Sources */,
 				B9C217CB1DCC40F900F617FC /* UserProfileInteractor.swift in Sources */,
-				B9330D811DCC7EEC00B64FDD /* UICollectionViewCellSizeHandler.swift in Sources */,
+				B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */,
 				B9C217B41DCC40F900F617FC /* NewsFeedInteractorInput.swift in Sources */,
 				B9C217A91DCC40F900F617FC /* LoginInteractorInput.swift in Sources */,
 				B9C217D81DCC40F900F617FC /* Profile.swift in Sources */,

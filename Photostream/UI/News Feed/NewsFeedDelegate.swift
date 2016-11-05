@@ -43,9 +43,15 @@ extension NewsFeedViewController {
             return 0.0
         }
         
-        let size = cellSizeHandler.compute(for: post.id, with: kPostListCellReuseId, and: maxWidth) { (cell) -> Void in
-            let postCell = cell as! PostListCell
-            postCell.configure(for: post, isPrototype: true)
+        let size = sizeHandler.compute(for: post.id, with: kPostListCellReuseId) { (prototype) -> CGSize in
+            let cell = prototype as! PostListCell
+            cell.configure(for: post, isPrototype: true)
+            
+            var targetSize = CGSize()
+            targetSize.width = maxWidth
+            targetSize.height = cell.bounds.height
+            
+            return targetSize
         }
         let ratio = maxWidth / CGFloat(post.photoWidth)
         let photoHeight = CGFloat(post.photoHeight) * ratio
