@@ -18,24 +18,6 @@ struct NewsFeedData {
         self.items = [NewsFeedDataItem]()
     }
     
-    subscript(id: String) -> NewsFeedPost? {
-        set {
-            guard let index = indexOf(post: id),
-                let value = newValue else {
-                    return
-            }
-            
-            items[index] = value
-        }
-        get {
-            guard let index = indexOf(post: id) else {
-                return nil
-            }
-            
-            return items[index] as? NewsFeedPost
-        }
-    }
-    
     func indexOf(post id: String) -> Int? {
         let index = items.index { (item) -> Bool in
             if let post = item as? NewsFeedPost {
