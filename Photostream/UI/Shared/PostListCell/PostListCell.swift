@@ -56,25 +56,11 @@ class PostListCell: UICollectionViewCell {
     }
 
     @IBAction func didTapPhoto() {
-        let heart = SpringImageView(image: UIImage(named: "heart_pink"))
-        heart.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
-        photoImageView.addSubviewAtCenter(heart)
-        heart.autohide = true
-        heart.autostart = false
-        heart.animation = "pop"
-        heart.duration = 1.0
-        heart.animateToNext {
-            heart.animation = "fadeOut"
-            heart.duration = 0.5
-            heart.animateToNext(completion: {
-                heart.removeFromSuperview()
-                self.delegate?.postListCellDidTapPhoto(cell: self)
-            })
+        showAnimatedHeart {
+            self.delegate?.postListCellDidTapPhoto(cell: self)
         }
         shouldHighlightLikeButton(true)
-        likeButton.animation = "pop"
-        likeButton.duration = 1.0
-        likeButton.animate()
+        animateLikeButton()
     }
 
     @IBAction func didTapComment() {
@@ -91,6 +77,33 @@ class PostListCell: UICollectionViewCell {
 
     @IBAction func didTapLikesCount() {
         delegate?.postListCellDidTapLikesCount(cell: self)
+    }
+}
+
+extension PostListCell {
+    
+    func showAnimatedHeart(completion: @escaping () -> Void) {
+        let heart = SpringImageView(image: UIImage(named: "heart_pink"))
+        heart.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
+        photoImageView.addSubviewAtCenter(heart)
+        heart.autohide = true
+        heart.autostart = false
+        heart.animation = "pop"
+        heart.duration = 1.0
+        heart.animateToNext {
+            heart.animation = "fadeOut"
+            heart.duration = 0.5
+            heart.animateToNext(completion: {
+                heart.removeFromSuperview()
+                completion()
+            })
+        }
+    }
+    
+    func animateLikeButton() {
+        likeButton.animation = "pop"
+        likeButton.duration = 1.0
+        likeButton.animate()
     }
 }
 
