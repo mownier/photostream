@@ -102,6 +102,8 @@ extension NewsFeedViewController: PostListCellDelegate {
         } else {
             presenter.like(post: post.id)
         }
+        
+        reloadView()
     }
     
     func postListCellDidTapLikesCount(cell: PostListCell) {
@@ -126,6 +128,7 @@ extension NewsFeedViewController: PostListCellDelegate {
         }
         
         presenter.like(post: post.id)
+        reloadView()
     }
 }
 
