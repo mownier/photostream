@@ -15,19 +15,21 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
     weak var output: NewsFeedInteractorOutput?
     var feedService: NewsFeedService!
     var postService: PostService!
-    var offset: Offset
+    var offset: Offset?
+    
+    fileprivate var isFetching: Bool = false
 
     required init(feedService: NewsFeedService, postService: PostService) {
         self.feedService = feedService
         self.postService = postService
-        self.offset = ""
     }
 
     fileprivate func fetch(with limit: UInt) {
-        guard output != nil else {
+        guard output != nil && offset != nil && !isFetching else {
             return
         }
         
+        isFetching = true
         feedService.fetchNewsFeed(offset: offset, limit: limit) { (result) in
             guard result.error == nil else {
                 self.output?.newsFeedDidFetchWithError(error: result.error!)
@@ -35,11 +37,14 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
             }
             
             let data = self.parseData(with: result.posts)
-            if self.offset.isEmpty {
+            if self.offset!.isEmpty {
                 self.output?.newsFeedDidRefresh(data: data)
             } else {
                 self.output?.newsFeedDidLoadMore(data: data)
             }
+            
+            self.offset = result.nextOffset as? String
+            self.isFetching = false
         }
     }
 
@@ -84,7 +89,6 @@ extension NewsFeedInteractor: NewsFeedInteractorInput {
     }
     
     func fetchNext(with limit: UInt) {
-        offset = "lastKey"
         fetch(with: limit)
     }
     

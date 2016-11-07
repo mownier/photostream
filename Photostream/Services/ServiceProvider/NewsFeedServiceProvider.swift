@@ -36,8 +36,14 @@ struct NewsFeedServiceProvider: NewsFeedService {
             query = query.queryStarting(atValue: offset)
         }
         
-        query = query.queryLimited(toFirst: limit)
+        query = query.queryLimited(toLast: limit + 1)
         query.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard snapshot.childrenCount > 0 else {
+                result.posts = PostList()
+                callback?(result)
+                return
+            }
+            
             var posts = [Post]()
             var users = [String: User]()
             
@@ -75,9 +81,13 @@ struct NewsFeedServiceProvider: NewsFeedService {
                                 posts.append(post)
                                 
                                 if UInt(posts.count) == snapshot.childrenCount {
-                                    var result = NewsFeedServiceResult()
+                                    if UInt(posts.count) == limit + 1 {
+                                        let post = posts.removeFirst()
+                                        result.nextOffset = post.id
+                                    }
+                                    
                                     var postList = PostList()
-                                    postList.posts = posts
+                                    postList.posts = posts.reversed()
                                     postList.users = users
                                     result.posts = postList
                                     callback?(result)

@@ -15,9 +15,10 @@ protocol NewsFeedService {
 }
 
 struct NewsFeedServiceResult {
-    
+
     var posts: PostList?
     var error: NewsFeedServiceError?
+    var nextOffset: Any?
 }
 
 enum NewsFeedServiceError: Error {

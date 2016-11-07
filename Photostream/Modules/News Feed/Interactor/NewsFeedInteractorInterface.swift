@@ -10,7 +10,7 @@ import Foundation
 
 protocol NewsFeedInteractorInterface: class {
     
-    var offset: Offset { set get }
+    var offset: Offset? { set get }
     var output: NewsFeedInteractorOutput? { set get }
     var feedService: NewsFeedService! { set get }
     var postService: PostService! { set get }
