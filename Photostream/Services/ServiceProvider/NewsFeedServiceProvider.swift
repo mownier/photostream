@@ -10,88 +10,79 @@ import Foundation
 import FirebaseDatabase
 
 struct NewsFeedServiceProvider: NewsFeedService {
-
+    
     var session: AuthSession
     
     init(session: AuthSession) {
         self.session = session
     }
     
-    func fetchNewsFeed(offset: UInt, limit: UInt, callback: ((NewsFeedServiceResult) -> Void)?) {
+    func fetchNewsFeed(offset: Any, limit: UInt, callback: ((NewsFeedServiceResult) -> Void)?) {
         var result = NewsFeedServiceResult()
-        guard session.isValid else {
+        guard let offset = offset as? String,
+            session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found")
             callback?(result)
             return
         }
-        // TODO: Implement fetching of news feed
         
-        let root = FIRDatabase.database().reference()
-        let users = root.child("users")
-        let posts = root.child("posts")
-        let photos = root.child("photos")
         let uid = session.user.id
-        let ref = users.child(uid).child("feed")
+        let rootRef = FIRDatabase.database().reference()
+        let feedRef = rootRef.child("user-feed").child(uid)
+        let postsRef = feedRef.child("posts")
+        var query = postsRef.queryOrderedByKey()
         
-        ref.queryLimited(toFirst: limit).observeSingleEvent(of: .value, with: { (data) in
-            var postList = [Post]()
-            var postUsers = [String: User]()
-            for snap in data.children {
-                posts.child((snap as AnyObject).key).observeSingleEvent(of: .value, with: { (data2) in
+        if !offset.isEmpty {
+            query = query.queryStarting(atValue: offset)
+        }
+        
+        query = query.queryLimited(toFirst: limit)
+        query.observeSingleEvent(of: .value, with: { (snapshot) in
+            var posts = [Post]()
+            var users = [String: User]()
+            
+            for child in snapshot.children {
+                guard let post = child as? FIRDataSnapshot else {
+                    continue
+                }
+                
+                let postKey = post.key
+                let postRef = rootRef.child("posts").child(postKey)
+                postRef.observeSingleEvent(of: .value, with: { (postSnapshot) in
+                    guard let userId = postSnapshot.childSnapshot(forPath: "uid").value as? String,
+                        let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                        return
+                    }
                     
-                    let posterId = data2.childSnapshot(forPath: "uid").value as! String
-                    let photoId = data2.childSnapshot(forPath: "photo_id").value as! String
+                    let userRef = rootRef.child("users").child(userId)
+                    let photoRef = rootRef.child("photos").child(photoId)
+                    let likesRef = rootRef.child("post-likes")
                     
-                    users.child(posterId).observeSingleEvent(of: .value, with: { (data3) in
-                        
-                        photos.child(photoId).observeSingleEvent(of: .value, with: { (data4) in
-                            
-                            if postUsers[posterId] == nil {
-                                var user = User()
-                                user.id = posterId
-                                user.firstName = data3.childSnapshot(forPath: "firstname").value as! String
-                                user.lastName = data3.childSnapshot(forPath: "lastname").value as! String
-                                postUsers[posterId] = user
-                            }
-                            
-                            var photo = Photo()
-                            photo.url = data4.childSnapshot(forPath: "url").value as! String
-                            photo.height = data4.childSnapshot(forPath: "height").value as! Int
-                            photo.width = data4.childSnapshot(forPath: "width").value as! Int
-                            
-                            var post = Post()
-                            post.userId = posterId
-                            post.id = data2.childSnapshot(forPath: "id").value as! String
-                            post.timestamp = data2.childSnapshot(forPath: "timestamp").value as! Double
-                            post.photo = photo
-                            
-                            if data2.hasChild("likes_count") {
-                                post.likesCount = data2.childSnapshot(forPath: "likes_count").value as! Int
-                            }
-                            
-                            if data2.hasChild("likes/\(uid)") {
-                                post.isLiked = true
-                            }
-                            
-                            if data2.hasChild("comments_count") {
-                                post.commentsCount = data2.childSnapshot(forPath: "comments_count").value as! Int
-                            }
-                            
-                            if data2.hasChild("message") {
-                                post.message = data2.childSnapshot(forPath: "message").value as! String
-                            }
-                            
-                            postList.append(post)
-                            
-                            
-                            if UInt(postList.count) == data.childrenCount {
-                                var result = NewsFeedServiceResult()
-                                var resultList = PostList()
-                                resultList.posts = postList
-                                resultList.users = postUsers
-                                result.posts = resultList
-                                callback?(result)
-                            }
+                    userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                        photoRef.observeSingleEvent(of: .value, with: { (photoSnapshot) in
+                            likesRef.observeSingleEvent(of: .value, with: { (likesSnapshot) in
+                                if users[userId] == nil {
+                                    users[userId] = parseUser(with: userSnapshot, exception: "email")
+                                }
+                                
+                                var post = parsePost(with: postSnapshot)
+                                post.photo = parsePhoto(with: photoSnapshot)
+                                
+                                if likesSnapshot.hasChild("\(postKey)/likes/\(uid)") {
+                                    post.isLiked = true
+                                }
+                                
+                                posts.append(post)
+                                
+                                if UInt(posts.count) == snapshot.childrenCount {
+                                    var result = NewsFeedServiceResult()
+                                    var postList = PostList()
+                                    postList.posts = posts
+                                    postList.users = users
+                                    result.posts = postList
+                                    callback?(result)
+                                }
+                            })
                         })
                     })
                 })

@@ -10,7 +10,7 @@ import Foundation
 
 class NewsFeedInteractor: NewsFeedInteractorInterface {
     
-    typealias Offset = UInt
+    typealias Offset = String
     
     weak var output: NewsFeedInteractorOutput?
     var feedService: NewsFeedService!
@@ -20,7 +20,7 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
     required init(feedService: NewsFeedService, postService: PostService) {
         self.feedService = feedService
         self.postService = postService
-        self.offset = 0
+        self.offset = ""
     }
 
     fileprivate func fetch(with limit: UInt) {
@@ -35,7 +35,7 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
             }
             
             let data = self.parseData(with: result.posts)
-            if self.offset == 0 {
+            if self.offset.isEmpty {
                 self.output?.newsFeedDidRefresh(data: data)
             } else {
                 self.output?.newsFeedDidLoadMore(data: data)
@@ -79,12 +79,12 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
 extension NewsFeedInteractor: NewsFeedInteractorInput {
     
     func fetchNew(with limit: UInt) {
-        offset = 0
+        offset = ""
         fetch(with: limit)
     }
     
     func fetchNext(with limit: UInt) {
-        offset = offset + UInt(1)
+        offset = "lastKey"
         fetch(with: limit)
     }
     
