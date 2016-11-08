@@ -141,8 +141,7 @@
 		B9C218121DCC40F900F617FC /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217921DCC40F900F617FC /* UIView+Extensions.swift */; };
 		B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217931DCC40F900F617FC /* UIViewController+Extensions.swift */; };
 		B9C218161DCC40F900F617FC /* ScrollHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217971DCC40F900F617FC /* ScrollHandler.swift */; };
-		B9F7A6CD1DD0384300D9B55D /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7A6CC1DD0384300D9B55D /* Page.swift */; };
-		B9F7A6D01DD0580300D9B55D /* SnapshotParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F7A6CF1DD0580300D9B55D /* SnapshotParsing.swift */; };
+		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,9 +297,8 @@
 		B9C217921DCC40F900F617FC /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		B9C217931DCC40F900F617FC /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B9C217971DCC40F900F617FC /* ScrollHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollHandler.swift; sourceTree = "<group>"; };
+		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
-		B9F7A6CC1DD0384300D9B55D /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
-		B9F7A6CF1DD0580300D9B55D /* SnapshotParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParsing.swift; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -726,7 +724,6 @@
 		B9C217481DCC40F900F617FC /* ServiceProvider */ = {
 			isa = PBXGroup;
 			children = (
-				B9F7A6CE1DD057EF00D9B55D /* SnapshotParsing */,
 				B9C217491DCC40F900F617FC /* AuthenticationServiceProvider.swift */,
 				B9C2174A1DCC40F900F617FC /* CommentServiceProvider.swift */,
 				B9C2174B1DCC40F900F617FC /* FileServiceProvider.swift */,
@@ -979,17 +976,9 @@
 		B9F7A6CB1DD0383B00D9B55D /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B9F7A6CC1DD0384300D9B55D /* Page.swift */,
+				B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		B9F7A6CE1DD057EF00D9B55D /* SnapshotParsing */ = {
-			isa = PBXGroup;
-			children = (
-				B9F7A6CF1DD0580300D9B55D /* SnapshotParsing.swift */,
-			);
-			path = SnapshotParsing;
 			sourceTree = "<group>";
 		};
 		D281ADAE6A0B74DF75AA42E8 /* Frameworks */ = {
@@ -1270,7 +1259,6 @@
 				B9C217A51DCC40F900F617FC /* HomeViewInterface.swift in Sources */,
 				B9C217CB1DCC40F900F617FC /* UserProfileInteractor.swift in Sources */,
 				B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */,
-				B9F7A6CD1DD0384300D9B55D /* Page.swift in Sources */,
 				B9C217B41DCC40F900F617FC /* NewsFeedInteractorInput.swift in Sources */,
 				B9C217A91DCC40F900F617FC /* LoginInteractorInput.swift in Sources */,
 				B9C217D81DCC40F900F617FC /* Profile.swift in Sources */,
@@ -1308,6 +1296,7 @@
 				B9C217E21DCC40F900F617FC /* FileServiceProvider.swift in Sources */,
 				B9C217B01DCC40F900F617FC /* LoginWireframe.swift in Sources */,
 				B9C217BE1DCC40F900F617FC /* NewsFeedWireframe.swift in Sources */,
+				B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */,
 				B9C217BF1DCC40F900F617FC /* NewsFeedWireframeInterface.swift in Sources */,
 				B9C217DB1DCC40F900F617FC /* CommentService.swift in Sources */,
 				B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */,
@@ -1356,7 +1345,6 @@
 				B9C218101DCC40F900F617FC /* UILabel+Extensions.swift in Sources */,
 				B9C217B11DCC40F900F617FC /* LoginWireframeInterface.swift in Sources */,
 				B9C217981DCC40F900F617FC /* AppDelegate.swift in Sources */,
-				B9F7A6D01DD0580300D9B55D /* SnapshotParsing.swift in Sources */,
 				B9C217E81DCC40F900F617FC /* HomeViewController.swift in Sources */,
 				B9C217C11DCC40F900F617FC /* RegistrationInteractorInput.swift in Sources */,
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,
