@@ -11,7 +11,7 @@ import Foundation
 protocol NewsFeedService {
     
     init(session: AuthSession)
-    func fetchNewsFeed(offset: Any, limit: UInt, callback: ((NewsFeedServiceResult) -> Void)?)
+    func fetchNewsFeed(offset: String, limit: UInt, callback: ((NewsFeedServiceResult) -> Void)?)
 }
 
 struct NewsFeedServiceResult {
