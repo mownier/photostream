@@ -63,6 +63,7 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
 extension NewsFeedPresenter: NewsFeedInteractorOutput {
     
     func newsFeedDidRefresh(data: NewsFeedData) {
+        feed.items.removeAll()
         feed.items.append(contentsOf: data.items)
         view.didRefreshFeeds()
         
