@@ -15,7 +15,20 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: MONUniformFlowLayout!
     var refreshControl: UIRefreshControl!
-
+    lazy var indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    
+    var shouldDisplayIndicatorView: Bool = false {
+        didSet {
+            if shouldDisplayIndicatorView {
+                indicatorView.startAnimating()
+                collectionView.backgroundView = indicatorView
+            } else {
+                indicatorView.stopAnimating()
+                collectionView.backgroundView = nil
+            }
+        }
+    }
+    
     var presenter: NewsFeedModuleInterface!
     lazy var scrollHandler = ScrollHandler()
     lazy var sizeHandler = DynamicSizeHandler<String,String>()
@@ -39,7 +52,8 @@ class NewsFeedViewController: UIViewController {
         PostListFooter.registerClass(in: collectionView)
         
         scrollHandler.scrollView = collectionView
-
+        
+        shouldDisplayIndicatorView = true
         refresh()
     }
 }
@@ -55,7 +69,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
 
     func showEmptyView() {
-
+        
     }
     
     func loadMore() {
@@ -67,6 +81,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didRefreshFeeds() {
+        shouldDisplayIndicatorView = false
         refreshControl.endRefreshing()
         reloadView()
     }
@@ -76,6 +91,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didFetchWithError(message: String) {
+        shouldDisplayIndicatorView = false
         refreshControl.endRefreshing()
     }
     
