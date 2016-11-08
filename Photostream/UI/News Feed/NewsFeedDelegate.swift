@@ -34,6 +34,12 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView!, layout: MONUniformFlowLayout!, footerHeightInSection section: Int) -> CGFloat {
         return 0.0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.section == presenter.feedCount - 1 {
+            loadMore()
+        }
+    }
 }
 
 extension NewsFeedViewController {
