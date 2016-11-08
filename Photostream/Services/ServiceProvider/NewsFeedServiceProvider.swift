@@ -17,10 +17,9 @@ struct NewsFeedServiceProvider: NewsFeedService {
         self.session = session
     }
     
-    func fetchNewsFeed(offset: Any, limit: UInt, callback: ((NewsFeedServiceResult) -> Void)?) {
+    func fetchNewsFeed(offset: String, limit: UInt, callback: ((NewsFeedServiceResult) -> Void)?) {
         var result = NewsFeedServiceResult()
-        guard let offset = offset as? String,
-            session.isValid else {
+        guard session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found")
             callback?(result)
             return
@@ -33,7 +32,7 @@ struct NewsFeedServiceProvider: NewsFeedService {
         var query = postsRef.queryOrderedByKey()
         
         if !offset.isEmpty {
-            query = query.queryStarting(atValue: offset)
+            query = query.queryEnding(atValue: offset)
         }
         
         query = query.queryLimited(toLast: limit + 1)
@@ -62,17 +61,17 @@ struct NewsFeedServiceProvider: NewsFeedService {
                     
                     let userRef = rootRef.child("users").child(userId)
                     let photoRef = rootRef.child("photos").child(photoId)
-                    let likesRef = rootRef.child("post-likes")
+                    let likesRef = rootRef.child("post-like")
                     
                     userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
                         photoRef.observeSingleEvent(of: .value, with: { (photoSnapshot) in
                             likesRef.observeSingleEvent(of: .value, with: { (likesSnapshot) in
                                 if users[userId] == nil {
-                                    users[userId] = parseUser(with: userSnapshot, exception: "email")
+                                    users[userId] = User(with: userSnapshot, exception: "email")
                                 }
                                 
-                                var post = parsePost(with: postSnapshot)
-                                post.photo = parsePhoto(with: photoSnapshot)
+                                var post = Post(with: postSnapshot)
+                                post.photo = Photo(with: photoSnapshot)
                                 
                                 if likesSnapshot.hasChild("\(postKey)/likes/\(uid)") {
                                     post.isLiked = true
@@ -80,16 +79,18 @@ struct NewsFeedServiceProvider: NewsFeedService {
                                 
                                 posts.append(post)
                                 
-                                if UInt(posts.count) == snapshot.childrenCount {
-                                    if UInt(posts.count) == limit + 1 {
-                                        let post = posts.removeFirst()
-                                        result.nextOffset = post.id
+                                let postCount = UInt(posts.count)
+                                if postCount == snapshot.childrenCount {
+                                    if postCount == limit + 1 {
+                                        let removedPost = posts.removeFirst()
+                                        result.nextOffset = removedPost.id
                                     }
-                                    
+
                                     var postList = PostList()
                                     postList.posts = posts.reversed()
                                     postList.users = users
                                     result.posts = postList
+                                    
                                     callback?(result)
                                 }
                             })
