@@ -42,14 +42,6 @@ class NewsFeedViewController: UIViewController {
 
         refresh()
     }
-    
-    func loadMore() {
-        presenter.loadMoreFeeds()
-    }
-    
-    func refresh() {
-        presenter.refreshFeeds()
-    }
 }
 
 extension NewsFeedViewController: NewsFeedViewInterface {
@@ -64,6 +56,14 @@ extension NewsFeedViewController: NewsFeedViewInterface {
 
     func showEmptyView() {
 
+    }
+    
+    func loadMore() {
+        presenter.loadMoreFeeds()
+    }
+    
+    func refresh() {
+        presenter.refreshFeeds()
     }
     
     func didRefreshFeeds() {
