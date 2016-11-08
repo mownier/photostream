@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Post {
 
@@ -28,6 +29,38 @@ struct Post {
         likesCount = 0
         isLiked = false
         photo = Photo()
+    }
+}
+
+extension Post: SnapshotParser {
+    
+    init(with snapshot: FIRDataSnapshot, exception: String...) {
+        self.init()
+        
+        if snapshot.hasChild("id") && !exception.contains("id") {
+            id = snapshot.childSnapshot(forPath: "id").value as! String
+        }
+        
+        if snapshot.hasChild("uid") && !exception.contains("uid") {
+            userId = snapshot.childSnapshot(forPath: "uid").value as! String
+        }
+        
+        if snapshot.hasChild("timestamp") && !exception.contains("timestamp") {
+            timestamp = snapshot.childSnapshot(forPath: "timestamp").value as! Double
+            timestamp = timestamp / 1000
+        }
+        
+        if snapshot.hasChild("likes_count") && !exception.contains("likes_count") {
+            likesCount = snapshot.childSnapshot(forPath: "likes_count").value as! Int
+        }
+        
+        if snapshot.hasChild("comments_count") && !exception.contains("comments_count") {
+            commentsCount = snapshot.childSnapshot(forPath: "comments_count").value as! Int
+        }
+        
+        if snapshot.hasChild("message") && !exception.contains("message") {
+            message = snapshot.childSnapshot(forPath: "message").value as! String
+        }
     }
 }
 

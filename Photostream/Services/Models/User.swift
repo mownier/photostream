@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct User {
 
@@ -40,5 +41,36 @@ struct User {
         lastName = ""
         email = ""
         avatarUrl = ""
+    }
+}
+
+extension User: SnapshotParser {
+    
+    init(with snapshot: FIRDataSnapshot, exception: String...) {
+        self.init()
+        
+        if snapshot.hasChild("id") && !exception.contains("id") {
+            id = snapshot.childSnapshot(forPath: "id").value as! String
+        }
+        
+        if snapshot.hasChild("firstname") && !exception.contains("firstname") {
+            firstName = snapshot.childSnapshot(forPath: "firstname").value as! String
+        }
+        
+        if snapshot.hasChild("lastname") && !exception.contains("lastname") {
+            lastName = snapshot.childSnapshot(forPath: "lastname").value as! String
+        }
+        
+        if snapshot.hasChild("email") && !exception.contains("email") {
+            email = snapshot.childSnapshot(forPath: "email").value as! String
+        }
+        
+        if snapshot.hasChild("username") && !exception.contains("username") {
+            username = snapshot.childSnapshot(forPath: "username").value as! String
+        }
+        
+        if snapshot.hasChild("avatar_url") && !exception.contains("avatar_url") {
+            avatarUrl = snapshot.childSnapshot(forPath: "avatar_url").value as! String
+        }
     }
 }
