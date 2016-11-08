@@ -142,6 +142,9 @@
 		B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217931DCC40F900F617FC /* UIViewController+Extensions.swift */; };
 		B9C218161DCC40F900F617FC /* ScrollHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217971DCC40F900F617FC /* ScrollHandler.swift */; };
 		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
+		B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */; };
+		B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */; };
+		B9D91EB81DD1B932000BF3E5 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D91EB71DD1B932000BF3E5 /* EmptyView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,6 +301,9 @@
 		B9C217931DCC40F900F617FC /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B9C217971DCC40F900F617FC /* ScrollHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollHandler.swift; sourceTree = "<group>"; };
 		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
+		B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewInterface.swift; sourceTree = "<group>"; };
+		B9D91EB71DD1B932000BF3E5 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -838,6 +844,7 @@
 		B9C217661DCC40F900F617FC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B9D91EB11DD1B586000BF3E5 /* EmptyView */,
 				B9C217671DCC40F900F617FC /* PostCellLoader */,
 				B9C2177B1DCC40F900F617FC /* PostListCell */,
 				B9C217801DCC40F900F617FC /* PostListFooter */,
@@ -973,6 +980,24 @@
 			path = Handlers;
 			sourceTree = "<group>";
 		};
+		B9D91EB11DD1B586000BF3E5 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D91EB61DD1B925000BF3E5 /* Xib */,
+				B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */,
+				B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */,
+			);
+			path = EmptyView;
+			sourceTree = "<group>";
+		};
+		B9D91EB61DD1B925000BF3E5 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				B9D91EB71DD1B932000BF3E5 /* EmptyView.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
 		B9F7A6CB1DD0383B00D9B55D /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -1105,6 +1130,7 @@
 				B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */,
 				B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */,
 				B9C217E71DCC40F900F617FC /* CommentModuleStoryboard.storyboard in Resources */,
+				B9D91EB81DD1B932000BF3E5 /* EmptyView.xib in Resources */,
 				B9C218061DCC40F900F617FC /* PostListCell.xib in Resources */,
 				B9C218031DCC40F900F617FC /* PostHeaderView.xib in Resources */,
 				B9C217E91DCC40F900F617FC /* HomeModuleStoryboard.storyboard in Resources */,
@@ -1306,11 +1332,13 @@
 				B9C218091DCC40F900F617FC /* PostListHeaderItem.swift in Sources */,
 				B9C217AB1DCC40F900F617FC /* LoginInteractorOutput.swift in Sources */,
 				B9C217F31DCC40F900F617FC /* PostCellDataSource.swift in Sources */,
+				B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */,
 				B9C217DD1DCC40F900F617FC /* NewsFeedService.swift in Sources */,
 				B9C217A21DCC40F900F617FC /* CommentWireframe.swift in Sources */,
 				B9C217FA1DCC40F900F617FC /* PostFooterView.swift in Sources */,
 				B9C217E01DCC40F900F617FC /* AuthenticationServiceProvider.swift in Sources */,
 				B9C217BC1DCC40F900F617FC /* NewsFeedPresenterInterface.swift in Sources */,
+				B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */,
 				B9C217D01DCC40F900F617FC /* UserProfileDisplayItem.swift in Sources */,
 				B9C217F01DCC40F900F617FC /* RegistrationViewController.swift in Sources */,
 				B9C217EC1DCC40F900F617FC /* NewsFeedDataSource.swift in Sources */,

@@ -16,6 +16,7 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var flowLayout: MONUniformFlowLayout!
     var refreshControl: UIRefreshControl!
     lazy var indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    lazy var emptyView = EmptyView.createNew()
     
     var shouldDisplayIndicatorView: Bool = false {
         didSet {
@@ -24,6 +25,16 @@ class NewsFeedViewController: UIViewController {
                 collectionView.backgroundView = indicatorView
             } else {
                 indicatorView.stopAnimating()
+                collectionView.backgroundView = nil
+            }
+        }
+    }
+    
+    var shouldDisplayEmptyView: Bool = false {
+        didSet {
+            if shouldDisplayEmptyView {
+                collectionView.backgroundView = emptyView
+            } else {
                 collectionView.backgroundView = nil
             }
         }
@@ -69,7 +80,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
 
     func showEmptyView() {
-        
+        shouldDisplayEmptyView = true
     }
     
     func loadMore() {
@@ -81,6 +92,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didRefreshFeeds() {
+        shouldDisplayEmptyView = false
         shouldDisplayIndicatorView = false
         refreshControl.endRefreshing()
         reloadView()
@@ -91,6 +103,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didFetchWithError(message: String) {
+        shouldDisplayEmptyView = false
         shouldDisplayIndicatorView = false
         refreshControl.endRefreshing()
     }
