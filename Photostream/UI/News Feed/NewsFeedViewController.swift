@@ -14,11 +14,20 @@ class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: MONUniformFlowLayout!
+    var refreshControl: UIRefreshControl!
 
     var presenter: NewsFeedModuleInterface!
     lazy var scrollHandler = ScrollHandler()
     lazy var sizeHandler = DynamicSizeHandler<String,String>()
 
+    override func loadView() {
+        super.loadView()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +42,7 @@ class NewsFeedViewController: UIViewController {
         
         scrollHandler.scrollView = collectionView
 
-        presenter.refreshFeeds()
+        refresh()
     }
     
     func configureRightBarButtonItem() {
@@ -44,6 +53,10 @@ class NewsFeedViewController: UIViewController {
     
     func loadMore() {
         presenter.loadMoreFeeds()
+    }
+    
+    func refresh() {
+        presenter.refreshFeeds()
     }
 }
 
@@ -62,6 +75,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didRefreshFeeds() {
+        refreshControl.endRefreshing()
         reloadView()
     }
     
@@ -70,7 +84,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didFetchWithError(message: String) {
-    
+        refreshControl.endRefreshing()
     }
     
     func didLikeWithError(message: String?) {
