@@ -31,8 +31,6 @@ class NewsFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureRightBarButtonItem()
-        
         flowLayout.enableStickyHeader = true
         
         PostListCell.registerPrototype(in: &sizeHandler)
@@ -43,12 +41,6 @@ class NewsFeedViewController: UIViewController {
         scrollHandler.scrollView = collectionView
 
         refresh()
-    }
-    
-    func configureRightBarButtonItem() {
-        let barItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(self.loadMore))
-        
-        navigationItem.rightBarButtonItem = barItem
     }
     
     func loadMore() {
