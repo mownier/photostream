@@ -10,12 +10,10 @@ import Foundation
 
 class NewsFeedInteractor: NewsFeedInteractorInterface {
     
-    typealias Offset = String
-    
     weak var output: NewsFeedInteractorOutput?
     var feedService: NewsFeedService!
     var postService: PostService!
-    var offset: Offset?
+    var offset: String?
     
     fileprivate var isFetching: Bool = false
 
@@ -30,7 +28,7 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
         }
         
         isFetching = true
-        feedService.fetchNewsFeed(offset: offset, limit: limit) { (result) in
+        feedService.fetchNewsFeed(offset: offset!, limit: limit) { (result) in
             guard result.error == nil else {
                 self.output?.newsFeedDidFetchWithError(error: result.error!)
                 return
