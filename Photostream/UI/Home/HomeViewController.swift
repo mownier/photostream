@@ -10,12 +10,45 @@ import UIKit
 
 class HomeViewController: UITabBarController {
 
+    lazy var specialButton = UIButton()
+    
+    var specialIndex: Int? {
+        didSet {
+            guard let index = specialIndex else {
+                specialButton.removeFromSuperview()
+                return
+            }
+            
+            guard tabBar.subviews.isValid(index) else {
+                return
+            }
+            
+            if specialButton.superview == nil {
+                specialButton.backgroundColor = UIColor.clear
+                specialButton.addTarget(self, action: #selector(self.showPostComposer), for: .touchUpInside)
+                view.addSubview(specialButton)
+            }
+            
+            let subview = tabBar.subviews[index]
+            let point = subview.superview!.convert(subview.frame.origin, to: view)
+            let size = subview.frame.size
+            let frame = CGRect(origin: point, size: size)
+            specialButton.frame = frame
+            
+            view.bringSubview(toFront: specialButton)
+        }
+    }
+    
     var presenter: HomePresenterInterface!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        specialIndex = 1
+    }
+    
+    func showPostComposer() {
+        print("will show post composer...")
     }
 }
 
