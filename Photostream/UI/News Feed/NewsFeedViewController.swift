@@ -18,6 +18,8 @@ class NewsFeedViewController: UIViewController {
     lazy var refreshControl = UIRefreshControl()
     lazy var indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     lazy var emptyView = EmptyView.createNew()
+    lazy var scrollHandler = ScrollHandler()
+    lazy var sizeHandler = DynamicSizeHandler<String,String>()
     
     var shouldDisplayIndicatorView: Bool = false {
         didSet {
@@ -52,8 +54,6 @@ class NewsFeedViewController: UIViewController {
     }
     
     var presenter: NewsFeedModuleInterface!
-    lazy var scrollHandler = ScrollHandler()
-    lazy var sizeHandler = DynamicSizeHandler<String,String>()
 
     override func loadView() {
         super.loadView()
