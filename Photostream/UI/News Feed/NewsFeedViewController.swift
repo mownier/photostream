@@ -40,6 +40,16 @@ class NewsFeedViewController: UIViewController {
         }
     }
     
+    var isRefreshing: Bool = false {
+        didSet {
+            if isRefreshing {
+                refreshControl.beginRefreshing()
+            } else {
+                refreshControl.endRefreshing()
+            }
+        }
+    }
+    
     var presenter: NewsFeedModuleInterface!
     lazy var scrollHandler = ScrollHandler()
     lazy var sizeHandler = DynamicSizeHandler<String,String>()
@@ -50,6 +60,10 @@ class NewsFeedViewController: UIViewController {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         collectionView.addSubview(refreshControl)
+        
+        emptyView.actionHandler = { (view) in
+            self.triggerInitialLoad()
+        }
     }
     
     override func viewDidLoad() {
@@ -63,9 +77,12 @@ class NewsFeedViewController: UIViewController {
         PostListFooter.registerClass(in: collectionView)
         
         scrollHandler.scrollView = collectionView
-        
+        triggerInitialLoad()
+    }
+    
+    func triggerInitialLoad() {
         shouldDisplayIndicatorView = true
-        refresh()
+        presenter.refreshFeeds()
     }
 }
 
@@ -88,13 +105,14 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func refresh() {
+        isRefreshing = true
         presenter.refreshFeeds()
     }
     
     func didRefreshFeeds() {
         shouldDisplayEmptyView = false
         shouldDisplayIndicatorView = false
-        refreshControl.endRefreshing()
+        isRefreshing = false
         reloadView()
     }
     
@@ -105,6 +123,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     func didFetchWithError(message: String) {
         shouldDisplayEmptyView = false
         shouldDisplayIndicatorView = false
+        isRefreshing = false
         refreshControl.endRefreshing()
     }
     
