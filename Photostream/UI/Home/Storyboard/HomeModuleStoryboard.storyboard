@@ -16,7 +16,7 @@
             </objects>
             <point key="canvasLocation" x="6" y="-215"/>
         </scene>
-        <!--Write Post-->
+        <!--View Controller-->
         <scene sceneID="IIQ-6b-FQm">
             <objects>
                 <viewController id="VjO-eJ-Adb" sceneMemberID="viewController">
@@ -25,15 +25,17 @@
                         <viewControllerLayoutGuide type="bottom" id="mpH-Ay-RJN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ECu-dt-QmY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Write Post" id="Pzt-Aa-oZB"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_camera" selectedImage="icon_camera_black" id="Pzt-Aa-oZB">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiZ-Gx-hJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82" y="102"/>
+            <point key="canvasLocation" x="706" y="92"/>
         </scene>
         <!--UserProfileModuleRoot-->
         <scene sceneID="Pwe-gc-tX5">
@@ -65,4 +67,8 @@
             <point key="canvasLocation" x="-553" y="116"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_camera" width="24" height="21"/>
+        <image name="icon_camera_black" width="24" height="21"/>
+    </resources>
 </document>
