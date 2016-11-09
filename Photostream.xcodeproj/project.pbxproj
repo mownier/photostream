@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */; };
 		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
+		B909204F1DD303DD0073FB72 /* PostComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909204E1DD303DD0073FB72 /* PostComposerViewController.swift */; };
+		B90920511DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90920501DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard */; };
+		B90920531DD304550073FB72 /* PostComposerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920521DD304550073FB72 /* PostComposerPresenter.swift */; };
+		B90920551DD304740073FB72 /* PostComposerViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920541DD304740073FB72 /* PostComposerViewInterface.swift */; };
+		B90920571DD3048A0073FB72 /* PostComposerWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920561DD3048A0073FB72 /* PostComposerWireframeInterface.swift */; };
+		B90920591DD304970073FB72 /* PostComposerWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920581DD304970073FB72 /* PostComposerWireframe.swift */; };
+		B909205B1DD304B40073FB72 /* PostComposerPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909205A1DD304B40073FB72 /* PostComposerPresenterInterface.swift */; };
+		B909205D1DD3058E0073FB72 /* PostComposerModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909205C1DD3058E0073FB72 /* PostComposerModuleInterface.swift */; };
+		B909205F1DD30C860073FB72 /* PostComposerModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909205E1DD30C860073FB72 /* PostComposerModuleDelegate.swift */; };
+		B90920611DD30D730073FB72 /* PostComposerModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920601DD30D730073FB72 /* PostComposerModuleExtension.swift */; };
 		B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */; };
 		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
 		B97AE8191D76BC3B009FC88B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */; };
@@ -163,6 +173,16 @@
 		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B909204E1DD303DD0073FB72 /* PostComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewController.swift; sourceTree = "<group>"; };
+		B90920501DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostComposerModuleStoryboard.storyboard; sourceTree = "<group>"; };
+		B90920521DD304550073FB72 /* PostComposerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerPresenter.swift; sourceTree = "<group>"; };
+		B90920541DD304740073FB72 /* PostComposerViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewInterface.swift; sourceTree = "<group>"; };
+		B90920561DD3048A0073FB72 /* PostComposerWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerWireframeInterface.swift; sourceTree = "<group>"; };
+		B90920581DD304970073FB72 /* PostComposerWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerWireframe.swift; sourceTree = "<group>"; };
+		B909205A1DD304B40073FB72 /* PostComposerPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerPresenterInterface.swift; sourceTree = "<group>"; };
+		B909205C1DD3058E0073FB72 /* PostComposerModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerModuleInterface.swift; sourceTree = "<group>"; };
+		B909205E1DD30C860073FB72 /* PostComposerModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerModuleDelegate.swift; sourceTree = "<group>"; };
+		B90920601DD30D730073FB72 /* PostComposerModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerModuleExtension.swift; sourceTree = "<group>"; };
 		B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
@@ -328,6 +348,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B90920471DD303490073FB72 /* Post Composer */ = {
+			isa = PBXGroup;
+			children = (
+				B90920481DD303490073FB72 /* Interactor */,
+				B90920491DD303490073FB72 /* Presenter */,
+				B909204A1DD303490073FB72 /* View */,
+				B909204B1DD303490073FB72 /* Wireframe */,
+			);
+			path = "Post Composer";
+			sourceTree = "<group>";
+		};
+		B90920481DD303490073FB72 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B90920491DD303490073FB72 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B90920521DD304550073FB72 /* PostComposerPresenter.swift */,
+				B909205A1DD304B40073FB72 /* PostComposerPresenterInterface.swift */,
+				B909205C1DD3058E0073FB72 /* PostComposerModuleInterface.swift */,
+				B909205E1DD30C860073FB72 /* PostComposerModuleDelegate.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B909204A1DD303490073FB72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B90920541DD304740073FB72 /* PostComposerViewInterface.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B909204B1DD303490073FB72 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B90920561DD3048A0073FB72 /* PostComposerWireframeInterface.swift */,
+				B90920581DD304970073FB72 /* PostComposerWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B909204C1DD303BD0073FB72 /* Post Composer */ = {
+			isa = PBXGroup;
+			children = (
+				B909204E1DD303DD0073FB72 /* PostComposerViewController.swift */,
+				B909204D1DD303BD0073FB72 /* Storyboard */,
+			);
+			path = "Post Composer";
+			sourceTree = "<group>";
+		};
+		B909204D1DD303BD0073FB72 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B90920501DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		B97E3CEB1D51C79300C5E76B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +484,7 @@
 				B9C216E31DCC40F900F617FC /* HomeModuleExtension.swift */,
 				B9C216E41DCC40F900F617FC /* LoginModuleExtension.swift */,
 				B9C216E51DCC40F900F617FC /* NewsFeedModuleExtension.swift */,
+				B90920601DD30D730073FB72 /* PostComposerModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
 				B9C216E71DCC40F900F617FC /* UserProfileExtension.swift */,
 			);
@@ -415,6 +499,7 @@
 				B9C216EF1DCC40F900F617FC /* Home */,
 				B9C216F81DCC40F900F617FC /* Login */,
 				B9C217071DCC40F900F617FC /* News Feed */,
+				B90920471DD303490073FB72 /* Post Composer */,
 				B9C2171A1DCC40F900F617FC /* Registration */,
 				B9C217291DCC40F900F617FC /* User Profile */,
 			);
@@ -747,6 +832,7 @@
 				B9C217541DCC40F900F617FC /* Home */,
 				B9C217581DCC40F900F617FC /* Login */,
 				B9C2175C1DCC40F900F617FC /* News Feed */,
+				B909204C1DD303BD0073FB72 /* Post Composer */,
 				B9C217621DCC40F900F617FC /* Registration */,
 				B9C217661DCC40F900F617FC /* Shared */,
 				B9C217871DCC40F900F617FC /* User Profile */,
@@ -1125,6 +1211,7 @@
 				B9C217EB1DCC40F900F617FC /* LoginModuleStoryboard.storyboard in Resources */,
 				B9C2180A1DCC40F900F617FC /* PostListHeader.xib in Resources */,
 				B9C218021DCC40F900F617FC /* PostGridCell.xib in Resources */,
+				B90920511DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B9C217EF1DCC40F900F617FC /* NewsFeedModuleStoryboard.storyboard in Resources */,
 				B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */,
@@ -1275,6 +1362,7 @@
 				B9C217C51DCC40F900F617FC /* RegistrationPresenter.swift in Sources */,
 				B9C217F71DCC40F900F617FC /* PostCellLoader.swift in Sources */,
 				B9C217BD1DCC40F900F617FC /* NewsFeedViewInterface.swift in Sources */,
+				B90920531DD304550073FB72 /* PostComposerPresenter.swift in Sources */,
 				B9C217D21DCC40F900F617FC /* UserProfileViewInterface.swift in Sources */,
 				B9C217DA1DCC40F900F617FC /* AuthenticationService.swift in Sources */,
 				B9C217C31DCC40F900F617FC /* RegistrationInteractorOutput.swift in Sources */,
@@ -1288,8 +1376,11 @@
 				B9C217B41DCC40F900F617FC /* NewsFeedInteractorInput.swift in Sources */,
 				B9C217A91DCC40F900F617FC /* LoginInteractorInput.swift in Sources */,
 				B9C217D81DCC40F900F617FC /* Profile.swift in Sources */,
+				B90920551DD304740073FB72 /* PostComposerViewInterface.swift in Sources */,
 				B9C217BA1DCC40F900F617FC /* NewsFeedModuleInterface.swift in Sources */,
+				B90920571DD3048A0073FB72 /* PostComposerWireframeInterface.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
+				B909205F1DD30C860073FB72 /* PostComposerModuleDelegate.swift in Sources */,
 				B9C217DF1DCC40F900F617FC /* UserService.swift in Sources */,
 				B9C217AE1DCC40F900F617FC /* LoginEventHandler.swift in Sources */,
 				B9C217B91DCC40F900F617FC /* NewsFeedItemParser.swift in Sources */,
@@ -1298,6 +1389,7 @@
 				B9C217E31DCC40F900F617FC /* NewsFeedServiceProvider.swift in Sources */,
 				B9C217D61DCC40F900F617FC /* Photo.swift in Sources */,
 				B9C218111DCC40F900F617FC /* UITextField+Extensions.swift in Sources */,
+				B90920611DD30D730073FB72 /* PostComposerModuleExtension.swift in Sources */,
 				B9C217991DCC40F900F617FC /* AppDependency.swift in Sources */,
 				B9C217F21DCC40F900F617FC /* PostCell.swift in Sources */,
 				B9C217C81DCC40F900F617FC /* RegistrationWireframe.swift in Sources */,
@@ -1345,10 +1437,12 @@
 				B9C217FB1DCC40F900F617FC /* PostGridCell.swift in Sources */,
 				B9C217F81DCC40F900F617FC /* PostCellLoaderCallback.swift in Sources */,
 				B9C217E61DCC40F900F617FC /* CommentsViewController.swift in Sources */,
+				B909204F1DD303DD0073FB72 /* PostComposerViewController.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
 				B9C2180E1DCC40F900F617FC /* String+Extensions.swift in Sources */,
 				B9C217C71DCC40F900F617FC /* RegistrationViewInterface.swift in Sources */,
+				B909205B1DD304B40073FB72 /* PostComposerPresenterInterface.swift in Sources */,
 				B9C2180F1DCC40F900F617FC /* UIColor+Extensions.swift in Sources */,
 				B9C218121DCC40F900F617FC /* UIView+Extensions.swift in Sources */,
 				B9C217A61DCC40F900F617FC /* HomeWireframe.swift in Sources */,
@@ -1366,6 +1460,7 @@
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
 				B9C2179E1DCC40F900F617FC /* RegistrationModuleExtension.swift in Sources */,
 				B9C217FE1DCC40F900F617FC /* PostGridCellItem.swift in Sources */,
+				B909205D1DD3058E0073FB72 /* PostComposerModuleInterface.swift in Sources */,
 				B9C218081DCC40F900F617FC /* PostListHeader.swift in Sources */,
 				B9C217B61DCC40F900F617FC /* NewsFeedInteractorOutput.swift in Sources */,
 				B9C217A11DCC40F900F617FC /* RootWireframeInterface.swift in Sources */,
@@ -1373,6 +1468,7 @@
 				B9C218101DCC40F900F617FC /* UILabel+Extensions.swift in Sources */,
 				B9C217B11DCC40F900F617FC /* LoginWireframeInterface.swift in Sources */,
 				B9C217981DCC40F900F617FC /* AppDelegate.swift in Sources */,
+				B90920591DD304970073FB72 /* PostComposerWireframe.swift in Sources */,
 				B9C217E81DCC40F900F617FC /* HomeViewController.swift in Sources */,
 				B9C217C11DCC40F900F617FC /* RegistrationInteractorInput.swift in Sources */,
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,

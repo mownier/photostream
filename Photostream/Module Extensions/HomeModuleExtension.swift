@@ -15,7 +15,18 @@ extension HomePresenter {
     }
     
     func presentPostComposer() {
-        router?.showPostComposer(from: view.controller)
+        router?.showPostComposer(from: view.controller, delegate: self)
+    }
+}
+
+extension HomePresenter: PostComposerModuleDelegate {
+    
+    func postComposerDidFinishWriting(view: UIView) {
+        print("Post composer did finish writing...")
+    }
+    
+    func postComposerDidCancelWriting() {
+        print("Post composer did cancel writing...")
     }
 }
 
@@ -39,7 +50,16 @@ extension HomeWireframe {
 //        profileWireframe.userProfileViewController.presenter = profileWireframe.userProfilePresenter
     }
     
-    func showPostComposer(from controller: UIViewController?) {
+    func showPostComposer(from controller: UIViewController?, delegate: PostComposerModuleDelegate?) {
+        guard controller != nil else {
+            return
+        }
         
+        let vc = PostComposerWireframe.createViewController()
+        let wireframe = PostComposerWireframe(root: root, delegate: delegate, view: vc)
+        let nav = PostComposerWireframe.createNavigationController()
+        nav.viewControllers.removeAll()
+        nav.viewControllers.append(vc)
+        wireframe.present(with: nav, from: controller!)
     }
 }

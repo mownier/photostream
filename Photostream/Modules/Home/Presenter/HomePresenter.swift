@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct HomePresenter: HomePresenterInterface {
+class HomePresenter: HomePresenterInterface {
     
     weak var view: HomeViewInterface!
     var wireframe: HomeWireframeInterface!
