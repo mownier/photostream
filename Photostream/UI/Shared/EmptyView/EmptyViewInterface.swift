@@ -14,5 +14,5 @@ protocol EmptyViewInterface: class {
     var subtitleLabel: UILabel? { set get }
     var imageView: UIImageView? { set get }
     var actionButton: UIButton? { set get }
-    var actionHandler: (EmptyViewInterface)? { set get }
+    var actionHandler: ((EmptyViewInterface) -> Void)? { set get }
 }

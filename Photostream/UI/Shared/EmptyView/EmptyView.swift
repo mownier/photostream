@@ -15,7 +15,11 @@ class EmptyView: UIView, EmptyViewInterface {
     @IBOutlet weak var imageView: UIImageView?
     @IBOutlet weak var actionButton: UIButton?
     
-    var actionHandler: (EmptyViewInterface)?
+    var actionHandler: ((EmptyViewInterface) -> Void)?
+    
+    @IBAction func didTapActionButton() {
+        actionHandler?(self)
+    }
 }
 
 extension EmptyView {
