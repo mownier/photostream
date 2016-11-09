@@ -48,7 +48,7 @@ class HomeViewController: UITabBarController {
     }
     
     func showPostComposer() {
-        print("will show post composer...")
+        (presenter as? HomePresenter)?.presentPostComposer()
     }
 }
 

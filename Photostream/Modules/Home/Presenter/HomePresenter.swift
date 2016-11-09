@@ -10,6 +10,6 @@ import UIKit
 
 struct HomePresenter: HomePresenterInterface {
     
-    var view: HomeViewInterface!
+    weak var view: HomeViewInterface!
     var wireframe: HomeWireframeInterface!
 }

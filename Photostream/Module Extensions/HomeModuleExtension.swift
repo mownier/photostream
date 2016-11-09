@@ -8,6 +8,17 @@
 
 import UIKit
 
+extension HomePresenter {
+    
+    var router: HomeWireframe? {
+        return wireframe as? HomeWireframe
+    }
+    
+    func presentPostComposer() {
+        router?.showPostComposer(from: view.controller)
+    }
+}
+
 extension HomeWireframe {
     
     static var viewController: HomeViewController {
@@ -26,5 +37,9 @@ extension HomeWireframe {
 //        profileWireframe.userProfileViewController = profileVC
 //        profileWireframe.userProfilePresenter.view = profileVC
 //        profileWireframe.userProfileViewController.presenter = profileWireframe.userProfilePresenter
+    }
+    
+    func showPostComposer(from controller: UIViewController?) {
+        
     }
 }
