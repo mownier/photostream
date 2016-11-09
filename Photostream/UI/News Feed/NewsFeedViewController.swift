@@ -14,7 +14,8 @@ class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: MONUniformFlowLayout!
-    var refreshControl: UIRefreshControl!
+    
+    lazy var refreshControl = UIRefreshControl()
     lazy var indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     lazy var emptyView = EmptyView.createNew()
     
@@ -57,7 +58,6 @@ class NewsFeedViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         collectionView.addSubview(refreshControl)
         
