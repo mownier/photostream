@@ -55,11 +55,30 @@ extension HomeWireframe {
             return
         }
         
-        let vc = PostComposerWireframe.createViewController()
-        let wireframe = PostComposerWireframe(root: root, delegate: delegate, view: vc)
-        let nav = PostComposerWireframe.createNavigationController()
-        nav.viewControllers.removeAll()
-        nav.viewControllers.append(vc)
-        wireframe.present(with: nav, from: controller!)
+//        let vc = PostComposerWireframe.createViewController()
+//        let wireframe = PostComposerWireframe(root: root, delegate: delegate, view: vc)
+//        let nav = PostComposerWireframe.createNavigationController()
+//        nav.viewControllers.removeAll()
+//        nav.viewControllers.append(vc)
+//        wireframe.present(with: nav, from: controller!)
+        
+        let vc = PhotoCaptureWireframe.createViewController()
+        let wireframe = PhotoCaptureWireframe(root: root, delegate: self, view: vc)
+        wireframe.present(with: vc, from: controller)
+    }
+}
+
+extension HomeWireframe: PhotoCaptureModuleDelegate {
+    
+    func photoCaptureDidFinish(with image: UIImage?) {
+        if image == nil {
+            print("Captured image is nil...")
+        } else {
+            print("Did capture image...")
+        }
+    }
+    
+    func photoCaptureDidCanel() {
+        
     }
 }
