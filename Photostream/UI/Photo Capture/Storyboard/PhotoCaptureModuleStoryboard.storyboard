@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Capture View Controller-->
+        <scene sceneID="jmt-hF-3UJ">
+            <objects>
+                <viewController storyboardIdentifier="PhotoCaptureViewController" id="C7J-PE-iyB" customClass="PhotoCaptureViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JJE-zI-EbK"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Yn-m7-zzQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tVQ-lI-jJO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-Qt-qZn" userLabel="Preview" customClass="GPUImageView">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M7f-Qt-qZn" secondAttribute="height" multiplier="1:1" id="jkm-hm-421"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9g-0X-H1l" userLabel="Control Content View">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZt-ee-sSK" userLabel="Capture Button">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="5yd-ac-2CI"/>
+                                            <constraint firstAttribute="height" constant="100" id="bDh-lf-O1H"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapCapture" destination="C7J-PE-iyB" eventType="touchUpInside" id="IYz-6L-fFo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="gZt-ee-sSK" firstAttribute="centerX" secondItem="R9g-0X-H1l" secondAttribute="centerX" id="gZg-ga-e8X"/>
+                                    <constraint firstItem="gZt-ee-sSK" firstAttribute="centerY" secondItem="R9g-0X-H1l" secondAttribute="centerY" id="lHi-rD-PtV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M7f-Qt-qZn" firstAttribute="top" secondItem="JJE-zI-EbK" secondAttribute="bottom" id="L0n-4J-NaJ"/>
+                            <constraint firstAttribute="trailing" secondItem="R9g-0X-H1l" secondAttribute="trailing" id="Uaf-28-jBQ"/>
+                            <constraint firstItem="8Yn-m7-zzQ" firstAttribute="top" secondItem="R9g-0X-H1l" secondAttribute="bottom" id="mvm-Op-Ubo"/>
+                            <constraint firstItem="M7f-Qt-qZn" firstAttribute="leading" secondItem="tVQ-lI-jJO" secondAttribute="leading" id="v0D-1j-g4t"/>
+                            <constraint firstItem="R9g-0X-H1l" firstAttribute="top" secondItem="M7f-Qt-qZn" secondAttribute="bottom" id="wkZ-Cl-2Tm"/>
+                            <constraint firstItem="R9g-0X-H1l" firstAttribute="leading" secondItem="tVQ-lI-jJO" secondAttribute="leading" id="xYm-3w-Vii"/>
+                            <constraint firstAttribute="trailing" secondItem="M7f-Qt-qZn" secondAttribute="trailing" id="zgM-0d-nYj"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="captureButton" destination="gZt-ee-sSK" id="8nA-uo-W1G"/>
+                        <outlet property="controlContentView" destination="R9g-0X-H1l" id="LFB-Uh-OLr"/>
+                        <outlet property="preview" destination="M7f-Qt-qZn" id="UwA-Pb-ci1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btx-fy-vJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204.375" y="-61.267605633802816"/>
+        </scene>
+    </scenes>
+</document>

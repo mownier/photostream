@@ -28,6 +28,8 @@
 		B978AF381DD42F40007C1AAD /* PhotoCaptureWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF371DD42F40007C1AAD /* PhotoCaptureWireframe.swift */; };
 		B978AF3A1DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF391DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift */; };
 		B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF3B1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift */; };
+		B978AF411DD44A53007C1AAD /* PhotoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF401DD44A53007C1AAD /* PhotoCaptureViewController.swift */; };
+		B978AF431DD44A8F007C1AAD /* PhotoCaptureModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B978AF421DD44A8F007C1AAD /* PhotoCaptureModuleStoryboard.storyboard */; };
 		B97AE8191D76BC3B009FC88B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
@@ -200,6 +202,8 @@
 		B978AF371DD42F40007C1AAD /* PhotoCaptureWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureWireframe.swift; sourceTree = "<group>"; };
 		B978AF391DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureModuleDelegate.swift; sourceTree = "<group>"; };
 		B978AF3B1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureModuleInterface.swift; sourceTree = "<group>"; };
+		B978AF401DD44A53007C1AAD /* PhotoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureViewController.swift; sourceTree = "<group>"; };
+		B978AF421DD44A8F007C1AAD /* PhotoCaptureModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoCaptureModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -461,6 +465,23 @@
 				B978AF371DD42F40007C1AAD /* PhotoCaptureWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B978AF3E1DD44A3D007C1AAD /* Photo Capture */ = {
+			isa = PBXGroup;
+			children = (
+				B978AF401DD44A53007C1AAD /* PhotoCaptureViewController.swift */,
+				B978AF3F1DD44A3D007C1AAD /* Storyboard */,
+			);
+			path = "Photo Capture";
+			sourceTree = "<group>";
+		};
+		B978AF3F1DD44A3D007C1AAD /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B978AF421DD44A8F007C1AAD /* PhotoCaptureModuleStoryboard.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		B97E3CEB1D51C79300C5E76B /* Assets */ = {
@@ -885,6 +906,7 @@
 				B9C217541DCC40F900F617FC /* Home */,
 				B9C217581DCC40F900F617FC /* Login */,
 				B9C2175C1DCC40F900F617FC /* News Feed */,
+				B978AF3E1DD44A3D007C1AAD /* Photo Capture */,
 				B909204C1DD303BD0073FB72 /* Post Composer */,
 				B9C217621DCC40F900F617FC /* Registration */,
 				B9C217661DCC40F900F617FC /* Shared */,
@@ -1263,6 +1285,7 @@
 			files = (
 				B9C217EB1DCC40F900F617FC /* LoginModuleStoryboard.storyboard in Resources */,
 				B9C2180A1DCC40F900F617FC /* PostListHeader.xib in Resources */,
+				B978AF431DD44A8F007C1AAD /* PhotoCaptureModuleStoryboard.storyboard in Resources */,
 				B9C218021DCC40F900F617FC /* PostGridCell.xib in Resources */,
 				B90920511DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
@@ -1414,6 +1437,7 @@
 				B9C217C91DCC40F900F617FC /* RegistrationWireframeInterface.swift in Sources */,
 				B9C217CF1DCC40F900F617FC /* UserProfileModuleInterface.swift in Sources */,
 				B9C218071DCC40F900F617FC /* PostListFooter.swift in Sources */,
+				B978AF411DD44A53007C1AAD /* PhotoCaptureViewController.swift in Sources */,
 				B978AF381DD42F40007C1AAD /* PhotoCaptureWireframe.swift in Sources */,
 				B9C217C51DCC40F900F617FC /* RegistrationPresenter.swift in Sources */,
 				B9C217F71DCC40F900F617FC /* PostCellLoader.swift in Sources */,
