@@ -15,4 +15,6 @@ protocol PhotoCaptureWireframeInterface: class {
     init(root: RootWireframeInterface?, delegate: PhotoCaptureModuleDelegate?, view: PhotoCaptureViewInterface)
     
     func attachRoot(with controller: UIViewController, in window: UIWindow)
+    
+    func present(with controller: UIViewController?, from parent: UIViewController?, animated: Bool, completion: (() -> Void)?)
 }
