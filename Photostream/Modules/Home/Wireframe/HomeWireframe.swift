@@ -8,11 +8,11 @@
 
 import UIKit
 
-struct HomeWireframe: HomeWireframeInterface {
+class HomeWireframe: HomeWireframeInterface {
     
     var root: RootWireframeInterface?
     
-    init(root: RootWireframeInterface?, view: HomeViewInterface) {
+    required init(root: RootWireframeInterface?, view: HomeViewInterface) {
         self.root = root
         
         let presenter = HomePresenter()
