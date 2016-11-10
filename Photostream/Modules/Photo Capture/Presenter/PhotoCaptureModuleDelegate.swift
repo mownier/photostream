@@ -10,6 +10,6 @@ import UIKit
 
 protocol PhotoCaptureModuleDelegate: class {
 
-    func photoCaptureDidFinish(with image: UIImage)
+    func photoCaptureDidFinish(with image: UIImage?)
     func photoCaptureDidCanel()
 }
