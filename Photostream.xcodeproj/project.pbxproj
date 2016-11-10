@@ -21,6 +21,13 @@
 		B90920611DD30D730073FB72 /* PostComposerModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920601DD30D730073FB72 /* PostComposerModuleExtension.swift */; };
 		B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */; };
 		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
+		B978AF301DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */; };
+		B978AF321DD42F14007C1AAD /* PhotoCapturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF311DD42F14007C1AAD /* PhotoCapturePresenter.swift */; };
+		B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF331DD42F26007C1AAD /* PhotoCaptureViewInterface.swift */; };
+		B978AF361DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF351DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift */; };
+		B978AF381DD42F40007C1AAD /* PhotoCaptureWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF371DD42F40007C1AAD /* PhotoCaptureWireframe.swift */; };
+		B978AF3A1DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF391DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift */; };
+		B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF3B1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift */; };
 		B97AE8191D76BC3B009FC88B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */; };
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
@@ -186,6 +193,13 @@
 		B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
+		B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCapturePresenterInterface.swift; sourceTree = "<group>"; };
+		B978AF311DD42F14007C1AAD /* PhotoCapturePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCapturePresenter.swift; sourceTree = "<group>"; };
+		B978AF331DD42F26007C1AAD /* PhotoCaptureViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureViewInterface.swift; sourceTree = "<group>"; };
+		B978AF351DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureWireframeInterface.swift; sourceTree = "<group>"; };
+		B978AF371DD42F40007C1AAD /* PhotoCaptureWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureWireframe.swift; sourceTree = "<group>"; };
+		B978AF391DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureModuleDelegate.swift; sourceTree = "<group>"; };
+		B978AF3B1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureModuleInterface.swift; sourceTree = "<group>"; };
 		B97AE8181D76BC3B009FC88B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -411,6 +425,44 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		B978AF2B1DD42EEA007C1AAD /* Photo Capture */ = {
+			isa = PBXGroup;
+			children = (
+				B978AF2C1DD42EEA007C1AAD /* Presenter */,
+				B978AF2D1DD42EEA007C1AAD /* View */,
+				B978AF2E1DD42EEA007C1AAD /* Wireframe */,
+			);
+			path = "Photo Capture";
+			sourceTree = "<group>";
+		};
+		B978AF2C1DD42EEA007C1AAD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */,
+				B978AF311DD42F14007C1AAD /* PhotoCapturePresenter.swift */,
+				B978AF391DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift */,
+				B978AF3B1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B978AF2D1DD42EEA007C1AAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B978AF331DD42F26007C1AAD /* PhotoCaptureViewInterface.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B978AF2E1DD42EEA007C1AAD /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B978AF351DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift */,
+				B978AF371DD42F40007C1AAD /* PhotoCaptureWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		B97E3CEB1D51C79300C5E76B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +551,7 @@
 				B9C216EF1DCC40F900F617FC /* Home */,
 				B9C216F81DCC40F900F617FC /* Login */,
 				B9C217071DCC40F900F617FC /* News Feed */,
+				B978AF2B1DD42EEA007C1AAD /* Photo Capture */,
 				B90920471DD303490073FB72 /* Post Composer */,
 				B9C2171A1DCC40F900F617FC /* Registration */,
 				B9C217291DCC40F900F617FC /* User Profile */,
@@ -1354,11 +1407,14 @@
 				B9C217EA1DCC40F900F617FC /* LoginViewController.swift in Sources */,
 				B9C217B71DCC40F900F617FC /* NewsFeedDisplayItemCollection.swift in Sources */,
 				B9C217A81DCC40F900F617FC /* LoginInteractor.swift in Sources */,
+				B978AF3A1DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift in Sources */,
 				B9C217A01DCC40F900F617FC /* Destructable.swift in Sources */,
 				B9C217D11DCC40F900F617FC /* UserProfilePresenter.swift in Sources */,
+				B978AF301DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift in Sources */,
 				B9C217C91DCC40F900F617FC /* RegistrationWireframeInterface.swift in Sources */,
 				B9C217CF1DCC40F900F617FC /* UserProfileModuleInterface.swift in Sources */,
 				B9C218071DCC40F900F617FC /* PostListFooter.swift in Sources */,
+				B978AF381DD42F40007C1AAD /* PhotoCaptureWireframe.swift in Sources */,
 				B9C217C51DCC40F900F617FC /* RegistrationPresenter.swift in Sources */,
 				B9C217F71DCC40F900F617FC /* PostCellLoader.swift in Sources */,
 				B9C217BD1DCC40F900F617FC /* NewsFeedViewInterface.swift in Sources */,
@@ -1378,6 +1434,7 @@
 				B9C217D81DCC40F900F617FC /* Profile.swift in Sources */,
 				B90920551DD304740073FB72 /* PostComposerViewInterface.swift in Sources */,
 				B9C217BA1DCC40F900F617FC /* NewsFeedModuleInterface.swift in Sources */,
+				B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */,
 				B90920571DD3048A0073FB72 /* PostComposerWireframeInterface.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
 				B909205F1DD30C860073FB72 /* PostComposerModuleDelegate.swift in Sources */,
@@ -1422,6 +1479,7 @@
 				B9C2179D1DCC40F900F617FC /* NewsFeedModuleExtension.swift in Sources */,
 				B9C217E51DCC40F900F617FC /* UserServiceProvider.swift in Sources */,
 				B9C218091DCC40F900F617FC /* PostListHeaderItem.swift in Sources */,
+				B978AF361DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift in Sources */,
 				B9C217AB1DCC40F900F617FC /* LoginInteractorOutput.swift in Sources */,
 				B9C217F31DCC40F900F617FC /* PostCellDataSource.swift in Sources */,
 				B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */,
@@ -1437,6 +1495,7 @@
 				B9C217FB1DCC40F900F617FC /* PostGridCell.swift in Sources */,
 				B9C217F81DCC40F900F617FC /* PostCellLoaderCallback.swift in Sources */,
 				B9C217E61DCC40F900F617FC /* CommentsViewController.swift in Sources */,
+				B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */,
 				B909204F1DD303DD0073FB72 /* PostComposerViewController.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
@@ -1460,6 +1519,7 @@
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
 				B9C2179E1DCC40F900F617FC /* RegistrationModuleExtension.swift in Sources */,
 				B9C217FE1DCC40F900F617FC /* PostGridCellItem.swift in Sources */,
+				B978AF321DD42F14007C1AAD /* PhotoCapturePresenter.swift in Sources */,
 				B909205D1DD3058E0073FB72 /* PostComposerModuleInterface.swift in Sources */,
 				B9C218081DCC40F900F617FC /* PostListHeader.swift in Sources */,
 				B9C217B61DCC40F900F617FC /* NewsFeedInteractorOutput.swift in Sources */,
