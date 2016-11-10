@@ -18,11 +18,9 @@ class PhotoCapturePresenter: PhotoCapturePresenterInterface {
 extension PhotoCapturePresenter: PhotoCaptureModuleInterface {
     
     func capture() {
-        guard let image = view.capturedImage else {
-            return
+        view.capturedImage { (image) in
+            self.moduleDelegate?.photoCaptureDidFinish(with: image)
         }
-        
-        moduleDelegate?.photoCaptureDidFinish(with: image)
     }
     
     func cancel() {
