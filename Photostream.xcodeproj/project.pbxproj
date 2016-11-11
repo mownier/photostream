@@ -38,6 +38,7 @@
 		B921B5611DD5A54C0065C187 /* PhotoPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5601DD5A54C0065C187 /* PhotoPickerDataSource.swift */; };
 		B921B5631DD5A8C40065C187 /* PhotoGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5621DD5A8C40065C187 /* PhotoGridCell.swift */; };
 		B921B5651DD5ADF20065C187 /* PhotoPickerModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5641DD5ADF20065C187 /* PhotoPickerModuleExtension.swift */; };
+		B921B5671DD5B08A0065C187 /* PhotoPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5661DD5B08A0065C187 /* PhotoPickerDelegate.swift */; };
 		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
 		B978AF301DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */; };
 		B978AF321DD42F14007C1AAD /* PhotoCapturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF311DD42F14007C1AAD /* PhotoCapturePresenter.swift */; };
@@ -230,6 +231,7 @@
 		B921B5601DD5A54C0065C187 /* PhotoPickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerDataSource.swift; sourceTree = "<group>"; };
 		B921B5621DD5A8C40065C187 /* PhotoGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGridCell.swift; sourceTree = "<group>"; };
 		B921B5641DD5ADF20065C187 /* PhotoPickerModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerModuleExtension.swift; sourceTree = "<group>"; };
+		B921B5661DD5B08A0065C187 /* PhotoPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerDelegate.swift; sourceTree = "<group>"; };
 		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
 		B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCapturePresenterInterface.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 			children = (
 				B921B5621DD5A8C40065C187 /* PhotoGridCell.swift */,
 				B921B5601DD5A54C0065C187 /* PhotoPickerDataSource.swift */,
+				B921B5661DD5B08A0065C187 /* PhotoPickerDelegate.swift */,
 				B921B55C1DD5A2DC0065C187 /* PhotoPickerViewController.swift */,
 				B921B55B1DD5A2CA0065C187 /* Storyboard */,
 			);
@@ -1713,6 +1716,7 @@
 				B9C217A41DCC40F900F617FC /* HomePresenterInterface.swift in Sources */,
 				B9C218101DCC40F900F617FC /* UILabel+Extensions.swift in Sources */,
 				B921B54B1DD58BD70065C187 /* PhotoPickerInteractor.swift in Sources */,
+				B921B5671DD5B08A0065C187 /* PhotoPickerDelegate.swift in Sources */,
 				B9C217B11DCC40F900F617FC /* LoginWireframeInterface.swift in Sources */,
 				B9C217981DCC40F900F617FC /* AppDelegate.swift in Sources */,
 				B90920591DD304970073FB72 /* PostComposerWireframe.swift in Sources */,
