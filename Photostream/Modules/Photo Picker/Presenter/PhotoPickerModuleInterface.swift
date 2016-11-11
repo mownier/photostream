@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Photos
 
 protocol PhotoPickerModuleInterface: class {
 
     func fetchImageAssets()
+    
+    func photo(at index: Int) -> PHAsset?
 }
