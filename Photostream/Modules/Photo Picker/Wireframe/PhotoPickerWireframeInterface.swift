@@ -15,4 +15,13 @@ protocol PhotoPickerWireframeInterface: class {
     init(root: RootWireframeInterface?, delegate: PhotoPickerModuleDelegate?, view: PhotoPickerViewInterface)
     
     func attachRoot(with controller: UIViewController, in window: UIWindow)
+    
+    func present(with controller: UIViewController?, from parent: UIViewController?, animated: Bool, completion: (() -> Void)?)
+}
+
+extension PhotoPickerWireframeInterface {
+    
+    func present(with controller: UIViewController?, from parent: UIViewController?, animated: Bool = true, completion: (() -> Void)? = nil) {
+        present(with: controller, from: parent, animated: animated, completion: completion)
+    }
 }

@@ -29,4 +29,12 @@ class PhotoPickerWireframe: PhotoPickerWireframeInterface {
     func attachRoot(with controller: UIViewController, in window: UIWindow) {
         root?.showRoot(with: controller, in: window)
     }
+    
+    func present(with controller: UIViewController?, from parent: UIViewController?, animated: Bool, completion: (() -> Void)?) {
+        guard controller != nil, parent != nil else {
+            return
+        }
+        
+        parent!.present(controller!, animated: animated, completion: completion)
+    }
 }
