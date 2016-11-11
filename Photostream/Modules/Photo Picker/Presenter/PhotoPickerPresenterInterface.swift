@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 protocol PhotoPickerPresenterInterface: class {
 
@@ -14,4 +15,5 @@ protocol PhotoPickerPresenterInterface: class {
     var view: PhotoPickerViewInterface! { set get }
     var wireframe: PhotoPickerWireframeInterface! { set get }
     var moduleDelegate: PhotoPickerModuleDelegate? { set get }
+    var photos: [PHAsset] { set get }
 }
