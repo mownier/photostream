@@ -11,8 +11,5 @@ import UIKit
 protocol PhotoCaptureViewInterface: class {
 
     var controller: UIViewController? { get }
-    var isCameraAvailable: Bool { get }
     var presenter: PhotoCaptureModuleInterface! { set get }
-    
-    func capturedImage(with result: @escaping (UIImage?) -> Void)
 }
