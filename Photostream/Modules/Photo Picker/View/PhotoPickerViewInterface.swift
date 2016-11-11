@@ -12,4 +12,6 @@ protocol PhotoPickerViewInterface: class {
 
     var controller: UIViewController? { get }
     var presenter: PhotoPickerModuleInterface! { set get }
+    
+    func didFetchImageAssets()
 }
