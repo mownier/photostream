@@ -10,5 +10,5 @@ import UIKit
 
 protocol PhotoPickerInteractorInput: class {
 
-    func fetchImageAssets()
+    func fetchPhotos()
 }

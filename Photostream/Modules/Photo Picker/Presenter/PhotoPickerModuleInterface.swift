@@ -11,7 +11,8 @@ import Photos
 
 protocol PhotoPickerModuleInterface: class {
 
-    func fetchImageAssets()
+    var photoCount: Int { get }
     
+    func fetchPhotos()
     func photo(at index: Int) -> PHAsset?
 }

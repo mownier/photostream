@@ -11,5 +11,5 @@ import Photos
 
 protocol PhotoPickerInteractorOutput: class {
 
-    func photoPickerDidFetchImage(with assets: [PHAsset])
+    func photoPickerDidFetchPhotos(with assets: [PHAsset])
 }

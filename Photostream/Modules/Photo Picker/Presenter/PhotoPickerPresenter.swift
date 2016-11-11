@@ -21,8 +21,12 @@ class PhotoPickerPresenter: PhotoPickerPresenterInterface {
 
 extension PhotoPickerPresenter: PhotoPickerModuleInterface {
     
-    func fetchImageAssets() {
-        interactor.fetchImageAssets()
+    var photoCount: Int {
+        return photos.count
+    }
+    
+    func fetchPhotos() {
+        interactor.fetchPhotos()
     }
     
     func photo(at index: Int) -> PHAsset? {
@@ -36,8 +40,8 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
 
 extension PhotoPickerPresenter: PhotoPickerInteractorOutput {
     
-    func photoPickerDidFetchImage(with assets: [PHAsset]) {
+    func photoPickerDidFetchPhotos(with assets: [PHAsset]) {
         photos.append(contentsOf: assets)
-        view.didFetchImageAssets()
+        view.didFetchPhotos()
     }
 }

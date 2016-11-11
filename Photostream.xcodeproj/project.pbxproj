@@ -33,6 +33,10 @@
 		B921B54F1DD58BFD0065C187 /* PhotoPickerInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B54E1DD58BFD0065C187 /* PhotoPickerInteractorOutput.swift */; };
 		B921B5551DD593240065C187 /* AssetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5541DD593240065C187 /* AssetService.swift */; };
 		B921B5571DD594A70065C187 /* AssetServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5561DD594A70065C187 /* AssetServiceProvider.swift */; };
+		B921B55D1DD5A2DC0065C187 /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B55C1DD5A2DC0065C187 /* PhotoPickerViewController.swift */; };
+		B921B55F1DD5A2EC0065C187 /* PhotoPickerModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B921B55E1DD5A2EC0065C187 /* PhotoPickerModuleStoryboard.storyboard */; };
+		B921B5611DD5A54C0065C187 /* PhotoPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5601DD5A54C0065C187 /* PhotoPickerDataSource.swift */; };
+		B921B5631DD5A8C40065C187 /* PhotoGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5621DD5A8C40065C187 /* PhotoGridCell.swift */; };
 		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
 		B978AF301DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */; };
 		B978AF321DD42F14007C1AAD /* PhotoCapturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF311DD42F14007C1AAD /* PhotoCapturePresenter.swift */; };
@@ -220,6 +224,10 @@
 		B921B54E1DD58BFD0065C187 /* PhotoPickerInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerInteractorOutput.swift; sourceTree = "<group>"; };
 		B921B5541DD593240065C187 /* AssetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetService.swift; sourceTree = "<group>"; };
 		B921B5561DD594A70065C187 /* AssetServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetServiceProvider.swift; sourceTree = "<group>"; };
+		B921B55C1DD5A2DC0065C187 /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
+		B921B55E1DD5A2EC0065C187 /* PhotoPickerModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoPickerModuleStoryboard.storyboard; sourceTree = "<group>"; };
+		B921B5601DD5A54C0065C187 /* PhotoPickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerDataSource.swift; sourceTree = "<group>"; };
+		B921B5621DD5A8C40065C187 /* PhotoGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGridCell.swift; sourceTree = "<group>"; };
 		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
 		B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCapturePresenterInterface.swift; sourceTree = "<group>"; };
@@ -538,6 +546,25 @@
 				B921B5561DD594A70065C187 /* AssetServiceProvider.swift */,
 			);
 			path = "Service Provider";
+			sourceTree = "<group>";
+		};
+		B921B55A1DD5A2CA0065C187 /* Photo Picker */ = {
+			isa = PBXGroup;
+			children = (
+				B921B5621DD5A8C40065C187 /* PhotoGridCell.swift */,
+				B921B5601DD5A54C0065C187 /* PhotoPickerDataSource.swift */,
+				B921B55C1DD5A2DC0065C187 /* PhotoPickerViewController.swift */,
+				B921B55B1DD5A2CA0065C187 /* Storyboard */,
+			);
+			path = "Photo Picker";
+			sourceTree = "<group>";
+		};
+		B921B55B1DD5A2CA0065C187 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B921B55E1DD5A2EC0065C187 /* PhotoPickerModuleStoryboard.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		B978AF2B1DD42EEA007C1AAD /* Photo Capture */ = {
@@ -1021,6 +1048,7 @@
 				B9C217581DCC40F900F617FC /* Login */,
 				B9C2175C1DCC40F900F617FC /* News Feed */,
 				B978AF3E1DD44A3D007C1AAD /* Photo Capture */,
+				B921B55A1DD5A2CA0065C187 /* Photo Picker */,
 				B909204C1DD303BD0073FB72 /* Post Composer */,
 				B9C217621DCC40F900F617FC /* Registration */,
 				B9C217661DCC40F900F617FC /* Shared */,
@@ -1401,6 +1429,7 @@
 				B9C2180A1DCC40F900F617FC /* PostListHeader.xib in Resources */,
 				B978AF431DD44A8F007C1AAD /* PhotoCaptureModuleStoryboard.storyboard in Resources */,
 				B9C218021DCC40F900F617FC /* PostGridCell.xib in Resources */,
+				B921B55F1DD5A2EC0065C187 /* PhotoPickerModuleStoryboard.storyboard in Resources */,
 				B90920511DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B9C217EF1DCC40F900F617FC /* NewsFeedModuleStoryboard.storyboard in Resources */,
@@ -1546,6 +1575,7 @@
 				B9C217A81DCC40F900F617FC /* LoginInteractor.swift in Sources */,
 				B978AF3A1DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift in Sources */,
 				B9C217A01DCC40F900F617FC /* Destructable.swift in Sources */,
+				B921B5631DD5A8C40065C187 /* PhotoGridCell.swift in Sources */,
 				B9C217D11DCC40F900F617FC /* UserProfilePresenter.swift in Sources */,
 				B978AF301DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift in Sources */,
 				B921B5471DD58BAE0065C187 /* PhotoPickerWireframe.swift in Sources */,
@@ -1575,12 +1605,14 @@
 				B90920551DD304740073FB72 /* PostComposerViewInterface.swift in Sources */,
 				B9C217BA1DCC40F900F617FC /* NewsFeedModuleInterface.swift in Sources */,
 				B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */,
+				B921B55D1DD5A2DC0065C187 /* PhotoPickerViewController.swift in Sources */,
 				B90920571DD3048A0073FB72 /* PostComposerWireframeInterface.swift in Sources */,
 				B921B5491DD58BCA0065C187 /* PhotoPickerInteractorInterface.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
 				B909205F1DD30C860073FB72 /* PostComposerModuleDelegate.swift in Sources */,
 				B9C217DF1DCC40F900F617FC /* UserService.swift in Sources */,
 				B9C217AE1DCC40F900F617FC /* LoginEventHandler.swift in Sources */,
+				B921B5611DD5A54C0065C187 /* PhotoPickerDataSource.swift in Sources */,
 				B9C217B91DCC40F900F617FC /* NewsFeedItemParser.swift in Sources */,
 				B9C217A71DCC40F900F617FC /* HomeWireframeInterface.swift in Sources */,
 				B9C217B81DCC40F900F617FC /* NewsFeedDisplayItemParser.swift in Sources */,
