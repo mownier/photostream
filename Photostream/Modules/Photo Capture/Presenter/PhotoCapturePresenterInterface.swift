@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import GPUImage
 
 protocol PhotoCapturePresenterInterface: class {
 
     var view: PhotoCaptureViewInterface! { set get }
     var wireframe: PhotoCaptureWireframeInterface! { set get }
     var moduleDelegate: PhotoCaptureModuleDelegate? { set get }
+    
+    var camera: GPUImageStillCamera? { set get }
+    var filter: GPUImageFilter? { set get }
 }
