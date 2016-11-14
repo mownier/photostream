@@ -62,9 +62,16 @@ extension HomeWireframe {
 //        nav.viewControllers.append(vc)
 //        wireframe.present(with: nav, from: controller!)
         
-        let vc = PhotoCaptureWireframe.createViewController()
-        let wireframe = PhotoCaptureWireframe(root: root, delegate: self, view: vc)
-        wireframe.present(with: vc, from: controller)
+//        let vc = PhotoCaptureWireframe.createViewController()
+//        let wireframe = PhotoCaptureWireframe(root: root, delegate: self, view: vc)
+//        wireframe.present(with: vc, from: controller)
+        
+        let vc = PhotoPickerWireframe.createViewController()
+        let wireframe = PhotoPickerWireframe(root: root, delegate: nil, view: vc)
+        let nav = PhotoPickerWireframe.createNavigationController()
+        nav.viewControllers.removeAll()
+        nav.viewControllers.append(vc)
+        wireframe.present(with: nav, from: controller)
     }
 }
 
