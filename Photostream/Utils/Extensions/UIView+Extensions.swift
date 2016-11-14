@@ -91,3 +91,12 @@ extension UIView {
         return image
     }
 }
+
+extension UIView {
+    
+    func removeAllSubviews() {
+        subviews.forEach { (subview) in
+            subview.removeFromSuperview()
+        }
+    }
+}
