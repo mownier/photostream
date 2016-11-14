@@ -15,10 +15,15 @@ class PhotoPickerViewController: UIViewController {
     
     var presenter: PhotoPickerModuleInterface!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        configureLayout(with: 3, columnSpacing: 1, rowSpacing: 1)
         presenter.fetchPhotos()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 
     @IBAction func didTapDone(_ sender: AnyObject) {
@@ -27,6 +32,14 @@ class PhotoPickerViewController: UIViewController {
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func configureLayout(with columnCount: Int, columnSpacing: CGFloat, rowSpacing: CGFloat) {
+        let totalColumnSpacing = (columnSpacing / 2) * CGFloat((columnCount - 1))
+        let side = (collectionView.width / CGFloat(columnCount)) - totalColumnSpacing
+        flowLayout.itemSize = CGSize(width: side, height: side)
+        flowLayout.minimumInteritemSpacing = (columnSpacing / 2)
+        flowLayout.minimumLineSpacing = rowSpacing
     }
 }
 
