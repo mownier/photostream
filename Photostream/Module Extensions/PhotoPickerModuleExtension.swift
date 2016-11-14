@@ -15,4 +15,10 @@ extension PhotoPickerWireframe {
         let vc = sb.instantiateViewController(withIdentifier: "PhotoPickerViewController")
         return vc as! PhotoPickerViewController
     }
+    
+    class func createNavigationController() -> UINavigationController {
+        let sb = UIStoryboard(name: "PhotoPickerModuleStoryboard", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "PhotoPickerNavigationController")
+        return vc as! UINavigationController
+    }
 }
