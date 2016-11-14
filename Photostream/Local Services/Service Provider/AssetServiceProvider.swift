@@ -14,9 +14,11 @@ class AssetServiceProvider: AssetService {
     func fetchImages(completion: (([PHAsset]) -> Void)?) {
         let result = PHAsset.fetchAssets(with: .image, options: nil)
         var assets = [PHAsset]()
-        result.enumerateObjects({ (object, _, _) -> Void in
-            assets.append(object)
+        
+        result.enumerateObjects({ (asset, _, _) in
+            assets.append(asset)
         })
+        
         
         completion?(assets)
     }
