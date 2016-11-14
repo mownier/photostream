@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class PhotoPickerViewController: UIViewController {
 
@@ -58,5 +59,35 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
     
     func didFetchPhotos() {
         reloadView()
+        
+        if presenter.photoCount > 0 {
+            let asset = presenter.photo(at: 0)!
+            showSelectedPhoto(with: asset)
+        }
+    }
+    
+    var targetSize: CGSize {
+        let scale = UIScreen.main.scale
+        return CGSize(width: scrollView.bounds.width * scale,
+                      height: scrollView.bounds.height * scale)
+    }
+}
+
+extension PhotoPickerViewController {
+    
+    func showSelectedPhoto(with asset: PHAsset) {
+        scrollView.removeAllSubviews()
+        PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: nil, resultHandler: { image, _ in
+            guard let image = image else { return }
+            
+            let imageRect = CGRect(origin: .zero, size: image.size)
+            var fitRect = imageRect.fit(in: self.scrollView.bounds)
+            fitRect.ceil()
+            
+            let imageView = UIImageView()
+            imageView.frame = fitRect
+            imageView.image = image
+            self.scrollView.addSubview(imageView)
+        })
     }
 }
