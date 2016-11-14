@@ -12,12 +12,15 @@ class PhotoPickerViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var presenter: PhotoPickerModuleInterface!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        collectionView.contentInset.top = scrollView.height
+        collectionView.scrollIndicatorInsets.top = scrollView.height
         configureLayout(with: 3, columnSpacing: 1, rowSpacing: 1)
         presenter.fetchPhotos()
     }
