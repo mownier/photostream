@@ -15,15 +15,22 @@ extension PhotoPickerViewController: UICollectionViewDataSource {
         return presenter.photoCount
     }
     
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = PhotoGridCell.dequeue(from: collectionView, for: indexPath)
-        let manager = PHImageManager.default()
-        let asset = presenter.photo(at: indexPath.row)
-        let targetSize = CGSize(width: 100, height: 100)
-        manager.requestImage(for: asset!, targetSize: targetSize, contentMode: .default, options: nil) { (image, info) in
+        presenter.requestImage(at: indexPath.row, size: cellImageTargetSize) { (image) in
             cell.thumbnailImageView.image = image
         }
         return cell
+    }
+}
+
+extension PhotoPickerViewController {
+    
+    var cellImageTargetSize: CGSize {
+        let scale = UIScreen.main.scale
+        var size = CGSize()
+        size.width = flowLayout.itemSize.width * scale
+        size.height = flowLayout.itemSize.height * scale
+        return size
     }
 }
