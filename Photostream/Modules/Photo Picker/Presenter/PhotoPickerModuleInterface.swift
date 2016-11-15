@@ -16,4 +16,5 @@ protocol PhotoPickerModuleInterface: class {
     func fetchPhotos()
     func photo(at index: Int) -> PHAsset?
     func willShowSelectedPhoto(at index: Int, size: CGSize)
+    func requestImage(at index: Int, size: CGSize, completion: ((UIImage?) -> Void)?)
 }
