@@ -12,6 +12,7 @@ import Photos
 protocol AssetService: class {
     
     func fetchImageAssets(with options: PHFetchOptions?, completion: (([PHAsset]) -> Void)?)
+    func fetchImage(for data: AssetRequestData, completion: ((UIImage?) -> Void)?)
 }
 
 extension AssetService {
@@ -22,5 +23,18 @@ extension AssetService {
             NSSortDescriptor(key: "creationDate", ascending: false)
         ]
         fetchImageAssets(with: options, completion: completion)
+    }
+}
+
+struct AssetRequestData {
+    
+    var asset: PHAsset?
+    var size: CGSize
+    var mode: PHImageContentMode
+    var options: PHImageRequestOptions?
+    
+    init() {
+        size = .zero
+        mode = .default
     }
 }

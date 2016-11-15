@@ -19,4 +19,16 @@ class AssetServiceProvider: AssetService {
         })
         completion?(assets)
     }
+    
+    func fetchImage(for data: AssetRequestData, completion: ((UIImage?) -> Void)?) {
+        guard let asset = data.asset else {
+            completion?(nil)
+            return
+        }
+        
+        let manager = PHImageManager.default()
+        manager.requestImage(for: asset, targetSize: data.size, contentMode: data.mode, options: data.options, resultHandler: { image, _ in
+            completion?(image)
+        })
+    }
 }
