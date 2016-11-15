@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CropView: UIScrollView, UIScrollViewDelegate {
+class CropView: UIScrollView {
     
     var imageView: UIImageView!
     
@@ -50,6 +50,9 @@ class CropView: UIScrollView, UIScrollViewDelegate {
         imageView.frame = fitRect
         imageView.image = image
     }
+}
+
+extension CropView: UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
@@ -57,6 +60,32 @@ class CropView: UIScrollView, UIScrollViewDelegate {
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         imageView.frame.origin = pointOnZoom
+    }
+}
+
+extension CropView {
+    
+    var zoomFitScale: CGFloat {
+        let imageViewSize = imageView.frame.size
+        let cropViewSize = frame.size
+        var fitScale: CGFloat = 1.0
+        
+        if imageViewSize.width < cropViewSize.width {
+            fitScale = (cropViewSize.width / imageViewSize.width)
+            
+        } else if imageViewSize.height < cropViewSize.height {
+            fitScale = (cropViewSize.height / imageViewSize.height)
+        }
+        
+        return fitScale
+    }
+    
+    func zoomToFit(_ isMaxScalePreserved: Bool = true) {
+        let scale = zoomFitScale
+        if !isMaxScalePreserved {
+            maximumZoomScale = scale
+        }
+        zoomScale = scale
     }
 }
 
