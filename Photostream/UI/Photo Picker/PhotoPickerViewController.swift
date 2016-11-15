@@ -13,16 +13,17 @@ class PhotoPickerViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var cropView: CropView!
     
     var presenter: PhotoPickerModuleInterface!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        collectionView.contentInset.top = scrollView.height
-        collectionView.scrollIndicatorInsets.top = scrollView.height
-        configureLayout(with: 3, columnSpacing: 1, rowSpacing: 1)
+        collectionView.contentInset.top = cropView.height
+        collectionView.scrollIndicatorInsets.top = cropView.height
+        flowLayout.configure(with: collectionView.width, columnCount: 4)
+        
         presenter.fetchPhotos()
     }
     
@@ -36,14 +37,6 @@ class PhotoPickerViewController: UIViewController {
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    func configureLayout(with columnCount: Int, columnSpacing: CGFloat, rowSpacing: CGFloat) {
-        let totalColumnSpacing = (columnSpacing / 2) * CGFloat((columnCount - 1))
-        let side = (collectionView.width / CGFloat(columnCount)) - totalColumnSpacing
-        flowLayout.itemSize = CGSize(width: side, height: side)
-        flowLayout.minimumInteritemSpacing = (columnSpacing / 2)
-        flowLayout.minimumLineSpacing = rowSpacing
     }
 }
 
@@ -61,33 +54,20 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
         reloadView()
         
         if presenter.photoCount > 0 {
-            let asset = presenter.photo(at: 0)!
-            showSelectedPhoto(with: asset)
+            presenter.willShowSelectedPhoto(at: 0, size: targetSize)
         }
     }
     
-    var targetSize: CGSize {
-        let scale = UIScreen.main.scale
-        return CGSize(width: scrollView.bounds.width * scale,
-                      height: scrollView.bounds.height * scale)
+    func showSelectedPhoto(with image: UIImage?) {
+        cropView.setCropTarget(with: image)
     }
 }
 
 extension PhotoPickerViewController {
     
-    func showSelectedPhoto(with asset: PHAsset) {
-        scrollView.removeAllSubviews()
-        PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: nil, resultHandler: { image, _ in
-            guard let image = image else { return }
-            
-            let imageRect = CGRect(origin: .zero, size: image.size)
-            var fitRect = imageRect.fit(in: self.scrollView.bounds)
-            fitRect.ceil()
-            
-            let imageView = UIImageView()
-            imageView.frame = fitRect
-            imageView.image = image
-            self.scrollView.addSubview(imageView)
-        })
+    var targetSize: CGSize {
+        let scale = UIScreen.main.scale
+        return CGSize(width: cropView.bounds.width * scale,
+                      height: cropView.bounds.height * scale)
     }
 }
