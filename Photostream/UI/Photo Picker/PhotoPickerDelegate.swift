@@ -11,10 +11,6 @@ import UIKit
 extension PhotoPickerViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let asset = presenter.photo(at: indexPath.row) else {
-            return
-        }
-        
-        showSelectedPhoto(with: asset)
+        presenter.willShowSelectedPhoto(at: indexPath.row, size: targetSize)
     }
 }
