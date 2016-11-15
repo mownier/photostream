@@ -21,7 +21,7 @@ class PhotoPickerInteractor: PhotoPickerInteractorInterface {
 extension PhotoPickerInteractor: PhotoPickerInteractorInput {
     
     func fetchPhotos() {
-        service.fetchImages { (assets) in
+        service.fetchImageAssets { (assets) in
             self.output?.photoPickerDidFetchPhotos(with: assets)
         }
     }
