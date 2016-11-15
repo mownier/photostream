@@ -43,27 +43,34 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
             return
         }
         
-        let manager = PHImageManager.default()
-        manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: nil, resultHandler: { image, _ in
+        var data = AssetRequestData()
+        data.asset = asset
+        data.size = size
+        data.mode = .aspectFit
+        
+        interactor.fetchPhoto(for: data) { (image) in
             self.view.showSelectedPhoto(with: image)
-        })
+        }
     }
     
-    func requestImage(at index: Int, size: CGSize, completion: ((UIImage?) -> Void)?) {
+    func fetchThumbnail(at index: Int, size: CGSize, completion: ((UIImage?) -> Void)?) {
         guard let asset = photo(at: index) else {
             completion?(nil)
             return
         }
         
-        let manager = PHImageManager.default()
-        manager.requestImage(for: asset, targetSize: size, contentMode: .default, options: nil, resultHandler: { image, _ in
+        var data = AssetRequestData()
+        data.asset = asset
+        data.size = size
+        
+        interactor.fetchPhoto(for: data) { (image) in
             completion?(image)
-        })
+        }
     }
 }
 
 extension PhotoPickerPresenter: PhotoPickerInteractorOutput {
-    
+
     func photoPickerDidFetchPhotos(with assets: [PHAsset]) {
         photos.append(contentsOf: assets)
         view.didFetchPhotos()
