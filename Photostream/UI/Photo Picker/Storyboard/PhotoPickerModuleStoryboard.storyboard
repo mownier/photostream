@@ -35,7 +35,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Pt-7K-XB3" userLabel="Thumbnail Image View"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Pt-7K-XB3" userLabel="Thumbnail Image View"/>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -54,8 +54,8 @@
                                     <outlet property="delegate" destination="DYm-43-GGe" id="mub-ui-FE9"/>
                                 </connections>
                             </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5j-37-gks">
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5j-37-gks" customClass="CropView" customModule="Photostream" customModuleProvider="target">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i5j-37-gks" secondAttribute="height" multiplier="1:1" id="8XC-AR-gBG"/>
                                 </constraints>
@@ -87,8 +87,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="XjD-uC-QOe" id="0tD-Tz-3DU"/>
+                        <outlet property="cropView" destination="i5j-37-gks" id="hJe-T9-V9W"/>
                         <outlet property="flowLayout" destination="3pq-Zb-UFb" id="5HG-RM-qFE"/>
-                        <outlet property="scrollView" destination="i5j-37-gks" id="HrU-Jg-fix"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPY-Vy-JIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
