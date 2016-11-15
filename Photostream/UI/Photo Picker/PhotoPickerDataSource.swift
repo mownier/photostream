@@ -17,7 +17,7 @@ extension PhotoPickerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = PhotoGridCell.dequeue(from: collectionView, for: indexPath)
-        presenter.requestImage(at: indexPath.row, size: cellImageTargetSize) { (image) in
+        presenter.fetchThumbnail(at: indexPath.row, size: cellImageTargetSize) { (image) in
             cell.thumbnailImageView.image = image
         }
         return cell
