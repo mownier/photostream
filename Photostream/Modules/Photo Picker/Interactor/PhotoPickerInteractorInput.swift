@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Photos
 
 protocol PhotoPickerInteractorInput: class {
 
     func fetchPhotos()
+    func fetchPhoto(for data: AssetRequestData, completion: ((UIImage?) -> Void)?)
 }

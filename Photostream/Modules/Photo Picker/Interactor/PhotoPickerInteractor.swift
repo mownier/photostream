@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Photos
 
 class PhotoPickerInteractor: PhotoPickerInteractorInterface {
 
@@ -23,6 +23,12 @@ extension PhotoPickerInteractor: PhotoPickerInteractorInput {
     func fetchPhotos() {
         service.fetchImageAssets { (assets) in
             self.output?.photoPickerDidFetchPhotos(with: assets)
+        }
+    }
+    
+    func fetchPhoto(for data: AssetRequestData, completion: ((UIImage?) -> Void)?) {
+        service.fetchImage(for: data) { (image) in
+            completion?(image)
         }
     }
 }
