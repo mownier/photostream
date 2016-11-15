@@ -36,6 +36,18 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
         
         return photos[index]
     }
+    
+    func willShowSelectedPhoto(at index: Int, size: CGSize) {
+        guard let asset = photo(at: index) else {
+            self.view.showSelectedPhoto(with: nil)
+            return
+        }
+        
+        let manager = PHImageManager.default()
+        manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: nil, resultHandler: { image, _ in
+            self.view.showSelectedPhoto(with: image)
+        })
+    }
 }
 
 extension PhotoPickerPresenter: PhotoPickerInteractorOutput {
