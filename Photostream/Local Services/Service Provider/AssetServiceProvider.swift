@@ -11,15 +11,12 @@ import Photos
 
 class AssetServiceProvider: AssetService {
 
-    func fetchImages(completion: (([PHAsset]) -> Void)?) {
-        let result = PHAsset.fetchAssets(with: .image, options: nil)
+    func fetchImages(with options: PHFetchOptions?, completion: (([PHAsset]) -> Void)?) {
+        let result = PHAsset.fetchAssets(with: .image, options: options)
         var assets = [PHAsset]()
-        
         result.enumerateObjects({ (asset, _, _) in
             assets.append(asset)
         })
-        
-        
         completion?(assets)
     }
 }

@@ -11,5 +11,16 @@ import Photos
 
 protocol AssetService: class {
     
-    func fetchImages(completion: (([PHAsset]) -> Void)?)
+    func fetchImages(with options: PHFetchOptions?, completion: (([PHAsset]) -> Void)?)
+}
+
+extension AssetService {
+    
+    func fetchImages(completion: (([PHAsset]) -> Void)?) {
+        let options = PHFetchOptions()
+        options.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: false)
+        ]
+        fetchImages(with: options, completion: completion)
+    }
 }
