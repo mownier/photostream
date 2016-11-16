@@ -10,13 +10,24 @@ import UIKit
 import Photos
 
 class PhotoPickerViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var cropView: CropView!
+    @IBOutlet weak var cropContentViewConstraintTop: NSLayoutConstraint!
     
     var presenter: PhotoPickerModuleInterface!
-    
+    var mode: ContentMode = .fill(false) {
+        didSet {
+            switch mode {
+            case .fill(let animated):
+                cropView.zoomToFill(animated)
+            case.fit(let animated):
+                cropView.zoomToFit(animated)
+            }
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -60,7 +71,7 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
     
     func showSelectedPhoto(with image: UIImage?) {
         cropView.setCropTarget(with: image)
-        cropView.zoomToFill(false)
+        mode = .fill(false)
     }
 }
 
@@ -70,5 +81,22 @@ extension PhotoPickerViewController {
         let scale = UIScreen.main.scale
         return CGSize(width: cropView.bounds.width * scale,
                       height: cropView.bounds.height * scale)
+    }
+}
+
+extension PhotoPickerViewController {
+
+    enum ContentMode {
+        case fill(Bool)
+        case fit(Bool)
+    }
+    
+    @IBAction func toggleContentMode() {
+        switch mode {
+        case .fill:
+            mode = .fit(true)
+        case .fit:
+            mode = .fill(true)
+        }
     }
 }
