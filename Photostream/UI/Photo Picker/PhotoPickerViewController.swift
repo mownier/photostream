@@ -32,11 +32,11 @@ class PhotoPickerViewController: UIViewController {
     }
 
     @IBAction func didTapDone(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+        presenter.didCrop(with: cropView.croppedImage)
     }
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+        presenter.didCancelCrop()
     }
 }
 
