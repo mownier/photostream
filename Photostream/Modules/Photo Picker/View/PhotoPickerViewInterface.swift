@@ -16,4 +16,6 @@ protocol PhotoPickerViewInterface: class {
     func reloadView()
     func didFetchPhotos()
     func showSelectedPhoto(with image: UIImage?)
+    func showSelectedPhotoInFillMode(animated: Bool)
+    func showSelectedPhotoInFitMode(animated: Bool)
 }

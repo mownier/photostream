@@ -20,4 +20,8 @@ protocol PhotoPickerModuleInterface: class {
     
     func didCrop(with image: UIImage?)
     func didCancelCrop()
+    
+    func fillSelectedPhoto(animated: Bool)
+    func fitSelectedPhoto(animated: Bool)
+    func toggleContentMode(animated: Bool)
 }

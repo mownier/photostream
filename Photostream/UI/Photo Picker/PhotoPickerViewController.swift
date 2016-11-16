@@ -17,16 +17,6 @@ class PhotoPickerViewController: UIViewController {
     @IBOutlet weak var cropContentViewConstraintTop: NSLayoutConstraint!
     
     var presenter: PhotoPickerModuleInterface!
-    var mode: ContentMode = .fill(false) {
-        didSet {
-            switch mode {
-            case .fill(let animated):
-                cropView.zoomToFill(animated)
-            case.fit(let animated):
-                cropView.zoomToFit(animated)
-            }
-        }
-    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -48,6 +38,10 @@ class PhotoPickerViewController: UIViewController {
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
         presenter.didCancelCrop()
+    }
+    
+    @IBAction func toggleContentMode() {
+        presenter.toggleContentMode(animated: true)
     }
 }
 
@@ -71,7 +65,15 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
     
     func showSelectedPhoto(with image: UIImage?) {
         cropView.setCropTarget(with: image)
-        mode = .fill(false)
+        presenter.fillSelectedPhoto(animated: false)
+    }
+    
+    func showSelectedPhotoInFitMode(animated: Bool) {
+        cropView.zoomToFit(animated)
+    }
+    
+    func showSelectedPhotoInFillMode(animated: Bool) {
+        cropView.zoomToFill(animated)
     }
 }
 
@@ -81,22 +83,5 @@ extension PhotoPickerViewController {
         let scale = UIScreen.main.scale
         return CGSize(width: cropView.bounds.width * scale,
                       height: cropView.bounds.height * scale)
-    }
-}
-
-extension PhotoPickerViewController {
-
-    enum ContentMode {
-        case fill(Bool)
-        case fit(Bool)
-    }
-    
-    @IBAction func toggleContentMode() {
-        switch mode {
-        case .fill:
-            mode = .fit(true)
-        case .fit:
-            mode = .fill(true)
-        }
     }
 }

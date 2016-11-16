@@ -17,6 +17,16 @@ class PhotoPickerPresenter: PhotoPickerPresenterInterface {
     var wireframe: PhotoPickerWireframeInterface!
     var interactor: PhotoPickerInteractorInput!
     var photos = [PHAsset]()
+    var contentMode: PhotoContentMode = .fill(false) {
+        didSet {
+            switch contentMode {
+            case .fill(let animated):
+                view.showSelectedPhotoInFillMode(animated: animated)
+            case.fit(let animated):
+                view.showSelectedPhotoInFitMode(animated: animated)
+            }
+        }
+    }
 }
 
 extension PhotoPickerPresenter: PhotoPickerModuleInterface {
@@ -74,6 +84,23 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
     
     func didCrop(with image: UIImage?) {
         moduleDelegate?.photoPickerDidPick(with: image)
+    }
+    
+    func fillSelectedPhoto(animated: Bool) {
+        contentMode = .fill(animated)
+    }
+    
+    func fitSelectedPhoto(animated: Bool) {
+        contentMode = .fit(animated)
+    }
+    
+    func toggleContentMode(animated: Bool) {
+        switch contentMode {
+        case .fill:
+            contentMode = .fit(animated)
+        case .fit:
+            contentMode = .fill(animated)
+        }
     }
 }
 

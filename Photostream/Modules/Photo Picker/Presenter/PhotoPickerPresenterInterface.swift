@@ -16,4 +16,11 @@ protocol PhotoPickerPresenterInterface: class {
     var wireframe: PhotoPickerWireframeInterface! { set get }
     var moduleDelegate: PhotoPickerModuleDelegate? { set get }
     var photos: [PHAsset] { set get }
+    var contentMode: PhotoContentMode { set get }
 }
+
+enum PhotoContentMode {
+    case fill(Bool)
+    case fit(Bool)
+}
+
