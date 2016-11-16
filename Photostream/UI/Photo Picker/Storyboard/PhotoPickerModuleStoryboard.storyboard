@@ -71,6 +71,9 @@
                                                 <real key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="toggleContentMode" destination="DYm-43-GGe" eventType="touchUpInside" id="88O-al-E2B"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,6 +114,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="XjD-uC-QOe" id="0tD-Tz-3DU"/>
+                        <outlet property="cropContentViewConstraintTop" destination="cBn-Qw-Eiq" id="HGo-aB-yyo"/>
                         <outlet property="cropView" destination="i5j-37-gks" id="hJe-T9-V9W"/>
                         <outlet property="flowLayout" destination="3pq-Zb-UFb" id="5HG-RM-qFE"/>
                     </connections>
