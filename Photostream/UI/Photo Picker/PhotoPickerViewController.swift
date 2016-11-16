@@ -21,9 +21,9 @@ class PhotoPickerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        collectionView.contentInset.top = cropView.height
-        collectionView.scrollIndicatorInsets.top = cropView.height
-        flowLayout.configure(with: collectionView.width, columnCount: 4)
+        collectionView.contentInset.top = cropView.height + 2
+        collectionView.scrollIndicatorInsets.top = cropView.height + 2
+        flowLayout.configure(with: collectionView.width, columnCount: 4, columnSpacing: 0.5, rowSpacing: 2)
         
         presenter.fetchPhotos()
     }
