@@ -60,7 +60,7 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
     
     func showSelectedPhoto(with image: UIImage?) {
         cropView.setCropTarget(with: image)
-        cropView.zoomToFit(false)
+        cropView.zoomToFill(false)
     }
 }
 

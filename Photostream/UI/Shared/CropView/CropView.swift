@@ -80,7 +80,7 @@ extension CropView {
         return fitScale
     }
     
-    func zoomToFit(_ isMaxScalePreserved: Bool = true) {
+    func zoomToFill(_ isMaxScalePreserved: Bool = true) {
         let scale = zoomFitScale
         if !isMaxScalePreserved {
             maximumZoomScale = scale
