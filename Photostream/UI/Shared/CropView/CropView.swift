@@ -65,27 +65,48 @@ extension CropView: UIScrollViewDelegate {
 
 extension CropView {
     
-    var zoomFitScale: CGFloat {
+    var zoomFillScale: CGFloat {
         let imageViewSize = imageView.frame.size
         let cropViewSize = frame.size
-        var fitScale: CGFloat = 1.0
+        var fillScale: CGFloat = zoomScale
         
-        if imageViewSize.width < cropViewSize.width {
-            fitScale = (cropViewSize.width / imageViewSize.width)
-            
-        } else if imageViewSize.height < cropViewSize.height {
-            fitScale = (cropViewSize.height / imageViewSize.height)
+        // If image view's width is less than the height,
+        // the scale will be relative to the width.
+        // Otherwise to the height.
+        if imageViewSize.width < imageViewSize.height {
+            // Fill Scale (FS)
+            // Crop View Width (CVW)
+            // Image View Height (IVW)
+            // Constant Multipler (K)
+            //
+            // FS = K * (CVW / IVW)
+            //
+            // If image view's width is less than the crop view's width
+            // and the zoom scale is at minimum, 
+            // `K` will be the minimum zoom scale.
+            // Otherwise, `K` will be the zoom scale.
+            if imageViewSize.width < cropViewSize.width && zoomScale == minimumZoomScale {
+                fillScale = minimumZoomScale * (cropViewSize.width / imageViewSize.width)
+            } else {
+                fillScale = zoomScale * (cropViewSize.width / imageViewSize.width)
+            }
+        } else {
+            if imageViewSize.height < cropViewSize.height && fillScale == minimumZoomScale {
+                fillScale = minimumZoomScale * (cropViewSize.height / imageViewSize.height)
+            } else {
+                fillScale = zoomScale * (cropViewSize.height / imageViewSize.height)
+            }
         }
         
-        return fitScale
+        return fillScale
     }
     
-    func zoomToFill(_ isMaxScalePreserved: Bool = true) {
-        let scale = zoomFitScale
-        if !isMaxScalePreserved {
-            maximumZoomScale = scale
-        }
-        zoomScale = scale
+    func zoomToFill(_ animated: Bool = false) {
+        setZoomScale(zoomFillScale, animated: animated)
+    }
+    
+    func zoomToFit(_ animated: Bool = false) {
+        setZoomScale(1.0, animated: animated)
     }
 }
 
