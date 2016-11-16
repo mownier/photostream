@@ -54,21 +54,45 @@
                                     <outlet property="delegate" destination="DYm-43-GGe" id="mub-ui-FE9"/>
                                 </connections>
                             </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5j-37-gks" customClass="CropView" customModule="Photostream" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0m4-QX-mPG" userLabel="Crop Content View">
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5j-37-gks" customClass="CropView" customModule="Photostream" customModuleProvider="target">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </scrollView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMg-SC-J23">
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="ev2-Sq-Kf1"/>
+                                            <constraint firstAttribute="width" constant="32" id="wcP-Pq-uDM"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_content_mode"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="i5j-37-gks" secondAttribute="height" multiplier="1:1" id="8XC-AR-gBG"/>
+                                    <constraint firstItem="i5j-37-gks" firstAttribute="top" secondItem="0m4-QX-mPG" secondAttribute="top" id="HJl-zT-mzQ"/>
+                                    <constraint firstAttribute="width" secondItem="0m4-QX-mPG" secondAttribute="height" multiplier="1:1" id="HS3-Y3-FO8"/>
+                                    <constraint firstAttribute="trailing" secondItem="i5j-37-gks" secondAttribute="trailing" id="SR0-ul-2Dt"/>
+                                    <constraint firstItem="i5j-37-gks" firstAttribute="leading" secondItem="0m4-QX-mPG" secondAttribute="leading" id="eKt-fl-5vw"/>
+                                    <constraint firstAttribute="bottom" secondItem="i5j-37-gks" secondAttribute="bottom" id="fR7-Va-U4K"/>
+                                    <constraint firstAttribute="bottom" secondItem="JMg-SC-J23" secondAttribute="bottom" constant="16" id="sGb-nx-lrS"/>
+                                    <constraint firstItem="JMg-SC-J23" firstAttribute="leading" secondItem="0m4-QX-mPG" secondAttribute="leading" constant="16" id="wbI-6z-aL6"/>
                                 </constraints>
-                            </scrollView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="i5j-37-gks" firstAttribute="leading" secondItem="ncI-K8-C1J" secondAttribute="leading" id="W8C-vm-HoT"/>
-                            <constraint firstAttribute="trailing" secondItem="i5j-37-gks" secondAttribute="trailing" id="bSd-gI-jC3"/>
+                            <constraint firstAttribute="trailing" secondItem="0m4-QX-mPG" secondAttribute="trailing" id="3FB-7L-H4E"/>
+                            <constraint firstItem="0m4-QX-mPG" firstAttribute="top" secondItem="GDs-lY-Nyy" secondAttribute="bottom" id="cBn-Qw-Eiq"/>
                             <constraint firstItem="Mpn-aJ-mXi" firstAttribute="top" secondItem="XjD-uC-QOe" secondAttribute="bottom" id="htc-cj-Awa"/>
+                            <constraint firstItem="0m4-QX-mPG" firstAttribute="leading" secondItem="ncI-K8-C1J" secondAttribute="leading" id="ioh-GI-FXu"/>
                             <constraint firstItem="XjD-uC-QOe" firstAttribute="top" secondItem="GDs-lY-Nyy" secondAttribute="bottom" id="lAU-wM-ERI"/>
                             <constraint firstItem="XjD-uC-QOe" firstAttribute="leading" secondItem="ncI-K8-C1J" secondAttribute="leading" id="nk3-P8-SR1"/>
-                            <constraint firstItem="i5j-37-gks" firstAttribute="top" secondItem="GDs-lY-Nyy" secondAttribute="bottom" id="tLh-oC-IS4"/>
                             <constraint firstAttribute="trailing" secondItem="XjD-uC-QOe" secondAttribute="trailing" id="vT1-Q8-dFJ"/>
                         </constraints>
                     </view>
@@ -116,4 +140,7 @@
             <point key="canvasLocation" x="-271.875" y="92.957746478873247"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_content_mode" width="16" height="16"/>
+    </resources>
 </document>
