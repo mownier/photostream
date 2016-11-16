@@ -116,3 +116,67 @@ extension CropView {
         return point
     }
 }
+
+extension CropView {
+    
+    // Inspired by https://github.com/wenzhaot/InstagramPhotoPicker
+    
+    var croppedImage: UIImage? {
+        var rect = visibleRect
+        let transform = rectTransform
+        rect = rect.applying(transform)
+        
+        guard let scale = imageView.image?.scale,
+            let orientation = imageView.image?.imageOrientation,
+            let ref = imageView.image?.cgImage?.cropping(to: rect) else {
+            return nil
+        }
+        
+        let image = UIImage(cgImage: ref, scale: scale, orientation: orientation)
+        return image
+    }
+    
+    var visibleRect: CGRect {
+        guard let imageWidth = imageView.image?.size.width,
+            imageView.frame.size.width > 0 else {
+            return .zero
+        }
+        
+        var sizeScale = imageWidth / imageView.frame.size.width
+        sizeScale *= zoomScale
+        var rect = convert(bounds, to: imageView)
+        rect.origin.x *= sizeScale
+        rect.origin.y *= sizeScale
+        rect.size.width *= sizeScale
+        rect.size.height *= sizeScale
+        return rect
+    }
+    
+    var rectTransform: CGAffineTransform {
+        guard let orientation = imageView.image?.imageOrientation,
+            let scale = imageView.image?.scale,
+            let width = imageView.image?.size.width,
+            let height = imageView.image?.size.height else {
+            return CGAffineTransform.identity
+        }
+        
+        var transform = CGAffineTransform()
+        switch orientation {
+        case .left:
+            transform = transform.rotated(by: radians(90)).translatedBy(x: 0, y: -height)
+        case .right:
+            transform = transform.rotated(by: radians(-90)).translatedBy(x: -width, y: 0)
+        case .down:
+            transform = transform.rotated(by: radians(-180)).translatedBy(x: -width, y: -height)
+        default:
+            transform = CGAffineTransform.identity
+        }
+        
+        transform = transform.scaledBy(x: scale, y: scale)
+        return transform
+    }
+    
+    func radians(_ degrees: Int) -> CGFloat {
+        return CGFloat(CGFloat(degrees) * .pi / 180)
+    }
+}
