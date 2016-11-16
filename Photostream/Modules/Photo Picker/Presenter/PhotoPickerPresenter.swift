@@ -67,6 +67,14 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
             completion?(image)
         }
     }
+    
+    func didCancelCrop() {
+        moduleDelegate?.photoPickerDidCancel()
+    }
+    
+    func didCrop(with image: UIImage?) {
+        moduleDelegate?.photoPickerDidPick(with: image)
+    }
 }
 
 extension PhotoPickerPresenter: PhotoPickerInteractorOutput {

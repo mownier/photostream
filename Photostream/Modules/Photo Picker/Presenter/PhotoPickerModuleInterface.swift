@@ -17,4 +17,7 @@ protocol PhotoPickerModuleInterface: class {
     func photo(at index: Int) -> PHAsset?
     func willShowSelectedPhoto(at index: Int, size: CGSize)
     func fetchThumbnail(at index: Int, size: CGSize, completion: ((UIImage?) -> Void)?)
+    
+    func didCrop(with image: UIImage?)
+    func didCancelCrop()
 }
