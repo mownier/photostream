@@ -59,7 +59,8 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
         reloadView()
         
         if presenter.photoCount > 0 {
-            presenter.willShowSelectedPhoto(at: 0, size: targetSize)
+            let indexPath = IndexPath(row: 0, section: 0)
+            collectionView(collectionView, didSelectItemAt: indexPath)
         }
     }
     
@@ -77,11 +78,4 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
     }
 }
 
-extension PhotoPickerViewController {
-    
-    var targetSize: CGSize {
-        let scale = UIScreen.main.scale
-        return CGSize(width: cropView.bounds.width * scale,
-                      height: cropView.bounds.height * scale)
-    }
-}
+
