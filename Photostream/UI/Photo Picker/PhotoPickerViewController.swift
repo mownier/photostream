@@ -16,6 +16,8 @@ class PhotoPickerViewController: UIViewController {
     @IBOutlet weak var cropView: CropView!
     @IBOutlet weak var cropContentViewConstraintTop: NSLayoutConstraint!
     
+    lazy var scrollHandler = ScrollHandler()
+    
     var presenter: PhotoPickerModuleInterface!
 
     override func viewDidAppear(_ animated: Bool) {
@@ -24,7 +26,7 @@ class PhotoPickerViewController: UIViewController {
         collectionView.contentInset.top = cropView.height + 2
         collectionView.scrollIndicatorInsets.top = cropView.height + 2
         flowLayout.configure(with: collectionView.width, columnCount: 4, columnSpacing: 0.5, rowSpacing: 2)
-        
+        scrollHandler.scrollView = collectionView
         presenter.fetchPhotos()
     }
     
