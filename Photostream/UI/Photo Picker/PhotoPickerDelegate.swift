@@ -23,3 +23,35 @@ extension PhotoPickerViewController {
                       height: cropView.bounds.height * scale)
     }
 }
+
+extension PhotoPickerViewController {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollHandler.offsetY = scrollView.contentOffset.y
+    }
+    
+    func scrollViewDidScroll(_ view: UIScrollView) {
+        if scrollHandler.isScrollable {
+            if scrollHandler.isScrollingDown {
+                didScrollDown(with: abs(scrollHandler.offsetDelta))
+            } else {
+                if view.contentOffset.y < -(48 + 2) {
+                    didScrollUp(with: abs(scrollHandler.offsetDelta))
+                }
+            }
+            scrollHandler.update()
+        }
+    }
+    
+    func didScrollUp(with delta: CGFloat) {
+        let sum = cropContentViewConstraintTop.constant + delta
+        let newDelta = min(sum, 0)
+        cropContentViewConstraintTop.constant = newDelta
+    }
+    
+    func didScrollDown(with delta: CGFloat) {
+        let diff = cropContentViewConstraintTop.constant - delta
+        let newDelta = max(diff, -(collectionView.contentInset.top - 48))
+        cropContentViewConstraintTop.constant = newDelta
+    }
+}
