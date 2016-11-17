@@ -22,7 +22,7 @@ struct ScrollHandler {
             return false
         }
         
-        return scrollView!.contentSize.height > scrollView!.height
+        return scrollView!.contentSize.height > scrollView!.height - scrollView!.contentInset.top
     }
     
     var currentOffsetY: CGFloat {
