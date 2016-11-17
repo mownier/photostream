@@ -83,8 +83,8 @@
                                     <constraint firstAttribute="trailing" secondItem="i5j-37-gks" secondAttribute="trailing" id="SR0-ul-2Dt"/>
                                     <constraint firstItem="i5j-37-gks" firstAttribute="leading" secondItem="0m4-QX-mPG" secondAttribute="leading" id="eKt-fl-5vw"/>
                                     <constraint firstAttribute="bottom" secondItem="i5j-37-gks" secondAttribute="bottom" id="fR7-Va-U4K"/>
-                                    <constraint firstAttribute="bottom" secondItem="JMg-SC-J23" secondAttribute="bottom" constant="16" id="sGb-nx-lrS"/>
-                                    <constraint firstItem="JMg-SC-J23" firstAttribute="leading" secondItem="0m4-QX-mPG" secondAttribute="leading" constant="16" id="wbI-6z-aL6"/>
+                                    <constraint firstAttribute="bottom" secondItem="JMg-SC-J23" secondAttribute="bottom" constant="8" id="sGb-nx-lrS"/>
+                                    <constraint firstItem="JMg-SC-J23" firstAttribute="leading" secondItem="0m4-QX-mPG" secondAttribute="leading" constant="8" id="wbI-6z-aL6"/>
                                 </constraints>
                             </view>
                         </subviews>
