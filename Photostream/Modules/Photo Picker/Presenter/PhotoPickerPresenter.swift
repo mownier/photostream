@@ -102,6 +102,10 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
             contentMode = .fill(animated)
         }
     }
+    
+    func dismiss(animated: Bool) {
+        wireframe.dismiss(with: view.controller)
+    }
 }
 
 extension PhotoPickerPresenter: PhotoPickerInteractorOutput {

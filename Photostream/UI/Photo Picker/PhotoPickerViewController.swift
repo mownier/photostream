@@ -68,6 +68,7 @@ class PhotoPickerViewController: UIViewController {
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
         presenter.didCancelCrop()
+        presenter.dismiss()
     }
     
     @IBAction func toggleContentMode() {

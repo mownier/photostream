@@ -24,4 +24,13 @@ protocol PhotoPickerModuleInterface: class {
     func fillSelectedPhoto(animated: Bool)
     func fitSelectedPhoto(animated: Bool)
     func toggleContentMode(animated: Bool)
+    
+    func dismiss(animated: Bool)
+}
+
+extension PhotoPickerModuleInterface {
+    
+    func dismiss() {
+        dismiss(animated: true)
+    }
 }

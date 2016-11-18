@@ -37,4 +37,12 @@ class PhotoPickerWireframe: PhotoPickerWireframeInterface {
         
         parent!.present(controller!, animated: animated, completion: completion)
     }
+    
+    func dismiss(with controller: UIViewController?, animated: Bool, completion: (() -> Void)?) {
+        guard controller != nil else {
+            return
+        }
+        
+        controller!.dismiss(animated: animated, completion: completion)
+    }
 }
