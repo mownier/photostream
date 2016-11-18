@@ -10,4 +10,12 @@ import UIKit
 
 protocol PhotoShareModuleInterface: class {
 
+    func pop(animated: Bool)
+}
+
+extension PhotoShareModuleInterface {
+    
+    func pop() {
+        pop(animated: true)
+    }
 }

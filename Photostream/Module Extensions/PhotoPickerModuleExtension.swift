@@ -21,4 +21,26 @@ extension PhotoPickerWireframe {
         let vc = sb.instantiateViewController(withIdentifier: "PhotoPickerNavigationController")
         return vc as! UINavigationController
     }
+    
+    func showPhotoShare(from controller: UIViewController?, with image: UIImage?) {
+        guard controller != nil, image != nil else {
+            return
+        }
+        
+        let vc = PhotoShareWireframe.createViewController()
+        vc.image = image!
+        let wireframe = PhotoShareWireframe(root: root, view: vc)
+        wireframe.push(with: vc, from: controller!.navigationController)
+    }
+}
+
+extension PhotoPickerPresenter {
+    
+    var router: PhotoPickerWireframe? {
+        return wireframe as? PhotoPickerWireframe
+    }
+    
+    func presentPhotoShare(with image: UIImage?) {
+        router?.showPhotoShare(from: view.controller, with: image)
+    }
 }

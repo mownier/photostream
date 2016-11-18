@@ -16,11 +16,16 @@ protocol PhotoShareWireframeInterface: class {
     
     func attachRoot(with controller: UIViewController, in window: UIWindow)
     func push(with controller: UIViewController?, from navigationController: UINavigationController?, animated: Bool)
+    func pop(from navigationController: UINavigationController?, animated: Bool)
 }
 
 extension PhotoShareWireframeInterface {
     
     func push(with controller: UIViewController?, from navigationController: UINavigationController?) {
         push(with: controller, from: navigationController, animated: true)
+    }
+    
+    func pop(from navigationController: UINavigationController?) {
+        pop(from: navigationController, animated: true)
     }
 }

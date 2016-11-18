@@ -63,6 +63,7 @@ class PhotoPickerViewController: UIViewController {
 
     @IBAction func didTapDone(_ sender: AnyObject) {
         presenter.didCrop(with: cropView.croppedImage)
+        (presenter as? PhotoPickerPresenter)?.presentPhotoShare(with: cropView.croppedImage)
     }
     
     @IBAction func didTapCancel(_ sender: AnyObject) {

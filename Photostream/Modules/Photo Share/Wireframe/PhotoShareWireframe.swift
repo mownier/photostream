@@ -14,6 +14,11 @@ class PhotoShareWireframe: PhotoShareWireframeInterface {
     
     required init(root: RootWireframeInterface?, view: PhotoShareViewInterface) {
         self.root = root
+        
+        let presenter = PhotoSharePresenter()
+        presenter.view = view
+        presenter.wireframe = self
+        view.presenter = presenter
     }
     
     func attachRoot(with controller: UIViewController, in window: UIWindow) {
@@ -26,5 +31,13 @@ class PhotoShareWireframe: PhotoShareWireframeInterface {
         }
         
         navigationController!.pushViewController(controller!, animated: animated)
+    }
+    
+    func pop(from navigationController: UINavigationController?, animated: Bool) {
+        guard navigationController != nil else {
+            return
+        }
+        
+        let _ = navigationController!.popViewController(animated: animated)
     }
 }

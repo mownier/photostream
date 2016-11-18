@@ -16,4 +16,7 @@ class PhotoSharePresenter: PhotoSharePresenterInterface {
 
 extension PhotoSharePresenter: PhotoShareModuleInterface {
     
+    func pop(animated: Bool) {
+        wireframe.pop(from: view.controller?.navigationController, animated: animated)
+    }
 }
