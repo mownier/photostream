@@ -14,20 +14,46 @@ class PhotoPickerViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var cropView: CropView!
+    @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var cropContentViewConstraintTop: NSLayoutConstraint!
     
     lazy var scrollHandler = ScrollHandler()
     
     var presenter: PhotoPickerModuleInterface!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        scrollHandler.scrollView = collectionView
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapDimView))
+        dimView.addGestureRecognizer(tap)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        addObserver(self, forKeyPath: "cropContentViewConstraintTop.constant", options: .new, context: nil)
         
         collectionView.contentInset.top = cropView.height + 2
         collectionView.scrollIndicatorInsets.top = cropView.height + 2
         flowLayout.configure(with: collectionView.width, columnCount: 4, columnSpacing: 0.5, rowSpacing: 2)
-        scrollHandler.scrollView = collectionView
+
         presenter.fetchPhotos()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        removeObserver(self, forKeyPath: "cropContentViewConstraintTop.constant")
+        
+        super.viewDidDisappear(animated)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let newValue = change?[.newKey] as? CGFloat else {
+            return
+        }
+        
+        dimView.isHidden = newValue == 0
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -44,6 +70,17 @@ class PhotoPickerViewController: UIViewController {
     
     @IBAction func toggleContentMode() {
         presenter.toggleContentMode(animated: true)
+    }
+    
+    func didTapDimView() {
+        scrollHandler.killScroll()
+        UIView.animate(withDuration: 0.25) { 
+            self.cropContentViewConstraintTop.constant = 0
+            self.dimView.alpha = 0
+            
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -79,5 +116,3 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
         cropView.zoomToFill(animated)
     }
 }
-
-
