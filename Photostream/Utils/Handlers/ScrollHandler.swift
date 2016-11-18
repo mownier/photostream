@@ -53,7 +53,41 @@ struct ScrollHandler {
         return con1 && con2
     }
     
+    var maximumOffsetY: CGFloat {
+        guard scrollView != nil else {
+            return 0
+        }
+        
+        return scrollView!.contentSize.height - scrollView!.frame.height
+    }
+    
+    var percentageOffsetY: CGFloat {
+        guard scrollView != nil else {
+            return 0
+        }
+        
+        let offset = scrollView!.contentOffset.y + scrollView!.contentInset.top
+        let percentage = min(abs(offset / maximumOffsetY), 1.0)
+        return offset > 0 ? percentage : 0
+    }
+    
+    var isBottomReached: Bool {
+        guard scrollView != nil else {
+            return false
+        }
+        
+        return currentOffsetY + scrollView!.frame.height >= scrollView!.contentSize.height
+    }
+    
     mutating func update() {
         offsetY = currentOffsetY
+    }
+    
+    func killScroll() {
+        guard scrollView != nil else {
+            return
+        }
+        
+        scrollView!.setContentOffset(scrollView!.contentOffset, animated: false)
     }
 }
