@@ -27,7 +27,9 @@ extension PhotoPickerViewController {
 extension PhotoPickerViewController {
     
     func scrollViewDidScroll(_ view: UIScrollView) {
-        guard scrollHandler.isScrollable else {
+        guard let scrollView = scrollHandler.scrollView,
+            scrollView == view,
+            scrollHandler.isScrollable else {
             return
         }
         
@@ -35,17 +37,20 @@ extension PhotoPickerViewController {
             dimView.alpha = min(scrollHandler.percentageOffsetY, 0.5)
         }
         
-        if scrollHandler.isScrollingDown {
+        switch scrollHandler.direction {
+        case .down:
             didScrollDown(with: abs(scrollHandler.offsetDelta))
-        } else {
-            if view.contentOffset.y < -(48 + 2) {
-                didScrollUp(with: abs(scrollHandler.offsetDelta))
-            }
+        case .up, .none:
+            didScrollUp(with: abs(scrollHandler.offsetDelta), offsetY: view.contentOffset.y)
         }
+        
         scrollHandler.update()
     }
     
-    func didScrollUp(with delta: CGFloat) {
+    func didScrollUp(with delta: CGFloat, offsetY: CGFloat = 0) {
+        guard offsetY < -(48 + 2) else {
+            return
+        }
         let sum = cropContentViewConstraintTop.constant + delta
         let newDelta = min(sum, 0)
         cropContentViewConstraintTop.constant = newDelta

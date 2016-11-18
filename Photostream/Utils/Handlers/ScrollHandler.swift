@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum ScrollDirection {
+    case none
+    case down
+    case up
+}
+
 struct ScrollHandler {
 
     weak var scrollView: UIScrollView?
@@ -77,6 +83,17 @@ struct ScrollHandler {
         }
         
         return currentOffsetY + scrollView!.frame.height >= scrollView!.contentSize.height
+    }
+    
+    var direction: ScrollDirection {
+        if isScrollingDown {
+            return .down
+            
+        } else if isScrollingUp {
+            return .up
+        }
+        
+        return .none
     }
     
     mutating func update() {
