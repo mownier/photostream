@@ -75,14 +75,21 @@
                                             <action selector="toggleContentMode" destination="DYm-43-GGe" eventType="touchUpInside" id="88O-al-E2B"/>
                                         </connections>
                                     </button>
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXC-cy-F0F" userLabel="Dim View">
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="OXC-cy-F0F" secondAttribute="bottom" id="8HJ-Rw-hST"/>
                                     <constraint firstItem="i5j-37-gks" firstAttribute="top" secondItem="0m4-QX-mPG" secondAttribute="top" id="HJl-zT-mzQ"/>
                                     <constraint firstAttribute="width" secondItem="0m4-QX-mPG" secondAttribute="height" multiplier="1:1" id="HS3-Y3-FO8"/>
+                                    <constraint firstItem="OXC-cy-F0F" firstAttribute="leading" secondItem="0m4-QX-mPG" secondAttribute="leading" id="IyJ-rb-txg"/>
                                     <constraint firstAttribute="trailing" secondItem="i5j-37-gks" secondAttribute="trailing" id="SR0-ul-2Dt"/>
                                     <constraint firstItem="i5j-37-gks" firstAttribute="leading" secondItem="0m4-QX-mPG" secondAttribute="leading" id="eKt-fl-5vw"/>
                                     <constraint firstAttribute="bottom" secondItem="i5j-37-gks" secondAttribute="bottom" id="fR7-Va-U4K"/>
+                                    <constraint firstItem="OXC-cy-F0F" firstAttribute="top" secondItem="0m4-QX-mPG" secondAttribute="top" id="kdL-ZP-8fl"/>
+                                    <constraint firstAttribute="trailing" secondItem="OXC-cy-F0F" secondAttribute="trailing" id="qtw-DV-7tr"/>
                                     <constraint firstAttribute="bottom" secondItem="JMg-SC-J23" secondAttribute="bottom" constant="8" id="sGb-nx-lrS"/>
                                     <constraint firstItem="JMg-SC-J23" firstAttribute="leading" secondItem="0m4-QX-mPG" secondAttribute="leading" constant="8" id="wbI-6z-aL6"/>
                                 </constraints>
@@ -116,6 +123,7 @@
                         <outlet property="collectionView" destination="XjD-uC-QOe" id="0tD-Tz-3DU"/>
                         <outlet property="cropContentViewConstraintTop" destination="cBn-Qw-Eiq" id="HGo-aB-yyo"/>
                         <outlet property="cropView" destination="i5j-37-gks" id="hJe-T9-V9W"/>
+                        <outlet property="dimView" destination="OXC-cy-F0F" id="2ix-Mh-XpT"/>
                         <outlet property="flowLayout" destination="3pq-Zb-UFb" id="5HG-RM-qFE"/>
                     </connections>
                 </viewController>
