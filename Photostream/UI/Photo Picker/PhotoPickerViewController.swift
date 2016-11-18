@@ -36,6 +36,10 @@ class PhotoPickerViewController: UIViewController {
         
         addObserver(self, forKeyPath: "cropContentViewConstraintTop.constant", options: .new, context: nil)
         
+        guard selectedIndex < 0 else {
+            return
+        }
+        
         collectionView.contentInset.top = cropView.height + 2
         collectionView.scrollIndicatorInsets.top = cropView.height + 2
         flowLayout.configure(with: collectionView.width, columnCount: 4, columnSpacing: 0.5, rowSpacing: 2)
