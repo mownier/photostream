@@ -26,21 +26,23 @@ extension PhotoPickerViewController {
 
 extension PhotoPickerViewController {
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        scrollHandler.offsetY = scrollView.contentOffset.y
-    }
-    
     func scrollViewDidScroll(_ view: UIScrollView) {
-        if scrollHandler.isScrollable {
-            if scrollHandler.isScrollingDown {
-                didScrollDown(with: abs(scrollHandler.offsetDelta))
-            } else {
-                if view.contentOffset.y < -(48 + 2) {
-                    didScrollUp(with: abs(scrollHandler.offsetDelta))
-                }
-            }
-            scrollHandler.update()
+        guard scrollHandler.isScrollable else {
+            return
         }
+        
+        if !dimView.isHidden {
+            dimView.alpha = min(scrollHandler.percentageOffsetY, 0.5)
+        }
+        
+        if scrollHandler.isScrollingDown {
+            didScrollDown(with: abs(scrollHandler.offsetDelta))
+        } else {
+            if view.contentOffset.y < -(48 + 2) {
+                didScrollUp(with: abs(scrollHandler.offsetDelta))
+            }
+        }
+        scrollHandler.update()
     }
     
     func didScrollUp(with delta: CGFloat) {
