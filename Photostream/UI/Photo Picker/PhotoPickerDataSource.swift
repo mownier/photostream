@@ -17,14 +17,20 @@ extension PhotoPickerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = PhotoGridCell.dequeue(from: collectionView, for: indexPath)
-        presenter.fetchThumbnail(at: indexPath.row, size: cellImageTargetSize) { (image) in
-            cell.thumbnailImageView.image = image
-        }
+        configure(with: cell, at: indexPath.row)
+        
         return cell
     }
 }
 
 extension PhotoPickerViewController {
+    
+    func configure(with cell: PhotoGridCell, at index: Int) {
+        cell.isSelected = selectedIndex >= 0 && selectedIndex == index
+        presenter.fetchThumbnail(at: index, size: cellImageTargetSize) { (image) in
+            cell.thumbnailImageView.image = image
+        }
+    }
     
     var cellImageTargetSize: CGSize {
         let scale = UIScreen.main.scale

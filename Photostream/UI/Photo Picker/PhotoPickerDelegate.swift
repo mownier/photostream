@@ -11,7 +11,8 @@ import UIKit
 extension PhotoPickerViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.willShowSelectedPhoto(at: indexPath.row, size: selectedPhotoSize)
+        selectedIndex = indexPath.row
+        presenter.willShowSelectedPhoto(at: selectedIndex, size: selectedPhotoSize)
     }
 }
 

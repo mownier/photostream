@@ -13,11 +13,19 @@ let kPhotoGridCellReuseId = "PhotoGridCell"
 class PhotoGridCell: UICollectionViewCell {
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var whiteView: UIView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         thumbnailImageView.image = nil
+        isSelected = false
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            whiteView.isHidden = !isSelected
+        }
     }
 }
 

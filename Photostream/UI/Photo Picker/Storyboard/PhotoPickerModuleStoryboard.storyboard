@@ -36,16 +36,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Pt-7K-XB3" userLabel="Thumbnail Image View"/>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJz-hn-8R0" userLabel="White View">
+                                                    <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="cJz-hn-8R0" firstAttribute="top" secondItem="SEv-Iw-w6i" secondAttribute="top" id="5v3-fU-17R"/>
+                                            <constraint firstAttribute="trailing" secondItem="cJz-hn-8R0" secondAttribute="trailing" id="BXe-D2-7TX"/>
                                             <constraint firstAttribute="trailing" secondItem="5Pt-7K-XB3" secondAttribute="trailing" id="GTb-zN-F4o"/>
                                             <constraint firstAttribute="bottom" secondItem="5Pt-7K-XB3" secondAttribute="bottom" id="I3P-gV-RK1"/>
+                                            <constraint firstItem="cJz-hn-8R0" firstAttribute="leading" secondItem="SEv-Iw-w6i" secondAttribute="leading" id="KdU-Ql-Rt3"/>
                                             <constraint firstItem="5Pt-7K-XB3" firstAttribute="leading" secondItem="SEv-Iw-w6i" secondAttribute="leading" id="hcs-A2-GyJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="cJz-hn-8R0" secondAttribute="bottom" id="mgM-jr-VEf"/>
                                             <constraint firstItem="5Pt-7K-XB3" firstAttribute="top" secondItem="SEv-Iw-w6i" secondAttribute="top" id="wbP-BQ-jnF"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="thumbnailImageView" destination="5Pt-7K-XB3" id="FoK-jW-45G"/>
+                                            <outlet property="whiteView" destination="cJz-hn-8R0" id="RFr-RA-Vfa"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -20,6 +20,7 @@ class PhotoPickerViewController: UIViewController {
     lazy var scrollHandler = ScrollHandler()
     
     var presenter: PhotoPickerModuleInterface!
+    var selectedIndex: Int = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +101,7 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
         if presenter.photoCount > 0 {
             let indexPath = IndexPath(row: 0, section: 0)
             collectionView(collectionView, didSelectItemAt: indexPath)
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
         }
     }
     
