@@ -99,7 +99,7 @@ struct PostServiceProvider: PostService {
         })
     }
 
-    func writePost(imageUrl: String, callback: ((PostServiceResult) -> Void)?) {
+    func writePost(imageUrl: String, content: String, callback: ((PostServiceResult) -> Void)?) {
         var result = PostServiceResult()
         guard session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found.")
@@ -114,7 +114,8 @@ struct PostServiceProvider: PostService {
             "id": key as AnyObject,
             "uid": userId as AnyObject,
             "imageUrl": imageUrl as AnyObject,
-            "timestamp": FIRServerValue.timestamp() as AnyObject
+            "timestamp": FIRServerValue.timestamp() as AnyObject,
+            "message": content as AnyObject
         ]
         let path1 = "posts/\(key)"
         let path2 = "users/\(userId)/\(path1)"
