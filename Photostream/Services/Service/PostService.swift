@@ -14,7 +14,7 @@ protocol PostService {
     
     func fetchPostInfo(id: String, callback: ((PostServiceResult) -> Void)?)
     func fetchPosts(userId: String, offset: UInt, limit: UInt, callback: ((PostServiceResult) -> Void)?)
-    func writePost(imageUrl: String, content: String, callback: ((PostServiceResult) -> Void)?)
+    func writePost(photoId: String, content: String, callback: ((PostServiceResult) -> Void)?)
     
     func fetchLikes(id: String, offset: UInt, limit: UInt, callback: ((PostServiceLikeResult) -> Void)?)
     func like(id: String, callback: ((PostServiceError?) -> Void)?)

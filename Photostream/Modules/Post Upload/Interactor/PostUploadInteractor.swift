@@ -32,13 +32,13 @@ extension PostUploadInteractor: PostUploadInteractorInput {
             self.output?.didUpdate(with: progress!)
             
         }) { (result) in
-            guard let url = result.fileUrl, result.error == nil else {
+            guard let fileId = result.fileId, result.error == nil else {
                 self.output?.didFail(with: result.error!.message)
                 return
             }
             
             // Write details of the post
-            self.postService.writePost(imageUrl: url, content: content, callback: { (result) in
+            self.postService.writePost(photoId: fileId, content: content, callback: { (result) in
                 guard result.error == nil else {
                     self.output?.didFail(with: result.error!.message)
                     return

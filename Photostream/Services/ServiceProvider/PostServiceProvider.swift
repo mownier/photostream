@@ -99,7 +99,7 @@ struct PostServiceProvider: PostService {
         })
     }
 
-    func writePost(imageUrl: String, content: String, callback: ((PostServiceResult) -> Void)?) {
+    func writePost(photoId: String, content: String, callback: ((PostServiceResult) -> Void)?) {
         var result = PostServiceResult()
         guard session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found.")
@@ -113,14 +113,15 @@ struct PostServiceProvider: PostService {
         let data: [String: AnyObject] = [
             "id": key as AnyObject,
             "uid": userId as AnyObject,
-            "imageUrl": imageUrl as AnyObject,
             "timestamp": FIRServerValue.timestamp() as AnyObject,
-            "message": content as AnyObject
+            "message": content as AnyObject,
+            "photo_id": photoId as AnyObject,
+            "likes_count": 0 as AnyObject
         ]
         let path1 = "posts/\(key)"
-        let path2 = "users/\(userId)/\(path1)"
-        let path3 = "users/\(userId)/feed/\(key)"
-        let path4 = "users/\(userId)/profile/posts_count"
+        let path2 = "user-post/\(userId)/posts/\(key)"
+        let path3 = "user-feed/\(userId)/posts/\(key)"
+        let path4 = "user-profile/\(userId)/posts_count"
         let updates: [String: AnyObject] = [path1: data as AnyObject, path2: true as AnyObject, path3: true as AnyObject]
 
         ref.child(path4).runTransactionBlock({ (data) -> FIRTransactionResult in
