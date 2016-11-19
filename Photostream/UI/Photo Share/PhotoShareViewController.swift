@@ -39,25 +39,9 @@ class PhotoShareViewController: UIViewController {
         presenter.finish(with: image, content:message)
  
         // Upload photo
-        let session = AuthSession()
-        let service = FileServiceProvider(session: session)
-        var uploadData = FileServiceImageUploadData()
-        uploadData.data = UIImageJPEGRepresentation(image, 1.0)!
-        uploadData.width = Float(image.size.width)
-        uploadData.height = Float(image.size.height)
-        let uploadView = PhotoUploadView()
-        uploadView.frame = CGRect(x: 0, y: 0, width: view.width, height: 44 + (4 * 2))
-        view.addSubview(uploadView)
-        uploadView.imageView.image = image
-        service.uploadJPEGImage(data: uploadData, track: { (progress) in
-            guard let fractionCompletd = progress?.fractionCompleted else {
-                return
-            }
-            
-            uploadView.progressView.setProgress(Float(fractionCompletd), animated: true)
-        }) { (result) in
-            print(result)
-        }
+        upload()
+        
+
     }
 }
 
@@ -65,6 +49,69 @@ extension PhotoShareViewController: PhotoShareViewInterface {
     
     var controller: UIViewController? {
         return self
+    }
+    
+    func upload() {
+        let content = contentTextView.text!
+        
+        var data = FileServiceImageUploadData()
+        data.data = UIImageJPEGRepresentation(image, 1.0)!
+        data.width = Float(image.size.width)
+        data.height = Float(image.size.height)
+        
+        let uploadView = PhotoUploadView()
+        uploadView.frame = CGRect(x: 0, y: 0, width: view.width, height: 44 + (4 * 2))
+        view.addSubview(uploadView)
+        uploadView.imageView.image = image
+        
+        let auth = AuthSession()
+        let fileService = FileServiceProvider(session: auth)
+        let postService = PostServiceProvider(session: auth)
+        
+        // Upload first the photo
+        fileService.uploadJPEGImage(data: data, track: { (progress) in
+            guard progress != nil else {
+                return
+            }
+            
+            let value = Float(progress!.fractionCompleted)
+            uploadView.progressView.setProgress(value, animated: true)
+            
+        }) { (result) in
+            guard let fileId = result.fileId, result.error == nil else {
+                self.didFail(with: result.error!.message)
+                return
+            }
+            
+            // Write details of the post
+            postService.writePost(photoId: fileId, content: content, callback: { (result) in
+                guard result.error == nil else {
+                    self.didFail(with: result.error!.message)
+                    return
+                }
+                
+                guard let posts = result.posts,
+                    posts.count > 0,
+                    let (post, user) = posts[0] else {
+                        self.didFail(with: "New post not found.")
+                        return
+                }
+                
+                self.didSucceed(with: post, and: user)
+            })
+        }
+    }
+    
+    func didFail(with message: String) {
+        print("Write post did fail:", message)
+        presenter.dismiss()
+    }
+    
+    func didSucceed(with post: Post, and user: User) {
+        print("Write post did succeed.")
+        print("post:", post)
+        print("user:", user)
+        presenter.dismiss()
     }
 }
 
