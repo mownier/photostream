@@ -15,8 +15,11 @@ protocol PhotoShareWireframeInterface: class {
     init(root: RootWireframeInterface?, view: PhotoShareViewInterface)
     
     func attachRoot(with controller: UIViewController, in window: UIWindow)
+    
     func push(with controller: UIViewController?, from navigationController: UINavigationController?, animated: Bool)
     func pop(from navigationController: UINavigationController?, animated: Bool)
+    
+    func dismiss(with controller: UIViewController?, animated: Bool, completion: (() -> Void)?)
 }
 
 extension PhotoShareWireframeInterface {
@@ -27,5 +30,9 @@ extension PhotoShareWireframeInterface {
     
     func pop(from navigationController: UINavigationController?) {
         pop(from: navigationController, animated: true)
+    }
+    
+    func dismiss(with controller: UIViewController) {
+        dismiss(with: controller, animated: true, completion: nil)
     }
 }

@@ -28,4 +28,8 @@ extension PhotoSharePresenter: PhotoShareModuleInterface {
     func pop(animated: Bool) {
         wireframe.pop(from: view.controller?.navigationController, animated: animated)
     }
+    
+    func dismiss(animated: Bool, completion: (() -> Void)?) {
+        wireframe.dismiss(with: view.controller, animated: animated, completion: completion)
+    }
 }

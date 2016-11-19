@@ -14,11 +14,16 @@ protocol PhotoShareModuleInterface: class {
     func finish(with image: UIImage, content: String)
     
     func pop(animated: Bool)
+    func dismiss(animated: Bool, completion: (() -> Void)?)
 }
 
 extension PhotoShareModuleInterface {
     
     func pop() {
         pop(animated: true)
+    }
+    
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
     }
 }
