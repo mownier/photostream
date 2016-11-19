@@ -35,7 +35,7 @@ struct FileServiceProvider: FileService {
         
         let userId = session.user.id
         let storageRef = FIRStorage.storage().reference()
-        let key = Int(Date.timeIntervalSinceReferenceDate * 1000)
+        let key = Date.timeIntervalSinceReferenceDate * 1000
         let imagePath = "\(userId)/posts/\(key).jpg"
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/jpeg"
