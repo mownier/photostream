@@ -10,6 +10,9 @@ import UIKit
 
 protocol PhotoShareModuleInterface: class {
 
+    func cancel()
+    func finish(with image: UIImage, content: String)
+    
     func pop(animated: Bool)
 }
 
