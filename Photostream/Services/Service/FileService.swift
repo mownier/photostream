@@ -12,13 +12,21 @@ protocol FileService {
 
     init(session: AuthSession)
     
-    func uploadJPEGImage(data: FileServiceUploadData, width: Float, height: Float, callback: ((FileServiceResult) -> Void)?)
+    func uploadJPEGImage(data: FileServiceImageUploadData, track: ((Progress?) -> Void)?, callback: ((FileServiceResult) -> Void)?)
 }
 
-struct FileServiceUploadData {
+protocol FileServiceUploadData {
     
-    var id: String = ""
+    var id: String? { set get }
+    var data: Data? { set get }
+}
+
+struct FileServiceImageUploadData: FileServiceUploadData {
+    
+    var id: String?
     var data: Data?
+    var width: Float = 0
+    var height: Float = 0
 }
 
 struct FileServiceResult {
