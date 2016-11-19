@@ -18,7 +18,7 @@ struct FileServiceProvider: FileService {
         self.session = session
     }
     
-    func uploadJPEGImage(data: FileServiceUploadData, width: Float, height: Float, callback: ((FileServiceResult) -> Void)?) {
+    func uploadJPEGImage(data: FileServiceImageUploadData, track: ((Progress?) -> Void)?, callback: ((FileServiceResult) -> Void)?) {
         var result = FileServiceResult()
         result.uploadId = data.id
         guard session.isValid else {
@@ -40,8 +40,8 @@ struct FileServiceProvider: FileService {
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        storageRef.child(imagePath).put(imageData, metadata: metadata, completion: { (metadata, error) in
-            guard error != nil else {
+        let task = storageRef.child(imagePath).put(imageData, metadata: metadata, completion: { (metadata, error) in
+            guard error == nil else {
                 result.error = .failedToUpload(message: "Failed upload JPEG image.")
                 callback?(result)
                 return
@@ -60,13 +60,21 @@ struct FileServiceProvider: FileService {
                 "id": key as AnyObject,
                 "uid": userId as AnyObject,
                 "url": imageUrl as AnyObject,
-                "height": height as AnyObject,
-                "width": width as AnyObject ]
+                "height": data.height as AnyObject,
+                "width": data.width as AnyObject ]
             databaseRef.child(path).setValue(data)
             
             result.fileId = key
             result.fileUrl = imageUrl
             callback?(result)
         })
+        
+        guard track != nil else {
+            return
+        }
+        
+        task.observe(.progress) { (snapshot) in
+            track!(snapshot.progress)
+        }
     }
 }
