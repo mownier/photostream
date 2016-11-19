@@ -10,11 +10,20 @@ import UIKit
 
 class PhotoSharePresenter: PhotoSharePresenterInterface {
 
+    weak var moduleDelegate: PhotoShareModuleDelegate?
     weak var view: PhotoShareViewInterface!
     var wireframe: PhotoShareWireframeInterface!
 }
 
 extension PhotoSharePresenter: PhotoShareModuleInterface {
+    
+    func cancel() {
+        moduleDelegate?.photoShareDidCancel()
+    }
+    
+    func finish(with image: UIImage, content: String) {
+        moduleDelegate?.photoShareDidFinish(with: image, content: content)
+    }
     
     func pop(animated: Bool) {
         wireframe.pop(from: view.controller?.navigationController, animated: animated)
