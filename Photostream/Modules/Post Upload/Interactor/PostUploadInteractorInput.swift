@@ -11,5 +11,4 @@ import Foundation
 protocol PostUploadInteractorInput: class {
 
     func upload(with data: FileServiceImageUploadData, content: String)
-    func cancel()
 }

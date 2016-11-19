@@ -55,8 +55,4 @@ extension PostUploadInteractor: PostUploadInteractorInput {
             })
         }
     }
-    
-    func cancel() {
-        
-    }
 }

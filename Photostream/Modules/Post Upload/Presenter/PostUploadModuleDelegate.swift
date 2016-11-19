@@ -10,7 +10,6 @@ import Foundation
 
 protocol PostUploadModuleDelegate: class {
 
-    func postUploadDidCancel()
     func postUploadDidRetry()
     func postUploadDidFail()
     func postUploadDidSucceed()

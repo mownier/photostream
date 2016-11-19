@@ -20,10 +20,6 @@ class PostUploadPresenter: PostUploadPresenterInterface {
 
 extension PostUploadPresenter: PostUploadModuleInterface {
     
-    func cancel() {
-        
-    }
-    
     func upload() {
     
     }

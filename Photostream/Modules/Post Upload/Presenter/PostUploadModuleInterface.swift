@@ -10,6 +10,5 @@ import Foundation
 
 protocol PostUploadModuleInterface: class {
 
-    func cancel()
     func upload()
 }
