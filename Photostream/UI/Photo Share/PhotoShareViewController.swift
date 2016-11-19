@@ -11,7 +11,7 @@ import UIKit
 class PhotoShareViewController: UIViewController {
 
     var presenter: PhotoShareModuleInterface!
-    var image: UIImage?
+    var image: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,13 @@ class PhotoShareViewController: UIViewController {
     }
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
+        presenter.cancel()
         presenter.pop()
     }
     
     @IBAction func didTapDone(_ sender: AnyObject) {
-        
+        presenter.finish(with: image, content: "Hello world")
+        presenter.dismiss()
     }
 }
 
