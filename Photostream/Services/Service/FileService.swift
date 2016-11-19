@@ -43,7 +43,7 @@ enum FileServiceError: Error {
     case failedToUpload(message: String)
     case noDataToUpload(message: String)
     
-    var messsage: String {
+    var message: String {
         switch self {
         case .authenticationNotFound(let message),
              .failedToUpload(let message),
