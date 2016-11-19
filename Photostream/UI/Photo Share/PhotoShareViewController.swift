@@ -9,6 +9,9 @@
 import UIKit
 
 class PhotoShareViewController: UIViewController {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var contentTextView: UITextView!
 
     var presenter: PhotoShareModuleInterface!
     var image: UIImage!
@@ -16,7 +19,7 @@ class PhotoShareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        imageView.image = image
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -29,7 +32,11 @@ class PhotoShareViewController: UIViewController {
     }
     
     @IBAction func didTapDone(_ sender: AnyObject) {
-        presenter.finish(with: image, content: "Hello world")
+        guard let message = contentTextView.text, !message.isEmpty else {
+            return
+        }
+        
+        presenter.finish(with: image, content:message)
         presenter.dismiss()
     }
 }

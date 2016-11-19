@@ -17,7 +17,31 @@
                     <view key="view" contentMode="scaleToFill" id="RCR-ZR-a7n">
                         <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Nn-Uh-OlN">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="cK5-aU-6nD"/>
+                                    <constraint firstAttribute="width" constant="64" id="khJ-yw-0tg"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Awesome photo!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="u34-Yd-ffM" userLabel="Content Text View">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="g0s-54-31l"/>
+                                </constraints>
+                                <color key="textColor" red="0.039215686274509803" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u34-Yd-ffM" firstAttribute="top" secondItem="2Nn-Uh-OlN" secondAttribute="top" id="GoQ-UJ-NsB"/>
+                            <constraint firstAttribute="trailing" secondItem="u34-Yd-ffM" secondAttribute="trailing" constant="4" id="JA5-0i-yaE"/>
+                            <constraint firstItem="2Nn-Uh-OlN" firstAttribute="top" secondItem="Mgg-eu-MCP" secondAttribute="bottom" constant="8" id="hGx-1c-gMZ"/>
+                            <constraint firstItem="u34-Yd-ffM" firstAttribute="leading" secondItem="2Nn-Uh-OlN" secondAttribute="trailing" id="sPS-Sr-QC6"/>
+                            <constraint firstItem="2Nn-Uh-OlN" firstAttribute="leading" secondItem="RCR-ZR-a7n" secondAttribute="leading" constant="4" id="x9y-Pm-uMC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo Share" id="PNq-Cr-Tt6">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="whs-7b-2mL">
@@ -31,10 +55,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentTextView" destination="u34-Yd-ffM" id="N1j-uv-yIC"/>
+                        <outlet property="imageView" destination="2Nn-Uh-OlN" id="tuz-cx-Jgc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gso-n5-EoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="439.19999999999999" y="143.47826086956522"/>
+            <point key="canvasLocation" x="438.75" y="142.6056338028169"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xcr-At-fwn">
