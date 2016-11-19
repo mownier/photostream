@@ -26,6 +26,7 @@ class PostUploadWireframe: PostUploadWireframeInterface {
         
         presenter.view = view
         presenter.interactor = interactor
+        presenter.moduleDelegate = delegate
         presenter.wireframe = self
     }
 }
