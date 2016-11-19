@@ -12,4 +12,5 @@ protocol PhotoSharePresenterInterface: class {
 
     var view: PhotoShareViewInterface! { set get }
     var wireframe: PhotoShareWireframeInterface! { set get }
+    var moduleDelegate: PhotoShareModuleDelegate? { set get }
 }
