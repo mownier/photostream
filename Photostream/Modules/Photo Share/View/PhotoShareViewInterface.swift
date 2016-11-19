@@ -12,5 +12,5 @@ protocol PhotoShareViewInterface: class {
     
     var controller: UIViewController? { get }
     var presenter: PhotoShareModuleInterface! { set get }
-    var image: UIImage? { set get }
+    var image: UIImage! { set get }
 }
