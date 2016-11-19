@@ -10,9 +10,9 @@ It is necessary that you have to provide your own `GoogleService-Info.plist`. Af
 
 - [X] Login
 - [X] Registration
-- [ ] Home
+- [X] Home
+- [X] Write Post
+- [X] News Feed
 - [ ] User Profile
-- [ ] News Feed
-- [ ] Write Post
 - [ ] Comments
 - [ ] Write Comment
