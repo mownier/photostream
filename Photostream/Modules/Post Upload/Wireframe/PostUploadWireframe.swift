@@ -14,5 +14,18 @@ class PostUploadWireframe: PostUploadWireframeInterface {
     
     required init(root: RootWireframeInterface?, delegate: PostUploadModuleDelegate?, view: PostUploadViewInterface) {
         self.root = root
+        
+        let auth = AuthSession()
+        let fileService = FileServiceProvider(session: auth)
+        let postService = PostServiceProvider(session: auth)
+        let interactor = PostUploadInteractor(fileService: fileService, postService: postService)
+        let presenter = PostUploadPresenter()
+        
+        interactor.output = presenter
+        view.presenter = presenter
+        
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.wireframe = self
     }
 }

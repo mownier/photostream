@@ -10,6 +10,7 @@ import UIKit
 
 protocol PostUploadPresenterInterface: class {
 
+    var interactor: PostUploadInteractorInput! { set get }
     var view: PostUploadViewInterface! { set get }
     var wireframe: PostUploadWireframeInterface! { set get }
     var moduleDelegate: PostUploadModuleDelegate? { set get }

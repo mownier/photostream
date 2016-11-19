@@ -13,6 +13,7 @@ class PostUploadPresenter: PostUploadPresenterInterface {
     weak var moduleDelegate: PostUploadModuleDelegate?
     weak var view: PostUploadViewInterface!
     var wireframe: PostUploadWireframeInterface!
+    var interactor: PostUploadInteractorInput!
     
     var image: UIImage!
     var content: String!
@@ -22,5 +23,20 @@ extension PostUploadPresenter: PostUploadModuleInterface {
     
     func upload() {
     
+    }
+}
+
+extension PostUploadPresenter: PostUploadInteractorOutput {
+    
+    func didFail(with message: String) {
+        
+    }
+    
+    func didSucceed(with post: Post, and user: User) {
+        
+    }
+    
+    func didUpdate(with progress: Progress) {
+        
     }
 }
