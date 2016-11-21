@@ -21,7 +21,7 @@ class PhotoPickerViewController: UIViewController {
     
     var presenter: PhotoPickerModuleInterface!
     var selectedIndex: Int = -1
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,9 +40,9 @@ class PhotoPickerViewController: UIViewController {
             return
         }
         
-        collectionView.contentInset.top = cropView.height + 2
-        collectionView.scrollIndicatorInsets.top = cropView.height + 2
-        flowLayout.configure(with: collectionView.width, columnCount: 4, columnSpacing: 0.5, rowSpacing: 2)
+        collectionView.contentInset.top = view.width + 2
+        collectionView.scrollIndicatorInsets.top = view.width + 2
+        flowLayout.configure(with: view.width, columnCount: 4, columnSpacing: 0.5, rowSpacing: 2)
 
         presenter.fetchPhotos()
     }
