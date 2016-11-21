@@ -6,49 +6,124 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Write Post-->
-        <scene sceneID="AX6-rW-fF0">
+        <!--Photo Picker-->
+        <scene sceneID="q5x-8P-VWo">
             <objects>
-                <viewController storyboardIdentifier="PostComposerViewController" id="z0g-EN-hMU" customClass="PostComposerViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostComposerViewController" id="Aff-ne-iH3" customClass="PostComposerViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yaO-dk-uEg"/>
-                        <viewControllerLayoutGuide type="bottom" id="b6V-cm-bUH"/>
+                        <viewControllerLayoutGuide type="top" id="vkD-H8-3xL"/>
+                        <viewControllerLayoutGuide type="bottom" id="HpR-Wz-TId"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Rrr-Sw-V2b">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <view key="view" contentMode="scaleToFill" id="c5S-hZ-bMK">
+                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dQ-qW-osz">
+                                <connections>
+                                    <segue destination="h6P-GM-zgq" kind="embed" id="Xhf-GN-Huc"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBf-Jk-gVl">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Ztp-xK-ZSz"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="LIBRARY">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title="LIBRARY">
+                                    <color key="titleColor" red="0.039215686270000001" green="0.039215686270000001" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapLibrary" destination="Aff-ne-iH3" eventType="touchUpInside" id="tzA-dx-sYL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9b-yc-ZUn">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="QJv-RK-VMH"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="CAMERA">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title="CAMERA">
+                                    <color key="titleColor" red="0.039215686270000001" green="0.039215686270000001" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapCamera" destination="Aff-ne-iH3" eventType="touchUpInside" id="ROC-2Y-KG3"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4B-Zz-LRK" userLabel="Strip View">
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="28t-aC-8t8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="n9b-yc-ZUn" firstAttribute="leading" secondItem="RBf-Jk-gVl" secondAttribute="trailing" id="2jC-b8-nTj"/>
+                            <constraint firstItem="n9b-yc-ZUn" firstAttribute="leading" secondItem="RBf-Jk-gVl" secondAttribute="trailing" id="7aS-Jt-FoD"/>
+                            <constraint firstAttribute="trailing" secondItem="n9b-yc-ZUn" secondAttribute="trailing" id="B1F-LE-5Ah"/>
+                            <constraint firstItem="HpR-Wz-TId" firstAttribute="top" secondItem="n9b-yc-ZUn" secondAttribute="bottom" id="C9i-Sw-DZO"/>
+                            <constraint firstItem="2dQ-qW-osz" firstAttribute="leading" secondItem="c5S-hZ-bMK" secondAttribute="leading" id="DL2-Mv-k9u"/>
+                            <constraint firstAttribute="trailing" secondItem="P4B-Zz-LRK" secondAttribute="trailing" constant="4" id="PsE-Cg-Z0p"/>
+                            <constraint firstItem="HpR-Wz-TId" firstAttribute="top" secondItem="P4B-Zz-LRK" secondAttribute="bottom" constant="43" id="SKL-Qp-hBx"/>
+                            <constraint firstItem="2dQ-qW-osz" firstAttribute="top" secondItem="vkD-H8-3xL" secondAttribute="bottom" id="VFg-mZ-8Xg"/>
+                            <constraint firstItem="n9b-yc-ZUn" firstAttribute="width" secondItem="RBf-Jk-gVl" secondAttribute="width" id="cnb-wj-wDE"/>
+                            <constraint firstAttribute="trailing" secondItem="2dQ-qW-osz" secondAttribute="trailing" id="pHX-cQ-Ib8"/>
+                            <constraint firstItem="HpR-Wz-TId" firstAttribute="top" secondItem="RBf-Jk-gVl" secondAttribute="bottom" id="rDe-cp-Wp6"/>
+                            <constraint firstItem="HpR-Wz-TId" firstAttribute="top" secondItem="2dQ-qW-osz" secondAttribute="bottom" constant="44" id="tG3-UO-O71"/>
+                            <constraint firstItem="RBf-Jk-gVl" firstAttribute="leading" secondItem="c5S-hZ-bMK" secondAttribute="leading" id="v4e-aK-kSr"/>
+                            <constraint firstItem="P4B-Zz-LRK" firstAttribute="leading" secondItem="c5S-hZ-bMK" secondAttribute="leading" constant="4" id="vtu-Vu-d9L"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Write Post" id="xig-ei-NBC">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="0gl-3c-sWk">
+                    <navigationItem key="navigationItem" title="Photo Picker" id="kM9-AJ-Xpk">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="BbJ-ya-a4W">
                             <connections>
-                                <action selector="didCancelWriting:" destination="z0g-EN-hMU" id="zIX-N6-MlY"/>
+                                <action selector="didTapCancel:" destination="Aff-ne-iH3" id="hnz-N8-dHb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="pr8-Ge-zQB">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="inM-Up-Ghl">
                             <connections>
-                                <action selector="didFinishWriting:" destination="z0g-EN-hMU" id="i6a-8s-r3D"/>
+                                <action selector="didTapNext:" destination="Aff-ne-iH3" id="Ub6-Zx-sGk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cameraButton" destination="n9b-yc-ZUn" id="T9F-dp-oy6"/>
+                        <outlet property="libraryButton" destination="RBf-Jk-gVl" id="QBu-W9-tuu"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ggC-U2-2Za" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="92Q-cr-IKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1136.8" y="80.50974512743629"/>
+            <point key="canvasLocation" x="1055.625" y="78.16901408450704"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="cIL-U9-gBX">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="h6P-GM-zgq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gs2-gY-eQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1926" y="78"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="L2B-RX-qzN">
             <objects>
                 <navigationController storyboardIdentifier="PostComposerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="WTo-Ud-VFo" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="O9f-0r-ePm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.039215686270000001" green="0.039215686270000001" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.039215686270000001" green="0.039215686270000001" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="z0g-EN-hMU" kind="relationship" relationship="rootViewController" id="yMs-hL-rz0"/>
+                        <segue destination="Aff-ne-iH3" kind="relationship" relationship="rootViewController" id="ucP-yR-Ejl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dx4-5z-vDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
