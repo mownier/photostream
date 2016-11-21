@@ -12,4 +12,6 @@ protocol PostComposerViewInterface: class {
 
     var controller: UIViewController? { get }
     var presenter: PostComposerModuleInterface! { set get }
+    
+    func setupDependency(with controllers: [UIViewController])
 }
