@@ -208,6 +208,7 @@
 		B9DEB2671DDEE18300C47C37 /* PhotoShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2661DDEE18300C47C37 /* PhotoShareViewController.swift */; };
 		B9DEB2691DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */; };
 		B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */; };
+		B9FCB9661DE408DC00D8F2B5 /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,6 +432,7 @@
 		B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoShareModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
+		B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1389,6 +1391,7 @@
 				B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */,
 				B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */,
 				B92B96FA1DDADAA700D89025 /* UICollectionViewFlowLayout+Extension.swift */,
+				B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1837,6 +1840,7 @@
 				B9C217FC1DCC40F900F617FC /* PostGridCellDataSource.swift in Sources */,
 				B9C217C61DCC40F900F617FC /* RegistrationPresenterInterface.swift in Sources */,
 				B9C2179F1DCC40F900F617FC /* UserProfileExtension.swift in Sources */,
+				B9FCB9661DE408DC00D8F2B5 /* UIPageViewController+Extension.swift in Sources */,
 				B9DEB25F1DDEDE4400C47C37 /* PhotoShareWireframeInterface.swift in Sources */,
 				B954EE471DE0013400A0049D /* PhotoShareModuleDelegate.swift in Sources */,
 				B9C217E21DCC40F900F617FC /* FileServiceProvider.swift in Sources */,
