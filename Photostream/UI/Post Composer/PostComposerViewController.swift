@@ -71,6 +71,9 @@ extension PostComposerViewController: PostComposerViewInterface {
         cameraButton.isSelected = false
         title = "Photo Picker"
         
+        let rightBarItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(self.didTapNext(_:)))
+        navigationItem.rightBarButtonItem = rightBarItem
+                    
         pageViewController?.setViewControllers([pages[0]], direction: .reverse, animated: true, completion: nil)
     }
     
@@ -78,6 +81,8 @@ extension PostComposerViewController: PostComposerViewInterface {
         libraryButton.isSelected = false
         cameraButton.isSelected = true
         title = "Photo Capture"
+        
+        navigationItem.rightBarButtonItem = nil
         
         pageViewController?.setViewControllers([pages[1]], direction: .forward, animated: true, completion: nil)
     }
