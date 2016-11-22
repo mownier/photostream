@@ -9,7 +9,10 @@
 import Foundation
 
 protocol PostComposerModuleInterface: class {
-
+    
     func cancelWriting()
     func doneWriting()
+    
+    func willShowCamera()
+    func willShowLibrary()
 }
