@@ -42,7 +42,6 @@ class PhotoCaptureViewController: UIViewController {
     
     @IBAction func didTapCapture() {
         presenter.capture()
-        dismiss(animated: true, completion: nil)
     }
 }
 
