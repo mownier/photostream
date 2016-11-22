@@ -209,6 +209,8 @@
 		B9DEB2691DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */; };
 		B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */; };
 		B9FCB9661DE408DC00D8F2B5 /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */; };
+		B9FCB9681DE4176B00D8F2B5 /* PostComposerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9671DE4176B00D8F2B5 /* PostComposerViewDelegate.swift */; };
+		B9FCB96A1DE4179400D8F2B5 /* PostComposerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9691DE4179400D8F2B5 /* PostComposerViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -433,6 +435,8 @@
 		B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
 		B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
+		B9FCB9671DE4176B00D8F2B5 /* PostComposerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewDelegate.swift; sourceTree = "<group>"; };
+		B9FCB9691DE4179400D8F2B5 /* PostComposerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewDataSource.swift; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -506,6 +510,8 @@
 			isa = PBXGroup;
 			children = (
 				B909204E1DD303DD0073FB72 /* PostComposerViewController.swift */,
+				B9FCB9691DE4179400D8F2B5 /* PostComposerViewDataSource.swift */,
+				B9FCB9671DE4176B00D8F2B5 /* PostComposerViewDelegate.swift */,
 				B909204D1DD303BD0073FB72 /* Storyboard */,
 			);
 			path = "Post Composer";
@@ -1897,11 +1903,13 @@
 				B9DEB2631DDEE12000C47C37 /* PhotoShareModuleExtension.swift in Sources */,
 				B9C217B21DCC40F900F617FC /* NewsFeedData.swift in Sources */,
 				B9C2179C1DCC40F900F617FC /* LoginModuleExtension.swift in Sources */,
+				B9FCB96A1DE4179400D8F2B5 /* PostComposerViewDataSource.swift in Sources */,
 				B9C217F61DCC40F900F617FC /* PostCellItem.swift in Sources */,
 				B9C217FD1DCC40F900F617FC /* PostGridCellDelegate.swift in Sources */,
 				B9C218041DCC40F900F617FC /* PostListCell.swift in Sources */,
 				B9C217DE1DCC40F900F617FC /* PostService.swift in Sources */,
 				B9C217F41DCC40F900F617FC /* PostCellDelegate.swift in Sources */,
+				B9FCB9681DE4176B00D8F2B5 /* PostComposerViewDelegate.swift in Sources */,
 				B92B96F91DDAD8DB00D89025 /* CropView.swift in Sources */,
 				B921B53B1DD58B440065C187 /* PhotoPickerPresenterInterface.swift in Sources */,
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
