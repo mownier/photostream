@@ -31,10 +31,14 @@ class PhotoPickerViewController: UIViewController {
         dimView.addGestureRecognizer(tap)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         addObserver(self, forKeyPath: "cropContentViewConstraintTop.constant", options: .new, context: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         guard selectedIndex < 0 else {
             return
@@ -47,10 +51,10 @@ class PhotoPickerViewController: UIViewController {
         presenter.fetchPhotos()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        removeObserver(self, forKeyPath: "cropContentViewConstraintTop.constant")
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        super.viewDidDisappear(animated)
+        removeObserver(self, forKeyPath: "cropContentViewConstraintTop.constant")
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
