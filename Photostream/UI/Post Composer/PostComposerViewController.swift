@@ -43,7 +43,7 @@ class PostComposerViewController: UIViewController {
     }
     
     @IBAction func didTapNext(_ sender: AnyObject) {
-        
+        (presenter as? PostComposerPresenter)?.presentPhotoShare()
     }
     
     @IBAction func didTapLibrary() {
