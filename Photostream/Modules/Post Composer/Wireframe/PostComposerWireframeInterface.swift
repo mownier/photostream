@@ -12,11 +12,11 @@ protocol PostComposerWireframeInterface: class {
 
     var root: RootWireframeInterface? { set get }
     
-    init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface)
+    init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface, dependencyConfig: ((PostComposerPresenterInterface) -> Void)?)
     
     func attachRoot(with controller: UIViewController, in window: UIWindow)
     
     func present(with controller: UIViewController?, from: UIViewController?, animated: Bool, completion: (() -> Void)?)
     
-     func dismiss(with controller: UIViewController?, animated: Bool, completion: (() -> Void)?)
+    func dismiss(with controller: UIViewController?, animated: Bool, completion: (() -> Void)?)
 }
