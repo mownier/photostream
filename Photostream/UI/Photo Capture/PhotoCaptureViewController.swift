@@ -24,16 +24,10 @@ class PhotoCaptureViewController: UIViewController {
         presenter.setupBackCamera(with: preview)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         presenter.startCamera()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        presenter.stopCamera()
-        
-        super.viewWillDisappear(animated)
     }
     
     override var prefersStatusBarHidden: Bool {
