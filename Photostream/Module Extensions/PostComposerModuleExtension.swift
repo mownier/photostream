@@ -10,15 +10,16 @@ import UIKit
 
 extension PostComposerPresenter {
     
-    func presentPhotoShare() {
-        wireframe.showPhotoShare(from: view.controller?.navigationController)
+    func presentPhotoShare(with image: UIImage) {
+        wireframe.showPhotoShare(from: view.controller?.navigationController, with: image)
     }
 }
 
 extension PostComposerWireframeInterface {
     
-    func showPhotoShare(from navigationController: UINavigationController?) {
+    func showPhotoShare(from navigationController: UINavigationController?, with image: UIImage) {
         let vc = PhotoShareWireframe.createViewController()
+        vc.image = image
         let wireframe = PhotoShareWireframe(root: root, view: vc)
         wireframe.push(with: vc, from: navigationController)
     }

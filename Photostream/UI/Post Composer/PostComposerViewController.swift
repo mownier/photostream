@@ -43,7 +43,12 @@ class PostComposerViewController: UIViewController {
     }
     
     @IBAction func didTapNext(_ sender: AnyObject) {
-        (presenter as? PostComposerPresenter)?.presentPhotoShare()
+        guard let vc = pages[0] as? PhotoPickerViewController,
+            let image = vc.cropView.croppedImage else {
+            return
+        }
+        
+        (presenter as? PostComposerPresenter)?.presentPhotoShare(with: image)
     }
     
     @IBAction func didTapLibrary() {
