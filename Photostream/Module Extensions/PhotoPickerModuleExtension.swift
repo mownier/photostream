@@ -29,7 +29,7 @@ extension PhotoPickerWireframe {
         
         let vc = PhotoShareWireframe.createViewController()
         vc.image = image!
-        let wireframe = PhotoShareWireframe(root: root, view: vc)
+        let wireframe = PhotoShareWireframe(root: root, delegate: nil, view: vc)
         wireframe.push(with: vc, from: controller!.navigationController)
     }
 }
