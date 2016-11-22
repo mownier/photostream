@@ -12,7 +12,7 @@ protocol PhotoShareWireframeInterface: class {
 
     var root: RootWireframeInterface? { set get }
     
-    init(root: RootWireframeInterface?, view: PhotoShareViewInterface)
+    init(root: RootWireframeInterface?, delegate: PhotoShareModuleDelegate?, view: PhotoShareViewInterface)
     
     func attachRoot(with controller: UIViewController, in window: UIWindow)
     

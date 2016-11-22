@@ -12,12 +12,14 @@ class PhotoShareWireframe: PhotoShareWireframeInterface {
 
     var root: RootWireframeInterface?
     
-    required init(root: RootWireframeInterface?, view: PhotoShareViewInterface) {
+    required init(root: RootWireframeInterface?, delegate: PhotoShareModuleDelegate?, view: PhotoShareViewInterface) {
         self.root = root
         
         let presenter = PhotoSharePresenter()
+        presenter.moduleDelegate = delegate
         presenter.view = view
         presenter.wireframe = self
+        
         view.presenter = presenter
     }
     
