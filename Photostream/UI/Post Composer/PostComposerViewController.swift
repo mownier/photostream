@@ -9,7 +9,7 @@
 import UIKit
 
 class PostComposerViewController: UIViewController {
-
+    
     @IBOutlet weak var libraryButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     
@@ -30,7 +30,8 @@ class PostComposerViewController: UIViewController {
         
         pageViewController?.dataSource = self
         pageViewController?.delegate = self
-        pageViewController?.setViewControllers([pages[0]] , direction: .forward, animated: false, completion: nil)
+        
+        presenter.willShowLibrary()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -46,33 +47,11 @@ class PostComposerViewController: UIViewController {
     }
     
     @IBAction func didTapLibrary() {
-        toggleLibraryButton()
-        pageViewController?.setViewControllers([pages[0]], direction: .reverse, animated: true, completion: nil)
-        title = "Photo Picker"
+        presenter.willShowLibrary()
     }
     
     @IBAction func didTapCamera() {
-        toggleCameraButton()
-        pageViewController?.setViewControllers([pages[1]], direction: .forward, animated: true, completion: nil)
-        title = "Photo Capture"
-    }
-    
-    func toggleLibraryButton() {
-        guard !libraryButton.isSelected else {
-            return
-        }
-        
-        libraryButton.isSelected = true
-        cameraButton.isSelected = false
-    }
-    
-    func toggleCameraButton() {
-        guard !cameraButton.isSelected else {
-            return
-        }
-        
-        cameraButton.isSelected = true
-        libraryButton.isSelected = false
+        presenter.willShowCamera()
     }
 }
 
@@ -85,6 +64,22 @@ extension PostComposerViewController: PostComposerViewInterface {
     func setupDependency(with controllers: [UIViewController]) {
         pages.removeAll()
         pages.append(contentsOf: controllers)
+    }
+    
+    func showLibrary() {
+        libraryButton.isSelected = true
+        cameraButton.isSelected = false
+        title = "Photo Picker"
+        
+        pageViewController?.setViewControllers([pages[0]], direction: .reverse, animated: true, completion: nil)
+    }
+    
+    func showCamera() {
+        libraryButton.isSelected = false
+        cameraButton.isSelected = true
+        title = "Photo Capture"
+        
+        pageViewController?.setViewControllers([pages[1]], direction: .forward, animated: true, completion: nil)
     }
 }
 
@@ -113,19 +108,17 @@ extension PostComposerViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard previousViewControllers.count > 0, completed,
-            let index = pages.index(of: previousViewControllers[0]) else {
+            let previousIndex = pages.index(of: previousViewControllers[0]),
+            pages[previousIndex] != pageViewController.topViewController else {
             return
         }
         
-        let nextIndex = index == 0 ? 1 : 0
-        
-        switch nextIndex {
+        let currentIndex = previousIndex == 0 ? 1 : 0
+        switch currentIndex {
         case 0:
-            title = "Photo Picker"
-            toggleLibraryButton()
+            presenter.willShowLibrary()
         case 1:
-            title = "Photo Capture"
-            toggleCameraButton()
+            presenter.willShowCamera()
         default:
             break
         }
