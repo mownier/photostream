@@ -15,7 +15,7 @@ extension HomePresenter {
     }
     
     func presentPostComposer() {
-        router?.showPostComposer(from: view.controller, delegate: self, photoCaptureDelegate: self, photoPickerDelegate: self)
+        router?.showPostComposer(from: view.controller, delegate: self)
     }
 }
 
@@ -50,64 +50,38 @@ extension HomeWireframe {
 //        profileWireframe.userProfileViewController.presenter = profileWireframe.userProfilePresenter
     }
     
-    func showPostComposer(from controller: UIViewController?, delegate: PostComposerModuleDelegate?, photoCaptureDelegate: PhotoCaptureModuleDelegate?, photoPickerDelegate: PhotoPickerModuleDelegate?) {
+    func showPostComposer(from controller: UIViewController?, delegate: PostComposerModuleDelegate?) {
         guard controller != nil else {
             return
         }
         
-        // Assemble Photo Capture module
-        let photoCaptureViewController = PhotoCaptureWireframe.createViewController()
-        let _ = PhotoCaptureWireframe(root: root, delegate: photoCaptureDelegate, view: photoCaptureViewController)
-        
-        // Assemble Photo Picker module
-        let photoPickerViewController = PhotoPickerWireframe.createViewController()
-        let _ = PhotoPickerWireframe(root: root, delegate: photoPickerDelegate, view: photoPickerViewController)
-        
         // Assemble Post Composer module
         let postComposerViewController = PostComposerWireframe.createViewController()
         let postComposerWireframe = PostComposerWireframe(root: root, delegate: delegate, view: postComposerViewController)
+        { presenter in
+            guard let postComposerPresenter = presenter as? PostComposerPresenter else {
+                return
+            }
+            
+            // Assemble Photo Capture module
+            let photoCaptureViewController = PhotoCaptureWireframe.createViewController()
+            let _ = PhotoCaptureWireframe(root: self.root, delegate: postComposerPresenter, view: photoCaptureViewController)
+            
+            // Assemble Photo Picker module
+            let photoPickerViewController = PhotoPickerWireframe.createViewController()
+            let _ = PhotoPickerWireframe(root: self.root, delegate: nil, view: photoPickerViewController)
+            
+            // Dependency controllers
+            let controllers = [photoPickerViewController, photoCaptureViewController]
+            postComposerViewController.setupDependency(with: controllers)
+        }
+        
+        // Instantiate navigation controller
         let postComposerNavController = PostComposerWireframe.createNavigationController()
         postComposerNavController.viewControllers.removeAll()
         postComposerNavController.viewControllers.append(postComposerViewController)
         
-        // Dependency controllers
-        let controllers = [photoPickerViewController, photoCaptureViewController]
-        postComposerViewController.setupDependency(with: controllers)
-        
         // Present Post Composer module
         postComposerWireframe.present(with: postComposerNavController, from: controller!)
-    }
-}
-
-extension HomePresenter: PhotoCaptureModuleDelegate {
-    
-    func photoCaptureDidCanel() {
-        print("Photo capture did cancel")
-    }
-    
-    func photoCaptureDidFinish(with image: UIImage?) {
-        print("Photo capture did capture")
-    }
-}
-
-extension HomePresenter: PhotoPickerModuleDelegate {
-    
-    func photoPickerDidCancel() {
-        print("Photo picker did cancel")
-    }
-    
-    func photoPickerDidPick(with image: UIImage?) {
-        print("Photo picker did pick image")
-    }
-}
-
-extension HomePresenter: PhotoShareModuleDelegate {
-    
-    func photoShareDidCancel() {
-        print("Photo Share did cancel")
-    }
-    
-    func photoShareDidFinish(with image: UIImage, content: String) {
-        print("Photo Shared did finish.")
     }
 }
