@@ -13,4 +13,11 @@ protocol PostComposerPresenterInterface: class {
     var view: PostComposerViewInterface! { set get }
     var wireframe: PostComposerWireframeInterface! { set get }
     var moduleDelegate: PostComposerModuleDelegate? { set get }
+    var source: PhotoSource { set get }
+}
+
+enum PhotoSource {
+    case library
+    case camera
+    case unknown
 }
