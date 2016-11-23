@@ -34,9 +34,13 @@ class PostUploadWireframe: PostUploadWireframeInterface {
     
     func attach(with controller: UIViewController, in parent: UIViewController) {
         parent.view.addSubview(controller.view)
+        parent.addChildViewController(controller)
+        controller.didMove(toParentViewController: parent)
     }
     
     func detach(with controller: UIViewController) {
         controller.view.removeFromSuperview()
+        controller.removeFromParentViewController()
+        controller.didMove(toParentViewController: nil)
     }
 }
