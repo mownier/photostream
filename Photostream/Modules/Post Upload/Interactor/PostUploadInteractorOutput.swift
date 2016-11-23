@@ -10,7 +10,7 @@ import Foundation
 
 protocol PostUploadInteractorOutput: class {
 
-    func didSucceed(with post: Post, and user: User)
+    func didSucceed(with post: UploadedPost)
     func didFail(with message: String)
     func didUpdate(with progress: Progress)
 }
