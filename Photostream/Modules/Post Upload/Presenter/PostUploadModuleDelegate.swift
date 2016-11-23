@@ -11,6 +11,6 @@ import Foundation
 protocol PostUploadModuleDelegate: class {
 
     func postUploadDidRetry()
-    func postUploadDidFail()
-    func postUploadDidSucceed()
+    func postUploadDidFail(with message: String)
+    func postUploadDidSucceed(with post: UploadedPost)
 }
