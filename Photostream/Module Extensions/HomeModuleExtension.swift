@@ -21,7 +21,7 @@ extension HomePresenter {
 
 extension HomePresenter: PostComposerModuleDelegate {
     
-    func postComposerDidFinishWriting(view: UIView) {
+    func postComposerDidFinishWriting(with image: UIImage, content: String) {
         print("Post composer did finish writing...")
     }
     

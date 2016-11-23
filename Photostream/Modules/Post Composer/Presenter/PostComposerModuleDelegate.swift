@@ -10,6 +10,6 @@ import UIKit
 
 protocol PostComposerModuleDelegate: class {
     
-    func postComposerDidFinishWriting(view: UIView)
+    func postComposerDidFinishWriting(with image: UIImage, content: String)
     func postComposerDidCancelWriting()
 }

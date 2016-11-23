@@ -6,12 +6,12 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol PostComposerModuleInterface: class {
     
     func cancelWriting()
-    func doneWriting()
+    func doneWriting(with image: UIImage, content: String)
     
     func willShowCamera()
     func willShowLibrary()

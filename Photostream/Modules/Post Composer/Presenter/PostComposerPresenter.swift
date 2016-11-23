@@ -38,8 +38,8 @@ extension PostComposerPresenter: PostComposerModuleInterface {
         wireframe.dismiss(with: view.controller, animated: true, completion: nil)
     }
     
-    func doneWriting() {
-        moduleDelegate?.postComposerDidFinishWriting(view: UIView())
+    func doneWriting(with image: UIImage, content: String) {
+        moduleDelegate?.postComposerDidFinishWriting(with: image, content: content)
         wireframe.dismiss(with: view.controller, animated: true, completion: nil)
     }
     
