@@ -22,18 +22,28 @@ class PostUploadPresenter: PostUploadPresenterInterface {
 extension PostUploadPresenter: PostUploadModuleInterface {
     
     func upload() {
+        var data = FileServiceImageUploadData()
+        data.data = UIImageJPEGRepresentation(image, 1.0)
+        data.width = Float(image.size.width)
+        data.height = Float(image.size.height)
+        interactor.upload(with: data, content: content)
+    }
     
+    func willShowImage() {
+        view.show(image: image)
     }
 }
 
 extension PostUploadPresenter: PostUploadInteractorOutput {
     
     func didFail(with message: String) {
-        
+        moduleDelegate?.postUploadDidFail(with: message)
+        view.didFail(with: message)
     }
     
-    func didSucceed(with post: Post, and user: User) {
-        
+    func didSucceed(with post: UploadedPost) {
+        moduleDelegate?.postUploadDidSucceed(with: post)
+        view.didSucceed()
     }
     
     func didUpdate(with progress: Progress) {
