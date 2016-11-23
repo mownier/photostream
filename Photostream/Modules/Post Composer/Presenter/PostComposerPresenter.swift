@@ -35,12 +35,10 @@ extension PostComposerPresenter: PostComposerModuleInterface {
     
     func cancelWriting() {
         moduleDelegate?.postComposerDidCancelWriting()
-        wireframe.dismiss(with: view.controller, animated: true, completion: nil)
     }
     
     func doneWriting(with image: UIImage, content: String) {
         moduleDelegate?.postComposerDidFinishWriting(with: image, content: content)
-        wireframe.dismiss(with: view.controller, animated: true, completion: nil)
     }
     
     func willShowCamera() {
@@ -49,5 +47,9 @@ extension PostComposerPresenter: PostComposerModuleInterface {
     
     func willShowLibrary() {
         source = .library
+    }
+    
+    func dismiss(animated: Bool) {
+        wireframe.dismiss(with: view.controller, animated: animated, completion: nil)
     }
 }

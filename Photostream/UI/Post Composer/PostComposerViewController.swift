@@ -40,6 +40,7 @@ class PostComposerViewController: UIViewController {
 
     @IBAction func didTapCancel(_ sender: AnyObject) {
         presenter.cancelWriting()
+        presenter.dismiss()
     }
     
     @IBAction func didTapNext(_ sender: AnyObject) {

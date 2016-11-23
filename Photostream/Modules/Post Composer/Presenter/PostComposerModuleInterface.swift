@@ -15,4 +15,13 @@ protocol PostComposerModuleInterface: class {
     
     func willShowCamera()
     func willShowLibrary()
+    
+    func dismiss(animated: Bool)
+}
+
+extension PostComposerModuleInterface {
+    
+    func dismiss() {
+        dismiss(animated: true)
+    }
 }
