@@ -29,6 +29,7 @@ class PostUploadViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.willShowImage()
+        presenter.upload()
     }
 }
 
