@@ -26,7 +26,7 @@ extension PostComposerPresenter: PhotoCaptureModuleDelegate {
     }
     
     func photoCaptureDidCanel() {
-        print("PostComposerPresenter: did cancel capture")
+        print("Post Composer: did cancel capture")
     }
 }
 
@@ -37,7 +37,7 @@ extension PostComposerPresenter: PhotoShareModuleDelegate {
     }
     
     func photoShareDidCancel() {
-        print("PostComposerPresenter: did cancel share")
+        print("Post Composer: did cancel share")
     }
 }
 
