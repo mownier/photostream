@@ -43,10 +43,15 @@ extension PostUploadViewController: PostUploadViewInterface {
     }
     
     func didSucceed() {
-        
+        presenter.detach()
     }
     
     func didFail(with message: String) {
-        
+        print("Post Upload View Controller: did fail ==>", message)
+    }
+    
+    func didUpdate(with progress: Progress) {
+        let percentage = Float(progress.fractionCompleted)
+        uploadView.progressView.setProgress(percentage, animated: true)
     }
 }

@@ -17,4 +17,5 @@ protocol PostUploadViewInterface: class {
     
     func didFail(with message: String)
     func didSucceed()
+    func didUpdate(with progress: Progress)
 }
