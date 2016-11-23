@@ -9,6 +9,8 @@
 import Foundation
 
 protocol PostUploadModuleInterface: class {
-
+    
     func upload()
+    
+    func willShowImage()
 }
