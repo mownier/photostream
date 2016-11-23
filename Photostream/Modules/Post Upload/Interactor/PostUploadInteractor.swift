@@ -32,7 +32,9 @@ extension PostUploadInteractor: PostUploadInteractorInput {
             self.output?.didUpdate(with: progress!)
             
         }) { (result) in
-            guard let fileId = result.fileId, result.error == nil else {
+            guard let fileId = result.fileId,
+                let fileUrl = result.fileUrl,
+                result.error == nil else {
                 self.output?.didFail(with: result.error!.message)
                 return
             }
@@ -60,9 +62,9 @@ extension PostUploadInteractor: PostUploadInteractorInput {
                 uploadedPost.comments = post.commentsCount
                 uploadedPost.isLiked = post.isLiked
                 
-                uploadedPost.photoUrl = post.photo.url
-                uploadedPost.photoWidth = post.photo.width
-                uploadedPost.photoHeight  = post.photo.height
+                uploadedPost.photoUrl = fileUrl
+                uploadedPost.photoWidth = Int(data.width)
+                uploadedPost.photoHeight  = Int(data.height)
                 
                 uploadedPost.userId = user.id
                 uploadedPost.avatarUrl = user.avatarUrl
