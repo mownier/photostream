@@ -22,11 +22,26 @@ extension HomePresenter {
 extension HomePresenter: PostComposerModuleDelegate {
     
     func postComposerDidFinishWriting(with image: UIImage, content: String) {
-        print("Post composer did finish writing...")
+        router?.showPostUpload(in: view.controller, delegate: self, image: image, content: content)
     }
     
     func postComposerDidCancelWriting() {
         print("Post composer did cancel writing...")
+    }
+}
+
+extension HomePresenter: PostUploadModuleDelegate {
+    
+    func postUploadDidFail(with message: String) {
+        print("Home Presenter: post upload did fail ==>", message)
+    }
+    
+    func postUploadDidRetry() {
+        print("Home Presenter: post upload did retry")
+    }
+    
+    func postUploadDidSucceed(with post: UploadedPost) {
+        print("Home Presneter: post upload did succeed ==>", post)
     }
 }
 
@@ -76,5 +91,15 @@ extension HomeWireframe {
         
         // Present Post Composer module
         postComposerWireframe.present(with: postComposerNavController, from: controller!)
+    }
+    
+    func showPostUpload(in controller: UIViewController?, delegate: PostUploadModuleDelegate?, image: UIImage, content: String) {
+        guard controller != nil else {
+            return
+        }
+        
+        let vc = PostUploadViewController()
+        let wireframe = PostUploadWireframe(root: root, delegate: delegate, view: vc, image: image, content: content)
+        wireframe.attach(with: vc, in: controller!)
     }
 }
