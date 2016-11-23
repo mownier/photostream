@@ -37,11 +37,7 @@ class PhotoShareViewController: UIViewController {
         }
         
         presenter.finish(with: image, content:message)
- 
-        // Upload photo
-        upload()
-        
-
+        presenter.dismiss()
     }
 }
 
