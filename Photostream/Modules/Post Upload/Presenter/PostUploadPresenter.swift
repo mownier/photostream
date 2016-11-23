@@ -32,6 +32,14 @@ extension PostUploadPresenter: PostUploadModuleInterface {
     func willShowImage() {
         view.show(image: image)
     }
+    
+    func detach() {
+        guard let controller = view.controller else {
+            return
+        }
+        
+        wireframe.detach(with: controller)
+    }
 }
 
 extension PostUploadPresenter: PostUploadInteractorOutput {
@@ -47,6 +55,6 @@ extension PostUploadPresenter: PostUploadInteractorOutput {
     }
     
     func didUpdate(with progress: Progress) {
-        
+        view.didUpdate(with: progress)
     }
 }
