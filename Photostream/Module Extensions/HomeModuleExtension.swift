@@ -100,6 +100,8 @@ extension HomeWireframe {
         
         let vc = PostUploadViewController()
         let wireframe = PostUploadWireframe(root: root, delegate: delegate, view: vc, image: image, content: content)
+        
+        vc.view.frame.origin.y = 64
         wireframe.attach(with: vc, in: controller!)
     }
 }
