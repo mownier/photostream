@@ -12,7 +12,7 @@ class PostUploadWireframe: PostUploadWireframeInterface {
 
     var root: RootWireframeInterface?
     
-    required init(root: RootWireframeInterface?, delegate: PostUploadModuleDelegate?, view: PostUploadViewInterface) {
+    required init(root: RootWireframeInterface?, delegate: PostUploadModuleDelegate?, view: PostUploadViewInterface, image: UIImage, content: String) {
         self.root = root
         
         let auth = AuthSession()
@@ -24,9 +24,19 @@ class PostUploadWireframe: PostUploadWireframeInterface {
         interactor.output = presenter
         view.presenter = presenter
         
+        presenter.image = image
+        presenter.content = content
         presenter.view = view
         presenter.interactor = interactor
         presenter.moduleDelegate = delegate
         presenter.wireframe = self
+    }
+    
+    func attach(with controller: UIViewController, in parent: UIViewController) {
+        parent.view.addSubview(controller.view)
+    }
+    
+    func detach(with controller: UIViewController) {
+        controller.view.removeFromSuperview()
     }
 }
