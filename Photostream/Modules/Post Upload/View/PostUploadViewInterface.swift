@@ -13,7 +13,6 @@ protocol PostUploadViewInterface: class {
     var controller: UIViewController? { get }
     var presenter: PostUploadModuleInterface! { set get }
     
-    func show(content: String)
     func show(image: UIImage)
     
     func didFail(with message: String)
