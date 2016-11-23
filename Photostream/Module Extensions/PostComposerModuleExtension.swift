@@ -33,7 +33,7 @@ extension PostComposerPresenter: PhotoCaptureModuleDelegate {
 extension PostComposerPresenter: PhotoShareModuleDelegate {
     
     func photoShareDidFinish(with image: UIImage, content: String) {
-        print("PostComposerPresenter: did finish share")
+        moduleDelegate?.postComposerDidFinishWriting(with: image, content: content)
     }
     
     func photoShareDidCancel() {
