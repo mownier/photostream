@@ -51,7 +51,24 @@ extension PostUploadInteractor: PostUploadInteractorInput {
                     return
                 }
                 
-                self.output?.didSucceed(with: post, and: user)
+                var uploadedPost = UploadedPost()
+                uploadedPost.id = post.id
+                uploadedPost.message = post.message
+                uploadedPost.timestamp = post.timestamp / 1000
+                
+                uploadedPost.likes = post.likesCount
+                uploadedPost.comments = post.commentsCount
+                uploadedPost.isLiked = post.isLiked
+                
+                uploadedPost.photoUrl = post.photo.url
+                uploadedPost.photoWidth = post.photo.width
+                uploadedPost.photoHeight  = post.photo.height
+                
+                uploadedPost.userId = user.id
+                uploadedPost.avatarUrl = user.avatarUrl
+                uploadedPost.displayName = user.displayName
+                
+                self.output?.didSucceed(with: uploadedPost)
             })
         }
     }
