@@ -13,4 +13,6 @@ protocol PostUploadModuleInterface: class {
     func upload()
     
     func willShowImage()
+    
+    func detach()
 }
