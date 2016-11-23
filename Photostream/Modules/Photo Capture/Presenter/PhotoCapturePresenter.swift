@@ -46,7 +46,9 @@ extension PhotoCapturePresenter: PhotoCaptureModuleInterface {
         camera = GPUImageStillCamera(sessionPreset: preset, cameraPosition: cameraPosition)
         camera?.outputImageOrientation = outputOrientation
         
-        filter = GPUImageBrightnessFilter()
+        let cropFilter = GPUImageCropFilter()
+        cropFilter.cropRegion = CGRect(x: 0, y: 0.125, width: 1, height: 0.75)
+        filter = cropFilter
         filter?.addTarget(preview)
         camera?.addTarget(filter)
     }
