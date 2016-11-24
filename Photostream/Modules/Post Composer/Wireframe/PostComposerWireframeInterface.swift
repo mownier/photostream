@@ -12,7 +12,7 @@ protocol PostComposerWireframeInterface: class {
 
     var root: RootWireframeInterface? { set get }
     
-    init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface, dependencyConfig: ((PostComposerPresenterInterface) -> Void)?)
+    init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface)
     
     func attachRoot(with controller: UIViewController, in window: UIWindow)
     

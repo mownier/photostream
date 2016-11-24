@@ -12,7 +12,7 @@ class PostComposerWireframe: PostComposerWireframeInterface {
 
     var root: RootWireframeInterface?
     
-    required init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface, dependencyConfig: ((PostComposerPresenterInterface) -> Void)? = nil) {
+    required init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface) {
         self.root = root
     
         let presenter = PostComposerPresenter()
@@ -21,8 +21,6 @@ class PostComposerWireframe: PostComposerWireframeInterface {
         presenter.wireframe = self
         
         view.presenter = presenter
-        
-        dependencyConfig?(presenter)
     }
     
     func attachRoot(with controller: UIViewController, in window: UIWindow) {
