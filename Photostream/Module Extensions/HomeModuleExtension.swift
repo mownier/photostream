@@ -79,23 +79,19 @@ extension HomeWireframe {
         // Assemble Post Composer module
         let postComposerViewController = PostComposerWireframe.createViewController()
         let postComposerWireframe = PostComposerWireframe(root: root, delegate: delegate, view: postComposerViewController)
-        { presenter in
-            guard let postComposerPresenter = presenter as? PostComposerPresenter else {
-                return
-            }
-            
-            // Assemble Photo Capture module
-            let photoCaptureViewController = PhotoCaptureWireframe.createViewController()
-            let _ = PhotoCaptureWireframe(root: self.root, delegate: postComposerPresenter, view: photoCaptureViewController)
-            
-            // Assemble Photo Picker module
-            let photoPickerViewController = PhotoPickerWireframe.createViewController()
-            let _ = PhotoPickerWireframe(root: self.root, delegate: nil, view: photoPickerViewController)
-            
-            // Dependency controllers
-            let controllers = [photoPickerViewController, photoCaptureViewController]
-            postComposerViewController.setupDependency(with: controllers)
-        }
+        let postComposerPresenter = postComposerViewController.presenter as! PostComposerPresenter
+        
+        // Assemble Photo Capture module
+        let photoCaptureViewController = PhotoCaptureWireframe.createViewController()
+        let _ = PhotoCaptureWireframe(root: root, delegate: postComposerPresenter, view: photoCaptureViewController)
+        
+        // Assemble Photo Picker module
+        let photoPickerViewController = PhotoPickerWireframe.createViewController()
+        let _ = PhotoPickerWireframe(root: root, delegate: nil, view: photoPickerViewController)
+        
+        // Dependency controllers
+        let controllers = [photoPickerViewController, photoCaptureViewController]
+        postComposerViewController.setupDependency(with: controllers)
         
         // Instantiate navigation controller
         let postComposerNavController = PostComposerWireframe.createNavigationController()
