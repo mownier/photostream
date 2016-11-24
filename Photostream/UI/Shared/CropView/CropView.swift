@@ -201,3 +201,10 @@ extension CropView {
         return CGFloat(CGFloat(degrees) * .pi / 180)
     }
 }
+
+extension CropView: PhotoCropper {
+    
+    var image: UIImage? {
+        return croppedImage
+    }
+}
