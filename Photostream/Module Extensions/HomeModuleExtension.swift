@@ -22,18 +22,11 @@ extension HomePresenter {
 extension HomePresenter: PostComposerModuleDelegate {
     
     func postComposerDidFinishWriting(with image: UIImage, content: String) {
-        guard let tabBarController = view.controller as? UITabBarController,
-            let navController = tabBarController.viewControllers?[0] as? UINavigationController else {
+        guard let presenter: NewsFeedPresenter = wireframe.dependency() else {
             return
         }
         
-        let _ = navController.popToRootViewController(animated: false)
-        
-        guard let newsFeedView = navController.topViewController as? NewsFeedViewInterface else {
-            return
-        }
-        
-        router?.showPostUpload(in: newsFeedView.controller, delegate: self, image: image, content: content)
+        router?.showPostUpload(in: presenter.view.controller, delegate: self, image: image, content: content)
     }
     
     func postComposerDidCancelWriting() {
@@ -52,21 +45,14 @@ extension HomePresenter: PostUploadModuleDelegate {
     }
     
     func postUploadDidSucceed(with post: UploadedPost) {
-        guard let tabBarController = view.controller as? UITabBarController,
-            let navController = tabBarController.viewControllers?[0] as? UINavigationController else {
-                return
-        }
-        
-        let _ = navController.popToRootViewController(animated: false)
-        
-        guard let newsFeedView = navController.topViewController as? NewsFeedViewInterface else {
+        guard let presenter: NewsFeedPresenter = wireframe.dependency() else {
             return
         }
         
-        if newsFeedView.presenter.feedCount > 0 {
-            newsFeedView.presenter.refreshFeeds()
+        if presenter.feedCount > 0 {
+            presenter.refreshFeeds()
         } else {
-            newsFeedView.presenter.initialLoad()
+            presenter.initialLoad()
         }
     }
 }
@@ -82,6 +68,7 @@ extension HomeWireframe {
     func loadModuleDependency(with controller: UITabBarController) {
         let feedVC = (controller.viewControllers?[0] as? UINavigationController)?.topViewController as! NewsFeedViewController
         _ = NewsFeedWireframe(root: root, view: feedVC)
+        dependencies?.append(feedVC.presenter as! HomeModuleDependency)
     }
     
     func showPostComposer(from controller: UIViewController?, delegate: PostComposerModuleDelegate?) {
