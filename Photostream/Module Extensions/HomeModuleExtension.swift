@@ -63,7 +63,11 @@ extension HomePresenter: PostUploadModuleDelegate {
             return
         }
         
-        newsFeedView.refresh()
+        if newsFeedView.presenter.feedCount > 0 {
+            newsFeedView.presenter.refreshFeeds()
+        } else {
+            newsFeedView.presenter.initialLoad()
+        }
     }
 }
 
