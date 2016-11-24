@@ -10,6 +10,7 @@ import UIKit
 
 protocol PostComposerWireframeInterface: class {
 
+    var dependencies: [PostComposerModuleDependency]? { set get }
     var root: RootWireframeInterface? { set get }
     
     init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface)
@@ -19,4 +20,8 @@ protocol PostComposerWireframeInterface: class {
     func present(with controller: UIViewController?, from: UIViewController?, animated: Bool, completion: (() -> Void)?)
     
     func dismiss(with controller: UIViewController?, animated: Bool, completion: (() -> Void)?)
+    
+    func dependency<T>() -> T?
 }
+
+protocol PostComposerModuleDependency: class { }

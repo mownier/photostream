@@ -44,3 +44,6 @@ extension PhotoPickerPresenter {
         router?.showPhotoShare(from: view.controller, with: cropper.image)
     }
 }
+
+extension PhotoPickerPresenter: PostComposerModuleDependency { }
+

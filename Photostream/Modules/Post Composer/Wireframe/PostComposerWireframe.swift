@@ -10,6 +10,7 @@ import UIKit
 
 class PostComposerWireframe: PostComposerWireframeInterface {
 
+    lazy var dependencies: [PostComposerModuleDependency]? = [PostComposerModuleDependency]()
     var root: RootWireframeInterface?
     
     required init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface) {
@@ -41,5 +42,21 @@ class PostComposerWireframe: PostComposerWireframeInterface {
         }
         
         controller!.dismiss(animated: animated, completion: completion)
+    }
+    
+    func dependency<T>() -> T? {
+        guard dependencies != nil, dependencies!.count > 0 else {
+            return nil
+        }
+        
+        let result = dependencies!.filter { (dependency) -> Bool in
+            return type(of: dependency) == T.self
+        }
+        
+        guard result.count > 0 else {
+            return nil
+        }
+        
+        return result[0] as? T
     }
 }

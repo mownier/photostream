@@ -87,7 +87,7 @@ extension HomeWireframe {
         
         // Assemble Photo Picker module
         let photoPickerViewController = PhotoPickerWireframe.createViewController()
-        let _ = PhotoPickerWireframe(root: root, delegate: nil, view: photoPickerViewController)
+        let _ = PhotoPickerWireframe(root: root, delegate: postComposerPresenter, view: photoPickerViewController)
         
         // Dependency controllers
         let controllers = [photoPickerViewController, photoCaptureViewController]
@@ -97,6 +97,10 @@ extension HomeWireframe {
         let postComposerNavController = PostComposerWireframe.createNavigationController()
         postComposerNavController.viewControllers.removeAll()
         postComposerNavController.viewControllers.append(postComposerViewController)
+        
+        // Add necessary dependency
+        let dependency = photoPickerViewController.presenter as! PostComposerModuleDependency
+        postComposerWireframe.dependencies?.append(dependency)
         
         // Present Post Composer module
         postComposerWireframe.present(with: postComposerNavController, from: controller!)

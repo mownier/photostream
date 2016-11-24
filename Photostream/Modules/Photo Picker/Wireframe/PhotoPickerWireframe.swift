@@ -21,6 +21,7 @@ class PhotoPickerWireframe: PhotoPickerWireframeInterface {
         
         interactor.output = presenter
         view.presenter = presenter
+        presenter.moduleDelegate = delegate
         presenter.view = view
         presenter.interactor = interactor
         presenter.wireframe = self

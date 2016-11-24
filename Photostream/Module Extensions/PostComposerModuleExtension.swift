@@ -10,8 +10,31 @@ import UIKit
 
 extension PostComposerPresenter {
     
+    func didPickPhoto() {
+        guard let presenter: PhotoPickerPresenter = wireframe.dependency() else {
+            return
+        }
+        
+        presenter.done()
+    }
+    
     func presentPhotoShare(with image: UIImage) {
         wireframe.showPhotoShare(from: view.controller?.navigationController, with: image, delegate: self)
+    }
+}
+
+extension PostComposerPresenter: PhotoPickerModuleDelegate {
+    
+    func photoPickerDidPick(with image: UIImage?) {
+        guard image != nil else {
+            return
+        }
+        
+        presentPhotoShare(with: image!)
+    }
+    
+    func photoPickerDidCancel() {
+        print("Post Composer: did cancel pick")
     }
 }
 
