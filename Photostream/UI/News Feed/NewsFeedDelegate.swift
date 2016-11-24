@@ -37,7 +37,7 @@ extension NewsFeedViewController: MONUniformFlowLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.section == presenter.feedCount - 1 {
-            loadMore()
+            presenter.loadMoreFeeds()
         }
     }
 }

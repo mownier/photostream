@@ -10,6 +10,7 @@ import Foundation
 
 protocol NewsFeedModuleInterface: class {
 
+    func initialLoad()
     func refreshFeeds()
     func loadMoreFeeds()
     

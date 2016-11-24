@@ -15,10 +15,12 @@ protocol NewsFeedViewInterface: class {
     
     func reloadView()
     func showEmptyView()
-    func refresh()
-    func loadMore()
+    func showInitialLoadView()
+    
+    func didStartRefreshingFeeds()
     func didRefreshFeeds()
     func didLoadMoreFeeds()
+    
     func didFetchWithError(message: String)
     func didLikeWithError(message: String?)
     func didUnlikeWithError(message: String?)

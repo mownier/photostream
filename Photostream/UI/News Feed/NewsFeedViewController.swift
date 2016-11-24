@@ -58,11 +58,11 @@ class NewsFeedViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
         collectionView.addSubview(refreshControl)
         
         emptyView.actionHandler = { (view) in
-            self.triggerInitialLoad()
+            self.presenter.initialLoad()
         }
     }
     
@@ -77,11 +77,11 @@ class NewsFeedViewController: UIViewController {
         PostListFooter.registerClass(in: collectionView)
         
         scrollHandler.scrollView = collectionView
-        triggerInitialLoad()
+        
+        presenter.initialLoad()
     }
     
-    func triggerInitialLoad() {
-        shouldDisplayIndicatorView = true
+    func triggerRefresh() {
         presenter.refreshFeeds()
     }
 }
@@ -100,24 +100,22 @@ extension NewsFeedViewController: NewsFeedViewInterface {
         shouldDisplayEmptyView = true
     }
     
-    func loadMore() {
-        presenter.loadMoreFeeds()
+    func showInitialLoadView() {
+        shouldDisplayIndicatorView = true
     }
     
-    func refresh() {
+    func didStartRefreshingFeeds() {
         isRefreshing = true
-        presenter.refreshFeeds()
     }
     
     func didRefreshFeeds() {
         shouldDisplayEmptyView = false
         shouldDisplayIndicatorView = false
         isRefreshing = false
-        reloadView()
     }
     
     func didLoadMoreFeeds() {
-        reloadView()
+
     }
     
     func didFetchWithError(message: String) {
@@ -128,7 +126,7 @@ extension NewsFeedViewController: NewsFeedViewInterface {
     }
     
     func didLikeWithError(message: String?) {
-    
+        
     }
     
     func didUnlikeWithError(message: String?) {

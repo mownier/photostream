@@ -21,8 +21,14 @@ class NewsFeedPresenter: NewsFeedPresenterInterface {
 
 extension NewsFeedPresenter: NewsFeedModuleInterface {
     
+    func initialLoad() {
+        view.showInitialLoadView()
+        interactor.fetchNew(with: limit)
+    }
+    
     func refreshFeeds() {
         interactor.fetchNew(with: limit)
+        view.didStartRefreshingFeeds()
     }
     
     func loadMoreFeeds() {
@@ -66,6 +72,7 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
         feed.items.removeAll()
         feed.items.append(contentsOf: data.items)
         view.didRefreshFeeds()
+        view.reloadView()
         
         if feed.items.count == 0 {
             view.showEmptyView()
@@ -75,6 +82,7 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
     func newsFeedDidLoadMore(data: NewsFeedData) {
         feed.items.append(contentsOf: data.items)
         view.didLoadMoreFeeds()
+        view.reloadView()
     }
     
     func newsFeedDidFetchWithError(error: NewsFeedServiceError) {
@@ -83,9 +91,11 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
     
     func newsFeedDidLike(with error: PostServiceError?) {
         view.didLikeWithError(message: error?.message)
+        view.reloadView()
     }
     
     func newsFeedDidUnlike(with error: PostServiceError?) {
         view.didUnlikeWithError(message: error?.message)
+        view.reloadView()
     }
 }
