@@ -40,7 +40,7 @@ extension PhotoPickerPresenter {
         return wireframe as? PhotoPickerWireframe
     }
     
-    func presentPhotoShare(with image: UIImage?) {
-        router?.showPhotoShare(from: view.controller, with: image)
+    func presentPhotoShare() {
+        router?.showPhotoShare(from: view.controller, with: cropper.image)
     }
 }
