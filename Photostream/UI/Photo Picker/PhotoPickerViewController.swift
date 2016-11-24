@@ -25,6 +25,7 @@ class PhotoPickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presenter.set(photoCropper: cropView)
         scrollHandler.scrollView = collectionView
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapDimView))
@@ -70,12 +71,12 @@ class PhotoPickerViewController: UIViewController {
     }
 
     @IBAction func didTapDone(_ sender: AnyObject) {
-        presenter.didCrop(with: cropView.croppedImage)
-        (presenter as? PhotoPickerPresenter)?.presentPhotoShare(with: cropView.croppedImage)
+        presenter.done()
+        (presenter as? PhotoPickerPresenter)?.presentPhotoShare()
     }
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
-        presenter.didCancelCrop()
+        presenter.cancel()
         presenter.dismiss()
     }
     
