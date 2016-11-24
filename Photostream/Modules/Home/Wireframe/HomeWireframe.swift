@@ -10,6 +10,8 @@ import UIKit
 
 class HomeWireframe: HomeWireframeInterface {
     
+    lazy var dependencies: [HomeModuleDependency]? = [HomeModuleDependency]()
+    
     var root: RootWireframeInterface?
     
     required init(root: RootWireframeInterface?, view: HomeViewInterface) {
@@ -24,5 +26,21 @@ class HomeWireframe: HomeWireframeInterface {
     
     func attachRoot(with controller: UIViewController, in window: UIWindow) {
         root?.showRoot(with: controller, in: window)
+    }
+    
+    func dependency<T>() -> T? {
+        guard dependencies != nil, dependencies!.count > 0 else {
+            return nil
+        }
+        
+        let result = dependencies!.filter { (dependency) -> Bool in
+            return type(of: dependency) == T.self
+        }
+        
+        guard result.count > 0 else {
+            return nil
+        }
+        
+        return result[0] as? T
     }
 }
