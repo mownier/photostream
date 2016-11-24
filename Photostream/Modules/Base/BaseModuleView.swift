@@ -11,5 +11,5 @@ import UIKit
 protocol BaseModuleView: class {
     
     var controller: UIViewController? { get }
-    var presenter: BaseModulePresenter! { set get }
+    var presenter: BaseModuleInterface! { set get }
 }

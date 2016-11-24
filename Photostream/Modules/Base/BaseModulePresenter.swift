@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol BaseModulePresenter: BaseModuleInteractorOutput {
+protocol BaseModulePresenter: BaseModuleInteractorOutput, BaseModuleInterface {
 
     var view: BaseModuleView! { set get }
     var interactor: BaseModuleInteractorInput? { set get }
