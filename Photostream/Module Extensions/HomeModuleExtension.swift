@@ -52,7 +52,18 @@ extension HomePresenter: PostUploadModuleDelegate {
     }
     
     func postUploadDidSucceed(with post: UploadedPost) {
-        print("Home Presneter: post upload did succeed ==>", post)
+        guard let tabBarController = view.controller as? UITabBarController,
+            let navController = tabBarController.viewControllers?[0] as? UINavigationController else {
+                return
+        }
+        
+        let _ = navController.popToRootViewController(animated: false)
+        
+        guard let newsFeedView = navController.topViewController as? NewsFeedViewInterface else {
+            return
+        }
+        
+        newsFeedView.refresh()
     }
 }
 
