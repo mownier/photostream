@@ -13,6 +13,7 @@ class PhotoPickerPresenter: PhotoPickerPresenterInterface {
 
     weak var view: PhotoPickerViewInterface!
     weak var moduleDelegate: PhotoPickerModuleDelegate?
+    weak var cropper: PhotoCropper!
     
     var wireframe: PhotoPickerWireframeInterface!
     var interactor: PhotoPickerInteractorInput!
@@ -78,12 +79,16 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
         }
     }
     
-    func didCancelCrop() {
+    func set(photoCropper: PhotoCropper) {
+        cropper = photoCropper
+    }
+    
+    func cancel() {
         moduleDelegate?.photoPickerDidCancel()
     }
     
-    func didCrop(with image: UIImage?) {
-        moduleDelegate?.photoPickerDidPick(with: image)
+    func done() {
+        moduleDelegate?.photoPickerDidPick(with: cropper.image)
     }
     
     func fillSelectedPhoto(animated: Bool) {

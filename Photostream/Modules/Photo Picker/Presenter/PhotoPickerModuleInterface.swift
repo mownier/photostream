@@ -18,8 +18,9 @@ protocol PhotoPickerModuleInterface: class {
     func willShowSelectedPhoto(at index: Int, size: CGSize)
     func fetchThumbnail(at index: Int, size: CGSize, completion: ((UIImage?) -> Void)?)
     
-    func didCrop(with image: UIImage?)
-    func didCancelCrop()
+    func set(photoCropper: PhotoCropper)
+    func cancel()
+    func done()
     
     func fillSelectedPhoto(animated: Bool)
     func fitSelectedPhoto(animated: Bool)

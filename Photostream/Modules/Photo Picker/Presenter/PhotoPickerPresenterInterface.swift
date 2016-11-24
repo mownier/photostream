@@ -17,10 +17,16 @@ protocol PhotoPickerPresenterInterface: class {
     var moduleDelegate: PhotoPickerModuleDelegate? { set get }
     var photos: [PHAsset] { set get }
     var contentMode: PhotoContentMode { set get }
+    var cropper: PhotoCropper! { set get }
 }
 
 enum PhotoContentMode {
     case fill(Bool)
     case fit(Bool)
+}
+
+protocol PhotoCropper: class {
+    
+    var image: UIImage? { get }
 }
 
