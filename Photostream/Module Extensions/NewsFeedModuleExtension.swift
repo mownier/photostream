@@ -53,3 +53,5 @@ extension NewsFeedPost: PostListCellItem {
 }
 
 extension NewsFeedPost: PostListHeaderItem { }
+
+extension NewsFeedPresenter: HomeModuleDependency { }
