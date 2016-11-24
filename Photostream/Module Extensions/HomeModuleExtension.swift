@@ -22,7 +22,18 @@ extension HomePresenter {
 extension HomePresenter: PostComposerModuleDelegate {
     
     func postComposerDidFinishWriting(with image: UIImage, content: String) {
-        router?.showPostUpload(in: view.controller, delegate: self, image: image, content: content)
+        guard let tabBarController = view.controller as? UITabBarController,
+            let navController = tabBarController.viewControllers?[0] as? UINavigationController else {
+            return
+        }
+        
+        let _ = navController.popToRootViewController(animated: false)
+        
+        guard let newsFeedView = navController.topViewController as? NewsFeedViewInterface else {
+            return
+        }
+        
+        router?.showPostUpload(in: newsFeedView.controller, delegate: self, image: image, content: content)
     }
     
     func postComposerDidCancelWriting() {
@@ -100,8 +111,6 @@ extension HomeWireframe {
         
         let vc = PostUploadViewController()
         let wireframe = PostUploadWireframe(root: root, delegate: delegate, view: vc, image: image, content: content)
-        
-        vc.view.frame.origin.y = 64
         wireframe.attach(with: vc, in: controller!)
     }
 }
