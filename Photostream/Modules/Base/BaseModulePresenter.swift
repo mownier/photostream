@@ -1,0 +1,16 @@
+//
+//  BaseModulePresenter.swift
+//  Photostream
+//
+//  Created by Mounir Ybanez on 24/11/2016.
+//  Copyright © 2016 Mounir Ybanez. All rights reserved.
+//
+
+import UIKit
+
+protocol BaseModulePresenter: BaseModuleInteractorOutput {
+
+    var view: BaseModuleView! { set get }
+    var interactor: BaseModuleInteractorInput? { set get }
+    var wireframe: BaseModuleWireframe! { set get }
+}
