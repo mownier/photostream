@@ -8,14 +8,14 @@
 
 import UIKit
 
-extension HomePresenter {
-    
-    var router: HomeWireframe? {
-        return wireframe as? HomeWireframe
-    }
+extension HomePresenterInterface {
     
     func presentPostComposer() {
-        router?.showPostComposer(from: view.controller, delegate: self)
+        guard let presenter = self as? HomePresenter else {
+            return
+        }
+        
+        wireframe.showPostComposer(from: view.controller, delegate: presenter)
     }
 }
 
@@ -26,8 +26,9 @@ extension HomePresenter: PostComposerDelegate {
             return
         }
         
-        router?.showPostUpload(in: presenter.view.controller, delegate: self, image: image, content: content)
+        wireframe.showPostUpload(in: presenter.view.controller, delegate: self, image: image, content: content)
     }
+    
     func postComposerDidCancel() {
         print("Post composer did cancel writing...")
     }
@@ -69,6 +70,9 @@ extension HomeWireframe {
         _ = NewsFeedWireframe(root: root, view: feedVC)
         dependencies?.append(feedVC.presenter as! HomeModuleDependency)
     }
+}
+
+extension HomeWireframeInterface {
     
     func showPostUpload(in controller: UIViewController?, delegate: PostUploadModuleDelegate?, image: UIImage, content: String) {
         guard controller != nil else {
