@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol HomeViewInterface: NSObjectProtocol {
+protocol HomeViewInterface: class {
 
     var controller: UIViewController? { get }
     var presenter: HomePresenterInterface! { set get }

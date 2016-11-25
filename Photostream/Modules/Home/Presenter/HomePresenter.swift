@@ -6,8 +6,6 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
-
 class HomePresenter: HomePresenterInterface {
     
     weak var view: HomeViewInterface!
