@@ -8,14 +8,15 @@
 
 import UIKit
 
-extension PhotoPickerPresenter {
+extension PhotoPickerModuleInterface {
     
-    func didPickPhoto() {
-        guard let presenter: PhotoLibraryPresenter = wireframe.dependency() else {
+    func didPickPhotoFromLibrary() {
+        guard let presenter = self as? PhotoPickerPresenter else {
             return
         }
         
-        presenter.done()
+        let photoLibraryPresenter: PhotoLibraryPresenter? = presenter.wireframe.dependency()
+        photoLibraryPresenter?.done()
     }
 }
 

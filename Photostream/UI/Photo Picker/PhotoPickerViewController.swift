@@ -44,7 +44,7 @@ class PhotoPickerViewController: UIViewController {
     }
     
     @IBAction func didTapNext(_ sender: AnyObject) {
-        (presenter as? PhotoPickerPresenter)?.didPickPhoto()
+        presenter.didPickPhotoFromLibrary()
     }
     
     @IBAction func didTapLibrary() {
