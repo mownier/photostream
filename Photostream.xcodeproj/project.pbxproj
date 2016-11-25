@@ -199,6 +199,7 @@
 		B9D496971DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496921DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift */; };
 		B9D496981DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496931DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift */; };
 		B9D496991DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */; };
+		B9D4969C1DE7F09D00CDD58E /* PostComposerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */; };
 		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
 		B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */; };
 		B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */; };
@@ -434,6 +435,7 @@
 		B9D496921DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewDataSource.swift; sourceTree = "<group>"; };
 		B9D496931DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewDelegate.swift; sourceTree = "<group>"; };
 		B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoPickerModuleStoryboard.storyboard; sourceTree = "<group>"; };
+		B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerNavigationController.swift; sourceTree = "<group>"; };
 		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
 		B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewInterface.swift; sourceTree = "<group>"; };
@@ -1076,6 +1078,7 @@
 				B9D496711DE7EB5F00CDD58E /* Photo Library */,
 				B9D496901DE7EE3F00CDD58E /* Photo Picker */,
 				B9DEB2641DDEE17200C47C37 /* Photo Share */,
+				B9D4969A1DE7F07F00CDD58E /* Post Composer */,
 				B9690BF91DE565D0007E4593 /* Post Upload */,
 				B9C217621DCC40F900F617FC /* Registration */,
 				B9C217661DCC40F900F617FC /* Shared */,
@@ -1447,6 +1450,14 @@
 				B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		B9D4969A1DE7F07F00CDD58E /* Post Composer */ = {
+			isa = PBXGroup;
+			children = (
+				B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */,
+			);
+			path = "Post Composer";
 			sourceTree = "<group>";
 		};
 		B9D91EB11DD1B586000BF3E5 /* EmptyView */ = {
@@ -1965,6 +1976,7 @@
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
 				B9DEB2611DDEDE5200C47C37 /* PhotoShareWireframe.swift in Sources */,
 				B9C2179E1DCC40F900F617FC /* RegistrationModuleExtension.swift in Sources */,
+				B9D4969C1DE7F09D00CDD58E /* PostComposerNavigationController.swift in Sources */,
 				B9C217FE1DCC40F900F617FC /* PostGridCellItem.swift in Sources */,
 				B921B5551DD593240065C187 /* AssetService.swift in Sources */,
 				B978AF321DD42F14007C1AAD /* PhotoCapturePresenter.swift in Sources */,
