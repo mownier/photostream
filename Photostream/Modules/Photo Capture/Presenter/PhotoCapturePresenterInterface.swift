@@ -6,7 +6,6 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
 import GPUImage
 
 protocol PhotoCapturePresenterInterface: class {
