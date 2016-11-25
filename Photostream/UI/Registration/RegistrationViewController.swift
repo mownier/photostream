@@ -21,7 +21,7 @@ class RegistrationViewController: UIViewController {
     @IBInspectable var bottomColor: UIColor!
     @IBInspectable var cornerRadius: CGFloat = 0
 
-    var presenter: RegistrationEventHandler!
+    var presenter: RegistrationModuleInterface!
     var isOkToRegister: (String, String, String, String)? {
         guard let email = emailTextField.text,
             let password = passwordTextField.text,

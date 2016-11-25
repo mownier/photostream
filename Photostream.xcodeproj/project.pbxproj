@@ -91,7 +91,7 @@
 		B9C217C11DCC40F900F617FC /* RegistrationInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2171D1DCC40F900F617FC /* RegistrationInteractorInput.swift */; };
 		B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2171E1DCC40F900F617FC /* RegistrationInteractorInterface.swift */; };
 		B9C217C31DCC40F900F617FC /* RegistrationInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2171F1DCC40F900F617FC /* RegistrationInteractorOutput.swift */; };
-		B9C217C41DCC40F900F617FC /* RegistrationEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217211DCC40F900F617FC /* RegistrationEventHandler.swift */; };
+		B9C217C41DCC40F900F617FC /* RegistrationModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217211DCC40F900F617FC /* RegistrationModuleInterface.swift */; };
 		B9C217C51DCC40F900F617FC /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217221DCC40F900F617FC /* RegistrationPresenter.swift */; };
 		B9C217C61DCC40F900F617FC /* RegistrationPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217231DCC40F900F617FC /* RegistrationPresenterInterface.swift */; };
 		B9C217C71DCC40F900F617FC /* RegistrationViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217251DCC40F900F617FC /* RegistrationViewInterface.swift */; };
@@ -328,7 +328,7 @@
 		B9C2171D1DCC40F900F617FC /* RegistrationInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorInput.swift; sourceTree = "<group>"; };
 		B9C2171E1DCC40F900F617FC /* RegistrationInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorInterface.swift; sourceTree = "<group>"; };
 		B9C2171F1DCC40F900F617FC /* RegistrationInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationInteractorOutput.swift; sourceTree = "<group>"; };
-		B9C217211DCC40F900F617FC /* RegistrationEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationEventHandler.swift; sourceTree = "<group>"; };
+		B9C217211DCC40F900F617FC /* RegistrationModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationModuleInterface.swift; sourceTree = "<group>"; };
 		B9C217221DCC40F900F617FC /* RegistrationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		B9C217231DCC40F900F617FC /* RegistrationPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPresenterInterface.swift; sourceTree = "<group>"; };
 		B9C217251DCC40F900F617FC /* RegistrationViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewInterface.swift; sourceTree = "<group>"; };
@@ -939,7 +939,7 @@
 		B9C217201DCC40F900F617FC /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				B9C217211DCC40F900F617FC /* RegistrationEventHandler.swift */,
+				B9C217211DCC40F900F617FC /* RegistrationModuleInterface.swift */,
 				B9C217221DCC40F900F617FC /* RegistrationPresenter.swift */,
 				B9C217231DCC40F900F617FC /* RegistrationPresenterInterface.swift */,
 			);
@@ -1998,7 +1998,7 @@
 				B9C217E81DCC40F900F617FC /* HomeViewController.swift in Sources */,
 				B9C217C11DCC40F900F617FC /* RegistrationInteractorInput.swift in Sources */,
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,
-				B9C217C41DCC40F900F617FC /* RegistrationEventHandler.swift in Sources */,
+				B9C217C41DCC40F900F617FC /* RegistrationModuleInterface.swift in Sources */,
 				B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */,
 				B9C217B51DCC40F900F617FC /* NewsFeedInteractorInterface.swift in Sources */,
 				B9C217D41DCC40F900F617FC /* AuthSession.swift in Sources */,

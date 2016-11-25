@@ -11,7 +11,7 @@ import UIKit
 protocol RegistrationViewInterface: class {
     
     var controller: UIViewController? { get }
-    var presenter: RegistrationEventHandler! { set get }
+    var presenter: RegistrationModuleInterface! { set get }
     
     func didTapRegister()
     func didReceiveError(message: String)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RegistrationEventHandler: class {
+protocol RegistrationModuleInterface: class {
 
     func register(email: String, password: String, firstName: String, lastName: String)
     func presentErrorAlert(message: String)

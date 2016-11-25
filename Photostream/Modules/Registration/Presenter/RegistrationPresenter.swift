@@ -15,7 +15,7 @@ class RegistrationPresenter: RegistrationPresenterInterface {
     var wireframe: RegistrationWireframeInterface!
 }
 
-extension RegistrationPresenter: RegistrationEventHandler {
+extension RegistrationPresenter: RegistrationModuleInterface {
     
     func register(email: String, password: String, firstName: String, lastName: String) {
         interactor.register(email: email, password: password, firstName: firstName, lastName: lastName)
