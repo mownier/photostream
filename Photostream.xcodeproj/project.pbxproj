@@ -9,16 +9,7 @@
 /* Begin PBXBuildFile section */
 		46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */; };
 		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
-		B909204F1DD303DD0073FB72 /* PostComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909204E1DD303DD0073FB72 /* PostComposerViewController.swift */; };
-		B90920511DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90920501DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard */; };
-		B90920531DD304550073FB72 /* PostComposerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920521DD304550073FB72 /* PostComposerPresenter.swift */; };
-		B90920551DD304740073FB72 /* PostComposerViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920541DD304740073FB72 /* PostComposerViewInterface.swift */; };
-		B90920571DD3048A0073FB72 /* PostComposerWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920561DD3048A0073FB72 /* PostComposerWireframeInterface.swift */; };
-		B90920591DD304970073FB72 /* PostComposerWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920581DD304970073FB72 /* PostComposerWireframe.swift */; };
-		B909205B1DD304B40073FB72 /* PostComposerPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909205A1DD304B40073FB72 /* PostComposerPresenterInterface.swift */; };
-		B909205D1DD3058E0073FB72 /* PostComposerModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909205C1DD3058E0073FB72 /* PostComposerModuleInterface.swift */; };
-		B909205F1DD30C860073FB72 /* PostComposerModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B909205E1DD30C860073FB72 /* PostComposerModuleDelegate.swift */; };
-		B90920611DD30D730073FB72 /* PostComposerModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920601DD30D730073FB72 /* PostComposerModuleExtension.swift */; };
+		B90920611DD30D730073FB72 /* PhotoPickerModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920601DD30D730073FB72 /* PhotoPickerModuleExtension.swift */; };
 		B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */; };
 		B921B5551DD593240065C187 /* AssetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5541DD593240065C187 /* AssetService.swift */; };
 		B921B5571DD594A70065C187 /* AssetServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921B5561DD594A70065C187 /* AssetServiceProvider.swift */; };
@@ -197,6 +188,17 @@
 		B9D4967A1DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496741DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift */; };
 		B9D4967B1DE7EB5F00CDD58E /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496751DE7EB5F00CDD58E /* PhotoLibraryViewController.swift */; };
 		B9D4967C1DE7EB5F00CDD58E /* PhotoLibraryModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D496771DE7EB5F00CDD58E /* PhotoLibraryModuleStoryboard.storyboard */; };
+		B9D496891DE7EDE300CDD58E /* PhotoPickerModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496801DE7EDE300CDD58E /* PhotoPickerModuleDelegate.swift */; };
+		B9D4968A1DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496811DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift */; };
+		B9D4968B1DE7EDE300CDD58E /* PhotoPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496821DE7EDE300CDD58E /* PhotoPickerPresenter.swift */; };
+		B9D4968C1DE7EDE300CDD58E /* PhotoPickerPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496831DE7EDE300CDD58E /* PhotoPickerPresenterInterface.swift */; };
+		B9D4968D1DE7EDE300CDD58E /* PhotoPickerViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496851DE7EDE300CDD58E /* PhotoPickerViewInterface.swift */; };
+		B9D4968E1DE7EDE300CDD58E /* PhotoPickerWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496871DE7EDE300CDD58E /* PhotoPickerWireframe.swift */; };
+		B9D4968F1DE7EDE300CDD58E /* PhotoPickerWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496881DE7EDE300CDD58E /* PhotoPickerWireframeInterface.swift */; };
+		B9D496961DE7EE3F00CDD58E /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496911DE7EE3F00CDD58E /* PhotoPickerViewController.swift */; };
+		B9D496971DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496921DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift */; };
+		B9D496981DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496931DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift */; };
+		B9D496991DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */; };
 		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
 		B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */; };
 		B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */; };
@@ -219,8 +221,6 @@
 		B9DEB2691DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */; };
 		B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */; };
 		B9FCB9661DE408DC00D8F2B5 /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */; };
-		B9FCB9681DE4176B00D8F2B5 /* PostComposerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9671DE4176B00D8F2B5 /* PostComposerViewDelegate.swift */; };
-		B9FCB96A1DE4179400D8F2B5 /* PostComposerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9691DE4179400D8F2B5 /* PostComposerViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,16 +239,7 @@
 		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B909204E1DD303DD0073FB72 /* PostComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewController.swift; sourceTree = "<group>"; };
-		B90920501DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostComposerModuleStoryboard.storyboard; sourceTree = "<group>"; };
-		B90920521DD304550073FB72 /* PostComposerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerPresenter.swift; sourceTree = "<group>"; };
-		B90920541DD304740073FB72 /* PostComposerViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewInterface.swift; sourceTree = "<group>"; };
-		B90920561DD3048A0073FB72 /* PostComposerWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerWireframeInterface.swift; sourceTree = "<group>"; };
-		B90920581DD304970073FB72 /* PostComposerWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerWireframe.swift; sourceTree = "<group>"; };
-		B909205A1DD304B40073FB72 /* PostComposerPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerPresenterInterface.swift; sourceTree = "<group>"; };
-		B909205C1DD3058E0073FB72 /* PostComposerModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerModuleInterface.swift; sourceTree = "<group>"; };
-		B909205E1DD30C860073FB72 /* PostComposerModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerModuleDelegate.swift; sourceTree = "<group>"; };
-		B90920601DD30D730073FB72 /* PostComposerModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerModuleExtension.swift; sourceTree = "<group>"; };
+		B90920601DD30D730073FB72 /* PhotoPickerModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerModuleExtension.swift; sourceTree = "<group>"; };
 		B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		B921B5541DD593240065C187 /* AssetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetService.swift; sourceTree = "<group>"; };
 		B921B5561DD594A70065C187 /* AssetServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetServiceProvider.swift; sourceTree = "<group>"; };
@@ -432,6 +423,17 @@
 		B9D496741DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryDelegate.swift; sourceTree = "<group>"; };
 		B9D496751DE7EB5F00CDD58E /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		B9D496771DE7EB5F00CDD58E /* PhotoLibraryModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoLibraryModuleStoryboard.storyboard; sourceTree = "<group>"; };
+		B9D496801DE7EDE300CDD58E /* PhotoPickerModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerModuleDelegate.swift; sourceTree = "<group>"; };
+		B9D496811DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerModuleInterface.swift; sourceTree = "<group>"; };
+		B9D496821DE7EDE300CDD58E /* PhotoPickerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerPresenter.swift; sourceTree = "<group>"; };
+		B9D496831DE7EDE300CDD58E /* PhotoPickerPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerPresenterInterface.swift; sourceTree = "<group>"; };
+		B9D496851DE7EDE300CDD58E /* PhotoPickerViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewInterface.swift; sourceTree = "<group>"; };
+		B9D496871DE7EDE300CDD58E /* PhotoPickerWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerWireframe.swift; sourceTree = "<group>"; };
+		B9D496881DE7EDE300CDD58E /* PhotoPickerWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerWireframeInterface.swift; sourceTree = "<group>"; };
+		B9D496911DE7EE3F00CDD58E /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
+		B9D496921DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewDataSource.swift; sourceTree = "<group>"; };
+		B9D496931DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewDelegate.swift; sourceTree = "<group>"; };
+		B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoPickerModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
 		B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewInterface.swift; sourceTree = "<group>"; };
@@ -455,8 +457,6 @@
 		B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
 		B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
-		B9FCB9671DE4176B00D8F2B5 /* PostComposerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewDelegate.swift; sourceTree = "<group>"; };
-		B9FCB9691DE4179400D8F2B5 /* PostComposerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewDataSource.swift; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -480,71 +480,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B90920471DD303490073FB72 /* Post Composer */ = {
-			isa = PBXGroup;
-			children = (
-				B90920481DD303490073FB72 /* Interactor */,
-				B90920491DD303490073FB72 /* Presenter */,
-				B909204A1DD303490073FB72 /* View */,
-				B909204B1DD303490073FB72 /* Wireframe */,
-			);
-			path = "Post Composer";
-			sourceTree = "<group>";
-		};
-		B90920481DD303490073FB72 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		B90920491DD303490073FB72 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				B90920521DD304550073FB72 /* PostComposerPresenter.swift */,
-				B909205A1DD304B40073FB72 /* PostComposerPresenterInterface.swift */,
-				B909205C1DD3058E0073FB72 /* PostComposerModuleInterface.swift */,
-				B909205E1DD30C860073FB72 /* PostComposerModuleDelegate.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		B909204A1DD303490073FB72 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B90920541DD304740073FB72 /* PostComposerViewInterface.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B909204B1DD303490073FB72 /* Wireframe */ = {
-			isa = PBXGroup;
-			children = (
-				B90920561DD3048A0073FB72 /* PostComposerWireframeInterface.swift */,
-				B90920581DD304970073FB72 /* PostComposerWireframe.swift */,
-			);
-			path = Wireframe;
-			sourceTree = "<group>";
-		};
-		B909204C1DD303BD0073FB72 /* Post Composer */ = {
-			isa = PBXGroup;
-			children = (
-				B909204E1DD303DD0073FB72 /* PostComposerViewController.swift */,
-				B9FCB9691DE4179400D8F2B5 /* PostComposerViewDataSource.swift */,
-				B9FCB9671DE4176B00D8F2B5 /* PostComposerViewDelegate.swift */,
-				B909204D1DD303BD0073FB72 /* Storyboard */,
-			);
-			path = "Post Composer";
-			sourceTree = "<group>";
-		};
-		B909204D1DD303BD0073FB72 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B90920501DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard */,
-			);
-			path = Storyboard;
-			sourceTree = "<group>";
-		};
 		B921B5501DD593090065C187 /* Local Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,7 +712,7 @@
 				B9C216E51DCC40F900F617FC /* NewsFeedModuleExtension.swift */,
 				B978AF441DD45A7B007C1AAD /* PhotoCaptureModuleExtension.swift */,
 				B921B5641DD5ADF20065C187 /* PhotoLibraryModuleExtension.swift */,
-				B90920601DD30D730073FB72 /* PostComposerModuleExtension.swift */,
+				B90920601DD30D730073FB72 /* PhotoPickerModuleExtension.swift */,
 				B9DEB2621DDEE12000C47C37 /* PhotoShareModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
 				B9C216E71DCC40F900F617FC /* UserProfileExtension.swift */,
@@ -795,8 +730,8 @@
 				B9C217071DCC40F900F617FC /* News Feed */,
 				B978AF2B1DD42EEA007C1AAD /* Photo Capture */,
 				B9D4964A1DE7EAD200CDD58E /* Photo Library */,
+				B9D4967D1DE7EDE300CDD58E /* Photo Picker */,
 				B9DEB2511DDEDD8900C47C37 /* Photo Share */,
-				B90920471DD303490073FB72 /* Post Composer */,
 				B954EE481DE0322600A0049D /* Post Upload */,
 				B9C2171A1DCC40F900F617FC /* Registration */,
 				B9C217291DCC40F900F617FC /* User Profile */,
@@ -1139,8 +1074,8 @@
 				B9C2175C1DCC40F900F617FC /* News Feed */,
 				B978AF3E1DD44A3D007C1AAD /* Photo Capture */,
 				B9D496711DE7EB5F00CDD58E /* Photo Library */,
+				B9D496901DE7EE3F00CDD58E /* Photo Picker */,
 				B9DEB2641DDEE17200C47C37 /* Photo Share */,
-				B909204C1DD303BD0073FB72 /* Post Composer */,
 				B9690BF91DE565D0007E4593 /* Post Upload */,
 				B9C217621DCC40F900F617FC /* Registration */,
 				B9C217661DCC40F900F617FC /* Shared */,
@@ -1449,6 +1384,71 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		B9D4967D1DE7EDE300CDD58E /* Photo Picker */ = {
+			isa = PBXGroup;
+			children = (
+				B9D4967E1DE7EDE300CDD58E /* Interactor */,
+				B9D4967F1DE7EDE300CDD58E /* Presenter */,
+				B9D496841DE7EDE300CDD58E /* View */,
+				B9D496861DE7EDE300CDD58E /* Wireframe */,
+			);
+			path = "Photo Picker";
+			sourceTree = "<group>";
+		};
+		B9D4967E1DE7EDE300CDD58E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B9D4967F1DE7EDE300CDD58E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B9D496801DE7EDE300CDD58E /* PhotoPickerModuleDelegate.swift */,
+				B9D496811DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift */,
+				B9D496821DE7EDE300CDD58E /* PhotoPickerPresenter.swift */,
+				B9D496831DE7EDE300CDD58E /* PhotoPickerPresenterInterface.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B9D496841DE7EDE300CDD58E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9D496851DE7EDE300CDD58E /* PhotoPickerViewInterface.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9D496861DE7EDE300CDD58E /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B9D496871DE7EDE300CDD58E /* PhotoPickerWireframe.swift */,
+				B9D496881DE7EDE300CDD58E /* PhotoPickerWireframeInterface.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B9D496901DE7EE3F00CDD58E /* Photo Picker */ = {
+			isa = PBXGroup;
+			children = (
+				B9D496911DE7EE3F00CDD58E /* PhotoPickerViewController.swift */,
+				B9D496921DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift */,
+				B9D496931DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift */,
+				B9D496941DE7EE3F00CDD58E /* Storyboard */,
+			);
+			path = "Photo Picker";
+			sourceTree = "<group>";
+		};
+		B9D496941DE7EE3F00CDD58E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		B9D91EB11DD1B586000BF3E5 /* EmptyView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1659,7 +1659,6 @@
 				B9DEB2691DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard in Resources */,
 				B978AF431DD44A8F007C1AAD /* PhotoCaptureModuleStoryboard.storyboard in Resources */,
 				B9C218021DCC40F900F617FC /* PostGridCell.xib in Resources */,
-				B90920511DD303F10073FB72 /* PostComposerModuleStoryboard.storyboard in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B9C217EF1DCC40F900F617FC /* NewsFeedModuleStoryboard.storyboard in Resources */,
 				B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */,
@@ -1667,6 +1666,7 @@
 				B9C217E71DCC40F900F617FC /* CommentModuleStoryboard.storyboard in Resources */,
 				B9D91EB81DD1B932000BF3E5 /* EmptyView.xib in Resources */,
 				B9C218061DCC40F900F617FC /* PostListCell.xib in Resources */,
+				B9D496991DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard in Resources */,
 				B9C218031DCC40F900F617FC /* PostHeaderView.xib in Resources */,
 				B9C217E91DCC40F900F617FC /* HomeModuleStoryboard.storyboard in Resources */,
 				B9D4967C1DE7EB5F00CDD58E /* PhotoLibraryModuleStoryboard.storyboard in Resources */,
@@ -1812,7 +1812,9 @@
 				B9C217D11DCC40F900F617FC /* UserProfilePresenter.swift in Sources */,
 				B978AF301DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift in Sources */,
 				B9DEB25B1DDEDE2E00C47C37 /* PhotoSharePresenter.swift in Sources */,
+				B9D4968B1DE7EDE300CDD58E /* PhotoPickerPresenter.swift in Sources */,
 				B9C217C91DCC40F900F617FC /* RegistrationWireframeInterface.swift in Sources */,
+				B9D4968A1DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift in Sources */,
 				B9C217CF1DCC40F900F617FC /* UserProfileModuleInterface.swift in Sources */,
 				B9C218071DCC40F900F617FC /* PostListFooter.swift in Sources */,
 				B978AF411DD44A53007C1AAD /* PhotoCaptureViewController.swift in Sources */,
@@ -1821,7 +1823,6 @@
 				B9C217C51DCC40F900F617FC /* RegistrationPresenter.swift in Sources */,
 				B9C217F71DCC40F900F617FC /* PostCellLoader.swift in Sources */,
 				B9C217BD1DCC40F900F617FC /* NewsFeedViewInterface.swift in Sources */,
-				B90920531DD304550073FB72 /* PostComposerPresenter.swift in Sources */,
 				B9DDB69C1DE6BC58007EFF33 /* BaseModuleInteractorOutput.swift in Sources */,
 				B9C217D21DCC40F900F617FC /* UserProfileViewInterface.swift in Sources */,
 				B9D496791DE7EB5F00CDD58E /* PhotoLibraryDataSource.swift in Sources */,
@@ -1835,20 +1836,18 @@
 				B921B5571DD594A70065C187 /* AssetServiceProvider.swift in Sources */,
 				B9C217D71DCC40F900F617FC /* Post.swift in Sources */,
 				B9C217A51DCC40F900F617FC /* HomeViewInterface.swift in Sources */,
+				B9D496891DE7EDE300CDD58E /* PhotoPickerModuleDelegate.swift in Sources */,
 				B9C217CB1DCC40F900F617FC /* UserProfileInteractor.swift in Sources */,
 				B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */,
 				B9C217B41DCC40F900F617FC /* NewsFeedInteractorInput.swift in Sources */,
 				B9C217A91DCC40F900F617FC /* LoginInteractorInput.swift in Sources */,
 				B9C217D81DCC40F900F617FC /* Profile.swift in Sources */,
-				B90920551DD304740073FB72 /* PostComposerViewInterface.swift in Sources */,
 				B9DEB2671DDEE18300C47C37 /* PhotoShareViewController.swift in Sources */,
 				B9C217BA1DCC40F900F617FC /* NewsFeedModuleInterface.swift in Sources */,
 				B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */,
 				B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */,
 				B9DDB69A1DE6BC43007EFF33 /* BaseModuleInteractorInput.swift in Sources */,
-				B90920571DD3048A0073FB72 /* PostComposerWireframeInterface.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
-				B909205F1DD30C860073FB72 /* PostComposerModuleDelegate.swift in Sources */,
 				B9C217DF1DCC40F900F617FC /* UserService.swift in Sources */,
 				B9C217AE1DCC40F900F617FC /* LoginEventHandler.swift in Sources */,
 				B9C217B91DCC40F900F617FC /* NewsFeedItemParser.swift in Sources */,
@@ -1858,7 +1857,7 @@
 				B9C217E31DCC40F900F617FC /* NewsFeedServiceProvider.swift in Sources */,
 				B9C217D61DCC40F900F617FC /* Photo.swift in Sources */,
 				B9C218111DCC40F900F617FC /* UITextField+Extensions.swift in Sources */,
-				B90920611DD30D730073FB72 /* PostComposerModuleExtension.swift in Sources */,
+				B90920611DD30D730073FB72 /* PhotoPickerModuleExtension.swift in Sources */,
 				B9C217991DCC40F900F617FC /* AppDependency.swift in Sources */,
 				B9C217F21DCC40F900F617FC /* PostCell.swift in Sources */,
 				B954EE4D1DE0323E00A0049D /* PostUploadPresenter.swift in Sources */,
@@ -1912,6 +1911,7 @@
 				B9D4965B1DE7EAD200CDD58E /* PhotoLibraryInteractorInput.swift in Sources */,
 				B9C217E51DCC40F900F617FC /* UserServiceProvider.swift in Sources */,
 				B9D496621DE7EAD200CDD58E /* PhotoLibraryViewInterface.swift in Sources */,
+				B9D496981DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift in Sources */,
 				B9C218091DCC40F900F617FC /* PostListHeaderItem.swift in Sources */,
 				B9D496631DE7EAD200CDD58E /* PhotoLibraryWireframe.swift in Sources */,
 				B978AF361DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift in Sources */,
@@ -1925,6 +1925,7 @@
 				B9DDB69E1DE6BC69007EFF33 /* BaseModuleWireframe.swift in Sources */,
 				B9C217A21DCC40F900F617FC /* CommentWireframe.swift in Sources */,
 				B9C217FA1DCC40F900F617FC /* PostFooterView.swift in Sources */,
+				B9D496961DE7EE3F00CDD58E /* PhotoPickerViewController.swift in Sources */,
 				B9C217E01DCC40F900F617FC /* AuthenticationServiceProvider.swift in Sources */,
 				B9C217BC1DCC40F900F617FC /* NewsFeedPresenterInterface.swift in Sources */,
 				B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */,
@@ -1935,13 +1936,12 @@
 				B9C217F81DCC40F900F617FC /* PostCellLoaderCallback.swift in Sources */,
 				B9C217E61DCC40F900F617FC /* CommentsViewController.swift in Sources */,
 				B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */,
-				B909204F1DD303DD0073FB72 /* PostComposerViewController.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
+				B9D496971DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift in Sources */,
 				B9D4965E1DE7EAD200CDD58E /* PhotoLibraryModuleDelegate.swift in Sources */,
 				B9C2180E1DCC40F900F617FC /* String+Extensions.swift in Sources */,
 				B9C217C71DCC40F900F617FC /* RegistrationViewInterface.swift in Sources */,
-				B909205B1DD304B40073FB72 /* PostComposerPresenterInterface.swift in Sources */,
 				B9C2180F1DCC40F900F617FC /* UIColor+Extensions.swift in Sources */,
 				B9C218121DCC40F900F617FC /* UIView+Extensions.swift in Sources */,
 				B9C217A61DCC40F900F617FC /* HomeWireframe.swift in Sources */,
@@ -1950,16 +1950,16 @@
 				B9C217E11DCC40F900F617FC /* CommentServiceProvider.swift in Sources */,
 				B9C217D31DCC40F900F617FC /* UserProfileWireframe.swift in Sources */,
 				B9DEB2631DDEE12000C47C37 /* PhotoShareModuleExtension.swift in Sources */,
+				B9D4968D1DE7EDE300CDD58E /* PhotoPickerViewInterface.swift in Sources */,
 				B9C217B21DCC40F900F617FC /* NewsFeedData.swift in Sources */,
 				B9D4967B1DE7EB5F00CDD58E /* PhotoLibraryViewController.swift in Sources */,
 				B9C2179C1DCC40F900F617FC /* LoginModuleExtension.swift in Sources */,
-				B9FCB96A1DE4179400D8F2B5 /* PostComposerViewDataSource.swift in Sources */,
 				B9C217F61DCC40F900F617FC /* PostCellItem.swift in Sources */,
 				B9C217FD1DCC40F900F617FC /* PostGridCellDelegate.swift in Sources */,
 				B9C218041DCC40F900F617FC /* PostListCell.swift in Sources */,
+				B9D4968F1DE7EDE300CDD58E /* PhotoPickerWireframeInterface.swift in Sources */,
 				B9C217DE1DCC40F900F617FC /* PostService.swift in Sources */,
 				B9C217F41DCC40F900F617FC /* PostCellDelegate.swift in Sources */,
-				B9FCB9681DE4176B00D8F2B5 /* PostComposerViewDelegate.swift in Sources */,
 				B9DDB6981DE6BC2E007EFF33 /* BaseModuleInteractor.swift in Sources */,
 				B92B96F91DDAD8DB00D89025 /* CropView.swift in Sources */,
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
@@ -1968,17 +1968,17 @@
 				B9C217FE1DCC40F900F617FC /* PostGridCellItem.swift in Sources */,
 				B921B5551DD593240065C187 /* AssetService.swift in Sources */,
 				B978AF321DD42F14007C1AAD /* PhotoCapturePresenter.swift in Sources */,
-				B909205D1DD3058E0073FB72 /* PostComposerModuleInterface.swift in Sources */,
 				B9C218081DCC40F900F617FC /* PostListHeader.swift in Sources */,
 				B954EE591DE032D400A0049D /* PostUploadModuleDelegate.swift in Sources */,
 				B9C217B61DCC40F900F617FC /* NewsFeedInteractorOutput.swift in Sources */,
 				B9C217A11DCC40F900F617FC /* RootWireframeInterface.swift in Sources */,
 				B9C217A41DCC40F900F617FC /* HomePresenterInterface.swift in Sources */,
 				B92B96FB1DDADAA700D89025 /* UICollectionViewFlowLayout+Extension.swift in Sources */,
+				B9D4968E1DE7EDE300CDD58E /* PhotoPickerWireframe.swift in Sources */,
 				B9C218101DCC40F900F617FC /* UILabel+Extensions.swift in Sources */,
 				B9C217B11DCC40F900F617FC /* LoginWireframeInterface.swift in Sources */,
 				B9C217981DCC40F900F617FC /* AppDelegate.swift in Sources */,
-				B90920591DD304970073FB72 /* PostComposerWireframe.swift in Sources */,
+				B9D4968C1DE7EDE300CDD58E /* PhotoPickerPresenterInterface.swift in Sources */,
 				B9C217E81DCC40F900F617FC /* HomeViewController.swift in Sources */,
 				B9C217C11DCC40F900F617FC /* RegistrationInteractorInput.swift in Sources */,
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,
