@@ -16,8 +16,8 @@ class PhotoShareViewController: UIViewController {
     var presenter: PhotoShareModuleInterface!
     var image: UIImage!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         imageView.image = image
     }
