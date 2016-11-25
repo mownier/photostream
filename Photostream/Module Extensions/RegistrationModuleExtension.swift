@@ -8,18 +8,19 @@
 
 import UIKit
 
-extension RegistrationPresenter {
+extension RegistrationModuleInterface {
     
-    var router: RegistrationWireframe? {
-        return (wireframe as? RegistrationWireframe)
+    fileprivate var presenter: RegistrationPresenterInterface? {
+        return self as? RegistrationPresenterInterface
     }
     
     func exit() {
-        router?.pop(controller: view.controller)
+        presenter?.wireframe.pop(controller: presenter?.view.controller)
     }
     
     func presentHome() {
-        router?.changeHomeAsRoot(in: view.controller?.view.window)
+        let viewController = presenter?.view.controller
+        presenter?.wireframe.changeHomeAsRoot(in: viewController?.view.window)
     }
 }
 
@@ -30,12 +31,15 @@ extension RegistrationWireframe {
         let vc = sb.instantiateViewController(withIdentifier: "RegistrationViewController")
         return vc as! RegistrationViewController
     }
+}
+
+extension RegistrationWireframeInterface {
     
     func push(controller: UIViewController, from: UIViewController?) {
         guard let nav = from?.navigationController else {
             return
         }
-    
+        
         nav.pushViewController(controller, animated: true)
     }
     

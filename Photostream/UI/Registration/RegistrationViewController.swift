@@ -46,7 +46,7 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func didTapBack() {
-        (presenter as? RegistrationPresenter)?.exit()
+        presenter.exit()
     }
     
     fileprivate func applyCornerRadius() {
@@ -109,6 +109,6 @@ extension RegistrationViewController: RegistrationViewInterface {
     }
     
     func didRegisterOk() {
-        (presenter as? RegistrationPresenter)?.presentHome()
+        presenter.presentHome()
     }
 }
