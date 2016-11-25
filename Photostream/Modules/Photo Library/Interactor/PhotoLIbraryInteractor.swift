@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Photos
+import UIKit
 
 class PhotoLibraryInteractor: PhotoLibraryInteractorInterface {
 
