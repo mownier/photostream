@@ -8,18 +8,19 @@
 
 import UIKit
 
-extension LoginPresenter {
+extension LoginModuleInterface {
     
-    var router: LoginWireframe? {
-        return wireframe as? LoginWireframe
+    var presenter: LoginPresenterInterface? {
+        return self as? LoginPresenterInterface
     }
     
     func presentRegistration() {
-        router?.pushRegistration(from: view.controller)
+        presenter?.wireframe.pushRegistration(from: presenter?.view.controller)
     }
     
     func presentHome() {
-        router?.changeRootAsHome(in: view.controller?.view.window)
+        let viewController = presenter?.view.controller
+        presenter?.wireframe.changeRootAsHome(in: viewController?.view.window)
     }
 }
 
@@ -30,6 +31,9 @@ extension LoginWireframe {
         let vc = sb.instantiateViewController(withIdentifier: "LoginViewController")
         return vc as! LoginViewController
     }
+}
+
+extension LoginWireframeInterface {
     
     func pushRegistration(from controller: UIViewController?) {
         guard controller != nil else {

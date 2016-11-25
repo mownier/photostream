@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didTapRegister() {
-        (presenter as? LoginPresenter)?.presentRegistration()
+        presenter.presentRegistration()
     }
 
     fileprivate func addIndicatorView() {
@@ -99,7 +99,7 @@ extension LoginViewController: LoginViewInterface {
     }
     
     func didLoginOk() {
-        (presenter as? LoginPresenter)?.presentHome()
+        presenter.presentHome()
     }
 }
 
