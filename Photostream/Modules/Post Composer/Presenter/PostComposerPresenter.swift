@@ -1,5 +1,5 @@
 //
-//  PostComposerPresenter.swift
+//  PhotoPickerPresenter.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 09/11/2016.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class PostComposerPresenter: PostComposerPresenterInterface {
+class PhotoPickerPresenter: PhotoPickerPresenterInterface {
     
-    weak var moduleDelegate: PostComposerModuleDelegate?
-    weak var view: PostComposerViewInterface!
-    var wireframe: PostComposerWireframeInterface!
+    weak var moduleDelegate: PhotoPickerModuleDelegate?
+    weak var view: PhotoPickerViewInterface!
+    var wireframe: PhotoPickerWireframeInterface!
     var source: PhotoSource = .unknown {
         didSet {
             guard source != oldValue else {
@@ -31,14 +31,14 @@ class PostComposerPresenter: PostComposerPresenterInterface {
     }
 }
 
-extension PostComposerPresenter: PostComposerModuleInterface {
+extension PhotoPickerPresenter: PhotoPickerModuleInterface {
     
     func cancelWriting() {
-        moduleDelegate?.postComposerDidCancelWriting()
+        moduleDelegate?.photoPickerDidCancelWriting()
     }
     
     func doneWriting(with image: UIImage, content: String) {
-        moduleDelegate?.postComposerDidFinishWriting(with: image, content: content)
+        moduleDelegate?.photoPickerDidFinishWriting(with: image, content: content)
     }
     
     func willShowCamera() {

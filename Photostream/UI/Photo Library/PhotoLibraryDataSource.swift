@@ -1,5 +1,5 @@
 //
-//  PhotoPickerDataSource.swift
+//  PhotoLibraryDataSource.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-extension PhotoPickerViewController: UICollectionViewDataSource {
+extension PhotoLibraryViewController: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.photoCount
@@ -23,7 +23,7 @@ extension PhotoPickerViewController: UICollectionViewDataSource {
     }
 }
 
-extension PhotoPickerViewController {
+extension PhotoLibraryViewController {
     
     func configure(with cell: PhotoGridCell, at index: Int) {
         cell.isSelected = selectedIndex >= 0 && selectedIndex == index

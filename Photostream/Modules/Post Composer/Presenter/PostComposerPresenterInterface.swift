@@ -1,5 +1,5 @@
 //
-//  PostComposerPresenterInterface.swift
+//  PhotoPickerPresenterInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 09/11/2016.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol PostComposerPresenterInterface: class {
+protocol PhotoPickerPresenterInterface: class {
 
-    var view: PostComposerViewInterface! { set get }
-    var wireframe: PostComposerWireframeInterface! { set get }
-    var moduleDelegate: PostComposerModuleDelegate? { set get }
+    var view: PhotoPickerViewInterface! { set get }
+    var wireframe: PhotoPickerWireframeInterface! { set get }
+    var moduleDelegate: PhotoPickerModuleDelegate? { set get }
     var source: PhotoSource { set get }
 }
 

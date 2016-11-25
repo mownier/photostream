@@ -1,5 +1,5 @@
 //
-//  PostComposerWireframe.swift
+//  PhotoPickerWireframe.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 09/11/2016.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class PostComposerWireframe: PostComposerWireframeInterface {
+class PhotoPickerWireframe: PhotoPickerWireframeInterface {
 
-    lazy var dependencies: [PostComposerModuleDependency]? = [PostComposerModuleDependency]()
+    lazy var dependencies: [PhotoPickerModuleDependency]? = [PhotoPickerModuleDependency]()
     var root: RootWireframeInterface?
     
-    required init(root: RootWireframeInterface?, delegate: PostComposerModuleDelegate?, view: PostComposerViewInterface) {
+    required init(root: RootWireframeInterface?, delegate: PhotoPickerModuleDelegate?, view: PhotoPickerViewInterface) {
         self.root = root
     
-        let presenter = PostComposerPresenter()
+        let presenter = PhotoPickerPresenter()
         presenter.moduleDelegate = delegate
         presenter.view = view
         presenter.wireframe = self

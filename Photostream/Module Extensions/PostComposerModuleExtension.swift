@@ -1,5 +1,5 @@
 //
-//  PostComposerModuleExtension.swift
+//  PhotoPickerModuleExtension.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 09/11/2016.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension PostComposerPresenter {
+extension PhotoPickerPresenter {
     
     func didPickPhoto() {
-        guard let presenter: PhotoPickerPresenter = wireframe.dependency() else {
+        guard let presenter: PhotoLibraryPresenter = wireframe.dependency() else {
             return
         }
         
@@ -23,9 +23,9 @@ extension PostComposerPresenter {
     }
 }
 
-extension PostComposerPresenter: PhotoPickerModuleDelegate {
+extension PhotoPickerPresenter: PhotoLibraryModuleDelegate {
     
-    func photoPickerDidPick(with image: UIImage?) {
+    func photoLibraryDidPick(with image: UIImage?) {
         guard image != nil else {
             return
         }
@@ -33,12 +33,12 @@ extension PostComposerPresenter: PhotoPickerModuleDelegate {
         presentPhotoShare(with: image!)
     }
     
-    func photoPickerDidCancel() {
+    func photoLibraryDidCancel() {
         print("Post Composer: did cancel pick")
     }
 }
 
-extension PostComposerPresenter: PhotoCaptureModuleDelegate {
+extension PhotoPickerPresenter: PhotoCaptureModuleDelegate {
     
     func photoCaptureDidFinish(with image: UIImage?) {
         guard image != nil else {
@@ -53,10 +53,10 @@ extension PostComposerPresenter: PhotoCaptureModuleDelegate {
     }
 }
 
-extension PostComposerPresenter: PhotoShareModuleDelegate {
+extension PhotoPickerPresenter: PhotoShareModuleDelegate {
     
     func photoShareDidFinish(with image: UIImage, content: String) {
-        moduleDelegate?.postComposerDidFinishWriting(with: image, content: content)
+        moduleDelegate?.photoPickerDidFinishWriting(with: image, content: content)
     }
     
     func photoShareDidCancel() {
@@ -64,7 +64,7 @@ extension PostComposerPresenter: PhotoShareModuleDelegate {
     }
 }
 
-extension PostComposerWireframeInterface {
+extension PhotoPickerWireframeInterface {
     
     func showPhotoShare(from navigationController: UINavigationController?, with image: UIImage, delegate: PhotoShareModuleDelegate) {
         let vc = PhotoShareWireframe.createViewController()
@@ -74,17 +74,17 @@ extension PostComposerWireframeInterface {
     }
 }
 
-extension PostComposerWireframe {
+extension PhotoPickerWireframe {
     
-    class func createViewController() -> PostComposerViewController {
-        let sb = UIStoryboard(name: "PostComposerModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "PostComposerViewController")
-        return vc as! PostComposerViewController
+    class func createViewController() -> PhotoPickerViewController {
+        let sb = UIStoryboard(name: "PhotoPickerModuleStoryboard", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "PhotoPickerViewController")
+        return vc as! PhotoPickerViewController
     }
     
     class func createNavigationController() -> UINavigationController {
-        let sb = UIStoryboard(name: "PostComposerModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "PostComposerNavigationController")
+        let sb = UIStoryboard(name: "PhotoPickerModuleStoryboard", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "PhotoPickerNavigationController")
         return vc as! UINavigationController
     }
 }

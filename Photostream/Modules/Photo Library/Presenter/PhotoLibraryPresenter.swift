@@ -1,5 +1,5 @@
 //
-//  PhotoPickerPresenter.swift
+//  PhotoLibraryPresenter.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -9,14 +9,14 @@
 import UIKit
 import Photos
 
-class PhotoPickerPresenter: PhotoPickerPresenterInterface {
+class PhotoLibraryPresenter: PhotoLibraryPresenterInterface {
 
-    weak var view: PhotoPickerViewInterface!
-    weak var moduleDelegate: PhotoPickerModuleDelegate?
+    weak var view: PhotoLibraryViewInterface!
+    weak var moduleDelegate: PhotoLibraryModuleDelegate?
     weak var cropper: PhotoCropper!
     
-    var wireframe: PhotoPickerWireframeInterface!
-    var interactor: PhotoPickerInteractorInput!
+    var wireframe: PhotoLibraryWireframeInterface!
+    var interactor: PhotoLibraryInteractorInput!
     var photos = [PHAsset]()
     var contentMode: PhotoContentMode = .fill(false) {
         didSet {
@@ -30,7 +30,7 @@ class PhotoPickerPresenter: PhotoPickerPresenterInterface {
     }
 }
 
-extension PhotoPickerPresenter: PhotoPickerModuleInterface {
+extension PhotoLibraryPresenter: PhotoLibraryModuleInterface {
     
     var photoCount: Int {
         return photos.count
@@ -84,11 +84,11 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
     }
     
     func cancel() {
-        moduleDelegate?.photoPickerDidCancel()
+        moduleDelegate?.photoLibraryDidCancel()
     }
     
     func done() {
-        moduleDelegate?.photoPickerDidPick(with: cropper.image)
+        moduleDelegate?.photoLibraryDidPick(with: cropper.image)
     }
     
     func fillSelectedPhoto(animated: Bool) {
@@ -113,9 +113,9 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
     }
 }
 
-extension PhotoPickerPresenter: PhotoPickerInteractorOutput {
+extension PhotoLibraryPresenter: PhotoLibraryInteractorOutput {
 
-    func photoPickerDidFetchPhotos(with assets: [PHAsset]) {
+    func photoLibraryDidFetchPhotos(with assets: [PHAsset]) {
         photos.append(contentsOf: assets)
         view.didFetchPhotos()
     }

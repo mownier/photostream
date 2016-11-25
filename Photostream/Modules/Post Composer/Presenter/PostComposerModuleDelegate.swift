@@ -1,5 +1,5 @@
 //
-//  PostComposerModuleDelegate.swift
+//  PhotoPickerModuleDelegate.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 09/11/2016.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol PostComposerModuleDelegate: class {
+protocol PhotoPickerModuleDelegate: class {
     
-    func postComposerDidFinishWriting(with image: UIImage, content: String)
-    func postComposerDidCancelWriting()
+    func photoPickerDidFinishWriting(with image: UIImage, content: String)
+    func photoPickerDidCancelWriting()
 }

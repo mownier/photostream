@@ -1,5 +1,5 @@
 //
-//  PhotoPickerInteractorInterface.swift
+//  PhotoLibraryInteractorInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol PhotoPickerInteractorInterface: class {
+protocol PhotoLibraryInteractorInterface: class {
 
-    var output: PhotoPickerInteractorOutput? { set get }
+    var output: PhotoLibraryInteractorOutput? { set get }
     var service: AssetService! { set get }
     
     init(service: AssetService)

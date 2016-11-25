@@ -1,5 +1,5 @@
 //
-//  PhotoPickerViewController.swift
+//  PhotoLibraryViewController.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class PhotoPickerViewController: UIViewController {
+class PhotoLibraryViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -19,7 +19,7 @@ class PhotoPickerViewController: UIViewController {
     
     lazy var scrollHandler = ScrollHandler()
     
-    var presenter: PhotoPickerModuleInterface!
+    var presenter: PhotoLibraryModuleInterface!
     var selectedIndex: Int = -1
     
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ class PhotoPickerViewController: UIViewController {
 
     @IBAction func didTapDone(_ sender: AnyObject) {
         presenter.done()
-        (presenter as? PhotoPickerPresenter)?.presentPhotoShare()
+        (presenter as? PhotoLibraryPresenter)?.presentPhotoShare()
     }
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
@@ -96,7 +96,7 @@ class PhotoPickerViewController: UIViewController {
     }
 }
 
-extension PhotoPickerViewController: PhotoPickerViewInterface {
+extension PhotoLibraryViewController: PhotoLibraryViewInterface {
     
     var controller: UIViewController? {
         return self

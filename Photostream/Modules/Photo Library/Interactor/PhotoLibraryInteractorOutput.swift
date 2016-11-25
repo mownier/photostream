@@ -1,5 +1,5 @@
 //
-//  PhotoPickerInteractorOutput.swift
+//  PhotoLibraryInteractorOutput.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-protocol PhotoPickerInteractorOutput: class {
+protocol PhotoLibraryInteractorOutput: class {
 
-    func photoPickerDidFetchPhotos(with assets: [PHAsset])
+    func photoLibraryDidFetchPhotos(with assets: [PHAsset])
 }

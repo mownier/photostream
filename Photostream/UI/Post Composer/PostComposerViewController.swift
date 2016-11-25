@@ -1,5 +1,5 @@
 //
-//  PostComposerViewController.swift
+//  PhotoPickerViewController.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 09/11/2016.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class PostComposerViewController: UIViewController {
+class PhotoPickerViewController: UIViewController {
     
     @IBOutlet weak var libraryButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     
     lazy var pages = [UIViewController]()
     
-    var presenter: PostComposerModuleInterface!
+    var presenter: PhotoPickerModuleInterface!
     var pageViewController: UIPageViewController? {
         guard !childViewControllers.isEmpty else {
             return nil
@@ -44,7 +44,7 @@ class PostComposerViewController: UIViewController {
     }
     
     @IBAction func didTapNext(_ sender: AnyObject) {
-        (presenter as? PostComposerPresenter)?.didPickPhoto()
+        (presenter as? PhotoPickerPresenter)?.didPickPhoto()
     }
     
     @IBAction func didTapLibrary() {
@@ -56,7 +56,7 @@ class PostComposerViewController: UIViewController {
     }
 }
 
-extension PostComposerViewController: PostComposerViewInterface {
+extension PhotoPickerViewController: PhotoPickerViewInterface {
     
     var controller: UIViewController? {
         return self

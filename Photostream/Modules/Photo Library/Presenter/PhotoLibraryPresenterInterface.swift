@@ -1,5 +1,5 @@
 //
-//  PhotoPickerPresenterInterface.swift
+//  PhotoLibraryPresenterInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -9,12 +9,12 @@
 import UIKit
 import Photos
 
-protocol PhotoPickerPresenterInterface: class {
+protocol PhotoLibraryPresenterInterface: class {
 
-    var interactor: PhotoPickerInteractorInput! { set get }
-    var view: PhotoPickerViewInterface! { set get }
-    var wireframe: PhotoPickerWireframeInterface! { set get }
-    var moduleDelegate: PhotoPickerModuleDelegate? { set get }
+    var interactor: PhotoLibraryInteractorInput! { set get }
+    var view: PhotoLibraryViewInterface! { set get }
+    var wireframe: PhotoLibraryWireframeInterface! { set get }
+    var moduleDelegate: PhotoLibraryModuleDelegate? { set get }
     var photos: [PHAsset] { set get }
     var contentMode: PhotoContentMode { set get }
     var cropper: PhotoCropper! { set get }

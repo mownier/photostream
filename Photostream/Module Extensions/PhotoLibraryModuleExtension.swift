@@ -1,5 +1,5 @@
 //
-//  PhotoPickerModuleExtension.swift
+//  PhotoLibraryModuleExtension.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-extension PhotoPickerWireframe {
+extension PhotoLibraryWireframe {
     
-    class func createViewController() -> PhotoPickerViewController {
-        let sb = UIStoryboard(name: "PhotoPickerModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "PhotoPickerViewController")
-        return vc as! PhotoPickerViewController
+    class func createViewController() -> PhotoLibraryViewController {
+        let sb = UIStoryboard(name: "PhotoLibraryModuleStoryboard", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "PhotoLibraryViewController")
+        return vc as! PhotoLibraryViewController
     }
     
     class func createNavigationController() -> UINavigationController {
-        let sb = UIStoryboard(name: "PhotoPickerModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "PhotoPickerNavigationController")
+        let sb = UIStoryboard(name: "PhotoLibraryModuleStoryboard", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "PhotoLibraryNavigationController")
         return vc as! UINavigationController
     }
     
@@ -34,10 +34,10 @@ extension PhotoPickerWireframe {
     }
 }
 
-extension PhotoPickerPresenter {
+extension PhotoLibraryPresenter {
     
-    var router: PhotoPickerWireframe? {
-        return wireframe as? PhotoPickerWireframe
+    var router: PhotoLibraryWireframe? {
+        return wireframe as? PhotoLibraryWireframe
     }
     
     func presentPhotoShare() {
@@ -45,5 +45,5 @@ extension PhotoPickerPresenter {
     }
 }
 
-extension PhotoPickerPresenter: PostComposerModuleDependency { }
+extension PhotoLibraryPresenter: PhotoPickerModuleDependency { }
 

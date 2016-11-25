@@ -1,5 +1,5 @@
 //
-//  PhotoPickerViewInterface.swift
+//  PhotoLibraryViewInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol PhotoPickerViewInterface: class {
+protocol PhotoLibraryViewInterface: class {
 
     var controller: UIViewController? { get }
-    var presenter: PhotoPickerModuleInterface! { set get }
+    var presenter: PhotoLibraryModuleInterface! { set get }
     
     func reloadView()
     func didFetchPhotos()

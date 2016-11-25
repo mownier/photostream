@@ -1,5 +1,5 @@
 //
-//  PostComposerViewDelegate.swift
+//  PhotoPickerViewDelegate.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 22/11/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PostComposerViewController: UIPageViewControllerDelegate {
+extension PhotoPickerViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard previousViewControllers.count > 0, completed,

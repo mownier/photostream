@@ -1,5 +1,5 @@
 //
-//  PhotoPickerWireframe.swift
+//  PhotoLibraryWireframe.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class PhotoPickerWireframe: PhotoPickerWireframeInterface {
+class PhotoLibraryWireframe: PhotoLibraryWireframeInterface {
 
     var root: RootWireframeInterface?
     
-    required init(root: RootWireframeInterface?, delegate: PhotoPickerModuleDelegate?, view: PhotoPickerViewInterface) {
+    required init(root: RootWireframeInterface?, delegate: PhotoLibraryModuleDelegate?, view: PhotoLibraryViewInterface) {
         self.root = root
         
         let service = AssetServiceProvider()
-        let interactor = PhotoPickerInteractor(service: service)
-        let presenter = PhotoPickerPresenter()
+        let interactor = PhotoLibraryInteractor(service: service)
+        let presenter = PhotoLibraryPresenter()
         
         interactor.output = presenter
         view.presenter = presenter

@@ -1,5 +1,5 @@
 //
-//  PhotoPickerDelegate.swift
+//  PhotoLibraryDelegate.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PhotoPickerViewController: UICollectionViewDelegate {
+extension PhotoLibraryViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
@@ -16,7 +16,7 @@ extension PhotoPickerViewController: UICollectionViewDelegate {
     }
 }
 
-extension PhotoPickerViewController {
+extension PhotoLibraryViewController {
     
     var selectedPhotoSize: CGSize {
         let scale = UIScreen.main.scale
@@ -25,7 +25,7 @@ extension PhotoPickerViewController {
     }
 }
 
-extension PhotoPickerViewController {
+extension PhotoLibraryViewController {
     
     func scrollViewDidScroll(_ view: UIScrollView) {
         guard let scrollView = scrollHandler.scrollView,

@@ -1,5 +1,5 @@
 //
-//  PhotoPickerModuleInterface.swift
+//  PhotoLibraryModuleInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-protocol PhotoPickerModuleInterface: class {
+protocol PhotoLibraryModuleInterface: class {
 
     var photoCount: Int { get }
     
@@ -29,7 +29,7 @@ protocol PhotoPickerModuleInterface: class {
     func dismiss(animated: Bool)
 }
 
-extension PhotoPickerModuleInterface {
+extension PhotoLibraryModuleInterface {
     
     func dismiss() {
         dismiss(animated: true)

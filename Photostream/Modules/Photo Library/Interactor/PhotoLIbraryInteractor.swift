@@ -1,5 +1,5 @@
 //
-//  PhotoPickerInteractor.swift
+//  PhotoLibraryInteractor.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 11/11/2016.
@@ -8,9 +8,9 @@
 
 import Photos
 
-class PhotoPickerInteractor: PhotoPickerInteractorInterface {
+class PhotoLibraryInteractor: PhotoLibraryInteractorInterface {
 
-    weak var output: PhotoPickerInteractorOutput?
+    weak var output: PhotoLibraryInteractorOutput?
     var service: AssetService!
     
     required init(service: AssetService) {
@@ -18,11 +18,11 @@ class PhotoPickerInteractor: PhotoPickerInteractorInterface {
     }
 }
 
-extension PhotoPickerInteractor: PhotoPickerInteractorInput {
+extension PhotoLibraryInteractor: PhotoLibraryInteractorInput {
     
     func fetchPhotos() {
         service.fetchImageAssets { (assets) in
-            self.output?.photoPickerDidFetchPhotos(with: assets)
+            self.output?.photoLibraryDidFetchPhotos(with: assets)
         }
     }
     

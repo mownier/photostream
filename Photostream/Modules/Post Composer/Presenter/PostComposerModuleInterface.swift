@@ -1,5 +1,5 @@
 //
-//  PostComposerModuleInterface.swift
+//  PhotoPickerModuleInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 09/11/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PostComposerModuleInterface: class {
+protocol PhotoPickerModuleInterface: class {
     
     func cancelWriting()
     func doneWriting(with image: UIImage, content: String)
@@ -19,7 +19,7 @@ protocol PostComposerModuleInterface: class {
     func dismiss(animated: Bool)
 }
 
-extension PostComposerModuleInterface {
+extension PhotoPickerModuleInterface {
     
     func dismiss() {
         dismiss(animated: true)

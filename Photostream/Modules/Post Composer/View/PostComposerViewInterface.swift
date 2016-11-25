@@ -1,5 +1,5 @@
 //
-//  PostComposerViewInterface.swift
+//  PhotoPickerViewInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 09/11/2016.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol PostComposerViewInterface: class {
+protocol PhotoPickerViewInterface: class {
 
     var controller: UIViewController? { get }
-    var presenter: PostComposerModuleInterface! { set get }
+    var presenter: PhotoPickerModuleInterface! { set get }
     
     func setupDependency(with controllers: [UIViewController])
     

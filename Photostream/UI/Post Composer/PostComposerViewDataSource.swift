@@ -1,5 +1,5 @@
 //
-//  PostComposerViewDataSource.swift
+//  PhotoPickerViewDataSource.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 22/11/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PostComposerViewController: UIPageViewControllerDataSource {
+extension PhotoPickerViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.index(of: viewController), currentIndex < pages.count - 1 else {
