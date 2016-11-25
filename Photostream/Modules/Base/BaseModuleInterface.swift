@@ -6,8 +6,6 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
-
 protocol BaseModuleInterface: class {
 
 }

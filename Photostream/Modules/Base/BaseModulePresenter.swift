@@ -6,8 +6,6 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
-
 protocol BaseModulePresenter: BaseModuleInteractorOutput, BaseModuleInterface {
 
     var view: BaseModuleView! { set get }
