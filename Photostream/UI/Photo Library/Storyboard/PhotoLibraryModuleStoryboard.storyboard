@@ -7,16 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Photo Picker-->
+        <!--Photo LIbrary-->
         <scene sceneID="Ogm-b9-TQ1">
             <objects>
-                <viewController storyboardIdentifier="PhotoPickerViewController" id="DYm-43-GGe" customClass="PhotoPickerViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoLibraryViewController" id="DYm-43-GGe" userLabel="Photo LIbrary" customClass="PhotoLibraryViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GDs-lY-Nyy"/>
                         <viewControllerLayoutGuide type="bottom" id="Mpn-aJ-mXi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ncI-K8-C1J">
-                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XjD-uC-QOe">
@@ -114,7 +114,7 @@
                             <constraint firstAttribute="trailing" secondItem="XjD-uC-QOe" secondAttribute="trailing" id="vT1-Q8-dFJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Photo Picker" id="Y3Z-nc-k0m">
+                    <navigationItem key="navigationItem" title="Photo Library" id="Y3Z-nc-k0m">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="YAA-Fr-5xc">
                             <connections>
                                 <action selector="didTapCancel:" destination="DYm-43-GGe" id="2Em-o8-wFF"/>

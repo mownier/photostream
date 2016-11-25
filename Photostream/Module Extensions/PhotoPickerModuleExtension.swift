@@ -17,50 +17,27 @@ extension PhotoPickerPresenter {
         
         presenter.done()
     }
-    
-    func presentPhotoShare(with image: UIImage) {
-        wireframe.showPhotoShare(from: view.controller?.navigationController, with: image, delegate: self)
-    }
 }
 
 extension PhotoPickerPresenter: PhotoLibraryModuleDelegate {
     
     func photoLibraryDidPick(with image: UIImage?) {
-        guard image != nil else {
-            return
-        }
-        
-        presentPhotoShare(with: image!)
+        moduleDelegate?.photoPickerDidFinish(with: image)
     }
     
     func photoLibraryDidCancel() {
-        print("Post Composer: did cancel pick")
+        print("Photo Picker: did cancel")
     }
 }
 
 extension PhotoPickerPresenter: PhotoCaptureModuleDelegate {
     
     func photoCaptureDidFinish(with image: UIImage?) {
-        guard image != nil else {
-            return
-        }
-        
-        presentPhotoShare(with: image!)
+        moduleDelegate?.photoPickerDidFinish(with: image)
     }
     
     func photoCaptureDidCanel() {
-        print("Post Composer: did cancel capture")
-    }
-}
-
-extension PhotoPickerPresenter: PhotoShareModuleDelegate {
-    
-    func photoShareDidFinish(with image: UIImage, content: String) {
-        moduleDelegate?.photoPickerDidFinishWriting(with: image, content: content)
-    }
-    
-    func photoShareDidCancel() {
-        print("Post Composer: did cancel share")
+        print("Photo Picker: did cancel capture")
     }
 }
 

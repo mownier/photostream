@@ -10,8 +10,8 @@ import UIKit
 
 protocol PhotoPickerModuleInterface: class {
     
-    func cancelWriting()
-    func doneWriting(with image: UIImage, content: String)
+    func cancel()
+    func done(with image: UIImage)
     
     func willShowCamera()
     func willShowLibrary()

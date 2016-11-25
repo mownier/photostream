@@ -33,12 +33,12 @@ class PhotoPickerPresenter: PhotoPickerPresenterInterface {
 
 extension PhotoPickerPresenter: PhotoPickerModuleInterface {
     
-    func cancelWriting() {
-        moduleDelegate?.photoPickerDidCancelWriting()
+    func cancel() {
+        moduleDelegate?.photoPickerDidCancel()
     }
     
-    func doneWriting(with image: UIImage, content: String) {
-        moduleDelegate?.photoPickerDidFinishWriting(with: image, content: content)
+    func done(with image: UIImage) {
+        moduleDelegate?.photoPickerDidFinish(with: image)
     }
     
     func willShowCamera() {

@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Photo Picker-->
+        <!--Photo Library-->
         <scene sceneID="q5x-8P-VWo">
             <objects>
-                <viewController storyboardIdentifier="PostComposerViewController" id="Aff-ne-iH3" customClass="PostComposerViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoPickerViewController" id="Aff-ne-iH3" customClass="PhotoPickerViewController" customModule="Photostream" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vkD-H8-3xL"/>
                         <viewControllerLayoutGuide type="bottom" id="HpR-Wz-TId"/>
@@ -78,7 +78,7 @@
                             <constraint firstItem="P4B-Zz-LRK" firstAttribute="leading" secondItem="c5S-hZ-bMK" secondAttribute="leading" constant="4" id="vtu-Vu-d9L"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Photo Picker" id="kM9-AJ-Xpk">
+                    <navigationItem key="navigationItem" title="Photo Library" id="kM9-AJ-Xpk">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="BbJ-ya-a4W">
                             <connections>
                                 <action selector="didTapCancel:" destination="Aff-ne-iH3" id="hnz-N8-dHb"/>

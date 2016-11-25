@@ -10,6 +10,6 @@ import UIKit
 
 protocol PhotoPickerModuleDelegate: class {
     
-    func photoPickerDidFinishWriting(with image: UIImage, content: String)
-    func photoPickerDidCancelWriting()
+    func photoPickerDidFinish(with image: UIImage?)
+    func photoPickerDidCancel()
 }

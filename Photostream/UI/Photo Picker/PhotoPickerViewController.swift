@@ -39,7 +39,7 @@ class PhotoPickerViewController: UIViewController {
     }
 
     @IBAction func didTapCancel(_ sender: AnyObject) {
-        presenter.cancelWriting()
+        presenter.cancel()
         presenter.dismiss()
     }
     
@@ -70,7 +70,7 @@ extension PhotoPickerViewController: PhotoPickerViewInterface {
     func showLibrary() {
         libraryButton.isSelected = true
         cameraButton.isSelected = false
-        title = "Photo Picker"
+        title = "Photo Library"
         
         let rightBarItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(self.didTapNext(_:)))
         navigationItem.rightBarButtonItem = rightBarItem

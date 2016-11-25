@@ -19,17 +19,16 @@ extension HomePresenter {
     }
 }
 
-extension HomePresenter: PhotoPickerModuleDelegate {
+extension HomePresenter: PostComposerDelegate {
     
-    func photoPickerDidFinishWriting(with image: UIImage, content: String) {
+    func postComposerDidFinish(with image: UIImage, content: String) {
         guard let presenter: NewsFeedPresenter = wireframe.dependency() else {
             return
         }
         
         router?.showPostUpload(in: presenter.view.controller, delegate: self, image: image, content: content)
     }
-    
-    func photoPickerDidCancelWriting() {
+    func postComposerDidCancel() {
         print("Post composer did cancel writing...")
     }
 }
@@ -71,41 +70,6 @@ extension HomeWireframe {
         dependencies?.append(feedVC.presenter as! HomeModuleDependency)
     }
     
-    func showPostComposer(from controller: UIViewController?, delegate: PhotoPickerModuleDelegate?) {
-        guard controller != nil else {
-            return
-        }
-        
-        // Assemble Post Composer module
-        let photoPickerViewController = PhotoPickerWireframe.createViewController()
-        let photoPickerWireframe = PhotoPickerWireframe(root: root, delegate: delegate, view: photoPickerViewController)
-        let photoPickerPresenter = photoPickerViewController.presenter as! PhotoPickerPresenter
-        
-        // Assemble Photo Capture module
-        let photoCaptureViewController = PhotoCaptureWireframe.createViewController()
-        let _ = PhotoCaptureWireframe(root: root, delegate: photoPickerPresenter, view: photoCaptureViewController)
-        
-        // Assemble Photo Picker module
-        let photoLibraryViewController = PhotoLibraryWireframe.createViewController()
-        let _ = PhotoLibraryWireframe(root: root, delegate: photoPickerPresenter, view: photoLibraryViewController)
-        
-        // Dependency controllers
-        let controllers = [photoLibraryViewController, photoCaptureViewController]
-        photoPickerViewController.setupDependency(with: controllers)
-        
-        // Instantiate navigation controller
-        let photoPickerNavController = PhotoPickerWireframe.createNavigationController()
-        photoPickerNavController.viewControllers.removeAll()
-        photoPickerNavController.viewControllers.append(photoPickerViewController)
-        
-        // Add necessary dependency
-        let dependency = photoLibraryViewController.presenter as! PhotoPickerModuleDependency
-        photoPickerWireframe.dependencies?.append(dependency)
-        
-        // Present Post Composer module
-        photoPickerWireframe.present(with: photoPickerNavController, from: controller!)
-    }
-    
     func showPostUpload(in controller: UIViewController?, delegate: PostUploadModuleDelegate?, image: UIImage, content: String) {
         guard controller != nil else {
             return
@@ -114,5 +78,34 @@ extension HomeWireframe {
         let vc = PostUploadViewController()
         let wireframe = PostUploadWireframe(root: root, delegate: delegate, view: vc, image: image, content: content)
         wireframe.attach(with: vc, in: controller!)
+    }
+    
+    func showPostComposer(from controller: UIViewController?, delegate: PostComposerDelegate?) {
+        guard controller != nil else {
+            return
+        }
+        
+        // Create necessary views
+        let photoShareView = PhotoShareWireframe.createViewController()
+        let photoCaptureView = PhotoCaptureWireframe.createViewController()
+        let photoLibraryView = PhotoLibraryWireframe.createViewController()
+        let photoPickerView = PhotoPickerWireframe.createViewController()
+        let postComposer = PostComposerNavigationController(photoPicker: photoPickerView, photoShare: photoShareView)
+        
+        // Create necessary wireframes
+        let photoPickerWireframe = PhotoPickerWireframe(root: root, delegate: postComposer, view: photoPickerView)
+        let _ = PhotoShareWireframe(root: root, delegate: postComposer, view: photoShareView)
+        let photoPickerPresenter = photoPickerView.presenter as! PhotoPickerPresenter
+        let _ = PhotoCaptureWireframe(root: root, delegate: photoPickerPresenter, view: photoCaptureView)
+        let _ = PhotoLibraryWireframe(root: root, delegate: photoPickerPresenter, view: photoLibraryView)
+        
+        // Configure dependencies
+        let photoLibraryPresenter = photoLibraryView.presenter as! PhotoPickerModuleDependency
+        photoPickerWireframe.dependencies?.append(photoLibraryPresenter)
+        photoPickerView.setupDependency(with: [photoLibraryView, photoCaptureView])
+        postComposer.moduleDelegate = delegate
+        
+        // Preset post composer
+        controller!.present(postComposer, animated: true, completion: nil)
     }
 }

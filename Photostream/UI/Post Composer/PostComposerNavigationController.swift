@@ -27,6 +27,13 @@ class PostComposerNavigationController: UINavigationController {
         self.photoShare = photoShare
     }
     
+    override func loadView() {
+        super.loadView()
+        
+        navigationBar.isTranslucent = false
+        navigationBar.tintColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
+    }
+    
     func dismiss() {
         dismiss(animated: true, completion: nil)
     }
