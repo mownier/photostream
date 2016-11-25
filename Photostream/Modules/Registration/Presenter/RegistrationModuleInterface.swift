@@ -1,5 +1,5 @@
 //
-//  RegistrationEventHandler.swift
+//  RegistrationModuleInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 02/11/2016.
