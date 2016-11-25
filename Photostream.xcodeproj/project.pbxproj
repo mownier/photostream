@@ -69,7 +69,6 @@
 		B9C217AB1DCC40F900F617FC /* LoginInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216FD1DCC40F900F617FC /* LoginInteractorOutput.swift */; };
 		B9C217AC1DCC40F900F617FC /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216FF1DCC40F900F617FC /* LoginPresenter.swift */; };
 		B9C217AD1DCC40F900F617FC /* LoginPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217001DCC40F900F617FC /* LoginPresenterInterface.swift */; };
-		B9C217AE1DCC40F900F617FC /* LoginEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217021DCC40F900F617FC /* LoginEventHandler.swift */; };
 		B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217031DCC40F900F617FC /* LoginViewInterface.swift */; };
 		B9C217B01DCC40F900F617FC /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217051DCC40F900F617FC /* LoginWireframe.swift */; };
 		B9C217B11DCC40F900F617FC /* LoginWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217061DCC40F900F617FC /* LoginWireframeInterface.swift */; };
@@ -201,6 +200,7 @@
 		B9D496991DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */; };
 		B9D4969C1DE7F09D00CDD58E /* PostComposerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */; };
 		B9D4969E1DE80EF700CDD58E /* PostUploadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */; };
+		B9D496A01DE8199F00CDD58E /* LoginModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */; };
 		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
 		B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */; };
 		B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */; };
@@ -306,7 +306,6 @@
 		B9C216FD1DCC40F900F617FC /* LoginInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractorOutput.swift; sourceTree = "<group>"; };
 		B9C216FF1DCC40F900F617FC /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		B9C217001DCC40F900F617FC /* LoginPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterInterface.swift; sourceTree = "<group>"; };
-		B9C217021DCC40F900F617FC /* LoginEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEventHandler.swift; sourceTree = "<group>"; };
 		B9C217031DCC40F900F617FC /* LoginViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewInterface.swift; sourceTree = "<group>"; };
 		B9C217051DCC40F900F617FC /* LoginWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
 		B9C217061DCC40F900F617FC /* LoginWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireframeInterface.swift; sourceTree = "<group>"; };
@@ -438,6 +437,7 @@
 		B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoPickerModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerNavigationController.swift; sourceTree = "<group>"; };
 		B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadItem.swift; sourceTree = "<group>"; };
+		B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
 		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
 		B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewInterface.swift; sourceTree = "<group>"; };
@@ -837,6 +837,7 @@
 		B9C216FE1DCC40F900F617FC /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */,
 				B9C216FF1DCC40F900F617FC /* LoginPresenter.swift */,
 				B9C217001DCC40F900F617FC /* LoginPresenterInterface.swift */,
 			);
@@ -846,7 +847,6 @@
 		B9C217011DCC40F900F617FC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9C217021DCC40F900F617FC /* LoginEventHandler.swift */,
 				B9C217031DCC40F900F617FC /* LoginViewInterface.swift */,
 			);
 			path = View;
@@ -1863,7 +1863,6 @@
 				B9DDB69A1DE6BC43007EFF33 /* BaseModuleInteractorInput.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
 				B9C217DF1DCC40F900F617FC /* UserService.swift in Sources */,
-				B9C217AE1DCC40F900F617FC /* LoginEventHandler.swift in Sources */,
 				B9C217B91DCC40F900F617FC /* NewsFeedItemParser.swift in Sources */,
 				B9C217A71DCC40F900F617FC /* HomeWireframeInterface.swift in Sources */,
 				B9C217B81DCC40F900F617FC /* NewsFeedDisplayItemParser.swift in Sources */,
@@ -1921,6 +1920,7 @@
 				B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */,
 				B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */,
 				B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */,
+				B9D496A01DE8199F00CDD58E /* LoginModuleInterface.swift in Sources */,
 				B9C217F51DCC40F900F617FC /* PostCellDisplayItemArray.swift in Sources */,
 				B9C2179D1DCC40F900F617FC /* NewsFeedModuleExtension.swift in Sources */,
 				B9D4965B1DE7EAD200CDD58E /* PhotoLibraryInteractorInput.swift in Sources */,

@@ -15,7 +15,7 @@ class LoginPresenter: LoginPresenterInterface {
     var wireframe: LoginWireframeInterface!
 }
 
-extension LoginPresenter: LoginEventHandler {
+extension LoginPresenter: LoginModuleInterface {
     
     func login(email: String, password: String) {
         interactor.login(email: email, password: password)

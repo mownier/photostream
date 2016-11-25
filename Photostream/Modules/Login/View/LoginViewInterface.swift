@@ -11,7 +11,7 @@ import UIKit
 protocol LoginViewInterface: class {
     
     var controller: UIViewController? { get }
-    var presenter: LoginEventHandler! { set get }
+    var presenter: LoginModuleInterface! { set get }
     
     func didTapLogin()
     func didReceiveError(message: String)

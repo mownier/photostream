@@ -1,5 +1,5 @@
 //
-//  LoginEventHandler.swift
+//  LoginModuleInterface.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 02/11/2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LoginEventHandler: class {
+protocol LoginModuleInterface: class {
     
     func login(email: String, password: String)
     func presentErrorAlert(message: String)
