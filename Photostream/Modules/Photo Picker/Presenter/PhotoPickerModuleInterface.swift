@@ -6,12 +6,11 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol PhotoPickerModuleInterface: class {
     
     func cancel()
-    func done(with image: UIImage)
     
     func willShowCamera()
     func willShowLibrary()

@@ -37,10 +37,6 @@ extension PhotoPickerPresenter: PhotoPickerModuleInterface {
         moduleDelegate?.photoPickerDidCancel()
     }
     
-    func done(with image: UIImage) {
-        moduleDelegate?.photoPickerDidFinish(with: image)
-    }
-    
     func willShowCamera() {
         source = .camera
     }
