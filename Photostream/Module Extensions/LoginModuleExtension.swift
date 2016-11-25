@@ -10,7 +10,7 @@ import UIKit
 
 extension LoginModuleInterface {
     
-    var presenter: LoginPresenterInterface? {
+    fileprivate var presenter: LoginPresenterInterface? {
         return self as? LoginPresenterInterface
     }
     
