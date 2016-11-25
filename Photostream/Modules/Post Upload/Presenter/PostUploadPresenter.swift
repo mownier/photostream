@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class PostUploadPresenter: PostUploadPresenterInterface {
 
@@ -14,23 +14,18 @@ class PostUploadPresenter: PostUploadPresenterInterface {
     weak var view: PostUploadViewInterface!
     var wireframe: PostUploadWireframeInterface!
     var interactor: PostUploadInteractorInput!
-    
-    var image: UIImage!
-    var content: String!
+    var item: PostUploadItem!
 }
 
 extension PostUploadPresenter: PostUploadModuleInterface {
     
     func upload() {
-        var data = FileServiceImageUploadData()
-        data.data = UIImageJPEGRepresentation(image, 1.0)
-        data.width = Float(image.size.width)
-        data.height = Float(image.size.height)
-        interactor.upload(with: data, content: content)
+
+        interactor.upload(with: item.imageData, content: item.content)
     }
     
     func willShowImage() {
-        view.show(image: image)
+        view.show(image: item.image)
     }
     
     func detach() {

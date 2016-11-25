@@ -12,7 +12,7 @@ protocol PostUploadWireframeInterface: class {
 
     var root: RootWireframeInterface? { set get }
     
-    init(root: RootWireframeInterface?, delegate: PostUploadModuleDelegate?, view: PostUploadViewInterface, image: UIImage, content: String)
+    init(root: RootWireframeInterface?, delegate: PostUploadModuleDelegate?, view: PostUploadViewInterface, item: PostUploadItem)
     
     func attach(with controller: UIViewController, in parent: UIViewController)
     func detach(with controller: UIViewController)

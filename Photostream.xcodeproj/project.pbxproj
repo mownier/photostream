@@ -200,6 +200,7 @@
 		B9D496981DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D496931DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift */; };
 		B9D496991DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */; };
 		B9D4969C1DE7F09D00CDD58E /* PostComposerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */; };
+		B9D4969E1DE80EF700CDD58E /* PostUploadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */; };
 		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
 		B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */; };
 		B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */; };
@@ -436,6 +437,7 @@
 		B9D496931DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewDelegate.swift; sourceTree = "<group>"; };
 		B9D496951DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoPickerModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerNavigationController.swift; sourceTree = "<group>"; };
+		B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadItem.swift; sourceTree = "<group>"; };
 		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
 		B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewInterface.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 		B954EE491DE0322600A0049D /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */,
 				B954EE581DE032D400A0049D /* PostUploadModuleDelegate.swift */,
 				B954EE501DE0325400A0049D /* PostUploadModuleInterface.swift */,
 				B954EE4C1DE0323E00A0049D /* PostUploadPresenter.swift */,
@@ -1883,6 +1886,7 @@
 				B9C217DC1DCC40F900F617FC /* FileService.swift in Sources */,
 				B9C217CA1DCC40F900F617FC /* UserProfileData.swift in Sources */,
 				B9C217F91DCC40F900F617FC /* PostCellLoaderConfiguration.swift in Sources */,
+				B9D4969E1DE80EF700CDD58E /* PostUploadItem.swift in Sources */,
 				B9C217D91DCC40F900F617FC /* User.swift in Sources */,
 				B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */,
 				B9C217AA1DCC40F900F617FC /* LoginInteractorInterface.swift in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol PostUploadPresenterInterface: class {
 
@@ -14,7 +14,5 @@ protocol PostUploadPresenterInterface: class {
     var view: PostUploadViewInterface! { set get }
     var wireframe: PostUploadWireframeInterface! { set get }
     var moduleDelegate: PostUploadModuleDelegate? { set get }
-    
-    var image: UIImage! { set get }
-    var content: String! { set get }
+    var item: PostUploadItem! { set get }
 }
