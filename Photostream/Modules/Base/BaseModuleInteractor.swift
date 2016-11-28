@@ -1,12 +1,15 @@
-//
-//  BaseModuleInteractor.swift
-//  Photostream
-//
-//  Created by Mounir Ybanez on 24/11/2016.
-//  Copyright © 2016 Mounir Ybanez. All rights reserved.
-//
 
-protocol BaseModuleInteractor: BaseModuleInteractorInput {
+public protocol BaseModuleInteractor: class {
 
-    var output: BaseModuleInteractorOutput? { set get }
+    var output: Output? { set get }
+    
+    associatedtype Output
+}
+
+public protocol BaseModuleInteractorInput: class {
+    
+}
+
+public protocol BaseModuleInteractorOutput: class {
+    
 }

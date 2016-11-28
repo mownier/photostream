@@ -55,7 +55,6 @@
 		B9C2179D1DCC40F900F617FC /* NewsFeedModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216E51DCC40F900F617FC /* NewsFeedModuleExtension.swift */; };
 		B9C2179E1DCC40F900F617FC /* RegistrationModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */; };
 		B9C2179F1DCC40F900F617FC /* UserProfileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216E71DCC40F900F617FC /* UserProfileExtension.swift */; };
-		B9C217A01DCC40F900F617FC /* Destructable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216EA1DCC40F900F617FC /* Destructable.swift */; };
 		B9C217A11DCC40F900F617FC /* RootWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216EB1DCC40F900F617FC /* RootWireframeInterface.swift */; };
 		B9C217A21DCC40F900F617FC /* CommentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216EE1DCC40F900F617FC /* CommentWireframe.swift */; };
 		B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216F11DCC40F900F617FC /* HomePresenter.swift */; };
@@ -205,13 +204,6 @@
 		B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */; };
 		B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */; };
 		B9D91EB81DD1B932000BF3E5 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D91EB71DD1B932000BF3E5 /* EmptyView.xib */; };
-		B9DDB6961DE6BC1D007EFF33 /* BaseModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDB6951DE6BC1D007EFF33 /* BaseModulePresenter.swift */; };
-		B9DDB6981DE6BC2E007EFF33 /* BaseModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDB6971DE6BC2E007EFF33 /* BaseModuleInteractor.swift */; };
-		B9DDB69A1DE6BC43007EFF33 /* BaseModuleInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDB6991DE6BC43007EFF33 /* BaseModuleInteractorInput.swift */; };
-		B9DDB69C1DE6BC58007EFF33 /* BaseModuleInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDB69B1DE6BC58007EFF33 /* BaseModuleInteractorOutput.swift */; };
-		B9DDB69E1DE6BC69007EFF33 /* BaseModuleWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDB69D1DE6BC69007EFF33 /* BaseModuleWireframe.swift */; };
-		B9DDB6A01DE6BC73007EFF33 /* BaseModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDB69F1DE6BC73007EFF33 /* BaseModuleView.swift */; };
-		B9DDB6A21DE6C02E007EFF33 /* BaseModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDB6A11DE6C02E007EFF33 /* BaseModuleInterface.swift */; };
 		B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */; };
 		B9DEB2591DDEDE2200C47C37 /* PhotoShareModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */; };
 		B9DEB25B1DDEDE2E00C47C37 /* PhotoSharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */; };
@@ -292,7 +284,6 @@
 		B9C216E51DCC40F900F617FC /* NewsFeedModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedModuleExtension.swift; sourceTree = "<group>"; };
 		B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationModuleExtension.swift; sourceTree = "<group>"; };
 		B9C216E71DCC40F900F617FC /* UserProfileExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileExtension.swift; sourceTree = "<group>"; };
-		B9C216EA1DCC40F900F617FC /* Destructable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destructable.swift; sourceTree = "<group>"; };
 		B9C216EB1DCC40F900F617FC /* RootWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframeInterface.swift; sourceTree = "<group>"; };
 		B9C216EE1DCC40F900F617FC /* CommentWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWireframe.swift; sourceTree = "<group>"; };
 		B9C216F11DCC40F900F617FC /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -442,13 +433,6 @@
 		B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewInterface.swift; sourceTree = "<group>"; };
 		B9D91EB71DD1B932000BF3E5 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
-		B9DDB6951DE6BC1D007EFF33 /* BaseModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModulePresenter.swift; sourceTree = "<group>"; };
-		B9DDB6971DE6BC2E007EFF33 /* BaseModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleInteractor.swift; sourceTree = "<group>"; };
-		B9DDB6991DE6BC43007EFF33 /* BaseModuleInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleInteractorInput.swift; sourceTree = "<group>"; };
-		B9DDB69B1DE6BC58007EFF33 /* BaseModuleInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleInteractorOutput.swift; sourceTree = "<group>"; };
-		B9DDB69D1DE6BC69007EFF33 /* BaseModuleWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleWireframe.swift; sourceTree = "<group>"; };
-		B9DDB69F1DE6BC73007EFF33 /* BaseModuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleView.swift; sourceTree = "<group>"; };
-		B9DDB6A11DE6C02E007EFF33 /* BaseModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleInterface.swift; sourceTree = "<group>"; };
 		B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenterInterface.swift; sourceTree = "<group>"; };
 		B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareModuleInterface.swift; sourceTree = "<group>"; };
 		B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenter.swift; sourceTree = "<group>"; };
@@ -747,14 +731,6 @@
 		B9C216E91DCC40F900F617FC /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B9DDB6971DE6BC2E007EFF33 /* BaseModuleInteractor.swift */,
-				B9DDB6991DE6BC43007EFF33 /* BaseModuleInteractorInput.swift */,
-				B9DDB69B1DE6BC58007EFF33 /* BaseModuleInteractorOutput.swift */,
-				B9DDB6A11DE6C02E007EFF33 /* BaseModuleInterface.swift */,
-				B9DDB6951DE6BC1D007EFF33 /* BaseModulePresenter.swift */,
-				B9DDB69F1DE6BC73007EFF33 /* BaseModuleView.swift */,
-				B9DDB69D1DE6BC69007EFF33 /* BaseModuleWireframe.swift */,
-				B9C216EA1DCC40F900F617FC /* Destructable.swift */,
 				B9C216EB1DCC40F900F617FC /* RootWireframeInterface.swift */,
 			);
 			path = Base;
@@ -1820,7 +1796,6 @@
 				B9C217A81DCC40F900F617FC /* LoginInteractor.swift in Sources */,
 				B978AF3A1DD4302C007C1AAD /* PhotoCaptureModuleDelegate.swift in Sources */,
 				B9DEB25D1DDEDE3900C47C37 /* PhotoShareViewInterface.swift in Sources */,
-				B9C217A01DCC40F900F617FC /* Destructable.swift in Sources */,
 				B9D496601DE7EAD200CDD58E /* PhotoLibraryPresenter.swift in Sources */,
 				B9690BFD1DE56607007E4593 /* PostUploadView.swift in Sources */,
 				B9C217D11DCC40F900F617FC /* UserProfilePresenter.swift in Sources */,
@@ -1837,7 +1812,6 @@
 				B9C217C51DCC40F900F617FC /* RegistrationPresenter.swift in Sources */,
 				B9C217F71DCC40F900F617FC /* PostCellLoader.swift in Sources */,
 				B9C217BD1DCC40F900F617FC /* NewsFeedViewInterface.swift in Sources */,
-				B9DDB69C1DE6BC58007EFF33 /* BaseModuleInteractorOutput.swift in Sources */,
 				B9C217D21DCC40F900F617FC /* UserProfileViewInterface.swift in Sources */,
 				B9D496791DE7EB5F00CDD58E /* PhotoLibraryDataSource.swift in Sources */,
 				B9C217DA1DCC40F900F617FC /* AuthenticationService.swift in Sources */,
@@ -1860,7 +1834,6 @@
 				B9C217BA1DCC40F900F617FC /* NewsFeedModuleInterface.swift in Sources */,
 				B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */,
 				B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */,
-				B9DDB69A1DE6BC43007EFF33 /* BaseModuleInteractorInput.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
 				B9C217DF1DCC40F900F617FC /* UserService.swift in Sources */,
 				B9C217B91DCC40F900F617FC /* NewsFeedItemParser.swift in Sources */,
@@ -1889,7 +1862,6 @@
 				B9C217D91DCC40F900F617FC /* User.swift in Sources */,
 				B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */,
 				B9C217AA1DCC40F900F617FC /* LoginInteractorInterface.swift in Sources */,
-				B9DDB6961DE6BC1D007EFF33 /* BaseModulePresenter.swift in Sources */,
 				B954EE5E1DE035D400A0049D /* PostUploadInteractorInterface.swift in Sources */,
 				B9C217AC1DCC40F900F617FC /* LoginPresenter.swift in Sources */,
 				B954EE5C1DE035C100A0049D /* PostUploadInteractor.swift in Sources */,
@@ -1916,7 +1888,6 @@
 				B9DEB2591DDEDE2200C47C37 /* PhotoShareModuleInterface.swift in Sources */,
 				B954EE601DE035DF00A0049D /* PostUploadInteractorInput.swift in Sources */,
 				B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */,
-				B9DDB6A01DE6BC73007EFF33 /* BaseModuleView.swift in Sources */,
 				B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */,
 				B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */,
 				B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */,
@@ -1937,7 +1908,6 @@
 				B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */,
 				B9C217DD1DCC40F900F617FC /* NewsFeedService.swift in Sources */,
 				B954EE571DE0327B00A0049D /* PostUploadWireframeInterface.swift in Sources */,
-				B9DDB69E1DE6BC69007EFF33 /* BaseModuleWireframe.swift in Sources */,
 				B9C217A21DCC40F900F617FC /* CommentWireframe.swift in Sources */,
 				B9C217FA1DCC40F900F617FC /* PostFooterView.swift in Sources */,
 				B9D496961DE7EE3F00CDD58E /* PhotoPickerViewController.swift in Sources */,
@@ -1975,7 +1945,6 @@
 				B9D4968F1DE7EDE300CDD58E /* PhotoPickerWireframeInterface.swift in Sources */,
 				B9C217DE1DCC40F900F617FC /* PostService.swift in Sources */,
 				B9C217F41DCC40F900F617FC /* PostCellDelegate.swift in Sources */,
-				B9DDB6981DE6BC2E007EFF33 /* BaseModuleInteractor.swift in Sources */,
 				B92B96F91DDAD8DB00D89025 /* CropView.swift in Sources */,
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
 				B9DEB2611DDEDE5200C47C37 /* PhotoShareWireframe.swift in Sources */,
@@ -2003,7 +1972,6 @@
 				B9C217B51DCC40F900F617FC /* NewsFeedInteractorInterface.swift in Sources */,
 				B9C217D41DCC40F900F617FC /* AuthSession.swift in Sources */,
 				B9D4967A1DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift in Sources */,
-				B9DDB6A21DE6C02E007EFF33 /* BaseModuleInterface.swift in Sources */,
 				B9C217EE1DCC40F900F617FC /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
