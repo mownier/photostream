@@ -10,4 +10,7 @@ import Foundation
 
 protocol CommentFeedInteractorInterface: BaseModuleInteractor {
 
+    var service: CommentService! { set get }
+    
+    init(service: CommentService)
 }

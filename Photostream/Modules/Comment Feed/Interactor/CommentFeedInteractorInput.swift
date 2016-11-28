@@ -6,8 +6,9 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class CommentFeedInteractorInput: AnyObject {
+protocol CommentFeedInteractorInput: BaseModuleInteractorInput {
 
+    func fetchComments(with postId: String)
 }

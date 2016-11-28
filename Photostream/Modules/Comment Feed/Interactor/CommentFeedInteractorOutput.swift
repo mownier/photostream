@@ -6,8 +6,10 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class CommentFeedInteractorOutput: AnyObject {
+protocol CommentFeedInteractorOutput: BaseModuleInteractorOutput {
 
+    func commentFeedDidFetch(with comments: CommentList)
+    func commentFeedDidFetch(with error: CommentServiceError)
 }
