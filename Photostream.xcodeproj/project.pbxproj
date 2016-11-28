@@ -46,6 +46,22 @@
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
 		B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEF1D51C79300C5E76B /* Main.storyboard */; };
+		B99B495D1DEC1D31001B9C5A /* CommentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B495C1DEC1D31001B9C5A /* CommentWireframe.swift */; };
+		B99B49631DEC1D86001B9C5A /* CommenFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49621DEC1D86001B9C5A /* CommenFeedInteractor.swift */; };
+		B99B49651DEC1D96001B9C5A /* CommentFeedInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49641DEC1D96001B9C5A /* CommentFeedInteractorInterface.swift */; };
+		B99B49671DEC1DA9001B9C5A /* CommentFeedInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49661DEC1DA9001B9C5A /* CommentFeedInteractorInput.swift */; };
+		B99B49691DEC1DB5001B9C5A /* CommentFeedInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49681DEC1DB5001B9C5A /* CommentFeedInteractorOutput.swift */; };
+		B99B496B1DEC1DD4001B9C5A /* CommentFeedModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B496A1DEC1DD4001B9C5A /* CommentFeedModuleInterface.swift */; };
+		B99B496D1DEC1DE6001B9C5A /* CommentFeedModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B496C1DEC1DE6001B9C5A /* CommentFeedModule.swift */; };
+		B99B496F1DEC1DF1001B9C5A /* CommentFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B496E1DEC1DF1001B9C5A /* CommentFeedPresenter.swift */; };
+		B99B49711DEC1DFB001B9C5A /* CommentFeedPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49701DEC1DFB001B9C5A /* CommentFeedPresenterInterface.swift */; };
+		B99B49731DEC1E07001B9C5A /* CommentFeedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49721DEC1E07001B9C5A /* CommentFeedScene.swift */; };
+		B99B49751DEC1E17001B9C5A /* CommentFeedWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49741DEC1E17001B9C5A /* CommentFeedWireframeInterface.swift */; };
+		B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49761DEC1E68001B9C5A /* BaseModule.swift */; };
+		B99B497C1DEC1E68001B9C5A /* BaseModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */; };
+		B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */; };
+		B99B497E1DEC1E68001B9C5A /* BaseModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49791DEC1E68001B9C5A /* BaseModuleView.swift */; };
+		B99B497F1DEC1E68001B9C5A /* BaseModuleWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B497A1DEC1E68001B9C5A /* BaseModuleWireframe.swift */; };
 		B9C1E4C71D507843000925FA /* PhotostreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4C61D507843000925FA /* PhotostreamTests.swift */; };
 		B9C217981DCC40F900F617FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216DF1DCC40F900F617FC /* AppDelegate.swift */; };
 		B9C217991DCC40F900F617FC /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216E01DCC40F900F617FC /* AppDependency.swift */; };
@@ -56,7 +72,6 @@
 		B9C2179E1DCC40F900F617FC /* RegistrationModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */; };
 		B9C2179F1DCC40F900F617FC /* UserProfileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216E71DCC40F900F617FC /* UserProfileExtension.swift */; };
 		B9C217A11DCC40F900F617FC /* RootWireframeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216EB1DCC40F900F617FC /* RootWireframeInterface.swift */; };
-		B9C217A21DCC40F900F617FC /* CommentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216EE1DCC40F900F617FC /* CommentWireframe.swift */; };
 		B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216F11DCC40F900F617FC /* HomePresenter.swift */; };
 		B9C217A41DCC40F900F617FC /* HomePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216F21DCC40F900F617FC /* HomePresenterInterface.swift */; };
 		B9C217A51DCC40F900F617FC /* HomeViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C216F41DCC40F900F617FC /* HomeViewInterface.swift */; };
@@ -271,6 +286,22 @@
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97E3CF01D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B99B495C1DEC1D31001B9C5A /* CommentWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWireframe.swift; sourceTree = "<group>"; };
+		B99B49621DEC1D86001B9C5A /* CommenFeedInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommenFeedInteractor.swift; sourceTree = "<group>"; };
+		B99B49641DEC1D96001B9C5A /* CommentFeedInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedInteractorInterface.swift; sourceTree = "<group>"; };
+		B99B49661DEC1DA9001B9C5A /* CommentFeedInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedInteractorInput.swift; sourceTree = "<group>"; };
+		B99B49681DEC1DB5001B9C5A /* CommentFeedInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedInteractorOutput.swift; sourceTree = "<group>"; };
+		B99B496A1DEC1DD4001B9C5A /* CommentFeedModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedModuleInterface.swift; sourceTree = "<group>"; };
+		B99B496C1DEC1DE6001B9C5A /* CommentFeedModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedModule.swift; sourceTree = "<group>"; };
+		B99B496E1DEC1DF1001B9C5A /* CommentFeedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedPresenter.swift; sourceTree = "<group>"; };
+		B99B49701DEC1DFB001B9C5A /* CommentFeedPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedPresenterInterface.swift; sourceTree = "<group>"; };
+		B99B49721DEC1E07001B9C5A /* CommentFeedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedScene.swift; sourceTree = "<group>"; };
+		B99B49741DEC1E17001B9C5A /* CommentFeedWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedWireframeInterface.swift; sourceTree = "<group>"; };
+		B99B49761DEC1E68001B9C5A /* BaseModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModule.swift; sourceTree = "<group>"; };
+		B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleInteractor.swift; sourceTree = "<group>"; };
+		B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModulePresenter.swift; sourceTree = "<group>"; };
+		B99B49791DEC1E68001B9C5A /* BaseModuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleView.swift; sourceTree = "<group>"; };
+		B99B497A1DEC1E68001B9C5A /* BaseModuleWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleWireframe.swift; sourceTree = "<group>"; };
 		B9C1E4AE1D507843000925FA /* Photostream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photostream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C1E4BD1D507843000925FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9C1E4C21D507843000925FA /* PhotostreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotostreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,7 +316,6 @@
 		B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationModuleExtension.swift; sourceTree = "<group>"; };
 		B9C216E71DCC40F900F617FC /* UserProfileExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileExtension.swift; sourceTree = "<group>"; };
 		B9C216EB1DCC40F900F617FC /* RootWireframeInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframeInterface.swift; sourceTree = "<group>"; };
-		B9C216EE1DCC40F900F617FC /* CommentWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWireframe.swift; sourceTree = "<group>"; };
 		B9C216F11DCC40F900F617FC /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		B9C216F21DCC40F900F617FC /* HomePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenterInterface.swift; sourceTree = "<group>"; };
 		B9C216F41DCC40F900F617FC /* HomeViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewInterface.swift; sourceTree = "<group>"; };
@@ -635,6 +665,64 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		B99B495A1DEC1D31001B9C5A /* Comment Feed */ = {
+			isa = PBXGroup;
+			children = (
+				B99B495E1DEC1D6D001B9C5A /* Interactor */,
+				B99B495F1DEC1D6D001B9C5A /* Module */,
+				B99B49601DEC1D6D001B9C5A /* Presenter */,
+				B99B49611DEC1D6D001B9C5A /* View */,
+				B99B495B1DEC1D31001B9C5A /* Wireframe */,
+			);
+			path = "Comment Feed";
+			sourceTree = "<group>";
+		};
+		B99B495B1DEC1D31001B9C5A /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B99B495C1DEC1D31001B9C5A /* CommentWireframe.swift */,
+				B99B49741DEC1E17001B9C5A /* CommentFeedWireframeInterface.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B99B495E1DEC1D6D001B9C5A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B99B49621DEC1D86001B9C5A /* CommenFeedInteractor.swift */,
+				B99B49641DEC1D96001B9C5A /* CommentFeedInteractorInterface.swift */,
+				B99B49661DEC1DA9001B9C5A /* CommentFeedInteractorInput.swift */,
+				B99B49681DEC1DB5001B9C5A /* CommentFeedInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B99B495F1DEC1D6D001B9C5A /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B99B496A1DEC1DD4001B9C5A /* CommentFeedModuleInterface.swift */,
+				B99B496C1DEC1DE6001B9C5A /* CommentFeedModule.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B99B49601DEC1D6D001B9C5A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B99B496E1DEC1DF1001B9C5A /* CommentFeedPresenter.swift */,
+				B99B49701DEC1DFB001B9C5A /* CommentFeedPresenterInterface.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B99B49611DEC1D6D001B9C5A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B99B49721DEC1E07001B9C5A /* CommentFeedScene.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B9C1E4A51D507843000925FA = {
 			isa = PBXGroup;
 			children = (
@@ -713,7 +801,7 @@
 			isa = PBXGroup;
 			children = (
 				B9C216E91DCC40F900F617FC /* Base */,
-				B9C216EC1DCC40F900F617FC /* Comment */,
+				B99B495A1DEC1D31001B9C5A /* Comment Feed */,
 				B9C216EF1DCC40F900F617FC /* Home */,
 				B9C216F81DCC40F900F617FC /* Login */,
 				B9C217071DCC40F900F617FC /* News Feed */,
@@ -731,25 +819,14 @@
 		B9C216E91DCC40F900F617FC /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				B99B49761DEC1E68001B9C5A /* BaseModule.swift */,
+				B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */,
+				B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */,
+				B99B49791DEC1E68001B9C5A /* BaseModuleView.swift */,
+				B99B497A1DEC1E68001B9C5A /* BaseModuleWireframe.swift */,
 				B9C216EB1DCC40F900F617FC /* RootWireframeInterface.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		B9C216EC1DCC40F900F617FC /* Comment */ = {
-			isa = PBXGroup;
-			children = (
-				B9C216ED1DCC40F900F617FC /* Wireframe */,
-			);
-			path = Comment;
-			sourceTree = "<group>";
-		};
-		B9C216ED1DCC40F900F617FC /* Wireframe */ = {
-			isa = PBXGroup;
-			children = (
-				B9C216EE1DCC40F900F617FC /* CommentWireframe.swift */,
-			);
-			path = Wireframe;
 			sourceTree = "<group>";
 		};
 		B9C216EF1DCC40F900F617FC /* Home */ = {
@@ -1803,11 +1880,14 @@
 				B9DEB25B1DDEDE2E00C47C37 /* PhotoSharePresenter.swift in Sources */,
 				B9D4968B1DE7EDE300CDD58E /* PhotoPickerPresenter.swift in Sources */,
 				B9C217C91DCC40F900F617FC /* RegistrationWireframeInterface.swift in Sources */,
+				B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */,
+				B99B497E1DEC1E68001B9C5A /* BaseModuleView.swift in Sources */,
 				B9D4968A1DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift in Sources */,
 				B9C217CF1DCC40F900F617FC /* UserProfileModuleInterface.swift in Sources */,
 				B9C218071DCC40F900F617FC /* PostListFooter.swift in Sources */,
 				B978AF411DD44A53007C1AAD /* PhotoCaptureViewController.swift in Sources */,
 				B9D4965A1DE7EAD200CDD58E /* PhotoLIbraryInteractor.swift in Sources */,
+				B99B497F1DEC1E68001B9C5A /* BaseModuleWireframe.swift in Sources */,
 				B978AF381DD42F40007C1AAD /* PhotoCaptureWireframe.swift in Sources */,
 				B9C217C51DCC40F900F617FC /* RegistrationPresenter.swift in Sources */,
 				B9C217F71DCC40F900F617FC /* PostCellLoader.swift in Sources */,
@@ -1824,11 +1904,14 @@
 				B921B5571DD594A70065C187 /* AssetServiceProvider.swift in Sources */,
 				B9C217D71DCC40F900F617FC /* Post.swift in Sources */,
 				B9C217A51DCC40F900F617FC /* HomeViewInterface.swift in Sources */,
+				B99B496D1DEC1DE6001B9C5A /* CommentFeedModule.swift in Sources */,
+				B99B49751DEC1E17001B9C5A /* CommentFeedWireframeInterface.swift in Sources */,
 				B9D496891DE7EDE300CDD58E /* PhotoPickerModuleDelegate.swift in Sources */,
 				B9C217CB1DCC40F900F617FC /* UserProfileInteractor.swift in Sources */,
 				B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */,
 				B9C217B41DCC40F900F617FC /* NewsFeedInteractorInput.swift in Sources */,
 				B9C217A91DCC40F900F617FC /* LoginInteractorInput.swift in Sources */,
+				B99B49731DEC1E07001B9C5A /* CommentFeedScene.swift in Sources */,
 				B9C217D81DCC40F900F617FC /* Profile.swift in Sources */,
 				B9DEB2671DDEE18300C47C37 /* PhotoShareViewController.swift in Sources */,
 				B9C217BA1DCC40F900F617FC /* NewsFeedModuleInterface.swift in Sources */,
@@ -1847,6 +1930,7 @@
 				B9C217991DCC40F900F617FC /* AppDependency.swift in Sources */,
 				B9C217F21DCC40F900F617FC /* PostCell.swift in Sources */,
 				B954EE4D1DE0323E00A0049D /* PostUploadPresenter.swift in Sources */,
+				B99B497C1DEC1E68001B9C5A /* BaseModuleInteractor.swift in Sources */,
 				B9C217C81DCC40F900F617FC /* RegistrationWireframe.swift in Sources */,
 				B954EE551DE0327000A0049D /* PostUploadWireframe.swift in Sources */,
 				B9C217C01DCC40F900F617FC /* RegistrationInteractor.swift in Sources */,
@@ -1858,6 +1942,7 @@
 				B9C217DC1DCC40F900F617FC /* FileService.swift in Sources */,
 				B9C217CA1DCC40F900F617FC /* UserProfileData.swift in Sources */,
 				B9C217F91DCC40F900F617FC /* PostCellLoaderConfiguration.swift in Sources */,
+				B99B49691DEC1DB5001B9C5A /* CommentFeedInteractorOutput.swift in Sources */,
 				B9D4969E1DE80EF700CDD58E /* PostUploadItem.swift in Sources */,
 				B9C217D91DCC40F900F617FC /* User.swift in Sources */,
 				B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */,
@@ -1889,6 +1974,8 @@
 				B954EE601DE035DF00A0049D /* PostUploadInteractorInput.swift in Sources */,
 				B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */,
 				B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */,
+				B99B496B1DEC1DD4001B9C5A /* CommentFeedModuleInterface.swift in Sources */,
+				B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */,
 				B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */,
 				B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */,
 				B9D496A01DE8199F00CDD58E /* LoginModuleInterface.swift in Sources */,
@@ -1908,10 +1995,12 @@
 				B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */,
 				B9C217DD1DCC40F900F617FC /* NewsFeedService.swift in Sources */,
 				B954EE571DE0327B00A0049D /* PostUploadWireframeInterface.swift in Sources */,
-				B9C217A21DCC40F900F617FC /* CommentWireframe.swift in Sources */,
 				B9C217FA1DCC40F900F617FC /* PostFooterView.swift in Sources */,
 				B9D496961DE7EE3F00CDD58E /* PhotoPickerViewController.swift in Sources */,
+				B99B49671DEC1DA9001B9C5A /* CommentFeedInteractorInput.swift in Sources */,
 				B9C217E01DCC40F900F617FC /* AuthenticationServiceProvider.swift in Sources */,
+				B99B49711DEC1DFB001B9C5A /* CommentFeedPresenterInterface.swift in Sources */,
+				B99B49651DEC1D96001B9C5A /* CommentFeedInteractorInterface.swift in Sources */,
 				B9C217BC1DCC40F900F617FC /* NewsFeedPresenterInterface.swift in Sources */,
 				B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */,
 				B9C217D01DCC40F900F617FC /* UserProfileDisplayItem.swift in Sources */,
@@ -1936,6 +2025,7 @@
 				B9C217D31DCC40F900F617FC /* UserProfileWireframe.swift in Sources */,
 				B9DEB2631DDEE12000C47C37 /* PhotoShareModuleExtension.swift in Sources */,
 				B9D4968D1DE7EDE300CDD58E /* PhotoPickerViewInterface.swift in Sources */,
+				B99B49631DEC1D86001B9C5A /* CommenFeedInteractor.swift in Sources */,
 				B9C217B21DCC40F900F617FC /* NewsFeedData.swift in Sources */,
 				B9D4967B1DE7EB5F00CDD58E /* PhotoLibraryViewController.swift in Sources */,
 				B9C2179C1DCC40F900F617FC /* LoginModuleExtension.swift in Sources */,
@@ -1966,12 +2056,14 @@
 				B9D4968C1DE7EDE300CDD58E /* PhotoPickerPresenterInterface.swift in Sources */,
 				B9C217E81DCC40F900F617FC /* HomeViewController.swift in Sources */,
 				B9C217C11DCC40F900F617FC /* RegistrationInteractorInput.swift in Sources */,
+				B99B496F1DEC1DF1001B9C5A /* CommentFeedPresenter.swift in Sources */,
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,
 				B9C217C41DCC40F900F617FC /* RegistrationModuleInterface.swift in Sources */,
 				B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */,
 				B9C217B51DCC40F900F617FC /* NewsFeedInteractorInterface.swift in Sources */,
 				B9C217D41DCC40F900F617FC /* AuthSession.swift in Sources */,
 				B9D4967A1DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift in Sources */,
+				B99B495D1DEC1D31001B9C5A /* CommentWireframe.swift in Sources */,
 				B9C217EE1DCC40F900F617FC /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
