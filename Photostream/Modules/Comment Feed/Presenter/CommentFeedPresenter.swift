@@ -53,6 +53,12 @@ extension CommentFeedPresenter: CommentFeedModuleInterface {
 extension CommentFeedPresenter: CommentFeedInteractorOutput {
     
     func commentFeedDidFetch(with feed: [CommentFeedDataItem]) {
+        guard !(feed.count == 0 && comments.count == 0) else {
+            view.reload()
+            view.showEmptyView()
+            return
+        }
+        
         if offset.isEmpty {
             comments.removeAll()
             view.didRefreshComments(with: nil)

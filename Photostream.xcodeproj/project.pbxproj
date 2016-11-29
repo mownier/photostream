@@ -19,6 +19,7 @@
 		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
 		B933ADF41DED316800FAE922 /* CommentFeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADF31DED316800FAE922 /* CommentFeedData.swift */; };
 		B933ADF61DED50D900FAE922 /* CommentFeedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */; };
+		B933ADF81DED630200FAE922 /* CommentFeedEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */; };
 		B954EE471DE0013400A0049D /* PhotoShareModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE461DE0013400A0049D /* PhotoShareModuleDelegate.swift */; };
 		B954EE4D1DE0323E00A0049D /* PostUploadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE4C1DE0323E00A0049D /* PostUploadPresenter.swift */; };
 		B954EE4F1DE0324900A0049D /* PostUploadPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE4E1DE0324900A0049D /* PostUploadPresenterInterface.swift */; };
@@ -260,6 +261,7 @@
 		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B933ADF31DED316800FAE922 /* CommentFeedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedData.swift; sourceTree = "<group>"; };
 		B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedExtension.swift; sourceTree = "<group>"; };
+		B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedEmptyView.swift; sourceTree = "<group>"; };
 		B954EE461DE0013400A0049D /* PhotoShareModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareModuleDelegate.swift; sourceTree = "<group>"; };
 		B954EE4C1DE0323E00A0049D /* PostUploadPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadPresenter.swift; sourceTree = "<group>"; };
 		B954EE4E1DE0324900A0049D /* PostUploadPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadPresenterInterface.swift; sourceTree = "<group>"; };
@@ -1152,6 +1154,7 @@
 		B9C217501DCC40F900F617FC /* Comment Feed */ = {
 			isa = PBXGroup;
 			children = (
+				B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */,
 				B9C217511DCC40F900F617FC /* CommentFeedViewController.swift */,
 				B9C217521DCC40F900F617FC /* Storyboard */,
 			);
@@ -1923,6 +1926,7 @@
 				B9DEB2671DDEE18300C47C37 /* PhotoShareViewController.swift in Sources */,
 				B9C217BA1DCC40F900F617FC /* NewsFeedModuleInterface.swift in Sources */,
 				B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */,
+				B933ADF81DED630200FAE922 /* CommentFeedEmptyView.swift in Sources */,
 				B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
 				B9C217DF1DCC40F900F617FC /* UserService.swift in Sources */,

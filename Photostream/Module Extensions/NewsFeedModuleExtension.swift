@@ -22,7 +22,7 @@ extension NewsFeedWireframeInterface {
     
     func presentCommentFeed(from parent: UIViewController, postId: String) {
         let module = CommentFeedModule()
-        module.build(root: nil, postId: "-KOnNV3HBc9z1wSaxxoR")
+        module.build(root: nil, postId: postId)
         module.wireframe.style = .push
         
         var property = WireframeEntryProperty()

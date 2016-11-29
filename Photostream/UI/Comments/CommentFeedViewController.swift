@@ -12,7 +12,7 @@ class CommentFeedViewController: UITableViewController {
     
     var presenter: CommentFeedModuleInterface!
     var indicatorView: UIActivityIndicatorView!
-    var emptyView: UILabel!
+    var emptyView: CommentFeedEmptyView!
     
     var shouldShowInitialLoadView: Bool = false {
         didSet {
@@ -37,7 +37,7 @@ class CommentFeedViewController: UITableViewController {
             }
             
             if shouldShowEmptyView {
-                emptyView.frame = tableView.bounds
+                emptyView.frame.size = tableView.bounds.size
                 tableView.backgroundView = emptyView
             } else {
                 tableView.backgroundView = nil
@@ -51,8 +51,8 @@ class CommentFeedViewController: UITableViewController {
         indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicatorView.hidesWhenStopped = true
         
-        emptyView = UILabel()
-        emptyView.text = "No comments"
+        emptyView = CommentFeedEmptyView()
+        emptyView.messageLabel.text = "No comments"
         
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()

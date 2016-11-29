@@ -27,11 +27,16 @@ struct CommentServiceProvider: CommentService {
         
         let root = FIRDatabase.database().reference()
         let comments = root.child("comments")
-        let posts = root.child("posts")
+        let postComment = root.child("post-comment")
         let users = root.child("users")
-        let ref = posts.child(postId).child("comments")
+        let ref = postComment.child(postId).child("comments")
         
         ref.queryLimited(toFirst: limit).observeSingleEvent(of: .value, with: { (data) in
+            guard data.hasChildren() else {
+                callback?(result)
+                return
+            }
+            
             var commentList = [Comment]()
             var commentUsers = [String: User]()
             for snap in data.children {
