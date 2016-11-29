@@ -15,6 +15,8 @@ class CommentFeedViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         
+        tableView.tableHeaderView = UIView()
+        tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CommentCell")
     }
     
