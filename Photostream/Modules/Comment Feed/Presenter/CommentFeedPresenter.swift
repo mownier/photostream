@@ -40,6 +40,9 @@ extension CommentFeedPresenter: CommentFeedModuleInterface {
     
     func refreshComments() {
         interactor.fetchComments(with: postId)
+        if comments.count == 0 {
+            view.showInitialLoadView()
+        }
     }
     
     func comment(at index: Int) -> CommentFeedDataItem? {

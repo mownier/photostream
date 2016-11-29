@@ -11,9 +11,48 @@ import UIKit
 class CommentFeedViewController: UITableViewController {
     
     var presenter: CommentFeedModuleInterface!
+    var indicatorView: UIActivityIndicatorView!
+    var emptyView: UILabel!
+    
+    var shouldShowInitialLoadView: Bool = false {
+        didSet {
+            guard oldValue != shouldShowInitialLoadView else {
+                return
+            }
+            
+            if shouldShowInitialLoadView {
+                tableView.backgroundView = indicatorView
+                indicatorView.startAnimating()
+            } else {
+                indicatorView.stopAnimating()
+                tableView.backgroundView = nil
+            }
+        }
+    }
+    
+    var shouldShowEmptyView: Bool = false {
+        didSet {
+            guard oldValue != shouldShowEmptyView else {
+                return
+            }
+            
+            if shouldShowEmptyView {
+                emptyView.frame = tableView.bounds
+                tableView.backgroundView = emptyView
+            } else {
+                tableView.backgroundView = nil
+            }
+        }
+    }
     
     override func loadView() {
         super.loadView()
+        
+        indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        indicatorView.hidesWhenStopped = true
+        
+        emptyView = UILabel()
+        emptyView.text = "No comments"
         
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
@@ -49,15 +88,16 @@ extension CommentFeedViewController: CommentFeedScene {
     }
     
     func showEmptyView() {
-        
+        shouldShowEmptyView = true
     }
     
     func showInitialLoadView() {
-        
+        shouldShowInitialLoadView = true
     }
     
     func didRefreshComments(with error: String?) {
-        
+        shouldShowInitialLoadView = false
+        shouldShowEmptyView = false
     }
     
     func didLoadMoreComments(with error: String?) {
