@@ -11,6 +11,8 @@ protocol CommentFeedScene: BaseModuleView {
     var presenter: CommentFeedModuleInterface! { set get }
     
     func reload()
+    func showEmptyView()
+    func showInitialLoadView()
     
     func didRefreshComments(with error: String?)
     func didLoadMoreComments(with error: String?)

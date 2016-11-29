@@ -139,7 +139,7 @@
 		B9C217E31DCC40F900F617FC /* NewsFeedServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2174C1DCC40F900F617FC /* NewsFeedServiceProvider.swift */; };
 		B9C217E41DCC40F900F617FC /* PostServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2174D1DCC40F900F617FC /* PostServiceProvider.swift */; };
 		B9C217E51DCC40F900F617FC /* UserServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2174E1DCC40F900F617FC /* UserServiceProvider.swift */; };
-		B9C217E61DCC40F900F617FC /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217511DCC40F900F617FC /* CommentsViewController.swift */; };
+		B9C217E61DCC40F900F617FC /* CommentFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217511DCC40F900F617FC /* CommentFeedViewController.swift */; };
 		B9C217E71DCC40F900F617FC /* CommentModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C217531DCC40F900F617FC /* CommentModuleStoryboard.storyboard */; };
 		B9C217E81DCC40F900F617FC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217551DCC40F900F617FC /* HomeViewController.swift */; };
 		B9C217E91DCC40F900F617FC /* HomeModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C217571DCC40F900F617FC /* HomeModuleStoryboard.storyboard */; };
@@ -384,7 +384,7 @@
 		B9C2174C1DCC40F900F617FC /* NewsFeedServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedServiceProvider.swift; sourceTree = "<group>"; };
 		B9C2174D1DCC40F900F617FC /* PostServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceProvider.swift; sourceTree = "<group>"; };
 		B9C2174E1DCC40F900F617FC /* UserServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceProvider.swift; sourceTree = "<group>"; };
-		B9C217511DCC40F900F617FC /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		B9C217511DCC40F900F617FC /* CommentFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedViewController.swift; sourceTree = "<group>"; };
 		B9C217531DCC40F900F617FC /* CommentModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommentModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9C217551DCC40F900F617FC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B9C217571DCC40F900F617FC /* HomeModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeModuleStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1129,7 +1129,7 @@
 		B9C2174F1DCC40F900F617FC /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				B9C217501DCC40F900F617FC /* Comments */,
+				B9C217501DCC40F900F617FC /* Comment Feed */,
 				B9C217541DCC40F900F617FC /* Home */,
 				B9C217581DCC40F900F617FC /* Login */,
 				B9C2175C1DCC40F900F617FC /* News Feed */,
@@ -1146,12 +1146,13 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		B9C217501DCC40F900F617FC /* Comments */ = {
+		B9C217501DCC40F900F617FC /* Comment Feed */ = {
 			isa = PBXGroup;
 			children = (
-				B9C217511DCC40F900F617FC /* CommentsViewController.swift */,
+				B9C217511DCC40F900F617FC /* CommentFeedViewController.swift */,
 				B9C217521DCC40F900F617FC /* Storyboard */,
 			);
+			name = "Comment Feed";
 			path = Comments;
 			sourceTree = "<group>";
 		};
@@ -2012,7 +2013,7 @@
 				B9C217EC1DCC40F900F617FC /* NewsFeedDataSource.swift in Sources */,
 				B9C217FB1DCC40F900F617FC /* PostGridCell.swift in Sources */,
 				B9C217F81DCC40F900F617FC /* PostCellLoaderCallback.swift in Sources */,
-				B9C217E61DCC40F900F617FC /* CommentsViewController.swift in Sources */,
+				B9C217E61DCC40F900F617FC /* CommentFeedViewController.swift in Sources */,
 				B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
