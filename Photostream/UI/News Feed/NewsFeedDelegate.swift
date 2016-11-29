@@ -123,7 +123,7 @@ extension NewsFeedViewController: PostListCellDelegate {
     }
     
     func postListCellDidTapComment(cell: PostListCell) {
-        guard let index = collectionView[cell]?.row else {
+        guard let index = collectionView[cell]?.section else {
             return
         }
         
@@ -131,7 +131,7 @@ extension NewsFeedViewController: PostListCellDelegate {
     }
     
     func postListCellDidTapCommentsCount(cell: PostListCell) {
-        guard let index = collectionView[cell]?.row else {
+        guard let index = collectionView[cell]?.section else {
             return
         }
         
