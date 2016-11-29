@@ -56,7 +56,8 @@ class CommentFeedViewController: UITableViewController {
         
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CommentCell")
+        
+        CommentListCell.register(in: tableView)
     }
     
     override func viewDidLoad() {
@@ -70,10 +71,14 @@ class CommentFeedViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell")!
+        let cell = CommentListCell.dequeue(from: tableView)!
         let comment = presenter.comment(at: indexPath.row)
-        cell.textLabel?.text = comment?.content
+        cell.configure(with: comment)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 104
     }
 }
 
