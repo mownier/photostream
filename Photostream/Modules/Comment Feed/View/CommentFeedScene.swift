@@ -6,8 +6,12 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+protocol CommentFeedScene: BaseModuleView {
 
-class CommentFeedScene: AnyObject {
-
+    var presenter: CommentFeedModuleInterface! { set get }
+    
+    func reload()
+    
+    func didRefreshComments(with error: String?)
+    func didLoadMoreComments(with error: String?)
 }

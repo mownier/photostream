@@ -6,8 +6,12 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+protocol CommentFeedModuleInterface: BaseModuleInterface {
 
-class CommentFeedModuleInterface: AnyObject {
-
+    var commentCount: Int { get }
+    
+    func refreshComments()
+    func loadMoreComments()
+    
+    func comment(at index: Int) -> CommentFeedDataItem?
 }

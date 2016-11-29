@@ -6,10 +6,8 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
-
 protocol CommentFeedInteractorOutput: BaseModuleInteractorOutput {
 
-    func commentFeedDidFetch(with comments: CommentList)
+    func commentFeedDidFetch(with feed: [CommentFeedDataItem])
     func commentFeedDidFetch(with error: CommentServiceError)
 }

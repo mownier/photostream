@@ -6,8 +6,10 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+protocol CommentFeedPresenterInterface: BaseModulePresenter, BaseModuleInteractable {
 
-class CommentFeedPresenterInterface: AnyObject {
-
+    var postId: String! { set get }
+    var comments: [CommentFeedDataItem]! { set get }
+    var offset: String! { set get }
+    var limit: Int! { set get }
 }

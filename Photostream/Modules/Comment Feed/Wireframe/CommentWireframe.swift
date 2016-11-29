@@ -6,16 +6,12 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+class CommentFeedWireframe: CommentFeedWireframeInterface {
 
-class CommentWireframe: AnyObject {
-
-    var appWireframe: AppWireframe!
-
-    func navigateCommentInterfaceFromViewController(_ viewController: UIViewController, shouldComment: Bool) {
-        let sb = UIStoryboard(name: "CommentModuleStoryboard", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
-        vc.shouldComment = shouldComment
-        viewController.navigationController?.pushViewController(vc, animated: true)
+    var root: RootWireframe?
+    var style: WireframeStyle!
+    
+    required init(root: RootWireframe?) {
+        self.root = root
     }
 }
