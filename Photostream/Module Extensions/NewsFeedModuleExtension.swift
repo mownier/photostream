@@ -18,6 +18,33 @@ extension NewsFeedWireframe {
     }
 }
 
+extension NewsFeedWireframeInterface {
+    
+    func presentCommentFeed(from parent: UIViewController, postId: String) {
+        let module = CommentFeedModule()
+        module.build(root: nil, postId: postId)
+        module.wireframe.style = .push
+        
+        var property = WireframeEntryProperty()
+        property.controller = module.view.controller
+        property.parent = parent
+        module.wireframe.enter(with: property)
+    }
+}
+
+extension NewsFeedModuleInterface {
+    
+    func presentCommentFeed(at index: Int) {
+        guard let presenter = self as? NewsFeedPresenter,
+            let parent = presenter.view.controller,
+            let post = feed(at: index) as? NewsFeedPost else {
+            return
+        }
+        
+        presenter.wireframe.presentCommentFeed(from: parent, postId: post.id)
+    }
+}
+
 extension NewsFeedPost: PostListCellItem {
     
     var likesText: String {

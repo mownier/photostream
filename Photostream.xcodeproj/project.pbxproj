@@ -789,6 +789,7 @@
 		B9C216E21DCC40F900F617FC /* Module Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */,
 				B9C216E31DCC40F900F617FC /* HomeModuleExtension.swift */,
 				B9C216E41DCC40F900F617FC /* LoginModuleExtension.swift */,
 				B9C216E51DCC40F900F617FC /* NewsFeedModuleExtension.swift */,
@@ -798,7 +799,6 @@
 				B9DEB2621DDEE12000C47C37 /* PhotoShareModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
 				B9C216E71DCC40F900F617FC /* UserProfileExtension.swift */,
-				B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */,
 			);
 			path = "Module Extensions";
 			sourceTree = "<group>";
