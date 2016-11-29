@@ -23,7 +23,12 @@ class CommentFeedModule: BaseModule, BaseModuleInteractable {
     }
 }
 
-extension CommentFeedModule: BaseModuleBuilder {
+protocol CommentFeedBuilder: BaseModuleBuilder {
+    
+    func build(root: RootWireframe?, postId: String)
+}
+
+extension CommentFeedModule: CommentFeedBuilder {
     
     func build(root: RootWireframe?) {
         let service = CommentServiceProvider(session: AuthSession())
@@ -37,5 +42,10 @@ extension CommentFeedModule: BaseModuleBuilder {
         
         interactor.output = presenter
         view.presenter = presenter
+    }
+    
+    func build(root: RootWireframe?, postId: String) {
+        build(root: root)
+        presenter.postId = postId
     }
 }
