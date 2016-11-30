@@ -42,6 +42,12 @@ class CommentListCell: UITableViewCell {
         timeLabel.font = UIFont.systemFont(ofSize: 10)
         timeLabel.textColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
         
+        authorLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightSemibold)
+        authorLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
+        
+        contentLabel.font = UIFont.systemFont(ofSize: 14)
+        contentLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
+        
         contentView.addSubview(authorPhoto)
         contentView.addSubview(authorLabel)
         contentView.addSubview(contentLabel)
