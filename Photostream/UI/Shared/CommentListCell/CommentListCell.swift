@@ -39,6 +39,9 @@ class CommentListCell: UITableViewCell {
         authorLabel.numberOfLines = 0
         contentLabel.numberOfLines = 0
         
+        timeLabel.font = UIFont.systemFont(ofSize: 10)
+        timeLabel.textColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
+        
         contentView.addSubview(authorPhoto)
         contentView.addSubview(authorLabel)
         contentView.addSubview(contentLabel)
