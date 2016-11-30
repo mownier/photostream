@@ -55,7 +55,7 @@ struct CommentServiceProvider: CommentService {
                         comment.userId = userId
                         comment.id = data2.childSnapshot(forPath: "id").value as! String
                         comment.message = data2.childSnapshot(forPath: "message").value as! String
-                        comment.timestamp = data2.childSnapshot(forPath: "timestamp").value as! Double
+                        comment.timestamp = (data2.childSnapshot(forPath: "timestamp").value as! Double) / 1000
                         
                         commentList.append(comment)
                         

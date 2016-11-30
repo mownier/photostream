@@ -18,7 +18,7 @@ extension CommentFeedModule {
 extension CommentFeedDataItem: CommentListCellItem {
     
     var timeAgo: String {
-        let date = NSDate(timeIntervalSinceNow: timestamp)
+        let date = NSDate(timeIntervalSince1970: timestamp)
         return date.timeAgoSinceNow()
     }
 }
