@@ -8,10 +8,37 @@
 
 import UIKit
 
-class CommentController: UIViewController {
+protocol CommentControllerInterface: BaseModuleWireframe {
+    
+    var postId: String! { set get }
+    var feed: CommentFeedModuleInterface! { set get }
+    var writer: CommentWriterModuleInterface! { set get }
+    
+    func setupFeed()
+    func setupWriter()
+}
 
+extension CommentControllerInterface {
+    
+    func setupModules() {
+        setupFeed()
+        setupWriter()
+    }
+}
+
+class CommentController: UIViewController, CommentControllerInterface {
+
+    var style: WireframeStyle!
     var root: RootWireframe?
     var postId: String!
+    
+    var feed: CommentFeedModuleInterface!
+    var writer: CommentWriterModuleInterface!
+    
+    required convenience init(root: RootWireframe?) {
+        self.init()
+        self.root = root
+    }
     
     override func loadView() {
         super.loadView()
@@ -25,46 +52,48 @@ class CommentController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        addCommentFeedModule()
-        addCommentWriterModule()
+
+        setupModules()
     }
     
     func back() {
-       let _ = navigationController?.popViewController(animated: true)
+        var property = WireframeExitProperty()
+        property.controller = self
+        exit(with: property)
     }
     
-    func addCommentWriterModule() {
+    func setupFeed() {
+        let module = CommentFeedModule()
+        module.build(root: root, postId: postId)
+        module.wireframe.style = .attach
+        feed = module.presenter
+        
+        let controller = module.view.controller!
+        controller.view.frame.origin = .zero
+        controller.view.frame.size = view.frame.size
+        
+        var property = WireframeEntryProperty()
+        property.controller = controller
+        property.parent = self
+        
+        module.wireframe.enter(with: property)
+    }
+    
+    func setupWriter() {
         let module = CommentWriterModule()
         module.build(root: root, postId: postId)
+        module.wireframe.style = .attach
+        writer = module.presenter
         
-        guard let controller = module.view.controller else {
-            return
-        }
-        
+        let controller = module.view.controller!
         let height = controller.view.frame.size.height
         controller.view.frame.origin.y = view.frame.size.height - height
         controller.view.frame.size.width = view.frame.size.width
-        addModuleView(controller)
-    }
-    
-    func addCommentFeedModule() {
-        let module = CommentFeedModule()
-        module.build(root: root, postId: postId)
         
-        guard let controller = module.view.controller else {
-            return
-        }
+        var property = WireframeEntryProperty()
+        property.controller = controller
+        property.parent = self
         
-        controller.view.frame.origin = .zero
-        controller.view.frame.size = view.frame.size
-        addModuleView(controller)
-    }
-    
-    func addModuleView(_ controller: UIViewController) {
-        
-        view.addSubview(controller.view)
-        addChildViewController(controller)
-        controller.didMove(toParentViewController: self)
+        module.wireframe.enter(with: property)
     }
 }

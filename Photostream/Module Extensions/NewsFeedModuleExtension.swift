@@ -21,10 +21,15 @@ extension NewsFeedWireframe {
 extension NewsFeedWireframeInterface {
     
     func presentCommentFeed(from parent: UIViewController, postId: String) {
-        let controller = CommentController()
-        controller.root = nil
+        let controller = CommentController(root: nil)
         controller.postId = postId
-        parent.navigationController?.pushViewController(controller, animated: true)
+        controller.style = .push
+        
+        var property = WireframeEntryProperty()
+        property.controller = controller
+        property.parent = parent
+        
+        controller.enter(with: property)
     }
 }
 
