@@ -14,7 +14,7 @@ class CommentFeedPresenter: CommentFeedPresenterInterface {
     
     lazy var comments: [CommentFeedDataItem]! = [CommentFeedDataItem]()
     
-    var view: ModuleView!
+    weak var view: ModuleView!
     var wireframe: ModuleWireframe!
     var interactor: ModeuleInteractor!
     var postId: String!
