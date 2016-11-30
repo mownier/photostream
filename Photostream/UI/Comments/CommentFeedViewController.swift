@@ -45,6 +45,8 @@ class CommentFeedViewController: UITableViewController {
         }
     }
     
+    var prototype = CommentListCell()
+    
     override func loadView() {
         super.loadView()
         
@@ -78,7 +80,9 @@ class CommentFeedViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 104
+        let comment = presenter.comment(at: indexPath.row)
+        prototype.configure(with: comment, isPrototype: true)
+        return prototype.dynamicHeight
     }
 }
 

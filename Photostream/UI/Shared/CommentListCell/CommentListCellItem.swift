@@ -18,6 +18,7 @@ protocol CommentListCellItem {
 
 protocol CommentListCellConfig {
     
+    var dynamicHeight: CGFloat { get }
     func configure(with item: CommentListCellItem?, isPrototype: Bool)
     func set(photo url: String, placeholder image: UIImage)
     func set(author name: String)
@@ -35,6 +36,10 @@ extension CommentListCell: CommentListCellConfig {
         return image
     }
     
+    var dynamicHeight: CGFloat {
+        return timeLabel.frame.origin.y + timeLabel.frame.size.height + spacing
+    }
+    
     func configure(with item: CommentListCellItem?, isPrototype: Bool = false) {
         guard item != nil else {
             return
@@ -47,6 +52,9 @@ extension CommentListCell: CommentListCellConfig {
         if !isPrototype {
             set(photo: item!.authorAvatar, placeholder: authorImage)
         }
+        
+        setNeedsLayout()
+        layoutIfNeeded()
     }
     
     func set(photo url: String, placeholder image: UIImage) {

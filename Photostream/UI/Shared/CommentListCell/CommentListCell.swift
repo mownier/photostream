@@ -36,6 +36,9 @@ class CommentListCell: UITableViewCell {
         contentLabel = UILabel()
         timeLabel = UILabel()
         
+        authorLabel.numberOfLines = 0
+        contentLabel.numberOfLines = 0
+        
         contentView.addSubview(authorPhoto)
         contentView.addSubview(authorLabel)
         contentView.addSubview(contentLabel)
@@ -49,13 +52,15 @@ class CommentListCell: UITableViewCell {
         frame.origin.x = photoLength + (spacing * 2)
         frame.origin.y = spacing
         frame.size.width = contentSize.width - frame.origin.x - spacing
-        frame.size.height = labelHeight
+        frame.size.height = authorLabel.sizeThatFits(frame.size).height
         authorLabel.frame = frame
         
-        frame.origin.y = labelHeight + (spacing * 2)
+        frame.origin.y += frame.size.height + spacing
+        frame.size.height = contentLabel.sizeThatFits(frame.size).height
         contentLabel.frame = frame
         
-        frame.origin.y = (labelHeight * 2) + (spacing * 3)
+        frame.origin.y += frame.size.height + spacing
+        frame.size.height = timeLabel.intrinsicContentSize.height
         timeLabel.frame = frame
     }
 }
@@ -76,10 +81,6 @@ extension CommentListCell {
     
     var contentSize: CGSize {
         return contentView.bounds.size
-    }
-    
-    var labelHeight: CGFloat {
-        return 32
     }
 }
 
