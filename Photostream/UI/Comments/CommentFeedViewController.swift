@@ -100,9 +100,16 @@ extension CommentFeedViewController: CommentFeedScene {
         shouldShowInitialLoadView = true
     }
     
-    func didRefreshComments(with error: String?) {
-        shouldShowInitialLoadView = false
+    func hideEmptyView() {
         shouldShowEmptyView = false
+    }
+    
+    func hideInitialLoadView() {
+        shouldShowInitialLoadView = false
+    }
+    
+    func didRefreshComments(with error: String?) {
+
     }
     
     func didLoadMoreComments(with error: String?) {

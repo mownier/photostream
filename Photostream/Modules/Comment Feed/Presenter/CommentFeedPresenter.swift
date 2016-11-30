@@ -41,6 +41,7 @@ extension CommentFeedPresenter: CommentFeedModuleInterface {
     func refreshComments() {
         interactor.fetchComments(with: postId)
         if comments.count == 0 {
+            view.hideEmptyView()
             view.showInitialLoadView()
         }
     }
@@ -67,6 +68,8 @@ extension CommentFeedPresenter: CommentFeedInteractorOutput {
         }
         
         comments.append(contentsOf: feed)
+        
+        view.hideInitialLoadView()
         view.reload()
     }
     
@@ -76,5 +79,12 @@ extension CommentFeedPresenter: CommentFeedInteractorOutput {
         } else {
             view.didLoadMoreComments(with: error.message)
         }
+        
+        if comments.count == 0 {
+            view.showEmptyView()
+        }
+        
+        view.hideInitialLoadView()
+        view.reload()
     }
 }
