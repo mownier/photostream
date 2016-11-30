@@ -37,7 +37,9 @@ extension CommentListCell: CommentListCellConfig {
     }
     
     var dynamicHeight: CGFloat {
-        return timeLabel.frame.origin.y + timeLabel.frame.size.height + spacing
+        let height1 = timeLabel.frame.origin.y + timeLabel.frame.size.height + spacing
+        let height2 = photoLength + (spacing * 2)
+        return max(height1, height2)
     }
     
     func configure(with item: CommentListCellItem?, isPrototype: Bool = false) {
