@@ -13,17 +13,16 @@ class CommentWriterViewController: UIViewController {
     var presenter: CommentWriterModuleInterface!
     
     override func loadView() {
-        super.loadView()
+        let width: CGFloat = UIScreen.main.bounds.size.width
+        let height: CGFloat = 44
+        let size = CGSize(width: width, height: height)
         
-        view.frame.size.height = 64
-    }
-    
-    override func didMove(toParentViewController parent: UIViewController?) {
-        guard parent != nil else {
-            return
-        }
+        let customView = UIView()
+        customView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        customView.frame.size = size
         
-        view.frame.origin.y = parent!.view.frame.size.height - 64
+        preferredContentSize = size
+        view = customView
     }
 }
 
