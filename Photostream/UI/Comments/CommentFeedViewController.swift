@@ -62,12 +62,21 @@ class CommentFeedViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         CommentListCell.register(in: tableView)
+        
+        title = "Comments"
+        
+        let barItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.back))
+        navigationItem.leftBarButtonItem = barItem
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter.refreshComments()
+    }
+    
+    func back() {
+        presenter.exit()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
