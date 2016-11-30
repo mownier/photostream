@@ -49,7 +49,7 @@ extension CommentListCell: CommentListCellConfig {
         
         set(author: item!.authorName)
         set(content: item!.content)
-        set(time: item!.timeAgo)
+        set(time: item!.timeAgo.uppercased())
         
         if !isPrototype {
             set(photo: item!.authorAvatar, placeholder: authorImage)
