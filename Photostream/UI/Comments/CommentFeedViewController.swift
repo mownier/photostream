@@ -58,6 +58,8 @@ class CommentFeedViewController: UITableViewController {
         
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
+        tableView.allowsSelection = false
+        tableView.separatorStyle = .none
         
         CommentListCell.register(in: tableView)
     }
