@@ -39,6 +39,8 @@
 		B941311D1DEEA29B00DD10CE /* CommentWriterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B941311C1DEEA29B00DD10CE /* CommentWriterPresenter.swift */; };
 		B941311F1DEEA30C00DD10CE /* CommentWriterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B941311E1DEEA30C00DD10CE /* CommentWriterScene.swift */; };
 		B94131211DEEA3BE00DD10CE /* CommentWriterModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94131201DEEA3BE00DD10CE /* CommentWriterModule.swift */; };
+		B94131241DEEA88400DD10CE /* CommentWriterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94131231DEEA88400DD10CE /* CommentWriterViewController.swift */; };
+		B94131261DEEA9B300DD10CE /* CommentWriterModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94131251DEEA9B300DD10CE /* CommentWriterModuleExtension.swift */; };
 		B954EE471DE0013400A0049D /* PhotoShareModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE461DE0013400A0049D /* PhotoShareModuleDelegate.swift */; };
 		B954EE4D1DE0323E00A0049D /* PostUploadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE4C1DE0323E00A0049D /* PostUploadPresenter.swift */; };
 		B954EE4F1DE0324900A0049D /* PostUploadPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE4E1DE0324900A0049D /* PostUploadPresenterInterface.swift */; };
@@ -289,6 +291,8 @@
 		B941311C1DEEA29B00DD10CE /* CommentWriterPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWriterPresenter.swift; sourceTree = "<group>"; };
 		B941311E1DEEA30C00DD10CE /* CommentWriterScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWriterScene.swift; sourceTree = "<group>"; };
 		B94131201DEEA3BE00DD10CE /* CommentWriterModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWriterModule.swift; sourceTree = "<group>"; };
+		B94131231DEEA88400DD10CE /* CommentWriterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWriterViewController.swift; sourceTree = "<group>"; };
+		B94131251DEEA9B300DD10CE /* CommentWriterModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWriterModuleExtension.swift; sourceTree = "<group>"; };
 		B954EE461DE0013400A0049D /* PhotoShareModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareModuleDelegate.swift; sourceTree = "<group>"; };
 		B954EE4C1DE0323E00A0049D /* PostUploadPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadPresenter.swift; sourceTree = "<group>"; };
 		B954EE4E1DE0324900A0049D /* PostUploadPresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadPresenterInterface.swift; sourceTree = "<group>"; };
@@ -670,6 +674,14 @@
 			path = Wireframe;
 			sourceTree = "<group>";
 		};
+		B94131221DEEA85E00DD10CE /* Comment Writer */ = {
+			isa = PBXGroup;
+			children = (
+				B94131231DEEA88400DD10CE /* CommentWriterViewController.swift */,
+			);
+			path = "Comment Writer";
+			sourceTree = "<group>";
+		};
 		B954EE481DE0322600A0049D /* Post Upload */ = {
 			isa = PBXGroup;
 			children = (
@@ -879,6 +891,7 @@
 				B9DEB2621DDEE12000C47C37 /* PhotoShareModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
 				B9C216E71DCC40F900F617FC /* UserProfileExtension.swift */,
+				B94131251DEEA9B300DD10CE /* CommentWriterModuleExtension.swift */,
 			);
 			path = "Module Extensions";
 			sourceTree = "<group>";
@@ -1213,6 +1226,7 @@
 		B9C2174F1DCC40F900F617FC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B94131221DEEA85E00DD10CE /* Comment Writer */,
 				B9C217501DCC40F900F617FC /* Comment Feed */,
 				B9C217541DCC40F900F617FC /* Home */,
 				B9C217581DCC40F900F617FC /* Login */,
@@ -2128,6 +2142,7 @@
 				B9DEB2631DDEE12000C47C37 /* PhotoShareModuleExtension.swift in Sources */,
 				B9D4968D1DE7EDE300CDD58E /* PhotoPickerViewInterface.swift in Sources */,
 				B941311B1DEEA23700DD10CE /* CommentWriterWireframe.swift in Sources */,
+				B94131261DEEA9B300DD10CE /* CommentWriterModuleExtension.swift in Sources */,
 				B9C217B21DCC40F900F617FC /* NewsFeedData.swift in Sources */,
 				B9D4967B1DE7EB5F00CDD58E /* PhotoLibraryViewController.swift in Sources */,
 				B9C2179C1DCC40F900F617FC /* LoginModuleExtension.swift in Sources */,
@@ -2158,6 +2173,7 @@
 				B9D4968C1DE7EDE300CDD58E /* PhotoPickerPresenterInterface.swift in Sources */,
 				B9C217E81DCC40F900F617FC /* HomeViewController.swift in Sources */,
 				B9C217C11DCC40F900F617FC /* RegistrationInteractorInput.swift in Sources */,
+				B94131241DEEA88400DD10CE /* CommentWriterViewController.swift in Sources */,
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,
 				B9C217C41DCC40F900F617FC /* RegistrationModuleInterface.swift in Sources */,
 				B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */,
