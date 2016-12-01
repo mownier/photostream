@@ -11,8 +11,8 @@ import UIKit
 protocol CommentControllerInterface: BaseModuleWireframe {
     
     var postId: String! { set get }
-    var feed: CommentFeedModuleInterface! { set get }
-    var writer: CommentWriterModuleInterface! { set get }
+    var feed: CommentFeedPresenter! { set get }
+    var writer: CommentWriterPresenter! { set get }
     
     func setupFeed()
     func setupWriter()
@@ -32,8 +32,8 @@ class CommentController: UIViewController, CommentControllerInterface {
     var root: RootWireframe?
     var postId: String!
     
-    var feed: CommentFeedModuleInterface!
-    var writer: CommentWriterModuleInterface!
+    var feed: CommentFeedPresenter!
+    var writer: CommentWriterPresenter!
     
     required convenience init(root: RootWireframe?) {
         self.init()
@@ -83,6 +83,7 @@ class CommentController: UIViewController, CommentControllerInterface {
         let module = CommentWriterModule()
         module.build(root: root, postId: postId)
         module.wireframe.style = .attach
+        module.presenter.delegate = self
         writer = module.presenter
         
         let controller = module.view.controller!
@@ -95,5 +96,17 @@ class CommentController: UIViewController, CommentControllerInterface {
         property.parent = self
         
         module.wireframe.enter(with: property)
+    }
+}
+
+extension CommentController: CommentWriterDelegate {
+    
+    func commentWriterDidFinish(with comment: CommentWriterData?) {
+        guard let newComment = comment as? CommentFeedData else {
+            return
+        }
+        
+        feed.comments.append(newComment)
+        feed.view.reload()
     }
 }

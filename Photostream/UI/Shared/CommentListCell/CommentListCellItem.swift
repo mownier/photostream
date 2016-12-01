@@ -7,13 +7,23 @@
 //
 
 import Kingfisher
+import DateTools
 
 protocol CommentListCellItem {
 
+    var timestamp: Double { get }
     var authorName: String { get }
     var authorAvatar: String { get }
     var timeAgo: String { get }
     var content: String { get }
+}
+
+extension CommentListCellItem {
+    
+    var timeAgo: String {
+        let date = NSDate(timeIntervalSince1970: timestamp)
+        return date.timeAgoSinceNow()
+    }
 }
 
 protocol CommentListCellConfig {

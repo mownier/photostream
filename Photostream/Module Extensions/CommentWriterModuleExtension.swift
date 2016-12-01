@@ -12,3 +12,7 @@ extension CommentWriterModule {
         self.init(view: CommentWriterViewController())
     }
 }
+
+extension CommentWriterDataItem: CommentFeedData { }
+
+extension CommentWriterDataItem: CommentListCellItem { }
