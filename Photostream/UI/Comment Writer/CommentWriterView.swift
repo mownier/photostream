@@ -68,6 +68,8 @@ class CommentWriterView: UIView {
     }
     
     func initSetup() {
+        backgroundColor = UIColor.white
+        
         contentTextView = UITextView()
         contentTextView.textColor = textColor
         contentTextView.tintColor = textColor
