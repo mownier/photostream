@@ -85,13 +85,13 @@ class CommentFeedViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CommentListCell.dequeue(from: tableView)!
-        let comment = presenter.comment(at: indexPath.row)
+        let comment = presenter.comment(at: indexPath.row) as? CommentListCellItem
         cell.configure(with: comment)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let comment = presenter.comment(at: indexPath.row)
+        let comment = presenter.comment(at: indexPath.row) as? CommentListCellItem
         prototype.configure(with: comment, isPrototype: true)
         return prototype.dynamicHeight
     }

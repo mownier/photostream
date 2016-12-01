@@ -12,7 +12,7 @@ class CommentFeedPresenter: CommentFeedPresenterInterface {
     typealias ModuleWireframe = CommentFeedWireframeInterface
     typealias ModeuleInteractor = CommentFeedInteractorInput
     
-    lazy var comments: [CommentFeedDataItem]! = [CommentFeedDataItem]()
+    lazy var comments: [CommentFeedData]! = [CommentFeedData]()
     
     weak var view: ModuleView!
     var wireframe: ModuleWireframe!
@@ -46,14 +46,14 @@ extension CommentFeedPresenter: CommentFeedModuleInterface {
         }
     }
     
-    func comment(at index: Int) -> CommentFeedDataItem? {
+    func comment(at index: Int) -> CommentFeedData? {
         return comments[index]
     }
 }
 
 extension CommentFeedPresenter: CommentFeedInteractorOutput {
     
-    func commentFeedDidFetch(with feed: [CommentFeedDataItem]) {
+    func commentFeedDidFetch(with feed: [CommentFeedData]) {
         view.hideInitialLoadView()
         
         guard !(feed.count == 0 && comments.count == 0) else {

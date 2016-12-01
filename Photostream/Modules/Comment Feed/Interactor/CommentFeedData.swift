@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-protocol CommentFeedDataItemProtocol {
+protocol CommentFeedData {
     
     var id: String { set get }
     var content: String { set get }
@@ -16,7 +16,7 @@ protocol CommentFeedDataItemProtocol {
     var authorAvatar: String { set get }
 }
 
-struct CommentFeedDataItem: CommentFeedDataItemProtocol {
+struct CommentFeedDataItem: CommentFeedData {
     
     var id: String = ""
     var content: String = ""
@@ -26,9 +26,9 @@ struct CommentFeedDataItem: CommentFeedDataItemProtocol {
     var authorAvatar: String = ""
 }
 
-extension Array where Element: CommentFeedDataItemProtocol {
+extension Array where Element: CommentFeedData {
     
-    func indexOf(comment id: String) -> CommentFeedDataItemProtocol? {
+    func indexOf(comment id: String) -> CommentFeedData? {
         let index = self.index { item -> Bool in
             return item.id == id
         }

@@ -9,7 +9,7 @@
 protocol CommentFeedPresenterInterface: BaseModulePresenter, BaseModuleInteractable {
 
     var postId: String! { set get }
-    var comments: [CommentFeedDataItem]! { set get }
+    var comments: [CommentFeedData]! { set get }
     var offset: String! { set get }
     var limit: Int! { set get }
 }

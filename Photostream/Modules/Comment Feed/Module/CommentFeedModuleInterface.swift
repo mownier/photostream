@@ -13,5 +13,5 @@ protocol CommentFeedModuleInterface: BaseModuleInterface {
     func refreshComments()
     func loadMoreComments()
     
-    func comment(at index: Int) -> CommentFeedDataItem?
+    func comment(at index: Int) -> CommentFeedData?
 }
