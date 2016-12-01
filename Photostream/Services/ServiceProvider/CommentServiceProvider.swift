@@ -84,8 +84,8 @@ struct CommentServiceProvider: CommentService {
         let ref = FIRDatabase.database().reference()
         let key = ref.child("comments").childByAutoId().key
         let path1 = "comments/\(key)"
-        let path2 = "posts/\(postId)/\(path1)"
-        let path3 = "users/\(userId)/\(path1)"
+        let path2 = "post-comment/\(postId)/\(path1)"
+        let path3 = "user-comment/\(userId)/\(path1)"
         let data = [
             "id": key,
             "uid": userId,

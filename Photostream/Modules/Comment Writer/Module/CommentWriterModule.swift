@@ -14,6 +14,7 @@ protocol CommentWriterDelegate: BaseModuleDelegate {
 
 protocol CommentWriterModuleInterface: BaseModuleInterface {
     
+    func writeComment(with content: String)
 }
 
 protocol CommentWriterBuilder: BaseModuleBuilder {

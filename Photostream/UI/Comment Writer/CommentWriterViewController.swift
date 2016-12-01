@@ -40,6 +40,10 @@ extension CommentWriterViewController: CommentWriterScene {
 extension CommentWriterViewController: CommentWriterViewDelegate {
     
     func willSend(with content: String?, view: CommentWriterView) {
+        guard content != nil else {
+            return
+        }
         
+        presenter.writeComment(with: content!)
     }
 }

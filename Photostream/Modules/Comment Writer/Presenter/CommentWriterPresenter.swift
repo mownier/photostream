@@ -46,4 +46,8 @@ extension CommentWriterPresenter: CommentWriterModuleInterface {
         property.controller = view.controller
         wireframe.exit(with: property)
     }
+    
+    func writeComment(with content: String) {
+        interactor.write(with: postId, and: content)
+    }
 }
