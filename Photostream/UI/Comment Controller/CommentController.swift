@@ -54,6 +54,10 @@ class CommentController: UIViewController, CommentControllerInterface {
         super.viewDidAppear(animated)
 
         setupModules()
+        
+        let feedViewController = feed.view.controller!
+        let writerViewFrame = writer.view.controller!.view.frame
+        feedViewController.view.frame.size.height -= writerViewFrame.size.height
     }
     
     func back() {
