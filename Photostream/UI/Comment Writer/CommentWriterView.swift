@@ -97,6 +97,13 @@ class CommentWriterView: UIView {
         addSubview(topBorder)
         addSubview(placeholderLabel)
     }
+    
+    func set(content: String) {
+        contentTextView.text = content
+        NotificationCenter.default.post(
+            name: NSNotification.Name.UITextViewTextDidChange,
+            object: contentTextView)
+    }
 }
 
 extension CommentWriterView {
@@ -104,6 +111,7 @@ extension CommentWriterView {
     func didTapSend() {
         let content = contentTextView.text
         delegate?.willSend(with: content, view: self)
+        set(content: "")
         contentTextView.resignFirstResponder()
     }
     
