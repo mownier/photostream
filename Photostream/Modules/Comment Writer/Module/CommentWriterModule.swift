@@ -8,8 +8,7 @@
 
 protocol CommentWriterDelegate: BaseModuleDelegate {
     
-    func commentWriterDidFinish(with comment: CommentWriterData)
-    func commentWriterDidFinish(with error: CommentServiceError)
+    func commentWriterDidFinish(with comment: CommentWriterData?)
 }
 
 protocol CommentWriterModuleInterface: BaseModuleInterface {

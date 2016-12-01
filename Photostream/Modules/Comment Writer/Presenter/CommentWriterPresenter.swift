@@ -35,7 +35,7 @@ extension CommentWriterPresenter: CommentWriterInteractorOutput {
     
     func interactorDidFinish(with error: CommentServiceError) {
         view.didWrite(with: error.message)
-        delegate?.commentWriterDidFinish(with: error)
+        delegate?.commentWriterDidFinish(with: nil)
     }
 }
 
