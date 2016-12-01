@@ -17,8 +17,8 @@ class CommentWriterViewController: UIViewController {
         let height: CGFloat = 44
         let size = CGSize(width: width, height: height)
         
-        let customView = UIView()
-        customView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        let customView = CommentWriterView()
+        customView.delegate = self
         customView.frame.size = size
         
         preferredContentSize = size
@@ -33,6 +33,13 @@ extension CommentWriterViewController: CommentWriterScene {
     }
     
     func didWrite(with error: String?) {
+        
+    }
+}
+
+extension CommentWriterViewController: CommentWriterViewDelegate {
+    
+    func willSend(with content: String?, view: CommentWriterView) {
         
     }
 }
