@@ -11,4 +11,6 @@ protocol CommentWriterScene: BaseModuleView {
     var presenter: CommentWriterModuleInterface! { set get }
     
     func didWrite(with error: String?)
+    
+    func keyboardWillMove(with info: [AnyHashable: Any]?)
 }
