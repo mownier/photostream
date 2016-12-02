@@ -24,6 +24,18 @@ class CommentWriterViewController: UIViewController {
         preferredContentSize = size
         view = customView
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter.addKeyboardObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presenter.removeKeyboardObserver()
+    }
 }
 
 extension CommentWriterViewController: CommentWriterScene {
@@ -35,12 +47,20 @@ extension CommentWriterViewController: CommentWriterScene {
     func didWrite(with error: String?) {
         
     }
+    
+    func keyboardWillMove(with info: [AnyHashable : Any]?) {
+        var handler = KeyboardHandler()
+        handler.info = info
+        handler.handle(using: view) { (offsetY) in
+            self.view.frame.origin.y += offsetY
+        }
+    }
 }
 
 extension CommentWriterViewController: CommentWriterViewDelegate {
     
     func willSend(with content: String?, view: CommentWriterView) {
-        guard content != nil else {
+        guard content != nil, !content!.isEmpty else {
             return
         }
         
