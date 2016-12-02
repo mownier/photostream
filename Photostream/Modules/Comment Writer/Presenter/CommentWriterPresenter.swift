@@ -6,6 +6,8 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
+import Foundation
+
 protocol CommentWriterPresenterInterface: BaseModulePresenter, BaseModuleInteractable, BaseModuleDelegatable {
     
     var postId: String! { set get }
@@ -24,6 +26,8 @@ class CommentWriterPresenter: CommentWriterPresenterInterface {
     var interactor: ModuleInteractor!
     var wireframe: ModuleWireframe!
     var postId: String!
+    
+    fileprivate var keyboardObserver: Any?
 }
 
 extension CommentWriterPresenter: CommentWriterInteractorOutput {
@@ -50,4 +54,23 @@ extension CommentWriterPresenter: CommentWriterModuleInterface {
     func writeComment(with content: String) {
         interactor.write(with: postId, and: content)
     }
+    
+    func addKeyboardObserver() {
+        keyboardObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name.UIKeyboardWillChangeFrame,
+            object: nil,
+            queue: nil) { (notif) in
+            self.view.keyboardWillMove(with: notif.userInfo)
+        }
+    }
+    
+    func removeKeyboardObserver() {
+        guard keyboardObserver != nil else {
+            return
+        }
+        
+        NotificationCenter.default.removeObserver(keyboardObserver!)
+    }
 }
+
+
