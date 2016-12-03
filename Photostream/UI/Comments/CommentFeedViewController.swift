@@ -13,6 +13,7 @@ class CommentFeedViewController: UITableViewController {
     var presenter: CommentFeedModuleInterface!
     var indicatorView: UIActivityIndicatorView!
     var emptyView: CommentFeedEmptyView!
+    var refreshView: UIRefreshControl!
     
     var shouldShowInitialLoadView: Bool = false {
         didSet {
@@ -45,10 +46,27 @@ class CommentFeedViewController: UITableViewController {
         }
     }
     
+    var shouldShowRefreshView: Bool = false {
+        didSet {
+            guard oldValue != shouldShowRefreshView else {
+                return
+            }
+            
+            if shouldShowRefreshView {
+                refreshView.beginRefreshing()
+            } else {
+                refreshView.endRefreshing()
+            }
+        }
+    }
+    
     var prototype = CommentListCell()
     
     override func loadView() {
         super.loadView()
+        
+        refreshView = UIRefreshControl()
+        refreshView.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
         
         indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicatorView.hidesWhenStopped = true
@@ -60,6 +78,7 @@ class CommentFeedViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
+        tableView.addSubview(refreshView)
         
         CommentListCell.register(in: tableView)
         
@@ -95,6 +114,10 @@ class CommentFeedViewController: UITableViewController {
         prototype.configure(with: comment, isPrototype: true)
         return prototype.dynamicHeight
     }
+    
+    func triggerRefresh() {
+        presenter.refreshComments()
+    }
 }
 
 extension CommentFeedViewController: CommentFeedScene {
@@ -115,12 +138,20 @@ extension CommentFeedViewController: CommentFeedScene {
         shouldShowInitialLoadView = true
     }
     
+    func showRefreshView() {
+        shouldShowRefreshView = true
+    }
+    
     func hideEmptyView() {
         shouldShowEmptyView = false
     }
     
     func hideInitialLoadView() {
         shouldShowInitialLoadView = false
+    }
+    
+    func hideRefreshView() {
+        shouldShowRefreshView = false
     }
     
     func didRefreshComments(with error: String?) {

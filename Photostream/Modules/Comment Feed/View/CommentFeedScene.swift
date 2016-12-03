@@ -13,8 +13,10 @@ protocol CommentFeedScene: BaseModuleView {
     func reload()
     func showEmptyView()
     func showInitialLoadView()
+    func showRefreshView()
     func hideEmptyView()
     func hideInitialLoadView()
+    func hideRefreshView()
     
     func didRefreshComments(with error: String?)
     func didLoadMoreComments(with error: String?)

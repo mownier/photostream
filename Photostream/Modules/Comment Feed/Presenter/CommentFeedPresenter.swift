@@ -43,6 +43,8 @@ extension CommentFeedPresenter: CommentFeedModuleInterface {
         if comments.count == 0 {
             view.hideEmptyView()
             view.showInitialLoadView()
+        } else {
+            view.showRefreshView()
         }
     }
     
@@ -64,6 +66,7 @@ extension CommentFeedPresenter: CommentFeedInteractorOutput {
         
         if offset.isEmpty {
             comments.removeAll()
+            view.hideRefreshView()
             view.didRefreshComments(with: nil)
         } else {
             view.didLoadMoreComments(with: nil)
@@ -76,6 +79,7 @@ extension CommentFeedPresenter: CommentFeedInteractorOutput {
     
     func commentFeedDidFetch(with error: CommentServiceError) {
         view.hideInitialLoadView()
+        view.hideRefreshView()
         
         if offset.isEmpty {
             view.didRefreshComments(with: error.message)
