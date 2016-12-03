@@ -34,6 +34,9 @@ class CommentController: UIViewController, CommentControllerInterface {
     
     var feed: CommentFeedPresenter!
     var writer: CommentWriterPresenter!
+    var bottomInset: CGFloat {
+        return writer.view.controller!.view.frame.size.height
+    }
     
     required convenience init(root: RootWireframe?) {
         self.init()
@@ -112,5 +115,25 @@ extension CommentController: CommentWriterDelegate {
         
         feed.comments.append(newComment)
         feed.view.reload()
+    }
+    
+    func keyboardWillMoveDown(offset: Float) {
+        feed.view.adjust(bottomInset: -bottomInset)
+    }
+    
+    func keyboardWillMoveUp(offset: Float) {
+        feed.view.adjust(bottomInset: bottomInset)
+    }
+}
+
+extension CommentFeedScene {
+    
+    func adjust(bottomInset: CGFloat) {
+        guard let view = controller?.view as? UITableView else {
+            return
+        }
+        
+        view.scrollIndicatorInsets.bottom += bottomInset
+        view.contentInset.bottom += bottomInset
     }
 }
