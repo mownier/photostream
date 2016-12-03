@@ -60,7 +60,15 @@ extension CommentWriterPresenter: CommentWriterModuleInterface {
             forName: Notification.Name.UIKeyboardWillChangeFrame,
             object: nil,
             queue: nil) { (notif) in
-            self.view.keyboardWillMove(with: notif.userInfo)
+            var handler = KeyboardHandler()
+            handler.info = notif.userInfo
+            handler.willMoveUp = { offset in
+                self.delegate?.keyboardWillMoveUp(offset: Float(offset))
+            }
+            handler.willMoveDown = { offset in
+                self.delegate?.keyboardWillMoveDown(offset: Float(offset))
+            }
+            self.view.keyboardWillMove(with: &handler)
         }
     }
     
