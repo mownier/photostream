@@ -62,11 +62,11 @@ extension CommentWriterPresenter: CommentWriterModuleInterface {
             queue: nil) { (notif) in
             var handler = KeyboardHandler()
             handler.info = notif.userInfo
-            handler.willMoveUp = { offset in
-                self.delegate?.keyboardWillMoveUp(offset: Float(offset))
+            handler.willMoveUp = { delta in
+                self.delegate?.keyboardWillMoveUp(with: delta)
             }
-            handler.willMoveDown = { offset in
-                self.delegate?.keyboardWillMoveDown(offset: Float(offset))
+            handler.willMoveDown = { delta in
+                self.delegate?.keyboardWillMoveDown(with: delta)
             }
             self.view.keyboardWillMove(with: &handler)
         }

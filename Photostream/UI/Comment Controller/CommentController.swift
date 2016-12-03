@@ -117,11 +117,19 @@ extension CommentController: CommentWriterDelegate {
         feed.view.reload()
     }
     
-    func keyboardWillMoveDown(offset: Float) {
+    func keyboardWillMoveDown(with delta: KeyboardFrameDelta) {
+        guard delta.height == 0 else {
+            return
+        }
+        
         feed.view.adjust(bottomInset: -bottomInset)
     }
     
-    func keyboardWillMoveUp(offset: Float) {
+    func keyboardWillMoveUp(with delta: KeyboardFrameDelta) {
+        guard delta.height == 0 else {
+            return
+        }
+        
         feed.view.adjust(bottomInset: bottomInset)
     }
 }

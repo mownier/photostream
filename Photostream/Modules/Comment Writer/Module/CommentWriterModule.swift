@@ -9,8 +9,8 @@
 protocol CommentWriterDelegate: BaseModuleDelegate {
     
     func commentWriterDidFinish(with comment: CommentWriterData?)
-    func keyboardWillMoveUp(offset: Float)
-    func keyboardWillMoveDown(offset: Float)
+    func keyboardWillMoveUp(with delta: KeyboardFrameDelta)
+    func keyboardWillMoveDown(with delta: KeyboardFrameDelta)
 }
 
 protocol CommentWriterModuleInterface: BaseModuleInterface {
