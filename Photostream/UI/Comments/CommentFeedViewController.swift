@@ -48,6 +48,10 @@ class CommentFeedViewController: UITableViewController {
     
     var shouldShowRefreshView: Bool = false {
         didSet {
+            if refreshView.superview == nil {
+                tableView.addSubview(refreshView)
+            }
+            
             guard oldValue != shouldShowRefreshView else {
                 return
             }
@@ -78,7 +82,6 @@ class CommentFeedViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
-        tableView.addSubview(refreshView)
         
         CommentListCell.register(in: tableView)
         
