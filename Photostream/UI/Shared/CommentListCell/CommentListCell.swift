@@ -36,6 +36,9 @@ class CommentListCell: UITableViewCell {
         contentLabel = UILabel()
         timeLabel = UILabel()
         
+        authorPhoto.cornerRadius = photoLength / 2
+        authorPhoto.clipsToBounds = true
+        
         authorLabel.numberOfLines = 0
         contentLabel.numberOfLines = 0
         
