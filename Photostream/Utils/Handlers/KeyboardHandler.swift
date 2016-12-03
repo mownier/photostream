@@ -13,13 +13,19 @@ fileprivate enum Direction {
     case down
 }
 
+struct KeyboardFrameDelta {
+    
+    var height: CGFloat = 0
+    var y: CGFloat = 0
+}
+
 struct KeyboardHandler {
 
-    var willMoveUp: ((CGFloat) -> Void)?
-    var willMoveDown: ((CGFloat) -> Void)?
+    var willMoveUp: ((KeyboardFrameDelta) -> Void)?
+    var willMoveDown: ((KeyboardFrameDelta) -> Void)?
     var info: [AnyHashable: Any]?
     
-    func handle(using view: UIView, with animation: @escaping (CGFloat) -> Void) {
+    func handle(using view: UIView, with animation: @escaping (KeyboardFrameDelta) -> Void) {
         guard let userInfo = info,
             let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt,
             let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double,
@@ -37,19 +43,21 @@ struct KeyboardHandler {
         let options = UIViewAnimationOptions(rawValue: curve << 16)
         let rectWindow = view.convert(CGRect.zero, to: nil)
         
-        var offsetY = rectEnd.origin.y - rectBegin.origin.y
         var insetBottom = window.bounds.size.height - rectWindow.origin.y
+        var delta = KeyboardFrameDelta()
+        delta.height = rectEnd.size.height - rectBegin.size.height
+        delta.y = rectEnd.origin.y - rectBegin.origin.y
         
         switch direction {
         case .up:
             insetBottom -= view.bounds.size.height
-            offsetY += insetBottom
-            willMoveUp?(offsetY)
+            delta.y += insetBottom
+            willMoveUp?(delta)
         case .down:
             insetBottom += view.frame.origin.y
             insetBottom -= superview.bounds.size.height
-            offsetY -= insetBottom
-            willMoveDown?(offsetY)
+            delta.y -= insetBottom
+            willMoveDown?(delta)
         }
         
         UIView.animate(
@@ -57,7 +65,7 @@ struct KeyboardHandler {
             delay: 0,
             options: options,
             animations: {
-                animation(offsetY)
+                animation(delta)
             },
             completion: nil
         )
