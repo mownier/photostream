@@ -18,7 +18,7 @@ struct CommentServiceProvider: CommentService {
         self.session = session
     }
     
-    func fetchComments(postId: String, offset: UInt, limit: UInt, callback: ((CommentServiceResult) -> Void)?) {
+    func fetchComments(postId: String, offset: String, limit: UInt, callback: ((CommentServiceResult) -> Void)?) {
         var result = CommentServiceResult()
         guard session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found.")
@@ -26,39 +26,50 @@ struct CommentServiceProvider: CommentService {
         }
         
         let root = FIRDatabase.database().reference()
-        let comments = root.child("comments")
-        let postComment = root.child("post-comment")
-        let users = root.child("users")
-        let ref = postComment.child(postId).child("comments")
+        let commentsRef = root.child("comments")
+        let postCommentRef = root.child("post-comment")
+        let usersRef = root.child("users")
+        var query = postCommentRef.child(postId).child("comments").queryOrderedByKey()
         
-        ref.queryLimited(toFirst: limit).observeSingleEvent(of: .value, with: { (data) in
+        if !offset.isEmpty {
+            query = query.queryEnding(atValue: offset)
+        }
+        
+        query = query.queryLimited(toLast: limit)
+        query.observeSingleEvent(of: .value, with: { (data) in
             guard data.hasChildren() else {
                 callback?(result)
                 return
             }
             
-            var commentList = [Comment]()
-            var commentUsers = [String: User]()
+            var comments = [Comment]()
+            var users = [String: User]()
             for snap in data.children {
-                comments.child((snap as AnyObject).key).observeSingleEvent(of: .value, with: { (commentSnapshot) in
+                commentsRef.child((snap as AnyObject).key).observeSingleEvent(of: .value, with: { (commentSnapshot) in
                     guard let userId = commentSnapshot.childSnapshot(forPath: "uid").value as? String else {
                         return
                     }
                     
-                    users.child(userId).observeSingleEvent(of: .value, with: { (userSnapshot) in
-                        if commentUsers[userId] == nil {
+                    usersRef.child(userId).observeSingleEvent(of: .value, with: { (userSnapshot) in
+                        if users[userId] == nil {
                             let user = User(with: userSnapshot, exception: "email")
-                            commentUsers[user.id] = user
+                            users[user.id] = user
                         }
                         
                         let comment = Comment(with: commentSnapshot)
-                        commentList.append(comment)
+                        comments.append(comment)
                         
-                        if UInt(commentList.count) == data.childrenCount {
-                            var resultList = CommentList()
-                            resultList.comments  = commentList
-                            resultList.users = commentUsers
-                            result.comments = resultList
+                        let commentCount = UInt(comments.count)
+                        if commentCount == data.childrenCount {
+                            if commentCount == limit + 1 {
+                                let removedComment = comments.removeFirst()
+                                result.nextOffset = removedComment.id
+                            }
+                            
+                            var commentList = CommentList()
+                            commentList.comments = comments.reversed()
+                            commentList.users = users
+                            result.comments = commentList
                             callback?(result)
                         }
                     })

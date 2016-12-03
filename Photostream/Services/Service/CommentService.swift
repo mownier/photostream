@@ -12,7 +12,7 @@ protocol CommentService {
 
     init(session: AuthSession)
     
-    func fetchComments(postId: String, offset: UInt, limit: UInt, callback: ((CommentServiceResult) -> Void)?)
+    func fetchComments(postId: String, offset: String, limit: UInt, callback: ((CommentServiceResult) -> Void)?)
     func writeComment(postId: String, message: String, callback: ((CommentServiceResult) -> Void)?)
 }
 
@@ -20,6 +20,7 @@ struct CommentServiceResult {
 
     var comments: CommentList?
     var error: CommentServiceError?
+    var nextOffset: String?
 }
 
 enum CommentServiceError: Error {

@@ -29,6 +29,8 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
         
         isFetching = true
         feedService.fetchNewsFeed(offset: offset!, limit: limit) { (result) in
+            self.isFetching = false
+            
             guard result.error == nil else {
                 self.output?.newsFeedDidFetchWithError(error: result.error!)
                 return
@@ -42,7 +44,6 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
             }
             
             self.offset = result.nextOffset as? String
-            self.isFetching = false
         }
     }
 

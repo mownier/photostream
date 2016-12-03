@@ -8,5 +8,6 @@
 
 protocol CommentFeedInteractorInput: BaseModuleInteractorInput {
 
-    func fetchComments(with postId: String)
+    func fetchNew(with postId: String, and limit: UInt)
+    func fetchNext(with postId: String, and limit: UInt)
 }

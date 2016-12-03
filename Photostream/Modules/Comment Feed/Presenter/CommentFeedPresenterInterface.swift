@@ -11,5 +11,5 @@ protocol CommentFeedPresenterInterface: BaseModulePresenter, BaseModuleInteracta
     var postId: String! { set get }
     var comments: [CommentFeedData]! { set get }
     var offset: String! { set get }
-    var limit: Int! { set get }
+    var limit: UInt! { set get }
 }

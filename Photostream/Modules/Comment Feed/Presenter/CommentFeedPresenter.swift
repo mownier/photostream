@@ -19,7 +19,7 @@ class CommentFeedPresenter: CommentFeedPresenterInterface {
     var interactor: ModeuleInteractor!
     var postId: String!
     var offset: String! = ""
-    var limit: Int! = 10
+    var limit: UInt! = 10
 }
 
 extension CommentFeedPresenter: CommentFeedModuleInterface {
@@ -35,11 +35,11 @@ extension CommentFeedPresenter: CommentFeedModuleInterface {
     }
     
     func loadMoreComments() {
-        interactor.fetchComments(with: postId)
+        interactor.fetchNext(with: postId, and: limit)
     }
     
     func refreshComments() {
-        interactor.fetchComments(with: postId)
+        interactor.fetchNew(with: postId, and: limit)
         if comments.count == 0 {
             view.hideEmptyView()
             view.showInitialLoadView()

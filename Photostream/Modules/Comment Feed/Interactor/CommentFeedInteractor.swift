@@ -13,21 +13,28 @@ class CommentFeedInteractor: CommentFeedInteractorInterface {
     weak var output: Output?
     
     var service: CommentService!
+    var offset: String?
+    
+    fileprivate var isFetching: Bool = false
     
     required init(service: CommentService) {
         self.service = service
     }
-}
-
-extension CommentFeedInteractor: CommentFeedInteractorInput {
     
-    func fetchComments(with postId: String) {
-        service.fetchComments(postId: postId, offset: 0, limit: 10) { (result) in
+    fileprivate func fetchComments(with postId: String, and limit: UInt) {
+        guard output != nil, offset != nil, !isFetching else {
+            return
+        }
+        
+        isFetching = true
+        service.fetchComments(postId: postId, offset: offset!, limit: limit) { (result) in
+            self.isFetching = false
+            
             guard result.error == nil else {
                 self.output?.commentFeedDidFetch(with: result.error!)
                 return
             }
-
+            
             guard let list = result.comments, list.comments.count > 0  else {
                 self.output?.commentFeedDidFetch(with: [CommentFeedDataItem]())
                 return
@@ -52,6 +59,19 @@ extension CommentFeedInteractor: CommentFeedInteractorInput {
             }
             
             self.output?.commentFeedDidFetch(with: feed)
+            self.offset = result.nextOffset
         }
+    }
+}
+
+extension CommentFeedInteractor: CommentFeedInteractorInput {
+    
+    func fetchNew(with postId: String, and limit: UInt) {
+        offset = ""
+        fetchComments(with: postId, and: limit)
+    }
+    
+    func fetchNext(with postId: String, and limit: UInt) {
+        fetchNext(with: postId, and: limit)
     }
 }
