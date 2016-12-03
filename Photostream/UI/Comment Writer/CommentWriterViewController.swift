@@ -48,11 +48,9 @@ extension CommentWriterViewController: CommentWriterScene {
         
     }
     
-    func keyboardWillMove(with info: [AnyHashable : Any]?) {
-        var handler = KeyboardHandler()
-        handler.info = info
-        handler.handle(using: view) { (offsetY) in
-            self.view.frame.origin.y += offsetY
+    func keyboardWillMove(with handler: inout KeyboardHandler) {
+        handler.handle(using: view) { offset in
+            self.view.frame.origin.y += offset
         }
     }
 }
