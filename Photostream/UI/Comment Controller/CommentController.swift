@@ -133,15 +133,3 @@ extension CommentController: CommentWriterDelegate {
         feed.view.adjust(bottomInset: bottomInset)
     }
 }
-
-extension CommentFeedScene {
-    
-    func adjust(bottomInset: CGFloat) {
-        guard let view = controller?.view as? UITableView else {
-            return
-        }
-        
-        view.scrollIndicatorInsets.bottom += bottomInset
-        view.contentInset.bottom += bottomInset
-    }
-}

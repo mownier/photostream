@@ -16,3 +16,15 @@ extension CommentFeedModule {
 }
 
 extension CommentFeedDataItem: CommentListCellItem { }
+
+extension CommentFeedScene {
+    
+    func adjust(bottomInset: CGFloat) {
+        guard let view = controller?.view as? UITableView else {
+            return
+        }
+        
+        view.scrollIndicatorInsets.bottom += bottomInset
+        view.contentInset.bottom += bottomInset
+    }
+}
