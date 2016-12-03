@@ -113,7 +113,7 @@ extension CommentController: CommentWriterDelegate {
             return
         }
         
-        feed.comments.append(newComment)
+        feed.comments.insert(newComment, at: 0)
         feed.view.reload()
     }
     
