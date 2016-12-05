@@ -27,4 +27,13 @@ extension CommentFeedScene {
         view.scrollIndicatorInsets.bottom += bottomInset
         view.contentInset.bottom += bottomInset
     }
+    
+    func scrollToTop(animated: Bool = false) {
+        guard let view = controller?.view as? UITableView else {
+            return
+        }
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        view.scrollToRow(at: indexPath, at: .top, animated: animated)
+    }
 }

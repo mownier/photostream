@@ -118,6 +118,7 @@ extension CommentController: CommentWriterDelegate {
         feed.view.hideEmptyView()
         feed.view.hideInitialLoadView()
         feed.view.reload()
+        feed.view.scrollToTop()
     }
     
     func keyboardWillMoveDown(with delta: KeyboardFrameDelta) {
