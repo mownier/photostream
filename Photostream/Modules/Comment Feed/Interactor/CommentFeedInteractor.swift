@@ -31,12 +31,20 @@ class CommentFeedInteractor: CommentFeedInteractorInterface {
             self.isFetching = false
             
             guard result.error == nil else {
-                self.output?.commentFeedDidFetch(with: result.error!)
+                if self.offset!.isEmpty {
+                    self.output?.commentFeedDidRefresh(with: result.error!)
+                } else {
+                    self.output?.commentFeedDidLoadMore(with: result.error!)
+                }
                 return
             }
             
             guard let list = result.comments, list.comments.count > 0  else {
-                self.output?.commentFeedDidFetch(with: [CommentFeedDataItem]())
+                if self.offset!.isEmpty {
+                    self.output?.commentFeedDidRefresh(with: [CommentFeedDataItem]())
+                } else {
+                    self.output?.commentFeedDidLoadMore(with: [CommentFeedDataItem]())
+                }
                 return
             }
             
@@ -58,7 +66,12 @@ class CommentFeedInteractor: CommentFeedInteractorInterface {
                 feed.append(item)
             }
             
-            self.output?.commentFeedDidFetch(with: feed)
+            if self.offset!.isEmpty {
+                self.output?.commentFeedDidRefresh(with: feed)
+            } else {
+                self.output?.commentFeedDidLoadMore(with: feed)
+            }
+            
             self.offset = result.nextOffset
         }
     }
@@ -72,6 +85,6 @@ extension CommentFeedInteractor: CommentFeedInteractorInput {
     }
     
     func fetchNext(with postId: String, and limit: UInt) {
-        fetchNext(with: postId, and: limit)
+        fetchComments(with: postId, and: limit)
     }
 }

@@ -35,7 +35,7 @@ struct CommentServiceProvider: CommentService {
             query = query.queryEnding(atValue: offset)
         }
         
-        query = query.queryLimited(toLast: limit)
+        query = query.queryLimited(toLast: limit + 1)
         query.observeSingleEvent(of: .value, with: { (data) in
             guard data.hasChildren() else {
                 callback?(result)

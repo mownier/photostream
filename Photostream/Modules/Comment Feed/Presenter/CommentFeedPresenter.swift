@@ -18,7 +18,6 @@ class CommentFeedPresenter: CommentFeedPresenterInterface {
     var wireframe: ModuleWireframe!
     var interactor: ModeuleInteractor!
     var postId: String!
-    var offset: String! = ""
     var limit: UInt! = 10
 }
 
@@ -55,8 +54,9 @@ extension CommentFeedPresenter: CommentFeedModuleInterface {
 
 extension CommentFeedPresenter: CommentFeedInteractorOutput {
     
-    func commentFeedDidFetch(with feed: [CommentFeedData]) {
+    func commentFeedDidRefresh(with feed: [CommentFeedData]) {
         view.hideInitialLoadView()
+        view.hideRefreshView()
         
         guard !(feed.count == 0 && comments.count == 0) else {
             view.reload()
@@ -64,33 +64,41 @@ extension CommentFeedPresenter: CommentFeedInteractorOutput {
             return
         }
         
-        if offset.isEmpty {
-            comments.removeAll()
-            view.hideRefreshView()
-            view.didRefreshComments(with: nil)
-        } else {
-            view.didLoadMoreComments(with: nil)
-        }
-        
+        comments.removeAll()
         comments.append(contentsOf: feed)
-
+        
+        view.didRefreshComments(with: nil)
         view.reload()
     }
     
-    func commentFeedDidFetch(with error: CommentServiceError) {
+    func commentFeedDidLoadMore(with feed: [CommentFeedData]) {
+        guard feed.count > 0 else {
+            return
+        }
+        
+        comments.append(contentsOf: feed)
+        
+        view.didLoadMoreComments(with: nil)
+        view.reload()
+    }
+    
+    func commentFeedDidRefresh(with error: CommentServiceError) {
         view.hideInitialLoadView()
         view.hideRefreshView()
-        
-        if offset.isEmpty {
-            view.didRefreshComments(with: error.message)
-        } else {
-            view.didLoadMoreComments(with: error.message)
-        }
         
         if comments.count == 0 {
             view.showEmptyView()
         }
         
+        view.didRefreshComments(with: error.message)
+        view.reload()
+    }
+    
+    func commentFeedDidLoadMore(with error: CommentServiceError) {
+        view.hideInitialLoadView()
+        view.hideRefreshView()
+        
+        view.didLoadMoreComments(with: error.message)
         view.reload()
     }
 }

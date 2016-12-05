@@ -118,6 +118,12 @@ class CommentFeedViewController: UITableViewController {
         return prototype.dynamicHeight
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == presenter.commentCount - 2 {
+            presenter.loadMoreComments()
+        }
+    }
+    
     func triggerRefresh() {
         presenter.refreshComments()
     }

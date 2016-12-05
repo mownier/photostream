@@ -8,6 +8,8 @@
 
 protocol CommentFeedInteractorOutput: BaseModuleInteractorOutput {
 
-    func commentFeedDidFetch(with feed: [CommentFeedData])
-    func commentFeedDidFetch(with error: CommentServiceError)
+    func commentFeedDidRefresh(with feed: [CommentFeedData])
+    func commentFeedDidLoadMore(with feed: [CommentFeedData])
+    func commentFeedDidRefresh(with error: CommentServiceError)
+    func commentFeedDidLoadMore(with error: CommentServiceError)
 }
