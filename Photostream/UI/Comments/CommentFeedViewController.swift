@@ -119,7 +119,7 @@ class CommentFeedViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == presenter.commentCount - 2 {
+        if indexPath.row == presenter.commentCount - 10 {
             presenter.loadMoreComments()
         }
     }
