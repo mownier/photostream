@@ -42,9 +42,8 @@ extension CommentFeedPresenter: CommentFeedModuleInterface {
         if comments.count == 0 {
             view.hideEmptyView()
             view.showInitialLoadView()
-        } else {
-            view.showRefreshView()
         }
+        view.showRefreshView()
     }
     
     func comment(at index: Int) -> CommentFeedData? {
