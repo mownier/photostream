@@ -25,6 +25,29 @@ class CommentWriterView: UIView {
     var sendButton: UIButton!
     var topBorder: UIView!
     var placeholderLabel: UILabel!
+    var loadingView: UIActivityIndicatorView!
+    
+    var isSending: Bool = false {
+        didSet {
+            guard isSending != oldValue else {
+                return
+            }
+            
+            sendButton.isHidden = isSending
+            
+            if isSending {
+                loadingView.isHidden = false
+                loadingView.startAnimating()
+                
+                let content = contentTextView.text
+                delegate?.willSend(with: content, view: self)
+                set(content: "")
+                contentTextView.resignFirstResponder()
+            } else {
+                loadingView.stopAnimating()
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,6 +88,8 @@ class CommentWriterView: UIView {
         rect.size.height = 1
         rect.origin = .zero
         topBorder.frame = rect
+        
+        loadingView.frame = sendButton.frame
     }
     
     func initSetup() {
@@ -91,6 +116,9 @@ class CommentWriterView: UIView {
         placeholderLabel.font = contentFont
         placeholderLabel.isUserInteractionEnabled = true
         
+        loadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        loadingView.hidesWhenStopped = true
+        
         addPlaceholderTap()
         addContentObserver()
         
@@ -98,6 +126,7 @@ class CommentWriterView: UIView {
         addSubview(sendButton)
         addSubview(topBorder)
         addSubview(placeholderLabel)
+        addSubview(loadingView)
     }
     
     func set(content: String) {
@@ -111,10 +140,7 @@ class CommentWriterView: UIView {
 extension CommentWriterView {
     
     func didTapSend() {
-        let content = contentTextView.text
-        delegate?.willSend(with: content, view: self)
-        set(content: "")
-        contentTextView.resignFirstResponder()
+        isSending = true
     }
     
     func didTapPlaceholder() {

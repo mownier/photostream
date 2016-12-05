@@ -12,6 +12,10 @@ class CommentWriterViewController: UIViewController {
 
     var presenter: CommentWriterModuleInterface!
     
+    var commentWriterView: CommentWriterView! {
+        return view as! CommentWriterView
+    }
+    
     override func loadView() {
         let width: CGFloat = UIScreen.main.bounds.size.width
         let height: CGFloat = 44
@@ -45,7 +49,7 @@ extension CommentWriterViewController: CommentWriterScene {
     }
     
     func didWrite(with error: String?) {
-        
+        commentWriterView.isSending = false
     }
     
     func keyboardWillMove(with handler: inout KeyboardHandler) {
@@ -57,6 +61,7 @@ extension CommentWriterViewController: CommentWriterViewDelegate {
     
     func willSend(with content: String?, view: CommentWriterView) {
         guard content != nil, !content!.isEmpty else {
+            didWrite(with: "Comment is emtpy")
             return
         }
         
