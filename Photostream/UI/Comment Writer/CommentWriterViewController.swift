@@ -60,11 +60,12 @@ extension CommentWriterViewController: CommentWriterScene {
 extension CommentWriterViewController: CommentWriterViewDelegate {
     
     func willSend(with content: String?, view: CommentWriterView) {
-        guard content != nil, !content!.isEmpty else {
+        guard let comment = content?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !comment.isEmpty else {
             didWrite(with: "Comment is emtpy")
             return
         }
         
-        presenter.writeComment(with: content!)
+        presenter.writeComment(with: comment)
     }
 }
