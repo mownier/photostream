@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol CommentControllerDelegate: class {
+    
+    func commentControllerDidWrite(with postId: String)
+}
+
 protocol CommentControllerInterface: BaseModuleWireframe {
     
     var postId: String! { set get }
     var feed: CommentFeedPresenter! { set get }
     var writer: CommentWriterPresenter! { set get }
     var shouldComment: Bool { set get }
+    var delegate: CommentControllerDelegate? { set get }
     
     func setupFeed()
     func setupWriter()
@@ -29,6 +35,8 @@ extension CommentControllerInterface {
 
 class CommentController: UIViewController, CommentControllerInterface {
 
+    weak var delegate: CommentControllerDelegate?
+    
     var style: WireframeStyle!
     var root: RootWireframe?
     var postId: String!
@@ -125,6 +133,8 @@ extension CommentController: CommentWriterDelegate {
         feed.view.hideInitialLoadView()
         feed.view.reload()
         feed.view.scrollToTop()
+        
+        delegate?.commentControllerDidWrite(with: postId)
     }
     
     func keyboardWillMoveDown(with delta: KeyboardFrameDelta) {

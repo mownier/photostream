@@ -20,11 +20,12 @@ extension NewsFeedWireframe {
 
 extension NewsFeedWireframeInterface {
     
-    func presentCommentFeed(from parent: UIViewController, postId: String, shouldComment: Bool = false) {
+    func presentCommentController(from parent: UIViewController, delegate: CommentControllerDelegate?, postId: String, shouldComment: Bool = false) {
         let controller = CommentController(root: nil)
         controller.postId = postId
         controller.style = .push
         controller.shouldComment = shouldComment
+        controller.delegate = delegate
         
         var property = WireframeEntryProperty()
         property.controller = controller
@@ -36,14 +37,14 @@ extension NewsFeedWireframeInterface {
 
 extension NewsFeedModuleInterface {
     
-    func presentCommentFeed(at index: Int, shouldComment: Bool = false) {
+    func presentCommentController(at index: Int, shouldComment: Bool = false) {
         guard let presenter = self as? NewsFeedPresenter,
             let parent = presenter.view.controller,
             let post = feed(at: index) as? NewsFeedPost else {
             return
         }
         
-        presenter.wireframe.presentCommentFeed(from: parent, postId: post.id, shouldComment: shouldComment)
+        presenter.wireframe.presentCommentController(from: parent, delegate: presenter, postId: post.id, shouldComment: shouldComment)
     }
 }
 
@@ -84,3 +85,17 @@ extension NewsFeedPost: PostListCellItem {
 extension NewsFeedPost: PostListHeaderItem { }
 
 extension NewsFeedPresenter: HomeModuleDependency { }
+
+extension NewsFeedPresenter: CommentControllerDelegate {
+    
+    func commentControllerDidWrite(with postId: String) {
+        guard let index = feed.indexOf(post: postId),
+            var post = feed.items[index] as? NewsFeedPost else {
+            return
+        }
+        
+        post.comments += 1
+        feed.items[index] = post
+        view.reloadView()
+    }
+}
