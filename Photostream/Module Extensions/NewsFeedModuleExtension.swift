@@ -20,10 +20,11 @@ extension NewsFeedWireframe {
 
 extension NewsFeedWireframeInterface {
     
-    func presentCommentFeed(from parent: UIViewController, postId: String) {
+    func presentCommentFeed(from parent: UIViewController, postId: String, shouldComment: Bool = false) {
         let controller = CommentController(root: nil)
         controller.postId = postId
         controller.style = .push
+        controller.shouldComment = shouldComment
         
         var property = WireframeEntryProperty()
         property.controller = controller
@@ -35,14 +36,14 @@ extension NewsFeedWireframeInterface {
 
 extension NewsFeedModuleInterface {
     
-    func presentCommentFeed(at index: Int) {
+    func presentCommentFeed(at index: Int, shouldComment: Bool = false) {
         guard let presenter = self as? NewsFeedPresenter,
             let parent = presenter.view.controller,
             let post = feed(at: index) as? NewsFeedPost else {
             return
         }
         
-        presenter.wireframe.presentCommentFeed(from: parent, postId: post.id)
+        presenter.wireframe.presentCommentFeed(from: parent, postId: post.id, shouldComment: shouldComment)
     }
 }
 

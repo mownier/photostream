@@ -16,3 +16,14 @@ extension CommentWriterModule {
 extension CommentWriterDataItem: CommentFeedData { }
 
 extension CommentWriterDataItem: CommentListCellItem { }
+
+extension CommentWriterScene {
+    
+    func becomeFirstResponder() {
+        guard let view = controller?.view as? CommentWriterView else {
+            return
+        }
+        
+        view.contentTextView.becomeFirstResponder()
+    }
+}

@@ -127,7 +127,7 @@ extension NewsFeedViewController: PostListCellDelegate {
             return
         }
         
-        presenter.presentCommentFeed(at: index)
+        presenter.presentCommentFeed(at: index, shouldComment: true)
     }
     
     func postListCellDidTapCommentsCount(cell: PostListCell) {

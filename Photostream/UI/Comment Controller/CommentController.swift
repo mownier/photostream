@@ -13,6 +13,7 @@ protocol CommentControllerInterface: BaseModuleWireframe {
     var postId: String! { set get }
     var feed: CommentFeedPresenter! { set get }
     var writer: CommentWriterPresenter! { set get }
+    var shouldComment: Bool { set get }
     
     func setupFeed()
     func setupWriter()
@@ -31,6 +32,7 @@ class CommentController: UIViewController, CommentControllerInterface {
     var style: WireframeStyle!
     var root: RootWireframe?
     var postId: String!
+    var shouldComment: Bool = false
     
     var feed: CommentFeedPresenter!
     var writer: CommentWriterPresenter!
@@ -61,6 +63,10 @@ class CommentController: UIViewController, CommentControllerInterface {
         let feedViewController = feed.view.controller!
         let writerViewFrame = writer.view.controller!.view.frame
         feedViewController.view.frame.size.height -= writerViewFrame.size.height
+        
+        if shouldComment {
+            writer.view.becomeFirstResponder()
+        }
     }
     
     func back() {
