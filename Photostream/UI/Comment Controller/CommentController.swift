@@ -114,6 +114,9 @@ extension CommentController: CommentWriterDelegate {
         }
         
         feed.comments.insert(newComment, at: 0)
+        feed.view.hideRefreshView()
+        feed.view.hideEmptyView()
+        feed.view.hideInitialLoadView()
         feed.view.reload()
     }
     
