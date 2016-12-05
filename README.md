@@ -14,5 +14,5 @@ It is necessary that you have to provide your own `GoogleService-Info.plist`. Af
 - [X] Write Post
 - [X] News Feed
 - [ ] User Profile
-- [ ] Comments
-- [ ] Write Comment
+- [X] Comments
+- [X] Write Comment
