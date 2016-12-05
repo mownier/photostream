@@ -8,7 +8,9 @@
 
 import UIKit
 
-fileprivate enum Direction {
+enum KeyboardDirection {
+    
+    case none
     case up
     case down
 }
@@ -17,6 +19,7 @@ struct KeyboardFrameDelta {
     
     var height: CGFloat = 0
     var y: CGFloat = 0
+    var direction: KeyboardDirection = .none
 }
 
 struct KeyboardHandler {
@@ -25,13 +28,12 @@ struct KeyboardHandler {
     var willMoveDown: ((KeyboardFrameDelta) -> Void)?
     var info: [AnyHashable: Any]?
     
-    func handle(using view: UIView, with animation: @escaping (KeyboardFrameDelta) -> Void) {
+    func handle(using view: UIView, with animation: ((KeyboardFrameDelta) -> Void)? = nil) {
         guard let userInfo = info,
             let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt,
             let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double,
             let frameEnd = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
             let frameBegin = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue,
-            let direction = direction(end: frameEnd, begin: frameBegin),
             let window = view.window,
             let superview = view.superview else {
             return
@@ -45,10 +47,11 @@ struct KeyboardHandler {
         
         var insetBottom = window.bounds.size.height - rectWindow.origin.y
         var delta = KeyboardFrameDelta()
+        delta.direction = direction(end: frameEnd, begin: frameBegin)
         delta.height = rectEnd.size.height - rectBegin.size.height
         delta.y = rectEnd.origin.y - rectBegin.origin.y
         
-        switch direction {
+        switch delta.direction {
         case .up:
             insetBottom -= view.bounds.size.height
             delta.y += insetBottom
@@ -58,6 +61,8 @@ struct KeyboardHandler {
             insetBottom -= superview.bounds.size.height
             delta.y -= insetBottom
             willMoveDown?(delta)
+        default:
+            break
         }
         
         UIView.animate(
@@ -65,13 +70,18 @@ struct KeyboardHandler {
             delay: 0,
             options: options,
             animations: {
-                animation(delta)
+                if delta.height == 0 {
+                    view.frame.origin.y += delta.y
+                } else {
+                    view.frame.origin.y -= delta.height
+                }
+                animation?(delta)
             },
             completion: nil
         )
     }
     
-    private func direction(end frameEnd: NSValue, begin frameBegin: NSValue) -> Direction? {
+    private func direction(end frameEnd: NSValue, begin frameBegin: NSValue) -> KeyboardDirection {
         let rectEnd = frameEnd.cgRectValue
         let rectBegin = frameBegin.cgRectValue
         
@@ -82,7 +92,7 @@ struct KeyboardHandler {
             return .down
         
         } else {
-            return nil
+            return .none
         }
     }
 }
