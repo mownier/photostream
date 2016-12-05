@@ -59,7 +59,7 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
                 
                 item.id = post.id
                 item.message = post.message
-                item.timestamp = post.timestamp / 1000
+                item.timestamp = post.timestamp
                 
                 item.likes = post.likesCount
                 item.comments = post.commentsCount

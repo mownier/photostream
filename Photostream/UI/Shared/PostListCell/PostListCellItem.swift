@@ -28,7 +28,7 @@ extension PostListCell {
         }
         
         setMessage(with: item.message, and: item.displayName)
-        elapsedTime = item.timeAgo
+        elapsedTime = item.timeAgo.uppercased()
         
         shouldHighlightLikeButton(item.isLiked)
         likesCountText = item.likesText
