@@ -42,7 +42,9 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
         }
         
         post.isLiked = true
+        post.likes += 1
         feed.items[index] = post
+        view.reloadView()
         interactor.like(post: id)
     }
     
@@ -53,7 +55,9 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
         }
         
         post.isLiked = false
+        post.likes -= 1
         feed.items[index] = post
+        view.reloadView()
         interactor.unlike(post: id)
     }
     
