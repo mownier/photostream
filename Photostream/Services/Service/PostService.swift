@@ -16,7 +16,7 @@ protocol PostService {
     func fetchPosts(userId: String, offset: String, limit: UInt, callback: ((PostServiceResult) -> Void)?)
     func writePost(photoId: String, content: String, callback: ((PostServiceResult) -> Void)?)
     
-    func fetchLikes(id: String, offset: UInt, limit: UInt, callback: ((PostServiceLikeResult) -> Void)?)
+    func fetchLikes(id: String, offset: String, limit: UInt, callback: ((PostServiceLikeResult) -> Void)?)
     func like(id: String, callback: ((PostServiceError?) -> Void)?)
     func unlike(id: String, callback: ((PostServiceError?) -> Void)?)
 }
@@ -32,6 +32,7 @@ struct PostServiceLikeResult {
     
     var likes: [User]?
     var error: PostServiceError?
+    var nextOffset: String?
 }
 
 enum PostServiceError: Error {

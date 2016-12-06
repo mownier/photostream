@@ -176,66 +176,69 @@ struct PostServiceProvider: PostService {
     func like(id: String, callback: ((PostServiceError?) -> Void)?) {
         var error: PostServiceError?
         guard session.isValid else {
-            error = .authenticationNotFound(message: "Authentication not found.")
+            error = .authenticationNotFound(message: "Authentication not found")
             callback?(error)
             return
         }
         
         let userId = session.user.id
         let path1 = "posts/\(id)/likes_count"
-        let path2 = "posts/\(id)/likes/\(userId)"
+        let path2 = "post-like/\(id)/likes"
         let rootRef = FIRDatabase.database().reference()
+        let likesRef = rootRef.child(path2)
+        let likesCountRef = rootRef.child(path1)
         
-        rootRef.child(path2).observeSingleEvent(of: .value, with: { (data) in
+        likesRef.child(userId).observeSingleEvent(of: .value, with: { (data) in
             guard !data.exists() else {
-                error = .failedToLike(message: "Already liked.")
+                error = .failedToLike(message: "Already liked")
                 callback?(error)
                 return
             }
            
-            rootRef.child(path1).runTransactionBlock({ (data2) -> FIRTransactionResult in
-                if let val = data2.value as? Int {
-                    data2.value = val + 1
+            likesCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
+                if let val = data.value as? Int {
+                    data.value = val + 1
                 } else {
-                    data2.value = 1
+                    data.value = 1
                 }
-                return FIRTransactionResult.success(withValue: data2)
+                return FIRTransactionResult.success(withValue: data)
                 
                 }, andCompletionBlock: { (err, committed, snap) in
-                    guard committed else {
+                    guard err == nil, committed else {
                         error = .failedToLike(message: "Failed to like post.")
                         callback?(error)
                         return
                     }
                     
-                    rootRef.child(path2).setValue(true)
+                    likesRef.child(userId).setValue(true)
                     callback?(nil)
             })
         })
     }
 
-
     func unlike(id: String, callback: ((PostServiceError?) -> Void)?) {
         var error: PostServiceError?
         guard session.isValid else {
-            error = .authenticationNotFound(message: "Authentication not found.")
+            error = .authenticationNotFound(message: "Authentication not found")
             callback?(error)
             return
         }
         
         let userId = session.user.id
         let path1 = "posts/\(id)/likes_count"
-        let path2 = "posts/\(id)/likes/\(userId)"
+        let path2 = "post-like/\(id)/likes"
         let rootRef = FIRDatabase.database().reference()
+        let likesRef = rootRef.child(path2)
+        let likesCountRef = rootRef.child(path1)
         
-        rootRef.child(path2).observeSingleEvent(of: .value, with: { (data) in
+        likesRef.observeSingleEvent(of: .value, with: { (data) in
             guard data.exists() else {
-                error = .failedToUnlike(message: "Post does not exist.")
+                error = .failedToUnlike(message: "Post does not exist")
                 callback?(error)
                 return
             }
             
-            rootRef.child(path1).runTransactionBlock({ (data) -> FIRTransactionResult in
+            likesCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
                 if let val = data.value as? Int , val > 0 {
                     data.value = val - 1
                 } else {
@@ -244,19 +247,19 @@ struct PostServiceProvider: PostService {
                 return FIRTransactionResult.success(withValue: data)
                 
                 }, andCompletionBlock: { (err, committed, snap) in
-                    guard committed else {
-                        error = .failedToUnlike(message: "Failed to unlike post.")
+                    guard err == nil, committed else {
+                        error = .failedToUnlike(message: "Failed to unlike post")
                         callback?(error)
                         return
                     }
                     
-                    rootRef.child(path2).removeValue()
+                    likesRef.child(userId).removeValue()
                     callback?(nil)
             })
         })
     }
 
-    func fetchLikes(id: String, offset: UInt, limit: UInt, callback: ((PostServiceLikeResult) -> Void)?) {
+    func fetchLikes(id: String, offset: String, limit: UInt, callback: ((PostServiceLikeResult) -> Void)?) {
         var result = PostServiceLikeResult()
         guard session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found.")
@@ -264,31 +267,47 @@ struct PostServiceProvider: PostService {
             return
         }
         
-        let path1 = "posts/\(id)/likes"
+        let path1 = "post-like/\(id)/likes"
         let path2 = "users"
         let rootRef = FIRDatabase.database().reference()
+        let likesRef = rootRef.child(path1)
+        let usersRef = rootRef.child(path2)
+        var query = likesRef.queryOrderedByKey()
         
-        rootRef.child(path1).queryLimited(toFirst: limit).observeSingleEvent(of: .value, with: { (data) in
-            var likeList = [User]()
-            guard data.exists() else {
-                result.likes = likeList
+        if !offset.isEmpty {
+            query = query.queryEnding(atValue: offset)
+        }
+        
+        query = query.queryLimited(toLast: limit + 1)
+        query.observeSingleEvent(of: .value, with: { (data) in
+            guard data.exists(), data.childrenCount > 0 else {
+                result.likes = [User]()
                 callback?(result)
                 return
             }
             
-            for c in data.children {
-                let child = c as! FIRDataSnapshot
-                rootRef.child("\(path2)/\(child.key)").observeSingleEvent(of: .value, with: { (data2) in
+            var users = [User]()
+            
+            for child in data.children {
+                guard let userChild = child as? FIRDataSnapshot else {
+                    continue
+                }
+                
+                let userKey = userChild.key
+                let userRef = usersRef.child(userKey)
+                
+                userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                    let user = User(with: userSnapshot, exception: "email")
+                    users.append(user)
                     
-                    var user = User()
-                    user.id = data2.childSnapshot(forPath: "id").value as! String
-                    user.firstName = data2.childSnapshot(forPath: "firstname").value as! String
-                    user.lastName = data2.childSnapshot(forPath: "lastname").value as! String
-                    
-                    likeList.append(user)
-                    
-                    if UInt(likeList.count) == data.childrenCount {
-                        result.likes = likeList
+                    let userCount = UInt(users.count)
+                    if userCount == data.childrenCount {
+                        if userCount == limit + 1 {
+                            let removedUser = users.removeFirst()
+                            result.nextOffset = removedUser.id
+                        }
+                        
+                        result.likes = users.reversed()
                         callback?(result)
                     }
                 })

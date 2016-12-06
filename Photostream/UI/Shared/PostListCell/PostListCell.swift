@@ -182,9 +182,9 @@ extension PostListCell {
     
     func shouldHighlightLikeButton(_ should: Bool) {
         if should {
-            likeButton.setImage(UIImage(named: "heart_pink"), for: UIControlState())
+            likeButton.setImage(UIImage(named: "heart_pink"), for: .normal)
         } else {
-            likeButton.setImage(UIImage(named: "heart"), for: UIControlState())
+            likeButton.setImage(UIImage(named: "heart"), for: .normal)
         }
     }
 }
