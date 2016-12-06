@@ -42,19 +42,42 @@ extension UserPostPresenter: UserPostModuleInterface {
     }
     
     func refreshPosts() {
-        
+        interactor.fetchNew(with: userId, and: limit)
+        if postCount == 0 {
+            view.hideEmptyView()
+            view.showInitialLoadView()
+        }
+        view.showRefreshView()
     }
     
     func loadMorePosts() {
-        
+        interactor.fetchNext(with: userId, and: limit)
     }
     
     func likePost(at index: Int) {
+        guard var post = post(at: index), !post.isLiked else {
+            return
+        }
         
+        post.isLiked = true
+        post.likes += 1
+        posts[index] = post
+        view.reloadView()
+        
+        interactor.like(post: post.id)
     }
     
     func unlikePost(at index: Int) {
+        guard var post = post(at: index), post.isLiked else {
+            return
+        }
         
+        post.isLiked = false
+        post.likes -= 1
+        posts[index] = post
+        view.reloadView()
+        
+        interactor.unlike(post: post.id)
     }
     
     func post(at index: Int) -> UserPostData? {
