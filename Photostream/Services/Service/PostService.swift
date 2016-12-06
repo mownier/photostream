@@ -13,7 +13,7 @@ protocol PostService {
     init(session: AuthSession)
     
     func fetchPostInfo(id: String, callback: ((PostServiceResult) -> Void)?)
-    func fetchPosts(userId: String, offset: UInt, limit: UInt, callback: ((PostServiceResult) -> Void)?)
+    func fetchPosts(userId: String, offset: String, limit: UInt, callback: ((PostServiceResult) -> Void)?)
     func writePost(photoId: String, content: String, callback: ((PostServiceResult) -> Void)?)
     
     func fetchLikes(id: String, offset: UInt, limit: UInt, callback: ((PostServiceLikeResult) -> Void)?)
@@ -25,6 +25,7 @@ struct PostServiceResult {
 
     var posts: PostList?
     var error: PostServiceError?
+    var nextOffset: String?
 }
 
 struct PostServiceLikeResult {

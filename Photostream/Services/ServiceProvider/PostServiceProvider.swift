@@ -18,80 +18,87 @@ struct PostServiceProvider: PostService {
         self.session = session
     }
 
-    func fetchPosts(userId: String, offset: UInt, limit: UInt, callback: ((PostServiceResult) -> Void)?) {
+    func fetchPosts(userId: String, offset: String, limit: UInt, callback: ((PostServiceResult) -> Void)?) {
         var result = PostServiceResult()
         guard session.isValid else {
-            result.error = .authenticationNotFound(message: "Authentication not found.")
+            result.error = .authenticationNotFound(message: "Authentication not found")
             callback?(result)
             return
         }
         
-        let root = FIRDatabase.database().reference()
-        let users = root.child("users")
-        let posts = root.child("posts")
-        let photos = root.child("photos")
-        let ref = users.child(userId).child("posts")
         let uid = session.user.id
+        let rootRef = FIRDatabase.database().reference()
+        let usersRef = rootRef.child("users")
+        let postsRef = rootRef.child("posts")
+        let photosRef = rootRef.child("photos")
+        let ref = usersRef.child(userId).child("posts")
+        var query = ref.queryOrderedByKey()
         
-        ref.queryLimited(toFirst: limit).observeSingleEvent(of: .value, with: { (data) in
-            var postList = [Post]()
-            var postUsers = [String: User]()
-            for snap in data.children {
-                posts.child((snap as AnyObject).key).observeSingleEvent(of: .value, with: { (data2) in
+        if !offset.isEmpty {
+            query = query.queryEnding(atValue: offset)
+        }
+        
+        query = query.queryLimited(toLast: limit + 1)
+        query.observeSingleEvent(of: .value, with: { (data) in
+            guard data.childrenCount > 0 else {
+                result.posts = PostList()
+                callback?(result)
+                return
+            }
+            
+            var posts = [Post]()
+            var users = [String: User]()
+            
+            for child in data.children {
+                guard let userPost = child as? FIRDataSnapshot else {
+                    continue
+                }
+                
+                let postId = userPost.key
+                let postRef = postsRef.child(postId)
+                
+                postRef.observeSingleEvent(of: .value, with: { (postSnapshot) in
+                    guard let posterId = postSnapshot.childSnapshot(forPath: "uid").value as? String,
+                        let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                        return
+                    }
                     
-                    let posterId = data2.childSnapshot(forPath: "uid").value as! String
-                    let photoId = data2.childSnapshot(forPath: "photo_id").value as! String
+                    let userRef = usersRef.child(posterId)
+                    let photoRef = photosRef.child(photoId)
+                    let likesRef = rootRef.child("post-like/\(postId)/likes")
                     
-                    users.child(posterId).observeSingleEvent(of: .value, with: { (data3) in
-                        
-                        photos.child(photoId).observeSingleEvent(of: .value, with: { (data4) in
-                            
-                            if postUsers[posterId] == nil {
-                                var user = User()
-                                user.id = posterId
-                                user.firstName = data3.childSnapshot(forPath: "firstname").value as! String
-                                user.lastName = data3.childSnapshot(forPath: "lastname").value as! String
-                                postUsers[posterId] = user
-                            }
-                            
-                            var photo = Photo()
-                            photo.url = data4.childSnapshot(forPath: "url").value as! String
-                            photo.height = data4.childSnapshot(forPath: "height").value as! Int
-                            photo.width = data4.childSnapshot(forPath: "width").value as! Int
-                            
-                            var post = Post()
-                            post.userId = posterId
-                            post.id = data2.childSnapshot(forPath: "id").value as! String
-                            post.timestamp = data2.childSnapshot(forPath: "timestamp").value as! Double
-                            post.photo = photo
-                            
-                            if data2.hasChild("likes_count") {
-                                post.likesCount = data2.childSnapshot(forPath: "likes_count").value as! Int
-                            }
-                            
-                            if data2.hasChild("likes/\(uid)") {
-                                post.isLiked = true
-                            }
-                            
-                            if data2.hasChild("comments_count") {
-                                post.commentsCount = data2.childSnapshot(forPath: "comments_count").value as! Int
-                            }
-                            
-                            if data2.hasChild("message") {
-                                post.message = data2.childSnapshot(forPath: "message").value as! String
-                            }
-                            
-                            postList.append(post)
-                            
-                            
-                            if UInt(postList.count) == data.childrenCount {
-                                var result = PostServiceResult()
-                                var resultList = PostList()
-                                resultList.posts = postList
-                                resultList.users = postUsers
-                                result.posts = resultList
-                                callback?(result)
-                            }
+                    userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                        photoRef.observeSingleEvent(of: .value, with: { (photoSnapshot) in
+                            likesRef.observeSingleEvent(of: .value, with: { (likesSnapshot) in
+                                if users[posterId] == nil {
+                                    let user = User(with: userSnapshot, exception: "email")
+                                    users[posterId] = user
+                                }
+                                
+                                let photo = Photo(with: photoSnapshot)
+                                var post = Post(with: postSnapshot)
+                                post.photo = photo
+                                
+                                if likesSnapshot.hasChild(uid) {
+                                    post.isLiked = true
+                                }
+                                
+                                posts.append(post)
+                                
+                                let postCount = UInt(posts.count)
+                                if postCount == data.childrenCount {
+                                    if postCount == limit + 1 {
+                                        let removedPost = posts.removeFirst()
+                                        result.nextOffset = removedPost.id
+                                    }
+                                    
+                                    var list = PostList()
+                                    list.posts = posts.reversed()
+                                    list.users = users
+                                    result.posts = list
+                                    callback?(result)
+                                }
+                            })
                         })
                     })
                 })
@@ -102,29 +109,32 @@ struct PostServiceProvider: PostService {
     func writePost(photoId: String, content: String, callback: ((PostServiceResult) -> Void)?) {
         var result = PostServiceResult()
         guard session.isValid else {
-            result.error = .authenticationNotFound(message: "Authentication not found.")
+            result.error = .authenticationNotFound(message: "Authentication not found")
             callback?(result)
             return
         }
         
-        let userId = session.user.id
-        let ref = FIRDatabase.database().reference()
-        let key = ref.child("posts").childByAutoId().key
-        let data: [String: AnyObject] = [
-            "id": key as AnyObject,
-            "uid": userId as AnyObject,
-            "timestamp": FIRServerValue.timestamp() as AnyObject,
-            "message": content as AnyObject,
-            "photo_id": photoId as AnyObject,
-            "likes_count": 0 as AnyObject
+        let uid = session.user.id
+        let rootRef = FIRDatabase.database().reference()
+        let key = rootRef.child("posts").childByAutoId().key
+        let data: [String: Any] = [
+            "id": key,
+            "uid": uid,
+            "timestamp": FIRServerValue.timestamp(),
+            "message": content,
+            "photo_id": photoId,
+            "likes_count": 0,
+            "comments_count": 0
         ]
         let path1 = "posts/\(key)"
-        let path2 = "user-post/\(userId)/posts/\(key)"
-        let path3 = "user-feed/\(userId)/posts/\(key)"
-        let path4 = "user-profile/\(userId)/posts_count"
+        let path2 = "user-post/\(uid)/posts/\(key)"
+        let path3 = "user-feed/\(uid)/posts/\(key)"
+        let path4 = "user-profile/\(uid)/posts_count"
         let updates: [String: AnyObject] = [path1: data as AnyObject, path2: true as AnyObject, path3: true as AnyObject]
 
-        ref.child(path4).runTransactionBlock({ (data) -> FIRTransactionResult in
+        let postCountRef = rootRef.child(path4)
+        
+        postCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
             if let val = data.value as? Int {
                 data.value = val + 1
             } else {
@@ -133,36 +143,30 @@ struct PostServiceProvider: PostService {
             return FIRTransactionResult.success(withValue: data)
 
             }, andCompletionBlock: { (error, committed, snap) in
-                guard committed else {
-                    result.error = .failedToWrite(message: "Failed to write post.")
+                guard error == nil, committed else {
+                    result.error = .failedToWrite(message: "Failed to write post")
                     callback?(result)
                     return
                 }
                 
-                ref.updateChildValues(updates)
-                ref.child(path1).observeSingleEvent(of: .value, with: { (data) in
-                    ref.child("users/\(userId)").observeSingleEvent(of: .value, with: { (data2) in
-                        var user = User()
-                        user.id = userId
-                        user.firstName = data2.childSnapshot(forPath: "firstname").value as! String
-                        user.lastName = data2.childSnapshot(forPath: "lastname").value as! String
-
-                        var post = Post()
-                        post.id = key
-                        post.userId = userId
-                        post.timestamp = data.childSnapshot(forPath: "timestamp").value as! Double
-
-                        var posts = [Post]()
-                        posts.append(post)
-
-                        var users = [String: User]()
-                        users[userId] = user
-
-                        var resultList = PostList()
-                        resultList.posts = posts
-                        resultList.users = users
+                rootRef.updateChildValues(updates)
+                
+                let postsRef = rootRef.child(path1)
+                let usersRef = rootRef.child("users/\(uid)")
+                
+                postsRef.observeSingleEvent(of: .value, with: { (postSnapshot) in
+                    usersRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                        let user = User(with: userSnapshot, exception: "email")
+                        let users = [uid: user]
                         
-                        result.posts = resultList
+                        let post = Post(with: postSnapshot)
+                        let posts = [post]
+
+                        var list = PostList()
+                        list.posts = posts
+                        list.users = users
+                        
+                        result.posts = list
                         callback?(result)
                     })
                 })

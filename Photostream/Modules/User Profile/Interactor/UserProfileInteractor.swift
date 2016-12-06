@@ -37,7 +37,7 @@ class UserProfileInteractor: UserProfileInteractorInput {
     }
 
     func fetchUserPosts(_ limit: Int) {
-        service.post.fetchPosts(userId: userId, offset: 0, limit: 10) { (result) in
+        service.post.fetchPosts(userId: userId, offset: "", limit: 10) { (result) in
             guard result.error == nil  else {
                 self.output.userProfileDidFetchPostsWithError(result.error!)
                 return
