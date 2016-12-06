@@ -77,10 +77,6 @@ struct NewsFeedServiceProvider: NewsFeedService {
                                     post.isLiked = true
                                 }
                                 
-                                if post.id == "-KYEBghKOtMEmX39ZEoK" {
-                                    print("post '\(post.id)' -> isLiked ->", post.isLiked)
-                                }
-                                
                                 posts.append(post)
                                 
                                 let postCount = UInt(posts.count)
