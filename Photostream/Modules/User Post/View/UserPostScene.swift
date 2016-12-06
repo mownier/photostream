@@ -8,4 +8,20 @@
 
 protocol UserPostScene: BaseModuleView {
     
+    var presenter: UserPostModuleInterface! { set get }
+    
+    func reloadView()
+    
+    func showInitialLoadView()
+    func showRefreshView()
+    func showEmptyView()
+    
+    func hideInitialLoadView()
+    func hideRefreshView()
+    func hideEmptyView()
+    
+    func didRefresh(with error: String?)
+    func didLoadMore(with error: String?)
+    func didLike(with error: String?)
+    func didUnlike(with error: String?)
 }
