@@ -92,26 +92,47 @@ extension UserPostPresenter: UserPostModuleInterface {
 extension UserPostPresenter: UserPostInteractorOutput {
     
     func userPostDidRefresh(with data: [UserPostData]) {
+        view.hideInitialLoadView()
+        view.hideRefreshView()
         
+        posts.removeAll()
+        posts.append(contentsOf: data)
+        
+        if posts.count > 0 {
+            view.showEmptyView()
+        }
+        
+        view.didRefresh(with: nil)
+        view.reloadView()
     }
     
     func userPostDidRefresh(with error: PostServiceError) {
+        view.hideInitialLoadView()
+        view.hideRefreshView()
         
+        view.didRefresh(with: error.message)
     }
     
     func userPostDidLoadMore(with data: [UserPostData]) {
+        guard data.count > 0 else {
+            return
+        }
         
+        posts.append(contentsOf: data)
+        
+        view.didLoadMore(with: nil)
+        view.reloadView()
     }
     
     func userPostDidLoadMore(with error: PostServiceError) {
-        
+        view.didLoadMore(with: error.message)
     }
     
     func userPostDidLike(with postId: String, and error: PostServiceError?) {
-        
+        view.didLike(with: error?.message)
     }
     
     func userPostDidUnlike(with postId: String, and error: PostServiceError?) {
-        
+        view.didUnlike(with: error?.message)
     }
 }
