@@ -97,7 +97,7 @@ extension NewsFeedInteractor: NewsFeedInteractorInput {
         }
         
         postService.like(id: id) { (error) in
-            self.output?.newsFeedDidLike(with: error)
+            self.output?.newsFeedDidLike(with: id, and: error)
         }
     }
     
@@ -107,7 +107,7 @@ extension NewsFeedInteractor: NewsFeedInteractorInput {
         }
         
         postService.unlike(id: id) { (error) in
-            self.output?.newsFeedDidUnlike(with: error)
+            self.output?.newsFeedDidUnlike(with: id, and: error)
         }
     }
 }

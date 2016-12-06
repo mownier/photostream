@@ -93,12 +93,12 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
         view.didFetchWithError(message: error.message)
     }
     
-    func newsFeedDidLike(with error: PostServiceError?) {
+    func newsFeedDidLike(with postId: String, and error: PostServiceError?) {
         view.didLikeWithError(message: error?.message)
         view.reloadView()
     }
     
-    func newsFeedDidUnlike(with error: PostServiceError?) {
+    func newsFeedDidUnlike(with postId: String, and error: PostServiceError?) {
         view.didUnlikeWithError(message: error?.message)
         view.reloadView()
     }
