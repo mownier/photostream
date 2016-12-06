@@ -61,7 +61,7 @@ struct NewsFeedServiceProvider: NewsFeedService {
                     
                     let userRef = rootRef.child("users").child(userId)
                     let photoRef = rootRef.child("photos").child(photoId)
-                    let likesRef = rootRef.child("post-like")
+                    let likesRef = rootRef.child("post-like/\(postKey)/likes")
                     
                     userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
                         photoRef.observeSingleEvent(of: .value, with: { (photoSnapshot) in
@@ -73,7 +73,7 @@ struct NewsFeedServiceProvider: NewsFeedService {
                                 var post = Post(with: postSnapshot)
                                 post.photo = Photo(with: photoSnapshot)
                                 
-                                if likesSnapshot.hasChild("\(postKey)/likes/\(uid)") {
+                                if likesSnapshot.hasChild(uid) {
                                     post.isLiked = true
                                 }
                                 
