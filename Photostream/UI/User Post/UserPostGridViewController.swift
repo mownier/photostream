@@ -16,6 +16,12 @@ class UserPostGridViewController: UICollectionViewController {
     
     var presenter: UserPostModuleInterface!
     
+    lazy var emptyView: GhostView! = {
+        let view = GhostView()
+        view.titleLabel.text = "No posts"
+        return view
+    }()
+    
     var shouldShowLoadingView: Bool = false {
         didSet {
             guard shouldShowLoadingView != oldValue else {
@@ -47,6 +53,22 @@ class UserPostGridViewController: UICollectionViewController {
                 refreshView.beginRefreshing()
             } else {
                 refreshView.endRefreshing()
+            }
+        }
+    }
+    
+    var shouldShowEmptyView: Bool = false {
+        didSet {
+            guard shouldShowEmptyView != oldValue, collectionView != nil else {
+                return
+            }
+            
+            if shouldShowEmptyView {
+                emptyView.frame.size = collectionView!.frame.size
+                collectionView!.backgroundView = emptyView
+            } else {
+                emptyView.removeFromSuperview()
+                collectionView!.backgroundView = nil
             }
         }
     }
@@ -109,7 +131,7 @@ extension UserPostGridViewController: UserPostScene {
     }
     
     func showEmptyView() {
-        
+        shouldShowEmptyView = true
     }
     
     func showRefreshView() {
@@ -121,7 +143,7 @@ extension UserPostGridViewController: UserPostScene {
     }
     
     func hideEmptyView() {
-        
+        shouldShowEmptyView = false
     }
     
     func hideRefreshView() {
