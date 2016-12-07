@@ -34,8 +34,9 @@ class GhostView: UIView {
         var rect = CGRect.zero
         rect.size.width = frame.width - (spacing * 4)
         rect.size.height = titleLabel.sizeThatFits(frame.size).height
+        rect.origin.x = (frame.width - rect.size.width) / 2
+        rect.origin.y = (frame.height - rect.size.height) / 2
         titleLabel.frame = rect
-        titleLabel.center = center
     }
 }
 
