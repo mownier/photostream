@@ -79,7 +79,6 @@ class UserPostInteractor: UserPostInteractorInterface {
                 return
             }
             
-            self.offset = result.nextOffset
             var posts = [UserPostDataItem]()
             
             for post in list.posts {
@@ -113,6 +112,8 @@ class UserPostInteractor: UserPostInteractorInterface {
             } else {
                 self.output?.userPostDidLoadMore(with: posts)
             }
+            
+            self.offset = result.nextOffset
         }
     }
 }
