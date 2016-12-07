@@ -31,8 +31,8 @@ struct PostServiceProvider: PostService {
         let usersRef = rootRef.child("users")
         let postsRef = rootRef.child("posts")
         let photosRef = rootRef.child("photos")
-        let ref = usersRef.child(userId).child("posts")
-        var query = ref.queryOrderedByKey()
+        let userPostRef = rootRef.child("user-post/\(userId)/posts")
+        var query = userPostRef.queryOrderedByKey()
         
         if !offset.isEmpty {
             query = query.queryEnding(atValue: offset)
