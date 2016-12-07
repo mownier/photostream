@@ -12,6 +12,7 @@ class UserPostGridViewController: UICollectionViewController {
 
     var flowLayout: UICollectionViewFlowLayout!
     var loadingView: UIActivityIndicatorView!
+    var refreshView: UIRefreshControl!
     
     var presenter: UserPostModuleInterface!
     
@@ -32,10 +33,30 @@ class UserPostGridViewController: UICollectionViewController {
         }
     }
     
+    var shouldShowRefreshView: Bool = false {
+        didSet {
+            guard shouldShowRefreshView != oldValue else {
+                return
+            }
+            
+            if refreshView.superview == nil {
+                collectionView?.addSubview(refreshView)
+            }
+            
+            if shouldShowLoadingView {
+                refreshView.beginRefreshing()
+            } else {
+                refreshView.endRefreshing()
+            }
+        }
+    }
+    
     override func loadView() {
         let size = UIScreen.main.bounds.size
         let frame = CGRect(origin: .zero, size: size)
+        
         flowLayout = UICollectionViewFlowLayout()
+        flowLayout.configure(with: size.width, columnCount: 3)
 
         collectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
         collectionView!.delegate = self
@@ -43,20 +64,21 @@ class UserPostGridViewController: UICollectionViewController {
         collectionView!.alwaysBounceVertical = true
         collectionView!.backgroundColor = UIColor.white
         
-        navigationItem.title = "User Post"
-        
         loadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         loadingView.hidesWhenStopped = true
         
+        refreshView = UIRefreshControl()
+        refreshView.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
+        
         PostGridCollectionCell.register(in: collectionView!)
+        navigationItem.title = "User Post"
         
         view = collectionView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        flowLayout.configure(with: collectionView!.frame.size.width, columnCount: 3)
         presenter.refreshPosts()
     }
     
@@ -69,6 +91,10 @@ class UserPostGridViewController: UICollectionViewController {
         let item = presenter.post(at: indexPath.row) as? PostGridCollectionCellItem
         cell.configure(with: item)
         return cell
+    }
+    
+    func triggerRefresh() {
+        presenter.refreshPosts()
     }
 }
 
@@ -87,7 +113,7 @@ extension UserPostGridViewController: UserPostScene {
     }
     
     func showRefreshView() {
-        
+        shouldShowRefreshView = true
     }
     
     func showInitialLoadView() {
@@ -99,7 +125,7 @@ extension UserPostGridViewController: UserPostScene {
     }
     
     func hideRefreshView() {
-        
+        shouldShowRefreshView = false
     }
     
     func hideInitialLoadView() {
