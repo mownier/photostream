@@ -256,6 +256,7 @@
 		B9DEB2691DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */; };
 		B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */; };
 		B9F95E411DF7CF420090C73E /* PostGridCollectionCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F95E401DF7CF420090C73E /* PostGridCollectionCellItem.swift */; };
+		B9F95E441DF7DB170090C73E /* GhostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F95E431DF7DB170090C73E /* GhostView.swift */; };
 		B9FCB9661DE408DC00D8F2B5 /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -528,6 +529,7 @@
 		B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
 		B9F95E401DF7CF420090C73E /* PostGridCollectionCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCollectionCellItem.swift; sourceTree = "<group>"; };
+		B9F95E431DF7DB170090C73E /* GhostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostView.swift; sourceTree = "<group>"; };
 		B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1451,6 +1453,7 @@
 				B933ADF91DED666300FAE922 /* CommentListCell */,
 				B92B96F71DDAD8CB00D89025 /* CropView */,
 				B9D91EB11DD1B586000BF3E5 /* EmptyView */,
+				B9F95E421DF7DB090090C73E /* GhostView */,
 				B9C217671DCC40F900F617FC /* PostCellLoader */,
 				B94AB2DA1DF6A2D600313254 /* PostGridCollectionCell */,
 				B9C2177B1DCC40F900F617FC /* PostListCell */,
@@ -1821,6 +1824,14 @@
 				B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		B9F95E421DF7DB090090C73E /* GhostView */ = {
+			isa = PBXGroup;
+			children = (
+				B9F95E431DF7DB170090C73E /* GhostView.swift */,
+			);
+			path = GhostView;
 			sourceTree = "<group>";
 		};
 		D281ADAE6A0B74DF75AA42E8 /* Frameworks */ = {
@@ -2201,6 +2212,7 @@
 				B9C217B01DCC40F900F617FC /* LoginWireframe.swift in Sources */,
 				B954EE4F1DE0324900A0049D /* PostUploadPresenterInterface.swift in Sources */,
 				B954EE531DE0326100A0049D /* PostUploadViewInterface.swift in Sources */,
+				B9F95E441DF7DB170090C73E /* GhostView.swift in Sources */,
 				B9D496781DE7EB5F00CDD58E /* PhotoGridCell.swift in Sources */,
 				B933ADF61DED50D900FAE922 /* CommentFeedExtension.swift in Sources */,
 				B9C217BE1DCC40F900F617FC /* NewsFeedWireframe.swift in Sources */,
