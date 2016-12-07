@@ -119,6 +119,14 @@ class UserPostGridViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.row == presenter.postCount - 10 else {
+            return
+        }
+        
+        presenter.loadMorePosts()
+    }
+    
     func triggerRefresh() {
         presenter.refreshPosts()
     }
