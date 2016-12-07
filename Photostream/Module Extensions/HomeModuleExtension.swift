@@ -69,6 +69,18 @@ extension HomeWireframe {
         let feedVC = (controller.viewControllers?[0] as? UINavigationController)?.topViewController as! NewsFeedViewController
         _ = NewsFeedWireframe(root: root, view: feedVC)
         dependencies?.append(feedVC.presenter as! HomeModuleDependency)
+        
+        let auth = AuthSession()
+        controller.viewControllers?.removeLast()
+        let module = UserPostModule(sceneType: .grid)
+        module.build(root: nil, userId: auth.user.id)
+        
+        let nav = UINavigationController(rootViewController: module.view.controller!)
+        nav.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "user_line_icon"), selectedImage: #imageLiteral(resourceName: "user_black_icon"))
+        nav.tabBarItem.imageInsets.top = 8
+        nav.tabBarItem.imageInsets.bottom = -8
+        nav.navigationBar.isTranslucent = false
+        controller.viewControllers?.append(nav)
     }
 }
 
