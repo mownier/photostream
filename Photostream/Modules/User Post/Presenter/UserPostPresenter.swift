@@ -98,7 +98,7 @@ extension UserPostPresenter: UserPostInteractorOutput {
         posts.removeAll()
         posts.append(contentsOf: data)
         
-        if posts.count > 0 {
+        if posts.count == 0 {
             view.showEmptyView()
         }
         
