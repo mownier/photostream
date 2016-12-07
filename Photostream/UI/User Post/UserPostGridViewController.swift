@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class UserPostGridViewController: UICollectionViewController {
 
@@ -93,6 +94,9 @@ class UserPostGridViewController: UICollectionViewController {
         refreshView.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
         
         PostGridCollectionCell.register(in: collectionView!)
+        
+        let barItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(self.signOut))
+        navigationItem.rightBarButtonItem = barItem
         navigationItem.title = "User Post"
         
         view = collectionView
@@ -117,6 +121,10 @@ class UserPostGridViewController: UICollectionViewController {
     
     func triggerRefresh() {
         presenter.refreshPosts()
+    }
+    
+    func signOut() {
+        try? FIRAuth.auth()?.signOut()
     }
 }
 
