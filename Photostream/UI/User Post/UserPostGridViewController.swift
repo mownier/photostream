@@ -102,8 +102,8 @@ class UserPostGridViewController: UICollectionViewController {
         view = collectionView
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         presenter.refreshPosts()
     }

@@ -82,6 +82,8 @@ extension HomeWireframe {
         nav.navigationBar.isTranslucent = false
         nav.navigationBar.tintColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
         controller.viewControllers?.append(nav)
+        
+        module.view.controller!.preloadView()
     }
 }
 
