@@ -27,6 +27,14 @@ class UserPostListViewController: UserPostGridViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.section == presenter.postCount - 10 else {
+            return
+        }
+        
+        presenter.loadMorePosts()
+    }
+    
     override func configureFlowLayout(with size: CGSize) {
         flowLayout.configure(with: size.width, columnCount: 1)
         
