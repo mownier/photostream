@@ -8,58 +8,42 @@
 
 import UIKit
 
-class UserPostListViewController: UICollectionViewController {
+class UserPostListViewController: UserPostGridViewController {
+
+    lazy var prototype: PostListCollectionCell! = PostListCollectionCell()
     
-    var presenter: UserPostModuleInterface!
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return presenter.postCount
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = PostListCollectionCell.dequeue(from: collectionView, for: indexPath)!
+        let item = presenter.post(at: indexPath.section) as? PostListCollectionCellItem
+        cell.configure(with: item)
+        return cell
+    }
+    
+    override func configureFlowLayout(with size: CGSize) {
+        flowLayout.configure(with: size.width, columnCount: 1)
+        
+        prototype.contentView.bounds.size.width = flowLayout.itemSize.width
+    }
+    
+    override func registerCell() {
+        PostListCollectionCell.register(in: collectionView!)
+    }
 }
 
-extension UserPostListViewController: UserPostScene {
+extension UserPostListViewController: UICollectionViewDelegateFlowLayout {
     
-    var controller: UIViewController? {
-        return self
-    }
-    
-    func reloadView() {
-        
-    }
-    
-    func showEmptyView() {
-        
-    }
-    
-    func showRefreshView() {
-        
-    }
-    
-    func showInitialLoadView() {
-        
-    }
-    
-    func hideEmptyView() {
-        
-    }
-    
-    func hideRefreshView() {
-        
-    }
-    
-    func hideInitialLoadView() {
-        
-    }
-    
-    func didRefresh(with error: String?) {
-        
-    }
-    
-    func didLoadMore(with error: String?) {
-        
-    }
-    
-    func didLike(with error: String?) {
-        
-    }
-    
-    func didUnlike(with error: String?) {
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = presenter.post(at: indexPath.section) as? PostListCollectionCellItem
+        prototype.configure(with: item, isPrototype: true)
+        let size = CGSize(width: flowLayout.itemSize.width, height: prototype.dynamicHeight)
+        return size
     }
 }
