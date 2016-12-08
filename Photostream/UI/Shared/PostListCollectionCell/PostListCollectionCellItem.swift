@@ -52,7 +52,7 @@ extension PostListCollectionCell: PostListCollectionCellConfig {
         set(message: item.message, displayName: item.displayName)
         set(liked: item.isLiked)
         
-        timeLabel.text = item.timeAgo
+        timeLabel.text = item.timeAgo.uppercased()
         likeCountLabel.text = item.likesText
         commentCountLabel.text = item.commentsText
         photoImageView.frame.size = item.photoSize
@@ -67,8 +67,9 @@ extension PostListCollectionCell: PostListCollectionCellConfig {
             return
         }
         
-        let semiBold = UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightSemibold)
-        let regular = UIFont.systemFont(ofSize: 14.0)
+        let font = messageLabel.font!
+        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFontWeightSemibold)
+        let regular = UIFont.systemFont(ofSize: font.pointSize)
         let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
         let message = NSAttributedString(string: message, attributes: [NSFontAttributeName: regular])
         let text = NSMutableAttributedString()

@@ -45,19 +45,27 @@ class PostListCollectionCell: UICollectionViewCell {
         commentButton.setImage(#imageLiteral(resourceName: "comment"), for: .normal)
         
         stripView = UIView()
-        stripView.backgroundColor = UIColor.lightGray
+        stripView.backgroundColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1)
         
         likeCountLabel = UILabel()
         likeCountLabel.numberOfLines = 0
+        likeCountLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        likeCountLabel.textColor = primaryColor
         
         messageLabel = UILabel()
         messageLabel.numberOfLines = 0
+        messageLabel.font = UIFont.systemFont(ofSize: 12)
+        messageLabel.textColor = primaryColor
         
         commentCountLabel = UILabel()
         commentCountLabel.numberOfLines = 0
+        commentCountLabel.font = UIFont.systemFont(ofSize: 12)
+        commentCountLabel.textColor = secondaryColor
         
         timeLabel = UILabel()
         timeLabel.numberOfLines = 0
+        timeLabel.font = UIFont.systemFont(ofSize: 8)
+        timeLabel.textColor = secondaryColor
         
         contentView.addSubview(photoImageView)
         contentView.addSubview(heartButton)
@@ -79,19 +87,27 @@ class PostListCollectionCell: UICollectionViewCell {
         
         rect.origin.x = spacing * 2
         rect.origin.y = rect.size.height + (spacing * 2)
-        rect.size = heartButton.sizeThatFits(.zero)
+        rect.size = CGSize(width: buttonDimension, height: buttonDimension)
         heartButton.frame = rect
         
-        rect.origin.x += rect.size.width + (spacing * 2)
-        rect.size = commentButton.sizeThatFits(.zero)
+        rect.origin.x += rect.size.width + (spacing * 4)
         commentButton.frame = rect
         
         rect.origin.x = spacing * 2
-        rect.origin.y += max(heartButton.frame.size.height, commentButton.frame.size.height)
         rect.origin.y += (spacing * 2)
+        rect.origin.y += rect.size.height
         rect.size.height = 1
         rect.size.width = contentView.bounds.width - (spacing * 4)
         stripView.frame = rect
+        
+        if let text = likeCountLabel.text, !text.isEmpty {
+            rect.origin.y += (spacing * 2) + rect.size.height
+            rect.size.height = likeCountLabel.sizeThatFits(rect.size).height
+            likeCountLabel.frame = rect
+            
+        } else {
+            likeCountLabel.frame = .zero
+        }
         
         if let text = messageLabel.text, !text.isEmpty {
             rect.origin.y += (spacing * 2) + rect.size.height
@@ -132,6 +148,18 @@ extension PostListCollectionCell {
     
     var spacing: CGFloat {
         return 4
+    }
+    
+    var buttonDimension: CGFloat {
+        return 24
+    }
+    
+    var secondaryColor: UIColor {
+        return UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
+    }
+    
+    var primaryColor: UIColor {
+        return UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
     }
 }
 
