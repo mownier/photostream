@@ -79,7 +79,7 @@ class UserPostGridViewController: UICollectionViewController {
         let frame = CGRect(origin: .zero, size: size)
         
         flowLayout = UICollectionViewFlowLayout()
-        flowLayout.configure(with: size.width, columnCount: 3)
+        configureFlowLayout(with: size)
 
         collectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
         collectionView!.delegate = self
@@ -93,7 +93,7 @@ class UserPostGridViewController: UICollectionViewController {
         refreshView = UIRefreshControl()
         refreshView.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
         
-        PostGridCollectionCell.register(in: collectionView!)
+        registerCell()
         
         let barItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(self.signOut))
         navigationItem.rightBarButtonItem = barItem
@@ -133,6 +133,14 @@ class UserPostGridViewController: UICollectionViewController {
     
     func signOut() {
         try? FIRAuth.auth()?.signOut()
+    }
+    
+    func configureFlowLayout(with size: CGSize) {
+        flowLayout.configure(with: size.width, columnCount: 3)
+    }
+    
+    func registerCell() {
+        PostGridCollectionCell.register(in: collectionView!)
     }
 }
 
