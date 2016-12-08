@@ -33,9 +33,11 @@ class PostListCollectionHeader: UICollectionReusableView {
         avatarImageView.cornerRadius = avatarDimension / 2
         
         displayNameLabel = UILabel()
+        displayNameLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
+        displayNameLabel.font = UIFont.boldSystemFont(ofSize: 12)
         
         stripView = UIView()
-        stripView.backgroundColor = UIColor.lightGray
+        stripView.backgroundColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1)
         
         addSubview(avatarImageView)
         addSubview(displayNameLabel)
@@ -56,7 +58,7 @@ class PostListCollectionHeader: UICollectionReusableView {
         rect.size.width = frame.size.width
         rect.size.width -= rect.origin.x
         rect.size.width -= (spacing * 2)
-        rect.size.height -= displayNameLabel.sizeThatFits(.zero).height
+        rect.size.height = displayNameLabel.sizeThatFits(.zero).height
         rect.origin.y = (frame.size.height - rect.size.height) / 2
         displayNameLabel.frame = rect
         
@@ -71,7 +73,7 @@ class PostListCollectionHeader: UICollectionReusableView {
 extension PostListCollectionHeader {
     
     var avatarDimension: CGFloat {
-        return 32
+        return 28
     }
     
     var spacing: CGFloat {

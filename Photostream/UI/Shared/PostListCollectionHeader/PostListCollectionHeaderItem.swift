@@ -49,7 +49,7 @@ extension PostListCollectionHeader: PostListCollectionHeaderConfig {
         let width: CGFloat = avatarDimension
         let height: CGFloat = avatarDimension
         let frame = CGRect(x: 0, y: 0, width: width, height: height)
-        let font = UIFont.systemFont(ofSize: 15)
+        let font = UIFont.systemFont(ofSize: 12)
         let text: String = initial
         let placeholderImage = UILabel.createPlaceholderImageWithFrame(frame, text: text, font: font)
         return placeholderImage
