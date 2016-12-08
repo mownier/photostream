@@ -27,6 +27,8 @@ extension UserPostModule {
 
 extension UserPostDataItem: PostGridCollectionCellItem { }
 
+extension UserPostDataItem: PostListCollectionHeaderItem { }
+
 extension UserPostDataItem: PostListCollectionCellItem {
     
     var timeAgo: String {
