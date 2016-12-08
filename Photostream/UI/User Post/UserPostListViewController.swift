@@ -20,6 +20,20 @@ class UserPostListViewController: UserPostGridViewController {
         return 1
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let header = PostListCollectionHeader.dequeue(from: collectionView, for: indexPath)!
+            let item = presenter.post(at: indexPath.section) as? PostListCollectionHeaderItem
+            header.configure(with: item)
+            return header
+            
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = PostListCollectionCell.dequeue(from: collectionView, for: indexPath)!
         let item = presenter.post(at: indexPath.section) as? PostListCollectionCellItem
@@ -37,12 +51,14 @@ class UserPostListViewController: UserPostGridViewController {
     
     override func configureFlowLayout(with size: CGSize) {
         flowLayout.configure(with: size.width, columnCount: 1)
-        
+        flowLayout.headerReferenceSize = CGSize(width: size.width, height: 48)
+        flowLayout.sectionHeadersPinToVisibleBounds = true
         prototype.contentView.bounds.size.width = flowLayout.itemSize.width
     }
     
     override func registerCell() {
         PostListCollectionCell.register(in: collectionView!)
+        PostListCollectionHeader.register(in: collectionView!)
     }
 }
 
