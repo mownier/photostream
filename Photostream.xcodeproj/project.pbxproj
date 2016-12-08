@@ -256,6 +256,8 @@
 		B9DEB2691DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */; };
 		B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */; };
 		B9E631151DF915F600158632 /* PostListCollectionCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */; };
+		B9E631181DF9359500158632 /* PostListCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631171DF9359500158632 /* PostListCollectionHeader.swift */; };
+		B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */; };
 		B9F95E411DF7CF420090C73E /* PostGridCollectionCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F95E401DF7CF420090C73E /* PostGridCollectionCellItem.swift */; };
 		B9F95E441DF7DB170090C73E /* GhostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F95E431DF7DB170090C73E /* GhostView.swift */; };
 		B9F95E471DF7EA8F0090C73E /* PostListCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F95E461DF7EA8F0090C73E /* PostListCollectionCell.swift */; };
@@ -530,6 +532,8 @@
 		B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoShareModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionCellItem.swift; sourceTree = "<group>"; };
+		B9E631171DF9359500158632 /* PostListCollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionHeader.swift; sourceTree = "<group>"; };
+		B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionHeaderItem.swift; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
 		B9F95E401DF7CF420090C73E /* PostGridCollectionCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCollectionCellItem.swift; sourceTree = "<group>"; };
 		B9F95E431DF7DB170090C73E /* GhostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostView.swift; sourceTree = "<group>"; };
@@ -1462,6 +1466,7 @@
 				B94AB2DA1DF6A2D600313254 /* PostGridCollectionCell */,
 				B9C2177B1DCC40F900F617FC /* PostListCell */,
 				B9F95E451DF7EA730090C73E /* PostListCollectionCell */,
+				B9E631161DF9357400158632 /* PostListCollectionHeader */,
 				B9C217801DCC40F900F617FC /* PostListFooter */,
 				B9C217821DCC40F900F617FC /* PostListHeader */,
 			);
@@ -1823,6 +1828,15 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		B9E631161DF9357400158632 /* PostListCollectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				B9E631171DF9359500158632 /* PostListCollectionHeader.swift */,
+				B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */,
+			);
+			path = PostListCollectionHeader;
+			sourceTree = "<group>";
+		};
 		B9F7A6CB1DD0383B00D9B55D /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -2131,6 +2145,7 @@
 				B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */,
 				B99B497E1DEC1E68001B9C5A /* BaseModuleView.swift in Sources */,
 				B9D4968A1DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift in Sources */,
+				B9E631181DF9359500158632 /* PostListCollectionHeader.swift in Sources */,
 				B9C217CF1DCC40F900F617FC /* UserProfileModuleInterface.swift in Sources */,
 				B941310A1DEE9C0F00DD10CE /* CommentFeedModule.swift in Sources */,
 				B9C218071DCC40F900F617FC /* PostListFooter.swift in Sources */,
@@ -2242,6 +2257,7 @@
 				B941310B1DEE9C0F00DD10CE /* CommentFeedModuleInterface.swift in Sources */,
 				B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */,
 				B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */,
+				B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */,
 				B94AB2CD1DF692F000313254 /* UserPostModule.swift in Sources */,
 				B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */,
 				B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */,
