@@ -255,8 +255,10 @@
 		B9DEB2671DDEE18300C47C37 /* PhotoShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2661DDEE18300C47C37 /* PhotoShareViewController.swift */; };
 		B9DEB2691DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */; };
 		B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */; };
+		B9E631151DF915F600158632 /* PostListCollectionCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */; };
 		B9F95E411DF7CF420090C73E /* PostGridCollectionCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F95E401DF7CF420090C73E /* PostGridCollectionCellItem.swift */; };
 		B9F95E441DF7DB170090C73E /* GhostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F95E431DF7DB170090C73E /* GhostView.swift */; };
+		B9F95E471DF7EA8F0090C73E /* PostListCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F95E461DF7EA8F0090C73E /* PostListCollectionCell.swift */; };
 		B9FCB9661DE408DC00D8F2B5 /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -527,9 +529,11 @@
 		B9DEB2661DDEE18300C47C37 /* PhotoShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareViewController.swift; sourceTree = "<group>"; };
 		B9DEB2681DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotoShareModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
+		B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionCellItem.swift; sourceTree = "<group>"; };
 		B9F4343D1DBB172500A7C87D /* Photostream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Photostream.entitlements; sourceTree = "<group>"; };
 		B9F95E401DF7CF420090C73E /* PostGridCollectionCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCollectionCellItem.swift; sourceTree = "<group>"; };
 		B9F95E431DF7DB170090C73E /* GhostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GhostView.swift; sourceTree = "<group>"; };
+		B9F95E461DF7EA8F0090C73E /* PostListCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionCell.swift; sourceTree = "<group>"; };
 		B9FCB9651DE408DC00D8F2B5 /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		BE81CA90BDCD8694B0C4B8D3 /* Pods-Photostream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photostream.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photostream/Pods-Photostream.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1457,6 +1461,7 @@
 				B9C217671DCC40F900F617FC /* PostCellLoader */,
 				B94AB2DA1DF6A2D600313254 /* PostGridCollectionCell */,
 				B9C2177B1DCC40F900F617FC /* PostListCell */,
+				B9F95E451DF7EA730090C73E /* PostListCollectionCell */,
 				B9C217801DCC40F900F617FC /* PostListFooter */,
 				B9C217821DCC40F900F617FC /* PostListHeader */,
 			);
@@ -1834,6 +1839,15 @@
 			path = GhostView;
 			sourceTree = "<group>";
 		};
+		B9F95E451DF7EA730090C73E /* PostListCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				B9F95E461DF7EA8F0090C73E /* PostListCollectionCell.swift */,
+				B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */,
+			);
+			path = PostListCollectionCell;
+			sourceTree = "<group>";
+		};
 		D281ADAE6A0B74DF75AA42E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2095,6 +2109,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9E631151DF915F600158632 /* PostListCollectionCellItem.swift in Sources */,
 				B954EE511DE0325400A0049D /* PostUploadModuleInterface.swift in Sources */,
 				B9C218051DCC40F900F617FC /* PostListCellItem.swift in Sources */,
 				B9C217EA1DCC40F900F617FC /* LoginViewController.swift in Sources */,
@@ -2204,6 +2219,7 @@
 				B94131101DEE9C0F00DD10CE /* CommentWireframe.swift in Sources */,
 				B9C217C61DCC40F900F617FC /* RegistrationPresenterInterface.swift in Sources */,
 				B9C2179F1DCC40F900F617FC /* UserProfileExtension.swift in Sources */,
+				B9F95E471DF7EA8F0090C73E /* PostListCollectionCell.swift in Sources */,
 				B9FCB9661DE408DC00D8F2B5 /* UIPageViewController+Extension.swift in Sources */,
 				B9DEB25F1DDEDE4400C47C37 /* PhotoShareWireframeInterface.swift in Sources */,
 				B94AB2CF1DF693B500313254 /* UserPostPresenter.swift in Sources */,
