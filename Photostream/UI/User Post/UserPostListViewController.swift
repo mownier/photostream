@@ -38,6 +38,7 @@ class UserPostListViewController: UserPostGridViewController {
         let cell = PostListCollectionCell.dequeue(from: collectionView, for: indexPath)!
         let item = presenter.post(at: indexPath.section) as? PostListCollectionCellItem
         cell.configure(with: item)
+        cell.delegate = self
         return cell
     }
     
@@ -69,5 +70,39 @@ extension UserPostListViewController: UICollectionViewDelegateFlowLayout {
         prototype.configure(with: item, isPrototype: true)
         let size = CGSize(width: flowLayout.itemSize.width, height: prototype.dynamicHeight)
         return size
+    }
+}
+
+extension UserPostListViewController: PostListCollectionCellDelegate {
+    
+    func didTapPhoto(cell: PostListCollectionCell) {
+        guard let indexPath = collectionView!.indexPath(for: cell) else {
+            return
+        }
+        
+        presenter.likePost(at: indexPath.section)
+    }
+    
+    func didTapHeart(cell: PostListCollectionCell) {
+        guard let indexPath = collectionView!.indexPath(for: cell),
+            let post = presenter.post(at: indexPath.section) else {
+            return
+        }
+        
+        cell.toggleHeart(liked: post.isLiked) { 
+            self.presenter.toggleLike(at: indexPath.section)
+        }
+    }
+    
+    func didTapComment(cell: PostListCollectionCell) {
+        
+    }
+    
+    func didTapCommentCount(cell: PostListCollectionCell) {
+        
+    }
+    
+    func didTapLikeCount(cell: PostListCollectionCell) {
+        
     }
 }
