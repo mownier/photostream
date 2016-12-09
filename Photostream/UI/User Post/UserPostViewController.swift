@@ -1,5 +1,5 @@
 //
-//  UserPostGridViewController.swift
+//  UserPostViewController.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 06/12/2016.
@@ -9,14 +9,39 @@
 import UIKit
 import FirebaseAuth
 
-class UserPostGridViewController: UICollectionViewController {
+enum UserPostSceneType {
+    case grid
+    case list
+}
 
-    var flowLayout: UICollectionViewFlowLayout!
+class UserPostViewController: UICollectionViewController {
+    
     var loadingView: UIActivityIndicatorView!
     var refreshView: UIRefreshControl!
     
     var presenter: UserPostModuleInterface!
+    var sceneType: UserPostSceneType = .grid {
+        didSet {
+            guard sceneType != oldValue else {
+                return
+            }
+            
+            reloadView()
+            collectionView!.collectionViewLayout.invalidateLayout()
+            
+            switch sceneType {
+            case .grid:
+                collectionView!.setCollectionViewLayout(gridLayout, animated: false)
+            
+            case .list:
+                collectionView!.setCollectionViewLayout(listLayout, animated: false)
+            }
+        }
+    }
     
+    lazy var gridLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    lazy var listLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    lazy var prototype: PostListCollectionCell! = PostListCollectionCell()
     lazy var emptyView: GhostView! = {
         let view = GhostView()
         view.titleLabel.text = "No posts"
@@ -78,10 +103,20 @@ class UserPostGridViewController: UICollectionViewController {
         let size = UIScreen.main.bounds.size
         let frame = CGRect(origin: .zero, size: size)
         
-        flowLayout = UICollectionViewFlowLayout()
-        configureFlowLayout(with: size)
+        gridLayout.configure(with: size.width, columnCount: 3)
+        
+        listLayout.configure(with: size.width, columnCount: 1)
+        listLayout.headerReferenceSize = CGSize(width: size.width, height: 48)
+        listLayout.sectionHeadersPinToVisibleBounds = true
 
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
+        switch sceneType {
+        case .grid:
+            collectionView = UICollectionView(frame: frame, collectionViewLayout: gridLayout)
+        
+        case .list:
+            collectionView = UICollectionView(frame: frame, collectionViewLayout: listLayout)
+        }
+        
         collectionView!.delegate = self
         collectionView!.dataSource = self
         collectionView!.alwaysBounceVertical = true
@@ -93,10 +128,38 @@ class UserPostGridViewController: UICollectionViewController {
         refreshView = UIRefreshControl()
         refreshView.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
         
-        registerCell()
+        PostGridCollectionCell.register(in: collectionView!)
+        PostListCollectionCell.register(in: collectionView!)
+        PostListCollectionHeader.register(in: collectionView!)
         
-        let barItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(self.signOut))
+        prototype.contentView.bounds.size.width = size.width
+        
+        var barItem = UIBarButtonItem(
+            title: "Sign out",
+            style: .plain,
+            target: self,
+            action: #selector(self.signOut))
+        
         navigationItem.rightBarButtonItem = barItem
+        
+        var leftTitle = ""
+        
+        switch sceneType {
+        case .grid:
+            leftTitle = "Grid"
+            
+        case .list:
+            leftTitle = "List"
+        }
+        
+        barItem = UIBarButtonItem(
+            title: leftTitle,
+            style: .plain,
+            target: self,
+            action: #selector(self.toggleScene))
+        
+        navigationItem.leftBarButtonItem = barItem
+        
         navigationItem.title = "User Post"
         
         view = collectionView
@@ -108,25 +171,6 @@ class UserPostGridViewController: UICollectionViewController {
         presenter.refreshPosts()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.postCount
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = PostGridCollectionCell.dequeue(from: collectionView, for: indexPath)!
-        let item = presenter.post(at: indexPath.row) as? PostGridCollectionCellItem
-        cell.configure(with: item)
-        return cell
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard indexPath.row == presenter.postCount - 10 else {
-            return
-        }
-        
-        presenter.loadMorePosts()
-    }
-    
     func triggerRefresh() {
         presenter.refreshPosts()
     }
@@ -135,16 +179,29 @@ class UserPostGridViewController: UICollectionViewController {
         try? FIRAuth.auth()?.signOut()
     }
     
-    func configureFlowLayout(with size: CGSize) {
-        flowLayout.configure(with: size.width, columnCount: 3)
-    }
-    
-    func registerCell() {
-        PostGridCollectionCell.register(in: collectionView!)
+    func toggleScene() {
+        var leftTitle = ""
+        switch sceneType {
+        case .list:
+            leftTitle = "Grid"
+            sceneType = .grid
+        
+        case .grid:
+            leftTitle = "List"
+            sceneType = .list
+        }
+        
+        let barItem = UIBarButtonItem(
+            title: leftTitle,
+            style: .plain,
+            target: self,
+            action: #selector(self.toggleScene))
+        
+        navigationItem.leftBarButtonItem = barItem
     }
 }
 
-extension UserPostGridViewController: UserPostScene {
+extension UserPostViewController: UserPostScene {
     
     var controller: UIViewController? {
         return self
@@ -194,3 +251,4 @@ extension UserPostGridViewController: UserPostScene {
         
     }
 }
+
