@@ -11,8 +11,7 @@ import DateTools
 extension UserPostModule {
     
     convenience init(sceneType: UserPostSceneType = .grid) {
-        let scene = UserPostViewController()
-        scene.sceneType = sceneType
+        let scene = UserPostViewController(type: sceneType)
         self.init(view: scene)
     }
 }
