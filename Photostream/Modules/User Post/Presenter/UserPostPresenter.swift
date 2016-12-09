@@ -80,6 +80,18 @@ extension UserPostPresenter: UserPostModuleInterface {
         interactor.unlike(post: post.id)
     }
     
+    func toggleLike(at index: Int) {
+        guard let post = post(at: index) else {
+            return
+        }
+        
+        if post.isLiked {
+            unlikePost(at: index)
+        } else {
+            likePost(at: index)
+        }
+    }
+    
     func post(at index: Int) -> UserPostData? {
         guard posts.isValid(index) else {
             return nil

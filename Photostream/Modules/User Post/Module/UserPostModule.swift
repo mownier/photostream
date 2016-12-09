@@ -15,6 +15,7 @@ protocol UserPostModuleInterface: BaseModuleInterface {
     
     func unlikePost(at index: Int)
     func likePost(at index: Int)
+    func toggleLike(at index: Int)
     
     func post(at index: Int) -> UserPostData?
 }
