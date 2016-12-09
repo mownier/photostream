@@ -8,20 +8,12 @@
 
 import DateTools
 
-enum UserPostSceneType {
-    case grid
-    case list
-}
-
 extension UserPostModule {
     
-    convenience init(sceneType: UserPostSceneType) {
-        switch sceneType {
-        case .grid:
-            self.init(view: UserPostGridViewController())
-        case .list:
-            self.init(view: UserPostListViewController())
-        }
+    convenience init(sceneType: UserPostSceneType = .grid) {
+        let scene = UserPostViewController()
+        scene.sceneType = sceneType
+        self.init(view: scene)
     }
 }
 

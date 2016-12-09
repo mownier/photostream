@@ -72,7 +72,7 @@ extension HomeWireframe {
         
         let auth = AuthSession()
         controller.viewControllers?.removeLast()
-        let module = UserPostModule(sceneType: .list)
+        let module = UserPostModule()
         module.build(root: nil, userId: auth.user.id)
         
         let nav = UINavigationController(rootViewController: module.view.controller!)
