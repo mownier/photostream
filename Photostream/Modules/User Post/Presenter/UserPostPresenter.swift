@@ -43,11 +43,13 @@ extension UserPostPresenter: UserPostModuleInterface {
     
     func refreshPosts() {
         interactor.fetchNew(with: userId, and: limit)
+         view.hideEmptyView()
         if postCount == 0 {
-            view.hideEmptyView()
             view.showInitialLoadView()
+            
+        } else {
+            view.showRefreshView()
         }
-        view.showRefreshView()
     }
     
     func loadMorePosts() {

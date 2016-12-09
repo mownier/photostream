@@ -93,10 +93,6 @@ class UserPostViewController: UICollectionViewController {
     
     var shouldShowRefreshView: Bool = false {
         didSet {
-            guard shouldShowRefreshView != oldValue else {
-                return
-            }
-            
             if refreshView.superview == nil {
                 collectionView?.addSubview(refreshView)
             }
