@@ -6,10 +6,21 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Spring
+
+protocol PostListCollectionCellDelegate: class {
+    
+    func didTapPhoto(cell: PostListCollectionCell)
+    func didTapHeart(cell: PostListCollectionCell)
+    func didTapComment(cell: PostListCollectionCell)
+    func didTapCommentCount(cell: PostListCollectionCell)
+    func didTapLikeCount(cell: PostListCollectionCell)
+}
 
 class PostListCollectionCell: UICollectionViewCell {
 
+    weak var delegate: PostListCollectionCellDelegate?
+    
     var photoImageView: UIImageView!
     var heartButton: UIButton!
     var commentButton: UIButton!
@@ -35,6 +46,7 @@ class PostListCollectionCell: UICollectionViewCell {
         photoImageView.contentMode = .scaleAspectFill
         photoImageView.clipsToBounds = true
         photoImageView.backgroundColor = UIColor.lightGray
+        photoImageView.isUserInteractionEnabled = true
         
         heartButton = UIButton()
         heartButton.addTarget(self, action: #selector(self.didTapHeart), for: .touchUpInside)
@@ -51,6 +63,7 @@ class PostListCollectionCell: UICollectionViewCell {
         likeCountLabel.numberOfLines = 0
         likeCountLabel.font = UIFont.boldSystemFont(ofSize: 12)
         likeCountLabel.textColor = primaryColor
+        likeCountLabel.isUserInteractionEnabled = true
         
         messageLabel = UILabel()
         messageLabel.numberOfLines = 0
@@ -61,11 +74,24 @@ class PostListCollectionCell: UICollectionViewCell {
         commentCountLabel.numberOfLines = 0
         commentCountLabel.font = UIFont.systemFont(ofSize: 12)
         commentCountLabel.textColor = secondaryColor
+        commentCountLabel.isUserInteractionEnabled = true
         
         timeLabel = UILabel()
         timeLabel.numberOfLines = 0
         timeLabel.font = UIFont.systemFont(ofSize: 8)
         timeLabel.textColor = secondaryColor
+        
+        var tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapPhoto))
+        tap.numberOfTapsRequired = 2
+        photoImageView.addGestureRecognizer(tap)
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapCommentCount))
+        tap.numberOfTapsRequired = 1
+        commentCountLabel.addGestureRecognizer(tap)
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapLikeCount))
+        tap.numberOfTapsRequired = 1
+        likeCountLabel.addGestureRecognizer(tap)
         
         contentView.addSubview(photoImageView)
         contentView.addSubview(heartButton)
@@ -136,11 +162,81 @@ class PostListCollectionCell: UICollectionViewCell {
 extension PostListCollectionCell {
     
     func didTapHeart() {
-        
+        delegate?.didTapHeart(cell: self)
     }
     
     func didTapComment() {
+        delegate?.didTapComment(cell: self)
+    }
+    
+    func didTapPhoto() {
+        animateHeartButton { }
+        showAnimatedHeart {
+            self.delegate?.didTapPhoto(cell: self)
+        }
+    }
+    
+    func didTapCommentCount() {
+        delegate?.didTapCommentCount(cell: self)
+    }
+    
+    func didTapLikeCount() {
+        delegate?.didTapLikeCount(cell: self)
+    }
+}
+
+extension PostListCollectionCell {
+    
+    func showAnimatedHeart(completion: @escaping () -> Void) {
+        let heart = SpringImageView(image: #imageLiteral(resourceName: "heart_pink"))
+        heart.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
+        photoImageView.addSubviewAtCenter(heart)
+        heart.autohide = true
+        heart.autostart = false
+        heart.animation = "pop"
+        heart.duration = 1.0
+        heart.animateToNext {
+            heart.animation = "fadeOut"
+            heart.duration = 0.5
+            heart.animateToNext {
+                heart.removeFromSuperview()
+                completion()
+            }
+        }
+    }
+    
+    func animateHeartButton(completion: @escaping () -> Void) {
+        heartButton.isHidden = true
+        let heart = SpringImageView(image: #imageLiteral(resourceName: "heart_pink"))
+        heart.frame = heartButton.frame
+        contentView.addSubview(heart)
         
+        heart.autohide = true
+        heart.autostart = false
+        heart.animation = "pop"
+        heart.duration = 1.0
+        heart.animateToNext {
+            heart.removeFromSuperview()
+            self.heartButton.setImage(#imageLiteral(resourceName: "heart_pink"), for: .normal)
+            self.heartButton.isHidden = false
+            completion()
+        }
+    }
+}
+
+extension PostListCollectionCell {
+       
+    func toggleHeart(liked: Bool, completion: @escaping() -> Void) {
+        if liked {
+            heartButton.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
+            completion()
+
+        } else {
+            animateHeartButton { }
+            showAnimatedHeart {
+                completion()
+            }
+        }
     }
 }
 
