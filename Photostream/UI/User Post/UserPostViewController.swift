@@ -29,13 +29,25 @@ class UserPostViewController: UICollectionViewController {
             reloadView()
             collectionView!.collectionViewLayout.invalidateLayout()
             
+            var leftTitle = ""
+            
             switch sceneType {
             case .grid:
+                leftTitle = "Grid"
                 collectionView!.setCollectionViewLayout(gridLayout, animated: false)
             
             case .list:
+                leftTitle = "List"
                 collectionView!.setCollectionViewLayout(listLayout, animated: false)
             }
+            
+            let barItem = UIBarButtonItem(
+                title: leftTitle,
+                style: .plain,
+                target: self,
+                action: #selector(self.toggleScene))
+            
+            navigationItem.leftBarButtonItem = barItem
         }
     }
     
@@ -180,24 +192,13 @@ class UserPostViewController: UICollectionViewController {
     }
     
     func toggleScene() {
-        var leftTitle = ""
         switch sceneType {
         case .list:
-            leftTitle = "Grid"
             sceneType = .grid
         
         case .grid:
-            leftTitle = "List"
             sceneType = .list
         }
-        
-        let barItem = UIBarButtonItem(
-            title: leftTitle,
-            style: .plain,
-            target: self,
-            action: #selector(self.toggleScene))
-        
-        navigationItem.leftBarButtonItem = barItem
     }
 }
 
