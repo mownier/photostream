@@ -10,3 +10,48 @@ protocol UserProfileModuleInterface: BaseModuleInterface {
     
     func fetchUserProfile()
 }
+
+protocol UserProfileBuilder: BaseModuleBuilder {
+    
+    func build(root: RootWireframe?, userId: String)
+}
+
+class UserProfileModule: BaseModule, BaseModuleInteractable {
+    
+    typealias ModuleView = UserProfileScene
+    typealias ModuleInteractor = UserProfileInteractor
+    typealias ModulePresenter = UserProfilePresenter
+    typealias ModuleWireframe = UserProfileWireframe
+    
+    var view: ModuleView!
+    var interactor: ModuleInteractor!
+    var presenter: ModulePresenter!
+    var wireframe: ModuleWireframe!
+
+    required init(view: ModuleView) {
+        self.view = view
+    }
+}
+
+extension UserProfileModule: UserProfileBuilder {
+    
+    func build(root: RootWireframe?) {
+        let service = UserServiceProvider(session: AuthSession())
+        
+        interactor = UserProfileInteractor(service: service)
+        presenter = UserProfilePresenter()
+        wireframe = UserProfileWireframe(root: root)
+        
+        interactor.output = presenter
+        view.presenter = presenter
+        
+        presenter.interactor = interactor
+        presenter.view = view
+        presenter.wireframe = wireframe
+    }
+    
+    func build(root: RootWireframe?, userId: String) {
+        build(root: root)
+        presenter.userId = userId
+    }
+}
