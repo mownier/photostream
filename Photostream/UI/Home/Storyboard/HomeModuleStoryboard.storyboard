@@ -37,16 +37,6 @@
             </objects>
             <point key="canvasLocation" x="706" y="92"/>
         </scene>
-        <!--UserProfileModuleRoot-->
-        <scene sceneID="Pwe-gc-tX5">
-            <objects>
-                <viewControllerPlaceholder storyboardName="UserProfileModuleStoryboard" referencedIdentifier="UserProfileModuleRoot" id="q4W-oq-LRh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rK5-oS-RSS"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="axw-N4-3zs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="26.5" y="420"/>
-        </scene>
         <!--Home View Controller-->
         <scene sceneID="Rbu-cy-Rhq">
             <objects>
@@ -59,7 +49,6 @@
                     <connections>
                         <segue destination="Aca-U4-N0C" kind="relationship" relationship="viewControllers" id="pZ9-Vj-C6R"/>
                         <segue destination="VjO-eJ-Adb" kind="relationship" relationship="viewControllers" id="QzJ-e8-qQE"/>
-                        <segue destination="q4W-oq-LRh" kind="relationship" relationship="viewControllers" id="6he-W7-zb8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXn-Wy-Ri4" userLabel="First Responder" sceneMemberID="firstResponder"/>

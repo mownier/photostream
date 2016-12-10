@@ -71,7 +71,6 @@ extension HomeWireframe {
         dependencies?.append(feedVC.presenter as! HomeModuleDependency)
         
         let auth = AuthSession()
-        controller.viewControllers?.removeLast()
         let module = UserPostModule()
         module.build(root: nil, userId: auth.user.id)
         
