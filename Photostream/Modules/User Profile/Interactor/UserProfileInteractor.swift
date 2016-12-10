@@ -2,101 +2,68 @@
 //  UserProfileInteractor.swift
 //  Photostream
 //
-//  Created by Mounir Ybanez on 26/08/2016.
+//  Created by Mounir Ybanez on 10/12/2016.
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
-import FirebaseAuth
+protocol UserProfileInteractorInput: BaseModuleInteractorInput {
+    
+    func fetchProfile(user id: String)
+}
 
-class UserProfileInteractor: UserProfileInteractorInput {
+protocol UserProfileInteractorOutput: BaseModuleInteractorOutput {
+    
+    func userProfileDidFetch(with data: UserProfileData)
+    func userProfileDidFetch(with error: UserServiceError)
+}
 
-    var output: UserProfileInteractorOutput!
-    var service: UserProfileService!
-    var postService: PostService!
-    var userId: String!
+protocol UserProfileInteractorInterface: BaseModuleInteractor {
+    
+    var service: UserService! { set get }
+    
+    init(service: UserService)
+}
 
-    init(service: UserProfileService, userId: String?) {
+class UserProfileInteractor: UserProfileInteractorInterface {
+
+    typealias Output = UserProfileInteractorOutput
+    
+    weak var output: Output?
+    
+    var service: UserService!
+    
+    required init(service: UserService) {
         self.service = service
-        if userId != nil {
-            self.userId = userId
-        } else {
-            self.userId = FIRAuth.auth()?.currentUser?.uid
-        }
     }
+}
 
-    func fetchUserProfile() {
-        service.user.fetchProfile(id: userId) { (result) in
-            if let error = result.error {
-                self.output.userProfileDidFetchWithError(error)
-            } else {
-                let data = self.parseUserProfileData(result)
-                self.output.userProfileDidFetchOk(data)
-            }
-        }
-    }
-
-    func fetchUserPosts(_ limit: Int) {
-        service.post.fetchPosts(userId: userId, offset: "", limit: 10) { (result) in
-            guard result.error == nil  else {
-                self.output.userProfileDidFetchPostsWithError(result.error!)
+extension UserProfileInteractor: UserProfileInteractorInput {
+    
+    func fetchProfile(user id: String) {
+        service.fetchProfile(id: id) { (result) in
+            guard result.error == nil else {
+                self.output?.userProfileDidFetch(with: result.error!)
                 return
             }
             
-            let data = self.parseUserPostDataList(result.posts)
-            self.output.userProfileDidFetchPostsOk(data)
+            guard let profile = result.profile, let user = result.user else {
+                let error: UserServiceError = .failedToFetchProfile(message: "Profile not found")
+                self.output?.userProfileDidFetch(with: error)
+                return
+            }
+            
+            var item = UserProfileDataItem()
+            item.id = user.id
+            item.firstName = user.firstName
+            item.lastName = user.lastName
+            item.username = user.username
+            
+            item.bio = profile.bio
+            item.postCount = profile.postsCount
+            item.followerCount = profile.followersCount
+            item.followingCount = profile.followingCount
+            
+            self.output?.userProfileDidFetch(with: item)
         }
-    }
-
-    func likePost(_ postId: String) {
-
-    }
-
-    func unlikePost(_ postId: String) {
-
-    }
-
-    fileprivate func parseUserProfileData(_ result: UserServiceProfileResult) -> UserProfileData {
-        var data = UserProfileData()
-        data.followersCount = result.profile!.followersCount
-        data.followingCount = result.profile!.followingCount
-        data.postsCount = result.profile!.postsCount
-        data.avatarUrl = result.user!.avatarUrl
-        data.fullName = result.user!.fullName
-        data.userId = result.user!.id
-        data.username = result.user!.username
-        data.bio = result.profile!.bio
-        return data
-    }
-
-    fileprivate func parseUserPostDataList(_ posts: PostList?) -> UserProfilePostDataList {
-        guard posts != nil else {
-            return UserProfilePostDataList()
-        }
-        
-        let data = UserProfilePostDataList()
-//        for i in 0..<posts!.count {
-//            if let (post, user) = posts![i] {
-//                var postItem = UserProfilePostData()
-//                postItem.message = post.message
-//                postItem.id = post.id
-//                postItem.comments = post.commentsCount
-//                postItem.likes = post.likesCount
-//                postItem.isLiked = post.isLiked
-//                postItem.timestamp = post.timestamp / 1000
-//                postItem.userId = user.id
-//                postItem.photoUrl = post.photo.url
-//                postItem.photoWidth = post.photo.width
-//                postItem.photoHeight  = post.photo.height
-//
-//                var userItem = UserProfilePostAuthorData()
-//                userItem.userId = user.id
-//                userItem.avatarUrl = user.avatarUrl
-//                userItem.displayName = user.displayName
-//
-//                data.add(postItem, userItem: userItem)
-//            }
-//        }
-        return data
     }
 }

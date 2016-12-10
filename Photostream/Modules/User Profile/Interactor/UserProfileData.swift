@@ -2,31 +2,34 @@
 //  UserProfileData.swift
 //  Photostream
 //
-//  Created by Mounir Ybanez on 26/08/2016.
+//  Created by Mounir Ybanez on 10/12/2016.
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+protocol UserProfileData {
 
-struct UserProfileData {
+    var id: String { set get }
+    var username: String { set get }
+    var firstName: String { set get }
+    var lastName: String { set get }
+    var displayName: String { get }
+    var postCount: Int { set get }
+    var followerCount: Int { set get }
+    var followingCount: Int { set get }
+    var bio: String { set get }
+}
 
-    var userId: String
-    var fullName: String
-    var username: String
-    var avatarUrl: String
-    var postsCount: Int
-    var followersCount: Int
-    var followingCount: Int
-    var bio: String
-
-    init() {
-        userId = ""
-        fullName = ""
-        username = ""
-        avatarUrl = ""
-        bio = ""
-        postsCount = 0
-        followersCount = 0
-        followingCount = 0
+struct UserProfileDataItem: UserProfileData {
+    
+    var id: String = ""
+    var username: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var bio: String = ""
+    var postCount: Int = 0
+    var followerCount: Int = 0
+    var followingCount: Int = 0
+    var displayName: String {
+        return username.isEmpty ? username : firstName
     }
 }
