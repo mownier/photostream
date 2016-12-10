@@ -2,88 +2,48 @@
 //  UserProfilePresenter.swift
 //  Photostream
 //
-//  Created by Mounir Ybanez on 26/08/2016.
+//  Created by Mounir Ybanez on 10/12/2016.
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+protocol UserProfilePresenterInterface: BaseModulePresenter, BaseModuleInteractable {
+    
+    var userId: String! { set get }
+}
 
-class UserProfilePresenter: UserProfileModuleInterface, UserProfileInteractorOutput {
+class UserProfilePresenter: UserProfilePresenterInterface {
 
-    var view: UserProfileViewInterface!
-    var interactor: UserProfileInteractorInput!
-    var wireframe: UserProfileWireframe!
+    typealias ModuleView = UserProfileScene
+    typealias ModuleInteractor = UserProfileInteractorInput
+    typealias ModuleWireframe = UserProfileWireframeInterface
+    
+    weak var view: ModuleView!
+    
+    var interactor: ModuleInteractor!
+    var wireframe: ModuleWireframe!
+    var userId: String!
+}
 
+extension UserProfilePresenter: UserProfileModuleInterface {
+    
+    func exit() {
+        var property = WireframeExitProperty()
+        property.controller = view.controller
+        wireframe.exit(with: property)
+    }
+    
     func fetchUserProfile() {
-        interactor.fetchUserProfile()
+        interactor.fetchProfile(user: userId)
     }
+}
 
-    func fetchUserPosts(_ limit: Int) {
-        interactor.fetchUserPosts(limit)
+extension UserProfilePresenter: UserProfileInteractorOutput {
+
+    func userProfileDidFetch(with data: UserProfileData) {
+        view.didFetchUserProfile(with: data)
     }
-
-    func likePost(_ postId: String) {
-        interactor.likePost(postId)
-    }
-
-    func unlikePost(_ postId: String) {
-        interactor.unlikePost(postId)
-    }
-
-    func showComments(_ postId: String, shouldComment: Bool) {
-        wireframe.navigateCommentsInterface(postId, shouldComment: shouldComment)
-    }
-
-    func showLikes(_ postId: String) {
-        wireframe.navigateLikesInterface(postId)
-    }
-
-    func userProfileDidFetchOk(_ data: UserProfileData) {
-        let item = serialize(data)
-        view.showUserProfile(item)
-    }
-
-    func userProfileDidFetchWithError(_ error: UserServiceError) {
-        view.showError(error.message)
-    }
-
-    func userProfileDidFetchPostsOk(_ data: UserProfilePostDataList) {
-        let (list, grid) = parseList(data)
-        view.showUserPosts(list, grid: grid)
-        view.reloadUserPosts()
-    }
-
-    func userProfileDidFetchPostsWithError(_ error: PostServiceError) {
-        view.showError(error.message)
-    }
-
-    fileprivate func serialize(_ data: UserProfileData) -> UserProfileDisplayItem {
-        var item = UserProfileDisplayItem()
-        item.avatarUrl = data.avatarUrl
-        item.bio = data.bio
-        item.displayName = data.fullName
-        item.username = data.username
-        item.followersCountText = "\(data.followersCount)"
-        item.followingCountText = "\(data.followingCount)"
-        item.postsCountText = "\(data.postsCount)"
-        return item
-    }
-
-    fileprivate func parseList(_ data: UserProfilePostDataList) -> (UserProfilePostListItemArray, UserProfilePostGridItemArray) {
-        let list = UserProfilePostListItemArray()
-        let grid = UserProfilePostGridItemArray()
-//        for i in 0..<data.items.count {
-//            if let item = data.items[i] as? UserProfilePostData {
-//                let parser = UserProfilePostDisplayItemParser(post: item)
-//                let listItem =  parser.serializeCellItem()
-//                list.append(listItem)
-//
-//                var gridItem = PostGridCellItem()
-//                gridItem.postId = post.postId
-//                gridItem.photoUrl = post.photoUrl
-//                grid.append(gridItem)
-//            }
-//        }
-        return (list, grid)
+    
+    func userProfileDidFetch(with error: UserServiceError) {
+        view.didFetchUserProfile(with: error.message)
     }
 }
