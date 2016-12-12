@@ -32,6 +32,7 @@ struct UserServiceProfileResult {
     var user: User?
     var profile: Profile?
     var error: UserServiceError?
+    var isFollowed: Bool = false
 }
 
 struct UserServiceFollowListResult {
