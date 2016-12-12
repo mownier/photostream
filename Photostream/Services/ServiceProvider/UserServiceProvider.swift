@@ -179,39 +179,29 @@ struct UserServiceProvider: UserService {
             return
         }
         
+        let uid = session.user.id
         let path1 = "users/\(id)/"
-        let path2 = "profile"
+        let path2 = "user-profile"
+        let path3 = "user-follower/\(id)/followers/\(uid)"
         let rootRef = FIRDatabase.database().reference()
-        let userRef = rootRef.child(path1)
-        let profRef  = userRef.child(path2)
+        let usersRef = rootRef.child(path1)
+        let profileRef = rootRef.child(path2)
+        let followerRef = rootRef.child(path3)
         
-        userRef.observeSingleEvent(of: .value, with: { (data) in
-            profRef.observeSingleEvent(of: .value, with: { (data2) in
-                var user = User()
-                user.id = data.childSnapshot(forPath: "id").value as! String
-                user.firstName = data.childSnapshot(forPath: "firstname").value as! String
-                user.lastName = data.childSnapshot(forPath: "lastname").value as! String
-                
-                var profile = Profile()
-                profile.userId = user.id
-                
-                if data2.hasChild("posts_count") {
-                    profile.postsCount = data2.childSnapshot(forPath: "posts_count").value as! Int
-                }
-                
-                if data2.hasChild("followers_count") {
-                    profile.followersCount = data2.childSnapshot(forPath: "followers_count").value as! Int
-                }
-                
-                if data2.hasChild("following_count") {
-                    profile.followingCount = data2.childSnapshot(forPath: "following_count").value as! Int
-                }
-                
-                result.user = user
-                result.profile = profile
-                callback?(result)
+        followerRef.observeSingleEvent(of: .value, with: { (follow) in
+            usersRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                profileRef.observeSingleEvent(of: .value, with: { (profileSnapshot) in
+                    let user = User(with: userSnapshot, exception: "email")
+                    let profile = Profile(with: profileSnapshot)
+                    
+                    result.user = user
+                    result.profile = profile
+                    result.isFollowed = follow.exists()
+                    callback?(result)
+                })
             })
         })
+
     }
 
     private func fetchFollowList(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: ((UserServiceFollowListResult) -> Void)?) {
