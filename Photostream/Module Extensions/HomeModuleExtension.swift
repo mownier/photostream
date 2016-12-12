@@ -71,10 +71,13 @@ extension HomeWireframe {
         dependencies?.append(feedVC.presenter as! HomeModuleDependency)
         
         let auth = AuthSession()
-        let module = UserPostModule()
-        module.build(root: nil, userId: auth.user.id)
+        // let module = UserPostModule()
+        // let module = UserProfileModule()
+        // module.build(root: nil, userId: auth.user.id)
+        let userTimeline = UserTimelineViewController()
+        userTimeline.userId = auth.user.id
         
-        let nav = UINavigationController(rootViewController: module.view.controller!)
+        let nav = UINavigationController(rootViewController: userTimeline)
         nav.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "user_line_icon"), selectedImage: #imageLiteral(resourceName: "user_black_icon"))
         nav.tabBarItem.imageInsets.top = 8
         nav.tabBarItem.imageInsets.bottom = -8
@@ -82,7 +85,7 @@ extension HomeWireframe {
         nav.navigationBar.tintColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
         controller.viewControllers?.append(nav)
         
-        module.view.controller!.preloadView()
+        userTimeline.preloadView()
     }
 }
 
