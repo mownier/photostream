@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol ScrollEventListener: class {
+    
+    func didScrollUp(with delta: CGFloat, offsetY: CGFloat)
+    func didScrollDown(with delta: CGFloat, offsetY: CGFloat)
+}
+
 enum ScrollDirection {
     case none
     case down
