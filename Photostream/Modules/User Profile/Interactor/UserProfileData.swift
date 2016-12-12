@@ -9,6 +9,7 @@
 protocol UserProfileData {
 
     var id: String { set get }
+    var avatarUrl: String { set get }
     var username: String { set get }
     var firstName: String { set get }
     var lastName: String { set get }
@@ -17,11 +18,13 @@ protocol UserProfileData {
     var followerCount: Int { set get }
     var followingCount: Int { set get }
     var bio: String { set get }
+    var isFollowed: Bool { set get }
 }
 
 struct UserProfileDataItem: UserProfileData {
     
     var id: String = ""
+    var avatarUrl: String = ""
     var username: String = ""
     var firstName: String = ""
     var lastName: String = ""
@@ -29,7 +32,8 @@ struct UserProfileDataItem: UserProfileData {
     var postCount: Int = 0
     var followerCount: Int = 0
     var followingCount: Int = 0
+    var isFollowed: Bool = false
     var displayName: String {
-        return username.isEmpty ? username : firstName
+        return username.isEmpty ? firstName : username
     }
 }
