@@ -75,3 +75,21 @@ extension UserPostViewController: PostListCollectionCellDelegate {
         
     }
 }
+
+extension UserPostViewController {
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollHandler.isScrollable {
+            if scrollHandler.isScrollingUp {
+                scrollEventListener?.didScrollUp(
+                    with: scrollHandler.offsetDelta,
+                    offsetY: scrollHandler.currentOffsetY )
+            } else if scrollHandler.isScrollingDown {
+                scrollEventListener?.didScrollDown(
+                    with: scrollHandler.offsetDelta,
+                    offsetY: scrollHandler.currentOffsetY)
+            }
+            scrollHandler.update()
+        }
+    }
+}
