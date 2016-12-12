@@ -60,3 +60,22 @@ extension UserPostDataItem: PostListCollectionCellItem {
         }
     }
 }
+
+extension UserPostScene {
+    
+    func assignScrollEventListener(listener: ScrollEventListener) {
+        guard let controller = self as? UserPostViewController else {
+            return
+        }
+        
+        controller.scrollEventListener = listener
+    }
+    
+    func assignSceneType(type: UserPostSceneType) {
+        guard let controller = self as? UserPostViewController else {
+            return
+        }
+        
+        controller.sceneType = type
+    }
+}
