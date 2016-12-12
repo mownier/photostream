@@ -16,6 +16,8 @@ enum UserPostSceneType {
 
 class UserPostViewController: UICollectionViewController {
     
+    weak var scrollEventListener: ScrollEventListener?
+    
     var presenter: UserPostModuleInterface!
     
     lazy var gridLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -41,6 +43,12 @@ class UserPostViewController: UICollectionViewController {
             action: #selector(self.triggerRefresh),
             for: .valueChanged)
         return view
+    }()
+    
+    lazy var scrollHandler: ScrollHandler = {
+        var handler = ScrollHandler()
+        handler.scrollView = self.collectionView
+        return handler
     }()
     
     var sceneType: UserPostSceneType = .grid {
