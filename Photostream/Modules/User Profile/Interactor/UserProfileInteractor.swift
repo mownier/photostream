@@ -54,6 +54,7 @@ extension UserProfileInteractor: UserProfileInteractorInput {
             
             var item = UserProfileDataItem()
             item.id = user.id
+            item.avatarUrl = user.avatarUrl
             item.firstName = user.firstName
             item.lastName = user.lastName
             item.username = user.username
@@ -62,6 +63,8 @@ extension UserProfileInteractor: UserProfileInteractorInput {
             item.postCount = profile.postsCount
             item.followerCount = profile.followersCount
             item.followingCount = profile.followingCount
+            
+            item.isFollowed = result.isFollowed
             
             self.output?.userProfileDidFetch(with: item)
         }
