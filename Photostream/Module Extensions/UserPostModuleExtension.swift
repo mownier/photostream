@@ -78,4 +78,12 @@ extension UserPostScene {
         
         controller.sceneType = type
     }
+    
+    func killScroll() {
+        guard let controller = self as? UserPostViewController else {
+            return
+        }
+        
+        controller.scrollHandler.killScroll()
+    }
 }

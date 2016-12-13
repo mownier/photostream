@@ -76,10 +76,12 @@ extension UserTimelineViewController {
 extension UserTimelineViewController: UserTimelineControlDelegate {
     
     func didSelectList() {
+        userPostPresenter.view.killScroll()
         userPostPresenter.view.assignSceneType(type: .list)
     }
     
     func didSelectGrid() {
+        userPostPresenter.view.killScroll()
         userPostPresenter.view.assignSceneType(type: .grid)
     }
     
