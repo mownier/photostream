@@ -122,7 +122,7 @@ extension UserTimelineViewController: ScrollEventListener {
     func didScrollDown(with delta: CGFloat, offsetY: CGFloat) {
         var frame = userTimelineView.header.frame
         let new = frame.origin.y - abs(delta)
-        frame.origin.y = max(new, -(frame.height - 50))
+        frame.origin.y = max(new, -(frame.height - 49))
         
         userTimelineView.header.frame = frame
         userTimelineView.setNeedsLayout()
