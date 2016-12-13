@@ -61,21 +61,19 @@ class UserTimelineControl: UIView {
     }
     
     func initSetup() {
-        gridButton = UIButton(type: .system)
+        gridButton = UIButton()
         gridButton.setImage(#imageLiteral(resourceName: "grid_icon"), for: .normal)
-        gridButton.setImage(#imageLiteral(resourceName: "grid_icon"), for: .selected)
+        gridButton.setImage(#imageLiteral(resourceName: "grid_icon_selected"), for: .selected)
         gridButton.addTarget(self, action: #selector(self.didTapGrid), for: .touchUpInside)
-        gridButton.tintColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
+        gridButton.isSelected = true
         
-        listButton = UIButton(type: .system)
+        listButton = UIButton()
         listButton.setImage(#imageLiteral(resourceName: "list_icon"), for: .normal)
-        listButton.setImage(#imageLiteral(resourceName: "list_icon"), for: .selected)
+        listButton.setImage(#imageLiteral(resourceName: "list_icon_selected"), for: .selected)
         listButton.addTarget(self, action: #selector(self.didTapList), for: .touchUpInside)
-        listButton.tintColor = gridButton.tintColor
         
-        likedButton = UIButton(type: .system)
-        likedButton.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
-        likedButton.setImage(#imageLiteral(resourceName: "heart"), for: .selected)
+        likedButton = UIButton()
+        likedButton.setImage(#imageLiteral(resourceName: "timeline_likes_icon"), for: .normal)
         likedButton.addTarget(self, action: #selector(self.didTapLiked), for: .touchUpInside)
         likedButton.tintColor = gridButton.tintColor
         
@@ -96,10 +94,14 @@ class UserTimelineControl: UIView {
 extension UserTimelineControl {
     
     func didTapGrid() {
+        gridButton.isSelected = true
+        listButton.isSelected = false
         delegate?.didSelectGrid()
     }
     
     func didTapList() {
+        gridButton.isSelected = false
+        listButton.isSelected = true
         delegate?.didSelectList()
     }
     
