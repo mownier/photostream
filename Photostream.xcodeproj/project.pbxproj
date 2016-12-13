@@ -70,6 +70,7 @@
 		B9690C031DE56E31007E4593 /* UploadedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690C021DE56E31007E4593 /* UploadedPost.swift */; };
 		B969F43C1DFE4C7E003629F3 /* UserTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F43B1DFE4C7E003629F3 /* UserTimelineViewController.swift */; };
 		B969F43E1DFE6FCD003629F3 /* UserTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F43D1DFE6FCD003629F3 /* UserTimelineView.swift */; };
+		B969F4401DFE90B6003629F3 /* UserTimelineControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969F43F1DFE90B6003629F3 /* UserTimelineControl.swift */; };
 		B978AF301DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */; };
 		B978AF321DD42F14007C1AAD /* PhotoCapturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF311DD42F14007C1AAD /* PhotoCapturePresenter.swift */; };
 		B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B978AF331DD42F26007C1AAD /* PhotoCaptureViewInterface.swift */; };
@@ -341,6 +342,7 @@
 		B9690C021DE56E31007E4593 /* UploadedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadedPost.swift; sourceTree = "<group>"; };
 		B969F43B1DFE4C7E003629F3 /* UserTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTimelineViewController.swift; sourceTree = "<group>"; };
 		B969F43D1DFE6FCD003629F3 /* UserTimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTimelineView.swift; sourceTree = "<group>"; };
+		B969F43F1DFE90B6003629F3 /* UserTimelineControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTimelineControl.swift; sourceTree = "<group>"; };
 		B971CBB51DBA0130002166D3 /* codeplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = codeplay.playground; sourceTree = "<group>"; };
 		B978AF2F1DD42F02007C1AAD /* PhotoCapturePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCapturePresenterInterface.swift; sourceTree = "<group>"; };
 		B978AF311DD42F14007C1AAD /* PhotoCapturePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCapturePresenter.swift; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 			children = (
 				B969F43B1DFE4C7E003629F3 /* UserTimelineViewController.swift */,
 				B969F43D1DFE6FCD003629F3 /* UserTimelineView.swift */,
+				B969F43F1DFE90B6003629F3 /* UserTimelineControl.swift */,
 			);
 			path = "User Timeline";
 			sourceTree = "<group>";
@@ -2165,6 +2168,7 @@
 				B9D496791DE7EB5F00CDD58E /* PhotoLibraryDataSource.swift in Sources */,
 				B9E408441DFBC8AC00B7076A /* UserProfileScene.swift in Sources */,
 				B9E408551DFBDFD700B7076A /* UserProfileViewItem.swift in Sources */,
+				B969F4401DFE90B6003629F3 /* UserTimelineControl.swift in Sources */,
 				B9C217DA1DCC40F900F617FC /* AuthenticationService.swift in Sources */,
 				B9C217C31DCC40F900F617FC /* RegistrationInteractorOutput.swift in Sources */,
 				B9C217BB1DCC40F900F617FC /* NewsFeedPresenter.swift in Sources */,
