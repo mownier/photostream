@@ -153,7 +153,7 @@ class UserPostViewController: UICollectionViewController {
         
         listLayout.configure(with: size.width, columnCount: 1)
         listLayout.headerReferenceSize = CGSize(width: size.width, height: 48)
-        listLayout.sectionHeadersPinToVisibleBounds = true
+        listLayout.sectionHeadersPinToVisibleBounds = false
         
         PostGridCollectionCell.register(in: collectionView!)
         PostListCollectionCell.register(in: collectionView!)
