@@ -45,7 +45,7 @@ class UserTimelineView: UIView {
         rect.size.width = frame.width
         rect.size.height = header.dynamicHeight
         header.frame = rect
-               
+        
         postView.frame = bounds
         postView.scrollIndicatorInsets.top = rect.maxY
         postView.contentInset.top = rect.maxY
