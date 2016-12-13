@@ -19,7 +19,7 @@ class UserTimelineViewController: UIViewController {
     
     override func loadView() {
         userTimelineView = UserTimelineView(frame: UIScreen.main.bounds)
-        userTimelineView.control.delegate = self
+        userTimelineView.header.control.delegate = self
         
         view = userTimelineView
         
@@ -78,15 +78,28 @@ extension UserTimelineViewController: UserTimelineControlDelegate {
     func didSelectList() {
         userPostPresenter.view.killScroll()
         userPostPresenter.view.assignSceneType(type: .list)
+        moveDown()
     }
     
     func didSelectGrid() {
         userPostPresenter.view.killScroll()
         userPostPresenter.view.assignSceneType(type: .grid)
+        moveDown()
     }
     
     func didSelectLiked() {
         
+    }
+    
+    private func moveDown() {
+        UIView.animate(
+            withDuration: 0.25,
+            animations: {
+                self.userTimelineView.header.frame.origin.y = 0
+        }) { (done) in
+            self.userTimelineView.setNeedsLayout()
+            self.userTimelineView.layoutIfNeeded()
+        }
     }
 }
 
@@ -97,21 +110,21 @@ extension UserTimelineViewController: ScrollEventListener {
             return
         }
         
-        var frame = userTimelineView.userProfileView!.frame
+        var frame = userTimelineView.header.frame
         let new = frame.origin.y + delta
         frame.origin.y = min(new, 0)
         
-        userTimelineView.userProfileView!.frame = frame
+        userTimelineView.header.frame = frame
         userTimelineView.setNeedsLayout()
         userTimelineView.layoutIfNeeded()
     }
     
     func didScrollDown(with delta: CGFloat, offsetY: CGFloat) {
-        var frame = userTimelineView.userProfileView!.frame
-        let new = frame.origin.y + delta
-        frame.origin.y = max(new, -(frame.height + 4 + 1))
+        var frame = userTimelineView.header.frame
+        let new = frame.origin.y - abs(delta)
+        frame.origin.y = max(new, -(frame.height - 50))
         
-        userTimelineView.userProfileView!.frame = frame
+        userTimelineView.header.frame = frame
         userTimelineView.setNeedsLayout()
         userTimelineView.layoutIfNeeded()
     }
