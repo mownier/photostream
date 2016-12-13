@@ -19,7 +19,7 @@ class UserTimelineViewController: UIViewController {
     
     override func loadView() {
         userTimelineView = UserTimelineView(frame: UIScreen.main.bounds)
-        userTimelineView.delegate = self
+        userTimelineView.control.delegate = self
         
         view = userTimelineView
         
@@ -73,7 +73,7 @@ extension UserTimelineViewController {
     }
 }
 
-extension UserTimelineViewController: UserTimelineViewDelegate {
+extension UserTimelineViewController: UserTimelineControlDelegate {
     
     func didSelectList() {
         userPostPresenter.view.assignSceneType(type: .list)
@@ -91,7 +91,6 @@ extension UserTimelineViewController: UserTimelineViewDelegate {
 extension UserTimelineViewController: ScrollEventListener {
     
     func didScrollUp(with delta: CGFloat, offsetY: CGFloat) {
-        print(offsetY)
         guard offsetY > 0 else {
             return
         }
@@ -106,10 +105,9 @@ extension UserTimelineViewController: ScrollEventListener {
     }
     
     func didScrollDown(with delta: CGFloat, offsetY: CGFloat) {
-        print(offsetY)
         var frame = userTimelineView.userProfileView!.frame
         let new = frame.origin.y + delta
-        frame.origin.y = max(new, -frame.height)
+        frame.origin.y = max(new, -(frame.height + 4 + 1))
         
         userTimelineView.userProfileView!.frame = frame
         userTimelineView.setNeedsLayout()
