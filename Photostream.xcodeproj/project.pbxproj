@@ -90,6 +90,7 @@
 		B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */; };
 		B99B497E1DEC1E68001B9C5A /* BaseModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49791DEC1E68001B9C5A /* BaseModuleView.swift */; };
 		B99B497F1DEC1E68001B9C5A /* BaseModuleWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B497A1DEC1E68001B9C5A /* BaseModuleWireframe.swift */; };
+		B99E5F821DFFCD8C00998B95 /* UserTimelineHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99E5F811DFFCD8C00998B95 /* UserTimelineHeader.swift */; };
 		B9B8AE2D1DFA7D9F00D190A5 /* UserPostViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8AE2C1DFA7D9F00D190A5 /* UserPostViewDelegate.swift */; };
 		B9B8AE2F1DFA7DF100D190A5 /* UserPostViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8AE2E1DFA7DF100D190A5 /* UserPostViewDataSource.swift */; };
 		B9C1E4C71D507843000925FA /* PhotostreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1E4C61D507843000925FA /* PhotostreamTests.swift */; };
@@ -363,6 +364,7 @@
 		B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModulePresenter.swift; sourceTree = "<group>"; };
 		B99B49791DEC1E68001B9C5A /* BaseModuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleView.swift; sourceTree = "<group>"; };
 		B99B497A1DEC1E68001B9C5A /* BaseModuleWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleWireframe.swift; sourceTree = "<group>"; };
+		B99E5F811DFFCD8C00998B95 /* UserTimelineHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTimelineHeader.swift; sourceTree = "<group>"; };
 		B9B8AE2C1DFA7D9F00D190A5 /* UserPostViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostViewDelegate.swift; sourceTree = "<group>"; };
 		B9B8AE2E1DFA7DF100D190A5 /* UserPostViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostViewDataSource.swift; sourceTree = "<group>"; };
 		B9C1E4AE1D507843000925FA /* Photostream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photostream.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -867,9 +869,10 @@
 		B969F43A1DFE4C6D003629F3 /* User Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				B969F43B1DFE4C7E003629F3 /* UserTimelineViewController.swift */,
-				B969F43D1DFE6FCD003629F3 /* UserTimelineView.swift */,
 				B969F43F1DFE90B6003629F3 /* UserTimelineControl.swift */,
+				B99E5F811DFFCD8C00998B95 /* UserTimelineHeader.swift */,
+				B969F43D1DFE6FCD003629F3 /* UserTimelineView.swift */,
+				B969F43B1DFE4C7E003629F3 /* UserTimelineViewController.swift */,
 			);
 			path = "User Timeline";
 			sourceTree = "<group>";
@@ -2269,6 +2272,7 @@
 				B94AB2C91DF6921300313254 /* UserPostScene.swift in Sources */,
 				B9D4965B1DE7EAD200CDD58E /* PhotoLibraryInteractorInput.swift in Sources */,
 				B9C217E51DCC40F900F617FC /* UserServiceProvider.swift in Sources */,
+				B99E5F821DFFCD8C00998B95 /* UserTimelineHeader.swift in Sources */,
 				B9E408481DFBCA0200B7076A /* UserProfileWireframe.swift in Sources */,
 				B9D496621DE7EAD200CDD58E /* PhotoLibraryViewInterface.swift in Sources */,
 				B9D496981DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift in Sources */,
