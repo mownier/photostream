@@ -76,6 +76,7 @@ extension HomeWireframe {
         // module.build(root: nil, userId: auth.user.id)
         let userTimeline = UserTimelineViewController()
         userTimeline.userId = auth.user.id
+        userTimeline.root = root as? RootWireframe
         
         let nav = UINavigationController(rootViewController: userTimeline)
         nav.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "user_line_icon"), selectedImage: #imageLiteral(resourceName: "user_black_icon"))

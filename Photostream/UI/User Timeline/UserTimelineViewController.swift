@@ -42,7 +42,7 @@ class UserTimelineViewController: UIViewController, BaseModuleWireframe {
        
     func setupUserPostModule() {
         let module = UserPostModule(sceneType: .grid)
-        module.build(root: nil, userId: userId)
+        module.build(root: root, userId: userId)
         module.wireframe.style = .attach
         userPostPresenter = module.presenter
         
@@ -57,7 +57,7 @@ class UserTimelineViewController: UIViewController, BaseModuleWireframe {
     
     func setupUserProfileModule() {
         let module = UserProfileModule()
-        module.build(root: nil, userId: userId)
+        module.build(root: root, userId: userId)
         module.wireframe.style = .attach
         userProfilePresenter = module.presenter
         
@@ -82,7 +82,7 @@ extension UserTimelineViewController {
         section.items.append("Sign out")
         
         let module = SettingsModule()
-        module.build(root: nil, sections: [section])
+        module.build(root: root, sections: [section])
         
         var property = WireframeEntryProperty()
         property.controller = module.view.controller
