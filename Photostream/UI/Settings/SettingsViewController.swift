@@ -22,6 +22,8 @@ class SettingsViewController: UITableViewController {
         super.loadView()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseId)
+        
+        setupNavigationItem()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,9 +36,27 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseId)!
-        cell.accessoryType = .detailButton
+        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = presenter.itemName(at: indexPath.row, for: indexPath.section)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func setupNavigationItem() {
+        navigationItem.title = "Settings"
+        
+        let barItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.didTapBack))
+        navigationItem.leftBarButtonItem = barItem
+    }
+}
+
+extension SettingsViewController {
+    
+    func didTapBack() {
+        presenter.exit()
     }
 }
 
