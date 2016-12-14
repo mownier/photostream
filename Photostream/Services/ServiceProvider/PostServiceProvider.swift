@@ -129,7 +129,7 @@ struct PostServiceProvider: PostService {
         let path1 = "posts/\(key)"
         let path2 = "user-post/\(uid)/posts/\(key)"
         let path3 = "user-feed/\(uid)/posts/\(key)"
-        let path4 = "user-profile/\(uid)/posts_count"
+        let path4 = "user-profile/\(uid)/post_count"
         let updates: [String: AnyObject] = [path1: data as AnyObject, path2: true as AnyObject, path3: true as AnyObject]
 
         let postCountRef = rootRef.child(path4)

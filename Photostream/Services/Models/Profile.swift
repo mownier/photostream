@@ -34,8 +34,8 @@ extension Profile: SnapshotParser {
             userId = snapshot.childSnapshot(forPath: "uid").value as! String
         }
     
-        if snapshot.hasChild("posts_count") && !exception.contains("posts_count") {
-            postsCount = snapshot.childSnapshot(forPath: "posts_count").value as! Int
+        if snapshot.hasChild("post_count") && !exception.contains("post_count") {
+            postsCount = snapshot.childSnapshot(forPath: "post_count").value as! Int
         }
         
         if snapshot.hasChild("followers_count") && !exception.contains("followers_count") {
