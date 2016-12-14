@@ -29,11 +29,7 @@ extension Profile: SnapshotParser {
     
     init(with snapshot: FIRDataSnapshot, exception: String...) {
         self.init()
-        
-        if snapshot.hasChild("uid") && !exception.contains("uid") {
-            userId = snapshot.childSnapshot(forPath: "uid").value as! String
-        }
-    
+            
         if snapshot.hasChild("post_count") && !exception.contains("post_count") {
             postsCount = snapshot.childSnapshot(forPath: "post_count").value as! Int
         }
