@@ -94,6 +94,14 @@ extension UserPostScene {
         
         controller.collectionView!.setContentOffset(offset, animated: false)
     }
+
+    func assignRefreshEventTarget(target: Any, action: Selector) {
+        guard let controller = self as? UserPostViewController else {
+            return
+        }
+        
+        controller.refreshView.addTarget(target, action: action, for: .valueChanged)
+    }
 }
 
 extension UserPostWireframeInterface {
