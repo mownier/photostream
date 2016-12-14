@@ -91,6 +91,7 @@
 		B99719721E011BB000A24C74 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99719711E011BB000A24C74 /* SettingsPresenter.swift */; };
 		B99719741E0120D100A24C74 /* SettingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99719731E0120D100A24C74 /* SettingSection.swift */; };
 		B99719771E0121B400A24C74 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99719761E0121B400A24C74 /* SettingsViewController.swift */; };
+		B99719791E01255D00A24C74 /* SettingsModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99719781E01255D00A24C74 /* SettingsModuleExtension.swift */; };
 		B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49761DEC1E68001B9C5A /* BaseModule.swift */; };
 		B99B497C1DEC1E68001B9C5A /* BaseModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */; };
 		B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */; };
@@ -371,6 +372,7 @@
 		B99719711E011BB000A24C74 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		B99719731E0120D100A24C74 /* SettingSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSection.swift; sourceTree = "<group>"; };
 		B99719761E0121B400A24C74 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B99719781E01255D00A24C74 /* SettingsModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleExtension.swift; sourceTree = "<group>"; };
 		B99B49761DEC1E68001B9C5A /* BaseModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModule.swift; sourceTree = "<group>"; };
 		B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleInteractor.swift; sourceTree = "<group>"; };
 		B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModulePresenter.swift; sourceTree = "<group>"; };
@@ -1089,6 +1091,7 @@
 				B90920601DD30D730073FB72 /* PhotoPickerModuleExtension.swift */,
 				B9DEB2621DDEE12000C47C37 /* PhotoShareModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
+				B99719781E01255D00A24C74 /* SettingsModuleExtension.swift */,
 				B94AB2D31DF69DE600313254 /* UserPostModuleExtension.swift */,
 				B9E4084B1DFBCDDC00B7076A /* UserProfileModuleExtension.swift */,
 			);
@@ -2269,6 +2272,7 @@
 				B94131191DEE9FB300DD10CE /* CommentWriterData.swift in Sources */,
 				B9C217A71DCC40F900F617FC /* HomeWireframeInterface.swift in Sources */,
 				B94AB2D41DF69DE600313254 /* UserPostModuleExtension.swift in Sources */,
+				B99719791E01255D00A24C74 /* SettingsModuleExtension.swift in Sources */,
 				B9C217B81DCC40F900F617FC /* NewsFeedDisplayItemParser.swift in Sources */,
 				B9D4965C1DE7EAD200CDD58E /* PhotoLibraryInteractorInterface.swift in Sources */,
 				B9C217E31DCC40F900F617FC /* NewsFeedServiceProvider.swift in Sources */,
