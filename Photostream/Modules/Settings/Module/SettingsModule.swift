@@ -8,4 +8,9 @@
 
 protocol SettingsModuleInterface: BaseModuleInterface {
     
+    var sectionCount: Int { get }
+    
+    func sectionName(at index: Int) -> String
+    func itemCount(for section: Int) -> Int
+    func itemName(at index: Int, for section: Int) -> String
 }
