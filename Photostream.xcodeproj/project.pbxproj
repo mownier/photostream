@@ -89,6 +89,7 @@
 		B997196E1E011B2B00A24C74 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997196D1E011B2B00A24C74 /* SettingsScene.swift */; };
 		B99719701E011B6600A24C74 /* SettingsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997196F1E011B6600A24C74 /* SettingsWireframe.swift */; };
 		B99719721E011BB000A24C74 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99719711E011BB000A24C74 /* SettingsPresenter.swift */; };
+		B99719741E0120D100A24C74 /* SettingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99719731E0120D100A24C74 /* SettingSection.swift */; };
 		B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49761DEC1E68001B9C5A /* BaseModule.swift */; };
 		B99B497C1DEC1E68001B9C5A /* BaseModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */; };
 		B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */; };
@@ -367,6 +368,7 @@
 		B997196D1E011B2B00A24C74 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		B997196F1E011B6600A24C74 /* SettingsWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWireframe.swift; sourceTree = "<group>"; };
 		B99719711E011BB000A24C74 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		B99719731E0120D100A24C74 /* SettingSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSection.swift; sourceTree = "<group>"; };
 		B99B49761DEC1E68001B9C5A /* BaseModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModule.swift; sourceTree = "<group>"; };
 		B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleInteractor.swift; sourceTree = "<group>"; };
 		B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModulePresenter.swift; sourceTree = "<group>"; };
@@ -973,6 +975,7 @@
 			isa = PBXGroup;
 			children = (
 				B99719711E011BB000A24C74 /* SettingsPresenter.swift */,
+				B99719731E0120D100A24C74 /* SettingSection.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -2410,6 +2413,7 @@
 				B9C217E81DCC40F900F617FC /* HomeViewController.swift in Sources */,
 				B9C217C11DCC40F900F617FC /* RegistrationInteractorInput.swift in Sources */,
 				B94131241DEEA88400DD10CE /* CommentWriterViewController.swift in Sources */,
+				B99719741E0120D100A24C74 /* SettingSection.swift in Sources */,
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,
 				B9C217C41DCC40F900F617FC /* RegistrationModuleInterface.swift in Sources */,
 				B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */,
