@@ -43,6 +43,12 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let itemName = presenter.itemName(at: indexPath.row, for: indexPath.section)
+        
+        if itemName.lowercased() == "sign out" {
+            presenter.presentLogin()
+        }
     }
     
     func setupNavigationItem() {
