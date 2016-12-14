@@ -11,6 +11,8 @@ protocol UserPostPresenterInterface: BaseModulePresenter, BaseModuleInteractable
     var userId: String! { set get }
     var posts: [UserPostData] { set get }
     var limit: UInt { set get }
+    
+    func indexOf(post id: String) -> Int?
 }
 
 class UserPostPresenter: UserPostPresenterInterface {
@@ -27,6 +29,13 @@ class UserPostPresenter: UserPostPresenterInterface {
     var userId: String!
     var posts = [UserPostData]()
     var limit: UInt = 10
+    
+    func indexOf(post id: String) -> Int? {
+        let itemIndex = posts.index { item -> Bool in
+            return item.id == id
+        }
+        return itemIndex
+    }
 }
 
 extension UserPostPresenter: UserPostModuleInterface {
