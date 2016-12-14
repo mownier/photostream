@@ -95,3 +95,48 @@ extension UserPostScene {
         controller.collectionView!.setContentOffset(offset, animated: false)
     }
 }
+
+extension UserPostWireframeInterface {
+    
+    func presentCommentController(from parent: UIViewController, delegate: CommentControllerDelegate?, postId: String, shouldComment: Bool = false) {
+        let controller = CommentController(root: nil)
+        controller.postId = postId
+        controller.style = .push
+        controller.shouldComment = shouldComment
+        controller.delegate = delegate
+        
+        var property = WireframeEntryProperty()
+        property.controller = controller
+        property.parent = parent
+        
+        controller.enter(with: property)
+    }
+}
+
+extension UserPostModuleInterface {
+    
+    func presentCommentController(at index: Int, shouldComment: Bool = false) {
+        guard let presenter = self as? UserPostPresenter,
+            let parent = presenter.view.controller,
+            let post = post(at: index) else {
+            return
+        }
+        
+        presenter.wireframe.presentCommentController(from: parent, delegate: presenter, postId: post.id, shouldComment: shouldComment)
+    }
+}
+
+extension UserPostPresenter: CommentControllerDelegate {
+    
+    func commentControllerDidWrite(with postId: String) {
+        guard let index = indexOf(post: postId) else {
+            return
+        }
+        
+        var post = posts[index]
+        post.comments += 1
+        posts[index] = post
+        view.reloadView()
+    }
+}
+
