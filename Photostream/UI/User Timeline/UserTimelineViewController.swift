@@ -8,14 +8,22 @@
 
 import UIKit
 
-class UserTimelineViewController: UIViewController {
+class UserTimelineViewController: UIViewController, BaseModuleWireframe {
 
+    var root: RootWireframe?
+    var style: WireframeStyle!
+    
     var userId: String!
     
     var userPostPresenter: UserPostPresenter!
     var userProfilePresenter: UserProfilePresenter!
     
     var userTimelineView: UserTimelineView!
+    
+    convenience required init(root: RootWireframe?) {
+        self.init()
+        self.root = root
+    }
     
     override func loadView() {
         userTimelineView = UserTimelineView(frame: UIScreen.main.bounds)
