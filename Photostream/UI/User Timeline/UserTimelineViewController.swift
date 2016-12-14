@@ -78,54 +78,63 @@ extension UserTimelineViewController: UserTimelineControlDelegate {
     func didSelectList() {
         userPostPresenter.view.killScroll()
         userPostPresenter.view.assignSceneType(type: .list)
-        moveDown()
+        resetUserTimelineView()
     }
     
     func didSelectGrid() {
         userPostPresenter.view.killScroll()
         userPostPresenter.view.assignSceneType(type: .grid)
-        moveDown()
+        resetUserTimelineView()
     }
     
     func didSelectLiked() {
         
     }
     
-    private func moveDown() {
-        UIView.animate(
-            withDuration: 0.25,
-            animations: {
-                self.userTimelineView.header.frame.origin.y = 0
-        }) { (done) in
-            self.userTimelineView.setNeedsLayout()
-            self.userTimelineView.layoutIfNeeded()
-        }
+    private func resetUserTimelineView() {
+        userTimelineView.header.frame.origin.y = 0
+        
+        var offset = CGPoint.zero
+        offset.y = -userTimelineView.header.frame.height
+        userPostPresenter.view.assignContent(offset: offset)
     }
 }
 
 extension UserTimelineViewController: ScrollEventListener {
     
     func didScrollUp(with delta: CGFloat, offsetY: CGFloat) {
-        guard offsetY > 0 else {
+        guard offsetY < -headerStopperOffset else {
             return
         }
         
-        var frame = userTimelineView.header.frame
-        let new = frame.origin.y + delta
-        frame.origin.y = min(new, 0)
+        var newY = headerOriginY + abs(delta)
+        newY = min(newY, 0)
         
-        userTimelineView.header.frame = frame
+        userTimelineView.header.frame.origin.y = newY
         userTimelineView.setNeedsLayout()
         userTimelineView.layoutIfNeeded()
     }
     
     func didScrollDown(with delta: CGFloat, offsetY: CGFloat) {
-        var frame = userTimelineView.header.frame
-        let new = frame.origin.y - abs(delta)
-        frame.origin.y = max(new, -(frame.height - 49))
+        var newY = headerOriginY - abs(delta)
+        newY = max(newY, -headerStopper)
         
-        userTimelineView.header.frame = frame
+        userTimelineView.header.frame.origin.y = newY
         userTimelineView.setNeedsLayout()
         userTimelineView.layoutIfNeeded()
+    }
+    
+    private var headerStopper: CGFloat {
+        var stopper = userTimelineView.header.frame.height
+        stopper -= headerStopperOffset
+        return stopper
+    }
+    
+    private var headerStopperOffset: CGFloat {
+        return userTimelineView.header.control.frame.height
+    }
+    
+    private var headerOriginY: CGFloat {
+        return userTimelineView.header.frame.origin.y
     }
 }
