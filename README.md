@@ -13,6 +13,6 @@ It is necessary that you have to provide your own `GoogleService-Info.plist`. Af
 - [X] Home
 - [X] Write Post
 - [X] News Feed
-- [ ] User Profile
+- [X] User Profile
 - [X] Comments
 - [X] Write Comment
