@@ -131,7 +131,7 @@ extension UserTimelineViewController: ScrollEventListener {
     }
     
     private var headerStopperOffset: CGFloat {
-        return userTimelineView.header.control.frame.height
+        return userTimelineView.header.control.frame.height - 1
     }
     
     private var headerOriginY: CGFloat {
