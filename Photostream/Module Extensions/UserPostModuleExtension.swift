@@ -86,4 +86,12 @@ extension UserPostScene {
         
         controller.scrollHandler.killScroll()
     }
+    
+    func assignContent(offset: CGPoint) {
+        guard let controller = self as? UserPostViewController else {
+            return
+        }
+        
+        controller.collectionView!.setContentOffset(offset, animated: false)
+    }
 }
