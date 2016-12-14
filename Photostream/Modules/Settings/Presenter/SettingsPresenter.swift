@@ -16,9 +16,10 @@ class SettingsPresenter: SettingsPresenterInterface {
     typealias ModuleView = SettingsScene
     typealias ModuleWireframe = SettingsWireframeInterface
     
+    weak var view: ModuleView!
+    
     lazy var sections = [SettingSection]()
     
-    var view: ModuleView!
     var wireframe: ModuleWireframe!
 }
 
