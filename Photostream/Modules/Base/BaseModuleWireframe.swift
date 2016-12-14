@@ -11,6 +11,7 @@ public enum WireframeStyle {
     case push
     case present
     case attach
+    case root
 }
 
 public struct WireframeEntryProperty {
@@ -54,6 +55,8 @@ extension BaseModuleWireframe {
             parent.view.addSubview(controller.view)
             parent.addChildViewController(controller)
             controller.didMove(toParentViewController: parent)
+        case .root where root != nil:
+            root!.window.rootViewController = controller
         default:
             break
         }
