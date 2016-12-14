@@ -39,6 +39,7 @@ class UserTimelineViewController: UIViewController {
         userPostPresenter = module.presenter
         
         module.view.assignScrollEventListener(listener: self)
+        module.view.assignRefreshEventTarget(target: self, action: #selector(self.didRefreshPosts))
         
         var property = WireframeEntryProperty()
         property.parent = self
@@ -70,6 +71,10 @@ extension UserTimelineViewController {
     
     func didTapSettings() {
         
+    }
+    
+    func didRefreshPosts() {
+        userProfilePresenter.fetchUserProfile()
     }
 }
 
