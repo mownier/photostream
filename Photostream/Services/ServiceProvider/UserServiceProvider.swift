@@ -181,7 +181,7 @@ struct UserServiceProvider: UserService {
         
         let uid = session.user.id
         let path1 = "users/\(id)/"
-        let path2 = "user-profile"
+        let path2 = "user-profile/\(id)"
         let path3 = "user-follower/\(id)/followers/\(uid)"
         let rootRef = FIRDatabase.database().reference()
         let usersRef = rootRef.child(path1)
@@ -192,7 +192,8 @@ struct UserServiceProvider: UserService {
             usersRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
                 profileRef.observeSingleEvent(of: .value, with: { (profileSnapshot) in
                     let user = User(with: userSnapshot, exception: "email")
-                    let profile = Profile(with: profileSnapshot)
+                    var profile = Profile(with: profileSnapshot)
+                    profile.userId = user.id
                     
                     result.user = user
                     result.profile = profile
