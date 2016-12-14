@@ -62,7 +62,7 @@ class UserTimelineViewController: UIViewController {
     func setupNavigationItem() {
         navigationItem.title = "Timeline"
         
-        let barItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(self.didTapSettings))
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings_icon"), style: .plain, target: self, action: #selector(self.didTapSettings))
         navigationItem.rightBarButtonItem = barItem
     }
 }
