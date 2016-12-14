@@ -70,7 +70,18 @@ class UserTimelineViewController: UIViewController {
 extension UserTimelineViewController {
     
     func didTapSettings() {
+        var section = SettingSection()
+        section.items.append("Sign out")
         
+        let module = SettingsModule()
+        module.build(root: nil, sections: [section])
+        
+        var property = WireframeEntryProperty()
+        property.controller = module.view.controller
+        property.parent = self
+        
+        module.wireframe.style = .push
+        module.wireframe.enter(with: property)
     }
     
     func didRefreshPosts() {
