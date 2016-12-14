@@ -43,13 +43,3 @@ struct UserPostDataItem: UserPostData {
     var avatarUrl: String = ""
     var displayName: String = ""
 }
-
-extension Array where Element: UserPostData {
-    
-    func indexOf(post id: String) -> Int? {
-        let itemIndex = index { item -> Bool in
-            return item.id == id
-        }
-        return itemIndex
-    }
-}
