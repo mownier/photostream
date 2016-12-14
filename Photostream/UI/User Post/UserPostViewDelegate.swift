@@ -64,11 +64,19 @@ extension UserPostViewController: PostListCollectionCellDelegate {
     }
     
     func didTapComment(cell: PostListCollectionCell) {
+        guard let index = collectionView![cell]?.section else {
+            return
+        }
         
+        presenter.presentCommentController(at: index, shouldComment: true)
     }
     
     func didTapCommentCount(cell: PostListCollectionCell) {
+        guard let index = collectionView![cell]?.section else {
+            return
+        }
         
+        presenter.presentCommentController(at: index)
     }
     
     func didTapLikeCount(cell: PostListCollectionCell) {
