@@ -85,6 +85,10 @@
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
 		B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEF1D51C79300C5E76B /* Main.storyboard */; };
+		B997196C1E011AF500A24C74 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997196B1E011AF500A24C74 /* SettingsModule.swift */; };
+		B997196E1E011B2B00A24C74 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997196D1E011B2B00A24C74 /* SettingsScene.swift */; };
+		B99719701E011B6600A24C74 /* SettingsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997196F1E011B6600A24C74 /* SettingsWireframe.swift */; };
+		B99719721E011BB000A24C74 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99719711E011BB000A24C74 /* SettingsPresenter.swift */; };
 		B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49761DEC1E68001B9C5A /* BaseModule.swift */; };
 		B99B497C1DEC1E68001B9C5A /* BaseModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */; };
 		B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */; };
@@ -359,6 +363,10 @@
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97E3CF01D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B997196B1E011AF500A24C74 /* SettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModule.swift; sourceTree = "<group>"; };
+		B997196D1E011B2B00A24C74 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
+		B997196F1E011B6600A24C74 /* SettingsWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWireframe.swift; sourceTree = "<group>"; };
+		B99719711E011BB000A24C74 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		B99B49761DEC1E68001B9C5A /* BaseModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModule.swift; sourceTree = "<group>"; };
 		B99B49771DEC1E68001B9C5A /* BaseModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleInteractor.swift; sourceTree = "<group>"; };
 		B99B49781DEC1E68001B9C5A /* BaseModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModulePresenter.swift; sourceTree = "<group>"; };
@@ -942,6 +950,49 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		B99719661E011AC700A24C74 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B99719671E011AC700A24C74 /* Module */,
+				B99719681E011AC700A24C74 /* Presenter */,
+				B99719691E011AC700A24C74 /* View */,
+				B997196A1E011AC700A24C74 /* Wireframe */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B99719671E011AC700A24C74 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B997196B1E011AF500A24C74 /* SettingsModule.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B99719681E011AC700A24C74 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B99719711E011BB000A24C74 /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B99719691E011AC700A24C74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B997196D1E011B2B00A24C74 /* SettingsScene.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B997196A1E011AC700A24C74 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B997196F1E011B6600A24C74 /* SettingsWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		B99B495A1DEC1D31001B9C5A /* Comment Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -1046,6 +1097,7 @@
 				B9DEB2511DDEDD8900C47C37 /* Photo Share */,
 				B954EE481DE0322600A0049D /* Post Upload */,
 				B9C2171A1DCC40F900F617FC /* Registration */,
+				B99719661E011AC700A24C74 /* Settings */,
 				B94AB2BE1DF687D400313254 /* User Post */,
 				B9E408391DFBBA3F00B7076A /* User Profile */,
 			);
@@ -2176,7 +2228,9 @@
 				B9C217C31DCC40F900F617FC /* RegistrationInteractorOutput.swift in Sources */,
 				B9C217BB1DCC40F900F617FC /* NewsFeedPresenter.swift in Sources */,
 				B9690C031DE56E31007E4593 /* UploadedPost.swift in Sources */,
+				B997196C1E011AF500A24C74 /* SettingsModule.swift in Sources */,
 				B9D4965F1DE7EAD200CDD58E /* PhotoLibraryModuleInterface.swift in Sources */,
+				B99719701E011B6600A24C74 /* SettingsWireframe.swift in Sources */,
 				B9C217FF1DCC40F900F617FC /* PostHeaderView.swift in Sources */,
 				B921B5571DD594A70065C187 /* AssetServiceProvider.swift in Sources */,
 				B9E4084C1DFBCDDC00B7076A /* UserProfileModuleExtension.swift in Sources */,
@@ -2260,10 +2314,12 @@
 				B941310B1DEE9C0F00DD10CE /* CommentFeedModuleInterface.swift in Sources */,
 				B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */,
 				B969F43C1DFE4C7E003629F3 /* UserTimelineViewController.swift in Sources */,
+				B997196E1E011B2B00A24C74 /* SettingsScene.swift in Sources */,
 				B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */,
 				B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */,
 				B94AB2CD1DF692F000313254 /* UserPostModule.swift in Sources */,
 				B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */,
+				B99719721E011BB000A24C74 /* SettingsPresenter.swift in Sources */,
 				B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */,
 				B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */,
 				B9D496A01DE8199F00CDD58E /* LoginModuleInterface.swift in Sources */,
