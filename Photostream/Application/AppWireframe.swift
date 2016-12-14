@@ -8,7 +8,9 @@
 
 import UIKit
 
-class AppWireframe: RootWireframeInterface {
+class AppWireframe: RootWireframeInterface, RootWireframe {
+    
+    var window: UIWindow!
     
     func showRoot(with viewController: UIViewController, in window: UIWindow) {
         let nav = UINavigationController(rootViewController: viewController)
