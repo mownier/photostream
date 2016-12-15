@@ -11,6 +11,15 @@ import FirebaseAuth
 
 extension SettingsModule {
     
+    var defaultSections: [SettingSection] {
+        var section = SettingSection()
+        section.items.append("Privacy Policy")
+        section.items.append("Terms of Service")
+        section.items.append("Log out")
+        
+        return [section]
+    }
+    
     convenience init() {
         self.init(view: SettingsViewController())
     }
