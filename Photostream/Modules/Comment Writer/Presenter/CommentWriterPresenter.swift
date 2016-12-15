@@ -59,7 +59,7 @@ extension CommentWriterPresenter: CommentWriterModuleInterface {
         keyboardObserver = NotificationCenter.default.addObserver(
             forName: Notification.Name.UIKeyboardWillChangeFrame,
             object: nil,
-            queue: nil) { (notif) in
+            queue: nil) { [unowned self] notif in
             var handler = KeyboardHandler()
             handler.info = notif.userInfo
             handler.willMoveUp = { delta in
