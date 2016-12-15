@@ -118,6 +118,9 @@ extension UserTimelineViewController: UserTimelineControlDelegate {
         var offset = CGPoint.zero
         offset.y = -userTimelineView.header.frame.height
         userPostPresenter.view.assignContent(offset: offset)
+        
+        userTimelineView.setNeedsLayout()
+        userTimelineView.layoutIfNeeded()
     }
 }
 
