@@ -66,6 +66,10 @@
 		B954EE601DE035DF00A0049D /* PostUploadInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE5F1DE035DF00A0049D /* PostUploadInteractorInput.swift */; };
 		B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE611DE035F000A0049D /* PostUploadInteractorOutput.swift */; };
 		B95A06E41E023AA0005B47B6 /* LogoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06E31E023AA0005B47B6 /* LogoutInteractor.swift */; };
+		B95A06E61E023ED5005B47B6 /* LogoutModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06E51E023ED5005B47B6 /* LogoutModule.swift */; };
+		B95A06E81E023F06005B47B6 /* LogoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06E71E023F06005B47B6 /* LogoutPresenter.swift */; };
+		B95A06EA1E023F3E005B47B6 /* LogoutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06E91E023F3E005B47B6 /* LogoutScene.swift */; };
+		B95A06EC1E023F5A005B47B6 /* LogoutWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06EB1E023F5A005B47B6 /* LogoutWireframe.swift */; };
 		B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */; };
 		B9690BFD1DE56607007E4593 /* PostUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFC1DE56607007E4593 /* PostUploadView.swift */; };
 		B9690C031DE56E31007E4593 /* UploadedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690C021DE56E31007E4593 /* UploadedPost.swift */; };
@@ -347,6 +351,10 @@
 		B954EE5F1DE035DF00A0049D /* PostUploadInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadInteractorInput.swift; sourceTree = "<group>"; };
 		B954EE611DE035F000A0049D /* PostUploadInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadInteractorOutput.swift; sourceTree = "<group>"; };
 		B95A06E31E023AA0005B47B6 /* LogoutInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutInteractor.swift; sourceTree = "<group>"; };
+		B95A06E51E023ED5005B47B6 /* LogoutModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutModule.swift; sourceTree = "<group>"; };
+		B95A06E71E023F06005B47B6 /* LogoutPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutPresenter.swift; sourceTree = "<group>"; };
+		B95A06E91E023F3E005B47B6 /* LogoutScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutScene.swift; sourceTree = "<group>"; };
+		B95A06EB1E023F5A005B47B6 /* LogoutWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutWireframe.swift; sourceTree = "<group>"; };
 		B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadViewController.swift; sourceTree = "<group>"; };
 		B9690BFC1DE56607007E4593 /* PostUploadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadView.swift; sourceTree = "<group>"; };
 		B9690C021DE56E31007E4593 /* UploadedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadedPost.swift; sourceTree = "<group>"; };
@@ -896,6 +904,7 @@
 		B95A06DF1E023A70005B47B6 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				B95A06E71E023F06005B47B6 /* LogoutPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -903,6 +912,7 @@
 		B95A06E01E023A70005B47B6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B95A06E91E023F3E005B47B6 /* LogoutScene.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -910,6 +920,7 @@
 		B95A06E11E023A70005B47B6 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
+				B95A06EB1E023F5A005B47B6 /* LogoutWireframe.swift */,
 			);
 			path = Wireframe;
 			sourceTree = "<group>";
@@ -917,6 +928,7 @@
 		B95A06E21E023A8F005B47B6 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				B95A06E51E023ED5005B47B6 /* LogoutModule.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -2280,6 +2292,7 @@
 				B978AF411DD44A53007C1AAD /* PhotoCaptureViewController.swift in Sources */,
 				B941310F1DEE9C0F00DD10CE /* CommentFeedWireframeInterface.swift in Sources */,
 				B94131071DEE9C0F00DD10CE /* CommentFeedInteractorInput.swift in Sources */,
+				B95A06EA1E023F3E005B47B6 /* LogoutScene.swift in Sources */,
 				B94131091DEE9C0F00DD10CE /* CommentFeedInteractorOutput.swift in Sources */,
 				B94131211DEEA3BE00DD10CE /* CommentWriterModule.swift in Sources */,
 				B9D4965A1DE7EAD200CDD58E /* PhotoLIbraryInteractor.swift in Sources */,
@@ -2349,6 +2362,7 @@
 				B9C217AA1DCC40F900F617FC /* LoginInteractorInterface.swift in Sources */,
 				B954EE5E1DE035D400A0049D /* PostUploadInteractorInterface.swift in Sources */,
 				B9C217AC1DCC40F900F617FC /* LoginPresenter.swift in Sources */,
+				B95A06E61E023ED5005B47B6 /* LogoutModule.swift in Sources */,
 				B954EE5C1DE035C100A0049D /* PostUploadInteractor.swift in Sources */,
 				B9C217AD1DCC40F900F617FC /* LoginPresenterInterface.swift in Sources */,
 				B9C218161DCC40F900F617FC /* ScrollHandler.swift in Sources */,
@@ -2405,6 +2419,7 @@
 				B9D496981DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift in Sources */,
 				B9C218091DCC40F900F617FC /* PostListHeaderItem.swift in Sources */,
 				B9D496631DE7EAD200CDD58E /* PhotoLibraryWireframe.swift in Sources */,
+				B95A06E81E023F06005B47B6 /* LogoutPresenter.swift in Sources */,
 				B978AF361DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift in Sources */,
 				B933ADFB1DED667000FAE922 /* CommentListCell.swift in Sources */,
 				B9C217AB1DCC40F900F617FC /* LoginInteractorOutput.swift in Sources */,
@@ -2463,6 +2478,7 @@
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
 				B9DEB2611DDEDE5200C47C37 /* PhotoShareWireframe.swift in Sources */,
 				B9C2179E1DCC40F900F617FC /* RegistrationModuleExtension.swift in Sources */,
+				B95A06EC1E023F5A005B47B6 /* LogoutWireframe.swift in Sources */,
 				B9D4969C1DE7F09D00CDD58E /* PostComposerNavigationController.swift in Sources */,
 				B9C217FE1DCC40F900F617FC /* PostGridCellItem.swift in Sources */,
 				B921B5551DD593240065C187 /* AssetService.swift in Sources */,
