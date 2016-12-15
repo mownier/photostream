@@ -65,6 +65,7 @@
 		B954EE5E1DE035D400A0049D /* PostUploadInteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE5D1DE035D400A0049D /* PostUploadInteractorInterface.swift */; };
 		B954EE601DE035DF00A0049D /* PostUploadInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE5F1DE035DF00A0049D /* PostUploadInteractorInput.swift */; };
 		B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954EE611DE035F000A0049D /* PostUploadInteractorOutput.swift */; };
+		B95A06E41E023AA0005B47B6 /* LogoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06E31E023AA0005B47B6 /* LogoutInteractor.swift */; };
 		B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */; };
 		B9690BFD1DE56607007E4593 /* PostUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFC1DE56607007E4593 /* PostUploadView.swift */; };
 		B9690C031DE56E31007E4593 /* UploadedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690C021DE56E31007E4593 /* UploadedPost.swift */; };
@@ -345,6 +346,7 @@
 		B954EE5D1DE035D400A0049D /* PostUploadInteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadInteractorInterface.swift; sourceTree = "<group>"; };
 		B954EE5F1DE035DF00A0049D /* PostUploadInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadInteractorInput.swift; sourceTree = "<group>"; };
 		B954EE611DE035F000A0049D /* PostUploadInteractorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadInteractorOutput.swift; sourceTree = "<group>"; };
+		B95A06E31E023AA0005B47B6 /* LogoutInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutInteractor.swift; sourceTree = "<group>"; };
 		B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadViewController.swift; sourceTree = "<group>"; };
 		B9690BFC1DE56607007E4593 /* PostUploadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadView.swift; sourceTree = "<group>"; };
 		B9690C021DE56E31007E4593 /* UploadedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadedPost.swift; sourceTree = "<group>"; };
@@ -871,6 +873,54 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		B95A06DD1E023A70005B47B6 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				B95A06DE1E023A70005B47B6 /* Interactor */,
+				B95A06E21E023A8F005B47B6 /* Module */,
+				B95A06DF1E023A70005B47B6 /* Presenter */,
+				B95A06E01E023A70005B47B6 /* View */,
+				B95A06E11E023A70005B47B6 /* Wireframe */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
+		B95A06DE1E023A70005B47B6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B95A06E31E023AA0005B47B6 /* LogoutInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B95A06DF1E023A70005B47B6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B95A06E01E023A70005B47B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B95A06E11E023A70005B47B6 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B95A06E21E023A8F005B47B6 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
 		B9690BF91DE565D0007E4593 /* Post Upload */ = {
 			isa = PBXGroup;
 			children = (
@@ -1106,6 +1156,7 @@
 				B94130B91DEE9BC300DD10CE /* Comment Writer */,
 				B9C216EF1DCC40F900F617FC /* Home */,
 				B9C216F81DCC40F900F617FC /* Login */,
+				B95A06DD1E023A70005B47B6 /* Logout */,
 				B9C217071DCC40F900F617FC /* News Feed */,
 				B978AF2B1DD42EEA007C1AAD /* Photo Capture */,
 				B9D4964A1DE7EAD200CDD58E /* Photo Library */,
@@ -2331,6 +2382,7 @@
 				B954EE601DE035DF00A0049D /* PostUploadInteractorInput.swift in Sources */,
 				B941310D1DEE9C0F00DD10CE /* CommentFeedPresenterInterface.swift in Sources */,
 				B941310B1DEE9C0F00DD10CE /* CommentFeedModuleInterface.swift in Sources */,
+				B95A06E41E023AA0005B47B6 /* LogoutInteractor.swift in Sources */,
 				B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */,
 				B969F43C1DFE4C7E003629F3 /* UserTimelineViewController.swift in Sources */,
 				B997196E1E011B2B00A24C74 /* SettingsScene.swift in Sources */,
