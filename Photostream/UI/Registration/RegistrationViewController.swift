@@ -16,12 +16,15 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var contentScrollView: UIScrollView!
     
     @IBInspectable var topColor: UIColor!
     @IBInspectable var bottomColor: UIColor!
     @IBInspectable var cornerRadius: CGFloat = 0
 
+    var keyboardObserver: Any?
     var presenter: RegistrationModuleInterface!
+    
     var isOkToRegister: (String, String, String, String)? {
         guard let email = emailTextField.text,
             let password = passwordTextField.text,
@@ -34,11 +37,27 @@ class RegistrationViewController: UIViewController {
         return (email, password, firstName, lastName)
     }
     
+    deinit {
+        removeKeyboardObserver()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         applyGradientBackground()
         applyCornerRadius()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        addKeyboardObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeKeyboardObserver()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -48,6 +67,9 @@ class RegistrationViewController: UIViewController {
     @IBAction func didTapBack() {
         presenter.exit()
     }
+}
+
+extension RegistrationViewController {
     
     fileprivate func applyCornerRadius() {
         emailTextField.cornerRadius = cornerRadius
@@ -76,6 +98,62 @@ class RegistrationViewController: UIViewController {
     
     fileprivate func removeIndicatorView() {
         registerButton.viewWithTag(9000)?.removeFromSuperview()
+    }
+}
+
+extension RegistrationViewController {
+    
+    fileprivate func addKeyboardObserver() {
+        keyboardObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name.UIKeyboardWillChangeFrame,
+            object: nil,
+            queue: nil) { (notif) in
+                self.willHandleKeyboardNotification(with: notif)
+        }
+    }
+    
+    fileprivate func removeKeyboardObserver() {
+        guard keyboardObserver != nil else {
+            return
+        }
+        
+        NotificationCenter.default.removeObserver(keyboardObserver!)
+    }
+    
+    fileprivate func willHandleKeyboardNotification(with notif: Notification) {
+        var handler = KeyboardHandler()
+        handler.info = notif.userInfo
+        handler.willMoveUsedView = false
+        
+        handler.handle(using: self.contentScrollView, with: { delta in
+            switch delta.direction {
+            case .down:
+                if delta.height == 0 {
+                    self.contentScrollView.contentInset.bottom = 0
+                    self.contentScrollView.scrollIndicatorInsets.bottom = 0
+                    
+                } else {
+                    self.contentScrollView.contentInset.bottom -= abs(delta.height)
+                    self.contentScrollView.scrollIndicatorInsets.bottom -= abs(delta.height)
+                }
+                
+            case .up:
+                if delta.height == 0 {
+                    var bottom = self.registerButton.frame.maxY
+                    bottom -= self.emailTextField.frame.origin.y
+                    bottom -= abs(delta.y)
+                    self.contentScrollView.contentInset.bottom = bottom
+                    self.contentScrollView.scrollIndicatorInsets.bottom = abs(delta.y)
+                    
+                } else {
+                    self.contentScrollView.contentInset.bottom += abs(delta.height)
+                    self.contentScrollView.scrollIndicatorInsets.bottom += abs(delta.height)
+                }
+                
+            default:
+                break
+            }
+        })
     }
 }
 
