@@ -27,6 +27,7 @@ struct KeyboardHandler {
     var willMoveUp: ((KeyboardFrameDelta) -> Void)?
     var willMoveDown: ((KeyboardFrameDelta) -> Void)?
     var info: [AnyHashable: Any]?
+    var willMoveUsedView: Bool = true
     
     func handle(using view: UIView, with animation: ((KeyboardFrameDelta) -> Void)? = nil) {
         guard let userInfo = info,
@@ -70,10 +71,12 @@ struct KeyboardHandler {
             delay: 0,
             options: options,
             animations: {
-                if delta.height == 0 {
-                    view.frame.origin.y += delta.y
-                } else {
-                    view.frame.origin.y -= delta.height
+                if self.willMoveUsedView {
+                    if delta.height == 0 {
+                        view.frame.origin.y += delta.y
+                    } else {
+                        view.frame.origin.y -= delta.height
+                    }
                 }
                 animation?(delta)
             },
