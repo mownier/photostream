@@ -61,7 +61,7 @@ class NewsFeedViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
         collectionView.addSubview(refreshControl)
         
-        emptyView.actionHandler = { (view) in
+        emptyView.actionHandler = { [unowned self] view in
             self.presenter.initialLoad()
         }
     }
