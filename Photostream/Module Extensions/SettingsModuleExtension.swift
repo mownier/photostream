@@ -18,26 +18,26 @@ extension SettingsModule {
 
 extension SettingsModuleInterface {
     
-    func presentLogin() {
+    func presentLogout() {
         guard let presenter = self as? SettingsPresenter else {
             return
         }
         
-        try? FIRAuth.auth()?.signOut()
-        
-        presenter.wireframe.showLogin()
+        presenter.wireframe.showLogout(from: presenter.view.controller)
     }
 }
 
 extension SettingsWireframeInterface {
     
-    func showLogin() {
-        guard root != nil else {
-            return
-        }
+    func showLogout(from parent: UIViewController?) {
+        let module = LogoutModule()
+        module.build(root: root)
         
-        let vc = LoginWireframe.createViewController()
-        let loginWireframe = LoginWireframe(root: root as? RootWireframeInterface, view: vc)
-        loginWireframe.attachRoot(with: vc, in: root!.window)
+        var property = WireframeEntryProperty()
+        property.controller = module.view.controller
+        property.parent = parent
+        
+        module.wireframe.style = .present
+        module.wireframe.enter(with: property)
     }
 }
