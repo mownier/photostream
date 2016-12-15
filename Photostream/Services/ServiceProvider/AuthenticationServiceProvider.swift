@@ -89,4 +89,18 @@ struct AuthenticationServiceProvider: AuthenticationService {
             callback?(result)
         })
     }
+
+    func logout(callback: ((AuthenticationServiceError?) -> Void)?) {
+        guard let auth = FIRAuth.auth() else {
+            callback?(.authenticationNotFound(message: "Authentication not found"))
+            return
+        }
+        
+        do {
+            try auth.signOut()
+            callback?(nil)
+        } catch {
+            callback?(.unableToLogout(message: "Failed to log out"))
+        }
+    }
 }

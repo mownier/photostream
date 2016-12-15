@@ -12,6 +12,7 @@ protocol AuthenticationService {
 
     func login(data: AuthentationServiceLoginData, callback: ((AuthenticationServiceResult) -> Void)?)
     func register(data: AuthenticationServiceRegisterData, callback: ((AuthenticationServiceResult) -> Void)?)
+    func logout(callback: ((AuthenticationServiceError?) -> Void)?)
 }
 
 struct AuthentationServiceLoginData {
@@ -39,13 +40,15 @@ enum AuthenticationServiceError: Error {
     case authenticatedUserNotFound(message: String)
     case invalidLoginCredentials(message: String)
     case invalidRegisterCredentials(message: String)
+    case unableToLogout(message: String)
     
     var message: String {
         switch self {
         case .authenticationNotFound(let message),
              .authenticatedUserNotFound(let message),
              .invalidLoginCredentials(let message),
-             .invalidRegisterCredentials(let message):
+             .invalidRegisterCredentials(let message),
+             .unableToLogout(let message):
             return message
         }
     }
