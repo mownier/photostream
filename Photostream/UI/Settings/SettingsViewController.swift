@@ -46,7 +46,7 @@ class SettingsViewController: UITableViewController {
         
         let itemName = presenter.itemName(at: indexPath.row, for: indexPath.section)
         
-        if itemName.lowercased() == "sign out" {
+        if itemName.lowercased() == "log out" {
             presenter.presentLogout()
         }
     }
