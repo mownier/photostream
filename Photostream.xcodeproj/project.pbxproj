@@ -70,6 +70,7 @@
 		B95A06E81E023F06005B47B6 /* LogoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06E71E023F06005B47B6 /* LogoutPresenter.swift */; };
 		B95A06EA1E023F3E005B47B6 /* LogoutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06E91E023F3E005B47B6 /* LogoutScene.swift */; };
 		B95A06EC1E023F5A005B47B6 /* LogoutWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06EB1E023F5A005B47B6 /* LogoutWireframe.swift */; };
+		B95A06EF1E0241EB005B47B6 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06EE1E0241EB005B47B6 /* LogoutViewController.swift */; };
 		B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */; };
 		B9690BFD1DE56607007E4593 /* PostUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFC1DE56607007E4593 /* PostUploadView.swift */; };
 		B9690C031DE56E31007E4593 /* UploadedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690C021DE56E31007E4593 /* UploadedPost.swift */; };
@@ -355,6 +356,7 @@
 		B95A06E71E023F06005B47B6 /* LogoutPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutPresenter.swift; sourceTree = "<group>"; };
 		B95A06E91E023F3E005B47B6 /* LogoutScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutScene.swift; sourceTree = "<group>"; };
 		B95A06EB1E023F5A005B47B6 /* LogoutWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutWireframe.swift; sourceTree = "<group>"; };
+		B95A06EE1E0241EB005B47B6 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadViewController.swift; sourceTree = "<group>"; };
 		B9690BFC1DE56607007E4593 /* PostUploadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadView.swift; sourceTree = "<group>"; };
 		B9690C021DE56E31007E4593 /* UploadedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadedPost.swift; sourceTree = "<group>"; };
@@ -933,6 +935,14 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
+		B95A06ED1E0241D9005B47B6 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				B95A06EE1E0241EB005B47B6 /* LogoutViewController.swift */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
 		B9690BF91DE565D0007E4593 /* Post Upload */ = {
 			isa = PBXGroup;
 			children = (
@@ -1441,6 +1451,7 @@
 				B94131221DEEA85E00DD10CE /* Comment Writer */,
 				B9C217541DCC40F900F617FC /* Home */,
 				B9C217581DCC40F900F617FC /* Login */,
+				B95A06ED1E0241D9005B47B6 /* Logout */,
 				B9C2175C1DCC40F900F617FC /* News Feed */,
 				B978AF3E1DD44A3D007C1AAD /* Photo Capture */,
 				B9D496711DE7EB5F00CDD58E /* Photo Library */,
@@ -2503,6 +2514,7 @@
 				B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */,
 				B9C217B51DCC40F900F617FC /* NewsFeedInteractorInterface.swift in Sources */,
 				B941310C1DEE9C0F00DD10CE /* CommentFeedPresenter.swift in Sources */,
+				B95A06EF1E0241EB005B47B6 /* LogoutViewController.swift in Sources */,
 				B9C217D41DCC40F900F617FC /* AuthSession.swift in Sources */,
 				B9D4967A1DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift in Sources */,
 				B9C217EE1DCC40F900F617FC /* NewsFeedViewController.swift in Sources */,
