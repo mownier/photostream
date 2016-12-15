@@ -33,6 +33,11 @@ extension LogoutViewController: LogoutScene {
     }
     
     func didLogout(with error: String?) {
+        guard error == nil else {
+            presenter.exit()
+            return
+        }
         
+        presenter.presentLogin()
     }
 }
