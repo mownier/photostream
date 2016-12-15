@@ -190,3 +190,23 @@ extension RegistrationViewController: RegistrationViewInterface {
         presenter.presentHome()
     }
 }
+
+extension RegistrationViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        
+        } else if textField == passwordTextField {
+            firstNameTextField.becomeFirstResponder()
+            
+        } else if textField == firstNameTextField {
+            lastNameTextField.becomeFirstResponder()
+            
+        } else if textField == lastNameTextField {
+            didTapRegister()
+            
+        }
+        return false
+    }
+}
