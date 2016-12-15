@@ -107,7 +107,7 @@ extension RegistrationViewController {
         keyboardObserver = NotificationCenter.default.addObserver(
             forName: Notification.Name.UIKeyboardWillChangeFrame,
             object: nil,
-            queue: nil) { (notif) in
+            queue: nil) { [unowned self] notif in
                 self.willHandleKeyboardNotification(with: notif)
         }
     }
