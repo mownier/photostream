@@ -78,11 +78,8 @@ class UserTimelineViewController: UIViewController, BaseModuleWireframe {
 extension UserTimelineViewController {
     
     func didTapSettings() {
-        var section = SettingSection()
-        section.items.append("Sign out")
-        
         let module = SettingsModule()
-        module.build(root: root, sections: [section])
+        module.build(root: root, sections: module.defaultSections)
         
         var property = WireframeEntryProperty()
         property.controller = module.view.controller
