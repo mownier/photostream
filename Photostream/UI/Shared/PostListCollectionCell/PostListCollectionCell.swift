@@ -111,7 +111,7 @@ class PostListCollectionCell: UICollectionViewCell {
         
         let ratio = contentView.bounds.width / rect.size.width
         rect.size.width = contentView.bounds.width
-        rect.size.height = rect.size.height * ratio
+        rect.size.height = min(rect.size.width, rect.size.height * ratio)
         photoImageView.frame = rect
         
         rect.origin.x = spacing * 2
