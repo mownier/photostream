@@ -58,7 +58,7 @@ extension UserPostViewController: PostListCollectionCellDelegate {
                 return
         }
         
-        cell.toggleHeart(liked: post.isLiked) {
+        cell.toggleHeart(liked: post.isLiked) { [unowned self] in
             self.presenter.toggleLike(at: indexPath.section)
         }
     }
