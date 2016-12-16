@@ -42,6 +42,9 @@ class PostListCollectionCell: UICollectionViewCell {
     }
     
     func initSetup() {
+        contentView.clipsToBounds = true
+        contentView.layer.masksToBounds = true
+        
         photoImageView = UIImageView()
         photoImageView.contentMode = .scaleAspectFill
         photoImageView.clipsToBounds = true
