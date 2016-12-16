@@ -45,21 +45,21 @@ extension UserPostViewController: UICollectionViewDelegateFlowLayout {
 extension UserPostViewController: PostListCollectionCellDelegate {
     
     func didTapPhoto(cell: PostListCollectionCell) {
-        guard let indexPath = collectionView!.indexPath(for: cell) else {
+        guard let index = collectionView![cell]?.section else {
             return
         }
         
-        presenter.likePost(at: indexPath.section)
+        presenter.likePost(at: index)
     }
     
     func didTapHeart(cell: PostListCollectionCell) {
-        guard let indexPath = collectionView!.indexPath(for: cell),
-            let post = presenter.post(at: indexPath.section) else {
+        guard let index = collectionView![cell]?.section,
+            let post = presenter.post(at: index) else {
                 return
         }
         
         cell.toggleHeart(liked: post.isLiked) { [unowned self] in
-            self.presenter.toggleLike(at: indexPath.section)
+            self.presenter.toggleLike(at: index)
         }
     }
     
