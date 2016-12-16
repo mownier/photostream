@@ -170,31 +170,6 @@
 		B9C217EF1DCC40F900F617FC /* NewsFeedModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C217611DCC40F900F617FC /* NewsFeedModuleStoryboard.storyboard */; };
 		B9C217F01DCC40F900F617FC /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217631DCC40F900F617FC /* RegistrationViewController.swift */; };
 		B9C217F11DCC40F900F617FC /* RegistrationModuleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C217651DCC40F900F617FC /* RegistrationModuleStoryboard.storyboard */; };
-		B9C217F21DCC40F900F617FC /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217681DCC40F900F617FC /* PostCell.swift */; };
-		B9C217F31DCC40F900F617FC /* PostCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217691DCC40F900F617FC /* PostCellDataSource.swift */; };
-		B9C217F41DCC40F900F617FC /* PostCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2176A1DCC40F900F617FC /* PostCellDelegate.swift */; };
-		B9C217F51DCC40F900F617FC /* PostCellDisplayItemArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2176B1DCC40F900F617FC /* PostCellDisplayItemArray.swift */; };
-		B9C217F61DCC40F900F617FC /* PostCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2176C1DCC40F900F617FC /* PostCellItem.swift */; };
-		B9C217F71DCC40F900F617FC /* PostCellLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2176D1DCC40F900F617FC /* PostCellLoader.swift */; };
-		B9C217F81DCC40F900F617FC /* PostCellLoaderCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2176E1DCC40F900F617FC /* PostCellLoaderCallback.swift */; };
-		B9C217F91DCC40F900F617FC /* PostCellLoaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2176F1DCC40F900F617FC /* PostCellLoaderConfiguration.swift */; };
-		B9C217FA1DCC40F900F617FC /* PostFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217701DCC40F900F617FC /* PostFooterView.swift */; };
-		B9C217FB1DCC40F900F617FC /* PostGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217711DCC40F900F617FC /* PostGridCell.swift */; };
-		B9C217FC1DCC40F900F617FC /* PostGridCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217721DCC40F900F617FC /* PostGridCellDataSource.swift */; };
-		B9C217FD1DCC40F900F617FC /* PostGridCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217731DCC40F900F617FC /* PostGridCellDelegate.swift */; };
-		B9C217FE1DCC40F900F617FC /* PostGridCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217741DCC40F900F617FC /* PostGridCellItem.swift */; };
-		B9C217FF1DCC40F900F617FC /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217751DCC40F900F617FC /* PostHeaderView.swift */; };
-		B9C218001DCC40F900F617FC /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C217771DCC40F900F617FC /* PostCell.xib */; };
-		B9C218011DCC40F900F617FC /* PostFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C217781DCC40F900F617FC /* PostFooterView.xib */; };
-		B9C218021DCC40F900F617FC /* PostGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C217791DCC40F900F617FC /* PostGridCell.xib */; };
-		B9C218031DCC40F900F617FC /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C2177A1DCC40F900F617FC /* PostHeaderView.xib */; };
-		B9C218041DCC40F900F617FC /* PostListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2177C1DCC40F900F617FC /* PostListCell.swift */; };
-		B9C218051DCC40F900F617FC /* PostListCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2177D1DCC40F900F617FC /* PostListCellItem.swift */; };
-		B9C218061DCC40F900F617FC /* PostListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C2177F1DCC40F900F617FC /* PostListCell.xib */; };
-		B9C218071DCC40F900F617FC /* PostListFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217811DCC40F900F617FC /* PostListFooter.swift */; };
-		B9C218081DCC40F900F617FC /* PostListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217831DCC40F900F617FC /* PostListHeader.swift */; };
-		B9C218091DCC40F900F617FC /* PostListHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C217841DCC40F900F617FC /* PostListHeaderItem.swift */; };
-		B9C2180A1DCC40F900F617FC /* PostListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C217861DCC40F900F617FC /* PostListHeader.xib */; };
 		B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2178D1DCC40F900F617FC /* Array+Extensions.swift */; };
 		B9C2180E1DCC40F900F617FC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2178E1DCC40F900F617FC /* String+Extensions.swift */; };
 		B9C2180F1DCC40F900F617FC /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C2178F1DCC40F900F617FC /* UIColor+Extensions.swift */; };
@@ -240,9 +215,6 @@
 		B9D4969E1DE80EF700CDD58E /* PostUploadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */; };
 		B9D496A01DE8199F00CDD58E /* LoginModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */; };
 		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
-		B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */; };
-		B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */; };
-		B9D91EB81DD1B932000BF3E5 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D91EB71DD1B932000BF3E5 /* EmptyView.xib */; };
 		B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */; };
 		B9DEB2591DDEDE2200C47C37 /* PhotoShareModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */; };
 		B9DEB25B1DDEDE2E00C47C37 /* PhotoSharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */; };
@@ -454,31 +426,6 @@
 		B9C217611DCC40F900F617FC /* NewsFeedModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsFeedModuleStoryboard.storyboard; sourceTree = "<group>"; };
 		B9C217631DCC40F900F617FC /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B9C217651DCC40F900F617FC /* RegistrationModuleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegistrationModuleStoryboard.storyboard; sourceTree = "<group>"; };
-		B9C217681DCC40F900F617FC /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		B9C217691DCC40F900F617FC /* PostCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellDataSource.swift; sourceTree = "<group>"; };
-		B9C2176A1DCC40F900F617FC /* PostCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellDelegate.swift; sourceTree = "<group>"; };
-		B9C2176B1DCC40F900F617FC /* PostCellDisplayItemArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellDisplayItemArray.swift; sourceTree = "<group>"; };
-		B9C2176C1DCC40F900F617FC /* PostCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellItem.swift; sourceTree = "<group>"; };
-		B9C2176D1DCC40F900F617FC /* PostCellLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellLoader.swift; sourceTree = "<group>"; };
-		B9C2176E1DCC40F900F617FC /* PostCellLoaderCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellLoaderCallback.swift; sourceTree = "<group>"; };
-		B9C2176F1DCC40F900F617FC /* PostCellLoaderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCellLoaderConfiguration.swift; sourceTree = "<group>"; };
-		B9C217701DCC40F900F617FC /* PostFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFooterView.swift; sourceTree = "<group>"; };
-		B9C217711DCC40F900F617FC /* PostGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCell.swift; sourceTree = "<group>"; };
-		B9C217721DCC40F900F617FC /* PostGridCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCellDataSource.swift; sourceTree = "<group>"; };
-		B9C217731DCC40F900F617FC /* PostGridCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCellDelegate.swift; sourceTree = "<group>"; };
-		B9C217741DCC40F900F617FC /* PostGridCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostGridCellItem.swift; sourceTree = "<group>"; };
-		B9C217751DCC40F900F617FC /* PostHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostHeaderView.swift; sourceTree = "<group>"; };
-		B9C217771DCC40F900F617FC /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
-		B9C217781DCC40F900F617FC /* PostFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostFooterView.xib; sourceTree = "<group>"; };
-		B9C217791DCC40F900F617FC /* PostGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostGridCell.xib; sourceTree = "<group>"; };
-		B9C2177A1DCC40F900F617FC /* PostHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostHeaderView.xib; sourceTree = "<group>"; };
-		B9C2177C1DCC40F900F617FC /* PostListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCell.swift; sourceTree = "<group>"; };
-		B9C2177D1DCC40F900F617FC /* PostListCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCellItem.swift; sourceTree = "<group>"; };
-		B9C2177F1DCC40F900F617FC /* PostListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostListCell.xib; sourceTree = "<group>"; };
-		B9C217811DCC40F900F617FC /* PostListFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListFooter.swift; sourceTree = "<group>"; };
-		B9C217831DCC40F900F617FC /* PostListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListHeader.swift; sourceTree = "<group>"; };
-		B9C217841DCC40F900F617FC /* PostListHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListHeaderItem.swift; sourceTree = "<group>"; };
-		B9C217861DCC40F900F617FC /* PostListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostListHeader.xib; sourceTree = "<group>"; };
 		B9C2178D1DCC40F900F617FC /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		B9C2178E1DCC40F900F617FC /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B9C2178F1DCC40F900F617FC /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -524,9 +471,6 @@
 		B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadItem.swift; sourceTree = "<group>"; };
 		B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
 		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
-		B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
-		B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewInterface.swift; sourceTree = "<group>"; };
-		B9D91EB71DD1B932000BF3E5 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenterInterface.swift; sourceTree = "<group>"; };
 		B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareModuleInterface.swift; sourceTree = "<group>"; };
 		B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenter.swift; sourceTree = "<group>"; };
@@ -1497,94 +1441,12 @@
 			children = (
 				B933ADF91DED666300FAE922 /* CommentListCell */,
 				B92B96F71DDAD8CB00D89025 /* CropView */,
-				B9D91EB11DD1B586000BF3E5 /* EmptyView */,
 				B9F95E421DF7DB090090C73E /* GhostView */,
-				B9C217671DCC40F900F617FC /* PostCellLoader */,
 				B94AB2DA1DF6A2D600313254 /* PostGridCollectionCell */,
-				B9C2177B1DCC40F900F617FC /* PostListCell */,
 				B9F95E451DF7EA730090C73E /* PostListCollectionCell */,
 				B9E631161DF9357400158632 /* PostListCollectionHeader */,
-				B9C217801DCC40F900F617FC /* PostListFooter */,
-				B9C217821DCC40F900F617FC /* PostListHeader */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		B9C217671DCC40F900F617FC /* PostCellLoader */ = {
-			isa = PBXGroup;
-			children = (
-				B9C217681DCC40F900F617FC /* PostCell.swift */,
-				B9C217691DCC40F900F617FC /* PostCellDataSource.swift */,
-				B9C2176A1DCC40F900F617FC /* PostCellDelegate.swift */,
-				B9C2176B1DCC40F900F617FC /* PostCellDisplayItemArray.swift */,
-				B9C2176C1DCC40F900F617FC /* PostCellItem.swift */,
-				B9C2176D1DCC40F900F617FC /* PostCellLoader.swift */,
-				B9C2176E1DCC40F900F617FC /* PostCellLoaderCallback.swift */,
-				B9C2176F1DCC40F900F617FC /* PostCellLoaderConfiguration.swift */,
-				B9C217701DCC40F900F617FC /* PostFooterView.swift */,
-				B9C217711DCC40F900F617FC /* PostGridCell.swift */,
-				B9C217721DCC40F900F617FC /* PostGridCellDataSource.swift */,
-				B9C217731DCC40F900F617FC /* PostGridCellDelegate.swift */,
-				B9C217741DCC40F900F617FC /* PostGridCellItem.swift */,
-				B9C217751DCC40F900F617FC /* PostHeaderView.swift */,
-				B9C217761DCC40F900F617FC /* Xib */,
-			);
-			path = PostCellLoader;
-			sourceTree = "<group>";
-		};
-		B9C217761DCC40F900F617FC /* Xib */ = {
-			isa = PBXGroup;
-			children = (
-				B9C217771DCC40F900F617FC /* PostCell.xib */,
-				B9C217781DCC40F900F617FC /* PostFooterView.xib */,
-				B9C217791DCC40F900F617FC /* PostGridCell.xib */,
-				B9C2177A1DCC40F900F617FC /* PostHeaderView.xib */,
-			);
-			path = Xib;
-			sourceTree = "<group>";
-		};
-		B9C2177B1DCC40F900F617FC /* PostListCell */ = {
-			isa = PBXGroup;
-			children = (
-				B9C2177C1DCC40F900F617FC /* PostListCell.swift */,
-				B9C2177D1DCC40F900F617FC /* PostListCellItem.swift */,
-				B9C2177E1DCC40F900F617FC /* Xib */,
-			);
-			path = PostListCell;
-			sourceTree = "<group>";
-		};
-		B9C2177E1DCC40F900F617FC /* Xib */ = {
-			isa = PBXGroup;
-			children = (
-				B9C2177F1DCC40F900F617FC /* PostListCell.xib */,
-			);
-			path = Xib;
-			sourceTree = "<group>";
-		};
-		B9C217801DCC40F900F617FC /* PostListFooter */ = {
-			isa = PBXGroup;
-			children = (
-				B9C217811DCC40F900F617FC /* PostListFooter.swift */,
-			);
-			path = PostListFooter;
-			sourceTree = "<group>";
-		};
-		B9C217821DCC40F900F617FC /* PostListHeader */ = {
-			isa = PBXGroup;
-			children = (
-				B9C217831DCC40F900F617FC /* PostListHeader.swift */,
-				B9C217841DCC40F900F617FC /* PostListHeaderItem.swift */,
-				B9C217851DCC40F900F617FC /* Xib */,
-			);
-			path = PostListHeader;
-			sourceTree = "<group>";
-		};
-		B9C217851DCC40F900F617FC /* Xib */ = {
-			isa = PBXGroup;
-			children = (
-				B9C217861DCC40F900F617FC /* PostListHeader.xib */,
-			);
-			path = Xib;
 			sourceTree = "<group>";
 		};
 		B9C2178B1DCC40F900F617FC /* Utils */ = {
@@ -1818,24 +1680,6 @@
 				B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */,
 			);
 			path = "Post Composer";
-			sourceTree = "<group>";
-		};
-		B9D91EB11DD1B586000BF3E5 /* EmptyView */ = {
-			isa = PBXGroup;
-			children = (
-				B9D91EB61DD1B925000BF3E5 /* Xib */,
-				B9D91EB21DD1B59B000BF3E5 /* EmptyView.swift */,
-				B9D91EB41DD1B5AB000BF3E5 /* EmptyViewInterface.swift */,
-			);
-			path = EmptyView;
-			sourceTree = "<group>";
-		};
-		B9D91EB61DD1B925000BF3E5 /* Xib */ = {
-			isa = PBXGroup;
-			children = (
-				B9D91EB71DD1B932000BF3E5 /* EmptyView.xib */,
-			);
-			path = Xib;
 			sourceTree = "<group>";
 		};
 		B9DEB2511DDEDD8900C47C37 /* Photo Share */ = {
@@ -2115,23 +1959,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9C217EB1DCC40F900F617FC /* LoginModuleStoryboard.storyboard in Resources */,
-				B9C2180A1DCC40F900F617FC /* PostListHeader.xib in Resources */,
 				B9DEB2691DDEE19A00C47C37 /* PhotoShareModuleStoryboard.storyboard in Resources */,
 				B978AF431DD44A8F007C1AAD /* PhotoCaptureModuleStoryboard.storyboard in Resources */,
-				B9C218021DCC40F900F617FC /* PostGridCell.xib in Resources */,
 				B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */,
 				B9C217EF1DCC40F900F617FC /* NewsFeedModuleStoryboard.storyboard in Resources */,
 				B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */,
 				B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */,
 				B9C217E71DCC40F900F617FC /* CommentModuleStoryboard.storyboard in Resources */,
-				B9D91EB81DD1B932000BF3E5 /* EmptyView.xib in Resources */,
-				B9C218061DCC40F900F617FC /* PostListCell.xib in Resources */,
 				B9D496991DE7EE3F00CDD58E /* PhotoPickerModuleStoryboard.storyboard in Resources */,
-				B9C218031DCC40F900F617FC /* PostHeaderView.xib in Resources */,
 				B9C217E91DCC40F900F617FC /* HomeModuleStoryboard.storyboard in Resources */,
 				B9D4967C1DE7EB5F00CDD58E /* PhotoLibraryModuleStoryboard.storyboard in Resources */,
-				B9C218001DCC40F900F617FC /* PostCell.xib in Resources */,
-				B9C218011DCC40F900F617FC /* PostFooterView.xib in Resources */,
 				B9C217F11DCC40F900F617FC /* RegistrationModuleStoryboard.storyboard in Resources */,
 				B97AE8191D76BC3B009FC88B /* GoogleService-Info.plist in Resources */,
 			);
@@ -2260,7 +2097,6 @@
 			files = (
 				B9E631151DF915F600158632 /* PostListCollectionCellItem.swift in Sources */,
 				B954EE511DE0325400A0049D /* PostUploadModuleInterface.swift in Sources */,
-				B9C218051DCC40F900F617FC /* PostListCellItem.swift in Sources */,
 				B9C217EA1DCC40F900F617FC /* LoginViewController.swift in Sources */,
 				B94AB2C51DF687EA00313254 /* UserPostInteractor.swift in Sources */,
 				B9C217A81DCC40F900F617FC /* LoginInteractor.swift in Sources */,
@@ -2284,7 +2120,6 @@
 				B99719771E0121B400A24C74 /* SettingsViewController.swift in Sources */,
 				B9E631181DF9359500158632 /* PostListCollectionHeader.swift in Sources */,
 				B941310A1DEE9C0F00DD10CE /* CommentFeedModule.swift in Sources */,
-				B9C218071DCC40F900F617FC /* PostListFooter.swift in Sources */,
 				B9B8AE2F1DFA7DF100D190A5 /* UserPostViewDataSource.swift in Sources */,
 				B94AB2C71DF6890200313254 /* UserPostData.swift in Sources */,
 				B978AF411DD44A53007C1AAD /* PhotoCaptureViewController.swift in Sources */,
@@ -2298,7 +2133,6 @@
 				B978AF381DD42F40007C1AAD /* PhotoCaptureWireframe.swift in Sources */,
 				B9C217C51DCC40F900F617FC /* RegistrationPresenter.swift in Sources */,
 				B92A1C7B1DEFD79900EC8DAD /* CommentWriterView.swift in Sources */,
-				B9C217F71DCC40F900F617FC /* PostCellLoader.swift in Sources */,
 				B9D496791DE7EB5F00CDD58E /* PhotoLibraryDataSource.swift in Sources */,
 				B9E408441DFBC8AC00B7076A /* UserProfileScene.swift in Sources */,
 				B9E408551DFBDFD700B7076A /* UserProfileViewItem.swift in Sources */,
@@ -2309,7 +2143,6 @@
 				B997196C1E011AF500A24C74 /* SettingsModule.swift in Sources */,
 				B9D4965F1DE7EAD200CDD58E /* PhotoLibraryModuleInterface.swift in Sources */,
 				B99719701E011B6600A24C74 /* SettingsWireframe.swift in Sources */,
-				B9C217FF1DCC40F900F617FC /* PostHeaderView.swift in Sources */,
 				B921B5571DD594A70065C187 /* AssetServiceProvider.swift in Sources */,
 				B9E4084C1DFBCDDC00B7076A /* UserProfileModuleExtension.swift in Sources */,
 				B9C217D71DCC40F900F617FC /* Post.swift in Sources */,
@@ -2336,7 +2169,6 @@
 				B9C218111DCC40F900F617FC /* UITextField+Extensions.swift in Sources */,
 				B90920611DD30D730073FB72 /* PhotoPickerModuleExtension.swift in Sources */,
 				B9C217991DCC40F900F617FC /* AppDependency.swift in Sources */,
-				B9C217F21DCC40F900F617FC /* PostCell.swift in Sources */,
 				B954EE4D1DE0323E00A0049D /* PostUploadPresenter.swift in Sources */,
 				B99B497C1DEC1E68001B9C5A /* BaseModuleInteractor.swift in Sources */,
 				B941311F1DEEA30C00DD10CE /* CommentWriterScene.swift in Sources */,
@@ -2347,7 +2179,6 @@
 				B9D4965D1DE7EAD200CDD58E /* PhotoLibraryInteractorOutput.swift in Sources */,
 				B941311D1DEEA29B00DD10CE /* CommentWriterPresenter.swift in Sources */,
 				B9C217DC1DCC40F900F617FC /* FileService.swift in Sources */,
-				B9C217F91DCC40F900F617FC /* PostCellLoaderConfiguration.swift in Sources */,
 				B9D4969E1DE80EF700CDD58E /* PostUploadItem.swift in Sources */,
 				B9C217D91DCC40F900F617FC /* User.swift in Sources */,
 				B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */,
@@ -2364,7 +2195,6 @@
 				B921B5651DD5ADF20065C187 /* PhotoLibraryModuleExtension.swift in Sources */,
 				B9D496611DE7EAD200CDD58E /* PhotoLibraryPresenterInterface.swift in Sources */,
 				B9C217E41DCC40F900F617FC /* PostServiceProvider.swift in Sources */,
-				B9C217FC1DCC40F900F617FC /* PostGridCellDataSource.swift in Sources */,
 				B94AB2CB1DF6928400313254 /* UserPostWireframe.swift in Sources */,
 				B94131101DEE9C0F00DD10CE /* CommentWireframe.swift in Sources */,
 				B9C217C61DCC40F900F617FC /* RegistrationPresenterInterface.swift in Sources */,
@@ -2401,7 +2231,6 @@
 				B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */,
 				B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */,
 				B9D496A01DE8199F00CDD58E /* LoginModuleInterface.swift in Sources */,
-				B9C217F51DCC40F900F617FC /* PostCellDisplayItemArray.swift in Sources */,
 				B9C2179D1DCC40F900F617FC /* NewsFeedModuleExtension.swift in Sources */,
 				B94AB2C91DF6921300313254 /* UserPostScene.swift in Sources */,
 				B9D4965B1DE7EAD200CDD58E /* PhotoLibraryInteractorInput.swift in Sources */,
@@ -2410,7 +2239,6 @@
 				B9E408481DFBCA0200B7076A /* UserProfileWireframe.swift in Sources */,
 				B9D496621DE7EAD200CDD58E /* PhotoLibraryViewInterface.swift in Sources */,
 				B9D496981DE7EE3F00CDD58E /* PhotoPickerViewDelegate.swift in Sources */,
-				B9C218091DCC40F900F617FC /* PostListHeaderItem.swift in Sources */,
 				B9D496631DE7EAD200CDD58E /* PhotoLibraryWireframe.swift in Sources */,
 				B95A06E81E023F06005B47B6 /* LogoutPresenter.swift in Sources */,
 				B978AF361DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift in Sources */,
@@ -2418,23 +2246,17 @@
 				B9C217AB1DCC40F900F617FC /* LoginInteractorOutput.swift in Sources */,
 				B978AF451DD45A7B007C1AAD /* PhotoCaptureModuleExtension.swift in Sources */,
 				B9D496641DE7EAD200CDD58E /* PhotoLibraryWireframeInterface.swift in Sources */,
-				B9C217F31DCC40F900F617FC /* PostCellDataSource.swift in Sources */,
-				B9D91EB51DD1B5AB000BF3E5 /* EmptyViewInterface.swift in Sources */,
 				B9C217DD1DCC40F900F617FC /* NewsFeedService.swift in Sources */,
 				B954EE571DE0327B00A0049D /* PostUploadWireframeInterface.swift in Sources */,
 				B941310E1DEE9C0F00DD10CE /* CommentFeedScene.swift in Sources */,
-				B9C217FA1DCC40F900F617FC /* PostFooterView.swift in Sources */,
 				B9D496961DE7EE3F00CDD58E /* PhotoPickerViewController.swift in Sources */,
 				B9C217E01DCC40F900F617FC /* AuthenticationServiceProvider.swift in Sources */,
 				B9E408401DFBBA5000B7076A /* UserProfileInteractor.swift in Sources */,
 				B9D1AC9B1E039D72003E8870 /* NewsFeedWireframe.swift in Sources */,
-				B9D91EB31DD1B59B000BF3E5 /* EmptyView.swift in Sources */,
 				B94131291DEEAEC600DD10CE /* CommentController.swift in Sources */,
 				B9C217F01DCC40F900F617FC /* RegistrationViewController.swift in Sources */,
 				B9C217EC1DCC40F900F617FC /* NewsFeedDataSource.swift in Sources */,
 				B9E408421DFBBB8200B7076A /* UserProfileData.swift in Sources */,
-				B9C217FB1DCC40F900F617FC /* PostGridCell.swift in Sources */,
-				B9C217F81DCC40F900F617FC /* PostCellLoaderCallback.swift in Sources */,
 				B9C217E61DCC40F900F617FC /* CommentFeedViewController.swift in Sources */,
 				B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
@@ -2460,22 +2282,16 @@
 				B9D4967B1DE7EB5F00CDD58E /* PhotoLibraryViewController.swift in Sources */,
 				B94AB2DC1DF6A2D600313254 /* PostGridCollectionCell.swift in Sources */,
 				B9C2179C1DCC40F900F617FC /* LoginModuleExtension.swift in Sources */,
-				B9C217F61DCC40F900F617FC /* PostCellItem.swift in Sources */,
-				B9C217FD1DCC40F900F617FC /* PostGridCellDelegate.swift in Sources */,
-				B9C218041DCC40F900F617FC /* PostListCell.swift in Sources */,
 				B9D4968F1DE7EDE300CDD58E /* PhotoPickerWireframeInterface.swift in Sources */,
 				B9C217DE1DCC40F900F617FC /* PostService.swift in Sources */,
-				B9C217F41DCC40F900F617FC /* PostCellDelegate.swift in Sources */,
 				B92B96F91DDAD8DB00D89025 /* CropView.swift in Sources */,
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
 				B9DEB2611DDEDE5200C47C37 /* PhotoShareWireframe.swift in Sources */,
 				B9C2179E1DCC40F900F617FC /* RegistrationModuleExtension.swift in Sources */,
 				B95A06EC1E023F5A005B47B6 /* LogoutWireframe.swift in Sources */,
 				B9D4969C1DE7F09D00CDD58E /* PostComposerNavigationController.swift in Sources */,
-				B9C217FE1DCC40F900F617FC /* PostGridCellItem.swift in Sources */,
 				B921B5551DD593240065C187 /* AssetService.swift in Sources */,
 				B978AF321DD42F14007C1AAD /* PhotoCapturePresenter.swift in Sources */,
-				B9C218081DCC40F900F617FC /* PostListHeader.swift in Sources */,
 				B954EE591DE032D400A0049D /* PostUploadModuleDelegate.swift in Sources */,
 				B9C217A11DCC40F900F617FC /* RootWireframeInterface.swift in Sources */,
 				B9C217A41DCC40F900F617FC /* HomePresenterInterface.swift in Sources */,
