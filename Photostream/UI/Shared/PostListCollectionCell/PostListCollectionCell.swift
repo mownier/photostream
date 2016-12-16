@@ -218,7 +218,7 @@ extension PostListCollectionCell {
         heart.autostart = false
         heart.animation = "pop"
         heart.duration = 1.0
-        heart.animateToNext {
+        heart.animateToNext { [unowned self] in
             heart.removeFromSuperview()
             self.heartButton.setImage(#imageLiteral(resourceName: "heart_pink"), for: .normal)
             self.heartButton.isHidden = false
