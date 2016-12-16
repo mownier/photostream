@@ -31,6 +31,10 @@ class NewsFeedPresenter: NewsFeedPresenterInterface {
 
 extension NewsFeedPresenter: NewsFeedModuleInterface {
     
+    var feedCount: Int {
+        return feed.items.count
+    }
+    
     func exit() {
         var property = WireframeExitProperty()
         property.controller = view.controller
@@ -52,8 +56,8 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
         interactor.fetchNext(with: limit)
     }
     
-    func like(post id: String) {
-        guard let index = feed.indexOf(post: id),
+    func likePost(at index: Int) {
+        guard feed.items.isValid(index),
             var post = feed.items[index] as? NewsFeedPost, !post.isLiked else {
             return
         }
@@ -62,11 +66,11 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
         post.likes += 1
         feed.items[index] = post
         view.reloadView()
-        interactor.like(post: id)
+        interactor.like(post: post.id)
     }
     
-    func unlike(post id: String) {
-        guard let index = feed.indexOf(post: id),
+    func unlikePost(at index: Int) {
+        guard feed.items.isValid(index),
             var post = feed.items[index] as? NewsFeedPost, post.isLiked else {
             return
         }
@@ -75,11 +79,7 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
         post.likes -= 1
         feed.items[index] = post
         view.reloadView()
-        interactor.unlike(post: id)
-    }
-    
-    var feedCount: Int {
-        return feed.items.count
+        interactor.unlike(post: post.id)
     }
     
     func feed(at index: Int) -> NewsFeedDataItem? {
