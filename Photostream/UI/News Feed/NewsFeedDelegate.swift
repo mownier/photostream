@@ -11,7 +11,7 @@ import UIKit
 extension NewsFeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.section == presenter.feedCount - 1 {
+        if indexPath.section == presenter.feedCount - 10 {
             presenter.loadMoreFeeds()
         }
     }
