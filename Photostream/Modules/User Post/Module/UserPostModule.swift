@@ -10,6 +10,7 @@ protocol UserPostModuleInterface: BaseModuleInterface {
     
     var postCount: Int { get }
     
+    func initialLoad()
     func refreshPosts()
     func loadMorePosts()
     

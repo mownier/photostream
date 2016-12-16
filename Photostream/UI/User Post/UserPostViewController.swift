@@ -167,7 +167,7 @@ class UserPostViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter.refreshPosts()
+        presenter.initialLoad()
     }
     
     func triggerRefresh() {

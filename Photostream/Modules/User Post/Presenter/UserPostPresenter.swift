@@ -50,15 +50,15 @@ extension UserPostPresenter: UserPostModuleInterface {
         wireframe.exit(with: property)
     }
     
-    func refreshPosts() {
+    func initialLoad() {
+        view.showInitialLoadView()
         interactor.fetchNew(with: userId, and: limit)
-         view.hideEmptyView()
-        if postCount == 0 {
-            view.showInitialLoadView()
-            
-        } else {
-            view.showRefreshView()
-        }
+    }
+    
+    func refreshPosts() {
+        view.hideEmptyView()
+        view.showRefreshView()
+        interactor.fetchNew(with: userId, and: limit)
     }
     
     func loadMorePosts() {
