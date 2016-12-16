@@ -30,11 +30,22 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
 extension NewsFeedViewController: PostListCollectionCellDelegate {
     
     func didTapPhoto(cell: PostListCollectionCell) {
+        guard let index = collectionView[cell]?.section else {
+            return
+        }
         
+        presenter.likePost(at: index)
     }
     
     func didTapHeart(cell: PostListCollectionCell) {
+        guard let index = collectionView[cell]?.section,
+            let post = presenter.feed(at: index) as? NewsFeedPost else {
+                return
+        }
         
+        cell.toggleHeart(liked: post.isLiked) { [unowned self] in
+            self.presenter.toggleLike(at: index)
+        }
     }
     
     func didTapComment(cell: PostListCollectionCell) {
