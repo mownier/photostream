@@ -40,7 +40,7 @@ extension CommentListCell: CommentListCellConfig {
     
     fileprivate var authorImage: UIImage {
         let frame = CGRect(x: 0, y: 0, width: photoLength, height: photoLength)
-        let font = UIFont.systemFont(ofSize: 15)
+        let font = UIFont.systemFont(ofSize: 12)
         let text: String = authorLabel.text![0]
         let image = UILabel.createPlaceholderImageWithFrame(frame, text: text, font: font)
         return image

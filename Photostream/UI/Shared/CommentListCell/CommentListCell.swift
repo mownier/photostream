@@ -42,13 +42,13 @@ class CommentListCell: UITableViewCell {
         authorLabel.numberOfLines = 0
         contentLabel.numberOfLines = 0
         
-        timeLabel.font = UIFont.systemFont(ofSize: 10)
+        timeLabel.font = UIFont.systemFont(ofSize: 8)
         timeLabel.textColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
         
-        authorLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightSemibold)
+        authorLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightSemibold)
         authorLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
         
-        contentLabel.font = UIFont.systemFont(ofSize: 14)
+        contentLabel.font = UIFont.systemFont(ofSize: 12)
         contentLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
         
         contentView.addSubview(authorPhoto)
@@ -88,7 +88,7 @@ extension CommentListCell {
     }
     
     var photoLength: CGFloat {
-        return 32
+        return 28
     }
     
     var contentSize: CGSize {
