@@ -47,8 +47,9 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
     }
     
     func refreshFeeds() {
-        interactor.fetchNew(with: limit)
+        view.hideEmptyView()
         view.showRefreshView()
+        interactor.fetchNew(with: limit)
     }
     
     func loadMoreFeeds() {
