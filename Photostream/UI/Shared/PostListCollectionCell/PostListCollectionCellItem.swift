@@ -85,7 +85,14 @@ extension PostListCollectionCell: PostListCollectionCellConfig {
         }
         
         let resource = ImageResource(downloadURL: downloadUrl)
-        photoImageView.kf.setImage(with: resource, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        photoImageView.backgroundColor = UIColor.lightGray
+        photoImageView.kf.setImage(
+            with: resource,
+            placeholder: nil,
+            options: nil,
+            progressBlock: nil) { [unowned self] (_, _, _, _) in
+            self.photoImageView.backgroundColor = UIColor.white
+        }
     }
     
     func set(liked: Bool) {
