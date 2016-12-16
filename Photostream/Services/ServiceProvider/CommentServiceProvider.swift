@@ -106,7 +106,7 @@ struct CommentServiceProvider: CommentService {
             if let val = data.value as? Int {
                 data.value = val + 1
             } else {
-                data.value = 0
+                data.value = 1
             }
             return FIRTransactionResult.success(withValue: data)
             
