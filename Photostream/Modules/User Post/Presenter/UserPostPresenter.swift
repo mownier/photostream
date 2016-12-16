@@ -137,13 +137,13 @@ extension UserPostPresenter: UserPostInteractorOutput {
     }
     
     func userPostDidLoadMore(with data: [UserPostData]) {
+        view.didLoadMore(with: nil)
+        
         guard data.count > 0 else {
             return
         }
         
         posts.append(contentsOf: data)
-        
-        view.didLoadMore(with: nil)
         view.reloadView()
     }
     

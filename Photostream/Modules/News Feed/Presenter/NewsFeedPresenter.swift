@@ -116,8 +116,13 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
     }
     
     func newsFeedDidLoadMore(data: NewsFeedData) {
-        feed.items.append(contentsOf: data.items)
         view.didLoadMore(with: nil)
+        
+        guard data.items.count > 0 else {
+            return
+        }
+        
+        feed.items.append(contentsOf: data.items)
         view.reloadView()
     }
     
