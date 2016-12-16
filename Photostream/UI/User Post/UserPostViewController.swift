@@ -159,7 +159,7 @@ class UserPostViewController: UICollectionViewController {
         PostListCollectionCell.register(in: collectionView!)
         PostListCollectionHeader.register(in: collectionView!)
         
-        prototype.contentView.bounds.size.width = size.width
+        prototype.bounds.size.width = size.width
         
         setupNavigationItem()
     }
