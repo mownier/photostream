@@ -122,6 +122,9 @@ extension NewsFeedPresenter: NewsFeedInteractorOutput {
     }
     
     func newsFeedDidRefresh(error: NewsFeedServiceError) {
+        view.hideInitialLoadView()
+        view.hideRefreshView()
+        
         view.didRefresh(with: error.message)
     }
     
