@@ -86,7 +86,7 @@ class NewsFeedViewController: UIViewController {
     }
 }
 
-extension NewsFeedViewController: NewsFeedViewInterface {
+extension NewsFeedViewController: NewsFeedScene {
     
     var controller: UIViewController? {
         return self

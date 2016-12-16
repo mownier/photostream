@@ -6,11 +6,39 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
+protocol NewsFeedInteractorInput: BaseModuleInteractorInput {
+    
+    func fetchNew(with limit: UInt)
+    func fetchNext(with limit: UInt)
+    func like(post id: String)
+    func unlike(post id: String)
+}
+
+protocol NewsFeedInteractorOutput: BaseModuleInteractorOutput {
+    
+    func newsFeedDidRefresh(data: NewsFeedData)
+    func newsFeedDidLoadMore(data: NewsFeedData)
+    func newsFeedDidFetchWithError(error: NewsFeedServiceError)
+    
+    func newsFeedDidLike(with postId: String, and error: PostServiceError?)
+    func newsFeedDidUnlike(with postId: String, and error: PostServiceError?)
+}
+
+protocol NewsFeedInteractorInterface: BaseModuleInteractor {
+    
+    var offset: String? { set get }
+    var feedService: NewsFeedService! { set get }
+    var postService: PostService! { set get }
+    
+    init(feedService: NewsFeedService, postService: PostService)
+}
 
 class NewsFeedInteractor: NewsFeedInteractorInterface {
     
-    weak var output: NewsFeedInteractorOutput?
+    typealias Output = NewsFeedInteractorOutput
+    
+    weak var output: Output?
+    
     var feedService: NewsFeedService!
     var postService: PostService!
     var offset: String?

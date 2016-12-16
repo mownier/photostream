@@ -8,27 +8,14 @@
 
 import UIKit
 
+protocol NewsFeedWireframeInterface: BaseModuleWireframe { }
+
 class NewsFeedWireframe: NewsFeedWireframeInterface {
 
-    var root: RootWireframeInterface?
+    var root: RootWireframe?
+    var style: WireframeStyle!
     
-    required init(root: RootWireframeInterface?, view: NewsFeedViewInterface) {
+    required init(root: RootWireframe?) {
         self.root = root
-        
-        let session = AuthSession()
-        let feedService = NewsFeedServiceProvider(session: session)
-        let postService = PostServiceProvider(session: session)
-        let interactor = NewsFeedInteractor(feedService: feedService, postService: postService)
-        let presenter = NewsFeedPresenter()
-        
-        view.presenter = presenter
-        interactor.output = presenter
-        presenter.view = view
-        presenter.interactor = interactor
-        presenter.wireframe = self
-    }
-
-    func attachRoot(with controller: UIViewController, in window: UIWindow) {
-        root?.showRoot(with: controller, in: window)
     }
 }

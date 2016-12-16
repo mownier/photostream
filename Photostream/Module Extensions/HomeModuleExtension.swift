@@ -67,13 +67,11 @@ extension HomeWireframe {
     
     func loadModuleDependency(with controller: UITabBarController) {
         let feedVC = (controller.viewControllers?[0] as? UINavigationController)?.topViewController as! NewsFeedViewController
-        _ = NewsFeedWireframe(root: root, view: feedVC)
-        dependencies?.append(feedVC.presenter as! HomeModuleDependency)
+        let module = NewsFeedModule(view: feedVC)
+        module.build(root: root as? RootWireframe)
+        dependencies?.append(module.presenter)
         
         let auth = AuthSession()
-        // let module = UserPostModule()
-        // let module = UserProfileModule()
-        // module.build(root: nil, userId: auth.user.id)
         let userTimeline = UserTimelineViewController()
         userTimeline.userId = auth.user.id
         userTimeline.root = root as? RootWireframe

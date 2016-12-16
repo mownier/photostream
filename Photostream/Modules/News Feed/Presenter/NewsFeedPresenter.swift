@@ -8,18 +8,35 @@
 
 import Foundation
 
+protocol NewsFeedPresenterInterface: BaseModulePresenter, BaseModuleInteractable {
+    
+    var limit: UInt { set get }
+    var feed: NewsFeedData! { get }
+}
+
 class NewsFeedPresenter: NewsFeedPresenterInterface {
     
-    weak var view: NewsFeedViewInterface!
-    var wireframe: NewsFeedWireframeInterface!
-    var interactor: NewsFeedInteractorInput!
+    typealias ModuleView = NewsFeedScene
+    typealias ModuleInteractor = NewsFeedInteractorInput
+    typealias ModuleWireframe = NewsFeedWireframeInterface
+    
+    weak var view: ModuleView!
+    
+    var wireframe: ModuleWireframe!
+    var interactor: ModuleInteractor!
+    
     var feed: NewsFeedData! = NewsFeedData()
-    var limit: UInt {
-        return 10
-    }
+    var limit: UInt = 10
 }
 
 extension NewsFeedPresenter: NewsFeedModuleInterface {
+    
+    func exit() {
+        var property = WireframeExitProperty()
+        property.controller = view.controller
+        wireframe.exit(with: property)
+    }
+
     
     func initialLoad() {
         view.showInitialLoadView()

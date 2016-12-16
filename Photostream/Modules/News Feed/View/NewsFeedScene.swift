@@ -1,16 +1,13 @@
 //
-//  NewsFeedViewInterface.swift
+//  NewsFeedScene.swift
 //  Photostream
 //
 //  Created by Mounir Ybanez on 17/08/2016.
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+protocol NewsFeedScene: BaseModuleView {
 
-protocol NewsFeedViewInterface: class {
-
-    var controller: UIViewController? { get }
     var presenter: NewsFeedModuleInterface! { set get }
     
     func reloadView()
