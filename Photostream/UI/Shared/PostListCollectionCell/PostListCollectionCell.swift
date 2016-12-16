@@ -46,9 +46,9 @@ class PostListCollectionCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
         
         photoImageView = UIImageView()
-        photoImageView.contentMode = .scaleAspectFill
+        photoImageView.contentMode = .scaleAspectFit
         photoImageView.clipsToBounds = true
-        photoImageView.backgroundColor = UIColor.lightGray
+        photoImageView.backgroundColor = UIColor.white
         photoImageView.isUserInteractionEnabled = true
         
         heartButton = UIButton()
