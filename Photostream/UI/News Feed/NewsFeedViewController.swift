@@ -106,25 +106,28 @@ extension NewsFeedViewController: NewsFeedScene {
         shouldDisplayIndicatorView = true
     }
     
-    func didStartRefreshingFeeds() {
+    func showRefreshView() {
         isRefreshing = true
     }
     
-    func didRefreshFeeds() {
+    func hideEmptyView() {
         shouldDisplayEmptyView = false
+    }
+    
+    func hideInitialLoadView() {
         shouldDisplayIndicatorView = false
+    }
+    
+    func hideRefreshView() {
         isRefreshing = false
     }
     
-    func didLoadMoreFeeds() {
-
+    func didRefresh(with error: String?) {
+        
     }
     
-    func didFetchWithError(message: String) {
-        shouldDisplayEmptyView = false
-        shouldDisplayIndicatorView = false
-        isRefreshing = false
-        refreshView.endRefreshing()
+    func didLoadMore(with error: String?) {
+        
     }
     
     func didLikeWithError(message: String?) {
