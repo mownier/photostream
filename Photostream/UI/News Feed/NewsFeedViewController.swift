@@ -15,18 +15,36 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var listLayout: UICollectionViewFlowLayout!
     
-    lazy var refreshView = UIRefreshControl()
-    lazy var indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    lazy var emptyView = EmptyView.createNew()
     lazy var prototype: PostListCollectionCell! = PostListCollectionCell()
+    
+    lazy var emptyView: GhostView! = {
+        let view = GhostView()
+        view.titleLabel.text = "No posts"
+        return view
+    }()
+    
+    lazy var refreshView: UIRefreshControl = {
+        let view = UIRefreshControl()
+        view.addTarget(
+            self,
+            action: #selector(self.triggerRefresh),
+            for: .valueChanged)
+        return view
+    }()
+    
+    lazy var loadingView: UIActivityIndicatorView! = {
+        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        view.hidesWhenStopped = true
+        return view
+    }()
     
     var shouldDisplayIndicatorView: Bool = false {
         didSet {
             if shouldDisplayIndicatorView {
-                indicatorView.startAnimating()
-                collectionView.backgroundView = indicatorView
+                loadingView.startAnimating()
+                collectionView.backgroundView = loadingView
             } else {
-                indicatorView.stopAnimating()
+                loadingView.stopAnimating()
                 collectionView.backgroundView = nil
             }
         }
@@ -61,11 +79,7 @@ class NewsFeedViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        refreshView.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
-        
-        emptyView.actionHandler = { [unowned self] view in
-            self.presenter.initialLoad()
-        }
+        collectionView.alwaysBounceVertical = true
         
         PostListCollectionCell.register(in: collectionView)
         PostListCollectionHeader.register(in: collectionView)
