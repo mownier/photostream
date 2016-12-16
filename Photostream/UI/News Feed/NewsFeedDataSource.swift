@@ -41,11 +41,8 @@ extension NewsFeedViewController: UICollectionViewDataSource {
         let item = presenter.feed(at: indexPath.section)
         
         switch kind {
-        case UICollectionElementKindSectionHeader:
-            return header(from: collectionView, at: indexPath, for: item as! NewsFeedPost?)
-        case UICollectionElementKindSectionFooter:
-            let footer = PostListFooter.dequeue(from: collectionView, at: indexPath)
-            return footer!
+        case UICollectionElementKindSectionHeader where item is NewsFeedPost:
+            return header(from: collectionView, at: indexPath, for: item as? NewsFeedPost)
         default:
             return UICollectionReusableView()
         }
@@ -59,20 +56,23 @@ extension NewsFeedViewController {
     }
     
     func cell(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionViewCell {
-        guard let cell = PostListCell.dequeue(from: collectionView, at: indexPath), let post = item as? PostListCellItem else {
+        guard let cell = PostListCollectionCell.dequeue(from: collectionView, for: indexPath),
+            let post = item as? PostListCollectionCellItem else {
             return UICollectionViewCell()
         }
-        cell.configure(for: post)
+        
+        cell.configure(with: post)
         cell.delegate = self
         return cell
     }
     
     func header(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionReusableView {
-        guard let header = PostListHeader.dequeue(from: collectionView, at: indexPath), let post = item as? PostListHeaderItem else {
+        guard let header = PostListCollectionHeader.dequeue(from: collectionView, for: indexPath),
+            let post = item as? PostListCollectionHeaderItem else {
             return UICollectionReusableView()
         }
         
-        header.configure(for: post)
+        header.configure(with: post)
         return header
     }
 }

@@ -48,41 +48,48 @@ extension NewsFeedModuleInterface {
     }
 }
 
-extension NewsFeedPost: PostListCellItem {
+extension NewsFeedPost: PostListCollectionCellItem {
     
-    var likesText: String {
-        if likes > 0 {
-            if likes == 1 {
-                return "1 like"
-            } else {
-                return "\(likes) likes"
-            }
-        }
-        return ""
-    }
-    
-    var commentsText: String {
-        if comments > 0 {
-            if comments == 1 {
-                return "View 1 comment"
-            } else {
-                if comments > 3 {
-                    return "View \(comments) comments"
-                } else {
-                    return "View all \(comments) comments"
-                }
-            }
-        }
-        return ""
+    var photoSize: CGSize {
+        var size = CGSize.zero
+        size.width = CGFloat(photoWidth)
+        size.height = CGFloat(photoHeight)
+        return size
     }
     
     var timeAgo: String {
         let date = NSDate(timeIntervalSince1970: timestamp)
         return date.timeAgoSinceNow()
     }
+    
+    var likesText: String {
+        guard likes > 0 else {
+            return ""
+        }
+        
+        if likes > 1 {
+            return "\(likes) likes"
+            
+        } else {
+            return "1 like"
+        }
+    }
+    
+    var commentsText: String {
+        guard comments > 0 else {
+            return ""
+        }
+        
+        if comments > 1 {
+            return "View \(comments) comments"
+            
+        } else {
+            return "View 1 comment"
+        }
+    }
 }
 
-extension NewsFeedPost: PostListHeaderItem { }
+extension NewsFeedPost: PostListCollectionHeaderItem { }
 
 extension NewsFeedPresenter: HomeModuleDependency { }
 

@@ -13,13 +13,12 @@ import DateTools
 class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var flowLayout: MONUniformFlowLayout!
+    @IBOutlet weak var listLayout: UICollectionViewFlowLayout!
     
-    lazy var refreshControl = UIRefreshControl()
+    lazy var refreshView = UIRefreshControl()
     lazy var indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     lazy var emptyView = EmptyView.createNew()
-    lazy var scrollHandler = ScrollHandler()
-    lazy var sizeHandler = DynamicSizeHandler<String,String>()
+    lazy var prototype: PostListCollectionCell! = PostListCollectionCell()
     
     var shouldDisplayIndicatorView: Bool = false {
         didSet {
@@ -45,10 +44,14 @@ class NewsFeedViewController: UIViewController {
     
     var isRefreshing: Bool = false {
         didSet {
+            if refreshView.superview == nil {
+                self.collectionView.addSubview(self.refreshView)
+            }
+            
             if isRefreshing {
-                refreshControl.beginRefreshing()
+                refreshView.beginRefreshing()
             } else {
-                refreshControl.endRefreshing()
+                refreshView.endRefreshing()
             }
         }
     }
@@ -58,25 +61,24 @@ class NewsFeedViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        refreshControl.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
-        collectionView.addSubview(refreshControl)
+        refreshView.addTarget(self, action: #selector(self.triggerRefresh), for: .valueChanged)
         
         emptyView.actionHandler = { [unowned self] view in
             self.presenter.initialLoad()
         }
+        
+        PostListCollectionCell.register(in: collectionView)
+        PostListCollectionHeader.register(in: collectionView)
+        
+        listLayout.configure(with: view.bounds.width, columnCount: 1)
+        listLayout.headerReferenceSize = CGSize(width: view.bounds.width, height: 48)
+        listLayout.sectionHeadersPinToVisibleBounds = false
+        
+        prototype.bounds.size.width = view.bounds.width
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        flowLayout.enableStickyHeader = true
-        
-        PostListCell.registerPrototype(in: &sizeHandler)
-        PostListCell.registerNib(in: collectionView)
-        PostListHeader.registerNib(in: collectionView)
-        PostListFooter.registerClass(in: collectionView)
-        
-        scrollHandler.scrollView = collectionView
         
         presenter.initialLoad()
     }
@@ -122,7 +124,7 @@ extension NewsFeedViewController: NewsFeedScene {
         shouldDisplayEmptyView = false
         shouldDisplayIndicatorView = false
         isRefreshing = false
-        refreshControl.endRefreshing()
+        refreshView.endRefreshing()
     }
     
     func didLikeWithError(message: String?) {
