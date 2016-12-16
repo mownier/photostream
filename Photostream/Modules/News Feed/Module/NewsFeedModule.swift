@@ -14,8 +14,9 @@ protocol NewsFeedModuleInterface: BaseModuleInterface {
     func refreshFeeds()
     func loadMoreFeeds()
     
-    func likePost(at: Int)
-    func unlikePost(at: Int)
+    func toggleLike(at index: Int)
+    func likePost(at index: Int)
+    func unlikePost(at index: Int)
     
     func feed(at index: Int) -> NewsFeedDataItem?
 }

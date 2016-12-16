@@ -56,6 +56,18 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
         interactor.fetchNext(with: limit)
     }
     
+    func toggleLike(at index: Int) {
+        guard let post = feed(at: index) as? NewsFeedPost else {
+            return
+        }
+        
+        if post.isLiked {
+            unlikePost(at: index)
+        } else {
+            likePost(at: index)
+        }
+    }
+    
     func likePost(at index: Int) {
         guard feed.items.isValid(index),
             var post = feed.items[index] as? NewsFeedPost, !post.isLiked else {
