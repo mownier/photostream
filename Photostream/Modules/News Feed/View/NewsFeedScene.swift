@@ -11,14 +11,18 @@ protocol NewsFeedScene: BaseModuleView {
     var presenter: NewsFeedModuleInterface! { set get }
     
     func reloadView()
+    
     func showEmptyView()
     func showInitialLoadView()
+    func showRefreshView()
     
-    func didStartRefreshingFeeds()
-    func didRefreshFeeds()
-    func didLoadMoreFeeds()
+    func hideEmptyView()
+    func hideInitialLoadView()
+    func hideRefreshView()
     
-    func didFetchWithError(message: String)
+    func didRefresh(with error: String?)
+    func didLoadMore(with error: String?)
+    
     func didLikeWithError(message: String?)
     func didUnlikeWithError(message: String?)
 }

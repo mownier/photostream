@@ -41,7 +41,6 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
         wireframe.exit(with: property)
     }
 
-    
     func initialLoad() {
         view.showInitialLoadView()
         interactor.fetchNew(with: limit)
@@ -49,7 +48,7 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
     
     func refreshFeeds() {
         interactor.fetchNew(with: limit)
-        view.didStartRefreshingFeeds()
+        view.showRefreshView()
     }
     
     func loadMoreFeeds() {
@@ -102,24 +101,32 @@ extension NewsFeedPresenter: NewsFeedModuleInterface {
 extension NewsFeedPresenter: NewsFeedInteractorOutput {
     
     func newsFeedDidRefresh(data: NewsFeedData) {
+        view.hideInitialLoadView()
+        view.hideRefreshView()
+        
         feed.items.removeAll()
         feed.items.append(contentsOf: data.items)
-        view.didRefreshFeeds()
-        view.reloadView()
         
         if feed.items.count == 0 {
             view.showEmptyView()
         }
+        
+        view.didRefresh(with: nil)
+        view.reloadView()
     }
     
     func newsFeedDidLoadMore(data: NewsFeedData) {
         feed.items.append(contentsOf: data.items)
-        view.didLoadMoreFeeds()
+        view.didLoadMore(with: nil)
         view.reloadView()
     }
     
-    func newsFeedDidFetchWithError(error: NewsFeedServiceError) {
-        view.didFetchWithError(message: error.message)
+    func newsFeedDidRefresh(error: NewsFeedServiceError) {
+        view.didRefresh(with: error.message)
+    }
+    
+    func newsFeedDidLoadMore(error: NewsFeedServiceError) {
+        view.didLoadMore(with: error.message)
     }
     
     func newsFeedDidLike(with postId: String, and error: PostServiceError?) {

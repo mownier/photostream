@@ -18,7 +18,8 @@ protocol NewsFeedInteractorOutput: BaseModuleInteractorOutput {
     
     func newsFeedDidRefresh(data: NewsFeedData)
     func newsFeedDidLoadMore(data: NewsFeedData)
-    func newsFeedDidFetchWithError(error: NewsFeedServiceError)
+    func newsFeedDidRefresh(error: NewsFeedServiceError)
+    func newsFeedDidLoadMore(error: NewsFeedServiceError)
     
     func newsFeedDidLike(with postId: String, and error: PostServiceError?)
     func newsFeedDidUnlike(with postId: String, and error: PostServiceError?)
@@ -60,7 +61,11 @@ class NewsFeedInteractor: NewsFeedInteractorInterface {
             self.isFetching = false
             
             guard result.error == nil else {
-                self.output?.newsFeedDidFetchWithError(error: result.error!)
+                if self.offset!.isEmpty {
+                    self.output?.newsFeedDidRefresh(error: result.error!)
+                } else {
+                    self.output?.newsFeedDidLoadMore(error: result.error!)
+                }
                 return
             }
             
