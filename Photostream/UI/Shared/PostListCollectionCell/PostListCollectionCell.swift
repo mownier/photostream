@@ -41,10 +41,7 @@ class PostListCollectionCell: UICollectionViewCell {
         initSetup()
     }
     
-    func initSetup() {
-        contentView.clipsToBounds = true
-        contentView.layer.masksToBounds = true
-        
+    func initSetup() {       
         photoImageView = UIImageView()
         photoImageView.contentMode = .scaleAspectFit
         photoImageView.clipsToBounds = true
@@ -96,21 +93,21 @@ class PostListCollectionCell: UICollectionViewCell {
         tap.numberOfTapsRequired = 1
         likeCountLabel.addGestureRecognizer(tap)
         
-        contentView.addSubview(photoImageView)
-        contentView.addSubview(heartButton)
-        contentView.addSubview(commentButton)
-        contentView.addSubview(stripView)
-        contentView.addSubview(likeCountLabel)
-        contentView.addSubview(messageLabel)
-        contentView.addSubview(commentCountLabel)
-        contentView.addSubview(timeLabel)
+        addSubview(photoImageView)
+        addSubview(heartButton)
+        addSubview(commentButton)
+        addSubview(stripView)
+        addSubview(likeCountLabel)
+        addSubview(messageLabel)
+        addSubview(commentCountLabel)
+        addSubview(timeLabel)
     }
     
     override func layoutSubviews() {
         var rect = photoImageView.frame
         
-        let ratio = contentView.bounds.width / rect.size.width
-        rect.size.width = contentView.bounds.width
+        let ratio = bounds.width / rect.size.width
+        rect.size.width = bounds.width
         rect.size.height = min(rect.size.width, rect.size.height * ratio)
         photoImageView.frame = rect
         
@@ -126,7 +123,7 @@ class PostListCollectionCell: UICollectionViewCell {
         rect.origin.y += (spacing * 2)
         rect.origin.y += rect.size.height
         rect.size.height = 1
-        rect.size.width = contentView.bounds.width - (spacing * 4)
+        rect.size.width = bounds.width - (spacing * 4)
         stripView.frame = rect
         
         if let text = likeCountLabel.text, !text.isEmpty {
@@ -212,7 +209,7 @@ extension PostListCollectionCell {
         heartButton.isHidden = true
         let heart = SpringImageView(image: #imageLiteral(resourceName: "heart_pink"))
         heart.frame = heartButton.frame
-        contentView.addSubview(heart)
+        addSubview(heart)
         
         heart.autohide = true
         heart.autostart = false
