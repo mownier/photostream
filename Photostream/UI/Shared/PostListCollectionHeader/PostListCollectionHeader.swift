@@ -10,8 +10,8 @@ import UIKit
 
 protocol PostListCollectionHeaderDelegate: class {
     
-    func didTapDisplayName(header: PostListCollectionHeader)
-    func didTapAvatar(header: PostListCollectionHeader)
+    func didTapDisplayName(header: PostListCollectionHeader, point: CGPoint)
+    func didTapAvatar(header: PostListCollectionHeader, point: CGPoint)
 }
 
 class PostListCollectionHeader: UICollectionReusableView {
@@ -49,11 +49,11 @@ class PostListCollectionHeader: UICollectionReusableView {
         stripView = UIView()
         stripView.backgroundColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1)
         
-        var tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapDisplayName))
+        var tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapDisplayName(_:)))
         tap.numberOfTapsRequired = 1
         displayNameLabel.addGestureRecognizer(tap)
         
-        tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapAvatar))
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapAvatar(_:)))
         tap.numberOfTapsRequired = 1
         avatarImageView.addGestureRecognizer(tap)
         
@@ -90,12 +90,14 @@ class PostListCollectionHeader: UICollectionReusableView {
 
 extension PostListCollectionHeader {
     
-    func didTapDisplayName() {
-        delegate?.didTapDisplayName(header: self)
+    func didTapDisplayName(_ tap: UITapGestureRecognizer) {
+        let point = tap.location(in: self)
+        delegate?.didTapDisplayName(header: self, point: point)
     }
     
-    func didTapAvatar() {
-        delegate?.didTapAvatar(header: self)
+    func didTapAvatar(_ tap: UITapGestureRecognizer) {
+        let point = tap.location(in: self)
+        delegate?.didTapAvatar(header: self, point: point)
     }
 }
 
