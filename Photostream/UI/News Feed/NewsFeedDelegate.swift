@@ -71,11 +71,21 @@ extension NewsFeedViewController: PostListCollectionCellDelegate {
 
 extension NewsFeedViewController: PostListCollectionHeaderDelegate {
     
-    func didTapDisplayName(header: PostListCollectionHeader) {
-        
+    func didTapDisplayName(header: PostListCollectionHeader, point: CGPoint) {
+        willPresentUserTimeline(header: header, point: point)
     }
     
-    func didTapAvatar(header: PostListCollectionHeader) {
+    func didTapAvatar(header: PostListCollectionHeader, point: CGPoint) {
+        willPresentUserTimeline(header: header, point: point)
+    }
+    
+    private func willPresentUserTimeline(header: PostListCollectionHeader, point: CGPoint) {
+        var relativePoint = collectionView.convert(point, from: header)
+        relativePoint.y += header.frame.height
+        guard let indexPath = collectionView.indexPathForItem(at: relativePoint) else {
+            return
+        }
         
+        presenter.presentUserTimeline(at: indexPath.section)
     }
 }
