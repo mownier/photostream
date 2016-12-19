@@ -9,6 +9,9 @@
 protocol UserProfileModuleInterface: BaseModuleInterface {
     
     func fetchUserProfile()
+    
+    func follow()
+    func unfollow()
 }
 
 protocol UserProfileBuilder: BaseModuleBuilder {

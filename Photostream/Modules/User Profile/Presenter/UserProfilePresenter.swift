@@ -9,6 +9,7 @@
 protocol UserProfilePresenterInterface: BaseModulePresenter, BaseModuleInteractable {
     
     var userId: String! { set get }
+    var profile: UserProfileData! { set get }
 }
 
 class UserProfilePresenter: UserProfilePresenterInterface {
@@ -21,7 +22,9 @@ class UserProfilePresenter: UserProfilePresenterInterface {
     
     var interactor: ModuleInteractor!
     var wireframe: ModuleWireframe!
+    
     var userId: String!
+    var profile: UserProfileData!
 }
 
 extension UserProfilePresenter: UserProfileModuleInterface {
@@ -35,15 +38,42 @@ extension UserProfilePresenter: UserProfileModuleInterface {
     func fetchUserProfile() {
         interactor.fetchProfile(user: userId)
     }
+    
+    func follow() {
+        interactor.follow(user: userId)
+    }
+    
+    func unfollow() {
+        interactor.unfollow(user: userId)
+    }
 }
 
 extension UserProfilePresenter: UserProfileInteractorOutput {
 
     func userProfileDidFetch(with data: UserProfileData) {
-        view.didFetchUserProfile(with: data)
+        profile = data
+        view.didFetchUserProfile(with: profile)
     }
     
     func userProfileDidFetch(with error: UserServiceError) {
         view.didFetchUserProfile(with: error.message)
+    }
+    
+    func userProfileDidFollow() {
+        profile.isFollowed = true
+        view.didFollow(with: profile)
+    }
+    
+    func userProfileDidFollow(with error: UserServiceError) {
+        view.didFollow(with: error.message)
+    }
+    
+    func userProfileDidUnfollow() {
+        profile.isFollowed = false
+        view.didUnfollow(with: profile)
+    }
+    
+    func userProfileDidUnfollow(with error: UserServiceError) {
+        view.didUnfollow(with: error.message)
     }
 }
