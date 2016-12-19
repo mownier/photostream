@@ -9,12 +9,21 @@
 protocol UserProfileInteractorInput: BaseModuleInteractorInput {
     
     func fetchProfile(user id: String)
+    
+    func follow(user id: String)
+    func unfollow(user id: String)
 }
 
 protocol UserProfileInteractorOutput: BaseModuleInteractorOutput {
     
     func userProfileDidFetch(with data: UserProfileData)
     func userProfileDidFetch(with error: UserServiceError)
+    
+    func userProfileDidFollow()
+    func userProfileDidFollow(with error: UserServiceError)
+    
+    func userProfileDidUnfollow()
+    func userProfileDidUnfollow(with error: UserServiceError)
 }
 
 protocol UserProfileInteractorInterface: BaseModuleInteractor {
@@ -67,6 +76,28 @@ extension UserProfileInteractor: UserProfileInteractorInput {
             item.isFollowed = result.isFollowed
             
             self.output?.userProfileDidFetch(with: item)
+        }
+    }
+    
+    func follow(user id: String) {
+        service.follow(id: id) { [unowned self] error in
+            guard error == nil else {
+                self.output?.userProfileDidFollow(with: error!)
+                return
+            }
+            
+            self.output?.userProfileDidFollow()
+        }
+    }
+    
+    func unfollow(user id: String) {
+        service.unfollow(id: id) { [unowned self] error in
+            guard error == nil else {
+                self.output?.userProfileDidUnfollow(with: error!)
+                return
+            }
+            
+            self.output?.userProfileDidUnfollow()
         }
     }
 }
