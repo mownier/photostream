@@ -73,15 +73,18 @@ extension UserProfileView: UserProfileViewConfig {
     }
     
     func setupActionButton(me: Bool, followed: Bool) {
+        actionButton.isUserInteractionEnabled = true
+        
         guard !me else {
             actionButton.setTitle("Edit Profile", for: .normal)
             return
         }
         
         if followed {
-            actionButton.setTitle("Follow", for: .normal)
+            actionButton.setTitle("Following", for: .normal)
+            actionButton.isUserInteractionEnabled = false
         } else {
-            actionButton.setTitle("Unfollow", for: .normal)
+            actionButton.setTitle("Follow", for: .normal)
         }
     }
     
