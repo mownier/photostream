@@ -8,8 +8,17 @@
 
 import UIKit
 
+protocol UserProfileViewDelegate: class {
+    
+    func willFollow(view: UserProfileView)
+    func willUnfollow(view: UserProfileView)
+    func willEdit(view: UserProfileView)
+}
+
 class UserProfileView: UIView {
 
+    weak var delegate: UserProfileViewDelegate?
+    
     var avatarImageView: UIImageView!
     var postLabel: UILabel!
     var postCountLabel: UILabel!
@@ -79,7 +88,6 @@ class UserProfileView: UIView {
         actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightMedium)
         actionButton.setTitle("", for: .normal)
         actionButton.setTitleColor(primaryColor, for: .normal)
-        actionButton.addTarget(self, action: #selector(self.didTapAction), for: .touchUpInside)
         actionButton.cornerRadius = 2
         actionButton.borderWidth = 1
         actionButton.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
@@ -161,13 +169,6 @@ class UserProfileView: UIView {
         rect.origin.y += rect.size.height
         rect.size.height = bioLabel.sizeThatFits(rect.size).height
         bioLabel.frame = rect
-    }
-}
-
-extension UserProfileView {
-    
-    func didTapAction() {
-        
     }
 }
 
