@@ -30,13 +30,13 @@ struct UserServiceProvider: UserService {
             return
         }
         
-        let user = session.user
-        let path1 = "users/\(user.id)/profile/following_count"
-        let path2 = "users/\(user.id)/following/\(id)"
-        let path3 = "users/\(id)/followers/\(user.id)"
-        let path4 = "users/\(id)/profile/followers_count"
-        let path5 = "users/\(user.id)/feed"
-        let path6 = "users/\(id)/feed"
+        let uid = session.user.id
+        let path1 = "user-profile/\(uid)/following_count"
+        let path2 = "user-following/\(uid)/following/\(id)"
+        let path3 = "user-follower/\(id)/followers/\(uid)"
+        let path4 = "user-profile/\(id)/follower_count"
+        let path5 = "user-feed/\(uid)/posts"
+        let path6 = "user-feed/\(id)/posts"
         
         let rootRef = FIRDatabase.database().reference()
         let followingCountRef = rootRef.child(path1)
@@ -46,54 +46,56 @@ struct UserServiceProvider: UserService {
         let feed1Ref = rootRef.child(path5)
         let feed2Ref = rootRef.child(path6)
         
-        followingRef.observeSingleEvent(of: .value, with: { (data) in
-            guard !data.exists() else {
+        followingRef.observeSingleEvent(of: .value, with: { (followingSnapshot) in
+            guard !followingSnapshot.exists() else {
                 error = .failedToFollow(message: "Already followed")
                 callback?(error)
                 return
             }
             
-            followingRef.setValue(true)
-            followerRef.observeSingleEvent(of: .value, with: { (data2) in
-                followerRef.setValue(true)
-                followingCountRef.runTransactionBlock({ (data3) -> FIRTransactionResult in
-                    if let val = data3.value as? Int , val > 0 {
-                        data3.value = val + 1
-                    } else {
-                        data3.value = 1
-                    }
-                    return FIRTransactionResult.success(withValue: data3)
+            followingCountRef.runTransactionBlock({ (followingCountSnapshot) -> FIRTransactionResult in
+                if let val = followingCountSnapshot.value as? Int , val > 0 {
+                    followingCountSnapshot.value = val + 1
                     
-                    }, andCompletionBlock: { (err, committed, snap) in
-                        guard committed else {
-                            error = .failedToFollow(message: "Failed to follow.")
-                            callback?(error)
-                            return
-                        }
-                        
-                        followerCountRef.runTransactionBlock({ (data4) -> FIRTransactionResult in
-                            if let val = data4.value as? Int , val > 0 {
-                                data4.value = val + 1
-                            } else {
-                                data4.value = 1
-                            }
-                            return FIRTransactionResult.success(withValue: data4)
+                } else {
+                    followingCountSnapshot.value = 1
+                }
+                return FIRTransactionResult.success(withValue: followingCountSnapshot)
+                
+                }, andCompletionBlock: { (err, committed, snap) in
+                    guard committed else {
+                        error = .failedToFollow(message: "Failed to follow")
+                        callback?(error)
+                        return
+                    }
+                    
+                    followerCountRef.runTransactionBlock({ (followerCountSnapshot) -> FIRTransactionResult in
+                        if let val = followerCountSnapshot.value as? Int , val > 0 {
+                            followerCountSnapshot.value = val + 1
                             
-                            }, andCompletionBlock: { (err, committed, snap) in
-                                guard committed else {
-                                    error = .failedToFollow(message: "Failed to follow.")
-                                    callback?(error)
-                                    return
+                        } else {
+                            followerCountSnapshot.value = 1
+                        }
+                        return FIRTransactionResult.success(withValue: followerCountSnapshot)
+                        
+                        }, andCompletionBlock: { (err, committed, snap) in
+                            guard committed else {
+                                error = .failedToFollow(message: "Failed to follow")
+                                callback?(error)
+                                return
+                            }
+                            
+                            feed2Ref.observeSingleEvent(of: .value, with: { (feed1Snapshot) in
+                                if let feed1 = feed1Snapshot.value as? [AnyHashable: Any] {
+                                    feed1Ref.updateChildValues(feed1)
                                 }
                                 
-                                feed2Ref.observeSingleEvent(of: .value, with: { (data5) in
-                                    if let feeds = data5.value as? [String: AnyObject] {
-                                        feed1Ref.updateChildValues(feeds)
-                                    }
-                                    callback?(nil)
-                                })
-                        })
-                })
+                                followingRef.setValue(true)
+                                followerRef.setValue(true)
+                                
+                                callback?(nil)
+                            })
+                    })
             })
         })
     }
@@ -106,13 +108,13 @@ struct UserServiceProvider: UserService {
             return
         }
         
-        let user = session.user
-        let path1 = "users/\(user.id)/profile/following_count"
-        let path2 = "users/\(user.id)/following/\(id)"
-        let path3 = "users/\(id)/followers/\(user.id)"
-        let path4 = "users/\(id)/profile/followers_count"
-        let path5 = "users/\(user.id)/feed"
-        let path6 = "users/\(id)/feed"
+        let uid = session.user.id
+        let path1 = "user-profile/\(uid)/following_count"
+        let path2 = "user-following/\(uid)/following/\(id)"
+        let path3 = "user-follower/\(id)/followers/\(uid)"
+        let path4 = "user-profile/\(id)/follower_count"
+        let path5 = "user-feed/\(uid)/posts"
+        let path6 = "user-feed/\(id)/posts"
         
         let rootRef = FIRDatabase.database().reference()
         let followingCountRef = rootRef.child(path1)
@@ -122,42 +124,51 @@ struct UserServiceProvider: UserService {
         let feed1Ref = rootRef.child(path5)
         let feed2Ref = rootRef.child(path6)
         
-        followingRef.removeValue()
-        followerRef.removeValue()
-        followingCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
-            if let val = data.value as? Int , val > 0 {
-                data.value = val - 1
+        followingCountRef.runTransactionBlock({ (followingCountSnapshot) -> FIRTransactionResult in
+            if let val = followingCountSnapshot.value as? Int , val > 0 {
+                followingCountSnapshot.value = val - 1
+                
             } else {
-                data.value = 0
+                followingCountSnapshot.value = 0
             }
-            return FIRTransactionResult.success(withValue: data)
+            return FIRTransactionResult.success(withValue: followingCountSnapshot)
             
             }, andCompletionBlock: { (err, committed, snap) in
                 guard committed else {
-                    error = .failedToUnfollow(message: "Failed to unfollow.")
+                    error = .failedToUnfollow(message: "Failed to unfollow")
                     callback?(error)
                     return
                 }
                 
-                followerCountRef.runTransactionBlock({ (data2) -> FIRTransactionResult in
-                    if let val = data2.value as? Int , val > 0 {
-                        data2.value = val - 1
+                followerCountRef.runTransactionBlock({ (followerCountSnapshot) -> FIRTransactionResult in
+                    if let val = followerCountSnapshot.value as? Int , val > 0 {
+                        followerCountSnapshot.value = val - 1
+                        
                     } else {
-                        data2.value = 0
+                        followerCountSnapshot.value = 0
                     }
-                    return FIRTransactionResult.success(withValue: data2)
+                    return FIRTransactionResult.success(withValue: followerCountSnapshot)
                     
                     }, andCompletionBlock: { (err, committed, snap) in
                         guard committed else {
-                            error = .failedToUnfollow(message: "Failed to unfollow.")
+                            error = .failedToUnfollow(message: "Failed to unfollow")
                             callback?(error)
                             return
                         }
                         
-                        feed2Ref.observeSingleEvent(of: .value, with: { (data3) in
-                            for child in data3.children {
-                                feed1Ref.child((child as AnyObject).key).removeValue()
+                        feed2Ref.observeSingleEvent(of: .value, with: { (feed2Snapshot) in
+                            for child in feed2Snapshot.children {
+                                guard let childSnapshot = child as? FIRDataSnapshot else {
+                                    continue
+                                }
+                                
+                                let key = childSnapshot.key
+                                feed1Ref.child(key).removeValue()
                             }
+                            
+                            followingRef.removeValue()
+                            followerRef.removeValue()
+                            
                             callback?(nil)
                         })
                 })
