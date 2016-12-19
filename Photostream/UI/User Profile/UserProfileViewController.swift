@@ -24,7 +24,16 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userProfileView.actionLoadingView.startAnimating()
         presenter.fetchUserProfile()
+    }
+    
+    func startLoadingView() {
+        userProfileView.actionLoadingView.startAnimating()
+    }
+    
+    func stopLoadingView() {
+        userProfileView.actionLoadingView.stopAnimating()
     }
 }
 
@@ -47,20 +56,22 @@ extension UserProfileViewController: UserProfileScene {
     }
     
     func didFetchUserProfile(with error: String?) {
-        
+        stopLoadingView()
     }
     
     func didFollow(with error: String) {
-        
+        stopLoadingView()
     }
     
     func didUnfollow(with error: String) {
-        
+        stopLoadingView()
     }
     
     private func update(with data: UserProfileData) {
         let item = data as? UserProfileViewItem
         userProfileView.configure(wiht: item)
+        
+        stopLoadingView()
     }
 }
 
@@ -71,10 +82,12 @@ extension UserProfileViewController: UserProfileViewDelegate {
     }
     
     func willFollow(view: UserProfileView) {
+        startLoadingView()
         presenter.follow()
     }
     
     func willUnfollow(view: UserProfileView) {
+        startLoadingView()
         presenter.unfollow()
     }
 }
