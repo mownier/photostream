@@ -29,6 +29,7 @@ class UserProfileView: UIView {
     var displayNameLabel: UILabel!
     var bioLabel: UILabel!
     var actionButton: UIButton!
+    var actionLoadingView: UIActivityIndicatorView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -84,7 +85,7 @@ class UserProfileView: UIView {
         followingCountLabel.textAlignment = .center
         followingCountLabel.font = postCountLabel.font
         
-        actionButton = UIButton(type: .system)
+        actionButton = UIButton()
         actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightMedium)
         actionButton.setTitle("", for: .normal)
         actionButton.setTitleColor(primaryColor, for: .normal)
@@ -103,6 +104,13 @@ class UserProfileView: UIView {
         bioLabel.numberOfLines = 3
         bioLabel.font = UIFont.systemFont(ofSize: 12)
         
+        actionLoadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        actionLoadingView.hidesWhenStopped = true
+        actionLoadingView.backgroundColor = UIColor.white
+        actionLoadingView.cornerRadius = 2
+        actionLoadingView.borderWidth = 1
+        actionLoadingView.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+        
         addSubview(avatarImageView)
         addSubview(postLabel)
         addSubview(postCountLabel)
@@ -113,6 +121,7 @@ class UserProfileView: UIView {
         addSubview(actionButton)
         addSubview(displayNameLabel)
         addSubview(bioLabel)
+        addSubview(actionLoadingView)
     }
     
     override func layoutSubviews() {
@@ -169,6 +178,8 @@ class UserProfileView: UIView {
         rect.origin.y += rect.size.height
         rect.size.height = bioLabel.sizeThatFits(rect.size).height
         bioLabel.frame = rect
+        
+        actionLoadingView.frame = actionButton.frame
     }
 }
 
