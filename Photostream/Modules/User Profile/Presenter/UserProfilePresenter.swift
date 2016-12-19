@@ -61,6 +61,7 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
     
     func userProfileDidFollow() {
         profile.isFollowed = true
+        profile.followerCount += 1
         view.didFollow(with: profile)
     }
     
@@ -70,6 +71,12 @@ extension UserProfilePresenter: UserProfileInteractorOutput {
     
     func userProfileDidUnfollow() {
         profile.isFollowed = false
+        if profile.followerCount > 0 {
+            profile.followerCount -= 1
+            
+        } else {
+            profile.followerCount = 0
+        }
         view.didUnfollow(with: profile)
     }
     
