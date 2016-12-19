@@ -76,11 +76,13 @@ class UserProfileView: UIView {
         followingCountLabel.font = postCountLabel.font
         
         actionButton = UIButton(type: .system)
-        actionButton.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
         actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightMedium)
         actionButton.setTitle("", for: .normal)
         actionButton.setTitleColor(primaryColor, for: .normal)
         actionButton.addTarget(self, action: #selector(self.didTapAction), for: .touchUpInside)
+        actionButton.cornerRadius = 2
+        actionButton.borderWidth = 1
+        actionButton.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
         
         displayNameLabel = UILabel()
         displayNameLabel.text = "Me"
