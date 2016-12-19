@@ -16,4 +16,4 @@ It is necessary that you have to provide your own `GoogleService-Info.plist`. Af
 - [X] User Profile
 - [X] Comments
 - [X] Write Comment
-- [ ] Follow / Unfollow
+- [X] Follow / Unfollow
