@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46CB215C10C692DE5B7B8D14 /* Pods_PhotostreamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */; };
 		508BAD5F7CE701B21C560092 /* Pods_Photostream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066EDFA56358FD5960400AC8 /* Pods_Photostream.framework */; };
+		B90899751E078CA70036D4A4 /* PostUploadModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90899741E078CA70036D4A4 /* PostUploadModuleExtension.swift */; };
 		B90920611DD30D730073FB72 /* PhotoPickerModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90920601DD30D730073FB72 /* PhotoPickerModuleExtension.swift */; };
 		B91B3DEB1DF1573700E39544 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91B3DEA1DF1573700E39544 /* KeyboardHandler.swift */; };
 		B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */; };
@@ -260,6 +261,7 @@
 		745C7315A31A5E639316E576 /* Pods-PhotostreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		7E4FCC08E3F3E84ECB8E52C2 /* Pods_PhotostreamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotostreamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD4ADD8AA175A050F0EAB /* Pods-PhotostreamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotostreamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotostreamTests/Pods-PhotostreamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B90899741E078CA70036D4A4 /* PostUploadModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadModuleExtension.swift; sourceTree = "<group>"; };
 		B90920601DD30D730073FB72 /* PhotoPickerModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerModuleExtension.swift; sourceTree = "<group>"; };
 		B91B3DEA1DF1573700E39544 /* KeyboardHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		B91DB3251DCDB11F004858B8 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
@@ -1097,6 +1099,7 @@
 				B94AB2D31DF69DE600313254 /* UserPostModuleExtension.swift */,
 				B9E4084B1DFBCDDC00B7076A /* UserProfileModuleExtension.swift */,
 				B95A06F01E0245C9005B47B6 /* LogoutModuleExtension.swift */,
+				B90899741E078CA70036D4A4 /* PostUploadModuleExtension.swift */,
 			);
 			path = "Module Extensions";
 			sourceTree = "<group>";
@@ -2259,6 +2262,7 @@
 				B9E408421DFBBB8200B7076A /* UserProfileData.swift in Sources */,
 				B9C217E61DCC40F900F617FC /* CommentFeedViewController.swift in Sources */,
 				B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */,
+				B90899751E078CA70036D4A4 /* PostUploadModuleExtension.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
 				B9D496971DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift in Sources */,
