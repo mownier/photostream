@@ -33,6 +33,19 @@ extension NewsFeedWireframeInterface {
         
         controller.enter(with: property)
     }
+    
+    func showUserTimeline(from parent: UIViewController?, userId: String) {
+        let userTimeline = UserTimelineViewController()
+        userTimeline.root = root
+        userTimeline.style = .push
+        userTimeline.userId = userId
+        
+        var property = WireframeEntryProperty()
+        property.parent = parent
+        property.controller = userTimeline
+        
+        userTimeline.enter(with: property)
+    }
 }
 
 extension NewsFeedModuleInterface {
@@ -45,6 +58,16 @@ extension NewsFeedModuleInterface {
         }
         
         presenter.wireframe.presentCommentController(from: parent, delegate: presenter, postId: post.id, shouldComment: shouldComment)
+    }
+    
+    func presentUserTimeline(at index: Int) {
+        guard let presenter = self as? NewsFeedPresenter,
+            let parent = presenter.view.controller,
+            let post = feed(at: index) as? NewsFeedPost else {
+            return
+        }
+        
+        presenter.wireframe.showUserTimeline(from: parent, userId: post.userId)
     }
 }
 
