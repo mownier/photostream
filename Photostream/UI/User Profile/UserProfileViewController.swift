@@ -35,12 +35,32 @@ extension UserProfileViewController: UserProfileScene {
     }
     
     func didFetchUserProfile(with data: UserProfileData) {
-        let item = data as? UserProfileViewItem
-        userProfileView.configure(wiht: item)
+        update(with: data)
+    }
+    
+    func didFollow(with data: UserProfileData) {
+        update(with: data)
+    }
+    
+    func didUnfollow(with data: UserProfileData) {
+        update(with: data)
     }
     
     func didFetchUserProfile(with error: String?) {
         
+    }
+    
+    func didFollow(with error: String) {
+        
+    }
+    
+    func didUnfollow(with error: String) {
+        
+    }
+    
+    private func update(with data: UserProfileData) {
+        let item = data as? UserProfileViewItem
+        userProfileView.configure(wiht: item)
     }
 }
 
@@ -51,11 +71,11 @@ extension UserProfileViewController: UserProfileViewDelegate {
     }
     
     func willFollow(view: UserProfileView) {
-        
+        presenter.follow()
     }
     
     func willUnfollow(view: UserProfileView) {
-        
+        presenter.unfollow()
     }
 }
 
