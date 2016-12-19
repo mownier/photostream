@@ -12,4 +12,10 @@ protocol UserProfileScene: BaseModuleView {
     
     func didFetchUserProfile(with error: String?)
     func didFetchUserProfile(with data: UserProfileData)
+    
+    func didFollow(with data: UserProfileData)
+    func didFollow(with error: String)
+    
+    func didUnfollow(with data: UserProfileData)
+    func didUnfollow(with error: String)
 }
