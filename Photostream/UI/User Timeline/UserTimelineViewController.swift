@@ -11,7 +11,7 @@ import UIKit
 class UserTimelineViewController: UIViewController, BaseModuleWireframe {
 
     var root: RootWireframe?
-    var style: WireframeStyle!
+    var style: WireframeStyle! = .unknown
     
     var userId: String!
     
@@ -19,6 +19,11 @@ class UserTimelineViewController: UIViewController, BaseModuleWireframe {
     var userProfilePresenter: UserProfilePresenter!
     
     var userTimelineView: UserTimelineView!
+    
+    var isMe: Bool {
+        let session = AuthSession()
+        return session.user.id == userId
+    }
     
     convenience required init(root: RootWireframe?) {
         self.init()
@@ -70,8 +75,18 @@ class UserTimelineViewController: UIViewController, BaseModuleWireframe {
     func setupNavigationItem() {
         navigationItem.title = "Timeline"
         
-        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings_icon"), style: .plain, target: self, action: #selector(self.didTapSettings))
-        navigationItem.rightBarButtonItem = barItem
+        if isMe {
+            let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings_icon"), style: .plain, target: self, action: #selector(self.didTapSettings))
+            navigationItem.rightBarButtonItem = barItem
+        }
+        
+        switch style! {
+        case .push:
+            let barItem =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.didTapBack))
+            navigationItem.leftBarButtonItem = barItem
+        default:
+            break
+        }
     }
 }
 
@@ -87,6 +102,12 @@ extension UserTimelineViewController {
         
         module.wireframe.style = .push
         module.wireframe.enter(with: property)
+    }
+    
+    func didTapBack() {
+        var property = WireframeExitProperty()
+        property.controller = self
+        exit(with: property)
     }
     
     func didRefreshPosts() {
