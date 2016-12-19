@@ -49,11 +49,8 @@ extension HomePresenter: PostUploadModuleDelegate {
             return
         }
         
-        if presenter.feedCount > 0 {
-            presenter.refreshFeeds()
-        } else {
-            presenter.initialLoad()
-        }
+        presenter.feed.items.insert(post.covertToNewsFeedPost(), at: 0)
+        presenter.view.reloadView()
     }
 }
 
