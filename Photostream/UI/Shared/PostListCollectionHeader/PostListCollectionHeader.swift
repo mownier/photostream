@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol PostListCollectionHeaderDelegate: class {
+    
+    func didTapDisplayName(header: PostListCollectionHeader)
+    func didTapAvatar(header: PostListCollectionHeader)
+}
+
 class PostListCollectionHeader: UICollectionReusableView {
+    
+    weak var delegate: PostListCollectionHeaderDelegate?
     
     var avatarImageView: UIImageView!
     var displayNameLabel: UILabel!
@@ -31,13 +39,23 @@ class PostListCollectionHeader: UICollectionReusableView {
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.backgroundColor = UIColor.lightGray
         avatarImageView.cornerRadius = avatarDimension / 2
+        avatarImageView.isUserInteractionEnabled = true
         
         displayNameLabel = UILabel()
         displayNameLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
         displayNameLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        displayNameLabel.isUserInteractionEnabled = true
         
         stripView = UIView()
         stripView.backgroundColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1)
+        
+        var tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapDisplayName))
+        tap.numberOfTapsRequired = 1
+        displayNameLabel.addGestureRecognizer(tap)
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapAvatar))
+        tap.numberOfTapsRequired = 1
+        avatarImageView.addGestureRecognizer(tap)
         
         addSubview(avatarImageView)
         addSubview(displayNameLabel)
@@ -67,6 +85,17 @@ class PostListCollectionHeader: UICollectionReusableView {
         rect.size.width = frame.size.width
         rect.size.height = 1
         stripView.frame = rect
+    }
+}
+
+extension PostListCollectionHeader {
+    
+    func didTapDisplayName() {
+        delegate?.didTapDisplayName(header: self)
+    }
+    
+    func didTapAvatar() {
+        delegate?.didTapAvatar(header: self)
     }
 }
 

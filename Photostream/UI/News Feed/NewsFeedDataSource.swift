@@ -73,6 +73,7 @@ extension NewsFeedViewController {
         }
         
         header.configure(with: post)
+        header.delegate = self
         return header
     }
 }

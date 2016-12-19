@@ -68,3 +68,14 @@ extension NewsFeedViewController: PostListCollectionCellDelegate {
         
     }
 }
+
+extension NewsFeedViewController: PostListCollectionHeaderDelegate {
+    
+    func didTapDisplayName(header: PostListCollectionHeader) {
+        
+    }
+    
+    func didTapAvatar(header: PostListCollectionHeader) {
+        
+    }
+}
