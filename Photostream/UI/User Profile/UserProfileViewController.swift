@@ -17,6 +17,7 @@ class UserProfileViewController: UIViewController {
         let frame = CGRect(origin: .zero, size: UIScreen.main.bounds.size)
         userProfileView = UserProfileView()
         userProfileView.frame = frame
+        userProfileView.delegate = self
         view = userProfileView
     }
     
@@ -39,6 +40,21 @@ extension UserProfileViewController: UserProfileScene {
     }
     
     func didFetchUserProfile(with error: String?) {
+        
+    }
+}
+
+extension UserProfileViewController: UserProfileViewDelegate {
+    
+    func willEdit(view: UserProfileView) {
+        
+    }
+    
+    func willFollow(view: UserProfileView) {
+        
+    }
+    
+    func willUnfollow(view: UserProfileView) {
         
     }
 }

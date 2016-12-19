@@ -29,6 +29,12 @@ protocol UserProfileViewConfig {
     func setupActionButton(me: Bool, followed: Bool)
 }
 
+fileprivate enum ActionType {
+    case edit
+    case follow
+    case unfollow
+}
+
 extension UserProfileView: UserProfileViewConfig {
     
     var dynamicHeight: CGFloat {
@@ -76,15 +82,16 @@ extension UserProfileView: UserProfileViewConfig {
         actionButton.isUserInteractionEnabled = true
         
         guard !me else {
-            actionButton.setTitle("Edit Profile", for: .normal)
+            setupActionButton(for: .edit)
             return
         }
         
         if followed {
-            actionButton.setTitle("Following", for: .normal)
-            actionButton.isUserInteractionEnabled = false
+            setupActionButton(for: .unfollow)
+            
         } else {
-            actionButton.setTitle("Follow", for: .normal)
+            setupActionButton(for: .follow)
+            
         }
     }
     
@@ -94,5 +101,46 @@ extension UserProfileView: UserProfileViewConfig {
         let text: String = displayNameLabel.text![0]
         let image = UILabel.createPlaceholderImageWithFrame(frame, text: text, font: font)
         return image
+    }
+    
+    fileprivate func setupActionButton(for type: ActionType) {
+        actionButton.removeTarget(self, action: #selector(didTapToEdit), for: .touchUpInside)
+        actionButton.removeTarget(self, action: #selector(didTapToFollow), for: .touchUpInside)
+        actionButton.removeTarget(self, action: #selector(didTapToUnfollow), for: .touchUpInside)
+        
+        var action: Selector!
+        var title: String!
+        
+        switch type {
+        case .edit:
+            title = "Edit Profile"
+            action = #selector(self.didTapToEdit)
+            
+        case .follow:
+            title = "Follow"
+            action = #selector(self.didTapToFollow)
+            
+        case .unfollow:
+            title = "Following"
+            action = #selector(self.didTapToUnfollow)
+        }
+        
+        actionButton.setTitle(title, for: .normal)
+        actionButton.addTarget(self, action: action, for: .touchUpInside)
+    }
+}
+
+extension UserProfileView {
+    
+    func didTapToEdit() {
+        delegate?.willEdit(view: self)
+    }
+    
+    func didTapToFollow() {
+        delegate?.willFollow(view: self)
+    }
+    
+    func didTapToUnfollow() {
+        delegate?.willUnfollow(view: self)
     }
 }
