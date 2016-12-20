@@ -382,7 +382,7 @@ struct PostServiceProvider: PostService {
                                 
                                 posts.append(post)
                                 
-                                if !followingSnapshot.exists() {
+                                if !followingSnapshot.exists(), posterId != uid {
                                     discoveryPosts.append(postId)
                                     discoveryPostAuthors.append(posterId)
                                 }
