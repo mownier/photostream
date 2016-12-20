@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-protocol PostDicoveryModuleInterface: BaseModuleInterface {
+protocol PostDiscoveryModuleInterface: BaseModuleInterface {
     
     var postCount: Int { get }
     
