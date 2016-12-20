@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import DateTools
 
 extension PostDiscoveryModule {
     
@@ -57,5 +57,50 @@ extension PostDiscoveryPresenter: CommentControllerDelegate {
         post.comments += 1
         posts[index] = post
         view.reloadView()
+    }
+}
+
+extension PostDiscoveryDataItem: PostGridCollectionCellItem { }
+
+extension PostDiscoveryDataItem: PostListCollectionHeaderItem { }
+
+extension PostDiscoveryDataItem: PostListCollectionCellItem {
+    
+    var timeAgo: String {
+        let date = NSDate(timeIntervalSince1970: timestamp)
+        return date.timeAgoSinceNow()
+    }
+    
+    var photoSize: CGSize {
+        var size = CGSize.zero
+        size.width = CGFloat(photoWidth)
+        size.height = CGFloat(photoHeight)
+        return size
+    }
+    
+    var likesText: String {
+        guard likes > 0 else {
+            return ""
+        }
+        
+        if likes > 1 {
+            return "\(likes) likes"
+            
+        } else {
+            return "1 like"
+        }
+    }
+    
+    var commentsText: String {
+        guard comments > 0 else {
+            return ""
+        }
+        
+        if comments > 1 {
+            return "View \(comments) comments"
+            
+        } else {
+            return "View 1 comment"
+        }
     }
 }
