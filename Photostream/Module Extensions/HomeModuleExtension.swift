@@ -63,17 +63,19 @@ extension HomeWireframe {
     }
     
     func loadModuleDependency(with controller: UITabBarController) {
+        // Load news feed module
         let feedVC = (controller.viewControllers?[0] as? UINavigationController)?.topViewController as! NewsFeedViewController
         let module = NewsFeedModule(view: feedVC)
         module.build(root: root as? RootWireframe)
         dependencies?.append(module.presenter)
         
+        // Load user timeline supermodule
         let auth = AuthSession()
         let userTimeline = UserTimelineViewController()
         userTimeline.userId = auth.user.id
         userTimeline.root = root as? RootWireframe
         
-        let nav = UINavigationController(rootViewController: userTimeline)
+        var nav = UINavigationController(rootViewController: userTimeline)
         nav.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "user_line_icon"), selectedImage: #imageLiteral(resourceName: "user_black_icon"))
         nav.tabBarItem.imageInsets.top = 8
         nav.tabBarItem.imageInsets.bottom = -8
@@ -82,6 +84,13 @@ extension HomeWireframe {
         controller.viewControllers?.append(nav)
         
         userTimeline.preloadView()
+        
+        // Load post discovery module
+        let postDiscovery = PostDiscoveryModule()
+        postDiscovery.build(root: root as? RootWireframe)
+        
+        nav = UINavigationController(rootViewController: postDiscovery.view.controller!)
+        controller.viewControllers?.insert(nav, at: 1)
     }
 }
 
