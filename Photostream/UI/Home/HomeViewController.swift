@@ -29,7 +29,15 @@ class HomeViewController: UITabBarController {
                 view.addSubview(specialButton)
             }
             
-            let subview = tabBar.subviews[index]
+            let tabBarButtons = tabBar.subviews.filter { subview -> Bool in
+                return subview.isUserInteractionEnabled
+            }
+            
+            let subviews = tabBarButtons.sorted { (button1, button2) -> Bool in
+                return button1.frame.origin.x < button2.frame.origin.x
+            }
+            
+            let subview = subviews[index]
             let point = subview.superview!.convert(subview.frame.origin, to: view)
             let size = subview.frame.size
             let frame = CGRect(origin: point, size: size)
