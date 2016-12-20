@@ -10,8 +10,9 @@ import UIKit
 
 extension PostDiscoveryModule {
     
-    convenience init() {
-        self.init(view: PostDiscoveryViewController())
+    convenience init(sceneType: PostDiscoverySceneType = .grid) {
+        let scene = PostDiscoveryViewController(type: sceneType)
+        self.init(view: scene)
     }
 }
 
