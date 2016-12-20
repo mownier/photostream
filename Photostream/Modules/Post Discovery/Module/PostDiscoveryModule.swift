@@ -21,6 +21,39 @@ protocol PostDiscoveryModuleInterface: BaseModuleInterface {
     func post(at index: Int) -> PostDiscoveryData?
 }
 
-class PostDiscoveryModule: AnyObject {
+protocol PostDiscoveryBuilder: BaseModuleBuilder { }
 
+class PostDiscoveryModule: BaseModule, BaseModuleInteractable {
+    
+    typealias ModuleView = PostDiscoveryScene
+    typealias ModuleInteractor = PostDiscoveryInteractor
+    typealias ModulePresenter = PostDiscoveryPresenter
+    typealias ModuleWireframe = PostDiscoveryWireframe
+    
+    var view: ModuleView!
+    var interactor: ModuleInteractor!
+    var presenter: ModulePresenter!
+    var wireframe: ModuleWireframe!
+    
+    required init(view: ModuleView) {
+        self.view = view
+    }
+}
+
+extension PostDiscoveryModule: PostDiscoveryBuilder {
+    
+    func build(root: RootWireframe?) {
+        let auth = AuthSession()
+        let service = PostServiceProvider(session: auth)
+        interactor = PostDiscoveryInteractor(service: service)
+        presenter = PostDiscoveryPresenter()
+        wireframe = PostDiscoveryWireframe(root: root)
+        
+        interactor.output = presenter
+        view.presenter = presenter
+        
+        presenter.interactor = interactor
+        presenter.view = view
+        presenter.wireframe = wireframe
+    }
 }
