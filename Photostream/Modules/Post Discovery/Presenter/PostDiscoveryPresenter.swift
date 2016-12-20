@@ -10,6 +10,8 @@ protocol PostDiscoveryPresenterInterface: BaseModulePresenter, BaseModuleInterac
 
     var posts: [PostDiscoveryData] { set get }
     var limit: UInt { set get }
+    
+    func indexOf(post id: String) -> Int?
 }
 
 class PostDiscoveryPresenter: PostDiscoveryPresenterInterface {
@@ -25,6 +27,13 @@ class PostDiscoveryPresenter: PostDiscoveryPresenterInterface {
     
     var posts = [PostDiscoveryData]()
     var limit: UInt = 50
+    
+    func indexOf(post id: String) -> Int? {
+        let itemIndex = posts.index { item -> Bool in
+            return item.id == id
+        }
+        return itemIndex
+    }
 }
 
 extension PostDiscoveryPresenter: PostDiscoveryModuleInterface {
