@@ -96,6 +96,7 @@
 		B99696251E08E890008A4811 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99696241E08E890008A4811 /* DictionaryExtensions.swift */; };
 		B99696271E08F4DC008A4811 /* PostDiscoveryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99696261E08F4DC008A4811 /* PostDiscoveryInteractor.swift */; };
 		B99696291E08F4EB008A4811 /* PostDiscoveryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99696281E08F4EB008A4811 /* PostDiscoveryData.swift */; };
+		B996962B1E08FCB7008A4811 /* PostDiscoveryModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B996962A1E08FCB7008A4811 /* PostDiscoveryModule.swift */; };
 		B997196C1E011AF500A24C74 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997196B1E011AF500A24C74 /* SettingsModule.swift */; };
 		B997196E1E011B2B00A24C74 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997196D1E011B2B00A24C74 /* SettingsScene.swift */; };
 		B99719701E011B6600A24C74 /* SettingsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997196F1E011B6600A24C74 /* SettingsWireframe.swift */; };
@@ -352,6 +353,7 @@
 		B99696241E08E890008A4811 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		B99696261E08F4DC008A4811 /* PostDiscoveryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDiscoveryInteractor.swift; sourceTree = "<group>"; };
 		B99696281E08F4EB008A4811 /* PostDiscoveryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDiscoveryData.swift; sourceTree = "<group>"; };
+		B996962A1E08FCB7008A4811 /* PostDiscoveryModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDiscoveryModule.swift; sourceTree = "<group>"; };
 		B997196B1E011AF500A24C74 /* SettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModule.swift; sourceTree = "<group>"; };
 		B997196D1E011B2B00A24C74 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		B997196F1E011B6600A24C74 /* SettingsWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWireframe.swift; sourceTree = "<group>"; };
@@ -990,6 +992,7 @@
 		B99696201E08D5D6008A4811 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				B996962A1E08FCB7008A4811 /* PostDiscoveryModule.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -2307,6 +2310,7 @@
 				B978AF451DD45A7B007C1AAD /* PhotoCaptureModuleExtension.swift in Sources */,
 				B9D496641DE7EAD200CDD58E /* PhotoLibraryWireframeInterface.swift in Sources */,
 				B9C217DD1DCC40F900F617FC /* NewsFeedService.swift in Sources */,
+				B996962B1E08FCB7008A4811 /* PostDiscoveryModule.swift in Sources */,
 				B954EE571DE0327B00A0049D /* PostUploadWireframeInterface.swift in Sources */,
 				B941310E1DEE9C0F00DD10CE /* CommentFeedScene.swift in Sources */,
 				B9D496961DE7EE3F00CDD58E /* PhotoPickerViewController.swift in Sources */,
