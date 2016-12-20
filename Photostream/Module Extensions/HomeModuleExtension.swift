@@ -90,6 +90,9 @@ extension HomeWireframe {
         postDiscovery.build(root: root as? RootWireframe)
         
         nav = UINavigationController(rootViewController: postDiscovery.view.controller!)
+        nav.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "discovery_line_icon"), selectedImage: #imageLiteral(resourceName: "discovery_black_icon"))
+        nav.tabBarItem.imageInsets.top = 8
+        nav.tabBarItem.imageInsets.bottom = -8
         controller.viewControllers?.insert(nav, at: 1)
     }
 }
