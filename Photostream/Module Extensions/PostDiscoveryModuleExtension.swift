@@ -8,6 +8,13 @@
 
 import UIKit
 
+extension PostDiscoveryModule {
+    
+    convenience init() {
+        self.init(view: PostDiscoveryViewController())
+    }
+}
+
 extension PostDiscoveryWireframeInterface {
     
     func presentCommentController(from parent: UIViewController, delegate: CommentControllerDelegate?, postId: String, shouldComment: Bool = false) {
