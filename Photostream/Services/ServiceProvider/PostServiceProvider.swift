@@ -318,4 +318,110 @@ struct PostServiceProvider: PostService {
     func fetchPostInfo(id: String, callback: ((PostServiceResult) -> Void)?) {
         // TODO: Implement fetching single post info
     }
+    
+    func fetchDiscoveryPosts(offset: String, limit: UInt, callback: ((PostServiceResult) -> Void)?) {
+        var result = PostServiceResult()
+        guard session.isValid else {
+            result.error = .authenticationNotFound(message: "Authentication not found")
+            callback?(result)
+            return
+        }
+        
+        let uid = session.user.id
+        let path1 = "posts"
+        let rootRef = FIRDatabase.database().reference()
+        let postsRef = rootRef.child(path1)
+        
+        var query = postsRef.queryOrderedByKey()
+        
+        if !offset.isEmpty {
+            query = query.queryEnding(atValue: offset)
+        }
+        
+        query = query.queryLimited(toLast: limit + 1)
+        
+        query.observeSingleEvent(of: .value, with: { queryResult -> Void in
+            guard queryResult.childrenCount > 0 else {
+                result.posts = PostList()
+                callback?(result)
+                return
+            }
+            
+            var posts = [Post]()
+            var users = [String: User]()
+            var discoveryPosts = [String]()
+            var discoveryPostAuthors = [String]()
+            
+            for child in queryResult.children {
+                guard let postSnapshot = child as? FIRDataSnapshot,
+                    let posterId = postSnapshot.childSnapshot(forPath: "uid").value as? String,
+                    let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                    continue
+                }
+                
+                let postId = postSnapshot.key
+                let userRef = rootRef.child("users").child(posterId)
+                let photoRef = rootRef.child("photos").child(photoId)
+                let likedRef = rootRef.child("post-likes").child(postId).child(uid)
+                let followingRef = rootRef.child("user-following").child(uid).child("following").child(posterId)
+                
+                followingRef.observeSingleEvent(of: .value, with: { followingSnapshot in
+                    likedRef.observeSingleEvent(of: .value, with: { likedSnapshot in
+                        userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                            photoRef.observeSingleEvent(of: .value, with: { photoSnapshot in
+                                if users[posterId] == nil {
+                                    let user = User(with: userSnapshot)
+                                    users[posterId] = user
+                                }
+                                
+                                var post = Post(with: postSnapshot)
+                                let photo = Photo(with: photoSnapshot)
+                                
+                                post.photo = photo
+                                post.isLiked = likedSnapshot.exists()
+                                
+                                posts.append(post)
+                                
+                                if !followingSnapshot.exists() {
+                                    discoveryPosts.append(postId)
+                                    discoveryPostAuthors.append(posterId)
+                                }
+                                
+                                let postCount = UInt(posts.count)
+                                if postCount == queryResult.childrenCount {
+                                    if postCount == limit + 1 {
+                                        let removedPost = posts.removeFirst()
+                                        result.nextOffset = removedPost.id
+                                    }
+                                    
+                                    var list = PostList()
+                                    
+                                    // Filtered posts based on the post id in
+                                    // 'discoveryPosts' array.
+                                    list.posts = posts.reversed().filter({ post -> Bool in
+                                        return discoveryPosts.contains(post.id)
+                                    })
+                                    
+                                    // Filtered users based on the user id in
+                                    // 'discoveryPostAuthors' array.
+                                    let filteredUsers = users.filter({ (entry: (key: String, value: User)) -> Bool in
+                                        return discoveryPostAuthors.contains(entry.key)
+                                    })
+                                    
+                                    // Filtered users is reduced and converted
+                                    // to dictionary with type '[String: User]'
+                                    list.users = filteredUsers.reduce([String: User]()) { dict, entry -> [String: User] in
+                                        return [entry.key: entry.value]
+                                    }
+                                    
+                                    result.posts = list
+                                    callback?(result)
+                                }
+                            })
+                        })
+                    })
+                })
+            }
+        })
+    }
 }
