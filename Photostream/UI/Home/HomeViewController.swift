@@ -44,7 +44,7 @@ class HomeViewController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        specialIndex = 1
+        specialIndex = 2
     }
     
     func showPostComposer() {
