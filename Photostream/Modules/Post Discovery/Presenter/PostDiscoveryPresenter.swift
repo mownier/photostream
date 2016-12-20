@@ -104,26 +104,47 @@ extension PostDiscoveryPresenter: PostDiscoveryModuleInterface {
 extension PostDiscoveryPresenter: PostDiscoveryInteractorOutput {
     
     func postDiscoveryDidRefresh(with data: [PostDiscoveryData]) {
+        view.hideInitialLoadView()
+        view.hideRefreshView()
         
+        posts.removeAll()
+        posts.append(contentsOf: data)
+        
+        if posts.count == 0 {
+            view.showEmptyView()
+        }
+        
+        view.didRefresh(with: nil)
+        view.reloadView()
     }
     
     func postDiscoveryDidLoadMore(with data: [PostDiscoveryData]) {
+        view.didLoadMore(with: nil)
         
+        guard data.count > 0 else {
+            return
+        }
+        
+        posts.append(contentsOf: data)
+        view.reloadView()
     }
     
     func postDiscoveryDidRefresh(with error: PostServiceError) {
+        view.hideInitialLoadView()
+        view.hideRefreshView()
         
+        view.didRefresh(with: error.message)
     }
     
     func postDiscoveryDidLoadMore(with error: PostServiceError) {
-        
+         view.didLoadMore(with: error.message)
     }
     
     func postDiscoveryDidLike(with postId: String, and error: PostServiceError?) {
-        
+        view.didLike(with: error?.message)
     }
     
     func postDiscoveryDidUnlike(with postId: String, and error: PostServiceError?) {
-        
+        view.didUnlike(with: error?.message)
     }
 }
