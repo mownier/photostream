@@ -34,31 +34,62 @@ extension PostDiscoveryPresenter: PostDiscoveryModuleInterface {
     }
     
     func exit() {
-        
+        var property = WireframeExitProperty()
+        property.controller = view.controller
+        wireframe.exit(with: property)
     }
     
     func initialLoad() {
-        
+        view.showInitialLoadView()
+        interactor.fetchNew(with: limit)
     }
     
     func refreshPosts() {
-        
+        view.hideEmptyView()
+        view.showRefreshView()
+        interactor.fetchNew(with: limit)
     }
     
     func loadMorePosts() {
-        
+        interactor.fetchNext(with: limit)
     }
     
     func unlikePost(at index: Int) {
+        guard var post = post(at: index), post.isLiked else {
+            return
+        }
         
+        post.isLiked = false
+        post.likes -= 1
+        posts[index] = post
+        view.reloadView()
+        
+        interactor.unlike(post: post.id)
     }
     
     func likePost(at index: Int) {
+        guard var post = post(at: index), !post.isLiked else {
+            return
+        }
         
+        post.isLiked = true
+        post.likes += 1
+        posts[index] = post
+        view.reloadView()
+        
+        interactor.like(post: post.id)
     }
     
     func toggleLike(at index: Int) {
+        guard let post = post(at: index) else {
+            return
+        }
         
+        if post.isLiked {
+            unlikePost(at: index)
+        } else {
+            likePost(at: index)
+        }
     }
     
     func post(at index: Int) -> PostDiscoveryData? {
