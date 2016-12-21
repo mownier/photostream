@@ -24,4 +24,6 @@ protocol PostDiscoveryScene: BaseModuleView {
     func didLoadMore(with error: String?)
     func didLike(with error: String?)
     func didUnlike(with error: String?)
+    
+    func showInitialPost(at index: Int)
 }
