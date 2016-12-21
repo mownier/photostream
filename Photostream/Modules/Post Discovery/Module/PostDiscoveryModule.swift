@@ -10,6 +10,9 @@ protocol PostDiscoveryModuleInterface: BaseModuleInterface {
     
     var postCount: Int { get }
     
+    func viewDidLoad()
+    func viewDidAppear()
+    
     func initialLoad()
     func refreshPosts()
     func loadMorePosts()
@@ -21,7 +24,10 @@ protocol PostDiscoveryModuleInterface: BaseModuleInterface {
     func post(at index: Int) -> PostDiscoveryData?
 }
 
-protocol PostDiscoveryBuilder: BaseModuleBuilder { }
+protocol PostDiscoveryBuilder: BaseModuleBuilder {
+    
+    func build(root: RootWireframe?, posts: [PostDiscoveryData], initialPostIndex: Int)
+}
 
 class PostDiscoveryModule: BaseModule, BaseModuleInteractable {
     
@@ -55,5 +61,11 @@ extension PostDiscoveryModule: PostDiscoveryBuilder {
         presenter.interactor = interactor
         presenter.view = view
         presenter.wireframe = wireframe
+    }
+    
+    func build(root: RootWireframe?, posts: [PostDiscoveryData], initialPostIndex: Int) {
+        build(root: root)
+        presenter.posts = posts
+        presenter.initialPostIndex = initialPostIndex
     }
 }
