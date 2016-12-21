@@ -6,10 +6,14 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
+import Foundation
+
 protocol PostDiscoveryPresenterInterface: BaseModulePresenter, BaseModuleInteractable {
 
     var posts: [PostDiscoveryData] { set get }
     var limit: UInt { set get }
+    var initialPostIndex: Int { set get }
+    var isShownInitialPost: Bool { set get }
     
     func indexOf(post id: String) -> Int?
 }
@@ -27,6 +31,8 @@ class PostDiscoveryPresenter: PostDiscoveryPresenterInterface {
     
     var posts = [PostDiscoveryData]()
     var limit: UInt = 50
+    var initialPostIndex: Int = 0
+    var isShownInitialPost: Bool = false
     
     func indexOf(post id: String) -> Int? {
         let itemIndex = posts.index { item -> Bool in
@@ -46,6 +52,24 @@ extension PostDiscoveryPresenter: PostDiscoveryModuleInterface {
         var property = WireframeExitProperty()
         property.controller = view.controller
         wireframe.exit(with: property)
+    }
+    
+    func viewDidLoad() {
+        if postCount == 0 {
+            initialLoad()
+            
+        } else {
+            view.reloadView()
+        }
+    }
+    
+    func viewDidAppear() {
+        guard !isShownInitialPost, posts.isValid(initialPostIndex) else {
+            return
+        }
+        
+        view.showInitialPost(at: initialPostIndex)
+        isShownInitialPost = true
     }
     
     func initialLoad() {
