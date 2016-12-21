@@ -29,7 +29,11 @@ extension PostDiscoveryViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.presentPostDiscovery()
+        guard sceneType == .grid else {
+            return
+        }
+        
+        presenter.presentPostDiscovery(initialPostIndex: indexPath.row)
     }
 }
 
