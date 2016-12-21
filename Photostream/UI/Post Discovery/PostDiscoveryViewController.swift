@@ -154,7 +154,13 @@ class PostDiscoveryViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter.initialLoad()
+        presenter.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter.viewDidAppear()
     }
     
     func triggerRefresh() {
@@ -198,6 +204,23 @@ extension PostDiscoveryViewController: PostDiscoveryScene {
     
     func hideInitialLoadView() {
         shouldShowLoadingView = false
+    }
+    
+    func showInitialPost(at index: Int) {
+        switch sceneType {
+        case .list:
+            let attributes = collectionView!.collectionViewLayout.layoutAttributesForSupplementaryView(
+                ofKind: UICollectionElementKindSectionHeader,
+                at: IndexPath(item: 0, section: index))
+            
+            var offset = CGPoint.zero
+            offset.y = attributes!.frame.origin.y
+            offset.y -= collectionView!.contentInset.top
+            collectionView!.setContentOffset(offset, animated: false)
+            
+        default:
+            break
+        }
     }
     
     func didRefresh(with error: String?) {
