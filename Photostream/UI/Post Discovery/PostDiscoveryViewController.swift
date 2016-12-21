@@ -157,12 +157,6 @@ class PostDiscoveryViewController: UICollectionViewController {
         presenter.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        presenter.viewDidAppear()
-    }
-    
     func triggerRefresh() {
         presenter.refreshPosts()
     }

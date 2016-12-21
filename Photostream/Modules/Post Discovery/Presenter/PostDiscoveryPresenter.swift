@@ -63,15 +63,6 @@ extension PostDiscoveryPresenter: PostDiscoveryModuleInterface {
         }
     }
     
-    func viewDidAppear() {
-        guard !isShownInitialPost, posts.isValid(initialPostIndex) else {
-            return
-        }
-        
-        view.showInitialPost(at: initialPostIndex)
-        isShownInitialPost = true
-    }
-    
     func initialLoad() {
         view.showInitialLoadView()
         interactor.fetchNew(with: limit)
@@ -131,6 +122,15 @@ extension PostDiscoveryPresenter: PostDiscoveryModuleInterface {
         }
         
         return posts[index]
+    }
+    
+    func initialPostWillShow() {
+        guard !isShownInitialPost, posts.isValid(initialPostIndex) else {
+            return
+        }
+        
+        view.showInitialPost(at: initialPostIndex)
+        isShownInitialPost = true
     }
 }
 

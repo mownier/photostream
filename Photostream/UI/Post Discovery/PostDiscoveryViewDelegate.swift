@@ -11,6 +11,9 @@ import UIKit
 extension PostDiscoveryViewController {
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        presenter.initialPostWillShow()
+        
         var condition: Bool = false
         
         switch sceneType {

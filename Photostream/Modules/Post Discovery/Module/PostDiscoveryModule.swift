@@ -11,7 +11,6 @@ protocol PostDiscoveryModuleInterface: BaseModuleInterface {
     var postCount: Int { get }
     
     func viewDidLoad()
-    func viewDidAppear()
     
     func initialLoad()
     func refreshPosts()
@@ -22,6 +21,8 @@ protocol PostDiscoveryModuleInterface: BaseModuleInterface {
     func toggleLike(at index: Int)
     
     func post(at index: Int) -> PostDiscoveryData?
+    
+    func initialPostWillShow()
 }
 
 protocol PostDiscoveryBuilder: BaseModuleBuilder {
