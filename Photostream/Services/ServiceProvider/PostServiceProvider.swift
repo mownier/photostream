@@ -382,9 +382,12 @@ struct PostServiceProvider: PostService {
                                 
                                 posts.append(post)
                                 
-                                if !followingSnapshot.exists(), posterId != uid {
+                                if !followingSnapshot.exists() && posterId != uid {
                                     discoveryPosts.append(postId)
-                                    discoveryPostAuthors.append(posterId)
+                                    
+                                    if !discoveryPostAuthors.contains(posterId) {
+                                        discoveryPostAuthors.append(posterId)
+                                    }
                                 }
                                 
                                 let postCount = UInt(posts.count)
@@ -411,7 +414,9 @@ struct PostServiceProvider: PostService {
                                     // Filtered users is reduced and converted
                                     // to dictionary with type '[String: User]'
                                     list.users = filteredUsers.reduce([String: User]()) { dict, entry -> [String: User] in
-                                        return [entry.key: entry.value]
+                                        var info = dict
+                                        info[entry.key] = entry.value
+                                        return info
                                     }
                                     
                                     result.posts = list
