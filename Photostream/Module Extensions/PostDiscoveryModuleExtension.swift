@@ -31,6 +31,18 @@ extension PostDiscoveryWireframeInterface {
         
         controller.enter(with: property)
     }
+    
+    func showPostDiscovery(from parent: UIViewController, type: PostDiscoverySceneType, posts: [PostDiscoveryData] = [PostDiscoveryData]()) {
+        let module = PostDiscoveryModule(sceneType: type)
+        module.build(root: root)
+        
+        var property = WireframeEntryProperty()
+        property.controller = module.view.controller
+        property.parent = parent
+        
+        module.wireframe.style = .push
+        module.wireframe.enter(with: property)
+    }
 }
 
 extension PostDiscoveryModuleInterface {
@@ -43,6 +55,15 @@ extension PostDiscoveryModuleInterface {
         }
         
         presenter.wireframe.presentCommentController(from: parent, delegate: presenter, postId: post.id, shouldComment: shouldComment)
+    }
+    
+    func presentPostDiscovery(type: PostDiscoverySceneType = .list) {
+        guard let presenter = self as? PostDiscoveryPresenter,
+            let parent = presenter.view.controller else {
+                return
+        }
+        
+        presenter.wireframe.showPostDiscovery(from: parent, type: type, posts: presenter.posts)
     }
 }
 

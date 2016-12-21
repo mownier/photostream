@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PostDiscoveryViewController: UICollectionViewDelegateFlowLayout {
+extension PostDiscoveryViewController {
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         var condition: Bool = false
@@ -27,6 +27,13 @@ extension PostDiscoveryViewController: UICollectionViewDelegateFlowLayout {
         
         presenter.loadMorePosts()
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.presentPostDiscovery()
+    }
+}
+
+extension PostDiscoveryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch sceneType {
