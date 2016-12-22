@@ -100,6 +100,27 @@ extension PostDiscoveryViewController: PostListCollectionCellDelegate {
     }
 }
 
+extension PostDiscoveryViewController: PostListCollectionHeaderDelegate {
+    
+    func didTapDisplayName(header: PostListCollectionHeader, point: CGPoint) {
+        willPresentUserTimeline(header: header, point: point)
+    }
+    
+    func didTapAvatar(header: PostListCollectionHeader, point: CGPoint) {
+        willPresentUserTimeline(header: header, point: point)
+    }
+    
+    private func willPresentUserTimeline(header: PostListCollectionHeader, point: CGPoint) {
+        var relativePoint = collectionView!.convert(point, from: header)
+        relativePoint.y += header.frame.height
+        guard let indexPath = collectionView!.indexPathForItem(at: relativePoint) else {
+            return
+        }
+        
+        presenter.presentUserTimeline(at: indexPath.section)
+    }
+}
+
 extension PostDiscoveryViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

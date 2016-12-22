@@ -59,6 +59,19 @@ extension PostDiscoveryWireframeInterface {
         module.wireframe.style = .push
         module.wireframe.enter(with: property)
     }
+    
+    func showUserTimeline(from parent: UIViewController?, userId: String) {
+        let userTimeline = UserTimelineViewController()
+        userTimeline.root = root
+        userTimeline.style = .push
+        userTimeline.userId = userId
+        
+        var property = WireframeEntryProperty()
+        property.parent = parent
+        property.controller = userTimeline
+        
+        userTimeline.enter(with: property)
+    }
 }
 
 extension PostDiscoveryModuleInterface {
@@ -84,6 +97,16 @@ extension PostDiscoveryModuleInterface {
             posts: presenter.posts,
             index: index
         )
+    }
+    
+    func presentUserTimeline(at index: Int) {
+        guard let presenter = self as? PostDiscoveryPresenter,
+            let parent = presenter.view.controller,
+            let post = post(at: index) else {
+                return
+        }
+        
+        presenter.wireframe.showUserTimeline(from: parent, userId: post.userId)
     }
 }
 

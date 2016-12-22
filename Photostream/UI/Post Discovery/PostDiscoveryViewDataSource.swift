@@ -54,6 +54,7 @@ extension PostDiscoveryViewController {
             let header = PostListCollectionHeader.dequeue(from: collectionView, for: indexPath)!
             let item = presenter.post(at: indexPath.section) as? PostListCollectionHeaderItem
             header.configure(with: item)
+            header.delegate = self
             return header
             
         default:
