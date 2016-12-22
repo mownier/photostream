@@ -60,6 +60,8 @@ extension PostDiscoveryPresenter: PostDiscoveryModuleInterface {
             
         } else {
             view.reloadView()
+            view.hideInitialLoadView()
+            view.hideRefreshView()
         }
     }
     
