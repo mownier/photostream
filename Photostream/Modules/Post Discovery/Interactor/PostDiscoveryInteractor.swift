@@ -57,14 +57,14 @@ class PostDiscoveryInteractor: PostDiscoveryInteractorInterface {
             return
         }
         
-        service.fetchDiscoveryPosts(offset: offset!, limit: limit) { [unowned self] result in
+        service.fetchDiscoveryPosts(offset: offset!, limit: limit) { [weak self] result in
             guard result.error == nil else {
-                self.didFetch(with: result.error!)
+                self?.didFetch(with: result.error!)
                 return
             }
             
             guard let list = result.posts, list.count > 0 else {
-                self.didFetch(with: [PostDiscoveryData]())
+                self?.didFetch(with: [PostDiscoveryData]())
                 return
             }
             
@@ -96,8 +96,8 @@ class PostDiscoveryInteractor: PostDiscoveryInteractorInterface {
                 posts.append(item)
             }
             
-            self.didFetch(with: posts)
-            self.offset = result.nextOffset
+            self?.didFetch(with: posts)
+            self?.offset = result.nextOffset
         }
     }
     
