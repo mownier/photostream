@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 struct UserServiceProvider: UserService {
 
-    private var session: AuthSession
+    fileprivate var session: AuthSession
 
     init(session: AuthSession) {
         self.session = session
@@ -215,8 +215,303 @@ struct UserServiceProvider: UserService {
         })
 
     }
+    
+    func fetchActivities(id: String, offset: String, limit: UInt, callback: ((UserServiceActivityListResult) -> Void)?) {
+        var result = UserServiceActivityListResult()
+        guard session.isValid else {
+            result.error = .authenticationNotFound(message: "Authentication not found")
+            return
+        }
+        
+        let uid = session.user.id
+        let path1 = "user-activity/\(uid)/activities"
+        let path2 = "activities"
+        let rootRef = FIRDatabase.database().reference()
+        let userActivityRef = rootRef.child(path1)
+        let activitiesRef = rootRef.child(path2)
+        
+        var query = userActivityRef.queryOrderedByKey()
+        
+        if !offset.isEmpty {
+            query = query.queryEnding(atValue: offset)
+        }
+        
+        query = query.queryLimited(toLast: limit + 1)
+        
+        query.observeSingleEvent(of: .value, with: { queryResult -> Void in
+            guard queryResult.childrenCount > 0 else {
+                result.list = ActivityList()
+                callback?(result)
+                return
+            }
+            
+            var posts = [String: Post]()
+            var users = [String: User]()
+            var comments = [String: Comment]()
+            var activities = [Activity]()
+            
+            let appendWith: (_ activity: Activity) -> Void = { activity in
+                activities.append(activity)
+                
+                let activityCount = UInt(activities.count)
+                
+                if activityCount == queryResult.childrenCount {
+                    if activityCount == limit + 1 {
+                        let removedActivity = activities.removeFirst()
+                        result.nextOffset = removedActivity.id
+                    }
+                    
+                    var list = ActivityList()
+                    list.activities = activities.reversed()
+                    list.posts = posts
+                    list.users = users
+                    list.comments = comments
+                    
+                    result.list = list
+                    
+                    callback?(result)
+                }
+            }
+            
+            for child in queryResult.children {
+                guard let userActivity = child as? FIRDataSnapshot else {
+                    continue
+                }
+                
+                let activityId = userActivity.key
+                let activityRef = activitiesRef.child(activityId)
+                
+                activityRef.observeSingleEvent(of: .value, with: { activitySnapshot in
+                    let activity = Activity(with: activitySnapshot)
+                    
+                    switch activity.type {
+                    case .like(let userId, let postId),
+                         .post(let userId, let postId):
+                        let userRef = rootRef.child("users/\(userId)")
+                        let postRef = rootRef.child("posts/\(postId)")
+                        
+                        // If both user and post does not exist
+                        // user => !exist
+                        // post => !exist
+                        if users[userId] == nil && posts[postId] == nil {
+                            userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                                postRef.observeSingleEvent(of: .value, with: { postSnapshot in
+                                    guard postSnapshot.hasChild("photoId"),
+                                        let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                                            return
+                                    }
+                                    
+                                    let photoRef = rootRef.child("photos/\(photoId)")
+                                    photoRef.observeSingleEvent(of: .value, with: { photoSnapshot in
+                                        let photo = Photo(with: photoSnapshot)
+                                        var post = Post(with: postSnapshot)
+                                        post.photo = photo
+                                        posts[postId] = post
+                                        
+                                        let user = User(with: userSnapshot, exception: "email")
+                                        users[userId] = user
+                                        
+                                        appendWith(activity)
+                                    })
+                                })
+                            })
+                            
+                        // If user does not exist while post does exist
+                        // user => !exist
+                        // post => exist
+                        } else if users[userId] == nil {
+                            userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                                let user = User(with: userSnapshot, exception: "email")
+                                users[userId] = user
+                                
+                                appendWith(activity)
+                            })
+                        
+                        // If user does exist while post does not exist
+                        // user => exist
+                        // post => !exist
+                        } else if posts[postId] == nil {
+                            postRef.observeSingleEvent(of: .value, with: { postSnapshot in
+                                guard postSnapshot.hasChild("photoId"),
+                                    let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                                        return
+                                }
+                                
+                                let photoRef = rootRef.child("photos/\(photoId)")
+                                photoRef.observeSingleEvent(of: .value, with: { photoSnapshot in
+                                    let photo = Photo(with: photoSnapshot)
+                                    var post = Post(with: postSnapshot)
+                                    post.photo = photo
+                                    posts[postId] = post
+                                    
+                                    appendWith(activity)
+                                })
+                            })
+                            
+                        } else {
+                            appendWith(activity)
+                        }
+                    
+                    case .comment(let userId, let commentId, let postId):
+                        let userRef = rootRef.child("users/\(userId)")
+                        let commentRef = rootRef.child("comments/\(commentId)")
+                        let postRef = rootRef.child("posts/\(postId)")
+                        
+                        if users[userId] == nil, comments[commentId] == nil, posts[postId] == nil {
+                            userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                                commentRef.observeSingleEvent(of: .value, with: { commentSnapshot in
+                                    postRef.observeSingleEvent(of: .value, with: { postSnapshot in
+                                        guard postSnapshot.hasChild("photoId"),
+                                            let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                                            return
+                                        }
+                                        
+                                        let photoRef = rootRef.child("photos/\(photoId)")
+                                        
+                                        photoRef.observeSingleEvent(of: .value, with: { photoSnapshot in
+                                            let photo = Photo(with: photoSnapshot)
+                                            var post = Post(with: postSnapshot)
+                                            post.photo = photo
+                                            posts[postId] = post
+                                            
+                                            let user = User(with: userSnapshot, exception: "email")
+                                            users[userId] = user
+                                            
+                                            let comment = Comment(with: commentSnapshot)
+                                            comments[commentId] = comment
+                                            
+                                            appendWith(activity)
+                                        })
+                                    })
+                                })
+                            })
+                            
+                        } else if users[userId] == nil, comments[commentId] == nil {
+                            userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                                commentRef.observeSingleEvent(of: .value, with: { commentSnapshot in
+                                    let user = User(with: userSnapshot, exception: "email")
+                                    users[userId] = user
+                                    
+                                    let comment = Comment(with: commentSnapshot)
+                                    comments[commentId] = comment
+                                    
+                                    appendWith(activity)
+                                })
+                            })
+                            
+                        } else if users[userId] == nil, posts[postId] == nil {
+                            userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                                postRef.observeSingleEvent(of: .value, with: { postSnapshot in
+                                    guard postSnapshot.hasChild("photoId"),
+                                        let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                                        return
+                                    }
+                                    
+                                    let photoRef = rootRef.child("photos/\(photoId)")
+                                    
+                                    photoRef.observeSingleEvent(of: .value, with: { photoSnapshot in
+                                        let photo = Photo(with: photoSnapshot)
+                                        var post = Post(with: postSnapshot)
+                                        post.photo = photo
+                                        posts[postId] = post
+                                        
+                                        let user = User(with: userSnapshot, exception: "email")
+                                        users[userId] = user
+                                        
+                                        appendWith(activity)
+                                    })
+                                })
+                            })
+                            
+                        } else if comments[commentId] == nil, posts[postId] == nil {
+                            commentRef.observeSingleEvent(of: .value, with: { commentSnapshot in
+                                postRef.observeSingleEvent(of: .value, with: { postSnapshot in
+                                    guard postSnapshot.hasChild("photoId"),
+                                        let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                                            return
+                                    }
+                                    
+                                    let photoRef = rootRef.child("photos/\(photoId)")
+                                    
+                                    photoRef.observeSingleEvent(of: .value, with: { photoSnapshot in
+                                        let photo = Photo(with: photoSnapshot)
+                                        var post = Post(with: postSnapshot)
+                                        post.photo = photo
+                                        posts[postId] = post
+                                        
+                                        let comment = Comment(with: commentSnapshot)
+                                        comments[commentId] = comment
+                                        
+                                        appendWith(activity)
+                                    })
+                                })
+                            })
+                        } else if users[userId] == nil {
+                            userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                                let user = User(with: userSnapshot, exception: "email")
+                                users[userId] = user
+                                
+                                appendWith(activity)
+                            })
+                            
+                        } else if comments[commentId] == nil {
+                            commentRef.observeSingleEvent(of: .value, with: { commentSnapshot in
+                                let comment = Comment(with: commentSnapshot)
+                                comments[commentId] = comment
+                                
+                                appendWith(activity)
+                            })
+                            
+                        } else if posts[postId] == nil {
+                            postRef.observeSingleEvent(of: .value, with: { postSnapshot in
+                                guard postSnapshot.hasChild("photoId"),
+                                    let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                                        return
+                                }
+                                
+                                let photoRef = rootRef.child("photos/\(photoId)")
+                                
+                                photoRef.observeSingleEvent(of: .value, with: { photoSnapshot in
+                                    let photo = Photo(with: photoSnapshot)
+                                    var post = Post(with: postSnapshot)
+                                    post.photo = photo
+                                    posts[postId] = post
+                                    
+                                    appendWith(activity)
+                                })
+                            })
+                            
+                        } else {
+                            appendWith(activity)
+                        }
+                    
+                    case .follow(let userId):
+                        let userRef = rootRef.child("users/\(userId)")
+                        
+                        if users[userId] == nil {
+                            userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                                let user = User(with: userSnapshot, exception: "email")
+                                users[userId] = user
+                                
+                                appendWith(activity)
+                            })
+                            
+                        } else {
+                            appendWith(activity)
+                        }
+                        
+                    default:
+                        break
+                    }
+                })
+            }
+        })
+    }
+}
 
-    private func fetchFollowList(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: ((UserServiceFollowListResult) -> Void)?) {
+extension UserServiceProvider {
+    
+    fileprivate func fetchFollowList(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: ((UserServiceFollowListResult) -> Void)?) {
         var result = UserServiceFollowListResult()
         guard session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found.")

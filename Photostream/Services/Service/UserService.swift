@@ -19,6 +19,7 @@ protocol UserService {
     func fetchFollowing(id: String, offset: UInt, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?)
     
     func fetchProfile(id: String, callback: ((UserServiceProfileResult) -> Void)?)
+    func fetchActivities(id: String, offset: String, limit: UInt, callback: ((UserServiceActivityListResult) -> Void)?)
 }
 
 struct UserServiceBasicResult {
@@ -41,6 +42,13 @@ struct UserServiceFollowListResult {
     var error: UserServiceError?
 }
 
+struct UserServiceActivityListResult {
+    
+    var list: ActivityList?
+    var error: UserServiceError?
+    var nextOffset: String?
+}
+
 enum UserServiceError: Error {
     
     case authenticationNotFound(message: String)
@@ -50,6 +58,7 @@ enum UserServiceError: Error {
     case failedToFetchFollowers(message: String)
     case failedToFetchFollowing(message: String)
     case failedToFetchProfile(message: String)
+    case failedToFetchActivities(message: String)
     
     var message: String {
         switch self {
@@ -59,7 +68,8 @@ enum UserServiceError: Error {
              .failedToUnfollow(let message),
              .failedToFetchFollowers(let message),
              .failedToFetchFollowing(let message),
-             .failedToFetchProfile(let message):
+             .failedToFetchProfile(let message),
+             .failedToFetchActivities(let message):
             return message
         }
     }
