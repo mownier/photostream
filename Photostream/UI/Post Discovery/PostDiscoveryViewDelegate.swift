@@ -36,7 +36,7 @@ extension PostDiscoveryViewController {
             return
         }
         
-        presenter.presentPostDiscovery(initialPostIndex: indexPath.row)
+        presenter.presentPostDiscoveryAsList(with: indexPath.row)
     }
 }
 

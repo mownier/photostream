@@ -43,12 +43,12 @@ extension PostDiscoveryWireframeInterface {
         controller.enter(with: property)
     }
     
-    func showPostDiscovery(from parent: UIViewController, type: PostDiscoverySceneType, posts: [PostDiscoveryData] = [PostDiscoveryData](), initialPostIndex: Int) {
-        let module = PostDiscoveryModule(sceneType: type)
+    func showPostDiscoveryAsList(from parent: UIViewController, posts: [PostDiscoveryData] = [PostDiscoveryData](), index: Int) {
+        let module = PostDiscoveryModule(sceneType: .list)
         module.build(
             root: root,
             posts: posts,
-            initialPostIndex: initialPostIndex
+            initialPostIndex: index
         )
         module.view.isBackBarItemVisible(true)
         
@@ -73,17 +73,16 @@ extension PostDiscoveryModuleInterface {
         presenter.wireframe.presentCommentController(from: parent, delegate: presenter, postId: post.id, shouldComment: shouldComment)
     }
     
-    func presentPostDiscovery(initialPostIndex: Int, type: PostDiscoverySceneType = .list) {
+    func presentPostDiscoveryAsList(with index: Int) {
         guard let presenter = self as? PostDiscoveryPresenter,
             let parent = presenter.view.controller else {
                 return
         }
         
-        presenter.wireframe.showPostDiscovery(
+        presenter.wireframe.showPostDiscoveryAsList(
             from: parent,
-            type: type,
             posts: presenter.posts,
-            initialPostIndex: initialPostIndex
+            index: index
         )
     }
 }
