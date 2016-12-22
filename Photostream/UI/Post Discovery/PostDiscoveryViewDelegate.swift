@@ -32,11 +32,13 @@ extension PostDiscoveryViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard sceneType == .grid else {
-            return
+        switch sceneType {
+        case .grid:
+            presenter.presentPostDiscoveryAsList(with: indexPath.row)
+            
+        default:
+            break
         }
-        
-        presenter.presentPostDiscoveryAsList(with: indexPath.row)
     }
 }
 
