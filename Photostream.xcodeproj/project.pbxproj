@@ -1174,18 +1174,18 @@
 				B94131251DEEA9B300DD10CE /* CommentWriterModuleExtension.swift */,
 				B9C216E31DCC40F900F617FC /* HomeModuleExtension.swift */,
 				B9C216E41DCC40F900F617FC /* LoginModuleExtension.swift */,
+				B95A06F01E0245C9005B47B6 /* LogoutModuleExtension.swift */,
 				B9C216E51DCC40F900F617FC /* NewsFeedModuleExtension.swift */,
 				B978AF441DD45A7B007C1AAD /* PhotoCaptureModuleExtension.swift */,
 				B921B5641DD5ADF20065C187 /* PhotoLibraryModuleExtension.swift */,
 				B90920601DD30D730073FB72 /* PhotoPickerModuleExtension.swift */,
 				B9DEB2621DDEE12000C47C37 /* PhotoShareModuleExtension.swift */,
+				B99696391E090619008A4811 /* PostDiscoveryModuleExtension.swift */,
+				B90899741E078CA70036D4A4 /* PostUploadModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
 				B99719781E01255D00A24C74 /* SettingsModuleExtension.swift */,
 				B94AB2D31DF69DE600313254 /* UserPostModuleExtension.swift */,
 				B9E4084B1DFBCDDC00B7076A /* UserProfileModuleExtension.swift */,
-				B95A06F01E0245C9005B47B6 /* LogoutModuleExtension.swift */,
-				B90899741E078CA70036D4A4 /* PostUploadModuleExtension.swift */,
-				B99696391E090619008A4811 /* PostDiscoveryModuleExtension.swift */,
 			);
 			path = "Module Extensions";
 			sourceTree = "<group>";

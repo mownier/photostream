@@ -16,6 +16,17 @@ extension PostDiscoveryModule {
     }
 }
 
+extension PostDiscoveryScene {
+    
+    func isBackBarItemVisible(_ isVisible: Bool) {
+        guard let controller = controller as? PostDiscoveryViewController else {
+            return
+        }
+        
+        controller.isBackBarItemVisible = isVisible
+    }
+}
+
 extension PostDiscoveryWireframeInterface {
     
     func presentCommentController(from parent: UIViewController, delegate: CommentControllerDelegate?, postId: String, shouldComment: Bool = false) {
@@ -39,6 +50,7 @@ extension PostDiscoveryWireframeInterface {
             posts: posts,
             initialPostIndex: initialPostIndex
         )
+        module.view.isBackBarItemVisible(true)
         
         var property = WireframeEntryProperty()
         property.controller = module.view.controller

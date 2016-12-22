@@ -18,6 +18,7 @@ class PostDiscoveryViewController: UICollectionViewController {
     weak var scrollEventListener: ScrollEventListener?
     
     var presenter: PostDiscoveryModuleInterface!
+    var isBackBarItemVisible: Bool = false
     
     lazy var gridLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     lazy var listLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -163,6 +164,21 @@ class PostDiscoveryViewController: UICollectionViewController {
     
     func setupNavigationItem() {
         navigationItem.title = "Discovery"
+        
+        if isBackBarItemVisible {
+            let barItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.didTapBack))
+            navigationItem.leftBarButtonItem = barItem
+            
+        } else {
+            navigationItem.leftBarButtonItem = nil
+        }
+    }
+}
+
+extension PostDiscoveryViewController {
+    
+    func didTapBack() {
+        presenter.exit()
     }
 }
 
