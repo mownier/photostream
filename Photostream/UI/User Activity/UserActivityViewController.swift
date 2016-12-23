@@ -86,6 +86,8 @@ class UserActivityViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         ActivityTableCell.register(in: tableView)
+        
+        navigationItem.title = "Activity"
     }
     
     override func viewDidLoad() {
