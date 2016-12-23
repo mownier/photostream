@@ -8,7 +8,7 @@
 
 protocol UserActivityScene: BaseModuleView {
 
-    var presnter: UserActivityModuleInterface! { set get }
+    var presenter: UserActivityModuleInterface! { set get }
     
     func reloadView()
     
