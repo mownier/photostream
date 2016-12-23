@@ -53,7 +53,7 @@ class UserActivityInteractor: UserActivityInteractorInterface {
         
         service.fetchActivities(id: userId, offset: offset!, limit: limit) {
             [weak self] result in
-            guard result.error != nil else {
+            guard result.error == nil else {
                 self?.didFetch(with: result.error!)
                 return
             }
