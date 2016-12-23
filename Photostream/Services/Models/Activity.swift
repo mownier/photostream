@@ -58,11 +58,7 @@ extension Activity: SnapshotParser {
         }
         
         if snapshot.hasChild("post_id") && !exception.contains("post_id") {
-            postId = snapshot.childSnapshot(forPath: "user_id").value as! String
-        }
-        
-        if snapshot.hasChild("user_id") && !exception.contains("user_id") {
-            userId = snapshot.childSnapshot(forPath: "user_id").value as! String
+            postId = snapshot.childSnapshot(forPath: "post_id").value as! String
         }
         
         if snapshot.hasChild("comment_id") && !exception.contains("comment_id") {
