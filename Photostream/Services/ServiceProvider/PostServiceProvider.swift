@@ -181,14 +181,18 @@ struct PostServiceProvider: PostService {
             return
         }
         
-        let userId = session.user.id
+        let uid = session.user.id
+        
         let path1 = "posts/\(id)/likes_count"
         let path2 = "post-like/\(id)/likes"
+        let path3 = "posts/\(id)/uid"
+        
         let rootRef = FIRDatabase.database().reference()
         let likesRef = rootRef.child(path2)
         let likesCountRef = rootRef.child(path1)
+        let authorRef = rootRef.child(path3)
         
-        likesRef.child(userId).observeSingleEvent(of: .value, with: { (data) in
+        likesRef.child(uid).observeSingleEvent(of: .value, with: { (data) in
             guard !data.exists() else {
                 error = .failedToLike(message: "Already liked")
                 callback?(error)
@@ -210,8 +214,34 @@ struct PostServiceProvider: PostService {
                         return
                     }
                     
-                    likesRef.child(userId).setValue(true)
-                    callback?(nil)
+                    authorRef.observeSingleEvent(of: .value, with: { authorSnapshot in
+                        guard let authorId = authorSnapshot.value as? String else {
+                            return
+                        }
+                        
+                        var updates: [AnyHashable: Any] = [
+                            path2: [uid: true]
+                        ]
+                        
+                        if authorId != uid {
+                            let activitiesRef = rootRef.child("activities")
+                            let activityKey = activitiesRef.childByAutoId().key
+                            let activityUpdate: [AnyHashable: Any] = [
+                                "id": activityKey,
+                                "type": "like",
+                                "trigger_by": uid,
+                                "post_id": id,
+                                "author_id": authorId,
+                                "timestamp": FIRServerValue.timestamp()
+                            ]
+                            updates["activities/\(activityKey)"] = activityUpdate
+                            updates["user-activity/\(authorId)/activities"] = [activityKey: true]
+                            updates["user-activity/\(authorId)/activity-like/\(id)/\(uid)"] = [activityKey: true]
+                        }
+                        
+                        rootRef.updateChildValues(updates)
+                        callback?(nil)
+                    })
             })
         })
     }
@@ -224,12 +254,16 @@ struct PostServiceProvider: PostService {
             return
         }
         
-        let userId = session.user.id
+        let uid = session.user.id
+        
         let path1 = "posts/\(id)/likes_count"
         let path2 = "post-like/\(id)/likes"
+        let path3 = "posts/\(id)/uid"
+        
         let rootRef = FIRDatabase.database().reference()
         let likesRef = rootRef.child(path2)
         let likesCountRef = rootRef.child(path1)
+        let authorRef = rootRef.child(path3)
         
         likesRef.observeSingleEvent(of: .value, with: { (data) in
             guard data.exists() else {
@@ -253,8 +287,37 @@ struct PostServiceProvider: PostService {
                         return
                     }
                     
-                    likesRef.child(userId).removeValue()
-                    callback?(nil)
+                    authorRef.observeSingleEvent(of: .value, with: { authorSnapshot in
+                        guard let authorId = authorSnapshot.value as? String else {
+                            return
+                        }
+                        
+                        let userActivityLikeRef = rootRef.child("user-activity/\(authorId)/activity-like/\(id)/\(uid)")
+                        
+                        userActivityLikeRef.observeSingleEvent(of: .value, with: { userActivitySnapshot in
+                            var updates = [AnyHashable: Any]()
+                            updates["\(path2)/\(uid)"] = NSNull()
+
+                            if authorId != uid {
+                                for child in userActivitySnapshot.children {
+                                    guard let activitySnapshot = child as? FIRDataSnapshot else {
+                                        continue
+                                    }
+                                    
+                                    let activityKey = activitySnapshot.key
+                                    
+                                    // Removal of activities
+                                    updates["activities/\(activityKey)"] = NSNull()
+                                    updates["user-activity/\(authorId)/activities/\(activityKey)"] = NSNull()
+                                }
+                                
+                                updates["user-activity/\(authorId)/activity-like/\(id)/\(uid)"] = NSNull()
+                            }
+                            
+                            rootRef.updateChildValues(updates)
+                            callback?(nil)
+                        })
+                    })
             })
         })
     }
