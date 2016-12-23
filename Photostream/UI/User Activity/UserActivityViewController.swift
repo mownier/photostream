@@ -84,6 +84,7 @@ class UserActivityViewController: UITableViewController {
         super.loadView()
         
         tableView.tableFooterView = UIView()
+        tableView.allowsSelection = false
         
         ActivityTableCell.register(in: tableView)
         
