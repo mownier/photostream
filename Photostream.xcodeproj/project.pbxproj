@@ -239,6 +239,7 @@
 		B9D9C34F1E0D0681002B906B /* UserActivityViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C34E1E0D0681002B906B /* UserActivityViewDelegate.swift */; };
 		B9D9C3521E0D0779002B906B /* ActivityTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3511E0D0779002B906B /* ActivityTableCell.swift */; };
 		B9D9C3541E0D089F002B906B /* ActivityTableCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3531E0D089F002B906B /* ActivityTableCellItem.swift */; };
+		B9D9C3561E0D0BF7002B906B /* UserActivityModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3551E0D0BF7002B906B /* UserActivityModuleExtension.swift */; };
 		B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */; };
 		B9DEB2591DDEDE2200C47C37 /* PhotoShareModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */; };
 		B9DEB25B1DDEDE2E00C47C37 /* PhotoSharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */; };
@@ -519,6 +520,7 @@
 		B9D9C34E1E0D0681002B906B /* UserActivityViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityViewDelegate.swift; sourceTree = "<group>"; };
 		B9D9C3511E0D0779002B906B /* ActivityTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableCell.swift; sourceTree = "<group>"; };
 		B9D9C3531E0D089F002B906B /* ActivityTableCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableCellItem.swift; sourceTree = "<group>"; };
+		B9D9C3551E0D0BF7002B906B /* UserActivityModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityModuleExtension.swift; sourceTree = "<group>"; };
 		B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenterInterface.swift; sourceTree = "<group>"; };
 		B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareModuleInterface.swift; sourceTree = "<group>"; };
 		B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenter.swift; sourceTree = "<group>"; };
@@ -1261,6 +1263,7 @@
 				B90899741E078CA70036D4A4 /* PostUploadModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
 				B99719781E01255D00A24C74 /* SettingsModuleExtension.swift */,
+				B9D9C3551E0D0BF7002B906B /* UserActivityModuleExtension.swift */,
 				B94AB2D31DF69DE600313254 /* UserPostModuleExtension.swift */,
 				B9E4084B1DFBCDDC00B7076A /* UserProfileModuleExtension.swift */,
 			);
@@ -2384,6 +2387,7 @@
 				B9C217AA1DCC40F900F617FC /* LoginInteractorInterface.swift in Sources */,
 				B954EE5E1DE035D400A0049D /* PostUploadInteractorInterface.swift in Sources */,
 				B9C217AC1DCC40F900F617FC /* LoginPresenter.swift in Sources */,
+				B9D9C3561E0D0BF7002B906B /* UserActivityModuleExtension.swift in Sources */,
 				B95A06E61E023ED5005B47B6 /* LogoutModule.swift in Sources */,
 				B9D1AC971E039D72003E8870 /* NewsFeedModule.swift in Sources */,
 				B954EE5C1DE035C100A0049D /* PostUploadInteractor.swift in Sources */,
