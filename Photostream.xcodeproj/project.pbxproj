@@ -234,6 +234,9 @@
 		B9D9C3421E0CFE60002B906B /* UserActivityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3411E0CFE60002B906B /* UserActivityScene.swift */; };
 		B9D9C3441E0CFECE002B906B /* UserActivityWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3431E0CFECE002B906B /* UserActivityWireframe.swift */; };
 		B9D9C3461E0CFF0D002B906B /* UserActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3451E0CFF0D002B906B /* UserActivityPresenter.swift */; };
+		B9D9C34B1E0D064D002B906B /* UserActivityVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C34A1E0D064D002B906B /* UserActivityVIewController.swift */; };
+		B9D9C34D1E0D0667002B906B /* UserActivityViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C34C1E0D0667002B906B /* UserActivityViewDataSource.swift */; };
+		B9D9C34F1E0D0681002B906B /* UserActivityViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C34E1E0D0681002B906B /* UserActivityViewDelegate.swift */; };
 		B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */; };
 		B9DEB2591DDEDE2200C47C37 /* PhotoShareModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */; };
 		B9DEB25B1DDEDE2E00C47C37 /* PhotoSharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */; };
@@ -509,6 +512,9 @@
 		B9D9C3411E0CFE60002B906B /* UserActivityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityScene.swift; sourceTree = "<group>"; };
 		B9D9C3431E0CFECE002B906B /* UserActivityWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityWireframe.swift; sourceTree = "<group>"; };
 		B9D9C3451E0CFF0D002B906B /* UserActivityPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityPresenter.swift; sourceTree = "<group>"; };
+		B9D9C34A1E0D064D002B906B /* UserActivityVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityVIewController.swift; sourceTree = "<group>"; };
+		B9D9C34C1E0D0667002B906B /* UserActivityViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityViewDataSource.swift; sourceTree = "<group>"; };
+		B9D9C34E1E0D0681002B906B /* UserActivityViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityViewDelegate.swift; sourceTree = "<group>"; };
 		B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenterInterface.swift; sourceTree = "<group>"; };
 		B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareModuleInterface.swift; sourceTree = "<group>"; };
 		B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenter.swift; sourceTree = "<group>"; };
@@ -1500,6 +1506,7 @@
 				B9C217621DCC40F900F617FC /* Registration */,
 				B99719751E0121A400A24C74 /* Settings */,
 				B9C217661DCC40F900F617FC /* Shared */,
+				B9D9C3491E0D064D002B906B /* User Activity */,
 				B94AB2D01DF69D2A00313254 /* User Post */,
 				B9E4084D1DFBCE4100B7076A /* User Profile */,
 				B969F43A1DFE4C6D003629F3 /* User Timeline */,
@@ -1841,6 +1848,16 @@
 				B9D4969B1DE7F09D00CDD58E /* PostComposerNavigationController.swift */,
 			);
 			path = "Post Composer";
+			sourceTree = "<group>";
+		};
+		B9D9C3491E0D064D002B906B /* User Activity */ = {
+			isa = PBXGroup;
+			children = (
+				B9D9C34A1E0D064D002B906B /* UserActivityVIewController.swift */,
+				B9D9C34C1E0D0667002B906B /* UserActivityViewDataSource.swift */,
+				B9D9C34E1E0D0681002B906B /* UserActivityViewDelegate.swift */,
+			);
+			path = "User Activity";
 			sourceTree = "<group>";
 		};
 		B9DEB2511DDEDD8900C47C37 /* Photo Share */ = {
@@ -2288,6 +2305,7 @@
 				B941310F1DEE9C0F00DD10CE /* CommentFeedWireframeInterface.swift in Sources */,
 				B9D9C3441E0CFECE002B906B /* UserActivityWireframe.swift in Sources */,
 				B94131071DEE9C0F00DD10CE /* CommentFeedInteractorInput.swift in Sources */,
+				B9D9C34F1E0D0681002B906B /* UserActivityViewDelegate.swift in Sources */,
 				B95A06EA1E023F3E005B47B6 /* LogoutScene.swift in Sources */,
 				B94131091DEE9C0F00DD10CE /* CommentFeedInteractorOutput.swift in Sources */,
 				B94131211DEEA3BE00DD10CE /* CommentWriterModule.swift in Sources */,
@@ -2345,6 +2363,7 @@
 				B941311D1DEEA29B00DD10CE /* CommentWriterPresenter.swift in Sources */,
 				B9C217DC1DCC40F900F617FC /* FileService.swift in Sources */,
 				B9D4969E1DE80EF700CDD58E /* PostUploadItem.swift in Sources */,
+				B9D9C34B1E0D064D002B906B /* UserActivityVIewController.swift in Sources */,
 				B9C217D91DCC40F900F617FC /* User.swift in Sources */,
 				B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */,
 				B9C217AA1DCC40F900F617FC /* LoginInteractorInterface.swift in Sources */,
@@ -2425,6 +2444,7 @@
 				B9C217E01DCC40F900F617FC /* AuthenticationServiceProvider.swift in Sources */,
 				B9E408401DFBBA5000B7076A /* UserProfileInteractor.swift in Sources */,
 				B99696271E08F4DC008A4811 /* PostDiscoveryInteractor.swift in Sources */,
+				B9D9C34D1E0D0667002B906B /* UserActivityViewDataSource.swift in Sources */,
 				B9D1AC9B1E039D72003E8870 /* NewsFeedWireframe.swift in Sources */,
 				B9D9C3421E0CFE60002B906B /* UserActivityScene.swift in Sources */,
 				B94131291DEEAEC600DD10CE /* CommentController.swift in Sources */,
