@@ -83,6 +83,8 @@ class UserActivityViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         
+        tableView.tableFooterView = UIView()
+        
         ActivityTableCell.register(in: tableView)
     }
     
