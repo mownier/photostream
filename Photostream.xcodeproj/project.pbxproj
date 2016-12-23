@@ -230,6 +230,7 @@
 		B9D4969E1DE80EF700CDD58E /* PostUploadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */; };
 		B9D496A01DE8199F00CDD58E /* LoginModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */; };
 		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
+		B9D9C3401E0CFDC4002B906B /* UserActivityModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C33F1E0CFDC4002B906B /* UserActivityModule.swift */; };
 		B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */; };
 		B9DEB2591DDEDE2200C47C37 /* PhotoShareModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */; };
 		B9DEB25B1DDEDE2E00C47C37 /* PhotoSharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */; };
@@ -501,6 +502,7 @@
 		B9D4969D1DE80EF700CDD58E /* PostUploadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadItem.swift; sourceTree = "<group>"; };
 		B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
 		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
+		B9D9C33F1E0CFDC4002B906B /* UserActivityModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityModule.swift; sourceTree = "<group>"; };
 		B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenterInterface.swift; sourceTree = "<group>"; };
 		B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareModuleInterface.swift; sourceTree = "<group>"; };
 		B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenter.swift; sourceTree = "<group>"; };
@@ -1139,6 +1141,7 @@
 		B9B0FF181E0B832200807B0B /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				B9D9C33F1E0CFDC4002B906B /* UserActivityModule.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -2434,6 +2437,7 @@
 				B9F95E411DF7CF420090C73E /* PostGridCollectionCellItem.swift in Sources */,
 				B9C217ED1DCC40F900F617FC /* NewsFeedDelegate.swift in Sources */,
 				B9C217E11DCC40F900F617FC /* CommentServiceProvider.swift in Sources */,
+				B9D9C3401E0CFDC4002B906B /* UserActivityModule.swift in Sources */,
 				B9DEB2631DDEE12000C47C37 /* PhotoShareModuleExtension.swift in Sources */,
 				B9E4084A1DFBCA6300B7076A /* UserProfilePresenter.swift in Sources */,
 				B9D4968D1DE7EDE300CDD58E /* PhotoPickerViewInterface.swift in Sources */,
