@@ -80,6 +80,12 @@ class UserActivityViewController: UITableViewController {
         }
     }
     
+    override func loadView() {
+        super.loadView()
+        
+        ActivityTableCell.register(in: tableView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
