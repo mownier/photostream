@@ -296,7 +296,7 @@ struct UserServiceProvider: UserService {
                         if users[userId] == nil && posts[postId] == nil {
                             userRef.observeSingleEvent(of: .value, with: { userSnapshot in
                                 postRef.observeSingleEvent(of: .value, with: { postSnapshot in
-                                    guard postSnapshot.hasChild("photoId"),
+                                    guard postSnapshot.hasChild("photo_id"),
                                         let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
                                             return
                                     }
