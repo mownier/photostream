@@ -53,8 +53,8 @@ extension Activity: SnapshotParser {
             timestamp = snapshot.childSnapshot(forPath: "timestamp").value as! Double
         }
         
-        if snapshot.hasChild("user_id") && !exception.contains("user_id") {
-            userId = snapshot.childSnapshot(forPath: "user_id").value as! String
+        if snapshot.hasChild("trigger_by") && !exception.contains("trigger_by") {
+            userId = snapshot.childSnapshot(forPath: "trigger_by").value as! String
         }
         
         if snapshot.hasChild("post_id") && !exception.contains("post_id") {
