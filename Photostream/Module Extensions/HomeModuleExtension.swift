@@ -98,6 +98,20 @@ extension HomeWireframe {
         controller.viewControllers?.insert(nav, at: 1)
         
         postDiscovery.view.controller?.preloadView()
+        
+        // Load user activity module
+        let userActivity = UserActivityModule()
+        userActivity.build(root: root as? RootWireframe, userId: auth.user.id)
+        
+        nav = UINavigationController(rootViewController: userActivity.view.controller!)
+        nav.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "discovery_line_icon"), selectedImage: #imageLiteral(resourceName: "discovery_black_icon"))
+        nav.tabBarItem.imageInsets.top = 8
+        nav.tabBarItem.imageInsets.bottom = -8
+        nav.navigationBar.isTranslucent = false
+        nav.navigationBar.tintColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
+        controller.viewControllers?.insert(nav, at: 3)
+        
+        userActivity.view.controller?.preloadView()
     }
 }
 
