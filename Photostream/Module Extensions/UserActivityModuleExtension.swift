@@ -6,6 +6,13 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
+extension UserActivityModule {
+    
+    convenience init() {
+        self.init(view: UserActivityViewController())
+    }
+}
+
 extension UserActivityLikeDataItem: ActivityTableCellLikeItem {
     
     var content: String {
