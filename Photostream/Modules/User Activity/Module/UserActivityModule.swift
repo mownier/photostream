@@ -10,6 +10,7 @@ protocol UserActivityModuleInterface: BaseModuleInterface {
     
     var activityCount: Int { get }
     
+    func viewDidLoad()
     func refreshActivities()
     func loadMoreActivities()
     
