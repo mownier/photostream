@@ -231,6 +231,7 @@
 		B9D496A01DE8199F00CDD58E /* LoginModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */; };
 		B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */; };
 		B9D9C3401E0CFDC4002B906B /* UserActivityModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C33F1E0CFDC4002B906B /* UserActivityModule.swift */; };
+		B9D9C3421E0CFE60002B906B /* UserActivityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3411E0CFE60002B906B /* UserActivityScene.swift */; };
 		B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */; };
 		B9DEB2591DDEDE2200C47C37 /* PhotoShareModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */; };
 		B9DEB25B1DDEDE2E00C47C37 /* PhotoSharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */; };
@@ -503,6 +504,7 @@
 		B9D4969F1DE8199F00CDD58E /* LoginModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModuleInterface.swift; sourceTree = "<group>"; };
 		B9D91EA51DD17ECA000BF3E5 /* SnapshotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotParser.swift; sourceTree = "<group>"; };
 		B9D9C33F1E0CFDC4002B906B /* UserActivityModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityModule.swift; sourceTree = "<group>"; };
+		B9D9C3411E0CFE60002B906B /* UserActivityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityScene.swift; sourceTree = "<group>"; };
 		B9DEB2561DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenterInterface.swift; sourceTree = "<group>"; };
 		B9DEB2581DDEDE2200C47C37 /* PhotoShareModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoShareModuleInterface.swift; sourceTree = "<group>"; };
 		B9DEB25A1DDEDE2E00C47C37 /* PhotoSharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharePresenter.swift; sourceTree = "<group>"; };
@@ -1156,6 +1158,7 @@
 		B9B0FF1A1E0B832200807B0B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9D9C3411E0CFE60002B906B /* UserActivityScene.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2415,6 +2418,7 @@
 				B9E408401DFBBA5000B7076A /* UserProfileInteractor.swift in Sources */,
 				B99696271E08F4DC008A4811 /* PostDiscoveryInteractor.swift in Sources */,
 				B9D1AC9B1E039D72003E8870 /* NewsFeedWireframe.swift in Sources */,
+				B9D9C3421E0CFE60002B906B /* UserActivityScene.swift in Sources */,
 				B94131291DEEAEC600DD10CE /* CommentController.swift in Sources */,
 				B9C217F01DCC40F900F617FC /* RegistrationViewController.swift in Sources */,
 				B9C217EC1DCC40F900F617FC /* NewsFeedDataSource.swift in Sources */,
