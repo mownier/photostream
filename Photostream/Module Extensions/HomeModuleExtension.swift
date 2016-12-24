@@ -104,7 +104,7 @@ extension HomeWireframe {
         userActivity.build(root: root as? RootWireframe, userId: auth.user.id)
         
         nav = UINavigationController(rootViewController: userActivity.view.controller!)
-        nav.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "discovery_line_icon"), selectedImage: #imageLiteral(resourceName: "discovery_black_icon"))
+        nav.tabBarItem = UITabBarItem(title: "", image: #imageLiteral(resourceName: "bell_icon"), selectedImage: #imageLiteral(resourceName: "bell_icon_black"))
         nav.tabBarItem.imageInsets.top = 8
         nav.tabBarItem.imageInsets.bottom = -8
         nav.navigationBar.isTranslucent = false
