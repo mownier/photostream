@@ -35,12 +35,13 @@ class ActivityTableLikeCell: UITableViewCell {
         avatarImageView.cornerRadius = avatarDimension / 2
         
         photoImageView = UIImageView()
-        photoImageView.contentMode = .scaleAspectFit
+        photoImageView.contentMode = .scaleAspectFill
         photoImageView.backgroundColor = UIColor.lightGray
+        photoImageView.clipsToBounds = true
         
         contentLabel = UILabel()
         contentLabel.numberOfLines = 0
-        contentLabel.font = UIFont.systemFont(ofSize: 14)
+        contentLabel.font = UIFont.systemFont(ofSize: 12)
         
         addSubview(avatarImageView)
         addSubview(photoImageView)
@@ -84,7 +85,7 @@ extension ActivityTableLikeCell {
     }
     
     var photoDimension: CGFloat {
-        return 32
+        return 40
     }
 }
 
