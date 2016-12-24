@@ -87,6 +87,7 @@ class UserActivityViewController: UITableViewController {
         
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
+        tableView.separatorStyle = .none
         
         ActivityTableLikeCell.register(in: tableView)
         
