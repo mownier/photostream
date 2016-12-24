@@ -15,6 +15,15 @@ protocol ActivityTableCellItem {
     var avatarUrl: String { set get }
     var timestamp: Double { set get }
     var content: String { get }
+    var timeAgo: String { get }
+}
+
+extension ActivityTableCellItem {
+    
+    var timeAgo: String {
+        let date = NSDate(timeIntervalSince1970: timestamp)
+        return date.shortTimeAgoSinceNow()
+    }
 }
 
 protocol ActivityTableCellLikeItem: ActivityTableCellItem {
@@ -45,7 +54,7 @@ protocol ActivityTableLikeCellConfig: ActivityTableCellConfig {
     func configure(with item: ActivityTableCellLikeItem?, isPrototype: Bool)
     func setup(photo url: String)
     func setup(avatar url: String, placeholder image: UIImage?)
-    func setup(content: String, displayName: String)
+    func setup(content: String, displayName: String, timeAgo: String)
 }
 
 protocol ActivityTablePostCellConfig: ActivityTableCellConfig {
@@ -67,7 +76,7 @@ extension ActivityTableLikeCellConfig {
     
     func authorPlaceholder(with name: String, size: CGSize) -> UIImage {
         let frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        let font = UIFont.systemFont(ofSize: 10)
+        let font = UIFont.systemFont(ofSize: 12)
         let image = UILabel.createPlaceholderImageWithFrame(frame, text: name[0], font: font)
         return image
     }
@@ -87,7 +96,7 @@ extension ActivityTableLikeCell: ActivityTableLikeCellConfig {
             return
         }
         
-        setup(content: item.content, displayName: item.displayName)
+        setup(content: item.content, displayName: item.displayName, timeAgo: item.timeAgo)
         
         if !isPrototype {
             setup(photo: item.photoUrl)
@@ -103,7 +112,7 @@ extension ActivityTableLikeCell: ActivityTableLikeCellConfig {
         layoutIfNeeded()
     }
     
-    func setup(content: String, displayName: String) {
+    func setup(content: String, displayName: String, timeAgo: String) {
         let contentMessage = content.replaceFirstOccurrence(of: displayName, to: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         let font = contentLabel.font!
@@ -113,11 +122,14 @@ extension ActivityTableLikeCell: ActivityTableLikeCellConfig {
         
         let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
         let message = NSAttributedString(string: contentMessage, attributes: [NSFontAttributeName: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSFontAttributeName: regular, NSForegroundColorAttributeName: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)
         text.append(NSAttributedString(string: " "))
         text.append(message)
+        text.append(NSAttributedString(string: " "))
+        text.append(time)
         
         contentLabel.attributedText = text
     }
