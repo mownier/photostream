@@ -51,6 +51,7 @@ extension Activity: SnapshotParser {
         
         if snapshot.hasChild("timestamp") && !exception.contains("timestamp") {
             timestamp = snapshot.childSnapshot(forPath: "timestamp").value as! Double
+            timestamp = timestamp / 1000
         }
         
         if snapshot.hasChild("trigger_by") && !exception.contains("trigger_by") {
@@ -64,7 +65,7 @@ extension Activity: SnapshotParser {
         if snapshot.hasChild("comment_id") && !exception.contains("comment_id") {
             commentId = snapshot.childSnapshot(forPath: "comment_id").value as! String
         }
-
+        
         if snapshot.hasChild("type") && !exception.contains("type") {
             let typeString = snapshot.childSnapshot(forPath: "type").value as! String
             
