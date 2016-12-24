@@ -60,6 +60,7 @@ class UserActivityInteractor: UserActivityInteractorInterface {
             
             guard let list = result.list, list.count > 0 else {
                 self?.didFetch(with: [UserActivityData]())
+                self?.offset = nil
                 return
             }
             
@@ -125,7 +126,7 @@ class UserActivityInteractor: UserActivityInteractorInterface {
             }
             
             self?.didFetch(with: data)
-            self?.isFetching = false
+            self?.offset = result.nextOffset
         }
     }
     
@@ -136,6 +137,8 @@ class UserActivityInteractor: UserActivityInteractorInterface {
         } else {
             output?.userActivityDidLoadMore(with: error)
         }
+        
+        isFetching = false
     }
     
     private func didFetch(with data: [UserActivityData]) {
@@ -145,6 +148,8 @@ class UserActivityInteractor: UserActivityInteractorInterface {
         } else {
             output?.userActivityDidLoadMore(with: data)
         }
+        
+        isFetching = false
     }
 }
 
