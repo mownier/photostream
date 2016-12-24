@@ -76,9 +76,9 @@ extension ActivityTableLikeCellConfig {
 extension ActivityTableLikeCell: ActivityTableLikeCellConfig {
     
     var dynamicHeight: CGFloat {
-        var height = max(contentLabel.frame.maxY + spacing, 0)
-        height = max(avatarDimension + spacing * 2, height)
-        height = max(photoDimension + spacing * 2, height)
+        var height = max(contentLabel.frame.height + spacing * 2, 0)
+        height = max(avatarImageView.frame.height + spacing * 2, height)
+        height = max(photoImageView.frame.height + spacing * 2, height)
         return height
     }
     
