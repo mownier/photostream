@@ -15,4 +15,18 @@ extension UserActivityViewController {
             presenter.loadMoreActivities()
         }
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let item = presenter.activity(at: indexPath.row)!
+        
+        switch item {
+            
+        case let likeItem as ActivityTableCellLikeItem:
+            likeCellPrototype.configure(with: likeItem, isPrototype: true)
+            return likeCellPrototype.dynamicHeight
+            
+        default:
+            return 44
+        }
+    }
 }

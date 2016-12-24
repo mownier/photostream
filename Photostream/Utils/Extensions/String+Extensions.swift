@@ -24,3 +24,13 @@ extension String {
         return self[Range(start ..< end)]
     }
 }
+
+extension String {
+    
+    func replaceFirstOccurrence(of target: String, to replacement: String) -> String {
+        if let range = self.range(of: target) {
+            return self.replacingCharacters(in: range, with: replacement)
+        }
+        return self
+    }
+}

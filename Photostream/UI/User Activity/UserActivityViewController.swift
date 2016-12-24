@@ -12,6 +12,8 @@ class UserActivityViewController: UITableViewController {
 
     var presenter: UserActivityModuleInterface!
     
+    lazy var likeCellPrototype = ActivityTableLikeCell()
+    
     lazy var emptyView: GhostView! = {
         let view = GhostView()
         view.titleLabel.text = "No activities"
@@ -87,6 +89,8 @@ class UserActivityViewController: UITableViewController {
         tableView.allowsSelection = false
         
         ActivityTableLikeCell.register(in: tableView)
+        
+        likeCellPrototype.frame.size.width = tableView.bounds.width
         
         navigationItem.title = "Activity"
     }
