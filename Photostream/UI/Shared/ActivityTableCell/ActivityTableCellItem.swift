@@ -38,44 +38,35 @@ protocol ActivityTableCellFollowItem: ActivityTableCellItem { }
 protocol ActivityTableCellConfig {
     
     var dynamicHeight: CGFloat { get }
+}
+
+protocol ActivityTableLikeCellConfig: ActivityTableCellConfig {
     
     func configure(with item: ActivityTableCellLikeItem?, isPrototype: Bool)
+}
+
+protocol ActivityTablePostCellConfig: ActivityTableCellConfig {
+    
     func configure(with item: ActivityTableCellPostItem?, isPrototype: Bool)
+}
+
+protocol ActivityTableCommentCellConfig: ActivityTableCellConfig {
+    
     func configure(with item: ActivityTableCellCommentItem?, isPrototype: Bool)
+}
+
+protocol ActivityTableFollowCellConfig: ActivityTableCellConfig {
+ 
     func configure(with item: ActivityTableCellFollowItem?, isPrototype: Bool)
 }
 
-extension ActivityTableCell: ActivityTableCellConfig {
+extension ActivityTableLikeCell: ActivityTableCellConfig {
     
     var dynamicHeight: CGFloat {
         return 44
     }
     
     func configure(with item: ActivityTableCellLikeItem?, isPrototype: Bool = false) {
-        guard item != nil else {
-            return
-        }
-        
-        textLabel?.text = item!.content
-    }
-    
-    func configure(with item: ActivityTableCellPostItem?, isPrototype: Bool = false) {
-        guard item != nil else {
-            return
-        }
-        
-        textLabel?.text = item!.content
-    }
-    
-    func configure(with item: ActivityTableCellCommentItem?, isPrototype: Bool = false) {
-        guard item != nil else {
-            return
-        }
-        
-        textLabel?.text = item!.content
-    }
-    
-    func configure(with item: ActivityTableCellFollowItem?, isPrototype: Bool = false) {
         guard item != nil else {
             return
         }

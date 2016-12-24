@@ -86,7 +86,7 @@ class UserActivityViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         
-        ActivityTableCell.register(in: tableView)
+        ActivityTableLikeCell.register(in: tableView)
         
         navigationItem.title = "Activity"
     }
