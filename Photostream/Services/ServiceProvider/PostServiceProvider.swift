@@ -192,35 +192,37 @@ struct PostServiceProvider: PostService {
         let likesCountRef = rootRef.child(path1)
         let authorRef = rootRef.child(path3)
         
-        likesRef.child(uid).observeSingleEvent(of: .value, with: { (data) in
-            guard !data.exists() else {
-                error = .failedToLike(message: "Already liked")
+        authorRef.observeSingleEvent(of: .value, with: { authorSnapshot in
+            guard let authorId = authorSnapshot.value as? String else {
+                error = .failedToLike(message: "Failed to like post")
                 callback?(error)
                 return
             }
-           
-            likesCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
-                if let val = data.value as? Int {
-                    data.value = val + 1
-                } else {
-                    data.value = 1
+            
+            likesRef.child(uid).observeSingleEvent(of: .value, with: { (data) in
+                guard !data.exists() else {
+                    error = .failedToLike(message: "Already liked")
+                    callback?(error)
+                    return
                 }
-                return FIRTransactionResult.success(withValue: data)
                 
-                }, andCompletionBlock: { (err, committed, snap) in
-                    guard err == nil, committed else {
-                        error = .failedToLike(message: "Failed to like post.")
-                        callback?(error)
-                        return
+                likesCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
+                    if let val = data.value as? Int {
+                        data.value = val + 1
+                    } else {
+                        data.value = 1
                     }
+                    return FIRTransactionResult.success(withValue: data)
                     
-                    authorRef.observeSingleEvent(of: .value, with: { authorSnapshot in
-                        guard let authorId = authorSnapshot.value as? String else {
+                    }, andCompletionBlock: { (err, committed, snap) in
+                        guard err == nil, committed else {
+                            error = .failedToLike(message: "Failed to like post")
+                            callback?(error)
                             return
                         }
                         
                         var updates: [AnyHashable: Any] = [
-                            path2: [uid: true]
+                            "\(path2)/\(uid)": true
                         ]
                         
                         if authorId != uid {
@@ -231,17 +233,16 @@ struct PostServiceProvider: PostService {
                                 "type": "like",
                                 "trigger_by": uid,
                                 "post_id": id,
-                                "author_id": authorId,
                                 "timestamp": FIRServerValue.timestamp()
                             ]
                             updates["activities/\(activityKey)"] = activityUpdate
-                            updates["user-activity/\(authorId)/activities"] = [activityKey: true]
+                            updates["user-activity/\(authorId)/activities/\(activityKey)"] = true
                             updates["user-activity/\(authorId)/activity-like/\(id)/\(uid)"] = [activityKey: true]
                         }
                         
                         rootRef.updateChildValues(updates)
                         callback?(nil)
-                    })
+                })
             })
         })
     }
@@ -265,39 +266,42 @@ struct PostServiceProvider: PostService {
         let likesCountRef = rootRef.child(path1)
         let authorRef = rootRef.child(path3)
         
-        likesRef.observeSingleEvent(of: .value, with: { (data) in
-            guard data.exists() else {
-                error = .failedToUnlike(message: "Post does not exist")
+        authorRef.observeSingleEvent(of: .value, with: { authorSnapshot in
+            guard let authorId = authorSnapshot.value as? String else {
+                error = .failedToUnlike(message: "Failed to unlike post")
                 callback?(error)
                 return
             }
             
-            likesCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
-                if let val = data.value as? Int , val > 0 {
-                    data.value = val - 1
-                } else {
-                    data.value = 0
-                }
-                return FIRTransactionResult.success(withValue: data)
-                
-                }, andCompletionBlock: { (err, committed, snap) in
-                    guard err == nil, committed else {
-                        error = .failedToUnlike(message: "Failed to unlike post")
+            let userActivityLikeRef = rootRef.child("user-activity/\(authorId)/activity-like/\(id)/\(uid)")
+            
+            userActivityLikeRef.observeSingleEvent(of: .value, with: { userActivitySnapshot in
+                likesRef.observeSingleEvent(of: .value, with: { (data) in
+                    guard data.exists() else {
+                        error = .failedToUnlike(message: "Post does not exist")
                         callback?(error)
                         return
                     }
                     
-                    authorRef.observeSingleEvent(of: .value, with: { authorSnapshot in
-                        guard let authorId = authorSnapshot.value as? String else {
-                            return
+                    likesCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
+                        if let val = data.value as? Int , val > 0 {
+                            data.value = val - 1
+                        } else {
+                            data.value = 0
                         }
+                        return FIRTransactionResult.success(withValue: data)
                         
-                        let userActivityLikeRef = rootRef.child("user-activity/\(authorId)/activity-like/\(id)/\(uid)")
-                        
-                        userActivityLikeRef.observeSingleEvent(of: .value, with: { userActivitySnapshot in
-                            var updates = [AnyHashable: Any]()
-                            updates["\(path2)/\(uid)"] = NSNull()
-
+                        }, andCompletionBlock: { (err, committed, snap) in
+                            guard err == nil, committed else {
+                                error = .failedToUnlike(message: "Failed to unlike post")
+                                callback?(error)
+                                return
+                            }
+                            
+                            var updates: [AnyHashable: Any] = [
+                                "\(path2)/\(uid)": NSNull()
+                            ]
+                            
                             if authorId != uid {
                                 for child in userActivitySnapshot.children {
                                     guard let activitySnapshot = child as? FIRDataSnapshot else {
@@ -316,8 +320,8 @@ struct PostServiceProvider: PostService {
                             
                             rootRef.updateChildValues(updates)
                             callback?(nil)
-                        })
                     })
+                })
             })
         })
     }
