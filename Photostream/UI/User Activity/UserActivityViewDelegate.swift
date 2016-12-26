@@ -24,6 +24,10 @@ extension UserActivityViewController {
         case let likeItem as ActivityTableCellLikeItem:
             likeCellPrototype.configure(with: likeItem, isPrototype: true)
             return likeCellPrototype.dynamicHeight
+        
+        case let commentItem as ActivityTableCellCommentItem:
+            commentCellPrototype.configure(with: commentItem, isPrototype: true)
+            return commentCellPrototype.dynamicHeight
             
         default:
             return 44

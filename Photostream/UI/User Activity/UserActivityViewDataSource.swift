@@ -25,6 +25,11 @@ extension UserActivityViewController {
             tableCell.configure(with: likeItem)
             cell = tableCell
         
+        case let commentItem as ActivityTableCellCommentItem:
+            let tableCell = ActivityTableCommentCell.dequeue(from: tableView)!
+            tableCell.configure(with: commentItem)
+            cell = tableCell
+        
         default:
             break
         }

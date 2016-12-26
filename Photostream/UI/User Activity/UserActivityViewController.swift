@@ -13,6 +13,7 @@ class UserActivityViewController: UITableViewController {
     var presenter: UserActivityModuleInterface!
     
     lazy var likeCellPrototype = ActivityTableLikeCell()
+    lazy var commentCellPrototype = ActivityTableCommentCell()
     
     lazy var emptyView: GhostView! = {
         let view = GhostView()
@@ -90,8 +91,10 @@ class UserActivityViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         ActivityTableLikeCell.register(in: tableView)
+        ActivityTableCommentCell.register(in: tableView)
         
         likeCellPrototype.frame.size.width = tableView.bounds.width
+        commentCellPrototype.frame.size.width = tableView.bounds.width
         
         navigationItem.title = "Activity"
     }
