@@ -148,11 +148,12 @@ struct CommentServiceProvider: CommentService {
                         "type": "comment",
                         "trigger_by": uid,
                         "post_id": postId,
+                        "comment_id": key,
                         "timestamp": FIRServerValue.timestamp()
                     ]
                     updates["activities/\(activityKey)"] = activityUpdate
                     updates["user-activity/\(authorId)/activities/\(activityKey)"] = true
-                    updates["user-activity/\(authorId)/activity-comment/\(postId)/\(uid)\(activityKey)"] = true
+                    updates["user-activity/\(authorId)/activity-comment/\(postId)/\(uid)/\(activityKey)"] = true
                 }
                 
                 rootRef.updateChildValues(updates, withCompletionBlock: { error, ref in
