@@ -93,6 +93,7 @@
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
 		B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEF1D51C79300C5E76B /* Main.storyboard */; };
+		B992796A1E11020C00D0F132 /* ActivityTableCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */; };
 		B99696251E08E890008A4811 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99696241E08E890008A4811 /* DictionaryExtensions.swift */; };
 		B99696271E08F4DC008A4811 /* PostDiscoveryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99696261E08F4DC008A4811 /* PostDiscoveryInteractor.swift */; };
 		B99696291E08F4EB008A4811 /* PostDiscoveryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99696281E08F4EB008A4811 /* PostDiscoveryData.swift */; };
@@ -370,6 +371,7 @@
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97E3CF01D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableCommentCell.swift; sourceTree = "<group>"; };
 		B99696241E08E890008A4811 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		B99696261E08F4DC008A4811 /* PostDiscoveryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDiscoveryInteractor.swift; sourceTree = "<group>"; };
 		B99696281E08F4EB008A4811 /* PostDiscoveryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDiscoveryData.swift; sourceTree = "<group>"; };
@@ -1871,8 +1873,9 @@
 		B9D9C3501E0D076D002B906B /* ActivityTableCell */ = {
 			isa = PBXGroup;
 			children = (
-				B9D9C3511E0D0779002B906B /* ActivityTableLikeCell.swift */,
 				B9D9C3531E0D089F002B906B /* ActivityTableCellItem.swift */,
+				B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */,
+				B9D9C3511E0D0779002B906B /* ActivityTableLikeCell.swift */,
 			);
 			path = ActivityTableCell;
 			sourceTree = "<group>";
@@ -2370,6 +2373,7 @@
 				B9C218111DCC40F900F617FC /* UITextField+Extensions.swift in Sources */,
 				B90920611DD30D730073FB72 /* PhotoPickerModuleExtension.swift in Sources */,
 				B9C217991DCC40F900F617FC /* AppDependency.swift in Sources */,
+				B992796A1E11020C00D0F132 /* ActivityTableCommentCell.swift in Sources */,
 				B954EE4D1DE0323E00A0049D /* PostUploadPresenter.swift in Sources */,
 				B99B497C1DEC1E68001B9C5A /* BaseModuleInteractor.swift in Sources */,
 				B941311F1DEEA30C00DD10CE /* CommentWriterScene.swift in Sources */,
