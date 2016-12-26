@@ -332,7 +332,7 @@ struct UserServiceProvider: UserService {
                         // post => !exist
                         } else if posts[postId] == nil {
                             postRef.observeSingleEvent(of: .value, with: { postSnapshot in
-                                guard postSnapshot.hasChild("photoId"),
+                                guard postSnapshot.hasChild("photo_id"),
                                     let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
                                         return
                                 }
@@ -361,7 +361,7 @@ struct UserServiceProvider: UserService {
                             userRef.observeSingleEvent(of: .value, with: { userSnapshot in
                                 commentRef.observeSingleEvent(of: .value, with: { commentSnapshot in
                                     postRef.observeSingleEvent(of: .value, with: { postSnapshot in
-                                        guard postSnapshot.hasChild("photoId"),
+                                        guard postSnapshot.hasChild("photo_id"),
                                             let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
                                             return
                                         }
@@ -402,7 +402,7 @@ struct UserServiceProvider: UserService {
                         } else if users[userId] == nil, posts[postId] == nil {
                             userRef.observeSingleEvent(of: .value, with: { userSnapshot in
                                 postRef.observeSingleEvent(of: .value, with: { postSnapshot in
-                                    guard postSnapshot.hasChild("photoId"),
+                                    guard postSnapshot.hasChild("photo_id"),
                                         let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
                                         return
                                     }
@@ -426,7 +426,7 @@ struct UserServiceProvider: UserService {
                         } else if comments[commentId] == nil, posts[postId] == nil {
                             commentRef.observeSingleEvent(of: .value, with: { commentSnapshot in
                                 postRef.observeSingleEvent(of: .value, with: { postSnapshot in
-                                    guard postSnapshot.hasChild("photoId"),
+                                    guard postSnapshot.hasChild("photo_id"),
                                         let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
                                             return
                                     }
@@ -464,7 +464,7 @@ struct UserServiceProvider: UserService {
                             
                         } else if posts[postId] == nil {
                             postRef.observeSingleEvent(of: .value, with: { postSnapshot in
-                                guard postSnapshot.hasChild("photoId"),
+                                guard postSnapshot.hasChild("photo_id"),
                                     let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
                                         return
                                 }
