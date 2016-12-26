@@ -86,57 +86,100 @@ struct CommentServiceProvider: CommentService {
             return
         }
         
-        let userId = session.user.id
-        let ref = FIRDatabase.database().reference()
-        let key = ref.child("comments").childByAutoId().key
+        let uid = session.user.id
+
+        let rootRef = FIRDatabase.database().reference()
+        
+        let key = rootRef.child("comments").childByAutoId().key
+        
         let path1 = "comments/\(key)"
         let path2 = "post-comment/\(postId)/\(path1)"
-        let path3 = "user-comment/\(userId)/\(path1)"
+        let path3 = "user-comment/\(uid)/\(path1)"
         let path4 = "posts/\(postId)/comments_count"
-        let data = [
-            "id": key,
-            "uid": userId,
-            "pid": postId,
-            "message": message,
-            "timestamp": FIRServerValue.timestamp()
-            ] as [String : Any]
-        let updates: [String: AnyObject] = [path1: data as AnyObject, path2: true as AnyObject, path3: true as AnyObject]
+        let path5 = "posts/\(postId)/uid"
+        let path6 = "users/\(uid)"
         
-        ref.child(path4).runTransactionBlock({ (data) -> FIRTransactionResult in
-            if let val = data.value as? Int {
-                data.value = val + 1
-            } else {
-                data.value = 1
-            }
-            return FIRTransactionResult.success(withValue: data)
-            
-        }) { (error, committed, snapshot) in
-            guard error == nil, committed else {
-                result.error = .failedToWrite(message: "Unable to write a comment")
+        let commentCountRef = rootRef.child(path4)
+        let authorRef = rootRef.child(path5)
+        let userRef = rootRef.child(path6)
+        let commentRef = rootRef.child(path1)
+        
+        authorRef.observeSingleEvent(of: .value, with: { authorSnapshot in
+            guard let authorId = authorSnapshot.value as? String else {
+                result.error = .failedToWrite(message: "Author not found")
                 callback?(result)
                 return
             }
             
-            ref.updateChildValues(updates)
-            ref.child(path1).observeSingleEvent(of: .value, with: { (commentSnapshot) in
-                ref.child("users/\(userId)").observeSingleEvent(of: .value, with: { (userSnapshot) in
-                    let user = User(with: userSnapshot, exception: "email")
-                    let comment = Comment(with: commentSnapshot)
-                    
-                    var comments = [Comment]()
-                    comments.append(comment)
-                    
-                    var users = [String: User]()
-                    users[userId] = user
-                    
-                    var resultList = CommentList()
-                    resultList.comments = comments
-                    resultList.users = users
-                    
-                    result.comments = resultList
+            commentCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
+                if let val = data.value as? Int {
+                    data.value = val + 1
+                } else {
+                    data.value = 1
+                }
+                return FIRTransactionResult.success(withValue: data)
+                
+            }) { (error, committed, snapshot) in
+                guard error == nil, committed else {
+                    result.error = .failedToWrite(message: "Unable to write a comment")
                     callback?(result)
+                    return
+                }
+                
+                let commentUpdate: [AnyHashable: Any] = [
+                    "id": key,
+                    "uid": uid,
+                    "pid": postId,
+                    "message": message,
+                    "timestamp": FIRServerValue.timestamp()
+                ]
+                
+                var updates: [AnyHashable: Any] = [
+                    path1: commentUpdate,
+                    path2: true,
+                    path3: true
+                ]
+                
+                if authorId != uid {
+                    let activitiesRef = rootRef.child("activities")
+                    let activityKey = activitiesRef.childByAutoId().key
+                    let activityUpdate: [AnyHashable: Any] = [
+                        "id": activityKey,
+                        "type": "comment",
+                        "trigger_by": uid,
+                        "post_id": postId,
+                        "timestamp": FIRServerValue.timestamp()
+                    ]
+                    updates["activities/\(activityKey)"] = activityUpdate
+                    updates["user-activity/\(authorId)/activities/\(activityKey)"] = true
+                    updates["user-activity/\(authorId)/activity-comment/\(postId)/\(uid)\(activityKey)"] = true
+                }
+                
+                rootRef.updateChildValues(updates, withCompletionBlock: { error, ref in
+                    guard error == nil else {
+                        result.error = .failedToWrite(message: "Failed to write comment")
+                        callback?(result)
+                        return
+                    }
+                    
+                    commentRef.observeSingleEvent(of: .value, with: { (commentSnapshot) in
+                        userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                            let user = User(with: userSnapshot, exception: "email")
+                            let comment = Comment(with: commentSnapshot)
+                            
+                            let comments = [comment]
+                            let users = [uid: user]
+                            
+                            var resultList = CommentList()
+                            resultList.comments = comments
+                            resultList.users = users
+                            
+                            result.comments = resultList
+                            callback?(result)
+                        })
+                    })
                 })
-            })
-        }
+            }
+        })
     }
 }
