@@ -95,10 +95,12 @@ struct UserServiceProvider: UserService {
                                     path3: true
                                 ]
                                 
-                                if let feed2 = feed2Snapshot.value as? [AnyHashable: Any] {
-                                    for (key, value) in feed2.enumerated() {
-                                        updates["\(path5)/\(key)"] = value
+                                for feed2Child in feed2Snapshot.children {
+                                    guard let feed2 = feed2Child as? FIRDataSnapshot else {
+                                        continue
                                     }
+                                    
+                                    updates["\(path5)/\(feed2.key)"] = feed2.value
                                 }
                                 
                                 let activitiesRef = rootRef.child("activities")
