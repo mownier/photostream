@@ -30,6 +30,11 @@ extension UserActivityViewController {
             tableCell.configure(with: commentItem)
             cell = tableCell
         
+        case let followItem as ActivityTableCellFollowItem:
+            let tableCell = ActivityTableFollowCell.dequeue(from: tableView)!
+            tableCell.configure(with: followItem)
+            cell = tableCell
+        
         default:
             break
         }
