@@ -8,8 +8,15 @@
 
 import UIKit
 
+protocol ActivityTableFollowCellDelegate: class {
+    
+    func didTapAction(cell: ActivityTableFollowCell)
+}
+
 class ActivityTableFollowCell: UITableViewCell {
 
+    weak var delegate: ActivityTableFollowCellDelegate?
+    
     var avatarImageView: UIImageView!
     var contentLabel: UILabel!
     var actionButton: UIButton!
@@ -75,7 +82,7 @@ class ActivityTableFollowCell: UITableViewCell {
 extension ActivityTableFollowCell {
     
     func didTapAction() {
-        
+        delegate?.didTapAction(cell: self)
     }
 }
 
@@ -111,8 +118,3 @@ extension ActivityTableFollowCell {
         view.register(self, forCellReuseIdentifier: self.reuseId)
     }
 }
-
-
-
-
-
