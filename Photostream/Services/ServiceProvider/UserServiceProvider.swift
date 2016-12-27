@@ -47,9 +47,7 @@ struct UserServiceProvider: UserService {
         let rootRef = FIRDatabase.database().reference()
         let followingCountRef = rootRef.child(path1)
         let followingRef = rootRef.child(path2)
-        let followerRef = rootRef.child(path3)
         let followerCountRef = rootRef.child(path4)
-        let feed1Ref = rootRef.child(path5)
         let feed2Ref = rootRef.child(path6)
         
         followingRef.observeSingleEvent(of: .value, with: { (followingSnapshot) in
@@ -91,14 +89,31 @@ struct UserServiceProvider: UserService {
                                 return
                             }
                             
-                            feed2Ref.observeSingleEvent(of: .value, with: { (feed1Snapshot) in
-                                if let feed1 = feed1Snapshot.value as? [AnyHashable: Any] {
-                                    feed1Ref.updateChildValues(feed1)
+                            feed2Ref.observeSingleEvent(of: .value, with: { feed2Snapshot in
+                                var updates: [AnyHashable: Any] = [
+                                    path2: true,
+                                    path3: true
+                                ]
+                                
+                                if let feed2 = feed2Snapshot.value as? [AnyHashable: Any] {
+                                    for (key, value) in feed2.enumerated() {
+                                        updates["\(path5)/\(key)"] = value
+                                    }
                                 }
                                 
-                                followingRef.setValue(true)
-                                followerRef.setValue(true)
+                                let activitiesRef = rootRef.child("activities")
+                                let activityKey = activitiesRef.childByAutoId().key
+                                let activityUpdate: [AnyHashable: Any] = [
+                                    "id": activityKey,
+                                    "type": "follow",
+                                    "trigger_by": uid,
+                                    "timestamp": FIRServerValue.timestamp()
+                                ]
+                                updates["activities/\(activityKey)"] = activityUpdate
+                                updates["user-activity/\(id)/activities/\(activityKey)"] = true
+                                updates["user-activity/\(id)/activity-follow/\(uid)"] = [activityKey: true]
                                 
+                                rootRef.updateChildValues(updates)
                                 callback?(nil)
                             })
                     })
