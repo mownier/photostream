@@ -25,7 +25,13 @@ struct UserServiceProvider: UserService {
     func follow(id: String, callback: ((UserServiceError?) -> Void)?) {
         var error: UserServiceError?
         guard session.isValid else {
-            error = .authenticationNotFound(message: "Authentication not found.")
+            error = .authenticationNotFound(message: "Authentication not found")
+            callback?(error)
+            return
+        }
+        
+        guard id != session.user.id else {
+            error = .failedToFollow(message: "You can only follow other than your self.")
             callback?(error)
             return
         }
