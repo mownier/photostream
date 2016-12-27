@@ -129,6 +129,12 @@ struct UserServiceProvider: UserService {
             return
         }
         
+        guard id != session.user.id else {
+            error = .failedToUnfollow(message: "You can only unfollow other than your self.")
+            callback?(error)
+            return
+        }
+        
         let uid = session.user.id
         let path1 = "user-profile/\(uid)/following_count"
         let path2 = "user-following/\(uid)/following/\(id)"
