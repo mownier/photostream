@@ -32,6 +32,7 @@ extension UserActivityViewController {
         
         case let followItem as ActivityTableCellFollowItem:
             let tableCell = ActivityTableFollowCell.dequeue(from: tableView)!
+            tableCell.delegate = self
             tableCell.configure(with: followItem)
             cell = tableCell
         

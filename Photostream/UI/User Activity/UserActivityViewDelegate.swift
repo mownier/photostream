@@ -34,3 +34,10 @@ extension UserActivityViewController {
         }
     }
 }
+
+extension UserActivityViewController: ActivityTableFollowCellDelegate {
+    
+    func didTapAction(cell: ActivityTableFollowCell) {
+        
+    }
+}
