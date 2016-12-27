@@ -147,10 +147,7 @@ struct UserServiceProvider: UserService {
         
         let rootRef = FIRDatabase.database().reference()
         let followingCountRef = rootRef.child(path1)
-        let followingRef = rootRef.child(path2)
-        let followerRef = rootRef.child(path3)
         let followerCountRef = rootRef.child(path4)
-        let feed1Ref = rootRef.child(path5)
         let feed2Ref = rootRef.child(path6)
         
         followingCountRef.runTransactionBlock({ (followingCountSnapshot) -> FIRTransactionResult in
@@ -185,20 +182,42 @@ struct UserServiceProvider: UserService {
                             return
                         }
                         
-                        feed2Ref.observeSingleEvent(of: .value, with: { (feed2Snapshot) in
-                            for child in feed2Snapshot.children {
-                                guard let childSnapshot = child as? FIRDataSnapshot else {
-                                    continue
+                        let userActivityFollowRef = rootRef.child("user-activity/\(id)/activity-follow/\(uid)")
+                        
+                        userActivityFollowRef.observeSingleEvent(of: .value, with: { userActivitySnapshot in
+                            feed2Ref.observeSingleEvent(of: .value, with: { feed2Snapshot in
+                                var updates: [AnyHashable: Any] = [
+                                    path2: NSNull(),
+                                    path3: NSNull()
+                                ]
+                                
+                                for feed2Child in feed2Snapshot.children {
+                                    guard let feed2 = feed2Child as? FIRDataSnapshot else {
+                                        continue
+                                    }
+                                    
+                                    updates["\(path5)/\(feed2.key)"] = NSNull()
                                 }
                                 
-                                let key = childSnapshot.key
-                                feed1Ref.child(key).removeValue()
-                            }
-                            
-                            followingRef.removeValue()
-                            followerRef.removeValue()
-                            
-                            callback?(nil)
+                                if userActivitySnapshot.exists() {
+                                    for child in userActivitySnapshot.children {
+                                        guard let activitySnapshot = child as? FIRDataSnapshot else {
+                                            continue
+                                        }
+                                        
+                                        let activityKey = activitySnapshot.key
+                                        
+                                        // Removal of activities
+                                        updates["activities/\(activityKey)"] = NSNull()
+                                        updates["user-activity/\(id)/activities/\(activityKey)"] = NSNull()
+                                    }
+                                    
+                                    updates["user-activity/\(id)/activity-follow/\(uid)"] = NSNull()
+                                }
+                                
+                                rootRef.updateChildValues(updates)
+                                callback?(nil)
+                            })
                         })
                 })
         })
