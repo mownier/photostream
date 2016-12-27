@@ -47,7 +47,10 @@ class ActivityTableFollowCell: UITableViewCell {
         
         actionButton = UIButton()
         actionButton.addTarget(self, action: #selector(self.didTapAction), for: .touchUpInside)
-        actionButton.setTitle("Action", for: .normal)
+        actionButton.setImage(#imageLiteral(resourceName: "activity_follow_action_button_black"), for: .normal)
+        actionButton.cornerRadius = 2
+        actionButton.borderWidth = 1
+        actionButton.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
         
         addSubview(avatarImageView)
         addSubview(contentLabel)
