@@ -85,9 +85,13 @@ struct NewsFeedServiceProvider: NewsFeedService {
                                         let removedPost = posts.removeFirst()
                                         result.nextOffset = removedPost.id
                                     }
-
+                                    
+                                    let sorted = posts.sorted(by: { post1, post2 -> Bool in
+                                        return post1.timestamp > post2.timestamp
+                                    })
+                                    
                                     var postList = PostList()
-                                    postList.posts = posts.reversed()
+                                    postList.posts = sorted
                                     postList.users = users
                                     result.posts = postList
                                     

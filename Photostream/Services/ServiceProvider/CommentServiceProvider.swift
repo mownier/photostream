@@ -66,8 +66,12 @@ struct CommentServiceProvider: CommentService {
                                 result.nextOffset = removedComment.id
                             }
                             
+                            let sorted = comments.sorted(by: { comment1, comment2 -> Bool in
+                                return comment1.timestamp > comment2.timestamp
+                            })
+                            
                             var commentList = CommentList()
-                            commentList.comments = comments.reversed()
+                            commentList.comments = sorted
                             commentList.users = users
                             result.comments = commentList
                             callback?(result)

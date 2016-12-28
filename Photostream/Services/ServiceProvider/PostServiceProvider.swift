@@ -92,8 +92,12 @@ struct PostServiceProvider: PostService {
                                         result.nextOffset = removedPost.id
                                     }
                                     
+                                    let sorted = posts.sorted(by: { post1, post2 -> Bool in
+                                        return post1.timestamp > post2.timestamp
+                                    })
+                                    
                                     var list = PostList()
-                                    list.posts = posts.reversed()
+                                    list.posts = sorted
                                     list.users = users
                                     result.posts = list
                                     callback?(result)
@@ -511,8 +515,10 @@ struct PostServiceProvider: PostService {
                                     
                                     // Filtered posts based on the post id in
                                     // 'discoveryPosts' array.
-                                    list.posts = posts.reversed().filter({ post -> Bool in
+                                    list.posts = posts.filter({ post -> Bool in
                                         return discoveryPosts.contains(post.id)
+                                    }).sorted(by: { post1, post2 -> Bool in
+                                        return post1.timestamp > post2.timestamp
                                     })
                                     
                                     // Filtered users based on the user id in
