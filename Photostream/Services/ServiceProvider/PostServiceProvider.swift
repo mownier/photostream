@@ -116,23 +116,16 @@ struct PostServiceProvider: PostService {
         
         let uid = session.user.id
         let rootRef = FIRDatabase.database().reference()
-        let key = rootRef.child("posts").childByAutoId().key
-        let data: [String: Any] = [
-            "id": key,
-            "uid": uid,
-            "timestamp": FIRServerValue.timestamp(),
-            "message": content,
-            "photo_id": photoId,
-            "likes_count": 0,
-            "comments_count": 0
-        ]
-        let path1 = "posts/\(key)"
-        let path2 = "user-post/\(uid)/posts/\(key)"
-        let path3 = "user-feed/\(uid)/posts/\(key)"
+        let postKey = rootRef.child("posts").childByAutoId().key
+        
+        let path1 = "posts/\(postKey)"
+        let path2 = "user-post/\(uid)/posts/\(postKey)"
+        let path3 = "user-feed/\(uid)/posts/\(postKey)"
         let path4 = "user-profile/\(uid)/post_count"
-        let updates: [String: AnyObject] = [path1: data as AnyObject, path2: true as AnyObject, path3: true as AnyObject]
+        let path5 = "user-follower/\(uid)/followers"
 
         let postCountRef = rootRef.child(path4)
+        let followerRef = rootRef.child(path5)
         
         postCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
             if let val = data.value as? Int {
@@ -149,25 +142,75 @@ struct PostServiceProvider: PostService {
                     return
                 }
                 
-                rootRef.updateChildValues(updates)
-                
-                let postsRef = rootRef.child(path1)
-                let usersRef = rootRef.child("users/\(uid)")
-                
-                postsRef.observeSingleEvent(of: .value, with: { (postSnapshot) in
-                    usersRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
-                        let user = User(with: userSnapshot, exception: "email")
-                        let users = [uid: user]
+                followerRef.observeSingleEvent(of: .value, with: { followerSnapshot in
+                    let postUpdate: [AnyHashable: Any] = [
+                        "id": postKey,
+                        "uid": uid,
+                        "timestamp": FIRServerValue.timestamp(),
+                        "message": content,
+                        "photo_id": photoId,
+                        "likes_count": 0,
+                        "comments_count": 0
+                    ]
+                    
+                    var updates: [AnyHashable: Any] = [
+                        path1: postUpdate,
+                        path2: true,
+                        path3: true
+                    ]
+                    
+                    let activitiesRef = rootRef.child("activities")
+                    
+                    for childSnapshot in followerSnapshot.children {
+                        guard let follower = childSnapshot as? FIRDataSnapshot else {
+                            continue
+                        }
                         
-                        let post = Post(with: postSnapshot)
-                        let posts = [post]
-
-                        var list = PostList()
-                        list.posts = posts
-                        list.users = users
+                        let followerId = follower.key
                         
-                        result.posts = list
-                        callback?(result)
+                        // Update follower's feed
+                        updates["user-feed/\(followerId)/posts/\(postKey)"] = true
+                        
+                        // Update follower's activity
+                        let activityKey = activitiesRef.childByAutoId().key
+                        let activityUpdate: [AnyHashable: Any] = [
+                            "id": activityKey,
+                            "type": "post",
+                            "trigger_by": uid,
+                            "post_id": postKey,
+                            "timestamp": FIRServerValue.timestamp()
+                        ]
+                        updates["activities/\(activityKey)"] = activityUpdate
+                        updates["user-activity/\(followerId)/activities/\(activityKey)"] = true
+                        updates["user-activity/\(followerId)/activity-post/\(postKey)/\(uid)/\(activityKey)"] = true
+                    }
+                    
+                    rootRef.updateChildValues(updates, withCompletionBlock: { error, ref in
+                        guard error == nil else {
+                            result.error = .failedToWrite(message: "Failed to write post")
+                            callback?(result)
+                            return
+                        }
+                        
+                        let postsRef = rootRef.child(path1)
+                        let usersRef = rootRef.child("users/\(uid)")
+                        
+                        postsRef.observeSingleEvent(of: .value, with: { (postSnapshot) in
+                            usersRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                                let user = User(with: userSnapshot, exception: "email")
+                                let users = [uid: user]
+                                
+                                let post = Post(with: postSnapshot)
+                                let posts = [post]
+                                
+                                var list = PostList()
+                                list.posts = posts
+                                list.users = users
+                                
+                                result.posts = list
+                                callback?(result)
+                            })
+                        })
                     })
                 })
         })
