@@ -30,6 +30,7 @@ struct ActivityList {
     var posts = [String: Post]()
     var users = [String: User]()
     var comments = [String: Comment]()
+    var following = [String]()
     
     var count: Int {
         return activities.count
