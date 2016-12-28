@@ -309,8 +309,12 @@ struct UserServiceProvider: UserService {
                         result.nextOffset = removedActivity.id
                     }
                     
+                    let sorted = activities.sorted(by: { activity1, activity2 -> Bool in
+                        return activity1.timestamp > activity2.timestamp
+                    })
+                    
                     var list = ActivityList()
-                    list.activities = activities.reversed()
+                    list.activities = sorted
                     list.posts = posts
                     list.users = users
                     list.comments = comments
