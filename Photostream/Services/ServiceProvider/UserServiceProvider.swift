@@ -296,6 +296,7 @@ struct UserServiceProvider: UserService {
             var posts = [String: Post]()
             var users = [String: User]()
             var comments = [String: Comment]()
+            var following = [String]()
             var activities = [Activity]()
             
             let appendWith: (_ activity: Activity) -> Void = { activity in
@@ -318,6 +319,7 @@ struct UserServiceProvider: UserService {
                     list.posts = posts
                     list.users = users
                     list.comments = comments
+                    list.following = following
                     
                     result.list = list
                     
@@ -539,17 +541,35 @@ struct UserServiceProvider: UserService {
                     
                     case .follow(let userId):
                         let userRef = rootRef.child("users/\(userId)")
+                        let followingRef = rootRef.child("user-following/\(uid)/following/\(userId)")
                         
                         if users[userId] == nil {
                             userRef.observeSingleEvent(of: .value, with: { userSnapshot in
-                                let user = User(with: userSnapshot, exception: "email")
-                                users[userId] = user
-                                
-                                appendWith(activity)
+                                followingRef.observeSingleEvent(of: .value, with: { followingSnapshot in
+                                    if followingSnapshot.exists(), !following.contains(userId) {
+                                        following.append(userId)
+                                    }
+                                    
+                                    let user = User(with: userSnapshot, exception: "email")
+                                    users[userId] = user
+                                    
+                                    appendWith(activity)
+                                })
                             })
                             
                         } else {
-                            appendWith(activity)
+                            guard !following.contains(userId) else {
+                                appendWith(activity)
+                                return
+                            }
+                            
+                            followingRef.observeSingleEvent(of: .value, with: { followingSnapshot in
+                                if followingSnapshot.exists() {
+                                    following.append(userId)
+                                }
+                                
+                                appendWith(activity)
+                            })
                         }
                         
                     default:
