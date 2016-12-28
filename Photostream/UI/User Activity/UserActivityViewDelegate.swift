@@ -18,20 +18,23 @@ extension UserActivityViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = presenter.activity(at: indexPath.row)!
+        var height: CGFloat = 8
         
         switch item {
             
         case let likeItem as ActivityTableCellLikeItem:
             likeCellPrototype.configure(with: likeItem, isPrototype: true)
-            return likeCellPrototype.dynamicHeight
+            height += likeCellPrototype.dynamicHeight
         
         case let commentItem as ActivityTableCellCommentItem:
             commentCellPrototype.configure(with: commentItem, isPrototype: true)
-            return commentCellPrototype.dynamicHeight
+            height += commentCellPrototype.dynamicHeight
             
         default:
-            return 44
+            height += 44
         }
+        
+        return height
     }
 }
 
