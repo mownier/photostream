@@ -118,6 +118,7 @@ class UserActivityInteractor: UserActivityInteractorInterface {
                     
                     var item = UserActivityFollowDataItem(user: user)
                     item.timestamp = activity.timestamp
+                    item.isFollowing = list.following.contains(userId)
                     data.append(item)
                     
                 default:
