@@ -26,7 +26,20 @@
                             <outlet property="delegate" destination="Qpp-9q-s7I" id="Uba-fh-GRH"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Photostream" id="X8G-E2-v0u"/>
+                    <navigationItem key="navigationItem" id="X8G-E2-v0u">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="Cvr-bk-jcw">
+                            <rect key="frame" x="100" y="6" width="176" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="title_image_black" translatesAutoresizingMaskIntoConstraints="NO" id="mxe-tX-ygl">
+                                    <frame key="frameInset" width="176" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="GXU-03-db0" id="0F5-Hg-kjj"/>
                         <outlet property="listLayout" destination="rhg-rV-HVo" id="ztR-Sd-kwM"/>
@@ -63,5 +76,6 @@
     <resources>
         <image name="home_black_icon" width="24" height="24"/>
         <image name="home_line_icon" width="24" height="24"/>
+        <image name="title_image_black" width="220" height="44"/>
     </resources>
 </document>
