@@ -316,3 +316,80 @@ extension ActivityTableFollowCell: ActivityTableFollowCellConfig {
         
     }
 }
+
+extension ActivityTablePostCell: ActivityTablePostCellConfig {
+    
+    var dynamicHeight: CGFloat {
+        var height = max(contentLabel.frame.height + spacing * 2, 0)
+        height = max(avatarImageView.frame.height + spacing * 2, height)
+        height = max(photoImageView.frame.height + spacing * 2, height)
+        return height
+    }
+    
+    func configure(with item: ActivityTableCellPostItem?, isPrototype: Bool = false) {
+        guard let item = item else {
+            return
+        }
+        
+        setup(content: item.content, displayName: item.displayName, timeAgo: item.timeAgo)
+        
+        if !isPrototype {
+            setup(photo: item.photoUrl)
+            
+            let image = authorPlaceholder(
+                with: item.displayName,
+                size: CGSize(width: avatarDimension, height: avatarDimension)
+            )
+            setup(avatar: item.avatarUrl, placeholder: image)
+        }
+        
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+    
+    func setup(content: String, displayName: String, timeAgo: String) {
+        let contentMessage = content.replaceFirstOccurrence(of: displayName, to: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        
+        let font = contentLabel.font!
+        
+        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFontWeightSemibold)
+        let regular = UIFont.systemFont(ofSize: font.pointSize)
+        
+        let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSFontAttributeName: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSFontAttributeName: regular, NSForegroundColorAttributeName: UIColor.lightGray])
+        
+        let text = NSMutableAttributedString()
+        text.append(name)
+        text.append(NSAttributedString(string: " "))
+        text.append(message)
+        text.append(NSAttributedString(string: " "))
+        text.append(time)
+        
+        contentLabel.attributedText = text
+    }
+    
+    func setup(photo url: String) {
+        guard let downloadUrl = URL(string: url) else {
+            return
+        }
+        
+        let resource = ImageResource(downloadURL: downloadUrl)
+        photoImageView.kf.setImage(with: resource)
+    }
+    
+    func setup(avatar url: String, placeholder image: UIImage?) {
+        guard let downloadUrl = URL(string: url) else {
+            avatarImageView.image = image
+            return
+        }
+        
+        let resource = ImageResource(downloadURL: downloadUrl)
+        avatarImageView.kf.setImage(
+            with: resource,
+            placeholder: image,
+            options: nil,
+            progressBlock: nil,
+            completionHandler: nil)
+    }
+}
