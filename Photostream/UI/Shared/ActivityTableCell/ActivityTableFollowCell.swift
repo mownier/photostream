@@ -100,7 +100,7 @@ extension ActivityTableFollowCell {
     }
     
     var actionButtonSize: CGSize {
-        return CGSize(width: 40, height: 40)
+        return CGSize(width: 44, height: 22)
     }
 }
 
