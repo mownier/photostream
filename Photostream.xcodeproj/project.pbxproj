@@ -94,6 +94,7 @@
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
 		B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEF1D51C79300C5E76B /* Main.storyboard */; };
 		B9876EAD1E12314000075CFD /* ActivityTableFollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */; };
+		B98992671E139E0000B373ED /* ActivityTablePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98992661E139E0000B373ED /* ActivityTablePostCell.swift */; };
 		B992796A1E11020C00D0F132 /* ActivityTableCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */; };
 		B99696251E08E890008A4811 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99696241E08E890008A4811 /* DictionaryExtensions.swift */; };
 		B99696271E08F4DC008A4811 /* PostDiscoveryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99696261E08F4DC008A4811 /* PostDiscoveryInteractor.swift */; };
@@ -373,6 +374,7 @@
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97E3CF01D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableFollowCell.swift; sourceTree = "<group>"; };
+		B98992661E139E0000B373ED /* ActivityTablePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTablePostCell.swift; sourceTree = "<group>"; };
 		B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableCommentCell.swift; sourceTree = "<group>"; };
 		B99696241E08E890008A4811 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		B99696261E08F4DC008A4811 /* PostDiscoveryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDiscoveryInteractor.swift; sourceTree = "<group>"; };
@@ -1879,6 +1881,7 @@
 				B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */,
 				B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */,
 				B9D9C3511E0D0779002B906B /* ActivityTableLikeCell.swift */,
+				B98992661E139E0000B373ED /* ActivityTablePostCell.swift */,
 			);
 			path = ActivityTableCell;
 			sourceTree = "<group>";
@@ -2311,6 +2314,7 @@
 				B94131171DEE9CC000DD10CE /* CommentWriterInteractor.swift in Sources */,
 				B9D4968B1DE7EDE300CDD58E /* PhotoPickerPresenter.swift in Sources */,
 				B9C217C91DCC40F900F617FC /* RegistrationWireframeInterface.swift in Sources */,
+				B98992671E139E0000B373ED /* ActivityTablePostCell.swift in Sources */,
 				B94131081DEE9C0F00DD10CE /* CommentFeedInteractorInterface.swift in Sources */,
 				B9D1AC981E039D72003E8870 /* NewsFeedPresenter.swift in Sources */,
 				B94AB2D21DF69D4000313254 /* UserPostViewController.swift in Sources */,
