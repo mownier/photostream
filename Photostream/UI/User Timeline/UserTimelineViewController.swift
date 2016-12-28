@@ -82,7 +82,7 @@ class UserTimelineViewController: UIViewController, BaseModuleWireframe {
         
         switch style! {
         case .push:
-            let barItem =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.didTapBack))
+            let barItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(self.didTapBack))
             navigationItem.leftBarButtonItem = barItem
         default:
             break

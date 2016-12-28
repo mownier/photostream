@@ -59,7 +59,7 @@ class CommentController: UIViewController, CommentControllerInterface {
         
         title = "Comments"
         
-        let barItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(self.back))
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(self.back))
         navigationItem.leftBarButtonItem = barItem
     }
     
