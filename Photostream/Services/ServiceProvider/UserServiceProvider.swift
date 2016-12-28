@@ -42,13 +42,13 @@ struct UserServiceProvider: UserService {
         let path3 = "user-follower/\(id)/followers/\(uid)"
         let path4 = "user-profile/\(id)/follower_count"
         let path5 = "user-feed/\(uid)/posts"
-        let path6 = "user-feed/\(id)/posts"
+        let path6 = "user-post/\(id)/posts"
         
         let rootRef = FIRDatabase.database().reference()
         let followingCountRef = rootRef.child(path1)
         let followingRef = rootRef.child(path2)
         let followerCountRef = rootRef.child(path4)
-        let feed2Ref = rootRef.child(path6)
+        let userPostRef = rootRef.child(path6)
         
         followingRef.observeSingleEvent(of: .value, with: { (followingSnapshot) in
             guard !followingSnapshot.exists() else {
@@ -89,18 +89,18 @@ struct UserServiceProvider: UserService {
                                 return
                             }
                             
-                            feed2Ref.observeSingleEvent(of: .value, with: { feed2Snapshot in
+                            userPostRef.observeSingleEvent(of: .value, with: { userPostSnapshot in
                                 var updates: [AnyHashable: Any] = [
                                     path2: true,
                                     path3: true
                                 ]
                                 
-                                for feed2Child in feed2Snapshot.children {
-                                    guard let feed2 = feed2Child as? FIRDataSnapshot else {
+                                for postChild in userPostSnapshot.children {
+                                    guard let post = postChild as? FIRDataSnapshot else {
                                         continue
                                     }
                                     
-                                    updates["\(path5)/\(feed2.key)"] = feed2.value
+                                    updates["\(path5)/\(post.key)"] = post.value
                                 }
                                 
                                 let activitiesRef = rootRef.child("activities")
@@ -143,12 +143,12 @@ struct UserServiceProvider: UserService {
         let path3 = "user-follower/\(id)/followers/\(uid)"
         let path4 = "user-profile/\(id)/follower_count"
         let path5 = "user-feed/\(uid)/posts"
-        let path6 = "user-feed/\(id)/posts"
+        let path6 = "user-post/\(id)/posts"
         
         let rootRef = FIRDatabase.database().reference()
         let followingCountRef = rootRef.child(path1)
         let followerCountRef = rootRef.child(path4)
-        let feed2Ref = rootRef.child(path6)
+        let userPostRef = rootRef.child(path6)
         
         followingCountRef.runTransactionBlock({ (followingCountSnapshot) -> FIRTransactionResult in
             if let val = followingCountSnapshot.value as? Int , val > 0 {
@@ -185,18 +185,18 @@ struct UserServiceProvider: UserService {
                         let userActivityFollowRef = rootRef.child("user-activity/\(id)/activity-follow/\(uid)")
                         
                         userActivityFollowRef.observeSingleEvent(of: .value, with: { userActivitySnapshot in
-                            feed2Ref.observeSingleEvent(of: .value, with: { feed2Snapshot in
+                            userPostRef.observeSingleEvent(of: .value, with: { userPostSnapshot in
                                 var updates: [AnyHashable: Any] = [
                                     path2: NSNull(),
                                     path3: NSNull()
                                 ]
                                 
-                                for feed2Child in feed2Snapshot.children {
-                                    guard let feed2 = feed2Child as? FIRDataSnapshot else {
+                                for userPostChild in userPostSnapshot.children {
+                                    guard let post = userPostChild as? FIRDataSnapshot else {
                                         continue
                                     }
                                     
-                                    updates["\(path5)/\(feed2.key)"] = NSNull()
+                                    updates["\(path5)/\(post.key)"] = NSNull()
                                 }
                                 
                                 if userActivitySnapshot.exists() {
