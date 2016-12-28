@@ -36,6 +36,11 @@ extension UserActivityViewController {
             tableCell.configure(with: followItem)
             cell = tableCell
         
+        case let postItem as ActivityTableCellPostItem:
+            let tableCell = ActivityTablePostCell.dequeue(from: tableView)!
+            tableCell.configure(with: postItem)
+            cell = tableCell
+        
         default:
             break
         }
