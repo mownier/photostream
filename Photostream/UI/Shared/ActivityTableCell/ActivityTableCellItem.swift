@@ -306,10 +306,12 @@ extension ActivityTableFollowCell: ActivityTableFollowCellConfig {
         if isFollowing {
             actionButton.backgroundColor = UIColor(red: 42/255, green: 163/255, blue: 239/255, alpha: 1)
             actionButton.setImage(#imageLiteral(resourceName: "activity_follow_action_button_white"), for: .normal)
+            actionButton.borderWidth = 0
         
         } else {
             actionButton.backgroundColor = UIColor.white
             actionButton.setImage(#imageLiteral(resourceName: "activity_follow_action_button_black"), for: .normal)
+            actionButton.borderWidth = 1
         }
         
     }
