@@ -33,6 +33,10 @@ extension UserActivityViewController {
         case let followItem as ActivityTableCellFollowItem:
             followCellPrototype.configure(with: followItem, isPrototype: true)
             height += followCellPrototype.dynamicHeight
+        
+        case let postItem as ActivityTableCellPostItem:
+            postCellPrototype.configure(with: postItem, isPrototype: true)
+            height += postCellPrototype.dynamicHeight
             
         default:
             height += 44
