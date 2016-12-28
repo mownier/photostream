@@ -42,7 +42,10 @@ protocol ActivityTableCellCommentItem: ActivityTableCellItem {
     var message: String { set get }
 }
 
-protocol ActivityTableCellFollowItem: ActivityTableCellItem { }
+protocol ActivityTableCellFollowItem: ActivityTableCellItem {
+    
+    var isFollowing: Bool { set get }
+}
 
 protocol ActivityTableCellConfig {
     
@@ -248,6 +251,7 @@ extension ActivityTableFollowCell: ActivityTableFollowCellConfig {
         }
         
         setup(content: item.content, displayName: item.displayName, timeAgo: item.timeAgo)
+        setup(isFollowing: item.isFollowing)
         
         if !isPrototype {
             let image = authorPlaceholder(
@@ -296,5 +300,17 @@ extension ActivityTableFollowCell: ActivityTableFollowCellConfig {
             options: nil,
             progressBlock: nil,
             completionHandler: nil)
+    }
+    
+    func setup(isFollowing: Bool) {
+        if isFollowing {
+            actionButton.backgroundColor = UIColor(red: 42/255, green: 163/255, blue: 239/255, alpha: 1)
+            actionButton.setImage(#imageLiteral(resourceName: "activity_follow_action_button_white"), for: .normal)
+        
+        } else {
+            actionButton.backgroundColor = UIColor.white
+            actionButton.setImage(#imageLiteral(resourceName: "activity_follow_action_button_black"), for: .normal)
+        }
+        
     }
 }
