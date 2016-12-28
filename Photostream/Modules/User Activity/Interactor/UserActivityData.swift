@@ -37,7 +37,10 @@ protocol UserActivityCommentData: UserActivityData {
     var postId: String { set get }
 }
 
-protocol UserActivityFollowData: UserActivityData { }
+protocol UserActivityFollowData: UserActivityData {
+    
+    var isFollowing: Bool { set get }
+}
 
 struct UserActivityLikeDataItem: UserActivityLikeData {
     
@@ -115,6 +118,8 @@ struct UserActivityFollowDataItem: UserActivityFollowData {
     var userId: String = ""
     var avatarUrl: String = ""
     var displayName: String = ""
+    
+    var isFollowing: Bool = false
     
     init(user: User) {
         userId = user.id
