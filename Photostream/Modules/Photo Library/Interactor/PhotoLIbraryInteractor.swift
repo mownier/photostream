@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+import Photos
 
 class PhotoLibraryInteractor: PhotoLibraryInteractorInterface {
 
@@ -15,6 +15,7 @@ class PhotoLibraryInteractor: PhotoLibraryInteractorInterface {
     
     required init(service: AssetService) {
         self.service = service
+        self.service.observer = self
     }
 }
 
@@ -30,5 +31,12 @@ extension PhotoLibraryInteractor: PhotoLibraryInteractorInput {
         service.fetchImage(for: data) { (image) in
             completion?(image)
         }
+    }
+}
+
+extension PhotoLibraryInteractor: AssetServiceObserver {
+    
+    func assetServiceDidChange(assets: [PHAsset]) {
+        output?.photoLibraryDidFetchPhotos(with: assets)
     }
 }
