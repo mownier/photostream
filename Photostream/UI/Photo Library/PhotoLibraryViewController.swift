@@ -22,8 +22,8 @@ class PhotoLibraryViewController: UIViewController {
     var presenter: PhotoLibraryModuleInterface!
     var selectedIndex: Int = -1
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        super.loadView()
         
         presenter.set(photoCropper: cropView)
         scrollHandler.scrollView = collectionView
@@ -32,14 +32,8 @@ class PhotoLibraryViewController: UIViewController {
         dimView.addGestureRecognizer(tap)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        addObserver(self, forKeyPath: "cropContentViewConstraintTop.constant", options: .new, context: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         guard selectedIndex < 0 else {
             return
@@ -48,8 +42,14 @@ class PhotoLibraryViewController: UIViewController {
         collectionView.contentInset.top = view.width + 2
         collectionView.scrollIndicatorInsets.top = view.width + 2
         flowLayout.configure(with: view.width, columnCount: 4, columnSpacing: 0.5, rowSpacing: 2)
-
+        
         presenter.fetchPhotos()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        addObserver(self, forKeyPath: "cropContentViewConstraintTop.constant", options: .new, context: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
