@@ -9,7 +9,14 @@
 import Foundation
 import Photos
 
+protocol AssetServiceObserver: class {
+    
+    func assetServiceDidChange(assets: [PHAsset])
+}
+
 protocol AssetService: class {
+    
+    var observer: AssetServiceObserver? { set get }
     
     func fetchImageAssets(with options: PHFetchOptions?, completion: (([PHAsset]) -> Void)?)
     func fetchImage(for data: AssetRequestData, completion: ((UIImage?) -> Void)?)
