@@ -29,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="icon_camera" selectedImage="icon_camera_black" id="Pzt-Aa-oZB">
+                    <tabBarItem key="tabBarItem" title="" image="plus_home_icon" selectedImage="plus_home_icon" id="Pzt-Aa-oZB">
                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                     </tabBarItem>
                 </viewController>
@@ -57,7 +57,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_camera" width="24" height="21"/>
-        <image name="icon_camera_black" width="24" height="21"/>
+        <image name="plus_home_icon" width="24" height="24"/>
     </resources>
 </document>
