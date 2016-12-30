@@ -13,6 +13,8 @@ protocol FileService {
     init(session: AuthSession)
     
     func uploadJPEGImage(data: FileServiceImageUploadData, track: ((Progress?) -> Void)?, callback: ((FileServiceResult) -> Void)?)
+    
+    func uploadAvatarImage(data: FileServiceImageUploadData, track: ((Progress?) -> Void)?, callback: ((FileServiceResult) -> Void)?)
 }
 
 protocol FileServiceUploadData {
