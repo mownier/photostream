@@ -632,7 +632,7 @@ struct UserServiceProvider: UserService {
         })
     }
     
-    func changeAvatar(url: String, callback: ((UserServiceError?) -> Void)?) {
+    func editAvatar(url: String, callback: ((UserServiceError?) -> Void)?) {
         var error: UserServiceError?
         
         guard session.isValid else {

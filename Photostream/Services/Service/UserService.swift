@@ -22,7 +22,7 @@ protocol UserService {
     func fetchActivities(id: String, offset: String, limit: UInt, callback: ((UserServiceActivityListResult) -> Void)?)
     
     func editUserInfo(data: UserServiceInfoEditData, callback: ((UserServiceInfoEditResult) -> Void)?)
-    func changeAvatar(url: String, callback: ((UserServiceError?) -> Void)?)
+    func editAvatar(url: String, callback: ((UserServiceError?) -> Void)?)
 }
 
 struct UserServiceInfoEditData {
