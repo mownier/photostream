@@ -49,8 +49,8 @@ extension UserProfileView: UserProfileViewConfig {
         postCountLabel.text = item.postCountText
         followerCountLabel.text = item.followerCountText
         followingCountLabel.text = item.followingCountText
-        displayNameLabel.text = item.displayName.isEmpty ? "Me" : item.displayName
-        bioLabel.text = item.bio.isEmpty ? "Write your bio here..." : item.bio
+        displayNameLabel.text = item.displayName.isEmpty ? "Name" : item.displayName
+        bioLabel.text = item.bio.isEmpty ? "Bio here..." : item.bio
         
         setupActionButton(me: item.isMe, followed: item.isFollowed)
         

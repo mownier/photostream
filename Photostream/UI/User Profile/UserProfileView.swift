@@ -94,12 +94,12 @@ class UserProfileView: UIView {
         actionButton.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
         
         displayNameLabel = UILabel()
-        displayNameLabel.text = "Me"
+        displayNameLabel.text = "Name"
         displayNameLabel.textColor = primaryColor
         displayNameLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
         
         bioLabel = UILabel()
-        bioLabel.text = "Write your bio here..."
+        bioLabel.text = "Bio here..."
         bioLabel.textColor = primaryColor
         bioLabel.numberOfLines = 3
         bioLabel.font = UIFont.systemFont(ofSize: 12)
