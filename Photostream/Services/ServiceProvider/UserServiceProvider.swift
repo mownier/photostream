@@ -604,10 +604,6 @@ struct UserServiceProvider: UserService {
             updates["\(path1)/first_name"] = data.lastName
         }
         
-        if !data.username.isEmpty, data.lastName != session.user.lastName {
-            updates["\(path1)/username"] = data.username
-        }
-        
         if !data.bio.isEmpty {
             updates["\(path2)/bio"] = data.bio
         }

@@ -29,7 +29,6 @@ struct UserServiceProfileEditData {
     
     var firstName: String = ""
     var lastName: String = ""
-    var username: String = ""
     var bio: String = ""
 }
 
