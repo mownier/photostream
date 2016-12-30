@@ -90,8 +90,8 @@ extension PostListCollectionCell: PostListCollectionCellConfig {
             with: resource,
             placeholder: nil,
             options: nil,
-            progressBlock: nil) { [unowned self] (_, _, _, _) in
-            self.photoImageView.backgroundColor = UIColor.white
+            progressBlock: nil) { [weak self] (_, _, _, _) in
+            self?.photoImageView.backgroundColor = UIColor.white
         }
     }
     
