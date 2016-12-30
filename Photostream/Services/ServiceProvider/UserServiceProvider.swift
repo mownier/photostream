@@ -579,6 +579,58 @@ struct UserServiceProvider: UserService {
             }
         })
     }
+    
+    func editUserInfo(data: UserServiceInfoEditData, callback: ((UserServiceInfoEditResult) -> Void)?) {
+        var result = UserServiceInfoEditResult()
+        
+        guard session.isValid else {
+            result.error = .authenticationNotFound(message: "Authentication not found")
+            callback?(result)
+            return
+        }
+        
+        let uid = session.user.id
+        
+        let path1 = "users/\(uid)"
+        let path2 = "user-profile/\(uid)"
+        
+        var updates = [AnyHashable: Any]()
+        
+        if !data.firstName.isEmpty, data.firstName != session.user.firstName {
+            updates["\(path1)/first_name"] = data.firstName
+        }
+        
+        if !data.lastName.isEmpty, data.lastName != session.user.lastName {
+            updates["\(path1)/first_name"] = data.lastName
+        }
+        
+        if !data.username.isEmpty, data.lastName != session.user.lastName {
+            updates["\(path1)/username"] = data.username
+        }
+        
+        if !data.bio.isEmpty {
+            updates["\(path2)/bio"] = data.bio
+        }
+        
+        guard !updates.isEmpty else {
+            result.editData = data
+            callback?(result)
+            return
+        }
+        
+        let rootRef = FIRDatabase.database().reference()
+        
+        rootRef.updateChildValues(updates, withCompletionBlock: { error, ref in
+            guard error == nil else {
+                result.error = .failedToEditUserInfo(message: "Failed to edit user info")
+                callback?(result)
+                return
+            }
+            
+            result.editData = data
+            callback?(result)
+        })
+    }
 }
 
 extension UserServiceProvider {
