@@ -580,8 +580,8 @@ struct UserServiceProvider: UserService {
         })
     }
     
-    func editUserInfo(data: UserServiceProfileEditData, callback: ((UserServiceInfoEditResult) -> Void)?) {
-        var result = UserServiceInfoEditResult()
+    func editUserInfo(data: UserServiceProfileEditData, callback: ((UserServiceProfileEditResult) -> Void)?) {
+        var result = UserServiceProfileEditResult()
         
         guard session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found")
