@@ -41,6 +41,14 @@ class RegistrationViewController: UIViewController {
         removeKeyboardObserver()
     }
     
+    override func loadView() {
+        super.loadView()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapView))
+        tap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(tap)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,6 +74,10 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func didTapBack() {
         presenter.exit()
+    }
+    
+    func didTapView() {
+        view.endEditing(true)
     }
 }
 
