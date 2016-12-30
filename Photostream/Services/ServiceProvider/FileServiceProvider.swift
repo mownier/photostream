@@ -77,4 +77,53 @@ struct FileServiceProvider: FileService {
             track!(snapshot.progress)
         }
     }
+    
+    func uploadAvatarImage(data: FileServiceImageUploadData, track: ((Progress?) -> Void)?, callback: ((FileServiceResult) -> Void)?) {
+        var result = FileServiceResult()
+        result.uploadId = data.id
+        guard session.isValid else {
+            result.error = .authenticationNotFound(message: "Authentication not found")
+            callback?(result)
+            return
+        }
+        
+        guard let imageData = data.data else {
+            result.error = .noDataToUpload(message: "No data to upload")
+            callback?(result)
+            return
+        }
+        
+        let uid = session.user.id
+        let storageRef = FIRStorage.storage().reference()
+        
+        let key = Date.timeIntervalSinceReferenceDate * 1000
+        let imagePath = "\(uid)/avatar/\(key).jpg"
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        let task = storageRef.child(imagePath).put(imageData, metadata: metadata, completion: { metadata, error in
+            guard error == nil else {
+                result.error = .failedToUpload(message: "Failed upload avatar image")
+                callback?(result)
+                return
+            }
+            
+            guard let avatarUrl = metadata?.downloadURL()?.absoluteString else {
+                result.error = .failedToUpload(message: "Avatar URL does not exist")
+                callback?(result)
+                return
+            }
+            
+            result.fileUrl = avatarUrl
+            callback?(result)
+        })
+        
+        guard track != nil else {
+            return
+        }
+        
+        task.observe(.progress) { (snapshot) in
+            track!(snapshot.progress)
+        }
+    }
 }
