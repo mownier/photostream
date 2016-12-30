@@ -631,6 +631,41 @@ struct UserServiceProvider: UserService {
             callback?(result)
         })
     }
+    
+    func changeAvatar(url: String, callback: ((UserServiceError?) -> Void)?) {
+        var error: UserServiceError?
+        
+        guard session.isValid else {
+            error = .authenticationNotFound(message: "Authentication not found")
+            callback?(error)
+            return
+        }
+        
+        guard let _ = URL(string: url) else {
+            error = .failedToChangeAvatar(message: "Url not valid")
+            callback?(error)
+            return
+        }
+        
+        let uid = session.user.id
+        let rootRef = FIRDatabase.database().reference()
+        
+        let path1 = "users/\(uid)/avatar"
+        
+        let updates: [AnyHashable: Any] = [
+            path1: url
+        ]
+        
+        rootRef.updateChildValues(updates, withCompletionBlock: { err, ref in
+            guard err == nil else {
+                error = .failedToChangeAvatar(message: "Failed to change avatar")
+                callback?(error)
+                return
+            }
+            
+            callback?(nil)
+        })
+    }
 }
 
 extension UserServiceProvider {
