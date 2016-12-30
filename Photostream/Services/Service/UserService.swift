@@ -21,11 +21,11 @@ protocol UserService {
     func fetchProfile(id: String, callback: ((UserServiceProfileResult) -> Void)?)
     func fetchActivities(id: String, offset: String, limit: UInt, callback: ((UserServiceActivityListResult) -> Void)?)
     
-    func editUserInfo(data: UserServiceInfoEditData, callback: ((UserServiceInfoEditResult) -> Void)?)
+    func editUserInfo(data: UserServiceProfileEditData, callback: ((UserServiceInfoEditResult) -> Void)?)
     func editAvatar(url: String, callback: ((UserServiceError?) -> Void)?)
 }
 
-struct UserServiceInfoEditData {
+struct UserServiceProfileEditData {
     
     var firstName: String = ""
     var lastName: String = ""
@@ -35,7 +35,7 @@ struct UserServiceInfoEditData {
 
 struct UserServiceInfoEditResult {
     
-    var editData: UserServiceInfoEditData?
+    var editData: UserServiceProfileEditData?
     var error: UserServiceError?
 }
 

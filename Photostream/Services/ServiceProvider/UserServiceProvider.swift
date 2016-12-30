@@ -580,7 +580,7 @@ struct UserServiceProvider: UserService {
         })
     }
     
-    func editUserInfo(data: UserServiceInfoEditData, callback: ((UserServiceInfoEditResult) -> Void)?) {
+    func editUserInfo(data: UserServiceProfileEditData, callback: ((UserServiceInfoEditResult) -> Void)?) {
         var result = UserServiceInfoEditResult()
         
         guard session.isValid else {
