@@ -151,9 +151,13 @@ extension RegistrationViewController {
                 
             case .up:
                 if delta.height == 0 {
-                    var bottom = self.registerButton.frame.maxY
-                    bottom -= self.emailTextField.frame.origin.y
-                    bottom -= abs(delta.y)
+                    let rect = self.contentScrollView.convert(self.registerButton.frame, to: self.view)
+                    
+                    var bottom = abs(delta.y)
+                    bottom -= self.view.frame.height
+                    bottom += rect.maxY
+                    bottom += self.emailTextField.frame.origin.y
+                    
                     self.contentScrollView.contentInset.bottom = bottom
                     self.contentScrollView.scrollIndicatorInsets.bottom = abs(delta.y)
                     
