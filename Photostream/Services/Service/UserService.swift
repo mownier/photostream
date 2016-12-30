@@ -20,6 +20,22 @@ protocol UserService {
     
     func fetchProfile(id: String, callback: ((UserServiceProfileResult) -> Void)?)
     func fetchActivities(id: String, offset: String, limit: UInt, callback: ((UserServiceActivityListResult) -> Void)?)
+    
+    func editUserInfo(data: UserServiceInfoEditData, callback: ((UserServiceInfoEditResult) -> Void)?)
+}
+
+struct UserServiceInfoEditData {
+    
+    var firstName: String = ""
+    var lastName: String = ""
+    var username: String = ""
+    var bio: String = ""
+}
+
+struct UserServiceInfoEditResult {
+    
+    var editData: UserServiceInfoEditData?
+    var error: UserServiceError?
 }
 
 struct UserServiceBasicResult {
@@ -59,6 +75,7 @@ enum UserServiceError: Error {
     case failedToFetchFollowing(message: String)
     case failedToFetchProfile(message: String)
     case failedToFetchActivities(message: String)
+    case failedToEditUserInfo(message: String)
     
     var message: String {
         switch self {
@@ -69,7 +86,8 @@ enum UserServiceError: Error {
              .failedToFetchFollowers(let message),
              .failedToFetchFollowing(let message),
              .failedToFetchProfile(let message),
-             .failedToFetchActivities(let message):
+             .failedToFetchActivities(let message),
+             .failedToEditUserInfo(let message):
             return message
         }
     }
