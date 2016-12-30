@@ -618,7 +618,7 @@ struct UserServiceProvider: UserService {
         
         rootRef.updateChildValues(updates, withCompletionBlock: { error, ref in
             guard error == nil else {
-                result.error = .failedToEditUserInfo(message: "Failed to edit user info")
+                result.error = .failedToEditProfile(message: "Failed to edit profile")
                 callback?(result)
                 return
             }

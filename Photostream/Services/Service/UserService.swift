@@ -75,7 +75,7 @@ enum UserServiceError: Error {
     case failedToFetchFollowing(message: String)
     case failedToFetchProfile(message: String)
     case failedToFetchActivities(message: String)
-    case failedToEditUserInfo(message: String)
+    case failedToEditProfile(message: String)
     case failedToChangeAvatar(message: String)
     
     var message: String {
@@ -88,7 +88,7 @@ enum UserServiceError: Error {
              .failedToFetchFollowing(let message),
              .failedToFetchProfile(let message),
              .failedToFetchActivities(let message),
-             .failedToEditUserInfo(let message),
+             .failedToEditProfile(let message),
              .failedToChangeAvatar(let message):
             return message
         }
