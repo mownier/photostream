@@ -22,6 +22,7 @@ protocol UserService {
     func fetchActivities(id: String, offset: String, limit: UInt, callback: ((UserServiceActivityListResult) -> Void)?)
     
     func editUserInfo(data: UserServiceInfoEditData, callback: ((UserServiceInfoEditResult) -> Void)?)
+    func changeAvatar(url: String, callback: ((UserServiceError?) -> Void)?)
 }
 
 struct UserServiceInfoEditData {
@@ -76,6 +77,7 @@ enum UserServiceError: Error {
     case failedToFetchProfile(message: String)
     case failedToFetchActivities(message: String)
     case failedToEditUserInfo(message: String)
+    case failedToChangeAvatar(message: String)
     
     var message: String {
         switch self {
@@ -87,7 +89,8 @@ enum UserServiceError: Error {
              .failedToFetchFollowing(let message),
              .failedToFetchProfile(let message),
              .failedToFetchActivities(let message),
-             .failedToEditUserInfo(let message):
+             .failedToEditUserInfo(let message),
+             .failedToChangeAvatar(let message):
             return message
         }
     }
