@@ -590,77 +590,83 @@ struct UserServiceProvider: UserService {
         }
         
         let uid = session.user.id
+        let rootRef = FIRDatabase.database().reference()
         
         let path1 = "users/\(uid)"
         let path2 = "user-profile/\(uid)"
         
         var updates = [AnyHashable: Any]()
         
+        let performUpdates = { () -> Void in
+            guard !updates.isEmpty else {
+                result.editData = data
+                callback?(result)
+                return
+            }
+            
+            rootRef.updateChildValues(updates, withCompletionBlock: { error, ref in
+                guard error == nil else {
+                    result.error = .failedToEditProfile(message: "Failed to edit profile")
+                    callback?(result)
+                    return
+                }
+                
+                result.editData = data
+                callback?(result)
+            })
+        }
+        
         if !data.firstName.isEmpty, data.firstName != session.user.firstName {
-            updates["\(path1)/first_name"] = data.firstName
+            updates["\(path1)/firstname"] = data.firstName
         }
         
         if !data.lastName.isEmpty, data.lastName != session.user.lastName {
-            updates["\(path1)/first_name"] = data.lastName
+            updates["\(path1)/lastname"] = data.lastName
         }
         
         if !data.bio.isEmpty {
             updates["\(path2)/bio"] = data.bio
         }
         
-        guard !updates.isEmpty else {
-            result.editData = data
-            callback?(result)
-            return
+        if !data.avatarUrl.isEmpty {
+            updates["\(path1)/avatar_url"] = data.avatarUrl
         }
         
-        let rootRef = FIRDatabase.database().reference()
-        
-        rootRef.updateChildValues(updates, withCompletionBlock: { error, ref in
-            guard error == nil else {
-                result.error = .failedToEditProfile(message: "Failed to edit profile")
-                callback?(result)
-                return
-            }
+        if data.username.isEmpty {
+            performUpdates()
             
-            result.editData = data
-            callback?(result)
-        })
-    }
-    
-    func editAvatar(url: String, callback: ((UserServiceError?) -> Void)?) {
-        var error: UserServiceError?
-        
-        guard session.isValid else {
-            error = .authenticationNotFound(message: "Authentication not found")
-            callback?(error)
-            return
-        }
-        
-        guard let _ = URL(string: url) else {
-            error = .failedToChangeAvatar(message: "Url not valid")
-            callback?(error)
-            return
-        }
-        
-        let uid = session.user.id
-        let rootRef = FIRDatabase.database().reference()
-        
-        let path1 = "users/\(uid)/avatar"
-        
-        let updates: [AnyHashable: Any] = [
-            path1: url
-        ]
-        
-        rootRef.updateChildValues(updates, withCompletionBlock: { err, ref in
-            guard err == nil else {
-                error = .failedToChangeAvatar(message: "Failed to change avatar")
-                callback?(error)
-                return
-            }
+        } else {
+            let usernameRef = rootRef.child(path1).child("username")
             
-            callback?(nil)
-        })
+            usernameRef.observeSingleEvent(of: .value, with: { usernameSnapshot in
+                if !usernameSnapshot.exists() {
+                    updates["\(path1)/username"] = data.username
+                    performUpdates()
+                    
+                } else {
+                    let username = usernameSnapshot.value as! String
+                    if username == data.username {
+                        performUpdates()
+                        
+                    } else {
+                        let usersRef = rootRef.child("users")
+                        var query = usersRef.queryOrdered(byChild: "username")
+                        query = query.queryEqual(toValue: data.username)
+                        
+                        query.observeSingleEvent(of: .value, with: { queryResult in
+                            guard !queryResult.exists() else {
+                                result.error = .failedToEditProfile(message: "Username is already taken")
+                                callback?(result)
+                                return
+                            }
+                            
+                            updates["\(path1)/username"] = data.username
+                            performUpdates()
+                        })
+                    }
+                }
+            })
+        }
     }
 }
 
