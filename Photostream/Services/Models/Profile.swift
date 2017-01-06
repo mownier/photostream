@@ -41,5 +41,9 @@ extension Profile: SnapshotParser {
         if snapshot.hasChild("following_count") && !exception.contains("following_count") {
             followingCount = snapshot.childSnapshot(forPath: "following_count").value as! Int
         }
+        
+        if snapshot.hasChild("bio") && !exception.contains("bio") {
+            bio = snapshot.childSnapshot(forPath: "bio").value as! String
+        }
     }
 }
