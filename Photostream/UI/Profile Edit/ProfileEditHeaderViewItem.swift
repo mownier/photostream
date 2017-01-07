@@ -50,7 +50,7 @@ extension ProfileEditHeaderView: ProfileEditHeaderViewConfig {
     
     fileprivate func placeholder(with initial: String) -> UIImage {
         let frame = CGRect(x: 0, y: 0, width: avatarDimension, height: avatarDimension)
-        let font = UIFont.systemFont(ofSize: 12)
+        let font = UIFont.systemFont(ofSize: avatarDimension / 2)
         let image = UILabel.createPlaceholderImageWithFrame(frame, text: initial, font: font)
         return image
     }
