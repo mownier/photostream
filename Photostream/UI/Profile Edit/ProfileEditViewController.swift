@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileEditViewController: UITableViewController {
     
+    lazy var header: ProfileEditHeaderView = ProfileEditHeaderView()
+    
     var presenter: ProfileEditModuleInterface!
     
     convenience init() {
@@ -19,14 +21,19 @@ class ProfileEditViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         
-        let headerView = ProfileEditHeaderView()
-        headerView.frame.size.width = tableView.frame.width
-        headerView.delegate = self
+        header.frame.size.width = tableView.frame.width
+        header.delegate = self
         
-        tableView.tableHeaderView = headerView
+        tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
         
         setupNavigationItem()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        presenter.viewDidLoad()
     }
     
     func setupNavigationItem() {
@@ -55,7 +62,8 @@ extension ProfileEditViewController: ProfileEditScene {
     }
     
     func showProfile(with data: ProfileEditData) {
-        
+        let item = data as? ProfileEditHeaderViewItem
+        header.configure(with: item)
     }
     
     func didUpdate(with error: String?) {
