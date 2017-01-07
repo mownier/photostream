@@ -14,6 +14,8 @@ class ProfileEditViewController: UITableViewController {
     
     var presenter: ProfileEditModuleInterface!
     
+    var displayData: ProfileEditData?
+    
     convenience init() {
         self.init(style: .grouped)
     }
@@ -48,6 +50,63 @@ class ProfileEditViewController: UITableViewController {
     }
 }
 
+extension ProfileEditViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard displayData != nil else {
+            return 0
+        }
+        
+        return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var reuseId: String?
+        var text: String?
+        
+        switch indexPath.row {
+            
+        case 0:
+            reuseId = "UsernameCell"
+            text = displayData?.username
+
+        case 1:
+            reuseId = "FirstNameCell"
+            text = displayData?.firstName
+            
+        case 2:
+            reuseId = "LastNameCell"
+            text = displayData?.lastName
+            
+        case 3:
+            reuseId = "BioCell"
+            text = displayData?.bio
+            
+        default:
+            break
+        }
+        
+        guard reuseId != nil else {
+            return UITableViewCell()
+        }
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseId!)
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: reuseId!)
+            cell!.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        }
+        
+        cell!.textLabel?.text = text
+        
+        return cell!
+    }
+}
+
 extension ProfileEditViewController: ProfileEditHeaderViewDelegate {
     
     func didTapToChangeAvatar() {
@@ -62,6 +121,8 @@ extension ProfileEditViewController: ProfileEditScene {
     }
     
     func showProfile(with data: ProfileEditData) {
+        displayData = data
+        
         let item = data as? ProfileEditHeaderViewItem
         header.configure(with: item)
     }
