@@ -6,8 +6,10 @@
 //  Copyright © 2017 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
+protocol ProfileEditScene: BaseModuleView {
 
-class ProfileEditScene: AnyObject {
-
+    var presenter: ProfileEditModuleInterface! { set get }
+    
+    func didUpdate(with error: String?)
+    func didUpload(with error: String?)
 }
