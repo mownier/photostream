@@ -78,7 +78,7 @@ extension ProfileEditHeaderView {
     }
     
     var avatarDimension: CGFloat {
-        return 64
+        return 72
     }
 }
 
