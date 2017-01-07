@@ -12,3 +12,18 @@ extension ProfileEditModule {
         self.init(view: ProfileEditViewController())
     }
 }
+
+extension ProfileEditDataItem: ProfileEditHeaderViewItem {
+    
+    var displayNameInitial: String {
+        if !username.isEmpty {
+            return username[0]
+        
+        } else if !firstName.isEmpty {
+            return firstName[0]
+            
+        } else {
+            return "U"
+        }
+    }
+}
