@@ -11,5 +11,10 @@ import UIKit
 protocol ProfileEditModuleInterface: BaseModuleInterface {
     
     func uploadAvatar(with image: UIImage)
-    func updateProfile(with data: ProfileEditData)
+    func updateProfile()
+    
+    func set(username: String)
+    func set(bio: String)
+    func set(firstName: String)
+    func set(lastName: String)
 }
