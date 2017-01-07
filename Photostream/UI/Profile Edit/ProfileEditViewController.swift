@@ -25,6 +25,19 @@ class ProfileEditViewController: UITableViewController {
         
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = UIView()
+        
+        setupNavigationItem()
+    }
+    
+    func setupNavigationItem() {
+        navigationItem.title = "Edit Profile"
+        
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(self.back))
+        navigationItem.leftBarButtonItem = barItem
+    }
+    
+    func back() {
+        presenter.exit()
     }
 }
 
