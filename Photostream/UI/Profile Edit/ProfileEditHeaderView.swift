@@ -31,7 +31,7 @@ class ProfileEditHeaderView: UIView {
     }
     
     func initSetup() {
-        frame.size.height = 128
+        frame.size.height = fixHeight
         
         avatarImageView = UIImageView()
         avatarImageView.contentMode = .scaleAspectFit
@@ -55,15 +55,14 @@ class ProfileEditHeaderView: UIView {
         avatarButton.sizeToFit()
         
         rect.origin.x = (frame.width - avatarDimension) / 2
-        rect.origin.y = (frame.height - avatarDimension) / 2
-        rect.origin.y -= avatarButton.frame.height
+        rect.origin.y = (frame.height - (avatarDimension + avatarButton.frame.height)) / 2
         rect.size.width = avatarDimension
         rect.size.height = avatarDimension
         avatarImageView.frame = rect
         
-        rect.size = avatarButton.frame.size
-        rect.origin.x = (frame.width - rect.size.width) / 2
+        rect.origin.x = (frame.width - avatarButton.frame.width) / 2
         rect.origin.y = rect.maxY
+        rect.size = avatarButton.frame.size
         avatarButton.frame = rect
     }
     
@@ -75,7 +74,7 @@ class ProfileEditHeaderView: UIView {
 extension ProfileEditHeaderView {
     
     var fixHeight: CGFloat {
-        return 128
+        return 144
     }
     
     var avatarDimension: CGFloat {
