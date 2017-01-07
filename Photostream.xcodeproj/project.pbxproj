@@ -258,6 +258,9 @@
 		B9E048011E20B0050099B6C5 /* ProfileEditModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E048001E20B0050099B6C5 /* ProfileEditModule.swift */; };
 		B9E048031E20B20D0099B6C5 /* ProfileEditWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E048021E20B20D0099B6C5 /* ProfileEditWireframe.swift */; };
 		B9E048051E20B2670099B6C5 /* ProfileEditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E048041E20B2670099B6C5 /* ProfileEditPresenter.swift */; };
+		B9E048081E20BC190099B6C5 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E048071E20BC190099B6C5 /* ProfileEditViewController.swift */; };
+		B9E0480A1E20BCEB0099B6C5 /* ProfileEditHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E048091E20BCEB0099B6C5 /* ProfileEditHeaderView.swift */; };
+		B9E0480C1E20C4980099B6C5 /* ProfileEditHeaderViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0480B1E20C4980099B6C5 /* ProfileEditHeaderViewItem.swift */; };
 		B9E0B19E1DD99EF300875DAB /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */; };
 		B9E408401DFBBA5000B7076A /* UserProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4083F1DFBBA5000B7076A /* UserProfileInteractor.swift */; };
 		B9E408421DFBBB8200B7076A /* UserProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E408411DFBBB8200B7076A /* UserProfileData.swift */; };
@@ -548,6 +551,9 @@
 		B9E048001E20B0050099B6C5 /* ProfileEditModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditModule.swift; sourceTree = "<group>"; };
 		B9E048021E20B20D0099B6C5 /* ProfileEditWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditWireframe.swift; sourceTree = "<group>"; };
 		B9E048041E20B2670099B6C5 /* ProfileEditPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditPresenter.swift; sourceTree = "<group>"; };
+		B9E048071E20BC190099B6C5 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		B9E048091E20BCEB0099B6C5 /* ProfileEditHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditHeaderView.swift; sourceTree = "<group>"; };
+		B9E0480B1E20C4980099B6C5 /* ProfileEditHeaderViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditHeaderViewItem.swift; sourceTree = "<group>"; };
 		B9E0B19D1DD99EF300875DAB /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		B9E4083F1DFBBA5000B7076A /* UserProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
 		B9E408411DFBBB8200B7076A /* UserProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileData.swift; sourceTree = "<group>"; };
@@ -1529,6 +1535,7 @@
 				B9D4969A1DE7F07F00CDD58E /* Post Composer */,
 				B99696321E090303008A4811 /* Post Discovery */,
 				B9690BF91DE565D0007E4593 /* Post Upload */,
+				B9E048061E20BC020099B6C5 /* Profile Edit */,
 				B9C217621DCC40F900F617FC /* Registration */,
 				B99719751E0121A400A24C74 /* Settings */,
 				B9C217661DCC40F900F617FC /* Shared */,
@@ -2015,6 +2022,16 @@
 			path = Wireframe;
 			sourceTree = "<group>";
 		};
+		B9E048061E20BC020099B6C5 /* Profile Edit */ = {
+			isa = PBXGroup;
+			children = (
+				B9E048071E20BC190099B6C5 /* ProfileEditViewController.swift */,
+				B9E048091E20BCEB0099B6C5 /* ProfileEditHeaderView.swift */,
+				B9E0480B1E20C4980099B6C5 /* ProfileEditHeaderViewItem.swift */,
+			);
+			path = "Profile Edit";
+			sourceTree = "<group>";
+		};
 		B9E408391DFBBA3F00B7076A /* User Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -2395,6 +2412,7 @@
 				B9E631181DF9359500158632 /* PostListCollectionHeader.swift in Sources */,
 				B9B0FF211E0B865900807B0B /* Activity.swift in Sources */,
 				B941310A1DEE9C0F00DD10CE /* CommentFeedModule.swift in Sources */,
+				B9E048081E20BC190099B6C5 /* ProfileEditViewController.swift in Sources */,
 				B9B8AE2F1DFA7DF100D190A5 /* UserPostViewDataSource.swift in Sources */,
 				B94AB2C71DF6890200313254 /* UserPostData.swift in Sources */,
 				B978AF411DD44A53007C1AAD /* PhotoCaptureViewController.swift in Sources */,
@@ -2432,6 +2450,7 @@
 				B9C217A91DCC40F900F617FC /* LoginInteractorInput.swift in Sources */,
 				B9C217D81DCC40F900F617FC /* Profile.swift in Sources */,
 				B9DEB2671DDEE18300C47C37 /* PhotoShareViewController.swift in Sources */,
+				B9E0480C1E20C4980099B6C5 /* ProfileEditHeaderViewItem.swift in Sources */,
 				B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */,
 				B933ADF81DED630200FAE922 /* CommentFeedEmptyView.swift in Sources */,
 				B94131061DEE9C0F00DD10CE /* CommentFeedInteractor.swift in Sources */,
@@ -2551,6 +2570,7 @@
 				B9D9C34D1E0D0667002B906B /* UserActivityViewDataSource.swift in Sources */,
 				B9D1AC9B1E039D72003E8870 /* NewsFeedWireframe.swift in Sources */,
 				B9D9C3421E0CFE60002B906B /* UserActivityScene.swift in Sources */,
+				B9E0480A1E20BCEB0099B6C5 /* ProfileEditHeaderView.swift in Sources */,
 				B94131291DEEAEC600DD10CE /* CommentController.swift in Sources */,
 				B9C217F01DCC40F900F617FC /* RegistrationViewController.swift in Sources */,
 				B9C217EC1DCC40F900F617FC /* NewsFeedDataSource.swift in Sources */,
