@@ -10,6 +10,8 @@ import UIKit
 
 protocol ProfileEditModuleInterface: BaseModuleInterface {
     
+    func viewDidLoad()
+    
     func uploadAvatar(with image: UIImage)
     func updateProfile()
     
