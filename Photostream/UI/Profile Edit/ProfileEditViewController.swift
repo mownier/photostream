@@ -42,12 +42,19 @@ class ProfileEditViewController: UITableViewController {
     func setupNavigationItem() {
         navigationItem.title = "Edit Profile"
         
-        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(self.back))
+        var barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(self.back))
         navigationItem.leftBarButtonItem = barItem
+        
+        barItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(self.save))
+        navigationItem.rightBarButtonItem = barItem
     }
     
     func back() {
         presenter.exit()
+    }
+    
+    func save() {
+        
     }
 }
 
