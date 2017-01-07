@@ -34,6 +34,10 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
         wireframe.exit(with: property)
     }
     
+    func viewDidLoad() {
+        view.showProfile(with: updateData)
+    }
+    
     func uploadAvatar(with image: UIImage) {
         let imageData = UIImageJPEGRepresentation(image, 1.0)
         var uploadData = FileServiceImageUploadData()
