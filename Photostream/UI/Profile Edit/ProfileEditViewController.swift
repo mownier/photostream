@@ -26,6 +26,7 @@ class ProfileEditViewController: UITableViewController {
         header.frame.size.width = tableView.frame.width
         header.delegate = self
         
+        tableView.allowsSelection = false
         tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
         
