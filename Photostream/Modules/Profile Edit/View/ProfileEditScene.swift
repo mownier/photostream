@@ -15,4 +15,6 @@ protocol ProfileEditScene: BaseModuleView {
     func didUpdate(with error: String?)
     func didUpload(with error: String?)
     func didUpload(with progress: Progress)
+    
+    func showProfile(with data: ProfileEditData)
 }
