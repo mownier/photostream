@@ -8,6 +8,8 @@
 
 import UIKit
 
-class ProfileEditModule: AnyObject {
-
+protocol ProfileEditModuleInterface: BaseModuleInterface {
+    
+    func uploadAvatar(with image: UIImage)
+    func updateProfile(with data: ProfileEditData)
 }
