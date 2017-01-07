@@ -89,7 +89,7 @@ extension ProfileEditPresenter: ProfileEditInteractorOutput {
     }
     
     func didUploadAvatar(progress: Progress) {
-        view.didUpload(with: progress)
+        view.didUploadWith(progress: progress)
     }
     
     func didUplaodAvatar(error: FileServiceError) {
