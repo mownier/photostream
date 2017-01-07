@@ -78,7 +78,7 @@ extension UserProfileViewController: UserProfileScene {
 extension UserProfileViewController: UserProfileViewDelegate {
     
     func willEdit(view: UserProfileView) {
-        
+        presenter.presentProfileEdit()
     }
     
     func willFollow(view: UserProfileView) {
