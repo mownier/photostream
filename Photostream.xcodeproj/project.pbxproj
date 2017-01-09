@@ -19,6 +19,8 @@
 		B92A1C7B1DEFD79900EC8DAD /* CommentWriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A1C7A1DEFD79900EC8DAD /* CommentWriterView.swift */; };
 		B92B96F91DDAD8DB00D89025 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92B96F81DDAD8DB00D89025 /* CropView.swift */; };
 		B92B96FB1DDADAA700D89025 /* UICollectionViewFlowLayout+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92B96FA1DDADAA700D89025 /* UICollectionViewFlowLayout+Extension.swift */; };
+		B93071091E233F5800BF73F6 /* ProfileEditTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93071081E233F5800BF73F6 /* ProfileEditTableCell.swift */; };
+		B930710B1E23543B00BF73F6 /* ProfileEditTableCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930710A1E23543B00BF73F6 /* ProfileEditTableCellItem.swift */; };
 		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
 		B933ADF61DED50D900FAE922 /* CommentFeedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */; };
 		B933ADF81DED630200FAE922 /* CommentFeedEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */; };
@@ -308,6 +310,8 @@
 		B92A1C7A1DEFD79900EC8DAD /* CommentWriterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWriterView.swift; sourceTree = "<group>"; };
 		B92B96F81DDAD8DB00D89025 /* CropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
 		B92B96FA1DDADAA700D89025 /* UICollectionViewFlowLayout+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Extension.swift"; sourceTree = "<group>"; };
+		B93071081E233F5800BF73F6 /* ProfileEditTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditTableCell.swift; sourceTree = "<group>"; };
+		B930710A1E23543B00BF73F6 /* ProfileEditTableCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditTableCellItem.swift; sourceTree = "<group>"; };
 		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedExtension.swift; sourceTree = "<group>"; };
 		B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedEmptyView.swift; sourceTree = "<group>"; };
@@ -2031,6 +2035,8 @@
 				B9E048071E20BC190099B6C5 /* ProfileEditViewController.swift */,
 				B9E048091E20BCEB0099B6C5 /* ProfileEditHeaderView.swift */,
 				B9E0480B1E20C4980099B6C5 /* ProfileEditHeaderViewItem.swift */,
+				B93071081E233F5800BF73F6 /* ProfileEditTableCell.swift */,
+				B930710A1E23543B00BF73F6 /* ProfileEditTableCellItem.swift */,
 			);
 			path = "Profile Edit";
 			sourceTree = "<group>";
@@ -2529,6 +2535,7 @@
 				B954EE601DE035DF00A0049D /* PostUploadInteractorInput.swift in Sources */,
 				B941310D1DEE9C0F00DD10CE /* CommentFeedPresenterInterface.swift in Sources */,
 				B941310B1DEE9C0F00DD10CE /* CommentFeedModuleInterface.swift in Sources */,
+				B930710B1E23543B00BF73F6 /* ProfileEditTableCellItem.swift in Sources */,
 				B95A06E41E023AA0005B47B6 /* LogoutInteractor.swift in Sources */,
 				B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */,
 				B969F43C1DFE4C7E003629F3 /* UserTimelineViewController.swift in Sources */,
@@ -2635,6 +2642,7 @@
 				B99719741E0120D100A24C74 /* SettingSection.swift in Sources */,
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,
 				B9C217C41DCC40F900F617FC /* RegistrationModuleInterface.swift in Sources */,
+				B93071091E233F5800BF73F6 /* ProfileEditTableCell.swift in Sources */,
 				B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */,
 				B941310C1DEE9C0F00DD10CE /* CommentFeedPresenter.swift in Sources */,
 				B95A06EF1E0241EB005B47B6 /* LogoutViewController.swift in Sources */,
