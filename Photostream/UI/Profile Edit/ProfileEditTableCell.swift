@@ -32,13 +32,9 @@ class ProfileEditTableCell: UITableViewCell {
     var infoDetailLabel: UILabel?
     var infoTextField: UITextField?
     
-    convenience init(style: ProfileEditTableCellStyle) {
-        self.init(style: .default, reuseIdentifier: style.reuseId)
+    init(style: ProfileEditTableCellStyle) {
+        super.init(style: .default, reuseIdentifier: style.reuseId)
         self.style = style
-    }
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
         initSetup()
     }
     
@@ -102,11 +98,10 @@ extension ProfileEditTableCell {
 extension ProfileEditTableCell {
     
     class func dequeue(from tableView: UITableView, style: ProfileEditTableCellStyle) -> ProfileEditTableCell? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: style.reuseId)
+        var cell = tableView.dequeueReusableCell(withIdentifier: style.reuseId)
+        if cell == nil {
+            cell = ProfileEditTableCell(style: style)
+        }
         return cell as? ProfileEditTableCell
-    }
-    
-    class func register(in tableView: UITableView, style: ProfileEditTableCellStyle) {
-        tableView.register(self, forCellReuseIdentifier: style.reuseId)
     }
 }
