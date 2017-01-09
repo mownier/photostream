@@ -59,64 +59,6 @@ class ProfileEditViewController: UITableViewController {
     }
 }
 
-extension ProfileEditViewController {
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.displayItemCount
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let style = cellStyle(for: indexPath.row)
-        let cell = ProfileEditTableCell.dequeue(from: tableView, style: style)!
-        let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
-        cell.configure(with: item)
-        
-        return cell
-    }
-    
-    func cellStyle(for index: Int) -> ProfileEditTableCellStyle {
-        switch index {
-            
-        case 0, 1, 2:
-            return .lineEdit
-        
-        default:
-            return .default
-        }
-    }
-}
-
-extension ProfileEditViewController {
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let style = cellStyle(for: indexPath.row)
-        
-        switch style {
-        
-        case .default:
-            let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
-            styleDefaultPrototype.configure(with: item, isPrototype: true)
-            return styleDefaultPrototype.dynamicHeight
-            
-        case .lineEdit:
-            let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
-            styleLineEditPrototype.configure(with: item, isPrototype: true)
-            return styleLineEditPrototype.dynamicHeight
-        }
-    }
-}
-
-extension ProfileEditViewController: ProfileEditHeaderViewDelegate {
-    
-    func didTapToChangeAvatar() {
-        
-    }
-}
-
 extension ProfileEditViewController: ProfileEditScene {
     
     var controller: UIViewController? {

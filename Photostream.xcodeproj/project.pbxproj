@@ -22,6 +22,8 @@
 		B93071091E233F5800BF73F6 /* ProfileEditTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93071081E233F5800BF73F6 /* ProfileEditTableCell.swift */; };
 		B930710B1E23543B00BF73F6 /* ProfileEditTableCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930710A1E23543B00BF73F6 /* ProfileEditTableCellItem.swift */; };
 		B930710D1E2359DB00BF73F6 /* ProfileEditDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930710C1E2359DB00BF73F6 /* ProfileEditDisplayItem.swift */; };
+		B930710F1E23698600BF73F6 /* ProfileEditViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930710E1E23698600BF73F6 /* ProfileEditViewDelegate.swift */; };
+		B93071111E2369AC00BF73F6 /* ProfileEditViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93071101E2369AC00BF73F6 /* ProfileEditViewDataSource.swift */; };
 		B9330D811DCC7EEC00B64FDD /* DynamicSizeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */; };
 		B933ADF61DED50D900FAE922 /* CommentFeedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */; };
 		B933ADF81DED630200FAE922 /* CommentFeedEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */; };
@@ -314,6 +316,8 @@
 		B93071081E233F5800BF73F6 /* ProfileEditTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditTableCell.swift; sourceTree = "<group>"; };
 		B930710A1E23543B00BF73F6 /* ProfileEditTableCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditTableCellItem.swift; sourceTree = "<group>"; };
 		B930710C1E2359DB00BF73F6 /* ProfileEditDisplayItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditDisplayItem.swift; sourceTree = "<group>"; };
+		B930710E1E23698600BF73F6 /* ProfileEditViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewDelegate.swift; sourceTree = "<group>"; };
+		B93071101E2369AC00BF73F6 /* ProfileEditViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewDataSource.swift; sourceTree = "<group>"; };
 		B9330D801DCC7EEC00B64FDD /* DynamicSizeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeHandler.swift; sourceTree = "<group>"; };
 		B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedExtension.swift; sourceTree = "<group>"; };
 		B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedEmptyView.swift; sourceTree = "<group>"; };
@@ -2035,11 +2039,13 @@
 		B9E048061E20BC020099B6C5 /* Profile Edit */ = {
 			isa = PBXGroup;
 			children = (
-				B9E048071E20BC190099B6C5 /* ProfileEditViewController.swift */,
 				B9E048091E20BCEB0099B6C5 /* ProfileEditHeaderView.swift */,
 				B9E0480B1E20C4980099B6C5 /* ProfileEditHeaderViewItem.swift */,
 				B93071081E233F5800BF73F6 /* ProfileEditTableCell.swift */,
 				B930710A1E23543B00BF73F6 /* ProfileEditTableCellItem.swift */,
+				B9E048071E20BC190099B6C5 /* ProfileEditViewController.swift */,
+				B93071101E2369AC00BF73F6 /* ProfileEditViewDataSource.swift */,
+				B930710E1E23698600BF73F6 /* ProfileEditViewDelegate.swift */,
 			);
 			path = "Profile Edit";
 			sourceTree = "<group>";
@@ -2413,6 +2419,7 @@
 				B98992671E139E0000B373ED /* ActivityTablePostCell.swift in Sources */,
 				B9E047FB1E20A08C0099B6C5 /* ProfileEditInteractor.swift in Sources */,
 				B94131081DEE9C0F00DD10CE /* CommentFeedInteractorInterface.swift in Sources */,
+				B93071111E2369AC00BF73F6 /* ProfileEditViewDataSource.swift in Sources */,
 				B9D1AC981E039D72003E8870 /* NewsFeedPresenter.swift in Sources */,
 				B94AB2D21DF69D4000313254 /* UserPostViewController.swift in Sources */,
 				B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */,
@@ -2654,6 +2661,7 @@
 				B9D1AC921E039D72003E8870 /* NewsFeedData.swift in Sources */,
 				B9D4967A1DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift in Sources */,
 				B9C217EE1DCC40F900F617FC /* NewsFeedViewController.swift in Sources */,
+				B930710F1E23698600BF73F6 /* ProfileEditViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
