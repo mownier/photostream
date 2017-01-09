@@ -23,6 +23,7 @@ extension ProfileEditViewController {
         let cell = ProfileEditTableCell.dequeue(from: tableView, style: style)!
         let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
         cell.configure(with: item)
+        cell.infoTextField?.delegate = self
         
         return cell
     }
