@@ -46,7 +46,7 @@ class ProfileEditTableCell: UITableViewCell {
     func initSetup() {
         infoLabel = UILabel()
         infoLabel.textColor = UIColor.lightGray
-        infoLabel.font = UIFont.systemFont(ofSize: 8)
+        infoLabel.font = UIFont.systemFont(ofSize: 10)
         addSubview(infoLabel)
         
         switch style {
@@ -58,6 +58,7 @@ class ProfileEditTableCell: UITableViewCell {
             
         case .lineEdit:
             infoTextField = UITextField()
+            infoTextField!.font = UIFont.systemFont(ofSize: 14)
             addSubview(infoTextField!)
         }
     }
@@ -76,12 +77,12 @@ class ProfileEditTableCell: UITableViewCell {
         
         case .default:
             infoDetailLabel!.sizeToFit()
-            rect.origin.y = rect.maxY + spacing
+            rect.origin.y = rect.maxY
             rect.size.height = infoDetailLabel!.frame.height
-            infoLabel.frame = rect
+            infoDetailLabel!.frame = rect
             
         case .lineEdit:
-            rect.origin.y = rect.maxY + spacing
+            rect.origin.y = rect.maxY
             rect.size.height = infoTextField!.font!.pointSize + (spacing * 2)
             infoTextField!.frame = rect
         }
