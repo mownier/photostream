@@ -30,22 +30,22 @@ class ProfileEditPresenter: ProfileEditPresenterInterface {
             displayItems.removeAll()
             
             var item = ProfileEditDisplayItem()
-            item.infoLabelText = "Username"
+            item.infoLabelText = "USERNAME"
             item.infoEditText = updateData.username
             displayItems.append(item)
             
             item.clear()
-            item.infoLabelText = "First Name"
+            item.infoLabelText = "FIRST NAME"
             item.infoEditText = updateData.firstName
             displayItems.append(item)
             
             item.clear()
-            item.infoLabelText = "Last Name"
+            item.infoLabelText = "LAST NAME"
             item.infoEditText = updateData.lastName
             displayItems.append(item)
             
             item.clear()
-            item.infoLabelText = "Bio"
+            item.infoLabelText = "BIO"
             item.infoDetailText = updateData.bio
             displayItems.append(item)
         }
