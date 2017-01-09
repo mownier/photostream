@@ -10,6 +10,8 @@ import UIKit
 
 protocol ProfileEditModuleInterface: BaseModuleInterface {
     
+    var displayItemCount: Int { get }
+    
     func viewDidLoad()
     
     func uploadAvatar(with image: UIImage)
@@ -19,6 +21,8 @@ protocol ProfileEditModuleInterface: BaseModuleInterface {
     func set(bio: String)
     func set(firstName: String)
     func set(lastName: String)
+    
+    func displayItem(at index: Int) -> ProfileEditDisplayItem?
 }
 
 protocol ProfileEditBuilder: BaseModuleBuilder {
