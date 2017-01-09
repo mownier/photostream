@@ -27,3 +27,5 @@ extension ProfileEditDataItem: ProfileEditHeaderViewItem {
         }
     }
 }
+
+extension ProfileEditDisplayItem: ProfileEditTableCellItem { }
