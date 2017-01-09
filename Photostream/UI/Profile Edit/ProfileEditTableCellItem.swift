@@ -34,7 +34,7 @@ extension ProfileEditTableCell: ProfileEditTableCellConfig {
         }
     }
     
-    func configure(with item: ProfileEditTableCellItem?, isPrototype: Bool) {
+    func configure(with item: ProfileEditTableCellItem?, isPrototype: Bool = false) {
         guard let item = item else {
             return
         }
@@ -49,5 +49,8 @@ extension ProfileEditTableCell: ProfileEditTableCellConfig {
         case .lineEdit:
             infoTextField!.text = item.infoEditText
         }
+        
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }
