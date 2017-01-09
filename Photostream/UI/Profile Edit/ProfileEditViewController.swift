@@ -11,10 +11,11 @@ import UIKit
 class ProfileEditViewController: UITableViewController {
     
     lazy var header: ProfileEditHeaderView = ProfileEditHeaderView()
+    lazy var styleDefaultPrototype: ProfileEditTableCell = ProfileEditTableCell(style: .default)
+    lazy var styleLineEditPrototype: ProfileEditTableCell = ProfileEditTableCell(style: .lineEdit)
     
     var presenter: ProfileEditModuleInterface!
-    
-    var displayData: ProfileEditData?
+    var displayItems = [ProfileEditDisplayItem]()
     
     convenience init() {
         self.init(style: .grouped)
@@ -65,53 +66,47 @@ extension ProfileEditViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard displayData != nil else {
-            return 0
-        }
-        
-        return 4
+        return presenter.displayItemCount
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let style = cellStyle(for: indexPath.row)
+        let cell = ProfileEditTableCell.dequeue(from: tableView, style: style)!
+        let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
+        cell.configure(with: item)
         
-        var reuseId: String?
-        var text: String?
+        return cell
+    }
+    
+    func cellStyle(for index: Int) -> ProfileEditTableCellStyle {
+        switch index {
+            
+        case 0, 1, 2:
+            return .lineEdit
         
-        switch indexPath.row {
-            
-        case 0:
-            reuseId = "UsernameCell"
-            text = displayData?.username
-
-        case 1:
-            reuseId = "FirstNameCell"
-            text = displayData?.firstName
-            
-        case 2:
-            reuseId = "LastNameCell"
-            text = displayData?.lastName
-            
-        case 3:
-            reuseId = "BioCell"
-            text = displayData?.bio
-            
         default:
-            break
+            return .default
         }
+    }
+}
+
+extension ProfileEditViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let style = cellStyle(for: indexPath.row)
         
-        guard reuseId != nil else {
-            return UITableViewCell()
+        switch style {
+        
+        case .default:
+            let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
+            styleDefaultPrototype.configure(with: item, isPrototype: true)
+            return styleDefaultPrototype.dynamicHeight
+            
+        case .lineEdit:
+            let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
+            styleLineEditPrototype.configure(with: item, isPrototype: true)
+            return styleLineEditPrototype.dynamicHeight
         }
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: reuseId!)
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: reuseId!)
-            cell!.textLabel?.font = UIFont.systemFont(ofSize: 14)
-        }
-        
-        cell!.textLabel?.text = text
-        
-        return cell!
     }
 }
 
@@ -129,8 +124,6 @@ extension ProfileEditViewController: ProfileEditScene {
     }
     
     func showProfile(with data: ProfileEditData) {
-        displayData = data
-        
         let item = data as? ProfileEditHeaderViewItem
         header.configure(with: item)
     }
