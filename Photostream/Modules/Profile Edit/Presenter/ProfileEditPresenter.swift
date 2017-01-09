@@ -11,6 +11,7 @@ import UIKit
 protocol ProfileEditPresenterInterface: BaseModulePresenter, BaseModuleInteractable {
     
     var updateData: ProfileEditData! { set get }
+    var displayItems: [ProfileEditDisplayItem] { set get }
 }
 
 class ProfileEditPresenter: ProfileEditPresenterInterface {
@@ -23,10 +24,39 @@ class ProfileEditPresenter: ProfileEditPresenterInterface {
     var interactor: ModuleInteractor!
     var wireframe: ModuleWireframe!
     
-    var updateData: ProfileEditData! = ProfileEditDataItem()
+    var displayItems = [ProfileEditDisplayItem]()
+    var updateData: ProfileEditData! = ProfileEditDataItem() {
+        didSet {
+            displayItems.removeAll()
+            
+            var item = ProfileEditDisplayItem()
+            item.infoLabelText = "Username"
+            item.infoEditText = updateData.username
+            displayItems.append(item)
+            
+            item.clear()
+            item.infoLabelText = "First Name"
+            item.infoEditText = updateData.firstName
+            displayItems.append(item)
+            
+            item.clear()
+            item.infoLabelText = "Last Name"
+            item.infoEditText = updateData.lastName
+            displayItems.append(item)
+            
+            item.clear()
+            item.infoLabelText = "Bio"
+            item.infoDetailText = updateData.bio
+            displayItems.append(item)
+        }
+    }
 }
 
 extension ProfileEditPresenter: ProfileEditModuleInterface {
+    
+    var displayItemCount: Int {
+        return displayItems.count
+    }
     
     func exit() {
         var property = WireframeExitProperty()
@@ -69,6 +99,14 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
     
     func set(firstName: String) {
         updateData.firstName = firstName
+    }
+    
+    func displayItem(at index: Int) -> ProfileEditDisplayItem? {
+        guard displayItems.isValid(index) else {
+            return nil
+        }
+        
+        return displayItems[index]
     }
 }
 
