@@ -54,6 +54,7 @@ class ProfileEditTableCell: UITableViewCell {
         case .default:
             infoDetailLabel = UILabel()
             infoDetailLabel!.font = UIFont.systemFont(ofSize: 14)
+            infoDetailLabel!.numberOfLines = 0
             addSubview(infoDetailLabel!)
             
         case .lineEdit:
