@@ -30,6 +30,7 @@ class ProfileEditViewController: UITableViewController {
         tableView.allowsSelection = false
         tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         
         setupNavigationItem()
         
