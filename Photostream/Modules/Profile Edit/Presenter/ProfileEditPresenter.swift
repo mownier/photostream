@@ -120,6 +120,7 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
             }
         }
         
+        view.isSavingViewHidden = false
         interactor.updateProfile(data: editData)
     }
 
@@ -148,11 +149,13 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
 extension ProfileEditPresenter: ProfileEditInteractorOutput {
     
     func didUpdate(data: ProfileEditData) {
+        view.isSavingViewHidden = true
         updateData = data
         view.didUpdate(with: nil)
     }
     
     func didUpdate(error: UserServiceError) {
+        view.isSavingViewHidden = true
         view.didUpdate(with: error.message)
     }
     
