@@ -32,6 +32,10 @@ class ProfileEditViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         setupNavigationItem()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(stopEditing))
+        tap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(tap)
     }
     
     override func viewDidLoad() {
@@ -56,6 +60,10 @@ class ProfileEditViewController: UITableViewController {
     
     func save() {
         
+    }
+    
+    func stopEditing() {
+        view.endEditing(true)
     }
 }
 
