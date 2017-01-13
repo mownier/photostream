@@ -46,7 +46,7 @@ class ProfileEditPresenter: ProfileEditPresenterInterface {
             
             item.clear()
             item.infoLabelText = "BIO"
-            item.infoDetailText = updateData.bio
+            item.infoEditText = updateData.bio
             displayItems.append(item)
         }
     }
@@ -84,29 +84,22 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
         editData.username = updateData.username
         interactor.updateProfile(data: editData)
     }
-    
-    func set(bio: String) {
-        updateData.bio = bio
-    }
-    
-    func set(lastName: String) {
-        updateData.lastName = lastName
-    }
-    
-    func set(username: String) {
-        updateData.username = username
-    }
-    
-    func set(firstName: String) {
-        updateData.firstName = firstName
-    }
-    
+
     func displayItem(at index: Int) -> ProfileEditDisplayItem? {
         guard displayItems.isValid(index) else {
             return nil
         }
         
         return displayItems[index]
+    }
+    
+    func updateDisplayItem(with text: String, at index: Int) {
+        guard var item = displayItem(at: index) else {
+            return
+        }
+        
+        item.infoEditText = text
+        displayItems[index] = item
     }
 }
 
