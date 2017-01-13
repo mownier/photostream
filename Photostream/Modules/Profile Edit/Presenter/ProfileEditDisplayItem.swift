@@ -9,12 +9,10 @@
 struct ProfileEditDisplayItem {
     
     var infoLabelText: String = ""
-    var infoDetailText: String = ""
     var infoEditText: String = ""
     
     mutating func clear() {
         infoLabelText = ""
-        infoDetailText = ""
         infoEditText = ""
     }
 }
