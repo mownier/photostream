@@ -28,4 +28,9 @@ extension ProfileEditDataItem: ProfileEditHeaderViewItem {
     }
 }
 
-extension ProfileEditDisplayItem: ProfileEditTableCellItem { }
+extension ProfileEditDisplayItem: ProfileEditTableCellItem {
+    
+    var infoLabelText: String {
+        return type.labelText
+    }
+ }
