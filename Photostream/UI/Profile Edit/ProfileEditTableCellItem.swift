@@ -11,7 +11,6 @@ import UIKit
 protocol ProfileEditTableCellItem {
 
     var infoLabelText: String { get }
-    var infoDetailText: String { get }
     var infoEditText: String { get }
 }
 
@@ -44,7 +43,7 @@ extension ProfileEditTableCell: ProfileEditTableCellConfig {
         switch style {
         
         case .default:
-            infoDetailLabel!.text = item.infoDetailText
+            infoDetailLabel!.text = item.infoEditText
         
         case .lineEdit:
             infoTextField!.text = item.infoEditText
