@@ -14,8 +14,32 @@ class ProfileEditViewController: UITableViewController {
     lazy var styleDefaultPrototype: ProfileEditTableCell = ProfileEditTableCell(style: .default)
     lazy var styleLineEditPrototype: ProfileEditTableCell = ProfileEditTableCell(style: .lineEdit)
     
+    lazy var savingView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        view.hidesWhenStopped = true
+        return view
+    }()
+    
     var presenter: ProfileEditModuleInterface!
     var displayItems = [ProfileEditDisplayItem]()
+    
+    var isSavingViewHidden: Bool = false {
+        didSet {
+            savingView.frame = view.bounds
+            
+            if isSavingViewHidden {
+                savingView.removeFromSuperview()
+                savingView.stopAnimating()
+                navigationItem.rightBarButtonItem!.isEnabled = true
+                
+            } else {
+                view.addSubview(savingView)
+                savingView.startAnimating()
+                navigationItem.rightBarButtonItem!.isEnabled = false
+            }
+        }
+    }
     
     convenience init() {
         self.init(style: .grouped)
