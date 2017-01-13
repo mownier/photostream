@@ -26,6 +26,27 @@ extension ProfileEditViewController {
             return styleLineEditPrototype.dynamicHeight
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? ProfileEditTableCell else {
+            return
+        }
+        
+        let index = indexPath.row
+        let style = cellStyle(for: index)
+        var text = ""
+        
+        switch style {
+        
+        case .default:
+            text = cell.infoDetailLabel!.text ?? text
+        
+        case .lineEdit:
+            text = cell.infoTextField!.text ?? text
+        }
+        
+        presenter.updateDisplayItem(with: text, at: index)
+    }
 }
 
 extension ProfileEditViewController: ProfileEditHeaderViewDelegate {
@@ -40,5 +61,15 @@ extension ProfileEditViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let cell = textField.superview as? ProfileEditTableCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        
+        let text = textField.text ?? ""
+        presenter.updateDisplayItem(with: text, at: indexPath.row)
     }
 }
