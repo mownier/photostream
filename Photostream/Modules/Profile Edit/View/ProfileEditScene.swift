@@ -11,6 +11,7 @@ import Foundation
 protocol ProfileEditScene: BaseModuleView {
 
     var presenter: ProfileEditModuleInterface! { set get }
+    var isSavingViewHidden: Bool { set get }
     
     func didUpdate(with error: String?)
     func didUpload(with error: String?)
