@@ -17,12 +17,8 @@ protocol ProfileEditModuleInterface: BaseModuleInterface {
     func uploadAvatar(with image: UIImage)
     func updateProfile()
     
-    func set(username: String)
-    func set(bio: String)
-    func set(firstName: String)
-    func set(lastName: String)
-    
     func displayItem(at index: Int) -> ProfileEditDisplayItem?
+    func updateDisplayItem(with text: String, at index: Int)
 }
 
 protocol ProfileEditBuilder: BaseModuleBuilder {
