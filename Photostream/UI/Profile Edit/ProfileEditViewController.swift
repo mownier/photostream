@@ -84,6 +84,7 @@ class ProfileEditViewController: UITableViewController {
     }
     
     func save() {
+        stopEditing()
         presenter.updateProfile()
     }
     
