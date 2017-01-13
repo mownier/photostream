@@ -142,7 +142,7 @@
         <!--Navigation Controller-->
         <scene sceneID="CXO-ZZ-EGc">
             <objects>
-                <navigationController storyboardIdentifier="PhotoPickerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="G0U-Dh-Nqy" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PhotoLibraryNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="G0U-Dh-Nqy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PvE-P8-hYp">
