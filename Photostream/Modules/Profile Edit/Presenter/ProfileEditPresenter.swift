@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileEditPresenterInterface: BaseModulePresenter, BaseModuleInteractable {
     
+    var newAvatarUrl: String! { set get }
     var updateData: ProfileEditData! { set get }
     var displayItems: [ProfileEditDisplayItem] { set get }
 }
@@ -24,29 +25,32 @@ class ProfileEditPresenter: ProfileEditPresenterInterface {
     var interactor: ModuleInteractor!
     var wireframe: ModuleWireframe!
     
+    var newAvatarUrl: String! = ""
     var displayItems = [ProfileEditDisplayItem]()
     var updateData: ProfileEditData! = ProfileEditDataItem() {
         didSet {
             displayItems.removeAll()
             
             var item = ProfileEditDisplayItem()
-            item.infoLabelText = "USERNAME"
+            
+            item.type = .username
             item.infoEditText = updateData.username
+            item.isEditable = true
             displayItems.append(item)
             
-            item.clear()
-            item.infoLabelText = "FIRST NAME"
+            item.type = .firstName
             item.infoEditText = updateData.firstName
+            item.isEditable = true
             displayItems.append(item)
             
-            item.clear()
-            item.infoLabelText = "LAST NAME"
+            item.type = .lastName
             item.infoEditText = updateData.lastName
+            item.isEditable = true
             displayItems.append(item)
             
-            item.clear()
-            item.infoLabelText = "BIO"
+            item.type = .bio
             item.infoEditText = updateData.bio
+            item.isEditable = false
             displayItems.append(item)
         }
     }
@@ -77,11 +81,45 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
     
     func updateProfile() {
         var editData = UserServiceProfileEditData()
-        editData.avatarUrl = updateData.avatarUrl
-        editData.bio = updateData.bio
-        editData.firstName = updateData.firstName
-        editData.lastName = updateData.lastName
-        editData.username = updateData.username
+        
+        if !newAvatarUrl.isEmpty, newAvatarUrl != updateData.avatarUrl {
+            editData.avatarUrl = newAvatarUrl
+        }
+        
+        for item in displayItems {
+            guard !item.infoEditText.isEmpty else {
+                continue
+            }
+            
+            let text = item.infoEditText
+            
+            switch item.type {
+            
+            case .username:
+                if text != updateData.username {
+                    editData.username = text
+                }
+                
+            case .firstName:
+                if text != updateData.firstName {
+                    editData.firstName = text
+                }
+                
+            case .lastName:
+                if text != updateData.lastName {
+                    editData.lastName = text
+                }
+                
+            case .bio:
+                if text != updateData.bio {
+                    editData.bio = text
+                }
+            
+            default:
+                break
+            }
+        }
+        
         interactor.updateProfile(data: editData)
     }
 
@@ -100,6 +138,10 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
         
         item.infoEditText = text
         displayItems[index] = item
+    }
+    
+    func updateAvatarUrl(with url: String) {
+        newAvatarUrl = url
     }
 }
 
