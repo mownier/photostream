@@ -54,6 +54,7 @@ extension ProfileEditWireframeInterface {
     func showPhotoLibrary(parent: UIViewController?, delegate: PhotoLibraryModuleDelegate) {
         let nav = PhotoLibraryWireframe.createNavigationController()
         let view = nav.topViewController as! PhotoLibraryViewController
+        view.style = .style2
         let wireframe = PhotoLibraryWireframe(root: root as? RootWireframeInterface, delegate: delegate, view: view)
         wireframe.present(with: nav, from: parent, animated: true, completion: nil)
     }
