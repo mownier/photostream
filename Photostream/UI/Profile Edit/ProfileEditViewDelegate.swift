@@ -52,7 +52,7 @@ extension ProfileEditViewController {
 extension ProfileEditViewController: ProfileEditHeaderViewDelegate {
     
     func didTapToChangeAvatar() {
-        
+        presenter.presentPhotoLibrary()
     }
 }
 
