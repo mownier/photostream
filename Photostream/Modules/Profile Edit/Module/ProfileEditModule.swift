@@ -11,6 +11,7 @@ import UIKit
 protocol ProfileEditModuleInterface: BaseModuleInterface {
     
     var displayItemCount: Int { get }
+    var updateData: ProfileEditData! { get }
     
     func viewDidLoad()
     
