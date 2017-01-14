@@ -67,7 +67,7 @@ extension ProfileEditPresenter: PhotoLibraryModuleDelegate {
             return
         }
         
-        view.willUpload()
+        view.willUpload(image: avatarImage)
         uploadAvatar(with: avatarImage)
     }
     
