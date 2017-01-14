@@ -636,35 +636,19 @@ struct UserServiceProvider: UserService {
             performUpdates()
             
         } else {
-            let usernameRef = rootRef.child(path1).child("username")
+            let usersRef = rootRef.child("users")
+            var query = usersRef.queryOrdered(byChild: "username")
+            query = query.queryEqual(toValue: data.username)
             
-            usernameRef.observeSingleEvent(of: .value, with: { usernameSnapshot in
-                if !usernameSnapshot.exists() {
-                    updates["\(path1)/username"] = data.username
-                    performUpdates()
-                    
-                } else {
-                    let username = usernameSnapshot.value as! String
-                    if username == data.username {
-                        performUpdates()
-                        
-                    } else {
-                        let usersRef = rootRef.child("users")
-                        var query = usersRef.queryOrdered(byChild: "username")
-                        query = query.queryEqual(toValue: data.username)
-                        
-                        query.observeSingleEvent(of: .value, with: { queryResult in
-                            guard !queryResult.exists() else {
-                                result.error = .failedToEditProfile(message: "Username is already taken")
-                                callback?(result)
-                                return
-                            }
-                            
-                            updates["\(path1)/username"] = data.username
-                            performUpdates()
-                        })
-                    }
+            query.observeSingleEvent(of: .value, with: { queryResult in
+                guard !queryResult.exists() else {
+                    result.error = .failedToEditProfile(message: "Username is already taken")
+                    callback?(result)
+                    return
                 }
+                
+                updates["\(path1)/username"] = data.username
+                performUpdates()
             })
         }
     }
