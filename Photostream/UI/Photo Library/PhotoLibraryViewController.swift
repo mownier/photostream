@@ -39,6 +39,15 @@ class PhotoLibraryViewController: UIViewController {
         dimView.addGestureRecognizer(tap)
         
         contentModeToggleButton.isHidden = style == .style2
+        
+        switch style {
+        
+        case .style2:
+            cropView.cornerRadius = view.frame.width / 2
+            
+        default:
+            break
+        }
     }
     
     override func viewDidLoad() {
