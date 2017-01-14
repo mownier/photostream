@@ -63,16 +63,17 @@ extension UserProfileView: UserProfileViewConfig {
     }
     
     func setupAvatar(with url: String) {
+        let placeholder = avatarImageView.image ?? userImage
+        
         guard let downloadUrl = URL(string: url) else {
-            avatarImageView.image = userImage
+            avatarImageView.image = placeholder
             return
         }
         
         let resource = ImageResource(downloadURL: downloadUrl)
         avatarImageView.kf.setImage(
             with: resource,
-            placeholder:
-            userImage,
+            placeholder: placeholder,
             options: nil,
             progressBlock: nil,
             completionHandler: nil)
