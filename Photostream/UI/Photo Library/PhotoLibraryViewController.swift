@@ -16,6 +16,7 @@ class PhotoLibraryViewController: UIViewController {
     @IBOutlet weak var cropView: CropView!
     @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var cropContentViewConstraintTop: NSLayoutConstraint!
+    @IBOutlet weak var contentModeToggleButton: UIButton!
     
     lazy var scrollHandler = ScrollHandler()
     

@@ -129,6 +129,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="XjD-uC-QOe" id="0tD-Tz-3DU"/>
+                        <outlet property="contentModeToggleButton" destination="JMg-SC-J23" id="NOc-54-WE7"/>
                         <outlet property="cropContentViewConstraintTop" destination="cBn-Qw-Eiq" id="HGo-aB-yyo"/>
                         <outlet property="cropView" destination="i5j-37-gks" id="hJe-T9-V9W"/>
                         <outlet property="dimView" destination="OXC-cy-F0F" id="2ix-Mh-XpT"/>
