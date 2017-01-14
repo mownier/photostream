@@ -49,15 +49,15 @@ extension UserProfileModuleInterface {
         data.firstName = presenter.profile.firstName
         data.lastName = presenter.profile.lastName
         
-        presenter.wireframe.showProfileEdit(from: presenter.view.controller, data: data)
+        presenter.wireframe.showProfileEdit(from: presenter.view.controller, data: data, delegate: presenter)
     }
 }
 
 extension UserProfileWireframeInterface {
     
-    func showProfileEdit(from parent: UIViewController?, data: ProfileEditData) {
+    func showProfileEdit(from parent: UIViewController?, data: ProfileEditData, delegate: ProfileEditDelegate? = nil) {
         let module = ProfileEditModule()
-        module.build(root: root, data: data)
+        module.build(root: root, data: data, delegate: delegate)
         
         var property = WireframeEntryProperty()
         property.parent = parent
@@ -65,5 +65,32 @@ extension UserProfileWireframeInterface {
         
         module.wireframe.style = .push
         module.wireframe.enter(with: property)
+    }
+}
+
+extension UserProfilePresenter: ProfileEditDelegate {
+    
+    func profileEditDidUpdate(data: ProfileEditData) {
+        if !data.avatarUrl.isEmpty, profile.avatarUrl != data.avatarUrl {
+            profile.avatarUrl = data.avatarUrl
+        }
+        
+        if !data.username.isEmpty, profile.username != data.username  {
+            profile.username = data.username
+        }
+        
+        if !data.bio.isEmpty, profile.bio != data.bio {
+            profile.bio = data.bio
+        }
+        
+        if !data.firstName.isEmpty, profile.firstName != data.firstName {
+            profile.firstName = data.firstName
+        }
+        
+        if !data.lastName.isEmpty, profile.lastName != data.lastName {
+            profile.lastName = data.lastName
+        }
+        
+        view.didFetchUserProfile(with: profile)
     }
 }
