@@ -81,7 +81,7 @@ class PhotoLibraryViewController: UIViewController {
 
     @IBAction func didTapDone(_ sender: AnyObject) {
         presenter.done()
-        (presenter as? PhotoLibraryPresenter)?.presentPhotoShare()
+        presenter.dismiss()
     }
     
     @IBAction func didTapCancel(_ sender: AnyObject) {
