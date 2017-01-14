@@ -87,7 +87,7 @@ extension ProfileEditInteractor: ProfileEditInteractorInput {
                 return
             }
             
-            guard result.fileUrl == nil else {
+            guard result.fileUrl != nil else {
                 let error: FileServiceError = .failedToUpload(message: "Uploaded avatar url not found")
                 self?.output?.didUplaodAvatar(error: error)
                 return
