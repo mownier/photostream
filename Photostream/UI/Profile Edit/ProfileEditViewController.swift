@@ -104,15 +104,26 @@ extension ProfileEditViewController: ProfileEditScene {
         header.configure(with: item)
     }
     
+    func willUpload(image: UIImage) {
+        header.avatarImageView.image = image
+        header.progressView.isHidden = false
+    }
+    
     func didUpdate(with error: String?) {
         
     }
     
     func didUpload(with error: String?) {
+        header.progressView.isHidden = true
         
+        if error != nil {
+            let item = presenter.updateData as? ProfileEditHeaderViewItem
+            header.configure(with: item)
+        }
     }
     
     func didUploadWith(progress: Progress) {
-        
+        let percent = Int(progress.fractionCompleted * 100)
+        header.progressView.text = "\(percent) %"
     }
 }
