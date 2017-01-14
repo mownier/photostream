@@ -63,7 +63,12 @@ extension ProfileEditWireframeInterface {
 extension ProfileEditPresenter: PhotoLibraryModuleDelegate {
     
     func photoLibraryDidPick(with image: UIImage?) {
+        guard let avatarImage = image else {
+            return
+        }
         
+        view.willUpload()
+        uploadAvatar(with: avatarImage)
     }
     
     func photoLibraryDidCancel() {
