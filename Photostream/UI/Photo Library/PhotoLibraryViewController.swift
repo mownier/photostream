@@ -126,8 +126,15 @@ extension PhotoLibraryViewController: PhotoLibraryViewInterface {
     }
     
     func showSelectedPhoto(with image: UIImage?) {
-        cropView.setCropTarget(with: image)
-        presenter.fillSelectedPhoto(animated: false)
+        switch style {
+            
+        case .style1:
+            cropView.setCropTarget(with: image, content: .fit)
+            presenter.fillSelectedPhoto(animated: false)
+            
+        case .style2:
+            cropView.setCropTarget(with: image, content: .fill)
+        }
     }
     
     func showSelectedPhotoInFitMode(animated: Bool) {
