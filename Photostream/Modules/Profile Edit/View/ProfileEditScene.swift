@@ -6,7 +6,7 @@
 //  Copyright © 2017 Mounir Ybanez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ProfileEditScene: BaseModuleView {
 
@@ -17,7 +17,7 @@ protocol ProfileEditScene: BaseModuleView {
     func didUpload(with error: String?)
     func didUploadWith(progress: Progress)
     
-    func willUpload()
+    func willUpload(image: UIImage)
     
     func showProfile(with data: ProfileEditData)
 }
