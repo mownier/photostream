@@ -37,6 +37,8 @@ class PhotoLibraryViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapDimView))
         dimView.addGestureRecognizer(tap)
+        
+        contentModeToggleButton.isHidden = style == .style2
     }
     
     override func viewDidLoad() {
