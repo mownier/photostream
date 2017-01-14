@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum CropViewContent {
+    
+    case fit, fill
+}
+
 class CropView: UIScrollView {
     
     var imageView: UIImageView!
@@ -36,7 +41,7 @@ class CropView: UIScrollView {
         zoomScale = 1.0
     }
     
-    func setCropTarget(with image: UIImage?) {
+    func setCropTarget(with image: UIImage?, content: CropViewContent = .fit) {
         guard let image = image else {
             return
         }
@@ -44,11 +49,37 @@ class CropView: UIScrollView {
         setupDefaults()
         
         let imageRect = CGRect(origin: .zero, size: image.size)
-        var fitRect = imageRect.fit(in: bounds)
-        fitRect.ceil()
         
-        imageView.frame = fitRect
+        var rect = CGRect.zero
+        
+        switch content {
+            
+        case .fit:
+            rect = imageRect.fit(in: bounds)
+        
+        case .fill:
+            rect = imageRect.fill(in: bounds)
+        }
+        
+        rect.ceil()
+        
+        imageView.frame = rect
         imageView.image = image
+        
+        contentSize = rect.size
+        adjustContent()
+    }
+    
+    fileprivate func adjustContent() {
+        if imageView.frame.width > bounds.width {
+            contentSize.width -= abs(imageView.frame.origin.x)
+            contentInset.left = abs(imageView.frame.origin.x)
+        }
+        
+        if imageView.frame.height > bounds.height {
+            contentSize.height -= abs(imageView.frame.origin.y)
+            contentInset.top = abs(imageView.frame.origin.y)
+        }
     }
 }
 
@@ -60,6 +91,15 @@ extension CropView: UIScrollViewDelegate {
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         imageView.frame.origin = pointOnZoom
+        
+        if zoomScale > minimumZoomScale {
+            contentSize = imageView.frame.size
+            contentInset.left = 0
+            contentInset.top = 0
+            
+        } else {
+           adjustContent()
+        }
     }
 }
 
