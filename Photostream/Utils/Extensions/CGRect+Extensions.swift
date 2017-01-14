@@ -10,11 +10,7 @@ import UIKit
 
 extension CGRect {
     
-    func fit(in rect: CGRect) -> CGRect {
-        let aspectWidth: CGFloat = rect.size.width / size.width
-        let aspectHeight: CGFloat = rect.size.height / size.height
-        let aspectRatio: CGFloat = min(aspectWidth, aspectHeight)
-        
+    private func newRect(in rect: CGRect, for aspectRatio: CGFloat) -> CGRect {
         let width = size.width * aspectRatio
         let height = size.height * aspectRatio
         
@@ -28,6 +24,24 @@ extension CGRect {
         
         let newRect = CGRect(origin: newOrigin, size: newSize)
         return newRect
+    }
+    
+    private func aspectWidth(for rect: CGRect) -> CGFloat {
+        return rect.size.width / size.width
+    }
+    
+    private func aspectHeight(for rect: CGRect) -> CGFloat {
+        return rect.size.height / size.height
+    }
+    
+    func fit(in rect: CGRect) -> CGRect {
+        let aspectRatio: CGFloat = min(aspectWidth(for: rect), aspectHeight(for: rect))
+        return newRect(in: rect, for: aspectRatio)
+    }
+    
+    func fill(in rect: CGRect) -> CGRect {
+        let aspectRatio: CGFloat = max(aspectWidth(for: rect), aspectHeight(for: rect))
+        return newRect(in: rect, for: aspectRatio)
     }
     
     mutating func ceil() {
