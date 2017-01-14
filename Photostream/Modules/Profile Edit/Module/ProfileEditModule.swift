@@ -22,9 +22,14 @@ protocol ProfileEditModuleInterface: BaseModuleInterface {
     func updateDisplayItem(with text: String, at index: Int)
 }
 
+protocol ProfileEditDelegate: BaseModuleDelegate {
+    
+    func profileEditDidUpdate(data: ProfileEditData)
+}
+
 protocol ProfileEditBuilder: BaseModuleBuilder {
     
-    func build(root: RootWireframe?, data: ProfileEditData)
+    func build(root: RootWireframe?, data: ProfileEditData, delegate: ProfileEditDelegate?)
 }
 
 class ProfileEditModule: BaseModule, BaseModuleInteractable {
@@ -63,8 +68,9 @@ extension ProfileEditModule: ProfileEditBuilder {
         presenter.wireframe = wireframe
     }
     
-    func build(root: RootWireframe?, data: ProfileEditData) {
+    func build(root: RootWireframe?, data: ProfileEditData, delegate: ProfileEditDelegate? = nil) {
         build(root: root)
         presenter.updateData = data
+        presenter.delegate = delegate
     }
 }

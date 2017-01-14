@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ProfileEditPresenterInterface: BaseModulePresenter, BaseModuleInteractable {
+protocol ProfileEditPresenterInterface: BaseModulePresenter, BaseModuleInteractable, BaseModuleDelegatable {
     
     var newAvatarUrl: String! { set get }
     var updateData: ProfileEditData! { set get }
@@ -20,7 +20,9 @@ class ProfileEditPresenter: ProfileEditPresenterInterface {
     typealias ModuleView = ProfileEditScene
     typealias ModuleInteractor = ProfileEditInteractorInput
     typealias ModuleWireframe = ProfileEditWireframeInterface
+    typealias ModuleDelegate = ProfileEditDelegate
     
+    weak var delegate: ModuleDelegate?
     weak var view: ModuleView!
     var interactor: ModuleInteractor!
     var wireframe: ModuleWireframe!
@@ -148,6 +150,7 @@ extension ProfileEditPresenter: ProfileEditInteractorOutput {
         view.isSavingViewHidden = true
         updateData = data
         view.didUpdate(with: nil)
+        delegate?.profileEditDidUpdate(data: updateData)
     }
     
     func didUpdate(error: UserServiceError) {
