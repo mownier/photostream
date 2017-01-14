@@ -140,10 +140,6 @@ extension ProfileEditPresenter: ProfileEditModuleInterface {
         item.infoEditText = text
         displayItems[index] = item
     }
-    
-    func updateAvatarUrl(with url: String) {
-        newAvatarUrl = url
-    }
 }
 
 extension ProfileEditPresenter: ProfileEditInteractorOutput {
@@ -160,7 +156,7 @@ extension ProfileEditPresenter: ProfileEditInteractorOutput {
     }
     
     func didUplaodAvatar(url: String) {
-        updateData.avatarUrl = url
+        newAvatarUrl = url
         view.didUpload(with: nil)
     }
     
