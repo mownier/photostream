@@ -19,6 +19,7 @@ class ProfileEditHeaderView: UIView {
     
     var avatarImageView: UIImageView!
     var avatarButton: UIButton!
+    var progressView: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,12 +42,22 @@ class ProfileEditHeaderView: UIView {
         avatarButton.addTarget(self, action: #selector(self.didTapAvatarButton), for: .touchUpInside)
         avatarButton.setTitle("Change Avatar", for: .normal)
         
+        progressView = UILabel()
+        progressView.textColor = UIColor.white
+        progressView.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
+        progressView.textAlignment = .center
+        progressView.baselineAdjustment = .alignCenters
+        progressView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        progressView.isHidden = true
+        progressView.cornerRadius = avatarImageView.cornerRadius
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapAvatarButton))
         tap.numberOfTapsRequired = 1
         avatarImageView.addGestureRecognizer(tap)
         
         addSubview(avatarImageView)
         addSubview(avatarButton)
+        addSubview(progressView)
     }
     
     override func layoutSubviews() {
@@ -59,6 +70,7 @@ class ProfileEditHeaderView: UIView {
         rect.size.width = avatarDimension
         rect.size.height = avatarDimension
         avatarImageView.frame = rect
+        progressView.frame = rect
         
         rect.origin.x = (frame.width - avatarButton.frame.width) / 2
         rect.origin.y = rect.maxY
