@@ -39,6 +39,8 @@ class CropView: UIScrollView {
     func setupDefaults() {
         contentSize = bounds.size
         zoomScale = 1.0
+        contentInset.left = 0
+        contentInset.top = 0
     }
     
     func setCropTarget(with image: UIImage?, content: CropViewContent = .fit) {
