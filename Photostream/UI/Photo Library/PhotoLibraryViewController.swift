@@ -9,6 +9,11 @@
 import UIKit
 import Photos
 
+enum PhotoLibraryViewControllerStyle {
+    
+    case style1, style2
+}
+
 class PhotoLibraryViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -22,6 +27,7 @@ class PhotoLibraryViewController: UIViewController {
     
     var presenter: PhotoLibraryModuleInterface!
     var selectedIndex: Int = -1
+    var style: PhotoLibraryViewControllerStyle = .style1
     
     override func loadView() {
         super.loadView()
