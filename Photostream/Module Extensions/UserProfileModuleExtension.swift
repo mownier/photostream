@@ -92,5 +92,6 @@ extension UserProfilePresenter: ProfileEditDelegate {
         }
         
         view.didFetchUserProfile(with: profile)
+        delegate?.userProfileDidSetupInfo()
     }
 }
