@@ -14,9 +14,16 @@ protocol UserProfileModuleInterface: BaseModuleInterface {
     func unfollow()
 }
 
+protocol UserProfileDelegate: BaseModuleDelegate {
+    
+    func userProfileDidSetupInfo()
+    func userProfileDidFollow()
+    func userProfileDidUnfollow()
+}
+
 protocol UserProfileBuilder: BaseModuleBuilder {
     
-    func build(root: RootWireframe?, userId: String)
+    func build(root: RootWireframe?, userId: String, delegate: UserProfileDelegate?)
 }
 
 class UserProfileModule: BaseModule, BaseModuleInteractable {
@@ -53,8 +60,9 @@ extension UserProfileModule: UserProfileBuilder {
         presenter.wireframe = wireframe
     }
     
-    func build(root: RootWireframe?, userId: String) {
+    func build(root: RootWireframe?, userId: String, delegate: UserProfileDelegate? = nil) {
         build(root: root)
         presenter.userId = userId
+        presenter.delegate = delegate
     }
 }
