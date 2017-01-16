@@ -51,7 +51,6 @@ class ProfileEditViewController: UITableViewController {
         header.frame.size.width = tableView.frame.width
         header.delegate = self
         
-        tableView.allowsSelection = false
         tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
@@ -60,6 +59,7 @@ class ProfileEditViewController: UITableViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(stopEditing))
         tap.numberOfTapsRequired = 1
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
