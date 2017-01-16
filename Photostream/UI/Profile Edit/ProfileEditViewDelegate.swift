@@ -28,11 +28,13 @@ extension ProfileEditViewController {
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? ProfileEditTableCell else {
+        let index = indexPath.row
+        
+        guard let cell = cell as? ProfileEditTableCell,
+            let item = presenter.displayItem(at: index), item.isEditable else {
             return
         }
         
-        let index = indexPath.row
         let style = cellStyle(for: index)
         var text = ""
         
