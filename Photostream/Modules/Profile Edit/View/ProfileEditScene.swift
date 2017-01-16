@@ -21,5 +21,5 @@ protocol ProfileEditScene: BaseModuleView {
     
     func showProfile(with data: ProfileEditData)
     
-    func reloadDisplayItems()
+    func reloadDisplayItem(at index: Int)
 }

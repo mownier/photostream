@@ -128,6 +128,6 @@ extension ProfileEditPresenter: MultilineEditorDelegate {
         item.infoEditText = text
         displayItems[index] = item
         
-        view.reloadDisplayItems()
+        view.reloadDisplayItem(at: index)
     }
 }
