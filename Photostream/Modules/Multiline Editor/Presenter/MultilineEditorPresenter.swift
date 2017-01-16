@@ -6,7 +6,10 @@
 //  Copyright © 2017 Mounir Ybanez. All rights reserved.
 //
 
-protocol MultilineEditorPresenterInterface: BaseModulePresenter, BaseModuleDelegatable { }
+protocol MultilineEditorPresenterInterface: BaseModulePresenter, BaseModuleDelegatable {
+    
+    var defaultText: String { set get }
+}
 
 class MultilineEditorPresenter: MultilineEditorPresenterInterface {
 
@@ -17,6 +20,7 @@ class MultilineEditorPresenter: MultilineEditorPresenterInterface {
     weak var delegate: ModuleDelegate?
     weak var view: ModuleView!
     var wireframe: ModuleWireframe!
+    var defaultText: String = ""
 }
 
 extension MultilineEditorPresenter: MultilineEditorModuleInterface {
