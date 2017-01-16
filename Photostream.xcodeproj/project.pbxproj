@@ -98,6 +98,10 @@
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
 		B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEF1D51C79300C5E76B /* Main.storyboard */; };
+		B98283091E2C8166006A3E71 /* MulltilineEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283081E2C8166006A3E71 /* MulltilineEditorView.swift */; };
+		B982830B1E2C8182006A3E71 /* MultilineEditorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830A1E2C8182006A3E71 /* MultilineEditorModule.swift */; };
+		B982830D1E2C81B7006A3E71 /* MultilineEditorWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830C1E2C81B7006A3E71 /* MultilineEditorWireframe.swift */; };
+		B982830F1E2C8203006A3E71 /* MultilineEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830E1E2C8203006A3E71 /* MultilineEditorPresenter.swift */; };
 		B9876EAD1E12314000075CFD /* ActivityTableFollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */; };
 		B98992671E139E0000B373ED /* ActivityTablePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98992661E139E0000B373ED /* ActivityTablePostCell.swift */; };
 		B992796A1E11020C00D0F132 /* ActivityTableCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */; };
@@ -393,6 +397,10 @@
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97E3CF01D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B98283081E2C8166006A3E71 /* MulltilineEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulltilineEditorView.swift; sourceTree = "<group>"; };
+		B982830A1E2C8182006A3E71 /* MultilineEditorModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorModule.swift; sourceTree = "<group>"; };
+		B982830C1E2C81B7006A3E71 /* MultilineEditorWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorWireframe.swift; sourceTree = "<group>"; };
+		B982830E1E2C8203006A3E71 /* MultilineEditorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorPresenter.swift; sourceTree = "<group>"; };
 		B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableFollowCell.swift; sourceTree = "<group>"; };
 		B98992661E139E0000B373ED /* ActivityTablePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTablePostCell.swift; sourceTree = "<group>"; };
 		B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableCommentCell.swift; sourceTree = "<group>"; };
@@ -1044,6 +1052,49 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		B98283031E2C8143006A3E71 /* Multiline Editor */ = {
+			isa = PBXGroup;
+			children = (
+				B98283041E2C8143006A3E71 /* Module */,
+				B98283051E2C8143006A3E71 /* Presenter */,
+				B98283061E2C8143006A3E71 /* View */,
+				B98283071E2C8143006A3E71 /* Wireframe */,
+			);
+			path = "Multiline Editor";
+			sourceTree = "<group>";
+		};
+		B98283041E2C8143006A3E71 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B982830A1E2C8182006A3E71 /* MultilineEditorModule.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B98283051E2C8143006A3E71 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B982830E1E2C8203006A3E71 /* MultilineEditorPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B98283061E2C8143006A3E71 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B98283081E2C8166006A3E71 /* MulltilineEditorView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B98283071E2C8143006A3E71 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B982830C1E2C81B7006A3E71 /* MultilineEditorWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		B996961E1E08D5D6008A4811 /* Post Discovery */ = {
 			isa = PBXGroup;
 			children = (
@@ -1316,6 +1367,7 @@
 				B9C216EF1DCC40F900F617FC /* Home */,
 				B9C216F81DCC40F900F617FC /* Login */,
 				B95A06DD1E023A70005B47B6 /* Logout */,
+				B98283031E2C8143006A3E71 /* Multiline Editor */,
 				B9D1AC811E039D72003E8870 /* News Feed */,
 				B978AF2B1DD42EEA007C1AAD /* Photo Capture */,
 				B9D4964A1DE7EAD200CDD58E /* Photo Library */,
@@ -2487,6 +2539,7 @@
 				B9C217D61DCC40F900F617FC /* Photo.swift in Sources */,
 				B9C218111DCC40F900F617FC /* UITextField+Extensions.swift in Sources */,
 				B90920611DD30D730073FB72 /* PhotoPickerModuleExtension.swift in Sources */,
+				B982830F1E2C8203006A3E71 /* MultilineEditorPresenter.swift in Sources */,
 				B9C217991DCC40F900F617FC /* AppDependency.swift in Sources */,
 				B992796A1E11020C00D0F132 /* ActivityTableCommentCell.swift in Sources */,
 				B954EE4D1DE0323E00A0049D /* PostUploadPresenter.swift in Sources */,
@@ -2504,6 +2557,7 @@
 				B9D9C34B1E0D064D002B906B /* UserActivityViewController.swift in Sources */,
 				B9C217D91DCC40F900F617FC /* User.swift in Sources */,
 				B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */,
+				B98283091E2C8166006A3E71 /* MulltilineEditorView.swift in Sources */,
 				B9C217AA1DCC40F900F617FC /* LoginInteractorInterface.swift in Sources */,
 				B954EE5E1DE035D400A0049D /* PostUploadInteractorInterface.swift in Sources */,
 				B9C217AC1DCC40F900F617FC /* LoginPresenter.swift in Sources */,
@@ -2529,6 +2583,7 @@
 				B954EE471DE0013400A0049D /* PhotoShareModuleDelegate.swift in Sources */,
 				B9C217E21DCC40F900F617FC /* FileServiceProvider.swift in Sources */,
 				B9C217B01DCC40F900F617FC /* LoginWireframe.swift in Sources */,
+				B982830D1E2C81B7006A3E71 /* MultilineEditorWireframe.swift in Sources */,
 				B969F43E1DFE6FCD003629F3 /* UserTimelineView.swift in Sources */,
 				B954EE4F1DE0324900A0049D /* PostUploadPresenterInterface.swift in Sources */,
 				B95A06F11E0245C9005B47B6 /* LogoutModuleExtension.swift in Sources */,
@@ -2549,6 +2604,7 @@
 				B95A06E41E023AA0005B47B6 /* LogoutInteractor.swift in Sources */,
 				B9DEB2571DDEDE1700C47C37 /* PhotoSharePresenterInterface.swift in Sources */,
 				B969F43C1DFE4C7E003629F3 /* UserTimelineViewController.swift in Sources */,
+				B982830B1E2C8182006A3E71 /* MultilineEditorModule.swift in Sources */,
 				B997196E1E011B2B00A24C74 /* SettingsScene.swift in Sources */,
 				B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */,
 				B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */,
