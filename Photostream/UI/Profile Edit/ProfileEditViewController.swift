@@ -126,4 +126,8 @@ extension ProfileEditViewController: ProfileEditScene {
         let percent = Int(progress.fractionCompleted * 100)
         header.progressView.text = "\(percent) %"
     }
+    
+    func reloadDisplayItems() {
+        tableView.reloadData()
+    }
 }
