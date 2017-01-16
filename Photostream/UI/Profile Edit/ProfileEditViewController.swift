@@ -110,7 +110,10 @@ extension ProfileEditViewController: ProfileEditScene {
     }
     
     func didUpdate(with error: String?) {
-        
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     func didUpload(with error: String?) {
