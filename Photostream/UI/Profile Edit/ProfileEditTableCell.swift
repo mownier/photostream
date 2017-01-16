@@ -79,7 +79,15 @@ class ProfileEditTableCell: UITableViewCell {
         case .default:
             infoDetailLabel!.sizeToFit()
             rect.origin.y = rect.maxY
-            rect.size.height = infoDetailLabel!.frame.height
+            
+            if infoDetailLabel!.text == nil || infoDetailLabel!.text!.isEmpty {
+                rect.size.height = infoDetailLabel!.font!.pointSize
+                rect.size.height += (spacing * 2)
+                
+            } else {
+                rect.size.height = infoDetailLabel!.frame.height
+            }
+            
             infoDetailLabel!.frame = rect
             
         case .lineEdit:
