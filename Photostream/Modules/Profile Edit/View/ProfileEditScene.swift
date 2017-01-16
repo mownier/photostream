@@ -20,4 +20,6 @@ protocol ProfileEditScene: BaseModuleView {
     func willUpload(image: UIImage)
     
     func showProfile(with data: ProfileEditData)
+    
+    func reloadDisplayItems()
 }
