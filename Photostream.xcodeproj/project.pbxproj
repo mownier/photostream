@@ -98,10 +98,12 @@
 		B97E3CF11D51C79300C5E76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEC1D51C79300C5E76B /* Assets.xcassets */; };
 		B97E3CF21D51C79300C5E76B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CED1D51C79300C5E76B /* LaunchScreen.storyboard */; };
 		B97E3CF31D51C79300C5E76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E3CEF1D51C79300C5E76B /* Main.storyboard */; };
-		B98283091E2C8166006A3E71 /* MulltilineEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283081E2C8166006A3E71 /* MulltilineEditorView.swift */; };
+		B98283091E2C8166006A3E71 /* MulltilineEditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283081E2C8166006A3E71 /* MulltilineEditorScene.swift */; };
 		B982830B1E2C8182006A3E71 /* MultilineEditorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830A1E2C8182006A3E71 /* MultilineEditorModule.swift */; };
 		B982830D1E2C81B7006A3E71 /* MultilineEditorWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830C1E2C81B7006A3E71 /* MultilineEditorWireframe.swift */; };
 		B982830F1E2C8203006A3E71 /* MultilineEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830E1E2C8203006A3E71 /* MultilineEditorPresenter.swift */; };
+		B98283121E2C85BB006A3E71 /* MultilineEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283111E2C85BB006A3E71 /* MultilineEditorViewController.swift */; };
+		B98283141E2C8610006A3E71 /* MultilineEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283131E2C8610006A3E71 /* MultilineEditorView.swift */; };
 		B9876EAD1E12314000075CFD /* ActivityTableFollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */; };
 		B98992671E139E0000B373ED /* ActivityTablePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98992661E139E0000B373ED /* ActivityTablePostCell.swift */; };
 		B992796A1E11020C00D0F132 /* ActivityTableCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */; };
@@ -397,10 +399,12 @@
 		B97E3CEC1D51C79300C5E76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B97E3CEE1D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B97E3CF01D51C79300C5E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B98283081E2C8166006A3E71 /* MulltilineEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulltilineEditorView.swift; sourceTree = "<group>"; };
+		B98283081E2C8166006A3E71 /* MulltilineEditorScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulltilineEditorScene.swift; sourceTree = "<group>"; };
 		B982830A1E2C8182006A3E71 /* MultilineEditorModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorModule.swift; sourceTree = "<group>"; };
 		B982830C1E2C81B7006A3E71 /* MultilineEditorWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorWireframe.swift; sourceTree = "<group>"; };
 		B982830E1E2C8203006A3E71 /* MultilineEditorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorPresenter.swift; sourceTree = "<group>"; };
+		B98283111E2C85BB006A3E71 /* MultilineEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorViewController.swift; sourceTree = "<group>"; };
+		B98283131E2C8610006A3E71 /* MultilineEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorView.swift; sourceTree = "<group>"; };
 		B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableFollowCell.swift; sourceTree = "<group>"; };
 		B98992661E139E0000B373ED /* ActivityTablePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTablePostCell.swift; sourceTree = "<group>"; };
 		B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableCommentCell.swift; sourceTree = "<group>"; };
@@ -1082,7 +1086,7 @@
 		B98283061E2C8143006A3E71 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B98283081E2C8166006A3E71 /* MulltilineEditorView.swift */,
+				B98283081E2C8166006A3E71 /* MulltilineEditorScene.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1093,6 +1097,15 @@
 				B982830C1E2C81B7006A3E71 /* MultilineEditorWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B98283101E2C859E006A3E71 /* Multiline Editor */ = {
+			isa = PBXGroup;
+			children = (
+				B98283111E2C85BB006A3E71 /* MultilineEditorViewController.swift */,
+				B98283131E2C8610006A3E71 /* MultilineEditorView.swift */,
+			);
+			path = "Multiline Editor";
 			sourceTree = "<group>";
 		};
 		B996961E1E08D5D6008A4811 /* Post Discovery */ = {
@@ -1586,6 +1599,7 @@
 		B9C2174F1DCC40F900F617FC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B98283101E2C859E006A3E71 /* Multiline Editor */,
 				B94131271DEEAE8A00DD10CE /* Comment Controller */,
 				B9C217501DCC40F900F617FC /* Comment Feed */,
 				B94131221DEEA85E00DD10CE /* Comment Writer */,
@@ -2557,7 +2571,7 @@
 				B9D9C34B1E0D064D002B906B /* UserActivityViewController.swift in Sources */,
 				B9C217D91DCC40F900F617FC /* User.swift in Sources */,
 				B9C217A31DCC40F900F617FC /* HomePresenter.swift in Sources */,
-				B98283091E2C8166006A3E71 /* MulltilineEditorView.swift in Sources */,
+				B98283091E2C8166006A3E71 /* MulltilineEditorScene.swift in Sources */,
 				B9C217AA1DCC40F900F617FC /* LoginInteractorInterface.swift in Sources */,
 				B954EE5E1DE035D400A0049D /* PostUploadInteractorInterface.swift in Sources */,
 				B9C217AC1DCC40F900F617FC /* LoginPresenter.swift in Sources */,
@@ -2610,6 +2624,7 @@
 				B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */,
 				B9D9C3461E0CFF0D002B906B /* UserActivityPresenter.swift in Sources */,
 				B94AB2CD1DF692F000313254 /* UserPostModule.swift in Sources */,
+				B98283121E2C85BB006A3E71 /* MultilineEditorViewController.swift in Sources */,
 				B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */,
 				B99719721E011BB000A24C74 /* SettingsPresenter.swift in Sources */,
 				B9C217C21DCC40F900F617FC /* RegistrationInteractorInterface.swift in Sources */,
@@ -2660,6 +2675,7 @@
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
 				B9D496971DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift in Sources */,
 				B9D4965E1DE7EAD200CDD58E /* PhotoLibraryModuleDelegate.swift in Sources */,
+				B98283141E2C8610006A3E71 /* MultilineEditorView.swift in Sources */,
 				B9C2180E1DCC40F900F617FC /* String+Extensions.swift in Sources */,
 				B9D1AC9A1E039D72003E8870 /* NewsFeedScene.swift in Sources */,
 				B9B8AE2D1DFA7D9F00D190A5 /* UserPostViewDelegate.swift in Sources */,
