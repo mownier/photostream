@@ -45,7 +45,9 @@ extension ProfileEditViewController {
             text = cell.infoTextField!.text ?? text
         }
         
-        presenter.updateDisplayItem(with: text, at: index)
+        if !text.isEmpty {
+            presenter.updateDisplayItem(with: text, at: index)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
