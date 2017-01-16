@@ -24,7 +24,7 @@ extension ProfileEditViewController {
         let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
         cell.configure(with: item)
         cell.infoTextField?.delegate = self
-        
+        cell.selectionStyle = .none
         return cell
     }
     
