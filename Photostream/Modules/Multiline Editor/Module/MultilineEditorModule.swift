@@ -20,7 +20,7 @@ protocol MultilineEditorDelegate: BaseModuleDelegate {
 
 protocol MultilineEditorBuilder: BaseModuleBuilder {
     
-    func build(root: RootWireframe, defaultText: String, delegate: MultilineEditorDelegate?)
+    func build(root: RootWireframe?, defaultText: String, delegate: MultilineEditorDelegate?)
 }
 
 class MultilineEditorModule: BaseModule {
@@ -50,7 +50,7 @@ extension MultilineEditorModule: MultilineEditorBuilder {
         presenter.wireframe = wireframe
     }
     
-    func build(root: RootWireframe, defaultText: String = "", delegate: MultilineEditorDelegate?) {
+    func build(root: RootWireframe?, defaultText: String = "", delegate: MultilineEditorDelegate?) {
         build(root: root)
         presenter.delegate = delegate
         presenter.defaultText = defaultText
