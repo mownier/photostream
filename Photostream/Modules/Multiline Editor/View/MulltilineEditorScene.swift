@@ -9,4 +9,6 @@
 protocol MultilineEditorScene: BaseModuleView {
 
     var presenter: MultilineEditorModuleInterface! { set get }
+    
+    func setupDefaultText(text: String)
 }

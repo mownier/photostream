@@ -8,6 +8,7 @@
 
 protocol MultilineEditorModuleInterface: BaseModuleInterface {
 
+    func viewDidLoad()
     func cancel()
     func save(text: String)
 }

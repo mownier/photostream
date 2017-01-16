@@ -22,6 +22,12 @@ class MultilineEditorViewController: UIViewController {
         setupNavigationItem()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        presenter.viewDidLoad()
+    }
+    
     func setupNavigationItem() {
         navigationItem.title = "Edit"
         
@@ -46,5 +52,9 @@ extension MultilineEditorViewController: MultilineEditorScene {
     
     var controller: UIViewController? {
         return self
+    }
+    
+    func setupDefaultText(text: String) {
+        multilineEditorView.textView.text = text
     }
 }

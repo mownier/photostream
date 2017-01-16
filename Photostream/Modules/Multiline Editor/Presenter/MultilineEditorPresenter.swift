@@ -31,6 +31,10 @@ extension MultilineEditorPresenter: MultilineEditorModuleInterface {
         wireframe.exit(with: property)
     }
     
+    func viewDidLoad() {
+        view.setupDefaultText(text: defaultText)
+    }
+    
     func cancel() {
         delegate?.multilineEditorDidCancel()
         exit()
