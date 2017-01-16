@@ -119,6 +119,15 @@ extension ProfileEditPresenter: MultilineEditorDelegate {
     }
     
     func multilineEditorDidSave(text: String) {
+        guard let index = displayItems.index(where: { item -> Bool in
+            return item.type == .bio
+        }), var item = displayItem(at: index) else {
+            return
+        }
+    
+        item.infoEditText = text
+        displayItems[index] = item
         
+        view.reloadDisplayItems()
     }
 }
