@@ -62,7 +62,7 @@ class UserTimelineViewController: UIViewController, BaseModuleWireframe {
     
     func setupUserProfileModule() {
         let module = UserProfileModule()
-        module.build(root: root, userId: userId)
+        module.build(root: root, userId: userId, delegate: self)
         module.wireframe.style = .attach
         userProfilePresenter = module.presenter
         
@@ -181,5 +181,23 @@ extension UserTimelineViewController: ScrollEventListener {
     
     private var headerOriginY: CGFloat {
         return userTimelineView.header.frame.origin.y
+    }
+}
+
+extension UserTimelineViewController: UserProfileDelegate {
+    
+    func userProfileDidSetupInfo() {
+        userTimelineView.header.setNeedsLayout()
+        userTimelineView.header.layoutIfNeeded()
+        userTimelineView.setNeedsLayout()
+        userTimelineView.layoutIfNeeded()
+    }
+    
+    func userProfileDidFollow() {
+        
+    }
+    
+    func userProfileDidUnfollow() {
+        
     }
 }
