@@ -56,6 +56,21 @@ extension ProfileEditModuleInterface {
         let controller = presenter.view.controller
         presenter.wireframe.showBioEditor(parent: controller, defaultText: defaultText, delegate: presenter)
     }
+    
+    func selectDisplayItem(at index: Int) {
+        guard let item = displayItem(at: index), !item.isEditable else {
+            return
+        }
+        
+        switch item.type {
+        
+        case .bio:
+            presentBioEditor(defaultText: item.infoEditText)
+        
+        default:
+            break
+        }
+    }
 }
 
 extension ProfileEditWireframeInterface {
