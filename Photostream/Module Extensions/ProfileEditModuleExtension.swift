@@ -47,6 +47,15 @@ extension ProfileEditModuleInterface {
         let controller = presenter.view.controller
         presenter.wireframe.showPhotoLibrary(parent: controller, delegate: presenter)
     }
+    
+    func presentBioEditor(defaultText: String) {
+        guard let presenter = self as? ProfileEditPresenter else {
+            return
+        }
+        
+        let controller = presenter.view.controller
+        presenter.wireframe.showBioEditor(parent: controller, defaultText: defaultText, delegate: presenter)
+    }
 }
 
 extension ProfileEditWireframeInterface {
@@ -57,6 +66,18 @@ extension ProfileEditWireframeInterface {
         view.style = .style2
         let wireframe = PhotoLibraryWireframe(root: root as? RootWireframeInterface, delegate: delegate, view: view)
         wireframe.present(with: nav, from: parent, animated: true, completion: nil)
+    }
+    
+    func showBioEditor(parent: UIViewController?, defaultText: String, delegate: MultilineEditorDelegate) {
+        let module = MultilineEditorModule()
+        module.build(root: root, defaultText: defaultText, delegate: delegate)
+        
+        var property = WireframeEntryProperty()
+        property.controller = module.view.controller
+        property.parent = parent
+        
+        module.wireframe.style = .push
+        module.wireframe.enter(with: property)
     }
 }
 
@@ -76,4 +97,13 @@ extension ProfileEditPresenter: PhotoLibraryModuleDelegate {
     }
 }
 
-
+extension ProfileEditPresenter: MultilineEditorDelegate {
+    
+    func multilineEditorDidCancel() {
+        
+    }
+    
+    func multilineEditorDidSave(text: String) {
+        
+    }
+}
