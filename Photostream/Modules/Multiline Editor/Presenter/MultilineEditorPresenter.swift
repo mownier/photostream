@@ -29,9 +29,11 @@ extension MultilineEditorPresenter: MultilineEditorModuleInterface {
     
     func cancel() {
         delegate?.multilineEditorDidCancel()
+        exit()
     }
     
     func save(text: String) {
         delegate?.multilineEditorDidSave(text: text)
+        exit()
     }
 }
