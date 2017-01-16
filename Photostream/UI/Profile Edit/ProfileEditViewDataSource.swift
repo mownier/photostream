@@ -29,12 +29,10 @@ extension ProfileEditViewController {
     }
     
     func cellStyle(for index: Int) -> ProfileEditTableCellStyle {
-        switch index {
-            
-        case 0, 1, 2:
+        if let item = presenter.displayItem(at: index), item.isEditable {
             return .lineEdit
             
-        default:
+        } else {
             return .default
         }
     }
