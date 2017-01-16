@@ -24,6 +24,7 @@ class MultilineEditorView: UIView {
     
     func initSetup() {
         textView = UITextView()
+        textView.font = UIFont.systemFont(ofSize: 14)
         
         addSubview(textView)
     }
