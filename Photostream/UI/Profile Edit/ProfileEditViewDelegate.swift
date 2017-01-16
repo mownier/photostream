@@ -47,6 +47,10 @@ extension ProfileEditViewController {
         
         presenter.updateDisplayItem(with: text, at: index)
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.selectDisplayItem(at: indexPath.row)
+    }
 }
 
 extension ProfileEditViewController: ProfileEditHeaderViewDelegate {
