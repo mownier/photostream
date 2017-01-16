@@ -102,9 +102,9 @@
 		B982830B1E2C8182006A3E71 /* MultilineEditorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830A1E2C8182006A3E71 /* MultilineEditorModule.swift */; };
 		B982830D1E2C81B7006A3E71 /* MultilineEditorWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830C1E2C81B7006A3E71 /* MultilineEditorWireframe.swift */; };
 		B982830F1E2C8203006A3E71 /* MultilineEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982830E1E2C8203006A3E71 /* MultilineEditorPresenter.swift */; };
-		B98283121E2C85BB006A3E71 /* MultilineEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283111E2C85BB006A3E71 /* MultilineEditorViewController.swift */; };
 		B98283141E2C8610006A3E71 /* MultilineEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283131E2C8610006A3E71 /* MultilineEditorView.swift */; };
 		B98283161E2C8F71006A3E71 /* MultilineEditorModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283151E2C8F71006A3E71 /* MultilineEditorModuleExtension.swift */; };
+		B98283181E2CA6EB006A3E71 /* MultilineEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98283171E2CA6EB006A3E71 /* MultilineEditorViewController.swift */; };
 		B9876EAD1E12314000075CFD /* ActivityTableFollowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */; };
 		B98992671E139E0000B373ED /* ActivityTablePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98992661E139E0000B373ED /* ActivityTablePostCell.swift */; };
 		B992796A1E11020C00D0F132 /* ActivityTableCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */; };
@@ -404,9 +404,9 @@
 		B982830A1E2C8182006A3E71 /* MultilineEditorModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorModule.swift; sourceTree = "<group>"; };
 		B982830C1E2C81B7006A3E71 /* MultilineEditorWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorWireframe.swift; sourceTree = "<group>"; };
 		B982830E1E2C8203006A3E71 /* MultilineEditorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorPresenter.swift; sourceTree = "<group>"; };
-		B98283111E2C85BB006A3E71 /* MultilineEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorViewController.swift; sourceTree = "<group>"; };
 		B98283131E2C8610006A3E71 /* MultilineEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorView.swift; sourceTree = "<group>"; };
 		B98283151E2C8F71006A3E71 /* MultilineEditorModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorModuleExtension.swift; sourceTree = "<group>"; };
+		B98283171E2CA6EB006A3E71 /* MultilineEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineEditorViewController.swift; sourceTree = "<group>"; };
 		B9876EAC1E12314000075CFD /* ActivityTableFollowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableFollowCell.swift; sourceTree = "<group>"; };
 		B98992661E139E0000B373ED /* ActivityTablePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTablePostCell.swift; sourceTree = "<group>"; };
 		B99279691E11020C00D0F132 /* ActivityTableCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableCommentCell.swift; sourceTree = "<group>"; };
@@ -1104,8 +1104,8 @@
 		B98283101E2C859E006A3E71 /* Multiline Editor */ = {
 			isa = PBXGroup;
 			children = (
-				B98283111E2C85BB006A3E71 /* MultilineEditorViewController.swift */,
 				B98283131E2C8610006A3E71 /* MultilineEditorView.swift */,
+				B98283171E2CA6EB006A3E71 /* MultilineEditorViewController.swift */,
 			);
 			path = "Multiline Editor";
 			sourceTree = "<group>";
@@ -2494,6 +2494,7 @@
 				B99B497D1DEC1E68001B9C5A /* BaseModulePresenter.swift in Sources */,
 				B9E408511DFBCE8300B7076A /* UserProfileView.swift in Sources */,
 				B99B497E1DEC1E68001B9C5A /* BaseModuleView.swift in Sources */,
+				B98283181E2CA6EB006A3E71 /* MultilineEditorViewController.swift in Sources */,
 				B9D9C3521E0D0779002B906B /* ActivityTableLikeCell.swift in Sources */,
 				B9D4968A1DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift in Sources */,
 				B99719771E0121B400A24C74 /* SettingsViewController.swift in Sources */,
@@ -2627,7 +2628,6 @@
 				B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */,
 				B9D9C3461E0CFF0D002B906B /* UserActivityPresenter.swift in Sources */,
 				B94AB2CD1DF692F000313254 /* UserPostModule.swift in Sources */,
-				B98283121E2C85BB006A3E71 /* MultilineEditorViewController.swift in Sources */,
 				B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */,
 				B99719721E011BB000A24C74 /* SettingsPresenter.swift in Sources */,
 				B98283161E2C8F71006A3E71 /* MultilineEditorModuleExtension.swift in Sources */,

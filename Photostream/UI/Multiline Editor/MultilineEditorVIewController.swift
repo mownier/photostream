@@ -16,6 +16,7 @@ class MultilineEditorViewController: UIViewController {
     override func loadView() {
         let bounds = UIScreen.main.bounds
         multilineEditorView = MultilineEditorView(frame: bounds)
+        multilineEditorView.textView.becomeFirstResponder()
         view = multilineEditorView
         
         setupNavigationItem()
