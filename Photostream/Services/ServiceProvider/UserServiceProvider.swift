@@ -705,7 +705,7 @@ extension UserServiceProvider {
                     userRef.observeSingleEvent(of: .value, with: { userSnapshot in
                         let user = User(with: userSnapshot, exception: "email")
                         
-                        if isFollowingSnapshot.exists(), following[userId] != nil {
+                        if isFollowingSnapshot.exists(), following[userId] == nil {
                             following[userId] = user
                         }
                         
