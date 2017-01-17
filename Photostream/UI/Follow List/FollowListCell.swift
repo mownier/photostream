@@ -39,11 +39,11 @@ class FollowListCell: UITableViewCell {
         actionButton = UIButton()
         actionButton.cornerRadius = 2
         actionButton.addTarget(self, action: #selector(self.didTapAction), for: .touchUpInside)
-        actionButton.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+        actionButton.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
         actionButton.borderWidth = 1
         actionButton.setTitle("Action", for: .normal)
         actionButton.setTitleColor(UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1), for: .normal)
-        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
         
         avatarImageView = UIImageView()
         avatarImageView.cornerRadius = avatarDimension / 2
@@ -51,7 +51,7 @@ class FollowListCell: UITableViewCell {
         avatarImageView.backgroundColor = .lightGray
         
         displayNameLabel = UILabel()
-        displayNameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
+        displayNameLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
         
         addSubview(actionButton)
         addSubview(avatarImageView)
@@ -61,7 +61,7 @@ class FollowListCell: UITableViewCell {
     override func layoutSubviews() {
         var rect = CGRect.zero
         
-        rect.size.width = 96
+        rect.size.width = 80
         rect.size.height = 32
         rect.origin.y = (spacing * 2)
         rect.origin.x = frame.width
