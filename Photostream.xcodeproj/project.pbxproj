@@ -78,6 +78,12 @@
 		B95A06EC1E023F5A005B47B6 /* LogoutWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06EB1E023F5A005B47B6 /* LogoutWireframe.swift */; };
 		B95A06EF1E0241EB005B47B6 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06EE1E0241EB005B47B6 /* LogoutViewController.swift */; };
 		B95A06F11E0245C9005B47B6 /* LogoutModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A06F01E0245C9005B47B6 /* LogoutModuleExtension.swift */; };
+		B9670C951E2DCAB300F27EE4 /* FollowListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670C941E2DCAB300F27EE4 /* FollowListInteractor.swift */; };
+		B9670C971E2DCB5000F27EE4 /* FollowListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670C961E2DCB5000F27EE4 /* FollowListModule.swift */; };
+		B9670C991E2DCCD400F27EE4 /* FollowListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670C981E2DCCD400F27EE4 /* FollowListScene.swift */; };
+		B9670C9B1E2DCE3800F27EE4 /* FollowListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670C9A1E2DCE3800F27EE4 /* FollowListWireframe.swift */; };
+		B9670C9D1E2DCE7600F27EE4 /* FollowListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670C9C1E2DCE7600F27EE4 /* FollowListPresenter.swift */; };
+		B9670CA11E2DCE9A00F27EE4 /* FollowListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CA01E2DCE9A00F27EE4 /* FollowListData.swift */; };
 		B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */; };
 		B9690BFD1DE56607007E4593 /* PostUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFC1DE56607007E4593 /* PostUploadView.swift */; };
 		B9690C031DE56E31007E4593 /* UploadedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690C021DE56E31007E4593 /* UploadedPost.swift */; };
@@ -379,6 +385,12 @@
 		B95A06EB1E023F5A005B47B6 /* LogoutWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutWireframe.swift; sourceTree = "<group>"; };
 		B95A06EE1E0241EB005B47B6 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		B95A06F01E0245C9005B47B6 /* LogoutModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutModuleExtension.swift; sourceTree = "<group>"; };
+		B9670C941E2DCAB300F27EE4 /* FollowListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListInteractor.swift; sourceTree = "<group>"; };
+		B9670C961E2DCB5000F27EE4 /* FollowListModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListModule.swift; sourceTree = "<group>"; };
+		B9670C981E2DCCD400F27EE4 /* FollowListScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListScene.swift; sourceTree = "<group>"; };
+		B9670C9A1E2DCE3800F27EE4 /* FollowListWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListWireframe.swift; sourceTree = "<group>"; };
+		B9670C9C1E2DCE7600F27EE4 /* FollowListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListPresenter.swift; sourceTree = "<group>"; };
+		B9670CA01E2DCE9A00F27EE4 /* FollowListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListData.swift; sourceTree = "<group>"; };
 		B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadViewController.swift; sourceTree = "<group>"; };
 		B9690BFC1DE56607007E4593 /* PostUploadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadView.swift; sourceTree = "<group>"; };
 		B9690C021DE56E31007E4593 /* UploadedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadedPost.swift; sourceTree = "<group>"; };
@@ -973,6 +985,59 @@
 			path = Logout;
 			sourceTree = "<group>";
 		};
+		B9670C8E1E2DCA9C00F27EE4 /* Follow List */ = {
+			isa = PBXGroup;
+			children = (
+				B9670C8F1E2DCA9C00F27EE4 /* Interactor */,
+				B9670C901E2DCA9C00F27EE4 /* Module */,
+				B9670C911E2DCA9C00F27EE4 /* Presenter */,
+				B9670C921E2DCA9C00F27EE4 /* View */,
+				B9670C931E2DCA9C00F27EE4 /* Wireframe */,
+			);
+			path = "Follow List";
+			sourceTree = "<group>";
+		};
+		B9670C8F1E2DCA9C00F27EE4 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B9670C941E2DCAB300F27EE4 /* FollowListInteractor.swift */,
+				B9670CA01E2DCE9A00F27EE4 /* FollowListData.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B9670C901E2DCA9C00F27EE4 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B9670C961E2DCB5000F27EE4 /* FollowListModule.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B9670C911E2DCA9C00F27EE4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B9670C9C1E2DCE7600F27EE4 /* FollowListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B9670C921E2DCA9C00F27EE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9670C981E2DCCD400F27EE4 /* FollowListScene.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9670C931E2DCA9C00F27EE4 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B9670C9A1E2DCE3800F27EE4 /* FollowListWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		B9690BF91DE565D0007E4593 /* Post Upload */ = {
 			isa = PBXGroup;
 			children = (
@@ -1380,6 +1445,7 @@
 				B9C216E91DCC40F900F617FC /* Base */,
 				B99B495A1DEC1D31001B9C5A /* Comment Feed */,
 				B94130B91DEE9BC300DD10CE /* Comment Writer */,
+				B9670C8E1E2DCA9C00F27EE4 /* Follow List */,
 				B9C216EF1DCC40F900F617FC /* Home */,
 				B9C216F81DCC40F900F617FC /* Login */,
 				B95A06DD1E023A70005B47B6 /* Logout */,
@@ -2558,6 +2624,7 @@
 				B9C218111DCC40F900F617FC /* UITextField+Extensions.swift in Sources */,
 				B90920611DD30D730073FB72 /* PhotoPickerModuleExtension.swift in Sources */,
 				B982830F1E2C8203006A3E71 /* MultilineEditorPresenter.swift in Sources */,
+				B9670CA11E2DCE9A00F27EE4 /* FollowListData.swift in Sources */,
 				B9C217991DCC40F900F617FC /* AppDependency.swift in Sources */,
 				B992796A1E11020C00D0F132 /* ActivityTableCommentCell.swift in Sources */,
 				B954EE4D1DE0323E00A0049D /* PostUploadPresenter.swift in Sources */,
@@ -2624,6 +2691,7 @@
 				B969F43C1DFE4C7E003629F3 /* UserTimelineViewController.swift in Sources */,
 				B982830B1E2C8182006A3E71 /* MultilineEditorModule.swift in Sources */,
 				B997196E1E011B2B00A24C74 /* SettingsScene.swift in Sources */,
+				B9670C951E2DCAB300F27EE4 /* FollowListInteractor.swift in Sources */,
 				B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */,
 				B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */,
 				B9D9C3461E0CFF0D002B906B /* UserActivityPresenter.swift in Sources */,
@@ -2660,6 +2728,7 @@
 				B9D496961DE7EE3F00CDD58E /* PhotoPickerViewController.swift in Sources */,
 				B9876EAD1E12314000075CFD /* ActivityTableFollowCell.swift in Sources */,
 				B930710D1E2359DB00BF73F6 /* ProfileEditDisplayItem.swift in Sources */,
+				B9670C971E2DCB5000F27EE4 /* FollowListModule.swift in Sources */,
 				B9C217E01DCC40F900F617FC /* AuthenticationServiceProvider.swift in Sources */,
 				B9E408401DFBBA5000B7076A /* UserProfileInteractor.swift in Sources */,
 				B9E048011E20B0050099B6C5 /* ProfileEditModule.swift in Sources */,
@@ -2698,12 +2767,14 @@
 				B91B3DEB1DF1573700E39544 /* KeyboardHandler.swift in Sources */,
 				B941311B1DEEA23700DD10CE /* CommentWriterWireframe.swift in Sources */,
 				B94131261DEEA9B300DD10CE /* CommentWriterModuleExtension.swift in Sources */,
+				B9670C9D1E2DCE7600F27EE4 /* FollowListPresenter.swift in Sources */,
 				B9D4967B1DE7EB5F00CDD58E /* PhotoLibraryViewController.swift in Sources */,
 				B94AB2DC1DF6A2D600313254 /* PostGridCollectionCell.swift in Sources */,
 				B9C2179C1DCC40F900F617FC /* LoginModuleExtension.swift in Sources */,
 				B9D4968F1DE7EDE300CDD58E /* PhotoPickerWireframeInterface.swift in Sources */,
 				B9C217DE1DCC40F900F617FC /* PostService.swift in Sources */,
 				B92B96F91DDAD8DB00D89025 /* CropView.swift in Sources */,
+				B9670C991E2DCCD400F27EE4 /* FollowListScene.swift in Sources */,
 				B9C2179A1DCC40F900F617FC /* AppWireframe.swift in Sources */,
 				B9DEB2611DDEDE5200C47C37 /* PhotoShareWireframe.swift in Sources */,
 				B9C2179E1DCC40F900F617FC /* RegistrationModuleExtension.swift in Sources */,
@@ -2735,6 +2806,7 @@
 				B95A06EF1E0241EB005B47B6 /* LogoutViewController.swift in Sources */,
 				B9C217D41DCC40F900F617FC /* AuthSession.swift in Sources */,
 				B9D1AC921E039D72003E8870 /* NewsFeedData.swift in Sources */,
+				B9670C9B1E2DCE3800F27EE4 /* FollowListWireframe.swift in Sources */,
 				B9D4967A1DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift in Sources */,
 				B9C217EE1DCC40F900F617FC /* NewsFeedViewController.swift in Sources */,
 				B930710F1E23698600BF73F6 /* ProfileEditViewDelegate.swift in Sources */,
