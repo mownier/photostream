@@ -89,6 +89,7 @@
 		B9670CA81E2DF1F300F27EE4 /* FollowListViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CA71E2DF1F300F27EE4 /* FollowListViewDelegate.swift */; };
 		B9670CAA1E2DF53E00F27EE4 /* FollowListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CA91E2DF53E00F27EE4 /* FollowListCell.swift */; };
 		B9670CAC1E2DF54E00F27EE4 /* FollowListCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CAB1E2DF54E00F27EE4 /* FollowListCellItem.swift */; };
+		B9670CAE1E2E009F00F27EE4 /* FollowListModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CAD1E2E009F00F27EE4 /* FollowListModuleExtension.swift */; };
 		B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */; };
 		B9690BFD1DE56607007E4593 /* PostUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFC1DE56607007E4593 /* PostUploadView.swift */; };
 		B9690C031DE56E31007E4593 /* UploadedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690C021DE56E31007E4593 /* UploadedPost.swift */; };
@@ -401,6 +402,7 @@
 		B9670CA71E2DF1F300F27EE4 /* FollowListViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListViewDelegate.swift; sourceTree = "<group>"; };
 		B9670CA91E2DF53E00F27EE4 /* FollowListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListCell.swift; sourceTree = "<group>"; };
 		B9670CAB1E2DF54E00F27EE4 /* FollowListCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListCellItem.swift; sourceTree = "<group>"; };
+		B9670CAD1E2E009F00F27EE4 /* FollowListModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListModuleExtension.swift; sourceTree = "<group>"; };
 		B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadViewController.swift; sourceTree = "<group>"; };
 		B9690BFC1DE56607007E4593 /* PostUploadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadView.swift; sourceTree = "<group>"; };
 		B9690C021DE56E31007E4593 /* UploadedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadedPost.swift; sourceTree = "<group>"; };
@@ -1440,6 +1442,7 @@
 			children = (
 				B933ADF51DED50D900FAE922 /* CommentFeedExtension.swift */,
 				B94131251DEEA9B300DD10CE /* CommentWriterModuleExtension.swift */,
+				B9670CAD1E2E009F00F27EE4 /* FollowListModuleExtension.swift */,
 				B9C216E31DCC40F900F617FC /* HomeModuleExtension.swift */,
 				B9C216E41DCC40F900F617FC /* LoginModuleExtension.swift */,
 				B95A06F01E0245C9005B47B6 /* LogoutModuleExtension.swift */,
@@ -2658,6 +2661,7 @@
 				B941311F1DEEA30C00DD10CE /* CommentWriterScene.swift in Sources */,
 				B9C217C81DCC40F900F617FC /* RegistrationWireframe.swift in Sources */,
 				B954EE551DE0327000A0049D /* PostUploadWireframe.swift in Sources */,
+				B9670CAE1E2E009F00F27EE4 /* FollowListModuleExtension.swift in Sources */,
 				B9E048031E20B20D0099B6C5 /* ProfileEditWireframe.swift in Sources */,
 				B9C217C01DCC40F900F617FC /* RegistrationInteractor.swift in Sources */,
 				B9C217D51DCC40F900F617FC /* Comment.swift in Sources */,

@@ -8,6 +8,11 @@
 
 import UIKit
 
-class FollowListModuleExtension: AnyObject {
-
+extension FollowListModule {
+    
+    convenience init() {
+        self.init(view: FollowListViewController())
+    }
 }
+
+extension FollowListDataItem: FollowListCellItem { }
