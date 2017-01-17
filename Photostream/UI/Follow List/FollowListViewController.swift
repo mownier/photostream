@@ -83,6 +83,8 @@ class FollowListViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         FollowListCell.register(in: tableView)
+        
+        setupNavigationItem()
     }
     
     override func viewDidLoad() {
@@ -93,6 +95,17 @@ class FollowListViewController: UITableViewController {
     
     func triggerRefresh() {
         presenter.refresh()
+    }
+    
+    func setupNavigationItem() {
+        let barItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back_nav_icon"), style: .plain, target: self, action: #selector(self.back))
+        navigationItem.leftBarButtonItem = barItem
+        
+        navigationItem.title = presenter.navigationItemTitle
+    }
+    
+    func back() {
+        presenter.exit()
     }
 }
 
