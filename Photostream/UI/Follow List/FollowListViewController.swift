@@ -34,12 +34,13 @@ class FollowListViewController: UITableViewController {
     var isEmptyViewHidden: Bool = false {
         didSet {
             if isEmptyViewHidden {
-                emptyView.frame = tableView.bounds
-                tableView.backgroundView = emptyView
+                if tableView.backgroundView == emptyView {
+                    tableView.backgroundView = nil
+                }
                 
             } else {
-                loadingView.removeFromSuperview()
-                tableView.backgroundView = nil
+                emptyView.frame = tableView.bounds
+                tableView.backgroundView = emptyView
             }
         }
     }
@@ -47,14 +48,15 @@ class FollowListViewController: UITableViewController {
     var isLoadingViewHidden: Bool = false {
         didSet {
             if isLoadingViewHidden {
+                loadingView.stopAnimating()
+                if tableView.backgroundView == loadingView {
+                    tableView.backgroundView = nil
+                }
+                
+            } else {
                 loadingView.frame = tableView.bounds
                 loadingView.startAnimating()
                 tableView.backgroundView = loadingView
-                
-            } else {
-                loadingView.stopAnimating()
-                loadingView.removeFromSuperview()
-                tableView.backgroundView = nil
             }
         }
     }
