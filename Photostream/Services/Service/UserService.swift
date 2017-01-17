@@ -58,6 +58,7 @@ struct UserServiceFollowListResult {
     var users: [User]?
     var error: UserServiceError?
     var nextOffset: String?
+    var following: [String: User]?
 }
 
 struct UserServiceActivityListResult {

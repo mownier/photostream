@@ -667,8 +667,11 @@ extension UserServiceProvider {
             return
         }
         
+        let uid = session.user.id
         let path1 = "users"
+        let path2 = "user-following/\(uid)/following"
         let rootRef = FIRDatabase.database().reference()
+        let followingRef = rootRef.child(path2)
         let usersRef = rootRef.child(path1)
         let followRef = rootRef.child(path)
         var query = followRef.queryOrderedByKey()
@@ -686,6 +689,7 @@ extension UserServiceProvider {
             }
             
             var users = [User]()
+            var following = [String: User]()
             
             for child in queryResult.children {
                 guard let childSnapshot = child as? FIRDataSnapshot else {
@@ -693,22 +697,32 @@ extension UserServiceProvider {
                 }
                 
                 let userId = childSnapshot.key
+                
+                let isFollowingRef = followingRef.child(userId)
                 let userRef = usersRef.child(userId)
                 
-                userRef.observeSingleEvent(of: .value, with: { userSnapshot in
-                    let user = User(with: userSnapshot, exception: "email")
-                    users.append(user)
-                    
-                    let userCount = UInt(users.count)
-                    if userCount == queryResult.childrenCount {
-                        if userCount == limit + 1 {
-                            let removedUser = users.removeFirst()
-                            result.nextOffset = removedUser.id
+                isFollowingRef.observeSingleEvent(of: .value, with: { isFollowingSnapshot in
+                    userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                        let user = User(with: userSnapshot, exception: "email")
+                        
+                        if isFollowingSnapshot.exists(), following[userId] != nil {
+                            following[userId] = user
                         }
                         
-                        result.users = users
-                        callback?(result)
-                    }
+                        users.append(user)
+                        
+                        let userCount = UInt(users.count)
+                        if userCount == queryResult.childrenCount {
+                            if userCount == limit + 1 {
+                                let removedUser = users.removeFirst()
+                                result.nextOffset = removedUser.id
+                            }
+                            
+                            result.users = users
+                            result.following = following
+                            callback?(result)
+                        }
+                    })
                 })
             }
         })
