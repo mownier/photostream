@@ -43,6 +43,7 @@ class FollowListCell: UITableViewCell {
         actionButton.borderWidth = 1
         actionButton.setTitle("Action", for: .normal)
         actionButton.setTitleColor(UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1), for: .normal)
+        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         
         avatarImageView = UIImageView()
         avatarImageView.cornerRadius = avatarDimension / 2
@@ -50,7 +51,7 @@ class FollowListCell: UITableViewCell {
         avatarImageView.backgroundColor = .lightGray
         
         displayNameLabel = UILabel()
-        displayNameLabel.font = UIFont.systemFont(ofSize: 12)
+        displayNameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
         
         addSubview(actionButton)
         addSubview(avatarImageView)
@@ -73,6 +74,7 @@ class FollowListCell: UITableViewCell {
         rect.size.height = avatarDimension
         avatarImageView.frame = rect
         
+        rect.origin.x = rect.maxY
         rect.origin.x += spacing
         rect.size.width = frame.width
         rect.size.width -= rect.origin.x
