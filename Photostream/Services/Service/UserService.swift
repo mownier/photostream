@@ -15,8 +15,8 @@ protocol UserService {
     
     func follow(id: String, callback: ((UserServiceError?) -> Void)?)
     func unfollow(id: String, callback: ((UserServiceError?) -> Void)?)
-    func fetchFollowers(id: String, offset: UInt, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?)
-    func fetchFollowing(id: String, offset: UInt, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?)
+    func fetchFollowers(id: String, offset: String, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?)
+    func fetchFollowing(id: String, offset: String, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?)
     
     func fetchProfile(id: String, callback: ((UserServiceProfileResult) -> Void)?)
     func fetchActivities(id: String, offset: String, limit: UInt, callback: ((UserServiceActivityListResult) -> Void)?)
@@ -57,6 +57,7 @@ struct UserServiceFollowListResult {
     
     var users: [User]?
     var error: UserServiceError?
+    var nextOffset: String?
 }
 
 struct UserServiceActivityListResult {

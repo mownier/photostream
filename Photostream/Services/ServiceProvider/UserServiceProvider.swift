@@ -223,11 +223,14 @@ struct UserServiceProvider: UserService {
         })
     }
     
-    func fetchFollowers(id: String, offset: UInt, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?) {
-        fetchFollowList(path: "followers", userId: id, offset: offset, limit: limit, callback: callback)
+    func fetchFollowers(id: String, offset: String, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?) {
+        let path = "user-follower/\(id)/followers"
+        fetchFollowList(path: path, offset: offset, limit: limit, callback: callback)
     }
 
-    func fetchFollowing(id: String, offset: UInt, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?) {        fetchFollowList(path: "following", userId: id, offset: offset, limit: limit, callback: callback)
+    func fetchFollowing(id: String, offset: String, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?) {
+        let path = "user-following/\(id)/following"
+        fetchFollowList(path: path, offset: offset, limit: limit, callback: callback)
     }
 
     func fetchProfile(id: String, callback: ((UserServiceProfileResult) -> Void)?) {
@@ -656,7 +659,7 @@ struct UserServiceProvider: UserService {
 
 extension UserServiceProvider {
     
-    fileprivate func fetchFollowList(path: String!, userId: String!, offset: UInt!, limit: UInt!, callback: ((UserServiceFollowListResult) -> Void)?) {
+    fileprivate func fetchFollowList(path: String, offset: String, limit: UInt, callback: ((UserServiceFollowListResult) -> Void)?) {
         var result = UserServiceFollowListResult()
         guard session.isValid else {
             result.error = .authenticationNotFound(message: "Authentication not found.")
@@ -665,30 +668,45 @@ extension UserServiceProvider {
         }
         
         let path1 = "users"
-        let path2 = "users/\(userId)/\(path)"
         let rootRef = FIRDatabase.database().reference()
-        let userRef = rootRef.child(path1)
-        let followerRef = rootRef.child(path2)
+        let usersRef = rootRef.child(path1)
+        let followRef = rootRef.child(path)
+        var query = followRef.queryOrderedByKey()
         
-        followerRef.observeSingleEvent(of: .value, with: { (data) in
-            var userList = [User]()
-            guard data.exists() else {
-                result.users = userList
+        if !offset.isEmpty {
+            query = query.queryEnding(atValue: offset)
+        }
+        
+        query = query.queryLimited(toLast: limit + 1)
+        query.observeSingleEvent(of: .value, with: { queryResult in
+            guard queryResult.exists(), queryResult.childrenCount > 0 else {
+                result.users = [User]()
                 callback?(result)
                 return
             }
             
-            for child in data.children {
-                userRef.child((child as AnyObject).key).observeSingleEvent(of: .value, with: { (data2) in
-                    var user = User()
-                    user.id = data2.childSnapshot(forPath: "id").value as! String
-                    user.firstName = data2.childSnapshot(forPath: "firstname").value as! String
-                    user.lastName = data2.childSnapshot(forPath: "lastname").value as! String
+            var users = [User]()
+            
+            for child in queryResult.children {
+                guard let childSnapshot = child as? FIRDataSnapshot else {
+                    continue
+                }
+                
+                let userId = childSnapshot.key
+                let userRef = usersRef.child(userId)
+                
+                userRef.observeSingleEvent(of: .value, with: { userSnapshot in
+                    let user = User(with: userSnapshot, exception: "email")
+                    users.append(user)
                     
-                    userList.append(user)
-                    
-                    if UInt(userList.count) == data.childrenCount {
-                        result.users = userList
+                    let userCount = UInt(users.count)
+                    if userCount == queryResult.childrenCount {
+                        if userCount == limit + 1 {
+                            let removedUser = users.removeFirst()
+                            result.nextOffset = removedUser.id
+                        }
+                        
+                        result.users = users
                         callback?(result)
                     }
                 })
