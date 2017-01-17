@@ -68,16 +68,16 @@ extension FollowListCell: FollowListCellConfig {
         var borderColor: UIColor!
         
         if isFollowing {
-            title = "Follow"
-            titleColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
-            backgroundColor = UIColor.white
-            borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
-            
-        } else {
             title = "Following"
             titleColor = UIColor.white
             backgroundColor = UIColor(red: 42/255, green: 163/255, blue: 239/255, alpha: 1)
             borderColor = backgroundColor
+            
+        } else {
+            title = "Follow"
+            titleColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
+            backgroundColor = UIColor.white
+            borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
         }
         
         actionButton.setTitle(title, for: .normal)
