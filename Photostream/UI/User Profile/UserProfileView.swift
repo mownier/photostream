@@ -13,6 +13,8 @@ protocol UserProfileViewDelegate: class {
     func willFollow(view: UserProfileView)
     func willUnfollow(view: UserProfileView)
     func willEdit(view: UserProfileView)
+    func willShowFollowing()
+    func willShowFollowers()
 }
 
 class UserProfileView: UIView {
@@ -111,6 +113,16 @@ class UserProfileView: UIView {
         actionLoadingView.borderWidth = 1
         actionLoadingView.borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
         
+        followerCountLabel.isUserInteractionEnabled = true
+        var tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapFollowerCountLabel))
+        tap.numberOfTapsRequired = 1
+        followerCountLabel.addGestureRecognizer(tap)
+        
+        followingCountLabel.isUserInteractionEnabled = true
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapFollowingCountLabel))
+        tap.numberOfTapsRequired = 1
+        followingCountLabel.addGestureRecognizer(tap)
+        
         addSubview(avatarImageView)
         addSubview(postLabel)
         addSubview(postCountLabel)
@@ -199,5 +211,16 @@ extension UserProfileView {
     
     var secondaryColor: UIColor {
         return UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
+    }
+}
+
+extension UserProfileView {
+    
+    func didTapFollowerCountLabel() {
+        delegate?.willShowFollowers()
+    }
+    
+    func didTapFollowingCountLabel() {
+        delegate?.willShowFollowing()
     }
 }

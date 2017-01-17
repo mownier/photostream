@@ -90,6 +90,12 @@ extension UserProfileViewController: UserProfileViewDelegate {
         startLoadingView()
         presenter.unfollow()
     }
+    
+    func willShowFollowers() {
+        presenter.presentFollowers()
+    }
+    
+    func willShowFollowing() {
+        presenter.presentFollowing()
+    }
 }
-
-
