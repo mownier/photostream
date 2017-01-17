@@ -9,6 +9,7 @@
 protocol FollowListModuleInterface: BaseModuleInterface {
     
     var listCount: Int { get }
+    var navigationItemTitle: String { get }
     
     func viewDidLoad()
     func listItem(at index: Int) -> FollowListData?

@@ -38,6 +38,17 @@ extension FollowListPresenter: FollowListModuleInterface {
         return list.count
     }
     
+    var navigationItemTitle: String {
+        switch fetchType {
+        
+        case .followers:
+            return "Followers"
+        
+        case .following:
+            return "Following"
+        }
+    }
+    
     func exit() {
         var property = WireframeExitProperty()
         property.controller = view.controller
