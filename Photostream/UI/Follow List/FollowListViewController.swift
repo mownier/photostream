@@ -121,6 +121,11 @@ extension FollowListViewController: FollowListScene {
         tableView.reloadData()
     }
     
+    func reloadItem(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
     func didRefresh(with error: String?) {
         
     }
