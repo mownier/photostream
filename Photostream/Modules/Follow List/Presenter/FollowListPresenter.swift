@@ -14,6 +14,7 @@ protocol FollowListPresenterInterface: BaseModulePresenter, BaseModuleInteractab
     var list: [FollowListDisplayData] { set get }
     
     func append(itemsOf data: [FollowListData])
+    func index(of userId: String) -> Int?
 }
 
 class FollowListPresenter: FollowListPresenterInterface {
@@ -35,6 +36,10 @@ class FollowListPresenter: FollowListPresenterInterface {
     
     func append(itemsOf data: [FollowListData]) {
         for entry in data {
+            guard index(of: entry.userId) == nil else {
+                return
+            }
+            
             var item = FollowListDisplayDataItem()
             item.avatarUrl = entry.avatarUrl
             item.displayName = entry.displayName
@@ -43,6 +48,12 @@ class FollowListPresenter: FollowListPresenterInterface {
             item.userId = entry.userId
             
             list.append(item)
+        }
+    }
+    
+    func index(of userId: String) -> Int? {
+        return list.index { displayData -> Bool in
+            return displayData.userId == userId
         }
     }
 }
@@ -112,19 +123,29 @@ extension FollowListPresenter: FollowListModuleInterface {
     }
     
     func follow(at index: Int) {
-        guard let listItem = listItem(at: index) else {
+        guard var listItem = listItem(at: index) else {
             view.didFollow(with: "Can not follow user rignt now")
             return
         }
+        
+        listItem.isBusy = true
+        list[index] = listItem
+        
+        view.reloadItem(at: index)
         
         interactor.follow(userId: listItem.userId)
     }
     
     func unfollow(at index: Int) {
-        guard let listItem = listItem(at: index) else {
+        guard var listItem = listItem(at: index) else {
             view.didUnfollow(with: "Can not unfollow user rignt now")
             return
         }
+        
+        listItem.isBusy = true
+        list[index] = listItem
+        
+        view.reloadItem(at: index)
         
         interactor.unfollow(userId: listItem.userId)
     }
@@ -171,7 +192,15 @@ extension FollowListPresenter: FollowListInteractorOutput {
         view.didLoadMore(with: error.message)
     }
     
-    func didFollow(with error: UserServiceError?) {
+    func didFollow(with error: UserServiceError?, userId: String) {
+        if let index = index(of: userId) {
+            var item = list[index]
+            item.isBusy = false
+            list[index] = item
+            
+            view.reloadItem(at: index)
+        }
+        
         view.didFollow(with: error?.message)
         
         if error == nil {
@@ -179,7 +208,15 @@ extension FollowListPresenter: FollowListInteractorOutput {
         }
     }
     
-    func didUnfollow(with error: UserServiceError?) {
+    func didUnfollow(with error: UserServiceError?, userId: String) {
+        if let index = index(of: userId) {
+            var item = list[index]
+            item.isBusy = false
+            list[index] = item
+            
+            view.reloadItem(at: index)
+        }
+        
         view.didUnfollow(with: error?.message)
         
         if error == nil {
