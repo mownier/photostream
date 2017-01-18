@@ -98,6 +98,19 @@ extension FollowListPresenter: FollowListModuleInterface {
         interactor.fetchNext(userId: userId, type: fetchType, limit: limit)
     }
     
+    func toggleFollow(at index: Int) {
+        guard let listItem = listItem(at: index) else {
+            return
+        }
+        
+        if listItem.isFollowing {
+            unfollow(at: index)
+            
+        } else {
+            follow(at: index)
+        }
+    }
+    
     func follow(at index: Int) {
         guard let listItem = listItem(at: index) else {
             view.didFollow(with: "Can not follow user rignt now")

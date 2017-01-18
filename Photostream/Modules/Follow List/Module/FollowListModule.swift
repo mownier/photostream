@@ -18,6 +18,7 @@ protocol FollowListModuleInterface: BaseModuleInterface {
     func refresh()
     func loadMore()
     
+    func toggleFollow(at index: Int)
     func follow(at index: Int)
     func unfollow(at index: Int)
 }
