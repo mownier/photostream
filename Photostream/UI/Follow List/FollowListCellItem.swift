@@ -74,24 +74,31 @@ extension FollowListCell: FollowListCellConfig {
         var titleColor: UIColor!
         var backgroundColor: UIColor!
         var borderColor: UIColor!
+        var loadingViewStyle: UIActivityIndicatorViewStyle!
         
         if isFollowing {
             title = "Following"
             titleColor = UIColor.white
             backgroundColor = UIColor(red: 42/255, green: 163/255, blue: 239/255, alpha: 1)
             borderColor = backgroundColor
+            loadingViewStyle = .white
             
         } else {
             title = "Follow"
             titleColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
             backgroundColor = UIColor.white
             borderColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+            loadingViewStyle = .gray
         }
         
         actionButton.setTitle(title, for: .normal)
         actionButton.setTitleColor(titleColor, for: .normal)
         actionButton.backgroundColor = backgroundColor
         actionButton.borderColor = borderColor
+        
+        actionLoadingView.activityIndicatorViewStyle = loadingViewStyle
+        actionLoadingView.backgroundColor = backgroundColor
+        actionLoadingView.borderColor = borderColor
     }
     
     fileprivate func placeholder(with initial: String) -> UIImage {

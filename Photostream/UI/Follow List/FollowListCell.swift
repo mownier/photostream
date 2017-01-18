@@ -20,6 +20,7 @@ class FollowListCell: UITableViewCell {
     var actionButton: UIButton!
     var avatarImageView: UIImageView!
     var displayNameLabel: UILabel!
+    var actionLoadingView: UIActivityIndicatorView!
     
     convenience init() {
         self.init(style: .default, reuseIdentifier: FollowListCell.reuseId)
@@ -53,9 +54,16 @@ class FollowListCell: UITableViewCell {
         displayNameLabel = UILabel()
         displayNameLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
         
+        actionLoadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        actionLoadingView.hidesWhenStopped = true
+        actionLoadingView.cornerRadius = actionButton.cornerRadius
+        actionLoadingView.borderWidth = actionButton.borderWidth
+        actionLoadingView.borderColor = actionButton.borderColor
+        
         addSubview(actionButton)
         addSubview(avatarImageView)
         addSubview(displayNameLabel)
+        addSubview(actionLoadingView)
     }
     
     override func layoutSubviews() {
@@ -68,6 +76,7 @@ class FollowListCell: UITableViewCell {
         rect.origin.x -= (spacing * 2)
         rect.origin.x -= rect.size.width
         actionButton.frame = rect
+        actionLoadingView.frame = rect
         
         rect.origin.x = (spacing * 2)
         rect.size.width = avatarDimension
