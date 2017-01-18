@@ -12,7 +12,7 @@ protocol FollowListModuleInterface: BaseModuleInterface {
     var navigationItemTitle: String { get }
     
     func viewDidLoad()
-    func listItem(at index: Int) -> FollowListData?
+    func listItem(at index: Int) -> FollowListDisplayData?
     
     func initialLoad()
     func refresh()

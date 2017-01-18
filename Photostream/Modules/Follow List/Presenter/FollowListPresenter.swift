@@ -11,7 +11,9 @@ protocol FollowListPresenterInterface: BaseModulePresenter, BaseModuleInteractab
     var userId: String { set get }
     var limit: UInt { set get }
     var fetchType: FollowListFetchType { set get }
-    var list: [FollowListData] { set get }
+    var list: [FollowListDisplayData] { set get }
+    
+    func append(itemsOf data: [FollowListData])
 }
 
 class FollowListPresenter: FollowListPresenterInterface {
@@ -29,7 +31,20 @@ class FollowListPresenter: FollowListPresenterInterface {
     var userId: String = ""
     var limit: UInt = 20
     var fetchType: FollowListFetchType = .following
-    var list = [FollowListData]()
+    var list = [FollowListDisplayData]()
+    
+    func append(itemsOf data: [FollowListData]) {
+        for entry in data {
+            var item = FollowListDisplayDataItem()
+            item.avatarUrl = entry.avatarUrl
+            item.displayName = entry.displayName
+            item.isFollowing = entry.isFollowing
+            item.isMe = entry.isMe
+            item.userId = entry.userId
+            
+            list.append(item)
+        }
+    }
 }
 
 extension FollowListPresenter: FollowListModuleInterface {
@@ -55,7 +70,7 @@ extension FollowListPresenter: FollowListModuleInterface {
         wireframe.exit(with: property)
     }
     
-    func listItem(at index: Int) -> FollowListData? {
+    func listItem(at index: Int) -> FollowListDisplayData? {
         guard list.isValid(index) else {
             return nil
         }
@@ -109,7 +124,8 @@ extension FollowListPresenter: FollowListInteractorOutput {
         view.isRefreshingViewHidden = true
         
         list.removeAll()
-        list.append(contentsOf: data)
+        
+        append(itemsOf: data)
         
         if list.count == 0 {
             view.isEmptyViewHidden = false
@@ -126,7 +142,8 @@ extension FollowListPresenter: FollowListInteractorOutput {
             return
         }
         
-        list.append(contentsOf: data)
+        append(itemsOf: data)
+        
         view.reload()
     }
     
