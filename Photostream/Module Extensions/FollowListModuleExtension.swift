@@ -16,3 +16,34 @@ extension FollowListModule {
 }
 
 extension FollowListDisplayDataItem: FollowListCellItem { }
+
+extension FollowListModuleInterface {
+    
+    func presentUserTimeline(for index: Int) {
+        guard let presenter = self as? FollowListPresenter,
+            let item = listItem(at: index) else {
+            return
+        }
+        
+        presenter.wireframe.showUserTimeline(
+            from: presenter.view.controller,
+            userId: item.userId
+        )
+    }
+}
+
+extension FollowListWireframeInterface {
+    
+    func showUserTimeline(from parent: UIViewController?, userId: String) {
+        let userTimeline = UserTimelineViewController()
+        userTimeline.root = root
+        userTimeline.style = .push
+        userTimeline.userId = userId
+        
+        var property = WireframeEntryProperty()
+        property.parent = parent
+        property.controller = userTimeline
+        
+        userTimeline.enter(with: property)
+    }
+}

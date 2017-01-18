@@ -26,6 +26,10 @@ extension FollowListViewController: FollowListCellDelegate {
     }
     
     func didTapDisplayName(cell: FollowListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
         
+        presenter.presentUserTimeline(for: indexPath.row)
     }
 }
