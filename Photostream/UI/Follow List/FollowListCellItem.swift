@@ -10,6 +10,7 @@ import Kingfisher
 
 protocol FollowListCellItem {
 
+    var isBusy: Bool { get }
     var isMe: Bool { get }
     var isFollowing: Bool { get }
     var avatarUrl: String { get }
@@ -20,7 +21,7 @@ protocol FollowListCellConfig {
     
     func configure(item: FollowListCellItem?, isPrototype: Bool)
     func setupAvatar(url: String, placeholder image: UIImage?)
-    func setupActionButton(isFollowing: Bool, isMe: Bool)
+    func setupActionButton(isFollowing: Bool, isMe: Bool, isBusy: Bool)
     func setupDisplayNameLabel(text: String)
 }
 
@@ -32,7 +33,7 @@ extension FollowListCell: FollowListCellConfig {
         }
         
         setupDisplayNameLabel(text: item.displayName)
-        setupActionButton(isFollowing: item.isFollowing, isMe: item.isMe)
+        setupActionButton(isFollowing: item.isFollowing, isMe: item.isMe, isBusy: item.isBusy)
         
         if !isPrototype {
             let image = placeholder(with: item.displayName[0])
@@ -62,7 +63,7 @@ extension FollowListCell: FollowListCellConfig {
             completionHandler: nil)
     }
     
-    func setupActionButton(isFollowing: Bool, isMe: Bool) {
+    func setupActionButton(isFollowing: Bool, isMe: Bool, isBusy: Bool) {
         guard !isMe else {
             actionButton.isHidden = true
             return
@@ -96,9 +97,18 @@ extension FollowListCell: FollowListCellConfig {
         actionButton.backgroundColor = backgroundColor
         actionButton.borderColor = borderColor
         
+        if isBusy {
+            actionLoadingView.startAnimating()
+        
+        } else {
+            actionLoadingView.stopAnimating()
+        }
+        
         actionLoadingView.activityIndicatorViewStyle = loadingViewStyle
         actionLoadingView.backgroundColor = backgroundColor
         actionLoadingView.borderColor = borderColor
+        
+
     }
     
     fileprivate func placeholder(with initial: String) -> UIImage {
