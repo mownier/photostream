@@ -10,6 +10,7 @@ import Kingfisher
 
 protocol FollowListCellItem {
 
+    var isMe: Bool { get }
     var isFollowing: Bool { get }
     var avatarUrl: String { get }
     var displayName: String { get }
@@ -19,7 +20,7 @@ protocol FollowListCellConfig {
     
     func configure(item: FollowListCellItem?, isPrototype: Bool)
     func setupAvatar(url: String, placeholder image: UIImage?)
-    func setupActionButton(isFollowing: Bool)
+    func setupActionButton(isFollowing: Bool, isMe: Bool)
     func setupDisplayNameLabel(text: String)
 }
 
@@ -31,7 +32,7 @@ extension FollowListCell: FollowListCellConfig {
         }
         
         setupDisplayNameLabel(text: item.displayName)
-        setupActionButton(isFollowing: item.isFollowing)
+        setupActionButton(isFollowing: item.isFollowing, isMe: item.isMe)
         
         if !isPrototype {
             let image = placeholder(with: item.displayName[0])
@@ -61,7 +62,14 @@ extension FollowListCell: FollowListCellConfig {
             completionHandler: nil)
     }
     
-    func setupActionButton(isFollowing: Bool) {
+    func setupActionButton(isFollowing: Bool, isMe: Bool) {
+        guard !isMe else {
+            actionButton.isHidden = true
+            return
+        }
+        
+        actionButton.isHidden = false
+        
         var title: String!
         var titleColor: UIColor!
         var backgroundColor: UIColor!
