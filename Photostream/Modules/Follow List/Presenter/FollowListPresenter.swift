@@ -196,6 +196,11 @@ extension FollowListPresenter: FollowListInteractorOutput {
         if let index = index(of: userId) {
             var item = list[index]
             item.isBusy = false
+            
+            if error == nil {
+                item.isFollowing = true
+            }
+            
             list[index] = item
             
             view.reloadItem(at: index)
@@ -212,6 +217,11 @@ extension FollowListPresenter: FollowListInteractorOutput {
         if let index = index(of: userId) {
             var item = list[index]
             item.isBusy = false
+            
+            if error == nil {
+                item.isFollowing = false
+            }
+            
             list[index] = item
             
             view.reloadItem(at: index)
