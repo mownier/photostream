@@ -18,6 +18,10 @@ extension FollowListViewController {
 extension FollowListViewController: FollowListCellDelegate {
     
     func didTapAction(cell: FollowListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
         
+        presenter.toggleFollow(at: indexPath.row)
     }
 }
