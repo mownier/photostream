@@ -98,6 +98,10 @@ class FollowListInteractor: FollowListInteractorInterface {
             
             item.isFollowing = result.following != nil && result.following![user.id] != nil
             
+            if let isMe = result.following?[user.id] {
+                item.isMe = isMe
+            }
+            
             data.append(item)
         }
         

@@ -13,6 +13,7 @@ protocol FollowListData {
     var displayName: String { set get }
     var avatarUrl: String { set get }
     var isFollowing: Bool { set get }
+    var isMe: Bool { set get }
 }
 
 struct FollowListDataItem: FollowListData {
@@ -21,6 +22,7 @@ struct FollowListDataItem: FollowListData {
     var displayName: String = ""
     var avatarUrl: String = ""
     var isFollowing: Bool = false
+    var isMe: Bool = false
 }
 
 enum FollowListFetchType {

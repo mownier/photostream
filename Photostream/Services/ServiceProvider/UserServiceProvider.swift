@@ -689,7 +689,7 @@ extension UserServiceProvider {
             }
             
             var users = [User]()
-            var following = [String: User]()
+            var following = [String: Bool]()
             
             for child in queryResult.children {
                 guard let childSnapshot = child as? FIRDataSnapshot else {
@@ -705,8 +705,9 @@ extension UserServiceProvider {
                     userRef.observeSingleEvent(of: .value, with: { userSnapshot in
                         let user = User(with: userSnapshot, exception: "email")
                         
-                        if isFollowingSnapshot.exists(), following[userId] == nil {
-                            following[userId] = user
+                        if following[userId] == nil &&
+                            (isFollowingSnapshot.exists() || userId == uid) {
+                            following[userId] = userId == uid
                         }
                         
                         users.append(user)
