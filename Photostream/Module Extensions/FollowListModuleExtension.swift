@@ -15,4 +15,4 @@ extension FollowListModule {
     }
 }
 
-extension FollowListDataItem: FollowListCellItem { }
+extension FollowListDisplayDataItem: FollowListCellItem { }
