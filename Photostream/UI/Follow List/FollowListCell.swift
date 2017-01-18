@@ -11,6 +11,7 @@ import UIKit
 protocol FollowListCellDelegate: class {
     
     func didTapAction(cell: FollowListCell)
+    func didTapDisplayName(cell: FollowListCell)
 }
 
 class FollowListCell: UITableViewCell {
@@ -60,6 +61,11 @@ class FollowListCell: UITableViewCell {
         actionLoadingView.borderWidth = actionButton.borderWidth
         actionLoadingView.borderColor = actionButton.borderColor
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapDisplayNameLabel))
+        tap.numberOfTapsRequired = 1
+        displayNameLabel.addGestureRecognizer(tap)
+        displayNameLabel.isUserInteractionEnabled = true
+        
         addSubview(actionButton)
         addSubview(avatarImageView)
         addSubview(displayNameLabel)
@@ -94,6 +100,10 @@ class FollowListCell: UITableViewCell {
     
     func didTapAction() {
         delegate?.didTapAction(cell: self)
+    }
+    
+    func didTapDisplayNameLabel() {
+        delegate?.didTapDisplayName(cell: self)
     }
 }
 

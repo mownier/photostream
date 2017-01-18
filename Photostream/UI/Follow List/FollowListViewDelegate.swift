@@ -24,4 +24,8 @@ extension FollowListViewController: FollowListCellDelegate {
         
         presenter.toggleFollow(at: indexPath.row)
     }
+    
+    func didTapDisplayName(cell: FollowListCell) {
+        
+    }
 }
