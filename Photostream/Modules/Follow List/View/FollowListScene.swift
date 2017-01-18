@@ -15,6 +15,7 @@ protocol FollowListScene: BaseModuleView {
     var isRefreshingViewHidden: Bool { set get }
     
     func reload()
+    func reloadItem(at index: Int)
     
     func didRefresh(with error: String?)
     func didLoadMore(with error: String?)
