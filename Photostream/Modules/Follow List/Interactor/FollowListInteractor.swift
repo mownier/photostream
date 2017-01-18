@@ -23,8 +23,8 @@ protocol FollowListInteractorOutput: BaseModuleInteractorOutput {
     func didFetchNew(with error: UserServiceError)
     func didFetchNext(with error: UserServiceError)
     
-    func didFollow(with error: UserServiceError?)
-    func didUnfollow(with error: UserServiceError?)
+    func didFollow(with error: UserServiceError?, userId: String)
+    func didUnfollow(with error: UserServiceError?, userId: String)
 }
 
 protocol FollowListInteractorInterface: BaseModuleInteractor {
@@ -146,13 +146,13 @@ extension FollowListInteractor: FollowListInteractorInput {
     
     func follow(userId: String) {
         service.follow(id: userId) { [weak self] error in
-            self?.output?.didFollow(with: error)
+            self?.output?.didFollow(with: error, userId: userId)
         }
     }
     
     func unfollow(userId: String) {
         service.unfollow(id: userId) { [weak self] error in
-            self?.output?.didUnfollow(with: error)
+            self?.output?.didUnfollow(with: error, userId: userId)
         }
     }
 }
