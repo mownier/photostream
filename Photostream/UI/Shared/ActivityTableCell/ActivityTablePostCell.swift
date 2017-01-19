@@ -52,8 +52,8 @@ class ActivityTablePostCell: UITableViewCell {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapPhoto))
         tap.numberOfTapsRequired = 1
-        avatarImageView.isUserInteractionEnabled = true
-        avatarImageView.addGestureRecognizer(tap)
+        photoImageView.isUserInteractionEnabled = true
+        photoImageView.addGestureRecognizer(tap)
         
         addSubview(avatarImageView)
         addSubview(photoImageView)
