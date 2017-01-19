@@ -32,6 +32,7 @@
 		B93F4D271E30973D00B06CAD /* LikedPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F4D261E30973D00B06CAD /* LikedPostViewController.swift */; };
 		B93F4D291E30975500B06CAD /* LikedPostViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F4D281E30975500B06CAD /* LikedPostViewDataSource.swift */; };
 		B93F4D2B1E30975E00B06CAD /* LikedPostViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F4D2A1E30975E00B06CAD /* LikedPostViewDelegate.swift */; };
+		B93F4D2D1E309C3300B06CAD /* LikedPostModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F4D2C1E309C3300B06CAD /* LikedPostModuleExtension.swift */; };
 		B94131051DEE9C0F00DD10CE /* CommentFeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94130F51DEE9C0F00DD10CE /* CommentFeedData.swift */; };
 		B94131061DEE9C0F00DD10CE /* CommentFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94130F61DEE9C0F00DD10CE /* CommentFeedInteractor.swift */; };
 		B94131071DEE9C0F00DD10CE /* CommentFeedInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94130F71DEE9C0F00DD10CE /* CommentFeedInteractorInput.swift */; };
@@ -365,6 +366,7 @@
 		B93F4D261E30973D00B06CAD /* LikedPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostViewController.swift; sourceTree = "<group>"; };
 		B93F4D281E30975500B06CAD /* LikedPostViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostViewDataSource.swift; sourceTree = "<group>"; };
 		B93F4D2A1E30975E00B06CAD /* LikedPostViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostViewDelegate.swift; sourceTree = "<group>"; };
+		B93F4D2C1E309C3300B06CAD /* LikedPostModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostModuleExtension.swift; sourceTree = "<group>"; };
 		B94130F51DEE9C0F00DD10CE /* CommentFeedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedData.swift; sourceTree = "<group>"; };
 		B94130F61DEE9C0F00DD10CE /* CommentFeedInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedInteractor.swift; sourceTree = "<group>"; };
 		B94130F71DEE9C0F00DD10CE /* CommentFeedInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedInteractorInput.swift; sourceTree = "<group>"; };
@@ -1548,6 +1550,7 @@
 				B94131251DEEA9B300DD10CE /* CommentWriterModuleExtension.swift */,
 				B9670CAD1E2E009F00F27EE4 /* FollowListModuleExtension.swift */,
 				B9C216E31DCC40F900F617FC /* HomeModuleExtension.swift */,
+				B93F4D2C1E309C3300B06CAD /* LikedPostModuleExtension.swift */,
 				B9C216E41DCC40F900F617FC /* LoginModuleExtension.swift */,
 				B95A06F01E0245C9005B47B6 /* LogoutModuleExtension.swift */,
 				B98283151E2C8F71006A3E71 /* MultilineEditorModuleExtension.swift */,
@@ -2940,6 +2943,7 @@
 				B996962B1E08FCB7008A4811 /* PostDiscoveryModule.swift in Sources */,
 				B954EE571DE0327B00A0049D /* PostUploadWireframeInterface.swift in Sources */,
 				B941310E1DEE9C0F00DD10CE /* CommentFeedScene.swift in Sources */,
+				B93F4D2D1E309C3300B06CAD /* LikedPostModuleExtension.swift in Sources */,
 				B9D496961DE7EE3F00CDD58E /* PhotoPickerViewController.swift in Sources */,
 				B9876EAD1E12314000075CFD /* ActivityTableFollowCell.swift in Sources */,
 				B930710D1E2359DB00BF73F6 /* ProfileEditDisplayItem.swift in Sources */,
