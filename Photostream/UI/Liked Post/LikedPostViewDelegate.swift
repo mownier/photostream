@@ -40,19 +40,19 @@ extension LikedPostViewController: PostListCollectionCellDelegate {
     }
     
     func didTapComment(cell: PostListCollectionCell) {
-//         guard let index = collectionView?.indexPath(for: cell)?.section else {
-//            return
-//        }
-//        
-//        presenter.presentCommentController(at: index, shouldComment: true)
+         guard let index = collectionView?.indexPath(for: cell)?.section else {
+            return
+        }
+        
+        presenter.presentCommentController(at: index, shouldComment: true)
     }
     
     func didTapCommentCount(cell: PostListCollectionCell) {
-//        guard let index = collectionView?.indexPath(for: cell)?.section else {
-//            return
-//        }
-//        
-//        presenter.presentCommentController(at: index)
+        guard let index = collectionView?.indexPath(for: cell)?.section else {
+            return
+        }
+        
+        presenter.presentCommentController(at: index)
     }
     
     func didTapLikeCount(cell: PostListCollectionCell) {
@@ -71,17 +71,17 @@ extension LikedPostViewController: PostListCollectionHeaderDelegate {
     }
     
     private func willPresentUserTimeline(header: PostListCollectionHeader, point: CGPoint) {
-//        guard collectionView != nil else {
-//            return
-//        }
-//        
-//        var relativePoint = collectionView!.convert(point, from: header)
-//        relativePoint.y += header.frame.height
-//        
-//        guard let index = collectionView!.indexPathForItem(at: relativePoint)?.section else {
-//            return
-//        }
-//        
-//        presenter.presentUserTimeline(at: index)
+        guard collectionView != nil else {
+            return
+        }
+        
+        var relativePoint = collectionView!.convert(point, from: header)
+        relativePoint.y += header.frame.height
+        
+        guard let index = collectionView!.indexPathForItem(at: relativePoint)?.section else {
+            return
+        }
+        
+        presenter.presentUserTimeline(at: index)
     }
 }
