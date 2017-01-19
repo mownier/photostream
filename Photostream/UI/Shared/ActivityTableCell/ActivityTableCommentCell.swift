@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol ActivityTableCommentCellDelegate: class {
+    
+    func didTapPhoto(cell: UITableViewCell)
+}
+
 class ActivityTableCommentCell: UITableViewCell {
+
+    weak var delegate: ActivityTableCommentCellDelegate?
     
     var avatarImageView: UIImageView!
     var photoImageView: UIImageView!
@@ -43,6 +50,11 @@ class ActivityTableCommentCell: UITableViewCell {
         contentLabel.numberOfLines = 0
         contentLabel.font = UIFont.systemFont(ofSize: 12)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapPhoto))
+        tap.numberOfTapsRequired = 1
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tap)
+        
         addSubview(avatarImageView)
         addSubview(photoImageView)
         addSubview(contentLabel)
@@ -71,6 +83,10 @@ class ActivityTableCommentCell: UITableViewCell {
         rect.size.height = contentLabel.sizeThatFits(rect.size).height
         rect.origin.y = (frame.height - rect.size.height) / 2
         contentLabel.frame = rect
+    }
+    
+    func didTapPhoto() {
+        delegate?.didTapPhoto(cell: self)
     }
 }
 

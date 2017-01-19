@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol ActivityTablePostCellDelegate: class {
+    
+    func didTapPhoto(cell: UITableViewCell)
+}
+
 class ActivityTablePostCell: UITableViewCell {
+    
+    weak var delegate: ActivityTablePostCellDelegate?
     
     var avatarImageView: UIImageView!
     var photoImageView: UIImageView!
@@ -43,6 +50,11 @@ class ActivityTablePostCell: UITableViewCell {
         contentLabel.numberOfLines = 0
         contentLabel.font = UIFont.systemFont(ofSize: 12)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapPhoto))
+        tap.numberOfTapsRequired = 1
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tap)
+        
         addSubview(avatarImageView)
         addSubview(photoImageView)
         addSubview(contentLabel)
@@ -71,6 +83,10 @@ class ActivityTablePostCell: UITableViewCell {
         rect.size.height = contentLabel.sizeThatFits(rect.size).height
         rect.origin.y = (frame.height - rect.size.height) / 2
         contentLabel.frame = rect
+    }
+    
+    func didTapPhoto() {
+        delegate?.didTapPhoto(cell: self)
     }
 }
 
