@@ -84,7 +84,7 @@ class SinglePostViewController: UICollectionViewController {
             target: self,
             action: #selector(self.back))
         
-        navigationItem.rightBarButtonItem = barItem
+        navigationItem.leftBarButtonItem = barItem
         
         navigationItem.title = "Post"
     }
