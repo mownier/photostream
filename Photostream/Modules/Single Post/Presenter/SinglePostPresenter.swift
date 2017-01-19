@@ -49,6 +49,7 @@ extension SinglePostPresenter: SinglePostModuleInterface {
         }
         
         postData!.isLiked = true
+        postData!.likes += 1
         view.reload()
         interactor.likePost(id: postId)
     }
@@ -59,6 +60,9 @@ extension SinglePostPresenter: SinglePostModuleInterface {
         }
         
         postData!.isLiked = false
+        if postData!.likes > 0 {
+            postData!.likes -= 1
+        }
         view.reload()
         interactor.unlikePost(id: postId)
     }
