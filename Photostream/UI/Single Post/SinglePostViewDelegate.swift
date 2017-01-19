@@ -46,3 +46,14 @@ extension SinglePostViewController: PostListCollectionCellDelegate {
         
     }
 }
+
+extension SinglePostViewController: PostListCollectionHeaderDelegate {
+    
+    func didTapDisplayName(header: PostListCollectionHeader, point: CGPoint) {
+        presenter.presentUserTimeline()
+    }
+    
+    func didTapAvatar(header: PostListCollectionHeader, point: CGPoint) {
+        presenter.presentUserTimeline()
+    }
+}

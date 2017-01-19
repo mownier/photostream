@@ -73,6 +73,19 @@ extension SinglePostWireframeInterface {
         
         controller.enter(with: property)
     }
+    
+    func showUserTimeline(from parent: UIViewController?, userId: String) {
+        let userTimeline = UserTimelineViewController()
+        userTimeline.root = root
+        userTimeline.style = .push
+        userTimeline.userId = userId
+        
+        var property = WireframeEntryProperty()
+        property.parent = parent
+        property.controller = userTimeline
+        
+        userTimeline.enter(with: property)
+    }
 }
 
 extension SinglePostModuleInterface {
@@ -90,6 +103,16 @@ extension SinglePostModuleInterface {
             postId: post.id,
             shouldComment: shouldComment
         )
+    }
+    
+    func presentUserTimeline() {
+        guard let presenter = self as? SinglePostPresenter,
+            let parent = presenter.view.controller,
+            let post = presenter.postData else {
+            return
+        }
+        
+        presenter.wireframe.showUserTimeline(from: parent, userId: post.userId)
     }
 }
 

@@ -33,6 +33,7 @@ extension SinglePostViewController {
             let header = PostListCollectionHeader.dequeue(from: collectionView, for: indexPath)!
             let item = presenter.postData as? PostListCollectionHeaderItem
             header.configure(with: item)
+            header.delegate = self
             return header
             
         default:
