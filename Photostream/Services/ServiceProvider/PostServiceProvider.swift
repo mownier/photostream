@@ -459,7 +459,7 @@ struct PostServiceProvider: PostService {
             
             let userRef = rootRef.child("users").child(posterId)
             let photoRef = rootRef.child("photos").child(photoId)
-            let likesRef = rootRef.child("post-like/\(posterId)/likes")
+            let likesRef = rootRef.child("post-like/\(id)/likes")
             
             userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
                 photoRef.observeSingleEvent(of: .value, with: { (photoSnapshot) in
