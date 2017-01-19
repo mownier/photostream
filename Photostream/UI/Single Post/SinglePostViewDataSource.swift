@@ -10,6 +10,10 @@ import UIKit
 
 extension SinglePostViewController {
 
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return presenter.postData != nil ? 1 : 0
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
