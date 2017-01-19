@@ -130,7 +130,15 @@ extension UserTimelineViewController: UserTimelineControlDelegate {
     }
     
     func didSelectLiked() {
+        let module = LikedPostModule()
+        module.build(root: root, userId: userId)
         
+        var property = WireframeEntryProperty()
+        property.parent = self
+        property.controller = module.view.controller
+        
+        module.wireframe.style = .push
+        module.wireframe.enter(with: property)
     }
     
     private func resetUserTimelineView() {
