@@ -35,6 +35,7 @@ extension SinglePostPresenter: SinglePostModuleInterface {
     }
     
     func viewDidLoad() {
+        view.isLoadingViewHidden = false
         fetchPost()
     }
     
