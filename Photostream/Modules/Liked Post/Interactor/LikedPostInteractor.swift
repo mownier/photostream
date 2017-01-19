@@ -134,11 +134,11 @@ extension LikedPostInteractor: LikedPostInteractorInput {
     
     func fetchNew(userId: String, limit: UInt) {
         offset = ""
-        fetchNew(userId: userId, limit: limit)
+        fetchPosts(userId: userId, limit: limit)
     }
     
     func fetchNext(userId: String, limit: UInt) {
-        fetchNew(userId: userId, limit: limit)
+        fetchPosts(userId: userId, limit: limit)
     }
     
     func likePost(id: String) {
