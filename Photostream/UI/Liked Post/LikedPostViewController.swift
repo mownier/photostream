@@ -18,24 +18,78 @@ class LikedPostViewController: UICollectionViewController {
         return view
     }()
     
+    lazy var emptyView: GhostView! = {
+        let view = GhostView()
+        view.titleLabel.text = "No posts"
+        return view
+    }()
+    
+    lazy var refreshView: UIRefreshControl! = {
+        let view = UIRefreshControl()
+        view.addTarget(
+            self,
+            action: #selector(self.triggerRefresh),
+            for: .valueChanged)
+        return view
+    }()
+    
     var listLayout: UICollectionViewFlowLayout!
     var presenter: LikedPostModuleInterface!
     
     var isLoadingViewHidden: Bool = false {
         didSet {
+            guard collectionView != nil else {
+                return
+            }
             
+            if isLoadingViewHidden {
+                loadingView.stopAnimating()
+                if collectionView!.backgroundView == loadingView {
+                    collectionView!.backgroundView = nil
+                }
+                
+            } else {
+                loadingView.frame = collectionView!.bounds
+                loadingView.startAnimating()
+                collectionView!.backgroundView = loadingView
+            }
         }
     }
     
     var isEmptyViewHidden: Bool = false {
         didSet {
+            guard collectionView != nil else {
+                return
+            }
             
+            if isEmptyViewHidden {
+                if collectionView!.backgroundView == emptyView {
+                    collectionView!.backgroundView = nil
+                }
+                
+            } else {
+                emptyView.frame = collectionView!.bounds
+                collectionView!.backgroundView = emptyView
+            }
         }
     }
     
     var isRefreshingViewHidden: Bool = false {
         didSet {
+            guard collectionView != nil else {
+                return
+            }
             
+            if refreshView.superview == nil {
+                collectionView!.addSubview(refreshView)
+            }
+            
+            if isRefreshingViewHidden {
+                refreshView.endRefreshing()
+                
+            } else {
+                refreshView.beginRefreshing()
+            }
         }
     }
     
@@ -89,6 +143,10 @@ class LikedPostViewController: UICollectionViewController {
     
     func back() {
         presenter.exit()
+    }
+    
+    func triggerRefresh() {
+        presenter.refresh()
     }
 }
 
