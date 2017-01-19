@@ -168,18 +168,36 @@ extension LikedPostPresenter: LikedPostInteractorOutput {
     func didLike(error: PostServiceError?, postId: String) {
         view.didLike(error: error?.message)
         
-        guard let index = indexOf(post: postId) else {
-            return
+        guard let index = indexOf(post: postId),
+            var post = post(at: index) else {
+                return
+        }
+        
+        if error != nil {
+            post.isLiked = false
+            
+            if post.likes > 0 {
+                post.likes -= 1
+            }
+            
+            posts[index] = post
         }
         
         view.reload(at: index)
     }
-    
+
     func didUnlike(error: PostServiceError?, postId: String) {
         view.didUnlike(error: error?.message)
         
-        guard let index = indexOf(post: postId) else {
-            return
+        guard let index = indexOf(post: postId),
+            var post = post(at: index) else {
+                return
+        }
+        
+        if error != nil {
+            post.isLiked = true
+            post.likes += 1
+            posts[index] = post
         }
         
         view.reload(at: index)
