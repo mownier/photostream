@@ -304,6 +304,9 @@
 		B9E525E41E304FE00044A41C /* SinglePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525E31E304FE00044A41C /* SinglePostPresenter.swift */; };
 		B9E525E61E3050430044A41C /* SinglePostScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525E51E3050430044A41C /* SinglePostScene.swift */; };
 		B9E525E81E3051830044A41C /* SinglePostWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525E71E3051830044A41C /* SinglePostWireframe.swift */; };
+		B9E525EB1E305A150044A41C /* SinglePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525EA1E305A150044A41C /* SinglePostViewController.swift */; };
+		B9E525ED1E3060070044A41C /* SinglePostViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525EC1E3060070044A41C /* SinglePostViewDataSource.swift */; };
+		B9E525EF1E30607A0044A41C /* SinglePostViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525EE1E30607A0044A41C /* SinglePostViewDelegate.swift */; };
 		B9E631151DF915F600158632 /* PostListCollectionCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */; };
 		B9E631181DF9359500158632 /* PostListCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631171DF9359500158632 /* PostListCollectionHeader.swift */; };
 		B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */; };
@@ -629,6 +632,9 @@
 		B9E525E31E304FE00044A41C /* SinglePostPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostPresenter.swift; sourceTree = "<group>"; };
 		B9E525E51E3050430044A41C /* SinglePostScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostScene.swift; sourceTree = "<group>"; };
 		B9E525E71E3051830044A41C /* SinglePostWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostWireframe.swift; sourceTree = "<group>"; };
+		B9E525EA1E305A150044A41C /* SinglePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewController.swift; sourceTree = "<group>"; };
+		B9E525EC1E3060070044A41C /* SinglePostViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewDataSource.swift; sourceTree = "<group>"; };
+		B9E525EE1E30607A0044A41C /* SinglePostViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewDelegate.swift; sourceTree = "<group>"; };
 		B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionCellItem.swift; sourceTree = "<group>"; };
 		B9E631171DF9359500158632 /* PostListCollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionHeader.swift; sourceTree = "<group>"; };
 		B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionHeaderItem.swift; sourceTree = "<group>"; };
@@ -1782,6 +1788,7 @@
 				B9C217621DCC40F900F617FC /* Registration */,
 				B99719751E0121A400A24C74 /* Settings */,
 				B9C217661DCC40F900F617FC /* Shared */,
+				B9E525E91E3059FE0044A41C /* Single Post */,
 				B9D9C3491E0D064D002B906B /* User Activity */,
 				B94AB2D01DF69D2A00313254 /* User Post */,
 				B9E4084D1DFBCE4100B7076A /* User Profile */,
@@ -2343,6 +2350,16 @@
 			path = "User Profile";
 			sourceTree = "<group>";
 		};
+		B9E525E91E3059FE0044A41C /* Single Post */ = {
+			isa = PBXGroup;
+			children = (
+				B9E525EA1E305A150044A41C /* SinglePostViewController.swift */,
+				B9E525EC1E3060070044A41C /* SinglePostViewDataSource.swift */,
+				B9E525EE1E30607A0044A41C /* SinglePostViewDelegate.swift */,
+			);
+			path = "Single Post";
+			sourceTree = "<group>";
+		};
 		B9E631161DF9357400158632 /* PostListCollectionHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -2821,6 +2838,7 @@
 				B9B0FF1D1E0B833E00807B0B /* UserActivityData.swift in Sources */,
 				B978AF361DD42F35007C1AAD /* PhotoCaptureWireframeInterface.swift in Sources */,
 				B933ADFB1DED667000FAE922 /* CommentListCell.swift in Sources */,
+				B9E525ED1E3060070044A41C /* SinglePostViewDataSource.swift in Sources */,
 				B9C217AB1DCC40F900F617FC /* LoginInteractorOutput.swift in Sources */,
 				B9B0FF1F1E0B836C00807B0B /* UserActivityInteractor.swift in Sources */,
 				B978AF451DD45A7B007C1AAD /* PhotoCaptureModuleExtension.swift in Sources */,
@@ -2846,6 +2864,8 @@
 				B9C217EC1DCC40F900F617FC /* NewsFeedDataSource.swift in Sources */,
 				B9E408421DFBBB8200B7076A /* UserProfileData.swift in Sources */,
 				B9C217E61DCC40F900F617FC /* CommentFeedViewController.swift in Sources */,
+				B9E525EF1E30607A0044A41C /* SinglePostViewDelegate.swift in Sources */,
+				B9E525EB1E305A150044A41C /* SinglePostViewController.swift in Sources */,
 				B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */,
 				B90899751E078CA70036D4A4 /* PostUploadModuleExtension.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
