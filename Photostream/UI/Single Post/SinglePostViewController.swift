@@ -64,6 +64,7 @@ class SinglePostViewController: UICollectionViewController {
         listLayout.sectionHeadersPinToVisibleBounds = false
         
         PostListCollectionCell.register(in: collectionView!)
+        PostListCollectionHeader.register(in: collectionView!)
         
         prototype.bounds.size.width = size.width
         
