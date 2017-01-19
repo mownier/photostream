@@ -307,6 +307,7 @@
 		B9E525EB1E305A150044A41C /* SinglePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525EA1E305A150044A41C /* SinglePostViewController.swift */; };
 		B9E525ED1E3060070044A41C /* SinglePostViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525EC1E3060070044A41C /* SinglePostViewDataSource.swift */; };
 		B9E525EF1E30607A0044A41C /* SinglePostViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525EE1E30607A0044A41C /* SinglePostViewDelegate.swift */; };
+		B9E525F31E3062520044A41C /* SinglePostModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525F21E3062520044A41C /* SinglePostModuleExtension.swift */; };
 		B9E631151DF915F600158632 /* PostListCollectionCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */; };
 		B9E631181DF9359500158632 /* PostListCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631171DF9359500158632 /* PostListCollectionHeader.swift */; };
 		B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */; };
@@ -635,6 +636,7 @@
 		B9E525EA1E305A150044A41C /* SinglePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewController.swift; sourceTree = "<group>"; };
 		B9E525EC1E3060070044A41C /* SinglePostViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewDataSource.swift; sourceTree = "<group>"; };
 		B9E525EE1E30607A0044A41C /* SinglePostViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewDelegate.swift; sourceTree = "<group>"; };
+		B9E525F21E3062520044A41C /* SinglePostModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostModuleExtension.swift; sourceTree = "<group>"; };
 		B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionCellItem.swift; sourceTree = "<group>"; };
 		B9E631171DF9359500158632 /* PostListCollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionHeader.swift; sourceTree = "<group>"; };
 		B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionHeaderItem.swift; sourceTree = "<group>"; };
@@ -1531,6 +1533,7 @@
 				B9E0480D1E20C9C60099B6C5 /* ProfileEditModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
 				B99719781E01255D00A24C74 /* SettingsModuleExtension.swift */,
+				B9E525F21E3062520044A41C /* SinglePostModuleExtension.swift */,
 				B9D9C3551E0D0BF7002B906B /* UserActivityModuleExtension.swift */,
 				B94AB2D31DF69DE600313254 /* UserPostModuleExtension.swift */,
 				B9E4084B1DFBCDDC00B7076A /* UserProfileModuleExtension.swift */,
@@ -2724,6 +2727,7 @@
 				B978AF3C1DD43EC2007C1AAD /* PhotoCaptureModuleInterface.swift in Sources */,
 				B933ADF81DED630200FAE922 /* CommentFeedEmptyView.swift in Sources */,
 				B94131061DEE9C0F00DD10CE /* CommentFeedInteractor.swift in Sources */,
+				B9E525F31E3062520044A41C /* SinglePostModuleExtension.swift in Sources */,
 				B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
 				B9C217DF1DCC40F900F617FC /* UserService.swift in Sources */,
