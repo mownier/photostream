@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension SinglePostViewController {
+extension SinglePostViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = presenter.postData as? PostListCollectionCellItem
