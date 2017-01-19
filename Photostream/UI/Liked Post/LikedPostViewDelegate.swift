@@ -16,6 +16,14 @@ extension LikedPostViewController: UICollectionViewDelegateFlowLayout {
         let size = CGSize(width: listLayout.itemSize.width, height: prototype.dynamicHeight)
         return size
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.section == presenter.postCount - 10 else {
+            return
+        }
+        
+        presenter.loadMore()
+    }
 }
 
 extension LikedPostViewController: PostListCollectionCellDelegate {
