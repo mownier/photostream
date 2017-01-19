@@ -182,7 +182,8 @@ struct PostServiceProvider: PostService {
                         }
                         
                         var updates: [AnyHashable: Any] = [
-                            "\(path2)/\(uid)": true
+                            "\(path2)/\(uid)": true,
+                            "user-like/\(uid)/posts/\(id)": true
                         ]
                         
                         if authorId != uid {
@@ -259,7 +260,8 @@ struct PostServiceProvider: PostService {
                             }
                             
                             var updates: [AnyHashable: Any] = [
-                                "\(path2)/\(uid)": NSNull()
+                                "\(path2)/\(uid)": NSNull(),
+                                "user-like/\(uid)/posts/\(id)": NSNull()
                             ]
                             
                             if authorId != uid {
