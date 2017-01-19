@@ -601,4 +601,13 @@ struct PostServiceProvider: PostService {
             }
         })
     }
+    
+    func fetchLikedPosts(userId: String, offset: String, limit: UInt, callback: ((PostServiceResult) -> Void)?) {
+        
+    }
+}
+
+extension PostServiceProvider {
+    
+    fileprivate func fetchUserPosts() { }
 }

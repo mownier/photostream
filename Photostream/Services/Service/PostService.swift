@@ -21,6 +21,7 @@ protocol PostService {
     func unlike(id: String, callback: ((PostServiceError?) -> Void)?)
     
     func fetchDiscoveryPosts(offset: String, limit: UInt, callback: ((PostServiceResult) -> Void)?)
+    func fetchLikedPosts(userId: String, offset: String, limit: UInt, callback: ((PostServiceResult) -> Void)?)
 }
 
 struct PostServiceResult {

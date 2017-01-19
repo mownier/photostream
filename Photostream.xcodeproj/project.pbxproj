@@ -308,6 +308,12 @@
 		B9E525ED1E3060070044A41C /* SinglePostViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525EC1E3060070044A41C /* SinglePostViewDataSource.swift */; };
 		B9E525EF1E30607A0044A41C /* SinglePostViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525EE1E30607A0044A41C /* SinglePostViewDelegate.swift */; };
 		B9E525F31E3062520044A41C /* SinglePostModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E525F21E3062520044A41C /* SinglePostModuleExtension.swift */; };
+		B9E526051E3087C40044A41C /* LikedPostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E526041E3087C40044A41C /* LikedPostInteractor.swift */; };
+		B9E526071E3087CD0044A41C /* LikedPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E526061E3087CD0044A41C /* LikedPostData.swift */; };
+		B9E526091E308EDD0044A41C /* LikedPostModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E526081E308EDD0044A41C /* LikedPostModule.swift */; };
+		B9E5260B1E308F750044A41C /* LikedPostScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E5260A1E308F750044A41C /* LikedPostScene.swift */; };
+		B9E5260D1E308FE30044A41C /* LikedPostWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E5260C1E308FE30044A41C /* LikedPostWireframe.swift */; };
+		B9E5260F1E3090310044A41C /* LikedPostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E5260E1E3090310044A41C /* LikedPostPresenter.swift */; };
 		B9E631151DF915F600158632 /* PostListCollectionCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */; };
 		B9E631181DF9359500158632 /* PostListCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631171DF9359500158632 /* PostListCollectionHeader.swift */; };
 		B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */; };
@@ -637,6 +643,12 @@
 		B9E525EC1E3060070044A41C /* SinglePostViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewDataSource.swift; sourceTree = "<group>"; };
 		B9E525EE1E30607A0044A41C /* SinglePostViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostViewDelegate.swift; sourceTree = "<group>"; };
 		B9E525F21E3062520044A41C /* SinglePostModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePostModuleExtension.swift; sourceTree = "<group>"; };
+		B9E526041E3087C40044A41C /* LikedPostInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostInteractor.swift; sourceTree = "<group>"; };
+		B9E526061E3087CD0044A41C /* LikedPostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostData.swift; sourceTree = "<group>"; };
+		B9E526081E308EDD0044A41C /* LikedPostModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostModule.swift; sourceTree = "<group>"; };
+		B9E5260A1E308F750044A41C /* LikedPostScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostScene.swift; sourceTree = "<group>"; };
+		B9E5260C1E308FE30044A41C /* LikedPostWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostWireframe.swift; sourceTree = "<group>"; };
+		B9E5260E1E3090310044A41C /* LikedPostPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostPresenter.swift; sourceTree = "<group>"; };
 		B9E631141DF915F600158632 /* PostListCollectionCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionCellItem.swift; sourceTree = "<group>"; };
 		B9E631171DF9359500158632 /* PostListCollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionHeader.swift; sourceTree = "<group>"; };
 		B9E631191DF939B400158632 /* PostListCollectionHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListCollectionHeaderItem.swift; sourceTree = "<group>"; };
@@ -1549,6 +1561,7 @@
 				B94130B91DEE9BC300DD10CE /* Comment Writer */,
 				B9670C8E1E2DCA9C00F27EE4 /* Follow List */,
 				B9C216EF1DCC40F900F617FC /* Home */,
+				B9E525FE1E3087B10044A41C /* Liked Post */,
 				B9C216F81DCC40F900F617FC /* Login */,
 				B95A06DD1E023A70005B47B6 /* Logout */,
 				B98283031E2C8143006A3E71 /* Multiline Editor */,
@@ -2363,6 +2376,59 @@
 			path = "Single Post";
 			sourceTree = "<group>";
 		};
+		B9E525FE1E3087B10044A41C /* Liked Post */ = {
+			isa = PBXGroup;
+			children = (
+				B9E525FF1E3087B10044A41C /* Interactor */,
+				B9E526001E3087B10044A41C /* Module */,
+				B9E526011E3087B10044A41C /* Presenter */,
+				B9E526021E3087B10044A41C /* View */,
+				B9E526031E3087B10044A41C /* Wireframe */,
+			);
+			path = "Liked Post";
+			sourceTree = "<group>";
+		};
+		B9E525FF1E3087B10044A41C /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B9E526041E3087C40044A41C /* LikedPostInteractor.swift */,
+				B9E526061E3087CD0044A41C /* LikedPostData.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B9E526001E3087B10044A41C /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B9E526081E308EDD0044A41C /* LikedPostModule.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B9E526011E3087B10044A41C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B9E5260E1E3090310044A41C /* LikedPostPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B9E526021E3087B10044A41C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9E5260A1E308F750044A41C /* LikedPostScene.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9E526031E3087B10044A41C /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B9E5260C1E308FE30044A41C /* LikedPostWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		B9E631161DF9357400158632 /* PostListCollectionHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -2702,6 +2768,7 @@
 				B9D496791DE7EB5F00CDD58E /* PhotoLibraryDataSource.swift in Sources */,
 				B9E408441DFBC8AC00B7076A /* UserProfileScene.swift in Sources */,
 				B9E408551DFBDFD700B7076A /* UserProfileViewItem.swift in Sources */,
+				B9E5260B1E308F750044A41C /* LikedPostScene.swift in Sources */,
 				B969F4401DFE90B6003629F3 /* UserTimelineControl.swift in Sources */,
 				B9C217DA1DCC40F900F617FC /* AuthenticationService.swift in Sources */,
 				B9C217C31DCC40F900F617FC /* RegistrationInteractorOutput.swift in Sources */,
@@ -2709,6 +2776,7 @@
 				B9690C031DE56E31007E4593 /* UploadedPost.swift in Sources */,
 				B997196C1E011AF500A24C74 /* SettingsModule.swift in Sources */,
 				B9D4965F1DE7EAD200CDD58E /* PhotoLibraryModuleInterface.swift in Sources */,
+				B9E5260F1E3090310044A41C /* LikedPostPresenter.swift in Sources */,
 				B99719701E011B6600A24C74 /* SettingsWireframe.swift in Sources */,
 				B921B5571DD594A70065C187 /* AssetServiceProvider.swift in Sources */,
 				B9E4084C1DFBCDDC00B7076A /* UserProfileModuleExtension.swift in Sources */,
@@ -2819,6 +2887,7 @@
 				B9670C951E2DCAB300F27EE4 /* FollowListInteractor.swift in Sources */,
 				B954EE621DE035F000A0049D /* PostUploadInteractorOutput.swift in Sources */,
 				B9E6311A1DF939B400158632 /* PostListCollectionHeaderItem.swift in Sources */,
+				B9E526091E308EDD0044A41C /* LikedPostModule.swift in Sources */,
 				B9D9C3461E0CFF0D002B906B /* UserActivityPresenter.swift in Sources */,
 				B94AB2CD1DF692F000313254 /* UserPostModule.swift in Sources */,
 				B99B497B1DEC1E68001B9C5A /* BaseModule.swift in Sources */,
@@ -2872,6 +2941,7 @@
 				B9E525EB1E305A150044A41C /* SinglePostViewController.swift in Sources */,
 				B978AF341DD42F26007C1AAD /* PhotoCaptureViewInterface.swift in Sources */,
 				B90899751E078CA70036D4A4 /* PostUploadModuleExtension.swift in Sources */,
+				B9E5260D1E308FE30044A41C /* LikedPostWireframe.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
 				B9D496971DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift in Sources */,
@@ -2935,6 +3005,8 @@
 				B941310C1DEE9C0F00DD10CE /* CommentFeedPresenter.swift in Sources */,
 				B95A06EF1E0241EB005B47B6 /* LogoutViewController.swift in Sources */,
 				B9C217D41DCC40F900F617FC /* AuthSession.swift in Sources */,
+				B9E526071E3087CD0044A41C /* LikedPostData.swift in Sources */,
+				B9E526051E3087C40044A41C /* LikedPostInteractor.swift in Sources */,
 				B9D1AC921E039D72003E8870 /* NewsFeedData.swift in Sources */,
 				B9670C9B1E2DCE3800F27EE4 /* FollowListWireframe.swift in Sources */,
 				B9D4967A1DE7EB5F00CDD58E /* PhotoLibraryDelegate.swift in Sources */,
