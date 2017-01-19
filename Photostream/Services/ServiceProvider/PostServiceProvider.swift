@@ -430,7 +430,63 @@ struct PostServiceProvider: PostService {
     }
     
     func fetchPostInfo(id: String, callback: ((PostServiceResult) -> Void)?) {
-        // TODO: Implement fetching single post info
+        var result = PostServiceResult()
+        
+        guard session.isValid else {
+            result.error = .authenticationNotFound(message: "Authentication not found")
+            callback?(result)
+            return
+        }
+        
+        let uid = session.user.id
+        let path1 = "posts/\(id)"
+        let rootRef = FIRDatabase.database().reference()
+        let postRef = rootRef.child(path1)
+        
+        postRef.observeSingleEvent(of: .value, with: { postSnapshot in
+            guard postSnapshot.exists(),
+                let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
+                result.error = .failedToFetch(message: "Post not found")
+                callback?(result)
+                return
+            }
+            
+            var posts = [Post]()
+            var users = [String: User]()
+            
+            let post = Post(with: postSnapshot)
+            let posterId = post.userId
+            
+            let userRef = rootRef.child("users").child(posterId)
+            let photoRef = rootRef.child("photos").child(photoId)
+            let likesRef = rootRef.child("post-like/\(posterId)/likes")
+            
+            userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                photoRef.observeSingleEvent(of: .value, with: { (photoSnapshot) in
+                    likesRef.observeSingleEvent(of: .value, with: { (likesSnapshot) in
+                        if users[posterId] == nil {
+                            let user = User(with: userSnapshot, exception: "email")
+                            users[posterId] = user
+                        }
+                        
+                        let photo = Photo(with: photoSnapshot)
+                        var post = Post(with: postSnapshot)
+                        post.photo = photo
+                        post.isLiked = likesSnapshot.hasChild(uid)
+                        
+                        posts.append(post)
+                        
+                        var list = PostList()
+                        list.posts = posts
+                        list.users = users
+                        
+                        result.posts = list
+                        
+                        callback?(result)
+                    })
+                })
+            })
+        })
     }
     
     func fetchDiscoveryPosts(offset: String, limit: UInt, callback: ((PostServiceResult) -> Void)?) {
