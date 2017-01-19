@@ -46,9 +46,17 @@ extension UserActivityViewController {
     }
 }
 
-extension UserActivityViewController: ActivityTableFollowCellDelegate {
+extension UserActivityViewController: ActivityTableFollowCellDelegate, ActivityTableLikeCellDelegate, ActivityTableCommentCellDelegate, ActivityTablePostCellDelegate {
     
     func didTapAction(cell: ActivityTableFollowCell) {
+        // TODO: Follow / Unfollow
+    }
+    
+    func didTapPhoto(cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
         
+        presenter.presentSinglePost(for: indexPath.row)
     }
 }
