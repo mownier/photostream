@@ -29,6 +29,9 @@
 		B933ADF81DED630200FAE922 /* CommentFeedEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */; };
 		B933ADFB1DED667000FAE922 /* CommentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADFA1DED667000FAE922 /* CommentListCell.swift */; };
 		B933ADFD1DED6DF100FAE922 /* CommentListCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B933ADFC1DED6DF100FAE922 /* CommentListCellItem.swift */; };
+		B93F4D271E30973D00B06CAD /* LikedPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F4D261E30973D00B06CAD /* LikedPostViewController.swift */; };
+		B93F4D291E30975500B06CAD /* LikedPostViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F4D281E30975500B06CAD /* LikedPostViewDataSource.swift */; };
+		B93F4D2B1E30975E00B06CAD /* LikedPostViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F4D2A1E30975E00B06CAD /* LikedPostViewDelegate.swift */; };
 		B94131051DEE9C0F00DD10CE /* CommentFeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94130F51DEE9C0F00DD10CE /* CommentFeedData.swift */; };
 		B94131061DEE9C0F00DD10CE /* CommentFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94130F61DEE9C0F00DD10CE /* CommentFeedInteractor.swift */; };
 		B94131071DEE9C0F00DD10CE /* CommentFeedInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94130F71DEE9C0F00DD10CE /* CommentFeedInteractorInput.swift */; };
@@ -359,6 +362,9 @@
 		B933ADF71DED630200FAE922 /* CommentFeedEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedEmptyView.swift; sourceTree = "<group>"; };
 		B933ADFA1DED667000FAE922 /* CommentListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListCell.swift; sourceTree = "<group>"; };
 		B933ADFC1DED6DF100FAE922 /* CommentListCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListCellItem.swift; sourceTree = "<group>"; };
+		B93F4D261E30973D00B06CAD /* LikedPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostViewController.swift; sourceTree = "<group>"; };
+		B93F4D281E30975500B06CAD /* LikedPostViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostViewDataSource.swift; sourceTree = "<group>"; };
+		B93F4D2A1E30975E00B06CAD /* LikedPostViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostViewDelegate.swift; sourceTree = "<group>"; };
 		B94130F51DEE9C0F00DD10CE /* CommentFeedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedData.swift; sourceTree = "<group>"; };
 		B94130F61DEE9C0F00DD10CE /* CommentFeedInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedInteractor.swift; sourceTree = "<group>"; };
 		B94130F71DEE9C0F00DD10CE /* CommentFeedInteractorInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedInteractorInput.swift; sourceTree = "<group>"; };
@@ -728,6 +734,16 @@
 				B933ADFC1DED6DF100FAE922 /* CommentListCellItem.swift */,
 			);
 			path = CommentListCell;
+			sourceTree = "<group>";
+		};
+		B93F4D251E30971E00B06CAD /* Liked Post */ = {
+			isa = PBXGroup;
+			children = (
+				B93F4D261E30973D00B06CAD /* LikedPostViewController.swift */,
+				B93F4D281E30975500B06CAD /* LikedPostViewDataSource.swift */,
+				B93F4D2A1E30975E00B06CAD /* LikedPostViewDelegate.swift */,
+			);
+			path = "Liked Post";
 			sourceTree = "<group>";
 		};
 		B94130B91DEE9BC300DD10CE /* Comment Writer */ = {
@@ -1789,6 +1805,7 @@
 				B94131221DEEA85E00DD10CE /* Comment Writer */,
 				B9670CA21E2DF19E00F27EE4 /* Follow List */,
 				B9C217541DCC40F900F617FC /* Home */,
+				B93F4D251E30971E00B06CAD /* Liked Post */,
 				B9C217581DCC40F900F617FC /* Login */,
 				B95A06ED1E0241D9005B47B6 /* Logout */,
 				B98283101E2C859E006A3E71 /* Multiline Editor */,
@@ -2799,6 +2816,7 @@
 				B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */,
 				B9C2179B1DCC40F900F617FC /* HomeModuleExtension.swift in Sources */,
 				B9C217DF1DCC40F900F617FC /* UserService.swift in Sources */,
+				B93F4D271E30973D00B06CAD /* LikedPostViewController.swift in Sources */,
 				B933ADFD1DED6DF100FAE922 /* CommentListCellItem.swift in Sources */,
 				B94131191DEE9FB300DD10CE /* CommentWriterData.swift in Sources */,
 				B9C217A71DCC40F900F617FC /* HomeWireframeInterface.swift in Sources */,
@@ -2806,6 +2824,7 @@
 				B99719791E01255D00A24C74 /* SettingsModuleExtension.swift in Sources */,
 				B9670CAA1E2DF53E00F27EE4 /* FollowListCell.swift in Sources */,
 				B9D4965C1DE7EAD200CDD58E /* PhotoLibraryInteractorInterface.swift in Sources */,
+				B93F4D2B1E30975E00B06CAD /* LikedPostViewDelegate.swift in Sources */,
 				B9C217E31DCC40F900F617FC /* NewsFeedServiceProvider.swift in Sources */,
 				B9C217D61DCC40F900F617FC /* Photo.swift in Sources */,
 				B9C218111DCC40F900F617FC /* UITextField+Extensions.swift in Sources */,
@@ -2868,6 +2887,7 @@
 				B9F95E441DF7DB170090C73E /* GhostView.swift in Sources */,
 				B9D496781DE7EB5F00CDD58E /* PhotoGridCell.swift in Sources */,
 				B933ADF61DED50D900FAE922 /* CommentFeedExtension.swift in Sources */,
+				B93F4D291E30975500B06CAD /* LikedPostViewDataSource.swift in Sources */,
 				B9D9C3541E0D089F002B906B /* ActivityTableCellItem.swift in Sources */,
 				B9D91EA61DD17ECA000BF3E5 /* SnapshotParser.swift in Sources */,
 				B99696311E08FE45008A4811 /* PostDiscoveryPresenter.swift in Sources */,
