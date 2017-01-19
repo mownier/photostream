@@ -23,22 +23,26 @@ extension UserActivityViewController {
         case let likeItem as ActivityTableCellLikeItem:
             let tableCell = ActivityTableLikeCell.dequeue(from: tableView)!
             tableCell.configure(with: likeItem)
+            tableCell.delegate = self
             cell = tableCell
         
         case let commentItem as ActivityTableCellCommentItem:
             let tableCell = ActivityTableCommentCell.dequeue(from: tableView)!
             tableCell.configure(with: commentItem)
+            tableCell.delegate = self
             cell = tableCell
         
         case let followItem as ActivityTableCellFollowItem:
             let tableCell = ActivityTableFollowCell.dequeue(from: tableView)!
             tableCell.delegate = self
             tableCell.configure(with: followItem)
+            tableCell.delegate = self
             cell = tableCell
         
         case let postItem as ActivityTableCellPostItem:
             let tableCell = ActivityTablePostCell.dequeue(from: tableView)!
             tableCell.configure(with: postItem)
+            tableCell.delegate = self
             cell = tableCell
         
         default:
