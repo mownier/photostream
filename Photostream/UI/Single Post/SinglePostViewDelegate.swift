@@ -35,11 +35,11 @@ extension SinglePostViewController: PostListCollectionCellDelegate {
     }
     
     func didTapComment(cell: PostListCollectionCell) {
-        // presenter.presentCommentController(at: index, shouldComment: true)
+        presenter.presentCommentController(shouldComment: true)
     }
     
     func didTapCommentCount(cell: PostListCollectionCell) {
-        // presenter.presentCommentController(at: index)
+        presenter.presentCommentController()
     }
     
     func didTapLikeCount(cell: PostListCollectionCell) {
