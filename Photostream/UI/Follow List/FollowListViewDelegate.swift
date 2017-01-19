@@ -13,6 +13,14 @@ extension FollowListViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 48
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard indexPath.row == presenter.listCount - 10 else {
+            return
+        }
+        
+        presenter.loadMore()
+    }
 }
 
 extension FollowListViewController: FollowListCellDelegate {
