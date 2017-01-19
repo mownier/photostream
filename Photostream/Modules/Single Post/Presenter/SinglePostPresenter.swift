@@ -34,6 +34,10 @@ extension SinglePostPresenter: SinglePostModuleInterface {
         wireframe.exit(with: property)
     }
     
+    func viewDidLoad() {
+        fetchPost()
+    }
+    
     func fetchPost() {
         interactor.fetchPost(id: postId)
     }

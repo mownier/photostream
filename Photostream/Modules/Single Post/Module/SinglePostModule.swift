@@ -10,6 +10,8 @@ protocol SinglePostModuleInterface: BaseModuleInterface {
     
     var postData: SinglePostData? { get }
     
+    func viewDidLoad()
+    
     func fetchPost()
     
     func likePost()
