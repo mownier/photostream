@@ -37,3 +37,32 @@ extension CommentFeedScene {
         view.scrollToRow(at: indexPath, at: .top, animated: animated)
     }
 }
+
+extension CommentFeedModuleInterface {
+    
+    func presentUserTimeline(at index: Int) {
+        guard let presenter = self as? CommentFeedPresenter,
+            let parent = presenter.view.controller,
+            let comment = comment(at: index) else {
+            return
+        }
+        
+        presenter.wireframe.showUserTimeline(from: parent, userId: comment.authorId)
+    }
+}
+
+extension CommentFeedWireframeInterface {
+    
+    func showUserTimeline(from parent: UIViewController?, userId: String) {
+        let userTimeline = UserTimelineViewController()
+        userTimeline.root = root
+        userTimeline.style = .push
+        userTimeline.userId = userId
+        
+        var property = WireframeEntryProperty()
+        property.parent = parent
+        property.controller = userTimeline
+        
+        userTimeline.enter(with: property)
+    }
+}

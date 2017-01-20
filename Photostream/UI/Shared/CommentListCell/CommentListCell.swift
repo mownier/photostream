@@ -6,11 +6,17 @@
 //  Copyright © 2016 Mounir Ybanez. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+
+protocol CommentListCellDelegate: class {
+    
+    func didTapAuthor(cell: CommentListCell)
+}
 
 class CommentListCell: UITableViewCell {
 
+    weak var delegate: CommentListCellDelegate?
+    
     var authorPhoto: UIImageView!
     var authorLabel: UILabel!
     var contentLabel: UILabel!
@@ -51,6 +57,16 @@ class CommentListCell: UITableViewCell {
         contentLabel.font = UIFont.systemFont(ofSize: 12)
         contentLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
         
+        var tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapAuthor))
+        tap.numberOfTapsRequired = 1
+        authorLabel.isUserInteractionEnabled = true
+        authorLabel.addGestureRecognizer(tap)
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapAuthor))
+        tap.numberOfTapsRequired = 1
+        authorPhoto.isUserInteractionEnabled = true
+        authorPhoto.addGestureRecognizer(tap)
+        
         contentView.addSubview(authorPhoto)
         contentView.addSubview(authorLabel)
         contentView.addSubview(contentLabel)
@@ -74,6 +90,10 @@ class CommentListCell: UITableViewCell {
         frame.origin.y += frame.size.height + spacing
         frame.size.height = timeLabel.intrinsicContentSize.height
         timeLabel.frame = frame
+    }
+    
+    func didTapAuthor() {
+        delegate?.didTapAuthor(cell: self)
     }
 }
 

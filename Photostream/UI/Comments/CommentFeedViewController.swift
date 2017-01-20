@@ -109,6 +109,7 @@ class CommentFeedViewController: UITableViewController {
         let cell = CommentListCell.dequeue(from: tableView)!
         let comment = presenter.comment(at: indexPath.row) as? CommentListCellItem
         cell.configure(with: comment)
+        cell.delegate = self
         return cell
     }
     
@@ -169,5 +170,17 @@ extension CommentFeedViewController: CommentFeedScene {
     
     func didLoadMoreComments(with error: String?) {
         
+    }
+}
+
+
+extension CommentFeedViewController: CommentListCellDelegate {
+    
+    func didTapAuthor(cell: CommentListCell) {
+        guard let index = tableView.indexPath(for: cell)?.row else {
+            return
+        }
+        
+        presenter.presentUserTimeline(at: index)
     }
 }
