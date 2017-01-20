@@ -65,7 +65,11 @@ extension NewsFeedViewController: PostListCollectionCellDelegate {
     }
     
     func didTapLikeCount(cell: PostListCollectionCell) {
+        guard let index = collectionView[cell]?.section else {
+            return
+        }
         
+        presenter.presentPostLikes(at: index)
     }
 }
 
