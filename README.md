@@ -4,10 +4,10 @@ A photo sharing app that uses Firebase.
 
 ## How To Make It Work?
 
-1. Clone this repo or download source code.
-2. Do `$ pod install`. (_install cocoapods first if not installed_)
-3. Create a new project in your Firebase console.
-4. Set the database rules to: 
+- Clone this repo or download source code.
+- Do `$ pod install`. (_install cocoapods first if not installed_)
+- Create a new project in your Firebase console.
+- Set the database rules to: 
 ```
 {
     "rules": {
@@ -22,9 +22,9 @@ A photo sharing app that uses Firebase.
     }
 }
 ```
-5. Enable `Email/Password` sign-in method.
-6. Download the `GoogleService-Info.plist` file.
-7. Put the file into the root of the project folder.
-8. Open `Photostream.xcworkspace` and add the file into the `Photostream` project.
-9. Modify the bundle identifier and display name.
-10. There you go, build and run the app. :)
+- Enable `Email/Password` sign-in method.
+- Download the `GoogleService-Info.plist` file.
+- Put the file into the root of the project folder.
+- Open `Photostream.xcworkspace` and add the file into the `Photostream` project.
+- Modify the bundle identifier and display name.
+- There you go, build and run the app. :)
