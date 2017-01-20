@@ -93,8 +93,6 @@
 		B9670CA41E2DF1AE00F27EE4 /* FollowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CA31E2DF1AE00F27EE4 /* FollowListViewController.swift */; };
 		B9670CA61E2DF1E800F27EE4 /* FollowListViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CA51E2DF1E800F27EE4 /* FollowListViewDataSource.swift */; };
 		B9670CA81E2DF1F300F27EE4 /* FollowListViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CA71E2DF1F300F27EE4 /* FollowListViewDelegate.swift */; };
-		B9670CAA1E2DF53E00F27EE4 /* FollowListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CA91E2DF53E00F27EE4 /* FollowListCell.swift */; };
-		B9670CAC1E2DF54E00F27EE4 /* FollowListCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CAB1E2DF54E00F27EE4 /* FollowListCellItem.swift */; };
 		B9670CAE1E2E009F00F27EE4 /* FollowListModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9670CAD1E2E009F00F27EE4 /* FollowListModuleExtension.swift */; };
 		B9690BFB1DE565E3007E4593 /* PostUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */; };
 		B9690BFD1DE56607007E4593 /* PostUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9690BFC1DE56607007E4593 /* PostUploadView.swift */; };
@@ -440,8 +438,6 @@
 		B9670CA31E2DF1AE00F27EE4 /* FollowListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListViewController.swift; sourceTree = "<group>"; };
 		B9670CA51E2DF1E800F27EE4 /* FollowListViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListViewDataSource.swift; sourceTree = "<group>"; };
 		B9670CA71E2DF1F300F27EE4 /* FollowListViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListViewDelegate.swift; sourceTree = "<group>"; };
-		B9670CA91E2DF53E00F27EE4 /* FollowListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListCell.swift; sourceTree = "<group>"; };
-		B9670CAB1E2DF54E00F27EE4 /* FollowListCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListCellItem.swift; sourceTree = "<group>"; };
 		B9670CAD1E2E009F00F27EE4 /* FollowListModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowListModuleExtension.swift; sourceTree = "<group>"; };
 		B9690BFA1DE565E3007E4593 /* PostUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadViewController.swift; sourceTree = "<group>"; };
 		B9690BFC1DE56607007E4593 /* PostUploadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUploadView.swift; sourceTree = "<group>"; };
@@ -1185,8 +1181,6 @@
 		B9670CA21E2DF19E00F27EE4 /* Follow List */ = {
 			isa = PBXGroup;
 			children = (
-				B9670CA91E2DF53E00F27EE4 /* FollowListCell.swift */,
-				B9670CAB1E2DF54E00F27EE4 /* FollowListCellItem.swift */,
 				B9670CA31E2DF1AE00F27EE4 /* FollowListViewController.swift */,
 				B9670CA51E2DF1E800F27EE4 /* FollowListViewDataSource.swift */,
 				B9670CA71E2DF1F300F27EE4 /* FollowListViewDelegate.swift */,
@@ -2933,7 +2927,6 @@
 				B94AB2D41DF69DE600313254 /* UserPostModuleExtension.swift in Sources */,
 				B9D9542F1E31ECA6006101BC /* UserTableCell.swift in Sources */,
 				B99719791E01255D00A24C74 /* SettingsModuleExtension.swift in Sources */,
-				B9670CAA1E2DF53E00F27EE4 /* FollowListCell.swift in Sources */,
 				B9D4965C1DE7EAD200CDD58E /* PhotoLibraryInteractorInterface.swift in Sources */,
 				B93F4D2B1E30975E00B06CAD /* LikedPostViewDelegate.swift in Sources */,
 				B9C217E31DCC40F900F617FC /* NewsFeedServiceProvider.swift in Sources */,
@@ -2974,7 +2967,6 @@
 				B9C217AD1DCC40F900F617FC /* LoginPresenterInterface.swift in Sources */,
 				B9C218161DCC40F900F617FC /* ScrollHandler.swift in Sources */,
 				B9D1AC931E039D72003E8870 /* NewsFeedInteractor.swift in Sources */,
-				B9670CAC1E2DF54E00F27EE4 /* FollowListCellItem.swift in Sources */,
 				B99696361E090529008A4811 /* PostDiscoveryViewDelegate.swift in Sources */,
 				B9E4084F1DFBCE5400B7076A /* UserProfileViewController.swift in Sources */,
 				B921B5651DD5ADF20065C187 /* PhotoLibraryModuleExtension.swift in Sources */,

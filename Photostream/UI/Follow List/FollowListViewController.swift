@@ -84,7 +84,7 @@ class FollowListViewController: UITableViewController {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         
-        FollowListCell.register(in: tableView)
+        UserTableCell.register(in: tableView)
         
         setupNavigationItem()
     }

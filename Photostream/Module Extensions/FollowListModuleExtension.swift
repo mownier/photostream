@@ -15,7 +15,7 @@ extension FollowListModule {
     }
 }
 
-extension FollowListDisplayDataItem: FollowListCellItem { }
+extension FollowListDisplayDataItem: UserTableCellItem { }
 
 extension FollowListModuleInterface {
     

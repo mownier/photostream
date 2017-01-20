@@ -15,8 +15,8 @@ extension FollowListViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = FollowListCell.dequeue(from: tableView)!
-        let item = presenter.listItem(at: indexPath.row) as? FollowListCellItem
+        let cell = UserTableCell.dequeue(from: tableView)!
+        let item = presenter.listItem(at: indexPath.row) as? UserTableCellItem
         cell.configure(item: item)
         cell.delegate = self
         return cell

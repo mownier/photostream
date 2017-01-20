@@ -23,9 +23,9 @@ extension FollowListViewController {
     }
 }
 
-extension FollowListViewController: FollowListCellDelegate {
+extension FollowListViewController: UserTableCellDelegate {
     
-    func didTapAction(cell: FollowListCell) {
+    func didTapAction(cell: UserTableCell) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }
@@ -33,7 +33,7 @@ extension FollowListViewController: FollowListCellDelegate {
         presenter.toggleFollow(at: indexPath.row)
     }
     
-    func didTapDisplayName(cell: FollowListCell) {
+    func didTapDisplayName(cell: UserTableCell) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
         }
