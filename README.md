@@ -28,3 +28,8 @@ A photo sharing app that uses Firebase.
 - Open `Photostream.xcworkspace` and add the file into the `Photostream` project.
 - Modify the bundle identifier and display name.
 - There you go, build and run the app. :)
+
+## Screenshots
+
+![Login] (https://raw.github.com/mownier/photostream/master/Screenshots/Login.png) 
+![Registration] (https://raw.github.com/mownier/photostream/master/Screenshots/Registration.png)
