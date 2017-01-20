@@ -271,6 +271,12 @@
 		B9D954211E31A0DC006101BC /* PostLikeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D954201E31A0DC006101BC /* PostLikeScene.swift */; };
 		B9D954231E31A13C006101BC /* PostLikeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D954221E31A13C006101BC /* PostLikeInteractor.swift */; };
 		B9D954251E31AA6E006101BC /* PostLikePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D954241E31AA6E006101BC /* PostLikePresenter.swift */; };
+		B9D954281E31B05B006101BC /* PostLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D954271E31B05B006101BC /* PostLikeViewController.swift */; };
+		B9D9542A1E31B077006101BC /* PostLikeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D954291E31B077006101BC /* PostLikeViewDelegate.swift */; };
+		B9D9542C1E31B084006101BC /* PostLikeViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9542B1E31B084006101BC /* PostLikeViewDataSource.swift */; };
+		B9D9542F1E31ECA6006101BC /* UserTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9542E1E31ECA6006101BC /* UserTableCell.swift */; };
+		B9D954311E31ECDC006101BC /* UserTableCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D954301E31ECDC006101BC /* UserTableCellItem.swift */; };
+		B9D954331E31EE48006101BC /* PostLikeModuleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D954321E31EE48006101BC /* PostLikeModuleExtension.swift */; };
 		B9D9C3401E0CFDC4002B906B /* UserActivityModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C33F1E0CFDC4002B906B /* UserActivityModule.swift */; };
 		B9D9C3421E0CFE60002B906B /* UserActivityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3411E0CFE60002B906B /* UserActivityScene.swift */; };
 		B9D9C3441E0CFECE002B906B /* UserActivityWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D9C3431E0CFECE002B906B /* UserActivityWireframe.swift */; };
@@ -617,6 +623,12 @@
 		B9D954201E31A0DC006101BC /* PostLikeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLikeScene.swift; sourceTree = "<group>"; };
 		B9D954221E31A13C006101BC /* PostLikeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLikeInteractor.swift; sourceTree = "<group>"; };
 		B9D954241E31AA6E006101BC /* PostLikePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLikePresenter.swift; sourceTree = "<group>"; };
+		B9D954271E31B05B006101BC /* PostLikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLikeViewController.swift; sourceTree = "<group>"; };
+		B9D954291E31B077006101BC /* PostLikeViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLikeViewDelegate.swift; sourceTree = "<group>"; };
+		B9D9542B1E31B084006101BC /* PostLikeViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLikeViewDataSource.swift; sourceTree = "<group>"; };
+		B9D9542E1E31ECA6006101BC /* UserTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableCell.swift; sourceTree = "<group>"; };
+		B9D954301E31ECDC006101BC /* UserTableCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableCellItem.swift; sourceTree = "<group>"; };
+		B9D954321E31EE48006101BC /* PostLikeModuleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLikeModuleExtension.swift; sourceTree = "<group>"; };
 		B9D9C33F1E0CFDC4002B906B /* UserActivityModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityModule.swift; sourceTree = "<group>"; };
 		B9D9C3411E0CFE60002B906B /* UserActivityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityScene.swift; sourceTree = "<group>"; };
 		B9D9C3431E0CFECE002B906B /* UserActivityWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActivityWireframe.swift; sourceTree = "<group>"; };
@@ -1574,6 +1586,7 @@
 				B90920601DD30D730073FB72 /* PhotoPickerModuleExtension.swift */,
 				B9DEB2621DDEE12000C47C37 /* PhotoShareModuleExtension.swift */,
 				B99696391E090619008A4811 /* PostDiscoveryModuleExtension.swift */,
+				B9D954321E31EE48006101BC /* PostLikeModuleExtension.swift */,
 				B90899741E078CA70036D4A4 /* PostUploadModuleExtension.swift */,
 				B9E0480D1E20C9C60099B6C5 /* ProfileEditModuleExtension.swift */,
 				B9C216E61DCC40F900F617FC /* RegistrationModuleExtension.swift */,
@@ -1834,6 +1847,7 @@
 				B9DEB2641DDEE17200C47C37 /* Photo Share */,
 				B9D4969A1DE7F07F00CDD58E /* Post Composer */,
 				B99696321E090303008A4811 /* Post Discovery */,
+				B9D954261E31B034006101BC /* Post Like */,
 				B9690BF91DE565D0007E4593 /* Post Upload */,
 				B9E048061E20BC020099B6C5 /* Profile Edit */,
 				B9C217621DCC40F900F617FC /* Registration */,
@@ -1940,6 +1954,7 @@
 		B9C217661DCC40F900F617FC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B9D9542D1E31EC6A006101BC /* UserTableCell */,
 				B9D9C3501E0D076D002B906B /* ActivityTableCell */,
 				B933ADF91DED666300FAE922 /* CommentListCell */,
 				B92B96F71DDAD8CB00D89025 /* CropView */,
@@ -2237,6 +2252,25 @@
 				B9D954181E319F14006101BC /* PostLikeWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B9D954261E31B034006101BC /* Post Like */ = {
+			isa = PBXGroup;
+			children = (
+				B9D954271E31B05B006101BC /* PostLikeViewController.swift */,
+				B9D9542B1E31B084006101BC /* PostLikeViewDataSource.swift */,
+				B9D954291E31B077006101BC /* PostLikeViewDelegate.swift */,
+			);
+			path = "Post Like";
+			sourceTree = "<group>";
+		};
+		B9D9542D1E31EC6A006101BC /* UserTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				B9D9542E1E31ECA6006101BC /* UserTableCell.swift */,
+				B9D954301E31ECDC006101BC /* UserTableCellItem.swift */,
+			);
+			path = UserTableCell;
 			sourceTree = "<group>";
 		};
 		B9D9C3491E0D064D002B906B /* User Activity */ = {
@@ -2807,6 +2841,7 @@
 			files = (
 				B9E631151DF915F600158632 /* PostListCollectionCellItem.swift in Sources */,
 				B954EE511DE0325400A0049D /* PostUploadModuleInterface.swift in Sources */,
+				B9D954331E31EE48006101BC /* PostLikeModuleExtension.swift in Sources */,
 				B9C217EA1DCC40F900F617FC /* LoginViewController.swift in Sources */,
 				B94AB2C51DF687EA00313254 /* UserPostInteractor.swift in Sources */,
 				B9C217A81DCC40F900F617FC /* LoginInteractor.swift in Sources */,
@@ -2837,6 +2872,7 @@
 				B9D4968A1DE7EDE300CDD58E /* PhotoPickerModuleInterface.swift in Sources */,
 				B99719771E0121B400A24C74 /* SettingsViewController.swift in Sources */,
 				B9E631181DF9359500158632 /* PostListCollectionHeader.swift in Sources */,
+				B9D9542C1E31B084006101BC /* PostLikeViewDataSource.swift in Sources */,
 				B9B0FF211E0B865900807B0B /* Activity.swift in Sources */,
 				B941310A1DEE9C0F00DD10CE /* CommentFeedModule.swift in Sources */,
 				B9E048081E20BC190099B6C5 /* ProfileEditViewController.swift in Sources */,
@@ -2895,6 +2931,7 @@
 				B94131191DEE9FB300DD10CE /* CommentWriterData.swift in Sources */,
 				B9C217A71DCC40F900F617FC /* HomeWireframeInterface.swift in Sources */,
 				B94AB2D41DF69DE600313254 /* UserPostModuleExtension.swift in Sources */,
+				B9D9542F1E31ECA6006101BC /* UserTableCell.swift in Sources */,
 				B99719791E01255D00A24C74 /* SettingsModuleExtension.swift in Sources */,
 				B9670CAA1E2DF53E00F27EE4 /* FollowListCell.swift in Sources */,
 				B9D4965C1DE7EAD200CDD58E /* PhotoLibraryInteractorInterface.swift in Sources */,
@@ -2949,6 +2986,7 @@
 				B9F95E471DF7EA8F0090C73E /* PostListCollectionCell.swift in Sources */,
 				B9FCB9661DE408DC00D8F2B5 /* UIPageViewController+Extension.swift in Sources */,
 				B9DEB25F1DDEDE4400C47C37 /* PhotoShareWireframeInterface.swift in Sources */,
+				B9D954311E31ECDC006101BC /* UserTableCellItem.swift in Sources */,
 				B94AB2CF1DF693B500313254 /* UserPostPresenter.swift in Sources */,
 				B954EE471DE0013400A0049D /* PhotoShareModuleDelegate.swift in Sources */,
 				B9C217E21DCC40F900F617FC /* FileServiceProvider.swift in Sources */,
@@ -3040,6 +3078,7 @@
 				B90899751E078CA70036D4A4 /* PostUploadModuleExtension.swift in Sources */,
 				B9E5260D1E308FE30044A41C /* LikedPostWireframe.swift in Sources */,
 				B91DB3261DCDB11F004858B8 /* UICollectionViewExtension.swift in Sources */,
+				B9D9542A1E31B077006101BC /* PostLikeViewDelegate.swift in Sources */,
 				B9C217AF1DCC40F900F617FC /* LoginViewInterface.swift in Sources */,
 				B9D496971DE7EE3F00CDD58E /* PhotoPickerViewDataSource.swift in Sources */,
 				B9D4965E1DE7EAD200CDD58E /* PhotoLibraryModuleDelegate.swift in Sources */,
@@ -3100,6 +3139,7 @@
 				B9C2180D1DCC40F900F617FC /* Array+Extensions.swift in Sources */,
 				B9C217C41DCC40F900F617FC /* RegistrationModuleInterface.swift in Sources */,
 				B93071091E233F5800BF73F6 /* ProfileEditTableCell.swift in Sources */,
+				B9D954281E31B05B006101BC /* PostLikeViewController.swift in Sources */,
 				B9C218131DCC40F900F617FC /* UIViewController+Extensions.swift in Sources */,
 				B941310C1DEE9C0F00DD10CE /* CommentFeedPresenter.swift in Sources */,
 				B95A06EF1E0241EB005B47B6 /* LogoutViewController.swift in Sources */,
