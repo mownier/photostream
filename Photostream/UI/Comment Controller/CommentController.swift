@@ -48,6 +48,24 @@ class CommentController: UIViewController, CommentControllerInterface {
         return writer.view.controller!.view.frame.size.height
     }
     
+    var isModuleSetup: Bool = false {
+        didSet {
+            guard !oldValue, isModuleSetup else {
+                return
+            }
+            
+            setupModules()
+            
+            let feedViewController = feed.view.controller!
+            let writerViewFrame = writer.view.controller!.view.frame
+            feedViewController.view.frame.size.height -= writerViewFrame.size.height
+            
+            if shouldComment {
+                writer.view.becomeFirstResponder()
+            }
+        }
+    }
+    
     required convenience init(root: RootWireframe?) {
         self.init()
         self.root = root
@@ -63,18 +81,11 @@ class CommentController: UIViewController, CommentControllerInterface {
         navigationItem.leftBarButtonItem = barItem
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        setupModules()
-        
-        let feedViewController = feed.view.controller!
-        let writerViewFrame = writer.view.controller!.view.frame
-        feedViewController.view.frame.size.height -= writerViewFrame.size.height
-        
-        if shouldComment {
-            writer.view.becomeFirstResponder()
-        }
+        isModuleSetup = true
     }
     
     func back() {
