@@ -215,25 +215,16 @@ extension FollowListPresenter: FollowListInteractorOutput {
     
     func didUnfollow(with error: UserServiceError?, userId: String) {
         if let index = index(of: userId) {
-            switch fetchType {
+            var item = list[index]
+            item.isBusy = false
             
-            case .following:
-                list.remove(at: index)
-                
-                view.reload()
-                
-            case .followers:
-                var item = list[index]
-                item.isBusy = false
-                
-                if error == nil {
-                    item.isFollowing = false
-                }
-                
-                list[index] = item
-                
-                view.reloadItem(at: index)
+            if error == nil {
+                item.isFollowing = false
             }
+            
+            list[index] = item
+            
+            view.reloadItem(at: index)
         }
         
         view.didUnfollow(with: error?.message)
