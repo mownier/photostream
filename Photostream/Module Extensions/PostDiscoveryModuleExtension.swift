@@ -72,6 +72,18 @@ extension PostDiscoveryWireframeInterface {
         
         userTimeline.enter(with: property)
     }
+    
+    func showPostLikes(from parent: UIViewController?, postId: String) {
+        let module = PostLikeModule()
+        module.build(root: root, postId: postId)
+        
+        var property = WireframeEntryProperty()
+        property.parent = parent
+        property.controller = module.view.controller
+        
+        module.wireframe.style = .push
+        module.wireframe.enter(with: property)
+    }
 }
 
 extension PostDiscoveryModuleInterface {
@@ -107,6 +119,16 @@ extension PostDiscoveryModuleInterface {
         }
         
         presenter.wireframe.showUserTimeline(from: parent, userId: post.userId)
+    }
+    
+    func presentPostLikes(at index: Int) {
+        guard let presenter = self as? NewsFeedPresenter,
+            let parent = presenter.view.controller,
+            let post = post(at: index) else {
+                return
+        }
+        
+        presenter.wireframe.showPostLikes(from: parent, postId: post.id)
     }
 }
 

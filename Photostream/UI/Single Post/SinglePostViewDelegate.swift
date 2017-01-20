@@ -43,7 +43,7 @@ extension SinglePostViewController: PostListCollectionCellDelegate {
     }
     
     func didTapLikeCount(cell: PostListCollectionCell) {
-        
+        presenter.presentPostLikes()
     }
 }
 

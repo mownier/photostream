@@ -64,7 +64,11 @@ extension LikedPostViewController: PostListCollectionCellDelegate {
     }
     
     func didTapLikeCount(cell: PostListCollectionCell) {
+        guard let index = collectionView?.indexPath(for: cell)?.section else {
+            return
+        }
         
+        presenter.presentPostLikes(at: index)
     }
 }
 

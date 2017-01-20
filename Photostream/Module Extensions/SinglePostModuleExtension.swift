@@ -86,6 +86,18 @@ extension SinglePostWireframeInterface {
         
         userTimeline.enter(with: property)
     }
+    
+    func showPostLikes(from parent: UIViewController?, postId: String) {
+        let module = PostLikeModule()
+        module.build(root: root, postId: postId)
+        
+        var property = WireframeEntryProperty()
+        property.parent = parent
+        property.controller = module.view.controller
+        
+        module.wireframe.style = .push
+        module.wireframe.enter(with: property)
+    }
 }
 
 extension SinglePostModuleInterface {
@@ -113,6 +125,16 @@ extension SinglePostModuleInterface {
         }
         
         presenter.wireframe.showUserTimeline(from: parent, userId: post.userId)
+    }
+    
+    func presentPostLikes() {
+        guard let presenter = self as? SinglePostPresenter,
+            let parent = presenter.view.controller,
+            let postId = postData?.id else {
+                return
+        }
+        
+        presenter.wireframe.showPostLikes(from: parent, postId: postId)
     }
 }
 
