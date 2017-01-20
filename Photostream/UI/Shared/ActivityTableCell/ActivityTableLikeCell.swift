@@ -11,6 +11,7 @@ import UIKit
 protocol ActivityTableLikeCellDelegate: class {
     
     func didTapPhoto(cell: UITableViewCell)
+    func didTapAvatar(cell: UITableViewCell)
 }
 
 class ActivityTableLikeCell: UITableViewCell {
@@ -50,10 +51,15 @@ class ActivityTableLikeCell: UITableViewCell {
         contentLabel.numberOfLines = 0
         contentLabel.font = UIFont.systemFont(ofSize: 12)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapPhoto))
+        var tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapPhoto))
         tap.numberOfTapsRequired = 1
         photoImageView.isUserInteractionEnabled = true
         photoImageView.addGestureRecognizer(tap)
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapAvatar))
+        tap.numberOfTapsRequired = 1
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tap)
         
         addSubview(avatarImageView)
         addSubview(photoImageView)
@@ -87,6 +93,10 @@ class ActivityTableLikeCell: UITableViewCell {
     
     func didTapPhoto() {
         delegate?.didTapPhoto(cell: self)
+    }
+    
+    func didTapAvatar() {
+        delegate?.didTapAvatar(cell: self)
     }
 }
 

@@ -11,6 +11,7 @@ import UIKit
 protocol ActivityTableFollowCellDelegate: class {
     
     func didTapAction(cell: ActivityTableFollowCell)
+    func didTapAvatar(cell: UITableViewCell)
 }
 
 class ActivityTableFollowCell: UITableViewCell {
@@ -79,6 +80,11 @@ class ActivityTableFollowCell: UITableViewCell {
         rect.size.height = contentLabel.sizeThatFits(rect.size).height
         rect.origin.y = (frame.height - rect.size.height) / 2
         contentLabel.frame = rect
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapAvatar))
+        tap.numberOfTapsRequired = 1
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tap)
     }
 }
 
@@ -86,6 +92,10 @@ extension ActivityTableFollowCell {
     
     func didTapAction() {
         delegate?.didTapAction(cell: self)
+    }
+    
+    func didTapAvatar() {
+        delegate?.didTapAvatar(cell: self)
     }
 }
 

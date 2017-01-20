@@ -59,4 +59,12 @@ extension UserActivityViewController: ActivityTableFollowCellDelegate, ActivityT
         
         presenter.presentSinglePost(for: indexPath.row)
     }
+    
+    func didTapAvatar(cell: UITableViewCell) {
+        guard let index = tableView.indexPath(for: cell)?.row else {
+            return
+        }
+        
+        presenter.presentUserTimeline(at: index)
+    }
 }
