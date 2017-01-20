@@ -18,3 +18,4 @@ It is necessary that you have to provide your own `GoogleService-Info.plist`. Af
 - [X] Write Comment
 - [X] Follow / Unfollow
 - [X] Edit Profile
+- [X] Liked Post
