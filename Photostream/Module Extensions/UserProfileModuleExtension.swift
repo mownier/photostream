@@ -131,14 +131,22 @@ extension UserProfilePresenter: ProfileEditDelegate {
 
 extension UserProfilePresenter: FollowListDelegate {
     
-    func followListDidFollow() {
-         profile.followingCount += 1
+    func followListDidFollow(isMe: Bool) {
+        guard isMe else {
+            return
+        }
+        
+        profile.followingCount += 1
         
         view.didFetchUserProfile(with: profile)
         delegate?.userProfileDidSetupInfo()
     }
     
-    func followListDidUnfollow() {
+    func followListDidUnfollow(isMe: Bool) {
+        guard isMe else {
+            return
+        }
+        
         let newCount = profile.followingCount - 1
         if newCount < 0  {
             profile.followingCount = 0

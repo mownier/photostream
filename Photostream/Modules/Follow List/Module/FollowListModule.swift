@@ -25,8 +25,8 @@ protocol FollowListModuleInterface: BaseModuleInterface {
 
 protocol FollowListDelegate: BaseModuleDelegate {
     
-    func followListDidFollow()
-    func followListDidUnfollow()
+    func followListDidFollow(isMe: Bool)
+    func followListDidUnfollow(isMe: Bool)
 }
 
 protocol FollowListBuilder: BaseModuleBuilder {
@@ -73,5 +73,8 @@ extension FollowListModule: FollowListBuilder {
         presenter.delegate = delegate
         presenter.userId = userId
         presenter.fetchType = fetchType
+        
+        let auth = AuthSession()
+        presenter.isMe = auth.user.id == userId
     }
 }

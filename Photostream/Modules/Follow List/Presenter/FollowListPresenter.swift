@@ -12,6 +12,7 @@ protocol FollowListPresenterInterface: BaseModulePresenter, BaseModuleInteractab
     var limit: UInt { set get }
     var fetchType: FollowListFetchType { set get }
     var list: [FollowListDisplayData] { set get }
+    var isMe: Bool { set get }
     
     func append(itemsOf data: [FollowListData])
     func index(of userId: String) -> Int?
@@ -33,6 +34,7 @@ class FollowListPresenter: FollowListPresenterInterface {
     var limit: UInt = 20
     var fetchType: FollowListFetchType = .following
     var list = [FollowListDisplayData]()
+    var isMe: Bool = false
     
     func append(itemsOf data: [FollowListData]) {
         for entry in data {
@@ -209,7 +211,7 @@ extension FollowListPresenter: FollowListInteractorOutput {
         view.didFollow(with: error?.message)
         
         if error == nil {
-            delegate?.followListDidFollow()
+            delegate?.followListDidFollow(isMe: isMe)
         }
     }
     
@@ -230,7 +232,7 @@ extension FollowListPresenter: FollowListInteractorOutput {
         view.didUnfollow(with: error?.message)
         
         if error == nil {
-            delegate?.followListDidUnfollow()
+            delegate?.followListDidUnfollow(isMe: isMe)
         }
     }
 }
