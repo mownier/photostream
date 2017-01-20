@@ -2,20 +2,13 @@
 
 A photo sharing app that uses Firebase.
 
-## Providing Firebase Info
+## How To Make It Work?
 
-It is necessary that you have to provide your own `GoogleService-Info.plist`. After you have downloaded the plist file from the firebase console, just place the file at the root of the project folder.
-
-## Todo List
-
-- [X] Login
-- [X] Registration
-- [X] Home
-- [X] Write Post
-- [X] News Feed
-- [X] User Profile
-- [X] Comments
-- [X] Write Comment
-- [X] Follow / Unfollow
-- [X] Edit Profile
-- [X] Liked Post
+1. Clone this repo or download source code.
+2. Do `$ pod install`. (_install cocoapods first if not installed_)
+2. Create a new project in your Firebase console.
+3. Download the `GoogleService-Info.plist` file.
+4. Put the file into the root of the project folder.
+5. Open `Photostream.xcworkspace` and add the file into the `Photostream` project.
+6. Modify the bundle identifier and display name.
+7. There you go, build and run the app. :)
