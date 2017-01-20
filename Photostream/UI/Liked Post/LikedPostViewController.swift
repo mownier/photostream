@@ -161,8 +161,8 @@ extension LikedPostViewController: LikedPostScene {
     }
     
     func reload(at index: Int) {
-        let indexPath = IndexPath(item: 0, section: index)
-        collectionView?.reloadItems(at: [indexPath])
+        let indexSet: IndexSet = [index]
+        collectionView?.reloadSections(indexSet)
     }
     
     func didRefresh(error: String?) {
