@@ -169,20 +169,18 @@ extension LikedPostPresenter: LikedPostInteractorOutput {
         view.didLike(error: error?.message)
         
         guard let index = indexOf(post: postId),
-            var post = post(at: index) else {
-                return
+            var post = post(at: index),
+            error != nil else {
+            return
         }
         
-        if error != nil {
-            post.isLiked = false
-            
-            if post.likes > 0 {
-                post.likes -= 1
-            }
-            
-            posts[index] = post
+        post.isLiked = false
+        
+        if post.likes > 0 {
+            post.likes -= 1
         }
         
+        posts[index] = post
         view.reload(at: index)
     }
 
@@ -190,15 +188,14 @@ extension LikedPostPresenter: LikedPostInteractorOutput {
         view.didUnlike(error: error?.message)
         
         guard let index = indexOf(post: postId),
-            var post = post(at: index) else {
-                return
+            var post = post(at: index),
+            error != nil else {
+            return
         }
         
-        if error != nil {
-            post.isLiked = true
-            post.likes += 1
-            posts[index] = post
-        }
+        post.isLiked = true
+        post.likes += 1
+        posts[index] = post
         
         view.reload(at: index)
     }
