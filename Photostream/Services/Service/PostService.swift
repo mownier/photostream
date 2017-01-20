@@ -36,6 +36,7 @@ struct PostServiceLikeResult {
     var likes: [User]?
     var error: PostServiceError?
     var nextOffset: String?
+    var following: [String: Bool]?
 }
 
 enum PostServiceError: Error {
