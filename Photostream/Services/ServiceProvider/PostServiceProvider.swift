@@ -296,11 +296,17 @@ struct PostServiceProvider: PostService {
             return
         }
         
+        let uid = session.user.id
+  
         let path1 = "post-like/\(id)/likes"
         let path2 = "users"
+        let path3 = "user-following/\(uid)/following"
+        
         let rootRef = FIRDatabase.database().reference()
         let likesRef = rootRef.child(path1)
         let usersRef = rootRef.child(path2)
+        let followingRef = rootRef.child(path3)
+        
         var query = likesRef.queryOrderedByKey()
         
         if !offset.isEmpty {
@@ -316,6 +322,7 @@ struct PostServiceProvider: PostService {
             }
             
             var users = [User]()
+            var following = [String: Bool]()
             
             for child in data.children {
                 guard let userChild = child as? FIRDataSnapshot else {
@@ -324,21 +331,31 @@ struct PostServiceProvider: PostService {
                 
                 let userKey = userChild.key
                 let userRef = usersRef.child(userKey)
+                let isFollowingRef = followingRef.child(userKey)
                 
-                userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
-                    let user = User(with: userSnapshot, exception: "email")
-                    users.append(user)
-                    
-                    let userCount = UInt(users.count)
-                    if userCount == data.childrenCount {
-                        if userCount == limit + 1 {
-                            let removedUser = users.removeFirst()
-                            result.nextOffset = removedUser.id
+                isFollowingRef.observeSingleEvent(of: .value, with: { isFollowingSnapshot in
+                    userRef.observeSingleEvent(of: .value, with: { (userSnapshot) in
+                        let user = User(with: userSnapshot, exception: "email")
+                        
+                        if following[userKey] == nil &&
+                            (isFollowingSnapshot.exists() || userKey == uid) {
+                            following[userKey] = userKey == uid
                         }
                         
-                        result.likes = users.reversed()
-                        callback?(result)
-                    }
+                        users.append(user)
+                        
+                        let userCount = UInt(users.count)
+                        if userCount == data.childrenCount {
+                            if userCount == limit + 1 {
+                                let removedUser = users.removeFirst()
+                                result.nextOffset = removedUser.id
+                            }
+                            
+                            result.likes = users
+                            result.following = following
+                            callback?(result)
+                        }
+                    })
                 })
             }
         })
