@@ -34,7 +34,7 @@ A photo sharing app that uses Firebase.
 |---|---|---|
 |![Login] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Login.png)| ![Registration] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Registration.png)| ![News Feed] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/News%20Feed.png)|
 |![Profile Edit] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Edit%20Profile.png)| ![Settings] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Settings.png)| ![Photo Picker] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Photo%20Picker.png)|
-|![Photo Share] (raw.githubusercontent.com/mownier/photostream/master/Screenshots/Photo%20Share.png)| ![Post Upload] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Post%20Upload.png)| ![Comment Controller] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Comment%20Controller.png)|
+|![Photo Share] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Photo%20Share.png)| ![Post Upload] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Post%20Upload.png)| ![Comment Controller] (https://raw.githubusercontent.com/mownier/photostream/master/Screenshots/Comment%20Controller.png)|
 
 
 ## Remarks
