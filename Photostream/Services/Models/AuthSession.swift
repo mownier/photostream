@@ -18,7 +18,7 @@ struct AuthSession {
 
     init() {
         user = User()
-        if let u = FIRAuth.auth()?.currentUser {
+        if let u = Auth.auth().currentUser {
             user.id = u.uid
         }
     }

@@ -8,7 +8,13 @@
 
 import UIKit
 
-class PostLikeViewController: UITableViewController {
+@objc protocol PostLikeViewControllerAction: class {
+    
+    func triggerRefresh()
+    func back()
+}
+
+class PostLikeViewController: UITableViewController, PostLikeViewControllerAction {
 
     lazy var emptyView: GhostView! = {
         let view = GhostView()

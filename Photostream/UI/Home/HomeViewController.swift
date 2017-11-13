@@ -8,7 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UITabBarController {
+@objc protocol HomeViewControllerAction: class {
+    
+    func showPostComposer()
+}
+
+class HomeViewController: UITabBarController, HomeViewControllerAction {
 
     lazy var specialButton = UIButton()
     

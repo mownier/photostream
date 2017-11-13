@@ -32,7 +32,7 @@ struct PostServiceProvider: PostService {
         }
         
         let uid = session.user.id
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let postKey = rootRef.child("posts").childByAutoId().key
         
         let path1 = "posts/\(postKey)"
@@ -44,13 +44,13 @@ struct PostServiceProvider: PostService {
         let postCountRef = rootRef.child(path4)
         let followerRef = rootRef.child(path5)
         
-        postCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
+        postCountRef.runTransactionBlock({ (data) -> TransactionResult in
             if let val = data.value as? Int {
                 data.value = val + 1
             } else {
                 data.value = 1
             }
-            return FIRTransactionResult.success(withValue: data)
+            return TransactionResult.success(withValue: data)
 
             }, andCompletionBlock: { (error, committed, snap) in
                 guard error == nil, committed else {
@@ -63,7 +63,7 @@ struct PostServiceProvider: PostService {
                     let postUpdate: [AnyHashable: Any] = [
                         "id": postKey,
                         "uid": uid,
-                        "timestamp": FIRServerValue.timestamp(),
+                        "timestamp": ServerValue.timestamp(),
                         "message": content,
                         "photo_id": photoId,
                         "likes_count": 0,
@@ -79,7 +79,7 @@ struct PostServiceProvider: PostService {
                     let activitiesRef = rootRef.child("activities")
                     
                     for childSnapshot in followerSnapshot.children {
-                        guard let follower = childSnapshot as? FIRDataSnapshot else {
+                        guard let follower = childSnapshot as? DataSnapshot else {
                             continue
                         }
                         
@@ -95,7 +95,7 @@ struct PostServiceProvider: PostService {
                             "type": "post",
                             "trigger_by": uid,
                             "post_id": postKey,
-                            "timestamp": FIRServerValue.timestamp()
+                            "timestamp": ServerValue.timestamp()
                         ]
                         updates["activities/\(activityKey)"] = activityUpdate
                         updates["user-activity/\(followerId)/activities/\(activityKey)"] = true
@@ -147,7 +147,7 @@ struct PostServiceProvider: PostService {
         let path2 = "post-like/\(id)/likes"
         let path3 = "posts/\(id)/uid"
         
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let likesRef = rootRef.child(path2)
         let likesCountRef = rootRef.child(path1)
         let authorRef = rootRef.child(path3)
@@ -166,13 +166,13 @@ struct PostServiceProvider: PostService {
                     return
                 }
                 
-                likesCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
+                likesCountRef.runTransactionBlock({ (data) -> TransactionResult in
                     if let val = data.value as? Int {
                         data.value = val + 1
                     } else {
                         data.value = 1
                     }
-                    return FIRTransactionResult.success(withValue: data)
+                    return TransactionResult.success(withValue: data)
                     
                     }, andCompletionBlock: { (err, committed, snap) in
                         guard err == nil, committed else {
@@ -194,7 +194,7 @@ struct PostServiceProvider: PostService {
                                 "type": "like",
                                 "trigger_by": uid,
                                 "post_id": id,
-                                "timestamp": FIRServerValue.timestamp()
+                                "timestamp": ServerValue.timestamp()
                             ]
                             updates["activities/\(activityKey)"] = activityUpdate
                             updates["user-activity/\(authorId)/activities/\(activityKey)"] = true
@@ -222,7 +222,7 @@ struct PostServiceProvider: PostService {
         let path2 = "post-like/\(id)/likes"
         let path3 = "posts/\(id)/uid"
         
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let likesRef = rootRef.child(path2)
         let likesCountRef = rootRef.child(path1)
         let authorRef = rootRef.child(path3)
@@ -244,13 +244,13 @@ struct PostServiceProvider: PostService {
                         return
                     }
                     
-                    likesCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
+                    likesCountRef.runTransactionBlock({ (data) -> TransactionResult in
                         if let val = data.value as? Int , val > 0 {
                             data.value = val - 1
                         } else {
                             data.value = 0
                         }
-                        return FIRTransactionResult.success(withValue: data)
+                        return TransactionResult.success(withValue: data)
                         
                         }, andCompletionBlock: { (err, committed, snap) in
                             guard err == nil, committed else {
@@ -266,7 +266,7 @@ struct PostServiceProvider: PostService {
                             
                             if authorId != uid {
                                 for child in userActivitySnapshot.children {
-                                    guard let activitySnapshot = child as? FIRDataSnapshot else {
+                                    guard let activitySnapshot = child as? DataSnapshot else {
                                         continue
                                     }
                                     
@@ -302,7 +302,7 @@ struct PostServiceProvider: PostService {
         let path2 = "users"
         let path3 = "user-following/\(uid)/following"
         
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let likesRef = rootRef.child(path1)
         let usersRef = rootRef.child(path2)
         let followingRef = rootRef.child(path3)
@@ -325,7 +325,7 @@ struct PostServiceProvider: PostService {
             var following = [String: Bool]()
             
             for child in data.children {
-                guard let userChild = child as? FIRDataSnapshot else {
+                guard let userChild = child as? DataSnapshot else {
                     continue
                 }
                 
@@ -372,7 +372,7 @@ struct PostServiceProvider: PostService {
         
         let uid = session.user.id
         let path1 = "posts/\(id)"
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let postRef = rootRef.child(path1)
         
         postRef.observeSingleEvent(of: .value, with: { postSnapshot in
@@ -431,7 +431,7 @@ struct PostServiceProvider: PostService {
         
         let uid = session.user.id
         let path1 = "posts"
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let postsRef = rootRef.child(path1)
         
         var query = postsRef.queryOrderedByKey()
@@ -455,7 +455,7 @@ struct PostServiceProvider: PostService {
             var discoveryPostAuthors = [String]()
             
             for child in queryResult.children {
-                guard let postSnapshot = child as? FIRDataSnapshot,
+                guard let postSnapshot = child as? DataSnapshot,
                     let posterId = postSnapshot.childSnapshot(forPath: "uid").value as? String,
                     let photoId = postSnapshot.childSnapshot(forPath: "photo_id").value as? String else {
                     continue
@@ -551,7 +551,7 @@ extension PostServiceProvider {
         }
         
         let uid = session.user.id
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let usersRef = rootRef.child("users")
         let postsRef = rootRef.child("posts")
         let photosRef = rootRef.child("photos")
@@ -574,7 +574,7 @@ extension PostServiceProvider {
             var users = [String: User]()
             
             for child in data.children {
-                guard let userPost = child as? FIRDataSnapshot else {
+                guard let userPost = child as? DataSnapshot else {
                     continue
                 }
                 

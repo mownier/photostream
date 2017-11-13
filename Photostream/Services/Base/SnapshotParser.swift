@@ -11,5 +11,5 @@ import Firebase
 
 protocol SnapshotParser {
     
-    init(with snapshot: FIRDataSnapshot, exception: String...)
+    init(with snapshot: DataSnapshot, exception: String...)
 }

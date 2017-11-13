@@ -25,6 +25,11 @@ protocol CommentControllerInterface: BaseModuleWireframe {
     func setupWriter()
 }
 
+@objc protocol CommentControllerAction: class {
+    
+    func back()
+}
+
 extension CommentControllerInterface {
     
     func setupModules() {
@@ -33,7 +38,7 @@ extension CommentControllerInterface {
     }
 }
 
-class CommentController: UIViewController, CommentControllerInterface {
+class CommentController: UIViewController, CommentControllerInterface, CommentControllerAction {
 
     weak var delegate: CommentControllerDelegate?
     

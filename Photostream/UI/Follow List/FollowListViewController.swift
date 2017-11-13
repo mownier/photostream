@@ -8,7 +8,13 @@
 
 import UIKit
 
-class FollowListViewController: UITableViewController {
+@objc protocol FollowListViewControllerAction: class {
+    
+    func triggerRefresh()
+    func back()
+}
+
+class FollowListViewController: UITableViewController, FollowListViewControllerAction {
 
     lazy var emptyView: GhostView! = {
         let view = GhostView()

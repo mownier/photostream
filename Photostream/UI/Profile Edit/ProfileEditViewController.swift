@@ -8,7 +8,14 @@
 
 import UIKit
 
-class ProfileEditViewController: UITableViewController {
+@objc protocol ProfileEditViewControllerAction: class {
+    
+    func back()
+    func save()
+    func stopEditing()
+}
+
+class ProfileEditViewController: UITableViewController, ProfileEditViewControllerAction {
     
     lazy var header: ProfileEditHeaderView = ProfileEditHeaderView()
     lazy var styleDefaultPrototype: ProfileEditTableCell = ProfileEditTableCell(style: .default)

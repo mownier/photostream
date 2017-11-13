@@ -8,7 +8,13 @@
 
 import UIKit
 
-class CommentFeedViewController: UITableViewController {
+@objc protocol CommentFeedViewControllerAction: class {
+    
+    func back()
+    func triggerRefresh()
+}
+
+class CommentFeedViewController: UITableViewController, CommentFeedViewControllerAction {
     
     var presenter: CommentFeedModuleInterface!
     var indicatorView: UIActivityIndicatorView!

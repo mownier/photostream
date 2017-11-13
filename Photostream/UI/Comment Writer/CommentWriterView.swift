@@ -13,7 +13,14 @@ protocol CommentWriterViewDelegate: class {
     func willSend(with content: String?, view: CommentWriterView)
 }
 
-class CommentWriterView: UIView {
+@objc protocol CommentWriterViewAction: class {
+    
+    func didTapPlaceholder()
+    func contentDidChangeText(notif: NSNotification)
+    func didTapSend()
+}
+
+class CommentWriterView: UIView, CommentWriterViewAction {
     
     fileprivate let spacing: CGFloat = 4
     fileprivate let textColor: UIColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)

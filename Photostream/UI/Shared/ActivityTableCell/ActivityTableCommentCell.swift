@@ -14,7 +14,13 @@ protocol ActivityTableCommentCellDelegate: class {
     func didTapAvatar(cell: UITableViewCell)
 }
 
-class ActivityTableCommentCell: UITableViewCell {
+@objc protocol ActivityTableCommentCellAction: class {
+
+    func didTapPhoto()
+    func didTapAvatar()
+}
+
+class ActivityTableCommentCell: UITableViewCell, ActivityTableCommentCellAction {
 
     weak var delegate: ActivityTableCommentCellDelegate?
     

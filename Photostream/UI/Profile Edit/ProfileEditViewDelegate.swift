@@ -16,12 +16,12 @@ extension ProfileEditViewController {
         switch style {
             
         case .default:
-            let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
+            let item = presenter.displayItem(at: indexPath.row)
             styleDefaultPrototype.configure(with: item, isPrototype: true)
             return styleDefaultPrototype.dynamicHeight
             
         case .lineEdit:
-            let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
+            let item = presenter.displayItem(at: indexPath.row)
             styleLineEditPrototype.configure(with: item, isPrototype: true)
             return styleLineEditPrototype.dynamicHeight
         }

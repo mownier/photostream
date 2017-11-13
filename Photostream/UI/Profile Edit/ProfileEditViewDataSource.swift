@@ -21,7 +21,7 @@ extension ProfileEditViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let style = cellStyle(for: indexPath.row)
         let cell = ProfileEditTableCell.dequeue(from: tableView, style: style)!
-        let item = presenter.displayItem(at: indexPath.row) as? ProfileEditTableCellItem
+        let item = presenter.displayItem(at: indexPath.row)
         cell.configure(with: item)
         cell.infoTextField?.delegate = self
         cell.selectionStyle = .none

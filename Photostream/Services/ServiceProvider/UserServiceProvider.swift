@@ -44,7 +44,7 @@ struct UserServiceProvider: UserService {
         let path5 = "user-feed/\(uid)/posts"
         let path6 = "user-post/\(id)/posts"
         
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let followingCountRef = rootRef.child(path1)
         let followingRef = rootRef.child(path2)
         let followerCountRef = rootRef.child(path4)
@@ -57,14 +57,14 @@ struct UserServiceProvider: UserService {
                 return
             }
             
-            followingCountRef.runTransactionBlock({ (followingCountSnapshot) -> FIRTransactionResult in
+            followingCountRef.runTransactionBlock({ (followingCountSnapshot) -> TransactionResult in
                 if let val = followingCountSnapshot.value as? Int , val > 0 {
                     followingCountSnapshot.value = val + 1
                     
                 } else {
                     followingCountSnapshot.value = 1
                 }
-                return FIRTransactionResult.success(withValue: followingCountSnapshot)
+                return TransactionResult.success(withValue: followingCountSnapshot)
                 
                 }, andCompletionBlock: { (err, committed, snap) in
                     guard committed else {
@@ -73,14 +73,14 @@ struct UserServiceProvider: UserService {
                         return
                     }
                     
-                    followerCountRef.runTransactionBlock({ (followerCountSnapshot) -> FIRTransactionResult in
+                    followerCountRef.runTransactionBlock({ (followerCountSnapshot) -> TransactionResult in
                         if let val = followerCountSnapshot.value as? Int , val > 0 {
                             followerCountSnapshot.value = val + 1
                             
                         } else {
                             followerCountSnapshot.value = 1
                         }
-                        return FIRTransactionResult.success(withValue: followerCountSnapshot)
+                        return TransactionResult.success(withValue: followerCountSnapshot)
                         
                         }, andCompletionBlock: { (err, committed, snap) in
                             guard committed else {
@@ -96,7 +96,7 @@ struct UserServiceProvider: UserService {
                                 ]
                                 
                                 for postChild in userPostSnapshot.children {
-                                    guard let post = postChild as? FIRDataSnapshot else {
+                                    guard let post = postChild as? DataSnapshot else {
                                         continue
                                     }
                                     
@@ -109,7 +109,7 @@ struct UserServiceProvider: UserService {
                                     "id": activityKey,
                                     "type": "follow",
                                     "trigger_by": uid,
-                                    "timestamp": FIRServerValue.timestamp()
+                                    "timestamp": ServerValue.timestamp()
                                 ]
                                 updates["activities/\(activityKey)"] = activityUpdate
                                 updates["user-activity/\(id)/activities/\(activityKey)"] = true
@@ -145,19 +145,19 @@ struct UserServiceProvider: UserService {
         let path5 = "user-feed/\(uid)/posts"
         let path6 = "user-post/\(id)/posts"
         
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let followingCountRef = rootRef.child(path1)
         let followerCountRef = rootRef.child(path4)
         let userPostRef = rootRef.child(path6)
         
-        followingCountRef.runTransactionBlock({ (followingCountSnapshot) -> FIRTransactionResult in
+        followingCountRef.runTransactionBlock({ (followingCountSnapshot) -> TransactionResult in
             if let val = followingCountSnapshot.value as? Int , val > 0 {
                 followingCountSnapshot.value = val - 1
                 
             } else {
                 followingCountSnapshot.value = 0
             }
-            return FIRTransactionResult.success(withValue: followingCountSnapshot)
+            return TransactionResult.success(withValue: followingCountSnapshot)
             
             }, andCompletionBlock: { (err, committed, snap) in
                 guard committed else {
@@ -166,14 +166,14 @@ struct UserServiceProvider: UserService {
                     return
                 }
                 
-                followerCountRef.runTransactionBlock({ (followerCountSnapshot) -> FIRTransactionResult in
+                followerCountRef.runTransactionBlock({ (followerCountSnapshot) -> TransactionResult in
                     if let val = followerCountSnapshot.value as? Int , val > 0 {
                         followerCountSnapshot.value = val - 1
                         
                     } else {
                         followerCountSnapshot.value = 0
                     }
-                    return FIRTransactionResult.success(withValue: followerCountSnapshot)
+                    return TransactionResult.success(withValue: followerCountSnapshot)
                     
                     }, andCompletionBlock: { (err, committed, snap) in
                         guard committed else {
@@ -192,7 +192,7 @@ struct UserServiceProvider: UserService {
                                 ]
                                 
                                 for userPostChild in userPostSnapshot.children {
-                                    guard let post = userPostChild as? FIRDataSnapshot else {
+                                    guard let post = userPostChild as? DataSnapshot else {
                                         continue
                                     }
                                     
@@ -201,7 +201,7 @@ struct UserServiceProvider: UserService {
                                 
                                 if userActivitySnapshot.exists() {
                                     for child in userActivitySnapshot.children {
-                                        guard let activitySnapshot = child as? FIRDataSnapshot else {
+                                        guard let activitySnapshot = child as? DataSnapshot else {
                                             continue
                                         }
                                         
@@ -245,7 +245,7 @@ struct UserServiceProvider: UserService {
         let path1 = "users/\(id)/"
         let path2 = "user-profile/\(id)"
         let path3 = "user-follower/\(id)/followers/\(uid)"
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let usersRef = rootRef.child(path1)
         let profileRef = rootRef.child(path2)
         let followerRef = rootRef.child(path3)
@@ -277,7 +277,7 @@ struct UserServiceProvider: UserService {
         let uid = session.user.id
         let path1 = "user-activity/\(uid)/activities"
         let path2 = "activities"
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let userActivityRef = rootRef.child(path1)
         let activitiesRef = rootRef.child(path2)
         
@@ -331,7 +331,7 @@ struct UserServiceProvider: UserService {
             }
             
             for child in queryResult.children {
-                guard let userActivity = child as? FIRDataSnapshot else {
+                guard let userActivity = child as? DataSnapshot else {
                     continue
                 }
                 
@@ -593,7 +593,7 @@ struct UserServiceProvider: UserService {
         }
         
         let uid = session.user.id
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         
         let path1 = "users/\(uid)"
         let path2 = "user-profile/\(uid)"
@@ -670,7 +670,7 @@ extension UserServiceProvider {
         let uid = session.user.id
         let path1 = "users"
         let path2 = "user-following/\(uid)/following"
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let followingRef = rootRef.child(path2)
         let usersRef = rootRef.child(path1)
         let followRef = rootRef.child(path)
@@ -692,7 +692,7 @@ extension UserServiceProvider {
             var following = [String: Bool]()
             
             for child in queryResult.children {
-                guard let childSnapshot = child as? FIRDataSnapshot else {
+                guard let childSnapshot = child as? DataSnapshot else {
                     continue
                 }
                 

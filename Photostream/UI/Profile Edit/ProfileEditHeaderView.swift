@@ -13,7 +13,12 @@ protocol ProfileEditHeaderViewDelegate: class {
     func didTapToChangeAvatar()
 }
 
-class ProfileEditHeaderView: UIView {
+@objc protocol ProfileEditHeaderViewAction: class {
+    
+    func didTapAvatarButton()
+}
+
+class ProfileEditHeaderView: UIView, ProfileEditHeaderViewAction {
     
     weak var delegate: ProfileEditHeaderViewDelegate?
     
@@ -44,7 +49,7 @@ class ProfileEditHeaderView: UIView {
         
         progressView = UILabel()
         progressView.textColor = UIColor.white
-        progressView.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightBold)
+        progressView.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)
         progressView.textAlignment = .center
         progressView.baselineAdjustment = .alignCenters
         progressView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)

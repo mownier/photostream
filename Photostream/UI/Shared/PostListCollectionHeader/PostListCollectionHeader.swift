@@ -14,7 +14,13 @@ protocol PostListCollectionHeaderDelegate: class {
     func didTapAvatar(header: PostListCollectionHeader, point: CGPoint)
 }
 
-class PostListCollectionHeader: UICollectionReusableView {
+@objc protocol PostListCollectionHeaderAction: class {
+    
+    func didTapDisplayName(_ tap: UITapGestureRecognizer)
+    func didTapAvatar(_ tap: UITapGestureRecognizer)
+}
+
+class PostListCollectionHeader: UICollectionReusableView, PostListCollectionHeaderAction {
     
     weak var delegate: PostListCollectionHeaderDelegate?
     

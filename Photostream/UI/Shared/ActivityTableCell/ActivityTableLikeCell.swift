@@ -14,7 +14,13 @@ protocol ActivityTableLikeCellDelegate: class {
     func didTapAvatar(cell: UITableViewCell)
 }
 
-class ActivityTableLikeCell: UITableViewCell {
+@objc protocol ActivityTableLikeCellAction: class {
+    
+    func didTapPhoto()
+    func didTapAvatar()
+}
+
+class ActivityTableLikeCell: UITableViewCell, ActivityTableLikeCellAction {
     
     weak var delegate: ActivityTableLikeCellDelegate?
     

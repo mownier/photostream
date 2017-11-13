@@ -8,7 +8,13 @@
 
 import UIKit
 
-class MultilineEditorViewController: UIViewController {
+@objc protocol MultilineEditorViewControllerAction: class {
+    
+    func didTapCancel()
+    func didTapSave()
+}
+
+class MultilineEditorViewController: UIViewController, MultilineEditorViewControllerAction {
 
     var multilineEditorView: MultilineEditorView!
     var presenter: MultilineEditorModuleInterface!

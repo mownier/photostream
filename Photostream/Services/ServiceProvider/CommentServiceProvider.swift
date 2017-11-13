@@ -25,7 +25,7 @@ struct CommentServiceProvider: CommentService {
             return
         }
         
-        let root = FIRDatabase.database().reference()
+        let root = Database.database().reference()
         let commentsRef = root.child("comments")
         let postCommentRef = root.child("post-comment")
         let usersRef = root.child("users")
@@ -92,7 +92,7 @@ struct CommentServiceProvider: CommentService {
         
         let uid = session.user.id
 
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         
         let key = rootRef.child("comments").childByAutoId().key
         
@@ -115,13 +115,13 @@ struct CommentServiceProvider: CommentService {
                 return
             }
             
-            commentCountRef.runTransactionBlock({ (data) -> FIRTransactionResult in
+            commentCountRef.runTransactionBlock({ (data) -> TransactionResult in
                 if let val = data.value as? Int {
                     data.value = val + 1
                 } else {
                     data.value = 1
                 }
-                return FIRTransactionResult.success(withValue: data)
+                return TransactionResult.success(withValue: data)
                 
             }) { (error, committed, snapshot) in
                 guard error == nil, committed else {
@@ -135,7 +135,7 @@ struct CommentServiceProvider: CommentService {
                     "uid": uid,
                     "pid": postId,
                     "message": message,
-                    "timestamp": FIRServerValue.timestamp()
+                    "timestamp": ServerValue.timestamp()
                 ]
                 
                 var updates: [AnyHashable: Any] = [
@@ -153,7 +153,7 @@ struct CommentServiceProvider: CommentService {
                         "trigger_by": uid,
                         "post_id": postId,
                         "comment_id": key,
-                        "timestamp": FIRServerValue.timestamp()
+                        "timestamp": ServerValue.timestamp()
                     ]
                     updates["activities/\(activityKey)"] = activityUpdate
                     updates["user-activity/\(authorId)/activities/\(activityKey)"] = true

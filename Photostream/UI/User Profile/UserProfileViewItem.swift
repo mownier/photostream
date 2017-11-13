@@ -29,6 +29,13 @@ protocol UserProfileViewConfig {
     func setupActionButton(me: Bool, followed: Bool)
 }
 
+@objc protocol UserProfileViewItemAction: class {
+    
+    func didTapToEdit()
+    func didTapToFollow()
+    func didTapToUnfollow()
+}
+
 fileprivate enum ActionType {
     case edit
     case follow
@@ -131,7 +138,7 @@ extension UserProfileView: UserProfileViewConfig {
     }
 }
 
-extension UserProfileView {
+extension UserProfileView: UserProfileViewItemAction {
     
     func didTapToEdit() {
         delegate?.willEdit(view: self)

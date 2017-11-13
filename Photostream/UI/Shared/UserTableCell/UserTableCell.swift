@@ -14,7 +14,13 @@ protocol UserTableCellDelegate: class {
     func didTapDisplayName(cell: UserTableCell)
 }
 
-class UserTableCell: UITableViewCell {
+@objc protocol UserTableCellAction: class {
+    
+    func didTapAction()
+    func didTapDisplayNameLabel()
+}
+
+class UserTableCell: UITableViewCell, UserTableCellAction {
     
     weak var delegate: UserTableCellDelegate?
     
@@ -45,7 +51,7 @@ class UserTableCell: UITableViewCell {
         actionButton.borderWidth = 1
         actionButton.setTitle("Action", for: .normal)
         actionButton.setTitleColor(UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1), for: .normal)
-        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
+        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.medium)
         
         avatarImageView = UIImageView()
         avatarImageView.cornerRadius = avatarDimension / 2
@@ -53,7 +59,7 @@ class UserTableCell: UITableViewCell {
         avatarImageView.backgroundColor = .lightGray
         
         displayNameLabel = UILabel()
-        displayNameLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
+        displayNameLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.medium)
         
         actionLoadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         actionLoadingView.hidesWhenStopped = true

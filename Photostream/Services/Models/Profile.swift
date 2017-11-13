@@ -27,7 +27,7 @@ struct Profile {
 
 extension Profile: SnapshotParser {
     
-    init(with snapshot: FIRDataSnapshot, exception: String...) {
+    init(with snapshot: DataSnapshot, exception: String...) {
         self.init()
             
         if snapshot.hasChild("post_count") && !exception.contains("post_count") {

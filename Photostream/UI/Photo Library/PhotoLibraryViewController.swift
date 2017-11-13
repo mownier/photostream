@@ -14,7 +14,12 @@ enum PhotoLibraryViewControllerStyle {
     case style1, style2
 }
 
-class PhotoLibraryViewController: UIViewController {
+@objc protocol PhotoLibraryViewControllerAction: class {
+    
+    func didTapDimView()
+}
+
+class PhotoLibraryViewController: UIViewController, PhotoLibraryViewControllerAction {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!

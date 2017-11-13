@@ -7,10 +7,14 @@
 //
 
 import UIKit
-import MONUniformFlowLayout
 import DateTools
 
-class NewsFeedViewController: UIViewController {
+@objc protocol NewsFeedViewControllerAction: class {
+    
+    func triggerRefresh()
+}
+
+class NewsFeedViewController: UIViewController, NewsFeedViewControllerAction {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var listLayout: UICollectionViewFlowLayout!

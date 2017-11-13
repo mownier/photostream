@@ -37,12 +37,12 @@ extension PhotoCapturePresenter: PhotoCaptureModuleInterface {
         moduleDelegate?.photoCaptureDidCanel()
     }
     
-    func setupCamera(with preview: GPUImageView, cameraPosition: AVCaptureDevicePosition = .back, preset: String = AVCaptureSessionPreset640x480, outputOrientation: UIInterfaceOrientation = .portrait) {
+    func setupCamera(with preview: GPUImageView, cameraPosition: AVCaptureDevice.Position = .back, preset: AVCaptureSession.Preset = .vga640x480, outputOrientation: UIInterfaceOrientation = .portrait) {
         guard isCameraAvailable else {
             return
         }
         
-        camera = GPUImageStillCamera(sessionPreset: preset, cameraPosition: cameraPosition)
+        camera = GPUImageStillCamera(sessionPreset: preset.rawValue, cameraPosition: cameraPosition)
         camera?.outputImageOrientation = outputOrientation
         
         filter = GPUImageCropFilter(cropRegion: squareCropRegion(for: preset))
@@ -69,17 +69,17 @@ extension PhotoCapturePresenter: PhotoCaptureModuleInterface {
 
 extension PhotoCapturePresenter {
     
-    func squareCropRegion(for preset: String) -> CGRect {
+    func squareCropRegion(for preset: AVCaptureSession.Preset) -> CGRect {
         switch preset {
-        case AVCaptureSessionPreset640x480:
+        case .vga640x480:
             return squareCropRegion(for: CGSize(width: 640, height: 480))
-        case AVCaptureSessionPreset352x288:
+        case .cif352x288:
             return squareCropRegion(for: CGSize(width: 352, height: 288))
-        case AVCaptureSessionPreset1280x720:
+        case .hd1280x720:
             return squareCropRegion(for: CGSize(width: 1280, height: 720))
-        case AVCaptureSessionPreset1920x1080:
+        case .hd1920x1080:
             return squareCropRegion(for: CGSize(width: 1920, height: 1080))
-        case AVCaptureSessionPreset3840x2160:
+        case .hd4K3840x2160:
             return squareCropRegion(for: CGSize(width: 3480, height: 2160))
         default:
             return CGRect(x: 0, y: 0, width: 1, height: 1)

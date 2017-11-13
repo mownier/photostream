@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class AppDependency: AnyObject {
+class AppDependency {
 
     var appWireframe: AppWireframe!
 
@@ -31,7 +31,7 @@ class AppDependency: AnyObject {
     }
 
     fileprivate func isOK() -> Bool {
-        if let _ = FIRAuth.auth()?.currentUser {
+        if let _ = Auth.auth().currentUser {
             return true
         } else {
             return false

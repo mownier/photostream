@@ -34,13 +34,13 @@ struct FileServiceProvider: FileService {
         }
         
         let userId = session.user.id
-        let storageRef = FIRStorage.storage().reference()
+        let storageRef = Storage.storage().reference()
         let key = Date.timeIntervalSinceReferenceDate * 1000
         let imagePath = "\(userId)/posts/\(key).jpg"
-        let metadata = FIRStorageMetadata()
+        let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        let task = storageRef.child(imagePath).put(imageData, metadata: metadata, completion: { (metadata, error) in
+        let task = storageRef.child(imagePath).putData(imageData, metadata: metadata, completion: { (metadata, error) in
             guard error == nil else {
                 result.error = .failedToUpload(message: "Failed upload JPEG image.")
                 callback?(result)
@@ -53,7 +53,7 @@ struct FileServiceProvider: FileService {
                 return
             }
             
-            let databaseRef = FIRDatabase.database().reference()
+            let databaseRef = Database.database().reference()
             let key = databaseRef.child("photos").childByAutoId().key
             let path = "photos/\(key)"
             let data: [String: AnyObject] = [
@@ -94,14 +94,14 @@ struct FileServiceProvider: FileService {
         }
         
         let uid = session.user.id
-        let storageRef = FIRStorage.storage().reference()
+        let storageRef = Storage.storage().reference()
         
         let key = Date.timeIntervalSinceReferenceDate * 1000
         let imagePath = "\(uid)/avatar/\(key).jpg"
-        let metadata = FIRStorageMetadata()
+        let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        let task = storageRef.child(imagePath).put(imageData, metadata: metadata, completion: { metadata, error in
+        let task = storageRef.child(imagePath).putData(imageData, metadata: metadata, completion: { metadata, error in
             guard error == nil else {
                 result.error = .failedToUpload(message: "Failed upload avatar image")
                 callback?(result)

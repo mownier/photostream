@@ -117,12 +117,12 @@ extension ActivityTableLikeCell: ActivityTableLikeCellConfig {
         
         let font = contentLabel.font!
         
-        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFontWeightSemibold)
+        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
         
-        let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
-        let message = NSAttributedString(string: contentMessage, attributes: [NSFontAttributeName: regular])
-        let time = NSAttributedString(string: timeAgo, attributes: [NSFontAttributeName: regular, NSForegroundColorAttributeName: UIColor.lightGray])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedStringKey.font: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedStringKey.font: regular, NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)
@@ -194,12 +194,12 @@ extension ActivityTableCommentCell: ActivityTableCommentCellConfig {
         
         let font = contentLabel.font!
         
-        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFontWeightSemibold)
+        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
         
-        let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
-        let message = NSAttributedString(string: contentMessage, attributes: [NSFontAttributeName: regular])
-        let time = NSAttributedString(string: timeAgo, attributes: [NSFontAttributeName: regular, NSForegroundColorAttributeName: UIColor.lightGray])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedStringKey.font: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedStringKey.font: regular, NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)
@@ -270,12 +270,12 @@ extension ActivityTableFollowCell: ActivityTableFollowCellConfig {
         
         let font = contentLabel.font!
         
-        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFontWeightSemibold)
+        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
         
-        let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
-        let message = NSAttributedString(string: contentMessage, attributes: [NSFontAttributeName: regular])
-        let time = NSAttributedString(string: timeAgo, attributes: [NSFontAttributeName: regular, NSForegroundColorAttributeName: UIColor.lightGray])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedStringKey.font: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedStringKey.font: regular, NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)
@@ -352,12 +352,12 @@ extension ActivityTablePostCell: ActivityTablePostCellConfig {
         
         let font = contentLabel.font!
         
-        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFontWeightSemibold)
+        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
         
-        let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
-        let message = NSAttributedString(string: contentMessage, attributes: [NSFontAttributeName: regular])
-        let time = NSAttributedString(string: timeAgo, attributes: [NSFontAttributeName: regular, NSForegroundColorAttributeName: UIColor.lightGray])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
+        let message = NSAttributedString(string: contentMessage, attributes: [NSAttributedStringKey.font: regular])
+        let time = NSAttributedString(string: timeAgo, attributes: [NSAttributedStringKey.font: regular, NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         
         let text = NSMutableAttributedString()
         text.append(name)

@@ -36,7 +36,7 @@ struct CommentList {
 
 extension Comment: SnapshotParser {
     
-    init(with snapshot: FIRDataSnapshot, exception: String...) {
+    init(with snapshot: DataSnapshot, exception: String...) {
         self.init()
         
         if snapshot.hasChild("id") && !exception.contains("id") {

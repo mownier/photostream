@@ -14,11 +14,7 @@ struct AuthenticationServiceProvider: AuthenticationService {
 
     func login(data: AuthentationServiceLoginData, callback: ((AuthenticationServiceResult) -> Void)?) {
         var result = AuthenticationServiceResult()
-        guard let auth = FIRAuth.auth() else {
-            result.error = .authenticationNotFound(message: "Authentication not found")
-            callback?(result)
-            return
-        }
+        let auth = Auth.auth()
         
         auth.signIn(withEmail: data.email, password: data.password) { (user, error) in
             guard error == nil else {
@@ -34,7 +30,7 @@ struct AuthenticationServiceProvider: AuthenticationService {
             }
             
             let id = authUser.uid
-            let ref = FIRDatabase.database().reference()
+            let ref = Database.database().reference()
             let path = "users/\(id)"
             ref.child(path).observeSingleEvent(of: .value, with: { (data) in
                 var u = User()
@@ -54,11 +50,7 @@ struct AuthenticationServiceProvider: AuthenticationService {
 
     func register(data: AuthenticationServiceRegisterData, callback: ((AuthenticationServiceResult) -> Void)?) {
         var result = AuthenticationServiceResult()
-        guard let auth = FIRAuth.auth() else {
-            result.error = .authenticationNotFound(message: "Authentication not found")
-            callback?(result)
-            return
-        }
+        let auth = Auth.auth()
         
         auth.createUser(withEmail: data.email, password: data.password, completion: { (user, error) in
             guard error == nil else {
@@ -75,7 +67,7 @@ struct AuthenticationServiceProvider: AuthenticationService {
             
             let id = authUser.uid
             let userInfo = ["firstname": data.firstName, "lastname": data.lastName, "id": id, "email": data.email]
-            let ref = FIRDatabase.database().reference()
+            let ref = Database.database().reference()
             let path = "users/\(id)"
             ref.child(path).setValue(userInfo)
             
@@ -91,10 +83,7 @@ struct AuthenticationServiceProvider: AuthenticationService {
     }
 
     func logout(callback: ((AuthenticationServiceError?) -> Void)?) {
-        guard let auth = FIRAuth.auth() else {
-            callback?(.authenticationNotFound(message: "Authentication not found"))
-            return
-        }
+        let auth = Auth.auth()
         
         do {
             try auth.signOut()

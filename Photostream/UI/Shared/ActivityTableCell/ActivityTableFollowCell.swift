@@ -14,6 +14,12 @@ protocol ActivityTableFollowCellDelegate: class {
     func didTapAvatar(cell: UITableViewCell)
 }
 
+@objc protocol ActivityTableFollowCellAction: class {
+    
+    func didTapAction()
+    func didTapAvatar()
+}
+
 class ActivityTableFollowCell: UITableViewCell {
 
     weak var delegate: ActivityTableFollowCellDelegate?
@@ -88,7 +94,7 @@ class ActivityTableFollowCell: UITableViewCell {
     }
 }
 
-extension ActivityTableFollowCell {
+extension ActivityTableFollowCell: ActivityTableFollowCellAction {
     
     func didTapAction() {
         delegate?.didTapAction(cell: self)

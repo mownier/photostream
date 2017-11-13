@@ -8,7 +8,12 @@
 
 import UIKit
 
-class UserActivityViewController: UITableViewController {
+@objc protocol UserActivityViewControllerAction: class {
+    
+    func triggerRefresh()
+}
+
+class UserActivityViewController: UITableViewController, UserActivityViewControllerAction {
 
     var presenter: UserActivityModuleInterface!
     

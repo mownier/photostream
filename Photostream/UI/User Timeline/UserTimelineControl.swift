@@ -15,6 +15,13 @@ protocol UserTimelineControlDelegate: class {
     func didSelectLiked()
 }
 
+@objc protocol UserTimelineControlAction: class {
+    
+    func didTapGrid()
+    func didTapList()
+    func didTapLiked()
+}
+
 class UserTimelineControl: UIView {
 
     weak var delegate: UserTimelineControlDelegate?
@@ -91,7 +98,7 @@ class UserTimelineControl: UIView {
     }
 }
 
-extension UserTimelineControl {
+extension UserTimelineControl: UserTimelineControlAction {
     
     func didTapGrid() {
         gridButton.isSelected = true

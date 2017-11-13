@@ -17,7 +17,13 @@ protocol UserProfileViewDelegate: class {
     func willShowFollowers()
 }
 
-class UserProfileView: UIView {
+@objc protocol UserProfileViewAction: class {
+    
+    func didTapFollowerCountLabel()
+    func didTapFollowingCountLabel()
+}
+
+class UserProfileView: UIView, UserProfileViewAction {
 
     weak var delegate: UserProfileViewDelegate?
     
@@ -55,13 +61,13 @@ class UserProfileView: UIView {
         postLabel.text = "posts"
         postLabel.textColor = secondaryColor
         postLabel.textAlignment = .center
-        postLabel.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightSemibold)
+        postLabel.font = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.semibold)
         
         postCountLabel = UILabel()
         postCountLabel.text = "0"
         postCountLabel.textColor = primaryColor
         postCountLabel.textAlignment = .center
-        postCountLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
+        postCountLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         
         followerLabel = UILabel()
         followerLabel.text = "followers"
@@ -88,7 +94,7 @@ class UserProfileView: UIView {
         followingCountLabel.font = postCountLabel.font
         
         actionButton = UIButton()
-        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 11, weight: UIFontWeightMedium)
+        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.medium)
         actionButton.setTitle("", for: .normal)
         actionButton.setTitleColor(primaryColor, for: .normal)
         actionButton.cornerRadius = 2
@@ -98,7 +104,7 @@ class UserProfileView: UIView {
         displayNameLabel = UILabel()
         displayNameLabel.text = "Name"
         displayNameLabel.textColor = primaryColor
-        displayNameLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
+        displayNameLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.medium)
         
         bioLabel = UILabel()
         bioLabel.text = "Bio here..."

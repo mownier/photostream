@@ -13,7 +13,13 @@ enum PostDiscoverySceneType {
     case list
 }
 
-class PostDiscoveryViewController: UICollectionViewController {
+@objc protocol PostDiscoveryViewControllerAction: class {
+    
+    func triggerRefresh()
+    func didTapBack()
+}
+
+class PostDiscoveryViewController: UICollectionViewController, PostDiscoveryViewControllerAction {
 
     weak var scrollEventListener: ScrollEventListener?
     
@@ -173,9 +179,6 @@ class PostDiscoveryViewController: UICollectionViewController {
             navigationItem.leftBarButtonItem = nil
         }
     }
-}
-
-extension PostDiscoveryViewController {
     
     func didTapBack() {
         presenter.exit()

@@ -39,7 +39,7 @@ struct ActivityList {
 
 extension Activity: SnapshotParser {
     
-    init(with snapshot: FIRDataSnapshot, exception: String...) {
+    init(with snapshot: DataSnapshot, exception: String...) {
         self.init()
         
         var userId = ""

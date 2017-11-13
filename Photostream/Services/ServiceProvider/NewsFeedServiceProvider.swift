@@ -26,7 +26,7 @@ struct NewsFeedServiceProvider: NewsFeedService {
         }
         
         let uid = session.user.id
-        let rootRef = FIRDatabase.database().reference()
+        let rootRef = Database.database().reference()
         let feedRef = rootRef.child("user-feed").child(uid)
         let postsRef = feedRef.child("posts")
         var query = postsRef.queryOrderedByKey()
@@ -47,7 +47,7 @@ struct NewsFeedServiceProvider: NewsFeedService {
             var users = [String: User]()
             
             for child in snapshot.children {
-                guard let post = child as? FIRDataSnapshot else {
+                guard let post = child as? DataSnapshot else {
                     continue
                 }
                 

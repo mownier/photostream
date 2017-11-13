@@ -14,7 +14,14 @@ enum UserPostSceneType {
     case list
 }
 
-class UserPostViewController: UICollectionViewController {
+@objc protocol UserPostViewControllerAction: class {
+    
+    func triggerRefresh()
+    func toggleScene()
+    func signOut()
+}
+
+class UserPostViewController: UICollectionViewController, UserPostViewControllerAction {
     
     weak var scrollEventListener: ScrollEventListener?
     
@@ -175,7 +182,7 @@ class UserPostViewController: UICollectionViewController {
     }
     
     func signOut() {
-        try? FIRAuth.auth()?.signOut()
+        try? Auth.auth().signOut()
     }
     
     func toggleScene() {

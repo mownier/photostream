@@ -57,7 +57,7 @@ extension NewsFeedViewController {
     
     func cell(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionViewCell {
         guard let cell = PostListCollectionCell.dequeue(from: collectionView, for: indexPath),
-            let post = item as? PostListCollectionCellItem else {
+            let post = item else {
             return UICollectionViewCell()
         }
         
@@ -68,7 +68,7 @@ extension NewsFeedViewController {
     
     func header(from collectionView: UICollectionView, at indexPath: IndexPath, for item: NewsFeedPost?) -> UICollectionReusableView {
         guard let header = PostListCollectionHeader.dequeue(from: collectionView, for: indexPath),
-            let post = item as? PostListCollectionHeaderItem else {
+            let post = item else {
             return UICollectionReusableView()
         }
         

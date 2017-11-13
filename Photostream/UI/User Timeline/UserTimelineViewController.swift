@@ -8,6 +8,13 @@
 
 import UIKit
 
+@objc protocol UserTimelineViewControllerAction: class {
+    
+    func didRefreshPosts()
+    func didTapSettings()
+    func didTapBack()
+}
+
 class UserTimelineViewController: UIViewController, BaseModuleWireframe {
 
     var root: RootWireframe?
@@ -90,7 +97,7 @@ class UserTimelineViewController: UIViewController, BaseModuleWireframe {
     }
 }
 
-extension UserTimelineViewController {
+extension UserTimelineViewController: UserTimelineViewControllerAction {
     
     func didTapSettings() {
         let module = SettingsModule()

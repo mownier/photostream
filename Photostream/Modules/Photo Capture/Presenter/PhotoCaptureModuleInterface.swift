@@ -15,18 +15,18 @@ protocol PhotoCaptureModuleInterface: class {
     func capture()
     func cancel()
     
-    func setupCamera(with preview: GPUImageView, cameraPosition: AVCaptureDevicePosition, preset: String, outputOrientation: UIInterfaceOrientation)
+    func setupCamera(with preview: GPUImageView, cameraPosition: AVCaptureDevice.Position, preset:  AVCaptureSession.Preset, outputOrientation: UIInterfaceOrientation)
     func startCamera()
     func stopCamera()
 }
 
 extension PhotoCaptureModuleInterface {
     
-    func setupBackCamera(with preview: GPUImageView, preset: String = AVCaptureSessionPreset640x480, outputOrientation: UIInterfaceOrientation = .portrait) {
+    func setupBackCamera(with preview: GPUImageView, preset: AVCaptureSession.Preset = AVCaptureSession.Preset.vga640x480, outputOrientation: UIInterfaceOrientation = .portrait) {
         setupCamera(with: preview, cameraPosition: .back, preset: preset, outputOrientation: outputOrientation)
     }
 
-    func setupFrontCamera(with preview: GPUImageView, preset: String = AVCaptureSessionPreset640x480, outputOrientation: UIInterfaceOrientation = .portrait) {
+    func setupFrontCamera(with preview: GPUImageView, preset: AVCaptureSession.Preset = AVCaptureSession.Preset.vga640x480, outputOrientation: UIInterfaceOrientation = .portrait) {
         setupCamera(with: preview, cameraPosition: .front, preset: preset, outputOrientation: outputOrientation)
     }
 }

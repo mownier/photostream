@@ -8,7 +8,12 @@
 
 import UIKit
 
-class SinglePostViewController: UICollectionViewController {
+@objc protocol SinglePostViewControllerAction: class {
+    
+    func back()
+}
+
+class SinglePostViewController: UICollectionViewController, SinglePostViewControllerAction {
     
     lazy var prototype: PostListCollectionCell! = PostListCollectionCell()
     

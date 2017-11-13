@@ -17,6 +17,15 @@ protocol PostListCollectionCellDelegate: class {
     func didTapLikeCount(cell: PostListCollectionCell)
 }
 
+@objc protocol PostListCollectionCellAction: class {
+    
+    func didTapHeart()
+    func didTapComment()
+    func didTapPhoto()
+    func didTapCommentCount()
+    func didTapLikeCount()
+}
+
 class PostListCollectionCell: UICollectionViewCell {
 
     weak var delegate: PostListCollectionCellDelegate?
@@ -159,7 +168,7 @@ class PostListCollectionCell: UICollectionViewCell {
     }
 }
 
-extension PostListCollectionCell {
+extension PostListCollectionCell: PostListCollectionCellAction {
     
     func didTapHeart() {
         delegate?.didTapHeart(cell: self)

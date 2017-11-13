@@ -8,7 +8,13 @@
 
 import UIKit
 
-class LikedPostViewController: UICollectionViewController {
+@objc protocol LikedPostViewControllerAction: class {
+    
+    func triggerRefresh()
+    func back()
+}
+
+class LikedPostViewController: UICollectionViewController, LikedPostViewControllerAction {
 
     lazy var prototype: PostListCollectionCell! = PostListCollectionCell()
     

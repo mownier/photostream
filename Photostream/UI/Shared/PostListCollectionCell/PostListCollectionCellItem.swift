@@ -68,10 +68,10 @@ extension PostListCollectionCell: PostListCollectionCellConfig {
         }
         
         let font = messageLabel.font!
-        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFontWeightSemibold)
+        let semiBold = UIFont.systemFont(ofSize: font.pointSize, weight: UIFont.Weight.semibold)
         let regular = UIFont.systemFont(ofSize: font.pointSize)
-        let name = NSAttributedString(string: displayName, attributes: [NSFontAttributeName: semiBold])
-        let message = NSAttributedString(string: message, attributes: [NSFontAttributeName: regular])
+        let name = NSAttributedString(string: displayName, attributes: [NSAttributedStringKey.font: semiBold])
+        let message = NSAttributedString(string: message, attributes: [NSAttributedStringKey.font: regular])
         let text = NSMutableAttributedString()
         text.append(name)
         text.append(NSAttributedString(string: " "))

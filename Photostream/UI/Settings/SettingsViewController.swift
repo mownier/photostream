@@ -8,7 +8,12 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController {
+@objc protocol SettingsViewControllerAction: class {
+    
+    func didTapBack()
+}
+
+class SettingsViewController: UITableViewController, SettingsViewControllerAction {
 
     let reuseId = "Cell"
     

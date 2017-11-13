@@ -8,7 +8,12 @@
 
 import UIKit
 
-class RegistrationViewController: UIViewController {
+@objc protocol RegistrationViewControllerAction: class {
+
+    func didTapView()
+}
+
+class RegistrationViewController: UIViewController, RegistrationViewControllerAction {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!

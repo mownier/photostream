@@ -13,7 +13,12 @@ protocol CommentListCellDelegate: class {
     func didTapAuthor(cell: CommentListCell)
 }
 
-class CommentListCell: UITableViewCell {
+@objc protocol CommentListCellAction: class {
+    
+    func didTapAuthor()
+}
+
+class CommentListCell: UITableViewCell, CommentListCellAction {
 
     weak var delegate: CommentListCellDelegate?
     
@@ -51,7 +56,7 @@ class CommentListCell: UITableViewCell {
         timeLabel.font = UIFont.systemFont(ofSize: 8)
         timeLabel.textColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
         
-        authorLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightSemibold)
+        authorLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.semibold)
         authorLabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
         
         contentLabel.font = UIFont.systemFont(ofSize: 12)
