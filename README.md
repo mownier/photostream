@@ -2,6 +2,11 @@
 
 A photo sharing app that uses Firebase.
 
+- [x] Swift 4
+- [x] iOS 11
+
+There is a `swift3` branch for those who want to stay on Swift 3.
+
 ## How To Make It Work?
 
 - Clone this repo or download source code.
