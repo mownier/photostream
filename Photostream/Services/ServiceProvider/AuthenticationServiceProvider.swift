@@ -33,13 +33,20 @@ struct AuthenticationServiceProvider: AuthenticationService {
             let ref = Database.database().reference()
             let path = "users/\(id)"
             ref.child(path).observeSingleEvent(of: .value, with: { (data) in
+                
+                // Get user value
                 var u = User()
-                u.email = data.childSnapshot(forPath: "email").value as! String
-                u.id = data.childSnapshot(forPath: "id").value as! String
-                u.firstName = data.childSnapshot(forPath: "firstname").value as! String
-                u.lastName = data.childSnapshot(forPath: "lastname").value as! String
-                if data.hasChild("username") {
-                    u.username = data.childSnapshot(forPath: "username").value as! String
+                let value = data.value as? NSDictionary
+                u.email = value?["email"] as? String ?? ""
+                u.id = value?["id"] as? String ?? ""
+                u.firstName = value?["firstname"] as? String ?? ""
+                u.lastName = value?["lastname"] as? String ?? ""
+
+                // UserName
+                let userName = value?["username"] as? String ?? ""
+                
+                if userName.length>0 {
+                    u.username = userName
                 }
                 
                 result.user = u
